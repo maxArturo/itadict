@@ -42,7 +42,7 @@ import {
   readCard,
 } from '../js/study.js';
 import { WORD_CAP, createReader, summarise, tokenize } from '../js/text.js';
-import { PALETTE, backTarget, formRows } from '../js/ui.js';
+import { PALETTE, backTarget, formRows, translationRows } from '../js/ui.js';
 import {
   LABELS,
   backupFile,
@@ -264,6 +264,39 @@ test('the FORMS table starts at the present tense, and persons keep their slots'
     { label: 'participio passato', value: 'andato' },
   ], 'present first, gerundio before participio, imperativo not drawn');
   assert.deepEqual(formRows([]), []);
+});
+
+// ---------------------------------------------------------------- the entry translation
+
+test('English glosses keep their part of speech, and no English data yields no section', () => {
+  assert.deepEqual(
+    translationRows([
+      { pos: 'noun', glosses: ['house', 'home'] },
+      { pos: 'verb', glosses: ['to house'] },
+    ]),
+    [
+      { pos: 'noun', gloss: 'house' },
+      { pos: '', gloss: 'home' },
+      { pos: 'verb', gloss: 'to house' },
+    ],
+    'each gloss stays in its own group',
+  );
+  assert.deepEqual(
+    translationRows([{ pos: 'noun', glosses: ['house'] }]),
+    [{ pos: '', gloss: 'house' }],
+    'one group draws no label',
+  );
+  assert.deepEqual(translationRows([]), [], 'no English data, no rows, so the section stays hidden');
+  assert.deepEqual(
+    toEntry({
+      id: 'ca:0',
+      word: 'casa',
+      en: [{ pos: 'noun', glosses: [' house ', ''] }, { pos: 'verb', glosses: [] }, 'junk'],
+    })?.en,
+    [{ pos: 'noun', glosses: ['house'] }],
+    'empty groups and junk are dropped',
+  );
+  assert.deepEqual(toEntry({ id: 'ca:0', word: 'casa' })?.en, [], 'an old entry has an empty list');
 });
 
 // ---------------------------------------------------------------- the text reader
