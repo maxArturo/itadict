@@ -12,7 +12,7 @@
  * `tools/sanity.mjs` drives the shell with fakes and the browser path calls `boot()` with nothing.
  */
 
-import { createData, bucketKey } from './data.js';
+import { bucketOfId, createData } from './data.js';
 import { HASH, createRouter } from './router.js';
 import { createSearch } from './search.js';
 import { createStorage } from './storage.js';
@@ -33,11 +33,11 @@ const WIDE = '(min-width: 900px)';
  * @type {Record<string, { title: string, note: string }>}
  */
 const PLACEHOLDERS = {
-  text: { title: 'Text', note: 'Reading texts arrive in milestone 5.' },
-  reference: { title: 'Reference', note: 'The grammar and pronunciation catalogue arrives in milestone 5.' },
-  lists: { title: 'Lists', note: 'Lists and notes arrive in milestone 4.' },
-  study: { title: 'Study', note: 'Flashcards arrive in milestone 6.' },
-  settings: { title: 'Settings', note: 'Settings arrive in milestone 4.' },
+  text: { title: 'Text', note: 'Text reader arrives in the next build.' },
+  study: { title: 'Study', note: 'Flashcards arrive in a later build.' },
+  lists: { title: 'Lists', note: 'Lists and notes arrive in a later build.' },
+  settings: { title: 'Settings', note: 'Settings arrive in a later build.' },
+  reference: { title: 'Reference', note: 'The grammar catalogue arrives in a later build.' },
 };
 
 /** The right pane of the wide layout before a row is tapped. */
@@ -107,32 +107,29 @@ export function boot(options = {}) {
   });
 
   /**
-   * One entry screen, from the row this session already showed. On a reload the row is gone, so
-   * the stored bucket from `storage.rememberEntry` is the way back to the body; with neither, one
-   * honest line replaces the sections.
+   * One entry screen. The id carries its own location, so a cold deep link costs one entry file
+   * and needs no memory of an earlier search. The row this session showed gives the headword at
+   * once; a cold link draws the id until the body lands.
    * @param {string} id
    * @returns {HTMLElement}
    */
   function entryView(id) {
     const known = search.row(id);
-    const bucket = known !== null && known.folded !== '' ? bucketKey(known.folded) : storage.openedBucket(id);
     /** @type {Row} */
-    const row = known ?? { folded: '', id, headword: id, pronunciation: '', gloss: '', rank: 0 };
-    const load =
-      bucket === null
-        ? Promise.resolve(null)
-        : data.entry(bucket, id).then(
-            (entry) => {
-              storage.rememberEntry(id, bucket);
-              return entry;
-            },
-            () => null,
-          );
+    const row = known ?? { folded: '', id, headword: id, pronunciation: '', pos: '', gloss: '' };
+    const bucket = bucketOfId(id);
     return ui.entryScreen({
       row,
-      load,
+      load: data.entry(id).then(
+        (entry) => entry,
+        () => null,
+      ),
       query: searchView.query(),
-      examples: () => (bucket === null ? Promise.resolve(new Map()) : data.examples(bucket).catch(() => new Map())),
+      examples: (indexes) =>
+        data
+          .examples(bucket)
+          .then((sentences) => indexes.map((index) => sentences[index] ?? '').filter((line) => line !== ''))
+          .catch(() => []),
     });
   }
 

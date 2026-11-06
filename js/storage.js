@@ -6,13 +6,12 @@
  * localStorage['itadict'] = { v: 1, data: { history: [...], opened: [...] } }
  * ```
  *
- * `history` is the last {@link HISTORY_MAX} search queries, newest first. `opened` remembers which
- * bucket an entry id came from, so reloading `#/entry/<id>` still finds the entry body: the URL
- * carries an id, and the shard key cannot be derived from an id.
+ * `history` is the last {@link HISTORY_MAX} search queries, newest first. An entry id carries its
+ * own location, so nothing has to remember a bucket.
  *
- * Nothing else is pruned. A blob this build cannot read (unparsable, foreign, newer) is left
- * exactly where it is and writes are refused, so data is never clobbered; the app keeps working
- * from memory for the session.
+ * Nothing is pruned. A blob this build cannot read (unparsable, foreign, newer) is left exactly
+ * where it is and writes are refused, so data is never clobbered; the app keeps working from
+ * memory for the session.
  */
 
 /** The one persistent key. No second key, no export, no import. */
@@ -24,15 +23,9 @@ export const VERSION = 1;
 /** How many queries search history keeps. */
 export const HISTORY_MAX = 50;
 
-/** How many entry ids the app remembers the bucket of. */
-export const OPENED_MAX = 200;
-
-/** One entry id and the bucket its body lives in. */
-/** @typedef {{ id: string, bucket: string }} Opened */
-
 /**
  * Envelope contents once versioned. Extra top-level keys survive untouched.
- * @typedef {{ history: string[], opened: Opened[], [key: string]: unknown }} Data
+ * @typedef {{ history: string[], [key: string]: unknown }} Data
  */
 
 /** A `localStorage`-shaped backend; injected so the module is testable without a DOM. */
@@ -85,17 +78,12 @@ function normalise(data) {
   /** @type {Record<string, unknown>} */
   const source = isPlain(data) ? { .../** @type {Record<string, unknown>} */ (data) } : {};
   const history = Array.isArray(source.history) ? source.history : [];
-  const opened = Array.isArray(source.opened) ? source.opened : [];
   return {
     ...source,
     history: history
       .filter((query) => typeof query === 'string' && query.trim() !== '')
       .map((query) => /** @type {string} */ (query).trim())
       .slice(0, HISTORY_MAX),
-    opened: opened
-      .filter((entry) => isPlain(entry) && typeof /** @type {any} */ (entry).id === 'string' && typeof /** @type {any} */ (entry).bucket === 'string')
-      .map((entry) => ({ id: /** @type {any} */ (entry).id, bucket: /** @type {any} */ (entry).bucket }))
-      .slice(0, OPENED_MAX),
   };
 }
 
@@ -151,8 +139,6 @@ function open(backend) {
  *   history: () => string[],
  *   addQuery: (query: string) => string[],
  *   clearHistory: () => void,
- *   openedBucket: (id: string) => string | null,
- *   rememberEntry: (id: string, bucket: string) => void,
  *   save: () => boolean,
  * }}
  */
@@ -200,24 +186,6 @@ export function createStorage(backend = globalThis.localStorage) {
     /** Drop every stored query. */
     clearHistory() {
       data.history = [];
-      persist();
-    },
-    /**
-     * The bucket an entry id was last opened from, or `null` when this build never opened it.
-     * @param {string} id
-     * @returns {string | null}
-     */
-    openedBucket(id) {
-      return data.opened.find((entry) => entry.id === id)?.bucket ?? null;
-    },
-    /**
-     * Remember where an entry body lives, so a reload of `#/entry/<id>` can fetch it.
-     * @param {string} id
-     * @param {string} bucket
-     */
-    rememberEntry(id, bucket) {
-      if (typeof id !== 'string' || id === '' || typeof bucket !== 'string' || bucket === '') return;
-      data.opened = [{ id, bucket }, ...data.opened.filter((entry) => entry.id !== id)].slice(0, OPENED_MAX);
       persist();
     },
     save: persist,

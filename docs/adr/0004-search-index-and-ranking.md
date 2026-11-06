@@ -12,50 +12,64 @@ headword at build time. Only the key is folded. Display strings keep their accen
 
 Consequence: `e` matches `è` and `é`. Results order by rank, not by alphabet.
 
-## Index format
+## Three file sets, three jobs
 
-The index is bucketed by the first two letters of the folded headword. A bucket is one file,
-`data/index/<bucket>.json`, capped at 1 MB and split the same way a fat letter splits. Two letters
-is the unit because a search runs from two characters, so every query needs exactly one bucket.
-
-A bucket is an array of rows sorted by folded key:
+Search rows are separate from entry bodies. A row carries what a result row draws and what ranking
+matches. Nothing else.
 
 ```
 [folded, id, headword, pronunciation, gloss]
 ```
 
-The row carries what a search row draws: headword, the small pronunciation line, one grey gloss line.
-That is why the index costs bytes. A result row is drawn without fetching the shard that holds the
-entry.
+A result list is therefore drawn from one file, with no entry fetch per row. The entry body is
+fetched only when a row is tapped. A body is about four times the size of its row, so this split is
+what keeps a keystroke cheap.
+
+Buckets are the first two folded letters of the headword. Two letters is the unit because search
+starts at two characters, so every query needs exactly one bucket. A bucket over 1 MB splits further,
+and the manifest lists every file.
 
 ## Form to lemma
 
-`data/forms/<bucket>.json` maps a folded inflected form to its lemma id and the lemma's headword.
-Buckets are the first two letters of the form, same as the head index. The source is the verb forms
-in the extract.
+`data/forms/<bucket>.json` maps a folded inflected form to its lemmas, as `[id, headword]`. Buckets
+are the first two letters of the form. The index is built from every form claim in the extract: the
+source's own `form_of` links, plus the tense and person tags on the lemma's form entries. It is
+inverted relative to a conjugation table, and that is on purpose: a search needs form to lemma, which
+is the one direction a dictionary never stores.
 
-This index duplicates every inflected form once, so it is the largest of the indexes. It is a separate
-file set so that it is only fetched when the first two steps fall short.
+This index duplicates every inflected form once, so it is the largest of the file sets. It ships
+separately so that it is fetched only when a short result list needs it, or when an entry with a
+conjugation opens.
+
+## Conjugation tables
+
+The related-forms section of an entry is built from the inverted form index, never from the extract's
+own `forms` field on the lemma. The field is per-source-page and misses forms that another page
+claims, so a table built from it has holes. The index has every claim.
+
+The build writes one lemma's group of forms into that lemma's entry body, so the app does no reverse
+scan. A lemma whose forms the index does not know shows no related-forms section, rather than an empty
+one.
 
 ## Ranking
 
 | Step | Match | Cost |
 |---|---|---|
 | exact | folded query equals a folded headword | one map lookup in the loaded bucket |
-| prefix | a folded headword starts with the query | binary search, then a scan up to the result cap |
-| inflected | the query is a verb form of a lemma | one forms bucket fetch, then a lookup per hit |
-| fuzzy | edit distance 1 for queries up to four characters, 2 above | a scan of the loaded buckets, never a shard |
+| prefix | a folded headword starts with the query | binary search for the range, then a scan up to the result cap |
+| inflected | the query is a form of a lemma | one forms bucket fetch, then a lookup per hit |
+| fuzzy | edit distance 1 for queries up to four characters, 2 above | a scan of the loaded bucket, never an entry body |
 
 Fuzzy runs only when the three steps above return fewer than the result cap, and only for queries of
 two characters or more, and it stops at the cap. It is the only step that scans, so it is the only
-step with a time budget. A one-character query shows history and notes suggestions instead of a
-search.
+step with a time budget. The cap is 50 rows. A one-character query shows history and notes suggestions
+instead of a search.
 
-Within a step, ties order by exact-case-and-accent match first, then by shorter headword, then by the
-row's rank field from the extract. Prefix search never crosses a bucket, because a bucket is the
-first two letters and the query is at least two characters.
+Within a step, ties order by exact case-and-accent match first, then by the shorter headword, then by
+the row's rank from the extract, then by alphabet, so the order is stable. Prefix search never crosses
+a bucket, because a bucket is the first two letters and the query is at least two characters.
 
 **Consequences:** a keystroke after the first costs no fetch, because the bucket is cached forever.
-The first search on a new bucket costs one small fetch. Fuzzy results are bounded, which is a quality
-limit, not a bug: `shortcut: fuzzy only scans the loaded buckets, raise the search length or add a
-bounded edit-distance index if recall matters`.
+The first search in a new bucket costs one small fetch. An inflected-form hit costs a second fetch.
+Fuzzy results are bounded, which is a quality limit, not a bug:
+`shortcut: matching scans the whole bucket; add a range index if a bucket passes 50k rows`.

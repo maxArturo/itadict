@@ -2,8 +2,8 @@
  * The shell's checks. `npm test`. node:assert only, no framework, no browser.
  *
  * What is checked is what would fail silently: folding, ranking order and cap, routing, the
- * envelope, and the manifest. Layout, focus, safe areas and taps need the browser, and are
- * checked by hand against `python3 -m http.server`.
+ * envelope, the manifest and its cache-busting hashes, the entry id, and the FORMS order. Layout,
+ * focus, safe areas and taps need the browser, checked by hand against `python3 -m http.server`.
  */
 
 import assert from 'node:assert/strict';
@@ -11,10 +11,22 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
-import { bucketKey, createData, parseExamples, parseForms, parseManifest, pickFiles, toEntry, toRow } from '../js/data.js';
+import {
+  bucketKey,
+  bucketOfId,
+  createData,
+  parseExamples,
+  parseForms,
+  parseManifest,
+  pickFiles,
+  shardUrl,
+  toEntry,
+  toRow,
+} from '../js/data.js';
 import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/router.js';
 import { createSearch, editDistanceAtMost, findMatch, fold, rank } from '../js/search.js';
-import { HISTORY_MAX, KEY, OPENED_MAX, VERSION, createStorage, migrate } from '../js/storage.js';
+import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
+import { formRows } from '../js/ui.js';
 
 const read = (path) => readFileSync(fileURLToPath(new URL(path, import.meta.url)), 'utf8');
 
@@ -54,7 +66,7 @@ function fakeWindow(hash) {
 }
 
 /** A search row, shaped as `js/data.js` hands one out. */
-const row = (headword, folded, gloss, rankValue) => ({ folded, id: headword, headword, pronunciation: '', gloss, rank: rankValue });
+const row = (headword, folded, gloss) => ({ folded, id: headword, headword, pronunciation: '', pos: '', gloss });
 
 /** A fetch over an in-memory file map, counting every call. @param {Record<string, unknown>} files */
 function fileFetch(files) {
@@ -88,7 +100,10 @@ test('every module carries the typecheck pragma, and the page loads only relativ
   assert.match(css, /--tap:\s*44px/);
   assert.match(css, /min-height:\s*var\(--tap\)/);
   assert.match(css, /overscroll-behavior-y:\s*contain/);
+  assert.match(css, /scroll-padding-top:\s*56px/);
   assert.match(css, /prefers-color-scheme:\s*dark/);
+  assert.match(css, /#6e6e73/i);
+  assert.doesNotMatch(css, /#8a8a8e/i, 'the secondary grey is never the low-contrast one');
 });
 
 // ---------------------------------------------------------------- folding and matching
@@ -100,6 +115,8 @@ test('folding drops accents and case; the bucket key keeps two letters and digit
   assert.equal(bucketKey('città'), 'ci');
   assert.equal(bucketKey('c'), 'c');
   assert.equal(bucketKey("c'è"), 'ce');
+  assert.equal(bucketOfId('ca:42'), 'ca');
+  assert.equal(bucketOfId('nope'), '');
 });
 
 test('findMatch maps a folded match back to the unfolded offsets', () => {
@@ -118,17 +135,17 @@ test('the edit distance is abandoned above the budget', () => {
 // ---------------------------------------------------------------- ranking
 
 test('ranking is exact, then prefix, then fuzzy, and a one-character query matches nothing', () => {
-  const rows = [row('casale', 'casale', 'farmhouse', 3), row('casata', 'casata', 'lineage', 2), row('casa', 'casa', 'house', 1)];
+  const rows = [row('casata', 'casata', 'lineage'), row('casale', 'casale', 'farmhouse'), row('casa', 'casa', 'house')];
 
   assert.deepEqual(rank(rows, 'c').prefix, [], 'one character reads history, not the dictionary');
   assert.deepEqual(rank(rows, 'casa').exact.map((entry) => entry.id), ['casa']);
-  assert.deepEqual(rank(rows, 'casa').prefix.map((entry) => entry.id), ['casata', 'casale'], 'equal length, then the extract rank');
+  assert.deepEqual(rank(rows, 'casa').prefix.map((entry) => entry.id), ['casale', 'casata'], 'equal length, then the alphabet');
   assert.deepEqual(rank(rows, 'casx').fuzzy.map((entry) => entry.id), ['casa'], 'distance 1 for four characters');
   assert.deepEqual(rank(rows, 'casa', 1).fuzzy, [], 'a full exact step skips fuzzy');
 });
 
 test('the exact case-and-accent match wins its tie', () => {
-  const rows = [row('perché', 'perche', 'why', 9), row('perche', 'perche', 'why', 1)];
+  const rows = [row('perché', 'perche', 'why'), row('perche', 'perche', 'why')];
   assert.deepEqual(rank(rows, 'perche').exact.map((entry) => entry.headword), ['perche', 'perché']);
   assert.deepEqual(rank(rows, 'perché').exact.map((entry) => entry.headword), ['perché', 'perche']);
 });
@@ -140,6 +157,7 @@ function memoryData(rows, forms = new Map()) {
   const asked = [];
   return {
     asked,
+    manifest: async () => ({ buckets: {} }),
     rows: async (key) => {
       asked.push('rows:' + key);
       return rows.filter((entry) => entry.folded.startsWith(key.slice(0, 2)));
@@ -149,7 +167,7 @@ function memoryData(rows, forms = new Map()) {
       return forms;
     },
     entry: async () => null,
-    examples: async () => new Map(),
+    examples: async () => [],
   };
 }
 
@@ -168,24 +186,43 @@ test('a query of one character reads history, not the dictionary', async () => {
 });
 
 test('exact beats prefix, and an inflected form resolves to its lemma row', async () => {
-  const rows = [row('casetta', 'casetta', 'little house', 3), row('casa', 'casa', 'house', 1), row('cassa', 'cassa', 'box', 2)];
-  const data = memoryData(rows, new Map([['case', { lemma: 'casa', label: 'plurale' }]]));
-  const search = createSearch({ data, storage: createStorage(fakeBackend()) });
+  const rows = [row('casetta', 'casetta', 'little house'), row('casa', 'casa', 'house'), row('cassa', 'cassa', 'box')];
+  const forms = new Map([['case', { id: 'casa', lemma: 'casa', label: 'plurale' }]]);
+  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()) });
 
   const result = await search.search('case');
-  assert.deepEqual(result.rows.map((entry) => entry.id), ['casetta', 'casa']);
+  assert.deepEqual(result.rows.map((entry) => entry.id), ['casetta', 'casa'], 'the lemma row follows the prefix rows');
   assert.equal(result.rows[1].matched, 'case', 'the secondary line shows the form that was typed');
   assert.equal(search.row('casa')?.headword, 'casa', 'a shown row is remembered for the entry screen');
 });
 
-test('an inflected form resolves to a lemma in another bucket', async () => {
-  const rows = [row('andare', 'andare', 'to go', 1)];
-  const data = memoryData(rows, new Map([['vado', { lemma: 'andare', label: 'presente 1s' }]]));
-  const search = createSearch({ data, storage: createStorage(fakeBackend()) });
+test('an inflected form resolves to a lemma in another bucket, by its id', async () => {
+  const rows = [row('andare', 'andare', 'to go')];
+  const forms = new Map([['vado', { id: 'andare', lemma: 'andare', label: 'presente 1s' }]]);
+  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()) });
   const result = await search.search('vado');
   assert.deepEqual(result.rows.map((entry) => entry.id), ['andare']);
-  assert.equal(result.rows[0].gloss, 'to go', 'the lemma row carries its gloss');
+  assert.equal(result.rows[0].gloss, 'to go');
   assert.equal(result.rows[0].matched, 'vado');
+});
+
+// ---------------------------------------------------------------- the FORMS table
+
+test('the FORMS table starts at the present tense, and persons keep their slots', () => {
+  const rows = formRows([
+    { key: 'participio passato', personal: false, forms: ['andato'] },
+    { key: 'indicativo presente', personal: true, forms: ['vado', 'vai', '', '', 'andate', ''] },
+    { key: 'gerundio', personal: false, forms: ['andando'] },
+    { key: 'imperativo', personal: true, forms: ['', 'vai'] },
+  ]);
+  assert.deepEqual(rows, [
+    { label: 'presente · io', value: 'vado' },
+    { label: 'presente · tu', value: 'vai' },
+    { label: 'presente · voi', value: 'andate' },
+    { label: 'gerundio', value: 'andando' },
+    { label: 'participio passato', value: 'andato' },
+  ], 'present first, gerundio before participio, imperativo not drawn');
+  assert.deepEqual(formRows([]), []);
 });
 
 // ---------------------------------------------------------------- routes
@@ -197,7 +234,7 @@ test('the router parses exactly the seven routes, and nothing else', () => {
     assert.deepEqual(parseRoute('#/' + name), { name, id: null });
   }
   assert.deepEqual(parseRoute('#/entry/casa'), { name: 'entry', id: 'casa' });
-  assert.deepEqual(parseRoute(entryHash('casa bella')), { name: 'entry', id: 'casa bella' });
+  assert.deepEqual(parseRoute(entryHash('ca:42')), { name: 'entry', id: 'ca:42' });
   for (const hash of ['#/nope', '#/entry', '#/entry/', '#/entry/a/b', '#/search/x', 'nope', '#/Entry/casa']) {
     assert.equal(parseRoute(hash), null, hash + ' is not a route');
   }
@@ -238,11 +275,11 @@ test('a route renders once, a repeat hash is not a navigation, and leaving tears
   fire();
   win.location.hash = HASH.text;
   fire();
-  win.location.hash = entryHash('casa');
+  win.location.hash = entryHash('ca:42');
   fire();
   router.stop();
 
-  assert.deepEqual(log, ['render search', 'teardown search', 'render text', 'teardown text', 'render casa', 'teardown casa']);
+  assert.deepEqual(log, ['render search', 'teardown search', 'render text', 'teardown text', 'render ca:42', 'teardown ca:42']);
   assert.equal(router.current(), null);
   assert.throws(() => createRouter({}), /render/);
   assert.deepEqual(resolveRoute('#/nope'), { route: { name: 'search', id: null }, redirect: HASH.search });
@@ -250,36 +287,22 @@ test('a route renders once, a repeat hash is not a navigation, and leaving tears
 
 // ---------------------------------------------------------------- the envelope
 
-test('the envelope migrates forward, keeps unknown keys, and caps both lists', () => {
-  const data = migrate(undefined, {
-    history: [' casa ', '', 3, 'via'],
-    opened: [{ id: 'casa', bucket: 'ca' }, { id: 1 }, null],
-    later: true,
-  });
+test('the envelope migrates forward, keeps unknown keys, and caps the history', () => {
+  const data = migrate(undefined, { history: [' casa ', '', 3, 'via'], later: true });
   assert.deepEqual(data.history, ['casa', 'via']);
-  assert.deepEqual(data.opened, [{ id: 'casa', bucket: 'ca' }]);
   assert.equal(data.later, true, 'a key this build does not know survives');
-
-  const many = migrate(VERSION, {
-    history: Array.from({ length: HISTORY_MAX + 10 }, (_, index) => 'q' + index),
-    opened: Array.from({ length: OPENED_MAX + 10 }, (_, index) => ({ id: 'e' + index, bucket: 'ee' })),
-  });
+  const many = migrate(VERSION, { history: Array.from({ length: HISTORY_MAX + 10 }, (_, index) => 'q' + index) });
   assert.equal(many.history.length, HISTORY_MAX);
-  assert.equal(many.opened.length, OPENED_MAX);
 });
 
-test('storage de-duplicates a query, remembers a bucket, and refuses a blob it cannot read', () => {
+test('storage de-duplicates a query and refuses a blob it cannot read', () => {
   const backend = fakeBackend();
   const storage = createStorage(backend);
   storage.addQuery(' casa ');
   storage.addQuery('via');
   storage.addQuery('casa');
   assert.deepEqual(storage.history(), ['casa', 'via'], 'newest first, no duplicate');
-  assert.deepEqual(JSON.parse(backend.raw()), { v: VERSION, data: { history: ['casa', 'via'], opened: [] } });
-
-  storage.rememberEntry('casa', 'ca');
-  assert.equal(storage.openedBucket('casa'), 'ca');
-  assert.equal(storage.openedBucket('nope'), null);
+  assert.deepEqual(JSON.parse(backend.raw()), { v: VERSION, data: { history: ['casa', 'via'] } });
   assert.deepEqual(createStorage(fakeBackend(backend.raw())).history(), ['casa', 'via'], 'the blob round-trips');
 
   const brokenBlob = fakeBackend('not json');
@@ -295,7 +318,7 @@ test('storage de-duplicates a query, remembers a bucket, and refuses a blob it c
 
 // ---------------------------------------------------------------- the data contract
 
-test('the manifest parses into four file sets per bucket, and skips a broken bucket', () => {
+test('the manifest parses into four file sets per bucket, with the hash of each file', () => {
   const manifest = parseManifest({
     version: 'v1-x',
     built: '2026-01-01',
@@ -304,10 +327,10 @@ test('the manifest parses into four file sets per bucket, and skips a broken buc
     totals: { entries: 2, forms: 3, examples: 4, bytes: 5 },
     buckets: {
       ca: {
-        search: [{ path: 'data/ca.json', bytes: 10, hash: 'a' }],
-        entry: [{ path: 'data/entry/ca.json', bytes: 11 }],
-        ex: [{ path: 'data/ex/ca.json', bytes: 12 }],
-        forms: [{ path: 'data/forms/ca.json', bytes: 13 }],
+        search: [{ path: 'data/ca.json', bytes: 10, hash: 'a1' }],
+        entry: [{ path: 'data/entry/ca.json', bytes: 11, hash: 'b2' }],
+        ex: [{ path: 'data/ex/ca.json', bytes: 12, hash: 'c3' }],
+        forms: [{ path: 'data/forms/ca.json', bytes: 13, hash: 'd4' }],
       },
       broken: { search: [{ nope: true }] },
       empty: {},
@@ -317,92 +340,100 @@ test('the manifest parses into four file sets per bucket, and skips a broken buc
   assert.equal(manifest?.partial, false);
   assert.deepEqual(manifest?.totals, { entries: 2, forms: 3, examples: 4, bytes: 5 });
   assert.deepEqual(manifest?.sources, [{ name: 'kaikki', url: 'https://example.org', licence: 'CC BY-SA' }]);
-  assert.deepEqual(manifest?.buckets.ca.search, [{ path: 'data/ca.json', bytes: 10, hash: 'a' }]);
-  assert.deepEqual(manifest?.buckets.ca.forms, [{ path: 'data/forms/ca.json', bytes: 13, hash: '' }]);
+  assert.deepEqual(manifest?.buckets.ca.entry, [{ path: 'data/entry/ca.json', bytes: 11, hash: 'b2' }]);
   assert.equal(manifest?.buckets.broken, undefined);
   assert.equal(manifest?.buckets.empty, undefined);
   assert.equal(parseManifest([]), null);
   assert.equal(parseManifest({ buckets: {} }), null);
 });
 
-test('the file for a key is the longest file prefix the key starts with', () => {
-  const files = [{ path: 'data/ca.json', bytes: 1, hash: '' }, { path: 'data/ca/cas.json', bytes: 1, hash: '' }, { path: 'data/ca/cat.json', bytes: 1, hash: '' }];
+test('a data URL carries the file hash, and a bucket picks its split file by prefix', () => {
+  assert.equal(shardUrl({ path: 'data/ca.json', bytes: 1, hash: 'abc' }), 'data/ca.json?v=abc');
+  assert.equal(shardUrl({ path: 'data/ca.json', bytes: 1, hash: '' }), 'data/ca.json');
+
+  const files = [
+    { path: 'data/ca.json', bytes: 1, hash: '1' },
+    { path: 'data/ca/cas.json', bytes: 1, hash: '2' },
+    { path: 'data/ca/cat.json', bytes: 1, hash: '3' },
+  ];
   assert.deepEqual(pickFiles(files, 'casa').map((file) => file.path), ['data/ca/cas.json']);
   assert.deepEqual(pickFiles(files, 'catone').map((file) => file.path), ['data/ca/cat.json']);
   assert.deepEqual(pickFiles(files, 'ca').map((file) => file.path), ['data/ca.json']);
   assert.deepEqual(pickFiles(files, 'cb'), files, 'a key shorter than every split prefix reads the bucket');
-  assert.deepEqual(pickFiles([], 'casa'), []);
 });
 
-test('a row, an entry and the two lookups are read from the shapes the build writes', () => {
-  assert.deepEqual(toRow(['casa', 'it-casa', 'casa', '/ˈkaza/', 'house']), {
+test('a row, an entry, the forms and the examples are read from the shapes the build writes', () => {
+  assert.deepEqual(toRow(['casa', 'ca:0', 'casa', '/ˈkasa/', 'noun', 'edificio']), {
     folded: 'casa',
-    id: 'it-casa',
+    id: 'ca:0',
     headword: 'casa',
-    pronunciation: '/ˈkaza/',
-    gloss: 'house',
-    rank: 0,
+    pronunciation: '/ˈkasa/',
+    pos: 'noun',
+    gloss: 'edificio',
   });
   assert.equal(toRow(['casa', '', 'casa']), null, 'a row without an id cannot be opened');
 
   const entry = toEntry({
-    id: 'it-casa',
+    id: 'ca:0',
     word: 'casa',
-    pos: 'noun',
+    ipa: '/ˈkasa/',
     cefr: 'a1',
-    ipa: '/ˈkaza/',
-    senses: ['house', 'home'],
-    ex: ['e1', 'e2'],
-    conj: [['case', 'plurale']],
+    pos: [{ pos: 'noun', senses: ['house', 'home'] }, { pos: 'adjective', senses: [] }],
+    ex: [0, 2],
+    conj: [{ key: 'indicativo presente', personal: true, forms: ['vado', null, 'va'] }, { key: 'gerundio', personal: false, forms: ['andando'] }],
   });
-  assert.deepEqual(entry, {
-    id: 'it-casa',
-    headword: 'casa',
-    pronunciation: '/ˈkaza/',
-    cefr: 'a1',
-    translation: ['house', 'home'],
-    forms: [{ label: 'plurale', value: 'case' }],
-    exampleIds: ['e1', 'e2'],
-  });
-  assert.equal(toEntry({ id: 'x' }), null, 'an entry without a word cannot be drawn');
+  assert.deepEqual(entry?.posList, [{ pos: 'noun', senses: ['house', 'home'] }], 'a pos group with no sense is dropped');
+  assert.deepEqual(entry?.conj, [
+    { key: 'indicativo presente', personal: true, forms: ['vado', '', 'va'] },
+    { key: 'gerundio', personal: false, forms: ['andando'] },
+  ]);
+  assert.deepEqual(entry?.exampleIndexes, [0, 2], 'an entry body carries example positions, not sentences');
+  assert.equal(toEntry({ id: 'ca:1' }), null, 'an entry without a word cannot be drawn');
 
-  assert.deepEqual([...parseForms({ case: { lemma: 'casa', label: 'plurale' } }).entries()], [['case', { lemma: 'casa', label: 'plurale' }]]);
-  assert.deepEqual([...parseExamples({ e1: 'La casa è grande.' }).entries()], [['e1', 'La casa è grande.']]);
+  assert.deepEqual([...parseForms({ case: { id: 'ca:0', lemma: 'casa', label: 'plurale' } }).values()], [
+    { id: 'ca:0', lemma: 'casa', label: 'plurale' },
+  ]);
+  assert.deepEqual(parseExamples([['e1', 'La casa è grande.'], ['e2', 'Vado a casa.']]), ['La casa è grande.', 'Vado a casa.']);
 });
 
-test('createData reads the manifest once and one file per lookup', async () => {
+test('createData reads the manifest once, one hashed file per lookup, and an entry from its id', async () => {
   const { calls, fetch } = fileFetch({
     'data/index.json': {
       version: 'v1',
       buckets: {
         ca: {
-          search: [{ path: 'data/ca.json' }],
-          entry: [{ path: 'data/entry/ca.json' }],
-          ex: [{ path: 'data/ex/ca.json' }],
-          forms: [{ path: 'data/forms/ca.json' }],
+          search: [{ path: 'data/ca.json', hash: 'h1' }],
+          entry: [{ path: 'data/entry/ca.json', hash: 'h2' }],
+          ex: [{ path: 'data/ex/ca.json', hash: 'h3' }],
+          forms: [{ path: 'data/forms/ca.json', hash: 'h4' }],
         },
       },
     },
-    'data/ca.json': [['casa', 'it-casa', 'casa', '/ˈkaza/', 'house'], ['cane', 'it-cane', 'cane', '', 'dog'], 'junk'],
-    'data/entry/ca.json': [{ id: 'it-casa', word: 'casa', pos: 'noun', cefr: 'a1', senses: ['house'], ex: ['e1'], conj: [['case', 'plurale']] }],
-    'data/ex/ca.json': { e1: 'La casa è grande.' },
-    'data/forms/ca.json': { case: { lemma: 'casa', label: 'plurale' } },
+    'data/ca.json?v=h1': [['casa', 'ca:0', 'casa', '/ˈkasa/', 'noun', 'house'], ['cane', 'ca:1', 'cane', '', 'noun', 'dog'], 'junk'],
+    'data/entry/ca.json?v=h2': [
+      { id: 'ca:0', word: 'casa', ipa: '/ˈkasa/', cefr: 'a1', pos: [{ pos: 'noun', senses: ['house'] }], ex: [0], conj: [] },
+      { id: 'ca:1', word: 'cane', cefr: 'a1', pos: [{ pos: 'noun', senses: ['dog'] }], ex: [], conj: [] },
+    ],
+    'data/ex/ca.json?v=h3': [['e1', 'La casa è grande.'], ['e2', 'Vado a casa.']],
+    'data/forms/ca.json?v=h4': { case: { id: 'ca:0', lemma: 'casa', label: 'plurale' } },
   });
   const data = createData({ fetch, base: '' });
 
   assert.equal((await data.rows('casa')).length, 2, 'a junk row is dropped');
-  await data.rows('casa');
+  assert.equal(calls.filter((url) => url === 'data/ca.json?v=h1').length, 1, 'the file URL carries its hash');
   assert.equal(calls.filter((url) => url === 'data/index.json').length, 1, 'the manifest is fetched once');
-  assert.equal(calls.filter((url) => url === 'data/ca.json').length, 1, 'a bucket file is fetched once');
-  assert.deepEqual(await data.rows('zz'), [], 'a bucket the manifest does not list is empty');
-  assert.equal(calls.some((url) => url.includes('zz')), false, 'and costs no request, so it cannot log a 404');
 
-  assert.deepEqual((await data.forms('case')).get('case'), { lemma: 'casa', label: 'plurale' });
-  const entry = await data.entry('ca', 'it-casa');
-  assert.deepEqual(entry?.translation, ['house']);
-  assert.deepEqual(entry?.exampleIds, ['e1'], 'an entry body carries sentence ids, not sentences');
-  assert.equal((await data.examples('ca')).get('e1'), 'La casa è grande.');
-  assert.equal(await data.entry('ca', 'nothing'), null);
+  const entry = await data.entry('ca:1');
+  assert.equal(entry?.headword, 'cane', 'the id names its bucket and position');
+  assert.equal(calls.filter((url) => url === 'data/entry/ca.json?v=h2').length, 1, 'one entry fetch, no search first');
+  assert.deepEqual((await data.examples('ca')).slice(0, 1), ['La casa è grande.']);
+  assert.equal((await data.forms('case')).get('case')?.id, 'ca:0');
+  assert.equal(await data.entry('ca:99'), null, 'a position past the file is not an entry');
+  assert.equal(await data.entry('nope'), null, 'an id without a bucket is not an entry');
+
+  const before = calls.length;
+  assert.deepEqual(await data.rows('zz'), [], 'a bucket the manifest does not list is empty');
+  assert.equal(calls.length, before, 'and costs no request, so it cannot log a 404');
 });
 
 // ---------------------------------------------------------------- the budget
@@ -419,7 +450,7 @@ test('ranking a 5,000-row bucket stays far below a keystroke', () => {
     let word = '';
     const parts = 2 + Math.floor(random() * 3);
     for (let k = 0; k < parts; k += 1) word += syllables[Math.floor(random() * syllables.length)];
-    rows.push(row(word, word, 'una glossa breve', index));
+    rows.push(row(word, word, 'una glossa breve'));
   }
   const queries = ['ca', 'casa', 'strada', 'perche', 'casta', 'casetta', 'zzzzz', 'libro'];
   for (const query of queries) rank(rows, query);

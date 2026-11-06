@@ -7,25 +7,26 @@
  * data/index.json
  *   {
  *     version, built, partial, bucketKey,
- *     sources: [{ name, url, licence, licenceUrl, bytes }],
+ *     sources: [{ name, url, licence }],
  *     totals: { entries, forms, examples, bytes },
  *     buckets: {
- *       "<key>": {                        // lowercase, diacritics removed, first two letters or digits
- *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, gloss]
- *         entry:  [{ path, bytes, hash }],   // [{ id, word, pos, cefr, ipa?, senses, ex, conj? }]
- *         ex:     [{ path, bytes, hash }],   // { sentenceId: sentence }
- *         forms:  [{ path, bytes, hash }],   // { foldedForm: { lemma, label } }
+ *       "<key>": {                          // lowercase, diacritics removed, first two letters or digits
+ *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, pos, gloss]
+ *         entry:  [{ path, bytes, hash }],   // [{ id: "<bucket>:<index>", word, ipa?, cefr, pos, ex, conj? }]
+ *         ex:     [{ path, bytes, hash }],   // [[sentenceId, sentence]] in index order
+ *         forms:  [{ path, bytes, hash }],   // { foldedForm: { id, lemma, label } }
  *       }
  *     }
  *   }
  * ```
  *
- * A bucket that grew past the file cap splits into files named by a longer key prefix
- * (`data/ca/cas.json`). The file for a query is the longest file prefix the query starts with, so
- * a cold search costs the manifest and one file.
+ * Every data URL carries `?v=<hash>` from the manifest. The service worker caches a data file
+ * forever, so a rebuilt shard must arrive as a new URL; the hash is that URL.
  *
- * The manifest paths are relative to the page, and every URL in the app is relative, so the same
- * files load from `/itadict/` and from a root dev server.
+ * A bucket that grew past the cap splits into files named by a longer key prefix
+ * (`data/ca/cao.json`). The file for a query is the longest file prefix the query starts with, so
+ * a cold search costs the manifest and one file. An entry id carries its own location, so a cold
+ * deep link costs one entry file too.
  */
 
 /** Where the pipeline writes, relative to the page. The manifest paths carry it too. */
@@ -53,24 +54,30 @@ export const DATA_BASE = '';
  *   id: string,
  *   headword: string,
  *   pronunciation: string,
+ *   pos: string,
  *   gloss: string,
- *   rank: number,
  *   matched?: string,
  * }} Row */
 
-/** One entry body, as the Entry screen draws it. `exampleIds` are fetched separately. */
+/** One part of speech and its senses. */
+/** @typedef {{ pos: string, senses: string[] }} PosGroup */
+
+/** One conjugation group. `forms` keeps the person slots: a missing form is "". */
+/** @typedef {{ key: string, personal: boolean, forms: string[] }} ConjGroup */
+
+/** One entry body, as the Entry screen draws it. */
 /** @typedef {{
  *   id: string,
  *   headword: string,
  *   pronunciation: string,
  *   cefr: string,
- *   translation: string[],
- *   forms: Array<{ label: string, value: string }>,
- *   exampleIds: string[],
+ *   posList: PosGroup[],
+ *   conj: ConjGroup[],
+ *   exampleIndexes: number[],
  * }} Entry */
 
 /** What an inflected form points at. */
-/** @typedef {{ lemma: string, label: string }} Form */
+/** @typedef {{ id: string, lemma: string, label: string }} Form */
 
 /** @param {unknown} value @returns {boolean} */
 function isObject(value) {
@@ -116,13 +123,22 @@ export function foldWord(text) {
  * @returns {string}
  */
 export function bucketKey(word) {
-  const key = foldWord(word).replace(/[^a-z0-9]/g, '');
-  return key.slice(0, 2);
+  return foldWord(word).replace(/[^a-z0-9]/g, '').slice(0, 2);
 }
 
 /**
- * Parse `data/index.json`, or `null` when it is not a manifest. A broken bucket or source is
- * skipped and a missing count reads as `0`: the shell must open on a partial manifest, not fail.
+ * The bucket an entry id names: `ca:42` -> `ca`.
+ * @param {string} id
+ * @returns {string}
+ */
+export function bucketOfId(id) {
+  const cut = typeof id === 'string' ? id.indexOf(':') : -1;
+  return cut > 0 ? id.slice(0, cut) : '';
+}
+
+/**
+ * Parse `data/index.json`, or `null` when it is not a manifest. A broken bucket is skipped and a
+ * missing count reads as `0`: the shell must open on a partial manifest, not fail.
  *
  * @param {unknown} json
  * @returns {Manifest | null}
@@ -179,7 +195,7 @@ function parseBucket(value) {
 }
 
 /**
- * The prefix a file holds, read off its name: `data/ca/cas.json` holds the key prefix `cas`.
+ * The prefix a file holds, read off its name: `data/ca/cao.json` holds the key prefix `cao`.
  * @param {string} path
  * @returns {string}
  */
@@ -190,7 +206,7 @@ function filePrefix(path) {
 
 /**
  * The one file of a set that holds a key, or every file when the key is shorter than the split
- * prefixes. A null answer means the set is empty.
+ * prefixes.
  *
  * @param {Shard[]} files
  * @param {string} key a folded key
@@ -212,15 +228,24 @@ export function pickFiles(files, key) {
 }
 
 /**
- * One row, from the compact `[folded, id, headword, pronunciation, gloss]` array the build writes.
- * The named shape is read too, because the build may settle on one.
+ * The data URL of one file. The hash is the file's cache key, so a rebuilt shard is a new URL.
+ * @param {Shard} shard
+ * @returns {string}
+ */
+export function shardUrl(shard) {
+  return shard.hash === '' ? shard.path : `${shard.path}?v=${shard.hash}`;
+}
+
+/**
+ * One row, from the compact `[folded, id, headword, pronunciation, pos, gloss]` array the build
+ * writes. The named shape is read too.
  *
  * @param {unknown} raw
  * @returns {Row | null}
  */
 export function toRow(raw) {
   const source = Array.isArray(raw)
-    ? { folded: raw[0], id: raw[1], headword: raw[2], pronunciation: raw[3], gloss: raw[4], rank: raw[5] }
+    ? { folded: raw[0], id: raw[1], headword: raw[2], pronunciation: raw[3], pos: raw[4], gloss: raw[5] }
     : obj(raw);
   if (source === null) return null;
   const row = {
@@ -228,15 +253,15 @@ export function toRow(raw) {
     id: str(source.id),
     headword: str(source.headword ?? source.word),
     pronunciation: str(source.pronunciation ?? source.ipa),
+    pos: str(source.pos),
     gloss: str(source.gloss),
-    rank: num(source.rank),
   };
   return row.id === '' || row.headword === '' ? null : row;
 }
 
 /**
- * One entry body. The examples arrive as sentence ids: their sentences are their own file, so the
- * headword never waits for them. `conj` is the conjugation table of a verb, drawn as FORMS.
+ * One entry body. Examples arrive as positions in the example file, so the headword never waits
+ * for the sentences. `conj` keeps each tense and its six person slots.
  *
  * @param {unknown} raw
  * @returns {Entry | null}
@@ -248,14 +273,25 @@ export function toEntry(raw) {
   const headword = str(source.word ?? source.headword);
   if (id === '' || headword === '') return null;
 
-  /** @type {Array<{ label: string, value: string }>} */
-  const forms = [];
-  const rawForms = source.conj ?? source.forms;
-  for (const pair of Array.isArray(rawForms) ? rawForms : []) {
-    // The build writes [form, label]; a named pair is read too.
-    const value = Array.isArray(pair) ? str(pair[0]) : str(obj(pair)?.value ?? obj(pair)?.form);
-    const label = Array.isArray(pair) ? str(pair[1]) : str(obj(pair)?.label);
-    if (value !== '') forms.push({ label: label === '' ? 'form' : label, value });
+  /** @type {PosGroup[]} */
+  const posList = [];
+  for (const rawPos of Array.isArray(source.pos) ? source.pos : []) {
+    const group = obj(rawPos);
+    if (group === null) continue;
+    const senses = strings(group.senses);
+    if (senses.length === 0) continue;
+    posList.push({ pos: str(group.pos), senses });
+  }
+
+  /** @type {ConjGroup[]} */
+  const conj = [];
+  for (const rawGroup of Array.isArray(source.conj) ? source.conj : []) {
+    const group = obj(rawGroup);
+    if (group === null || typeof group.key !== 'string') continue;
+    const forms = /** @type {any[]} */ (Array.isArray(group.forms) ? group.forms : []).map((form) =>
+      typeof form === 'string' ? form : '',
+    );
+    conj.push({ key: group.key, personal: group.personal === true, forms });
   }
 
   return {
@@ -263,14 +299,16 @@ export function toEntry(raw) {
     headword,
     pronunciation: str(source.ipa ?? source.pronunciation),
     cefr: str(source.cefr),
-    translation: strings(source.senses ?? source.translation),
-    forms,
-    exampleIds: strings(source.ex ?? source.exampleIds),
+    posList,
+    conj,
+    exampleIndexes: /** @type {any[]} */ (Array.isArray(source.ex) ? source.ex : []).filter(
+      (value) => typeof value === 'number' && Number.isInteger(value) && value >= 0,
+    ),
   };
 }
 
 /**
- * The forms set: folded inflected form -> `{ lemma, label }`.
+ * The forms set: folded inflected form -> `{ id, lemma, label }`.
  * @param {unknown} body
  * @returns {Map<string, Form>}
  */
@@ -281,28 +319,36 @@ export function parseForms(body) {
   if (root === null) return map;
   for (const [key, value] of Object.entries(root)) {
     const named = obj(value);
-    const lemma = str(named?.lemma ?? (Array.isArray(value) ? value[0] : ''));
+    const lemma = str(named?.lemma);
     if (lemma === '') continue;
-    map.set(key, { lemma, label: str(named?.label ?? (Array.isArray(value) ? value[1] : '')) });
+    map.set(key, { id: str(named?.id), lemma, label: str(named?.label) });
   }
   return map;
 }
 
 /**
- * The examples set: sentence id -> the sentence.
+ * The examples set, in file order: `[[sentenceId, sentence]]`. An object keyed by id is read too.
  * @param {unknown} body
- * @returns {Map<string, string>}
+ * @returns {string[]}
  */
 export function parseExamples(body) {
-  /** @type {Map<string, string>} */
-  const map = new Map();
-  const root = obj(body);
-  if (root === null) return map;
-  for (const [id, value] of Object.entries(root)) {
-    const sentence = typeof value === 'string' ? value : str(obj(value)?.it ?? obj(value)?.text);
-    if (sentence !== '') map.set(id, sentence);
+  /** @type {string[]} */
+  const out = [];
+  if (Array.isArray(body)) {
+    for (const raw of body) {
+      const pair = Array.isArray(raw) ? raw : null;
+      const sentence = pair ? str(pair[1]) : str(obj(raw)?.it ?? obj(raw)?.text);
+      if (sentence !== '') out.push(sentence);
+    }
+    return out;
   }
-  return map;
+  const root = obj(body);
+  if (root === null) return out;
+  for (const value of Object.values(root)) {
+    const sentence = typeof value === 'string' ? value : str(obj(value)?.it ?? obj(value)?.text);
+    if (sentence !== '') out.push(sentence);
+  }
+  return out;
 }
 
 /**
@@ -377,7 +423,30 @@ export function createData(options = {}) {
    * @returns {Promise<any[]>} every body, in order
    */
   function read(shards) {
-    return Promise.all(shards.map((shard) => memo('file:' + shard.path, () => json(shard.path))));
+    return Promise.all(
+      shards.map((shard) =>
+        memo('file:' + shard.path + '@' + shard.hash, () => json(shardUrl(shard))),
+      ),
+    );
+  }
+
+  /**
+   * Every entry of a bucket, in file order. The position is the second half of an entry id.
+   * @param {string} bucket
+   * @returns {Promise<Entry[]>}
+   */
+  function entries(bucket) {
+    return memo('entries:' + bucket, async () => {
+      /** @type {Entry[]} */
+      const out = [];
+      for (const body of await read(await files(bucket, 'entry', false))) {
+        for (const raw of Array.isArray(body) ? body : []) {
+          const entry = toEntry(raw);
+          if (entry !== null) out.push(entry);
+        }
+      }
+      return out;
+    });
   }
 
   return {
@@ -412,31 +481,28 @@ export function createData(options = {}) {
       return out;
     },
     /**
-     * One entry body, from the bucket its row came from.
-     * @param {string} bucket a bucket key
+     * One entry body, found from its own id: `ca:42` is the bucket `ca`, position 42.
      * @param {string} id
      * @returns {Promise<Entry | null>}
      */
-    async entry(bucket, id) {
-      for (const body of await read(await files(bucket, 'entry', false))) {
-        for (const raw of Array.isArray(body) ? body : []) {
-          const entry = toEntry(raw);
-          if (entry !== null && entry.id === id) return entry;
-        }
-      }
-      return null;
+    async entry(id) {
+      const bucket = bucketOfId(id);
+      if (bucket === '') return null;
+      const list = await entries(bucket);
+      const index = Number(id.slice(bucket.length + 1));
+      const at = Number.isInteger(index) ? list[index] : undefined;
+      if (at !== undefined && at.id === id) return at;
+      return list.find((entry) => entry.id === id) ?? null;
     },
     /**
-     * The sentences of one bucket, by id. One fetch, however many ids are wanted.
-     * @param {string} bucket a bucket key
-     * @returns {Promise<Map<string, string>>}
+     * The sentences of one bucket, in file order. An entry's example positions index this list.
+     * @param {string} bucket
+     * @returns {Promise<string[]>}
      */
     async examples(bucket) {
-      /** @type {Map<string, string>} */
-      const out = new Map();
-      for (const body of await read(await files(bucket, 'ex', false))) {
-        for (const [id, sentence] of parseExamples(body)) out.set(id, sentence);
-      }
+      /** @type {string[]} */
+      const out = [];
+      for (const body of await read(await files(bucket, 'ex', false))) out.push(...parseExamples(body));
       return out;
     },
   };

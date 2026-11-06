@@ -37,19 +37,30 @@ replacement is the decision.
 | Handwriting input, drawn on the screen and recognised | A spell-it-by-ear palette: tap kana-like sound groups to build a word, plus a plain keyboard and a voice-free fallback | Latin script needs no stroke recognition. An Italian learner spells a word he hears; the palette is that act, with no recogniser and no model download. |
 | JLPT levels N5 to N1 | CEFR bands A1 to C2 | JLPT grades Japanese; CEFR is the scale Italian learners and courses already use. |
 
-CEFR bands are approximate. They are assigned from a published list or from a frequency band, and the
-UI must say so wherever a band is shown. A band is a filter, never a claim about a word.
+CEFR bands are approximate. No open CEFR list for Italian exists, so a band comes from a frequency
+rank table calibrated on De Mauro vocabulary sizes. The UI must say so wherever a band is shown. A band
+is a filter, never a claim about a word.
 
 ## Data and licences
 
-Placeholder. Filled after the data spike. See `docs/adr/0001-data-and-licences.md` for the open
-questions.
+Two sources, two licences, and they never meet in one file.
 
-- Headwords, definitions, IPA and verb forms: the kaikki.org extract of the Italian Wiktionary.
-- Examples: Tatoeba Italian sentences.
-- Licence text and attribution placement: to be written here, and shown in Reference.
+| Source | What it gives | Licence |
+|---|---|---|
+| kaikki.org extract of it.wiktionary, dump 2026-11-01 | headwords, definitions, IPA, inflected forms | CC BY-SA 4.0 |
+| Tatoeba Italian sentences | example sentences | CC BY 2.0 FR |
 
-No number in this section is final.
+- **Dictionary data** is CC BY-SA 4.0 and the shards are a derivative of it. Attribution near each
+  entry: `Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0 - <url voce>, modificato`.
+- **App code** is MIT. Separate files, separate notice, never mixed with the data licence.
+- **Examples** are CC BY 2.0 FR and ship in their own file set. An entry body stores example ids, never
+  example text, so no Tatoeba sentence lands in a CC BY-SA shard.
+- 27 pages flagged for an unchecked copyright claim are excluded. The list is the category
+  `Da controllare per copyright` on it.wiktionary, read at build time.
+- CEFR bands come from a frequency table. The order is defensible; the label is approximate, and the
+  UI says so.
+
+See `docs/adr/0001-data-and-licences.md` for the full rule.
 
 ## Frozen decisions
 
@@ -58,13 +69,16 @@ No number in this section is final.
   root.
 - One hand-written `sw.js`. The shell is precached. Content shards are cached forever, keyed by their
   content hash. The manifest is stale-while-revalidate. A navigation falls back to `index.html`.
-- Content is sharded by the first letter of the headword, sub-sharded when a letter is fat. Maximum
-  1 MB per file, under 150 MB in total, one manifest at `data/index.json`.
+- Content is sharded by two folded letters of the headword, sub-sharded when a bucket is fat.
+  Maximum 1 MB per file, under 150 MB in total, one manifest at `data/index.json`.
+- Data and code carry separate licences. A CC BY-SA shard never holds Tatoeba text.
 - `localStorage` holds one key, `itadict`, shaped `{ v, data: { ... } }`, with one
   `migrate(v, data)` chain.
 - Search is prefix and accent-insensitive. Ranking is exact, prefix, inflected form, fuzzy. A search
   by a conjugated form resolves to its lemma.
 - Offline is an explicit action. The app never downloads the whole dictionary at boot.
+- A home-screen install is the durable state. A browser tab may lose its offline copy after 7 days
+  without use, because that is when Safari clears site caches.
 
 ## Language
 

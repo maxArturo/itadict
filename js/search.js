@@ -88,7 +88,7 @@ export function editDistanceAtMost(a, b, max) {
 
 /**
  * Ties inside one step: an exact case-and-accent match first, then the shorter headword, then the
- * row's rank from the extract, then the alphabet (so the order is stable).
+ * alphabet (so the order is stable).
  *
  * @param {string} query as typed, accents and case intact
  * @returns {(a: Row, b: Row) => number}
@@ -97,7 +97,6 @@ function compareTies(query) {
   return (a, b) =>
     (b.headword === query ? 1 : 0) - (a.headword === query ? 1 : 0) ||
     a.headword.length - b.headword.length ||
-    a.rank - b.rank ||
     (a.headword < b.headword ? -1 : a.headword > b.headword ? 1 : 0);
 }
 
@@ -195,11 +194,10 @@ export function createSearch(options) {
           // No forms set for this bucket yet; the cheap steps above stand.
         }
         if (form !== null) {
-          const lemmaKey = fold(form.lemma);
           /** @type {Row | null} */
           let lemmaRow = null;
           try {
-            lemmaRow = (await data.rows(lemmaKey)).find((row) => row.folded === lemmaKey) ?? null;
+            lemmaRow = (await data.rows(fold(form.lemma))).find((row) => row.id === form.id) ?? null;
           } catch {
             // The lemma's bucket is not downloaded. The form still names the lemma.
           }
