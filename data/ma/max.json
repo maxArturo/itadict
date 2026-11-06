@@ -1,10 +1,10 @@
 [
-["maxwell","max:0","maxwell","","noun","vecchia unità di misura del flusso magnetico nel sistema centimetro grammo secondo͵ pari alla centomilionesima parte di un weber"],
-["maximiliano","max:1","Maximiliano","","name","nome proprio di persona maschile."],
-["maxi-inchiesta","max:2","maxi-inchiesta","","noun","inchiesta giudiziaria su vasta scala"],
-["maxillofacciale","max:3","maxillofacciale","/maksillofatˈt͡ʃale/","adj","maxillofacial"],
-["maxillofrontale","max:4","maxillofrontale","","adj","che riguarda la fronte e la mascella"],
-["maxillolabiale","max:5","maxillolabiale","","adj","maxillolabial"],
-["maximoto","max:6","maximoto","","noun","a powerful motorcycle"],
-["maxwelliano","max:7","maxwelliano","","adj","Maxwellian"]
+["maxwell","max:0","maxwell","","noun","vecchia unità di misura del flusso magnetico nel sistema centimetro grammo secondo͵ pari alla centomilionesima parte di un weber",""],
+["maximiliano","max:1","Maximiliano","","name","nome proprio di persona maschile.",""],
+["maxi-inchiesta","max:2","maxi-inchiesta","","noun","inchiesta giudiziaria su vasta scala",""],
+["maxillofacciale","max:3","maxillofacciale","/maksillofatˈt͡ʃale/","adj","che riguarda il volto e la mascella","maxillofacial"],
+["maxillofrontale","max:4","maxillofrontale","","adj","che riguarda la fronte e la mascella",""],
+["maxillolabiale","max:5","maxillolabiale","","adj","che riguarda il labbro e la mascella","maxillolabial"],
+["maximoto","max:6","maximoto","","noun","motocicletta di grossa cilindrata","a powerful motorcycle"],
+["maxwelliano","max:7","maxwelliano","","adj","che si attiene alla dottrina del matematico e fisico scozzese James Clerk Maxwell","Maxwellian"]
 ]

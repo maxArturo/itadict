@@ -1,5 +1,5 @@
 [
-["rf","rf:0","RF","","abbrev","radiofrequenza"],
-["rfi","rf:1","RFI","","abbrev","Rete Ferroviaria Italiana"],
-["rft","rf:2","RFT","","abbrev","Radio Fiume Ticino"]
+["rf","rf:0","RF","","abbrev","radiofrequenza",""],
+["rfi","rf:1","RFI","","abbrev","Rete Ferroviaria Italiana",""],
+["rft","rf:2","RFT","","abbrev","Radio Fiume Ticino",""]
 ]

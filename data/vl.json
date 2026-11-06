@@ -1,8 +1,8 @@
 [
-["vladimiro","vl:0","Vladimiro","","name","a male given name, equivalent to English Vladimir"],
-["vldb","vl:1","VLDB","","abbrev","Very Large Data Base, database di grandi dimensioni, banca dati in grado di lavorare con migliaia di utenti su piattaforme diverse"],
-["vlf","vl:2","VLF","","abbrev","Very Low Frequency, bassissima frequenza"],
-["vlm","vl:3","VLM","","abbrev","Very Large Memory, memoria di grandi dimensioni"],
-["vlsi","vl:4","VLSI","","abbrev","Very Large Scale Integration, elevata integrazione di transistor all'interno di un singolo chip"],
-["vladimira","vl:5","Vladimira","","name","nome proprio di persona femminile"]
+["vladimiro","vl:0","Vladimiro","","name","nome proprio di persona maschile","a male given name, equivalent to English Vladimir"],
+["vldb","vl:1","VLDB","","abbrev","Very Large Data Base, database di grandi dimensioni, banca dati in grado di lavorare con migliaia di utenti su piattaforme diverse",""],
+["vlf","vl:2","VLF","","abbrev","Very Low Frequency, bassissima frequenza",""],
+["vlm","vl:3","VLM","","abbrev","Very Large Memory, memoria di grandi dimensioni",""],
+["vlsi","vl:4","VLSI","","abbrev","Very Large Scale Integration, elevata integrazione di transistor all'interno di un singolo chip",""],
+["vladimira","vl:5","Vladimira","","name","nome proprio di persona femminile",""]
 ]

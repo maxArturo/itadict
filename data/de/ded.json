@@ -1,14 +1,14 @@
 [
-["dedizione","ded:0","dedizione","/deditˈtsjone/","noun","dedication"],
-["dedica","ded:1","dedica","/ˈdɛdika/","noun","dedication"],
-["dedicare","ded:2","dedicare","/dediˈkare/","verb","to dedicate"],
-["dedurre","ded:3","dedurre","/deˈdurre/","verb","to deduce, to infer"],
-["dedicarsi","ded:4","dedicarsi","/dediˈkarsi/","verb","reflexive of dedicare"],
-["dedito","ded:5","dedito","/ˈdɛdito/","adj","dedicated"],
-["deducibile","ded:6","deducibile","","adj","deductible"],
-["dedalo","ded:7","dedalo","/ˈdɛdalo/","adj","maze, labyrinth"],
-["deduzione","ded:8","deduzione","/deduˈtsjone/","noun","deduction"],
-["deditamente","ded:9","deditamente","","adv","dedicatedly"],
-["deduttivamente","ded:10","deduttivamente","","adv","deductively"],
-["deduttivo","ded:11","deduttivo","/dedutˈtivo/","adj","deductive"]
+["dedizione","ded:0","dedizione","/deditˈtsjone/","noun","sensibilità ad aiutare qualcuno o fare qualcosa volentieri","dedication"],
+["dedica","ded:1","dedica","/ˈdɛdika/","noun","offerta in ambito letterario e artistico","dedication"],
+["dedicare","ded:2","dedicare","/dediˈkare/","verb","consacrare ufficialmente a un dio","to dedicate"],
+["dedurre","ded:3","dedurre","/deˈdurre/","verb","giungere ad una deduzione basandosi su fatti o indizi","to deduce, to infer"],
+["dedicarsi","ded:4","dedicarsi","/dediˈkarsi/","verb","occuparsi","reflexive of dedicare"],
+["dedito","ded:5","dedito","/ˈdɛdito/","adj","che si impegna con costanza e interesse su qualcosa","dedicated"],
+["deducibile","ded:6","deducibile","","adj","che si può dedurre","deductible"],
+["dedalo","ded:7","dedalo","/ˈdɛdalo/","adj","ingegnoso, geniale","maze, labyrinth"],
+["deduzione","ded:8","deduzione","/deduˈtsjone/","noun","processo logico per cui da una premessa iniziale, attraverso una serie di passaggi logici necessari (inferenze), derivano determinate conclusioni. La deduzione è quindi il processo che permette il…","deduction"],
+["deditamente","ded:9","deditamente","","adv","con dedizione","dedicatedly"],
+["deduttivamente","ded:10","deduttivamente","","adv","in modo deduttivo , per deduzione","deductively"],
+["deduttivo","ded:11","deduttivo","/dedutˈtivo/","adj","relativo alla deduzione","deductive"]
 ]

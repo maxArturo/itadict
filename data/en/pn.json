@@ -1,0 +1,15 @@
+{
+"pn":["lo:0","gl:0"],
+"pneumatic":["pn:0"],
+"pneumatophorous":["pn:10"],
+"pneumectomy":["pn:5"],
+"pneumo":["pn:6"],
+"pneumococcus":["pn:8"],
+"pneumoconiosis":["pn:9"],
+"pneumocyte":["pn:7"],
+"pneumology":["pn:11"],
+"pneumonia":["po:83","br:319"],
+"pneumonic":["pn:13","po:504"],
+"pneumopathy":["pn:14"],
+"pneumothorax":["pn:15"]
+}

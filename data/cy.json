@@ -1,10 +1,10 @@
 [
-["cyberspazio","cy:0","cyberspazio","","noun","alternative form of ciberspazio"],
-["cyborg","cy:1","cyborg","ˈsajborɡ","noun","cyborg"],
-["cyberbullismo","cy:2","cyberbullismo","/ˈsajberbulˈlizmo/","noun","cyberbullying"],
-["cyber-","cy:3","cyber-","","prefix","cyber-"],
-["cyberlibro","cy:4","cyberlibro","","noun","e-book"],
-["cyberpirata","cy:5","cyberpirata","","noun","autore di reati informatici"],
-["cyberpunk","cy:6","cyberpunk","","noun","genere letterario e cinematografico derivato dalla fantascienza, nato negli Stati Uniti alla fine degli anni settanta, che mette in evidenza le tensioni sociali e culturali della società…"],
-["cybersesso","cy:7","cybersesso","","noun","cybersex"]
+["cyberspazio","cy:0","cyberspazio","","noun","insieme di informazioni circolanti attraverso le grandi reti di computer","alternative form of ciberspazio"],
+["cyborg","cy:1","cyborg","ˈsajborɡ","noun","nel linguaggio della fantascienza, essere umano in cui sono innestati organi elettromeccanici in grado di estendere le proprie capacità fisiche e mentali","cyborg"],
+["cyberbullismo","cy:2","cyberbullismo","/ˈsajberbulˈlizmo/","noun","atto di prevaricazione o molestia messo in atto con una rete di computer","cyberbullying"],
+["cyber-","cy:3","cyber-","","prefix","prima parte di un lemma composto da due parole, la seconda delle quali varia, mentre la prima riguarda l'interazione tra l'uomo e il computer all'interno di una simulazione della realtà","cyber-"],
+["cyberlibro","cy:4","cyberlibro","","noun","libro elettronico sfogliabile telematicamente","e-book"],
+["cyberpirata","cy:5","cyberpirata","","noun","autore di reati informatici",""],
+["cyberpunk","cy:6","cyberpunk","","noun","genere letterario e cinematografico derivato dalla fantascienza, nato negli Stati Uniti alla fine degli anni settanta, che mette in evidenza le tensioni sociali e culturali della società…",""],
+["cybersesso","cy:7","cybersesso","","noun","simulazione di atti sessuali con Internet","cybersex"]
 ]

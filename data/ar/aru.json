@@ -1,8 +1,8 @@
 [
-["aruba","aru:0","Aruba","","name","isola autonoma appartenente ai Paesi Bassi, situata nei Caraibi"],
-["a ruota","aru:1","a ruota","","phrase","a pochissima distanza"],
-["a ruota libera","aru:2","a ruota libera","","adv_phrase","senza utilizzare i freni"],
-["arunduco","aru:3","arunduco","","noun","sorta di rettile non più noto"],
-["aruspice","aru:4","aruspice","/aˈruspit͡ʃe/","noun","haruspex (one who practices divination by inspecting entrails)"],
-["aruspicio","aru:5","aruspicio","","noun","prediction resulting from haruspicy"]
+["aruba","aru:0","Aruba","","name","isola autonoma appartenente ai Paesi Bassi, situata nei Caraibi",""],
+["a ruota","aru:1","a ruota","","phrase","a pochissima distanza",""],
+["a ruota libera","aru:2","a ruota libera","","adv_phrase","senza utilizzare i freni",""],
+["arunduco","aru:3","arunduco","","noun","sorta di rettile non più noto",""],
+["aruspice","aru:4","aruspice","/aˈruspit͡ʃe/","noun","sacerdote etrusco e romano dedito alla divinazione, che anticipava il futuro con l'analisi delle viscere degli animali.","haruspex (one who practices divination by inspecting entrails)"],
+["aruspicio","aru:5","aruspicio","","noun","azione consistente nell'esaminare e interpretare le interiora delle vittime sacrificate nel tentativo di predire il futuro","prediction resulting from haruspicy"]
 ]

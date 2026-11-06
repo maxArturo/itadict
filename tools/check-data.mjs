@@ -24,8 +24,8 @@ const MAX_TOTAL = 150_000_000;
 const MAX_ERRORS = 100;
 
 const BANDS = new Set(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']);
-const SETS = ['search', 'entry', 'ex', 'forms'];
-const DIRS = { search: '', entry: 'entry/', ex: 'ex/', forms: 'forms/' };
+const SETS = ['search', 'entry', 'ex', 'forms', 'en'];
+const DIRS = { search: '', entry: 'entry/', ex: 'ex/', forms: 'forms/', en: 'en/' };
 const LICENCES = ['CC BY-SA 4.0', 'CC BY 2.0 FR'];
 const ID = /^([a-z0-9_]+):(\d+)$/;
 /** What an inflected-form gloss looks like in the source. Such a gloss never ships. */
@@ -371,6 +371,47 @@ async function checkCefr(manifest, byId) {
   }
 }
 
+/**
+ * The English lookup: token -> entry ids. Every id resolves, the cap holds, and no file is
+ * over 250 KB, so one English lookup stays one small fetch.
+ * @param {any} manifest
+ * @param {Map<string, any>} byId
+ */
+async function checkEn(manifest, byId) {
+  let tokens = 0;
+  let postings = 0;
+  const seen = new Set();
+  for (const bucket of Object.values(manifest.buckets)) {
+    for (const file of bucket.en) {
+      const info = await stat(path.join(ROOT, file.path)).catch(() => null);
+      if (info !== null && info.size > 250_000) fail(file.path + ': ' + info.size + ' bytes, over the English index cap of 250 KB');
+      const index = await readJson(path.join(ROOT, file.path));
+      if (!isObject(index)) {
+        fail(file.path + ': must be a JSON object of token -> ids');
+        continue;
+      }
+      const prefix = path.basename(file.path, '.json');
+      for (const [token, ids] of Object.entries(index)) {
+        tokens += 1;
+        if (!Array.isArray(ids) || ids.length === 0) {
+          fail(file.path + ': token "' + token + '" has no ids');
+          continue;
+        }
+        if (ids.length > 100) fail(file.path + ': token "' + token + '" has ' + ids.length + ' postings, over the cap of 100');
+        if (!token.startsWith(prefix)) fail(file.path + ': token "' + token + '" is in the wrong bucket');
+        if (seen.has(token)) fail(file.path + ': token "' + token + '" is listed twice');
+        seen.add(token);
+        for (const id of ids) {
+          postings += 1;
+          if (!isText(id) || !byId.has(id)) fail(file.path + ': token "' + token + '" points at unknown entry ' + id);
+        }
+      }
+    }
+  }
+  if (manifest.totals?.enTokens !== tokens) fail('index.json: totals.enTokens is ' + manifest.totals?.enTokens + ', counted ' + tokens);
+  return { tokens, postings };
+}
+
 async function checkIndexes(manifest, byId) {
   let formRows = 0;
   let searchRows = 0;
@@ -383,11 +424,11 @@ async function checkIndexes(manifest, byId) {
       }
       if (rows.length === 0) fail(file.path + ': is listed but holds no row');
       for (const row of rows) {
-        if (!Array.isArray(row) || row.length !== 6) {
-          fail(file.path + ': every search row must have 6 fields');
+        if (!Array.isArray(row) || row.length !== 7) {
+          fail(file.path + ': every search row must have 7 fields');
           continue;
         }
-        const [folded, id, word, ipa, pos, gloss] = row;
+        const [folded, id, word, ipa, pos, gloss, en] = row;
         const entry = byId.get(id);
         if (!entry) {
           fail(file.path + ': search row points at unknown id ' + id);
@@ -398,8 +439,8 @@ async function checkIndexes(manifest, byId) {
         if ((entry.ipa ?? '') !== (ipa ?? '')) fail(file.path + ': search row ' + word + ' has a different pronunciation than its entry');
         if (!entry.pos.some((group) => group.pos === pos)) fail(file.path + ': search row ' + word + ' has POS ' + pos + ' that the entry does not carry');
         if (!isText(gloss)) fail(file.path + ': search row ' + word + ' has an empty gloss');
-        const expected = entry.en?.[0]?.glosses?.[0] ?? entry.pos[0].senses[0];
-        if (gloss !== expected) fail(file.path + ': search row ' + word + ' has a gloss that is not the first English or Italian gloss');
+        if (gloss !== entry.pos[0].senses[0]) fail(file.path + ': search row ' + word + ' has a gloss that is not the first Italian sense');
+        if (en !== (entry.en?.[0]?.glosses?.[0] ?? '')) fail(file.path + ': search row ' + word + ' has a wrong English gloss');
         const picked = pickFile(bucket.search, foldWord(word));
         if (picked !== null && picked.path !== file.path) fail(file.path + ': search row ' + word + ' belongs in ' + picked.path);
         searchRows += 1;
@@ -450,6 +491,7 @@ async function main() {
   const { entryCount, sentenceCount, withEnglish, enPos } = await checkBodies(manifest, exclusions, byId);
   await checkCefr(manifest, byId);
   const { formRows, searchRows } = await checkIndexes(manifest, byId);
+  const { tokens: enTokens, postings: enPostings } = await checkEn(manifest, byId);
   if (manifest.totals?.entries !== entryCount) fail('index.json: totals.entries is ' + manifest.totals?.entries + ', counted ' + entryCount);
   if (manifest.totals?.forms !== formRows) fail('index.json: totals.forms is ' + manifest.totals?.forms + ', counted ' + formRows);
   if (manifest.totals?.examples !== sentenceCount) fail('index.json: totals.examples is ' + manifest.totals?.examples + ', counted ' + sentenceCount);
@@ -457,7 +499,12 @@ async function main() {
   const split = Object.values(manifest.buckets).some((bucket) => SETS.some((set) => bucket[set].length > 1));
   if (!split) fail('no bucket lists more than one file: the longest-prefix rule is never exercised');
   const share = entryCount === 0 ? 0 : (withEnglish / entryCount) * 100;
-  console.log('en coverage: ' + share.toFixed(1) + '% (' + withEnglish + ' of ' + entryCount + ' entries)');
+  if (manifest.coverage?.withEnglish !== withEnglish) {
+    fail('index.json: coverage.withEnglish is ' + manifest.coverage?.withEnglish + ', counted ' + withEnglish);
+  }
+  const top5000 = manifest.coverage?.top5000;
+  console.log('en coverage: ' + withEnglish + ' / ' + entryCount + ' (' + share.toFixed(1) + '%), top 5000 ' + top5000 + ' / 5000');
+  console.log('en index: ' + enTokens + ' tokens, ' + enPostings + ' postings');
   console.log('en per pos: ' + [...enPos.entries()].sort((a, b) => b[1].total - a[1].total)
     .map(([pos, stat]) => pos + ' ' + stat.matched + '/' + stat.total).join(', '));
   return report({ bytes, entryCount, formRows, sentenceCount, buckets: Object.keys(manifest.buckets ?? {}).length });

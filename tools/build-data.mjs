@@ -82,7 +82,7 @@ const MAX_EXAMPLE = 120;
 const MAX_EXAMPLES = 3;
 const MAX_PREFIX = 4;
 
-const SETS = [['search', ''], ['entry', 'entry/'], ['ex', 'ex/'], ['forms', 'forms/']];
+const SETS = [['search', ''], ['entry', 'entry/'], ['ex', 'ex/'], ['forms', 'forms/'], ['en', 'en/']];
 const DIR_OF = new Map(SETS);
 
 /** CEFR bands by rank in the FrequencyWords Italian 50k list. */
@@ -386,6 +386,15 @@ function formOfText(gloss, lemma) {
  * (lowercase spelling, not accent-folded: "si" and "sì" are different words),
  * with one POS group per part of speech.
  */
+/**
+ * The tokens of the English index: fold with NFD, strip marks, lowercase, split on non-letters.
+ * @param {string} text
+ * @returns {string[]}
+ */
+function englishTokens(text) {
+  return String(text).normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase().match(/[a-z0-9]+/g) ?? [];
+}
+
 /** An English gloss: whitespace collapsed, capped like an Italian sense. */
 function cleanEnglish(raw) {
   const text = String(raw ?? '').replace(/\s+/g, ' ').trim();
@@ -612,9 +621,9 @@ function splitEntryList(list, length) {
 }
 
 /** Object files (forms) split the same way, keyed by the form itself. */
-function planObjectFiles(list, length) {
+function planObjectFiles(list, length, shortSuffix = true) {
   const prefix = prefixKey(list[0].key, length);
-  const key = prefix.length < length ? prefix + '_' : prefix;
+  const key = shortSuffix && prefix.length < length ? prefix + '_' : prefix;
   const body = renderObject(list.map((item) => item.body));
   if (Buffer.byteLength(body) <= FORM_CAP || length >= MAX_PREFIX) return [{ key, body }];
   const parts = groupBy(list, (item) => prefixKey(item.key, length + 1));
@@ -695,6 +704,7 @@ async function main() {
       withEnglish += 1;
     }
   }
+  const top5000 = shipped.slice(0, 5000).filter((entry) => entry.en).length;
   const lemmaWords = new Set(shipped.map((entry) => entry.word));
 
   // The form index only points at lemmas we ship.
@@ -805,10 +815,43 @@ async function main() {
     addFile('entry', file.key, body);
     addFile('search', file.key, renderArray(file.items.map((item) => {
       const entry = item.entry;
-      // The row speaks English when the entry has it, and falls back to Italian when it does not.
-      const gloss = entry.en?.[0]?.glosses[0] ?? entry.pos[0].senses[0];
-      return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, gloss]);
+      // Seven fields: the gloss is Italian again, and the English one has its own slot.
+      const en = entry.en?.[0]?.glosses[0] ?? '';
+      return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, entry.pos[0].senses[0], en]);
     })));
+  }
+
+  // English lookup: folded gloss token -> entry ids, 100 postings per token, sharded by the
+  // first two folded letters. The cap keeps the most frequent entries: entries are in
+  // frequency order, so the first 100 postings for a token are the ones a learner meets first.
+  const EN_POSTINGS = 100;
+  /** @type {Map<string, string[]>} */
+  const enTokens = new Map();
+  let enPostings = 0;
+  let enDropped = 0;
+  for (const entry of shipped) {
+    if (!entry.en) continue;
+    /** @type {Set<string>} */
+    const tokens = new Set();
+    for (const group of entry.en) for (const gloss of group.glosses) for (const token of englishTokens(gloss)) tokens.add(token);
+    for (const token of tokens) {
+      let ids = enTokens.get(token);
+      if (ids === undefined) enTokens.set(token, (ids = []));
+      if (ids.length >= EN_POSTINGS) {
+        enDropped += 1;
+        continue;
+      }
+      ids.push(entry.id);
+      enPostings += 1;
+    }
+  }
+  const enItems = [...enTokens.entries()]
+    .sort(([a], [b]) => (a < b ? -1 : 1))
+    .map(([token, ids]) => ({ key: token, body: JSON.stringify(token) + ':' + JSON.stringify(ids) }));
+  for (const [, list] of groupBy(enItems, (item) => prefixKey(item.key, 2))) {
+    // An English token is looked up exactly, never by prefix, so a one-letter token keeps its
+    // plain file name ("a.json") and no suffix is needed.
+    for (const file of planObjectFiles(list, 2, false)) addFile('en', file.key, file.body);
   }
 
   const idByWord = new Map(shipped.map((entry) => [entry.word, entry.id]));
@@ -828,7 +871,7 @@ async function main() {
     for (const [key, list] of byBucket) {
       let bucket = buckets.get(key);
       if (!bucket) {
-        bucket = { search: [], entry: [], ex: [], forms: [] };
+        bucket = Object.fromEntries(SETS.map(([set]) => [set, []]));
         buckets.set(key, bucket);
       }
       for (const file of list) {
@@ -838,7 +881,7 @@ async function main() {
   }
 
   const written = [];
-  const setBytes = { search: 0, entry: 0, ex: 0, forms: 0 };
+  const setBytes = Object.fromEntries(SETS.map(([set]) => [set, 0]));
   for (const [, bucket] of buckets) {
     for (const [name] of SETS) {
       bucket[name].sort((a, b) => (a.path < b.path ? -1 : 1));
@@ -914,7 +957,8 @@ async function main() {
     sources: SOURCES.map((source) => ({ url: source.url, licence: source.licence })),
     buckets: Object.fromEntries(keys.map((key) => [key, buckets.get(key)])),
     cefr,
-    totals: { entries: shipped.length, forms: forms.size, examples: exampleRows, bytes },
+    coverage: { withEnglish, top5000 },
+    totals: { entries: shipped.length, forms: forms.size, examples: exampleRows, bytes, enTokens: enTokens.size },
   };
   const manifestText = JSON.stringify(manifest, null, 2) + '\n';
   await writeFile(path.join(DATA, 'index.json'), manifestText);
@@ -937,7 +981,9 @@ async function main() {
     'excluded headwords    ' + excludedHits + ' of ' + excluded.size + ' listed',
     'entries shipped       ' + shipped.length + ' (' + merged + ' with more than one POS)' + (opts.limit > 0 ? ' --limit ' + opts.limit : ''),
     'with IPA              ' + shipped.filter((entry) => entry.ipa).length + ' (' + percent(shipped.filter((entry) => entry.ipa).length, shipped.length) + '%)',
-    'en coverage           ' + percent(withEnglish, shipped.length) + '% (' + withEnglish + ' of ' + shipped.length + '), none ' + (shipped.length - withEnglish),
+    'en coverage           ' + withEnglish + ' / ' + shipped.length + ' (' + percent(withEnglish, shipped.length) + '%), top 5000 ' +
+      top5000 + ' / ' + Math.min(5000, shipped.length) + ' (' + percent(top5000, Math.min(5000, shipped.length)) + '%)',
+    'en index              ' + enTokens.size + ' tokens, ' + enPostings + ' postings, ' + enDropped + ' dropped by the cap',
     'en per pos            ' + [...perPos.entries()].sort((a, b) => b[1].total - a[1].total)
       .map(([pos, stat]) => pos + ' ' + stat.matched + '/' + stat.total + ' (' + percent(stat.matched, stat.total) + '%)').join(', '),
     'en unmapped pos       ' + ([...unmappedPos.entries()].sort((a, b) => b[1] - a[1]).map(([pos, count]) => pos + ':' + count).join(' ') || 'none'),
@@ -947,7 +993,7 @@ async function main() {
     'form index            ' + forms.size + ' rows, ' + formBytes + ' bytes; dropped targets ' +
       (formMisses.unshipped + formMisses.unknown) + ' (lemma not shipped ' + formMisses.unshipped + ', no lemma record ' + formMisses.unknown + ')',
     'examples              ' + attachments + ' attachments, ' + textById.size + ' distinct sentences, ' + exampleRows + ' rows, ' + exBytes + ' bytes',
-    'bytes                 search ' + searchBytes + ', entry ' + entryBytes + ', forms ' + formBytes + ', ex ' + exBytes + ', total ' + bytes,
+    'bytes                 search ' + searchBytes + ', entry ' + entryBytes + ', forms ' + formBytes + ', ex ' + exBytes + ', en ' + setBytes.en + ', total ' + bytes,
     'cefr decks            ' + BAND_ORDER.map((band) => band + ':' + cefr[band].reduce((n, file) => n + 1, 0) + 'f/' + cefr[band].reduce((n, file) => n + file.bytes, 0) + 'B').join(' '),
     'files                 ' + written.length + ', largest ' + largest + ', buckets ' + keys.length,
     'build time            ' + ((Date.now() - started) / 1000).toFixed(1) + 's',

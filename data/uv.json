@@ -1,8 +1,8 @@
 [
-["uva","uv:0","uva","/ˈuva/","noun","grapes"],
-["uvetta","uv:1","uvetta","","noun","diminutive of uva (“grape”)"],
-["uva fragola","uv:2","uva fragola","","phrase","vite di origine americana che produce dei frutti che hanno un sapore che ricorda quello della fragola; la sua classificazione scientifica è Vitis labrusca ( tassonomia)"],
-["uvaggio","uv:3","uvaggio","/uˈvadʤo/","noun","blend of different grapes used to make wine"],
-["uvea","uv:4","uvea","","noun","uvea"],
-["uveite","uv:5","uveite","/uveˈite/","noun","uveitis"]
+["uva","uv:0","uva","/ˈuva/","noun","frutto della vite, costituita da acini riuniti formante un grappolo di colore viola-rossastro o giallo","grapes"],
+["uvetta","uv:1","uvetta","","noun","diminutivo di uva","diminutive of uva (“grape”)"],
+["uva fragola","uv:2","uva fragola","","phrase","vite di origine americana che produce dei frutti che hanno un sapore che ricorda quello della fragola; la sua classificazione scientifica è Vitis labrusca ( tassonomia)",""],
+["uvaggio","uv:3","uvaggio","/uˈvadʤo/","noun","miscela di uve di diversa qualità, con epoca di maturazione concomitante per creare un vino dalle qualità organolettiche particolari.","blend of different grapes used to make wine"],
+["uvea","uv:4","uvea","","noun","tonaca vascolare dell'occhio, compresa tra il tessuto connettivo della sclera e il tessuto nervoso della retina","uvea"],
+["uveite","uv:5","uveite","/uveˈite/","noun","arrossamento dell'uvea","uveitis"]
 ]

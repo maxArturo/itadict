@@ -1,15 +1,15 @@
 [
-["arpa","arp:0","arpa","/ˈarpa/","noun","harp (musical instrument)"],
-["arpista","arp:1","arpista","/arˈpista/","noun","harpist"],
-["arpione","arp:2","arpione","/arˈpjone/","noun","harpoon"],
-["arpagone","arp:3","arpagone","/arpaˈgone/","noun","grapnel, grappling iron"],
-["arpeggiamento","arp:4","arpeggiamento","","noun","the playing of an arpeggio"],
-["arpeggiare","arp:5","arpeggiare","","verb","to play a harp or similar instrument"],
-["arpeggiato","arp:6","arpeggiato","","adj","eseguito con un arpeggio"],
-["arpeggiatore","arp:7","arpeggiatore","","noun","harpist"],
-["arpeggio","arp:8","arpeggio","","noun","arpeggio"],
-["arpeggione","arp:9","arpeggione","/arpedˈd͡ʒone/","noun","strumento ad arco simile al violoncello, con sei corde"],
-["arpia","arp:10","arpia","","noun","harpy"],
-["arpionare","arp:11","arpionare","/arpjoˈnare/","verb","to harpoon"],
-["arpionismo","arp:12","arpionismo","arpjoˈnizmo","noun","ratchet mechanism or gear"]
+["arpa","arp:0","arpa","/ˈarpa/","noun","strumento musicale cordofono a pizzico formato da un grande telaio triangolare entro il quale corde metalliche o di minua di diversa lunghezza vengono pizzicate con le dita producendo il suono","harp (musical instrument)"],
+["arpista","arp:1","arpista","/arˈpista/","noun","musicista che suona l'arpa","harpist"],
+["arpione","arp:2","arpione","/arˈpjone/","noun","strumento in genere appuntito per trainare o provocare danni a oggetti o animali","harpoon"],
+["arpagone","arp:3","arpagone","/arpaˈgone/","noun","persona avida","grapnel, grappling iron"],
+["arpeggiamento","arp:4","arpeggiamento","","noun","l' esecuzione di una serie di arpeggi","the playing of an arpeggio"],
+["arpeggiare","arp:5","arpeggiare","","verb","suonare l'arpa o un altro strumento simile","to play a harp or similar instrument"],
+["arpeggiato","arp:6","arpeggiato","","adj","eseguito con un arpeggio",""],
+["arpeggiatore","arp:7","arpeggiatore","","noun","chi suona l'arpa","harpist"],
+["arpeggio","arp:8","arpeggio","","noun","modo di eseguire un accordo musicale, che consiste nel produrre due o più suoni di seguito (e non insieme); compreso tra gli abbellimenti.","arpeggio"],
+["arpeggione","arp:9","arpeggione","/arpedˈd͡ʒone/","noun","strumento ad arco simile al violoncello, con sei corde",""],
+["arpia","arp:10","arpia","","noun","figura araldica convenzionale ibrido tra una fanciulla (testa e petto, con i capelli sparsi) e l'aquila (corpo, ali e artigli); è una figura abbastanza rara e si blasona come l'aquila; altre…","harpy"],
+["arpionare","arp:11","arpionare","/arpjoˈnare/","verb","colpire con un arpione","to harpoon"],
+["arpionismo","arp:12","arpionismo","arpjoˈnizmo","noun","meccanismo di accoppiamento di un arpione con una rotella, col compito di permettere movimento in una sola direzione","ratchet mechanism or gear"]
 ]

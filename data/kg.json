@@ -1,6 +1,6 @@
 [
-["kg","kg:0","kg","","abbrev","simbolo del chilogrammo"],
-["kgb","kg:1","KGB","","abbrev","Komitet Gosudarstvennoj Bezopasnosti «Comitato per la sicurezza dello stato», nome ufficiale della polizia segreta dell'Unione Sovietica"],
-["kg/l","kg:2","kg/l","","abbrev","chilogrammo per litro"],
-["kgm","kg:3","kgm","","abbrev","chilogrammetro"]
+["kg","kg:0","kg","","abbrev","simbolo del chilogrammo",""],
+["kgb","kg:1","KGB","","abbrev","Komitet Gosudarstvennoj Bezopasnosti «Comitato per la sicurezza dello stato», nome ufficiale della polizia segreta dell'Unione Sovietica",""],
+["kg/l","kg:2","kg/l","","abbrev","chilogrammo per litro",""],
+["kgm","kg:3","kgm","","abbrev","chilogrammetro",""]
 ]

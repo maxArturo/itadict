@@ -1,4 +1,4 @@
 [
-["nmos","nm:0","NMOS","","abbrev","transistor MOS che entra in funzione se la tensione all'ingresso è più alta di quella di soglia"],
-["nm","nm:1","nm","","abbrev","nanometro"]
+["nmos","nm:0","NMOS","","abbrev","transistor MOS che entra in funzione se la tensione all'ingresso è più alta di quella di soglia",""],
+["nm","nm:1","nm","","abbrev","nanometro",""]
 ]

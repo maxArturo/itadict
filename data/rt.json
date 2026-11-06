@@ -1,7 +1,7 @@
 [
-["rtg","rt:0","RTG","","abbrev","Rete Telefonica Generale"],
-["rti","rt:1","RTI","","abbrev","Rete Televisiva Italiana: dal 1979 al 1984"],
-["rtl","rt:2","RTL","","abbrev","Resistor Transistor Logic, circuito elettronico formato solo da resistori e transistor"],
-["rtms","rt:3","RTMS","","abbrev","sistema di telefonia mobile radio, standard analogico di telefonia mobile, sviluppato in Italia a metà degli anni ottanta, concepito per comunicazioni telefoniche in auto, e poi sostituito dal TACS"],
-["rtsi","rt:4","RTSI","","abbrev","radiotelevisione svizzera di lingua italiana, in uso fino al 2009"]
+["rtg","rt:0","RTG","","abbrev","Rete Telefonica Generale",""],
+["rti","rt:1","RTI","","abbrev","Rete Televisiva Italiana: dal 1979 al 1984",""],
+["rtl","rt:2","RTL","","abbrev","Resistor Transistor Logic, circuito elettronico formato solo da resistori e transistor",""],
+["rtms","rt:3","RTMS","","abbrev","sistema di telefonia mobile radio, standard analogico di telefonia mobile, sviluppato in Italia a metà degli anni ottanta, concepito per comunicazioni telefoniche in auto, e poi sostituito dal TACS",""],
+["rtsi","rt:4","RTSI","","abbrev","radiotelevisione svizzera di lingua italiana, in uso fino al 2009",""]
 ]

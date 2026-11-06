@@ -1,15 +1,15 @@
 [
-["ftm","ft:0","FTM","","abbrev","Female to Male, persona di sesso biologico femminile, che però si considera uomo"],
-["ftse","ft:1","FTSE","","abbrev","Financial Times Stock Exchange, indice azionario delle società quotate presso le borse di Londra e Milano"],
-["ftalammide","ft:2","ftalammide","","noun","phthalamide"],
-["ftalato","ft:3","ftalato","","noun","phthalate"],
-["ftalazina","ft:4","ftalazina","/,ftaladˈdzina/","noun","phthalazine"],
-["ftalazone","ft:5","ftalazone","","noun","phthalazone"],
-["ftaleina","ft:6","ftaleina","/ftaleˈina/","noun","phthalein"],
-["ftalico","ft:7","ftalico","","adj","phthalic"],
-["ftalide","ft:8","ftalide","","noun","phthalide"],
-["ftalile","ft:9","ftalile","/ftaˈlile/","noun","phthaloyl, phthalyl"],
-["ftalimmide","ft:10","ftalimmide","","noun","phthalimide"],
-["ftalimmidina","ft:11","ftalimmidina","","noun","phthalimidine"],
-["ftalonitrile","ft:12","ftalonitrile","/ftaloniˈtrile/","noun","phthalonitrile"]
+["ftm","ft:0","FTM","","abbrev","Female to Male, persona di sesso biologico femminile, che però si considera uomo",""],
+["ftse","ft:1","FTSE","","abbrev","Financial Times Stock Exchange, indice azionario delle società quotate presso le borse di Londra e Milano",""],
+["ftalammide","ft:2","ftalammide","","noun","diammide di acido ftalico","phthalamide"],
+["ftalato","ft:3","ftalato","","noun","sale di acido ftalico","phthalate"],
+["ftalazina","ft:4","ftalazina","/,ftaladˈdzina/","noun","composto aromatico che deriva dalla condensazione dell'aldeide ftalica con idrazina","phthalazine"],
+["ftalazone","ft:5","ftalazone","","noun","composto chetonico derivabile dalla ftalazina","phthalazone"],
+["ftaleina","ft:6","ftaleina","/ftaleˈina/","noun","colorante sintetico che deriva dall'unione dell'anidride ftalica con un fenolo","phthalein"],
+["ftalico","ft:7","ftalico","","adj","di acido organico derivato della naftalina, che si usa per produrre coloranti, resine, medicinali e cosmetici","phthalic"],
+["ftalide","ft:8","ftalide","","noun","sostanza ottenuta per azione dello zinco e dell'acido cloridrico sul cloruro di ftalile, che si usa come gelatinizzante per polvere da sparo","phthalide"],
+["ftalile","ft:9","ftalile","/ftaˈlile/","noun","residuo acido bivalente di acido ftalico","phthaloyl, phthalyl"],
+["ftalimmide","ft:10","ftalimmide","","noun","immide di acido ftalico che si usa in molte sintesi organiche","phthalimide"],
+["ftalimmidina","ft:11","ftalimmidina","","noun","prodotto ottenuto per riduzione della ftalimmide, impiegato in alcune sintesi organiche","phthalimidine"],
+["ftalonitrile","ft:12","ftalonitrile","/ftaloniˈtrile/","noun","nitrile derivato dall'acido ftalico, che si usa nella sintesi di ftalocianine","phthalonitrile"]
 ]

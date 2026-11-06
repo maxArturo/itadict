@@ -1,11 +1,11 @@
 [
-["paziente","paz:0","paziente","/paˈt͡sjɛnte/","adj","patient"],
-["pazzo","paz:1","pazzo","/ˈpattso/","adj","crazy, insane, mad"],
-["pazienza","paz:2","pazienza","/paˈtsjɛntsa/","noun","patience, endurance, forbearance"],
-["pazzia","paz:3","pazzia","","noun","madness, lunacy"],
-["pazientemente","paz:4","pazientemente","/pattsjenteˈmente/","adv","patiently, with patience"],
-["pazzesco","paz:5","pazzesco","/patˈtsesko/","adj","crazy, insane"],
-["pazientare","paz:6","pazientare","/patsjenˈtare/","verb","to be patient"],
-["pazzamente","paz:7","pazzamente","/pattsaˈmente/","adv","madly, crazily"],
-["pazzoide","paz:8","pazzoide","/patˈtsɔjde/","adj","madcap; crazy, wacky, daft"]
+["paziente","paz:0","paziente","/paˈt͡sjɛnte/","adj","che tollera con rassegnazione circostanze sfavorevoli","patient"],
+["pazzo","paz:1","pazzo","/ˈpattso/","adj","affetto da malattia mentale","crazy, insane, mad"],
+["pazienza","paz:2","pazienza","/paˈtsjɛntsa/","noun","virtù di chi accetta tranquillamente disgrazie o contrattempi","patience, endurance, forbearance"],
+["pazzia","paz:3","pazzia","","noun","alterazione della mente che, differentemente dal delirio o dalla follia, conduce alla totale estraneità ad ogni forma di contatto con l'esterno, ossia al completo impedimento nella comunicazione","madness, lunacy"],
+["pazientemente","paz:4","pazientemente","/pattsjenteˈmente/","adv","in modo paziente, con tolleranza","patiently, with patience"],
+["pazzesco","paz:5","pazzesco","/patˈtsesko/","adj","caratteristico di un pazzo","crazy, insane"],
+["pazientare","paz:6","pazientare","/patsjenˈtare/","verb","aspettare con pazienza","to be patient"],
+["pazzamente","paz:7","pazzamente","/pattsaˈmente/","adv","da pazzo","madly, crazily"],
+["pazzoide","paz:8","pazzoide","/patˈtsɔjde/","adj","molto eccentrico","madcap; crazy, wacky, daft"]
 ]

@@ -1,4 +1,4 @@
 [
-["rl","rl:0","RL","","abbrev","(di) circuito elettrico dove le grandezze elettriche coinvolte sono la Resistenza e l'induttanza (L, dal fisico Heinrich Lenz)"],
-["rlc","rl:1","RLC","","abbrev","resistenza, induttanza (L, da Heinrich Lenz) e capacità"]
+["rl","rl:0","RL","","abbrev","(di) circuito elettrico dove le grandezze elettriche coinvolte sono la Resistenza e l'induttanza (L, dal fisico Heinrich Lenz)",""],
+["rlc","rl:1","RLC","","abbrev","resistenza, induttanza (L, da Heinrich Lenz) e capacità",""]
 ]

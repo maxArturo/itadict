@@ -1,9 +1,9 @@
 [
-["cpa","cp:0","CPA","","abbrev","cassa previdenziale avvocati"],
-["cpc","cp:1","CPC","","abbrev","Codice di Procedura Civile"],
-["cplp","cp:2","CPLP","","abbrev","Comunità dei Paesi di Lingua Portoghese: unione per la mutua amicizia fra le nazioni lusofone (parlanti portoghese) del mondo"],
-["cpp","cp:3","CPP","","abbrev","Codice di Procedura Penale"],
-["cpu","cp:4","CPU","","abbrev","Central Processing Unit: unità centrale di elaborazione (letteralmente: unità processante centrale), processore che dirige e coordina in forma generale tutte le unità di elaborazione presenti nella…"],
-["cpt","cp:5","cpt","","abbrev","capito"],
-["cpv.","cp:6","cpv.","","abbrev","abbreviazione di capoverso"]
+["cpa","cp:0","CPA","","abbrev","cassa previdenziale avvocati",""],
+["cpc","cp:1","CPC","","abbrev","Codice di Procedura Civile",""],
+["cplp","cp:2","CPLP","","abbrev","Comunità dei Paesi di Lingua Portoghese: unione per la mutua amicizia fra le nazioni lusofone (parlanti portoghese) del mondo",""],
+["cpp","cp:3","CPP","","abbrev","Codice di Procedura Penale",""],
+["cpu","cp:4","CPU","","abbrev","Central Processing Unit: unità centrale di elaborazione (letteralmente: unità processante centrale), processore che dirige e coordina in forma generale tutte le unità di elaborazione presenti nella…",""],
+["cpt","cp:5","cpt","","abbrev","capito",""],
+["cpv.","cp:6","cpv.","","abbrev","abbreviazione di capoverso",""]
 ]

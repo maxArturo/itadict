@@ -1,12 +1,12 @@
 [
-["mappa","map:0","mappa","/ˈmappa/","noun","map (visual representation of an area)"],
-["mappamondo","map:1","mappamondo","/mappaˈmondo/","noun","globe (spherical map of the world)"],
-["mapo","map:2","mapo","/ˈma po/","noun","cross between clementine and grapefruit (Citrus paradisi x Citrus reticulata); a kind of tangelo or ugli"],
-["mappare","map:3","mappare","/mapˈpare/","verb","to map"],
-["maputo","map:4","Maputo","","name","capitale del Mozambico"],
-["mappa genetica","map:5","mappa genetica","","phrase","nel DNA, rappresentazione grafica della disposizione di siti delle sequenze di basi azotate che derivano dalla purina e dalla pirimidina, col fine di codificare la sintesi delle proteine"],
-["mappa isoceraunica","map:6","mappa isoceraunica","","noun","è la carta geografica nella quale viene indicata l'intensità media dei fenomeni elettrici di natura temporalesca (fulmini) nell'atmosfera, generalmente quantificata in F/Km2/anno (Fulmini/Km2/anno)."],
-["mappatella","map:7","mappatella","","noun","a cloth used by agricultural workers to hold their lunch"],
-["mappatura","map:8","mappatura","/mappaˈtura/","noun","mapping"],
-["mapudungun","map:9","mapudungun","","noun","lingua parlata dai nativi di etnia Mapuche; conta circa 440000 parlanti distribuiti soprattutto in Cile e, in misura minore, in Argentina"]
+["mappa","map:0","mappa","/ˈmappa/","noun","rappresentazione semplificata di uno spazio e delle sue relazioni interne","map (visual representation of an area)"],
+["mappamondo","map:1","mappamondo","/mappaˈmondo/","noun","raffigurazione della Terra su una sfera","globe (spherical map of the world)"],
+["mapo","map:2","mapo","/ˈma po/","noun","agrume ottenuto ibridando mandarino e pompelmo","cross between clementine and grapefruit (Citrus paradisi x Citrus reticulata); a kind of tangelo or ugli"],
+["mappare","map:3","mappare","/mapˈpare/","verb","cartografare un luogo, rappresentarlo su carta","to map"],
+["maputo","map:4","Maputo","","name","capitale del Mozambico",""],
+["mappa genetica","map:5","mappa genetica","","phrase","nel DNA, rappresentazione grafica della disposizione di siti delle sequenze di basi azotate che derivano dalla purina e dalla pirimidina, col fine di codificare la sintesi delle proteine",""],
+["mappa isoceraunica","map:6","mappa isoceraunica","","noun","è la carta geografica nella quale viene indicata l'intensità media dei fenomeni elettrici di natura temporalesca (fulmini) nell'atmosfera, generalmente quantificata in F/Km2/anno (Fulmini/Km2/anno).",""],
+["mappatella","map:7","mappatella","","noun","panno che contiene il pasto dei lavoratori","a cloth used by agricultural workers to hold their lunch"],
+["mappatura","map:8","mappatura","/mappaˈtura/","noun","tessere la superficie di un modello 3D con immagini aventi un materiale (metallo, marmo, vetro), un colore e/o motivo geometrico","mapping"],
+["mapudungun","map:9","mapudungun","","noun","lingua parlata dai nativi di etnia Mapuche; conta circa 440000 parlanti distribuiti soprattutto in Cile e, in misura minore, in Argentina",""]
 ]

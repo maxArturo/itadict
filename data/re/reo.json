@@ -1,12 +1,12 @@
 [
-["reo","reo:0","Reo","/ˈrɛo/","noun","offender"],
-["reorniti","reo:1","Reorniti","/re'orniti","noun","Ratiti"],
-["reo-","reo:2","reo-","/ˈrɛo/","prefix","rheo-"],
-["reoforo","reo:3","reoforo","","noun","rheophore"],
-["reologia","reo:4","reologia","","noun","rheology"],
-["reologico","reo:5","reologico","","adj","rheological"],
-["reopectico","reo:6","reopectico","","adj","rheopectic"],
-["reopessia","reo:7","reopessia","","noun","rheopexy"],
-["reostato","reo:8","reostato","","noun","rheostat, dimmer"],
-["reovirus","reo:9","reovirus","","noun","virus a trasmissione orofecale responsabili di numerose affezioni non gravi respiratorie, digestive e neurologiche"]
+["reo","reo:0","Reo","/ˈrɛo/","noun","colpa","offender"],
+["reorniti","reo:1","Reorniti","/re'orniti","noun","Ratiti",""],
+["reo-","reo:2","reo-","/ˈrɛo/","prefix","prima parte di un lemma formato dall'accostamento di due parole la prima delle quali significa \"flusso, corrente\"","rheo-"],
+["reoforo","reo:3","reoforo","","noun","filo in metallo per condurre corrente elettrica","rheophore"],
+["reologia","reo:4","reologia","","noun","scienza che studia l'equilibrio raggiunto dalla materia deformata dopo una sollecitazione","rheology"],
+["reologico","reo:5","reologico","","adj","che riguarda lo studio dell'equilibrio raggiunto dalla materia deformata dopo una sollecitazione","rheological"],
+["reopectico","reo:6","reopectico","","adj","di proprietà di alcune soluzioni in forma di colloidi di trasformarsi in gel più velocemente se sottoposte ad agitazione meccanica","rheopectic"],
+["reopessia","reo:7","reopessia","","noun","proprietà di alcune soluzioni in forma di colloidi di trasformarsi in gel più velocemente se sottoposte ad agitazione meccanica","rheopexy"],
+["reostato","reo:8","reostato","","noun","resistore a resistenza variabile","rheostat, dimmer"],
+["reovirus","reo:9","reovirus","","noun","virus a trasmissione orofecale responsabili di numerose affezioni non gravi respiratorie, digestive e neurologiche",""]
 ]
