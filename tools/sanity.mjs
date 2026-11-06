@@ -27,7 +27,7 @@ import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/r
 import { createSearch, editDistanceAtMost, findMatch, fold, rank } from '../js/search.js';
 import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
 import { WORD_CAP, createReader, summarise, tokenize } from '../js/text.js';
-import { PALETTE, formRows } from '../js/ui.js';
+import { PALETTE, backTarget, formRows } from '../js/ui.js';
 
 const read = (path) => readFileSync(fileURLToPath(new URL(path, import.meta.url)), 'utf8');
 
@@ -68,6 +68,16 @@ function fakeWindow(hash) {
 
 /** A search row, shaped as `js/data.js` hands one out. */
 const row = (headword, folded, gloss) => ({ folded, id: headword, headword, pronunciation: '', pos: '', gloss });
+
+/** A manifest bucket with one search file and one forms file. @param {string} key @param {string} hash */
+function oneFileBucket(key, hash) {
+  return {
+    search: [{ path: `data/${key}.json`, hash }],
+    forms: [{ path: `data/forms/${key}.json`, hash: hash + 'f' }],
+    entry: [],
+    ex: [],
+  };
+}
 
 /** A fetch over an in-memory file map, counting every call. @param {Record<string, unknown>} files */
 function fileFetch(files) {
@@ -272,22 +282,81 @@ test('the summary counts every word but lists each unknown word once, most frequ
 });
 
 test('the reader resolves a headword and a form, and reads an unknown word as null', async () => {
-  const asked = [];
-  const data = {
-    rows: async (bucket) => {
-      asked.push(bucket);
-      return [{ folded: 'casa', id: 'ca:0', headword: 'casa', pronunciation: '', pos: '', gloss: '' }];
-    },
-    forms: async () => new Map([['case', { id: 'ca:0', lemma: 'casa', label: 'plurale' }]]),
-  };
-  const reader = createReader({ data });
+  const { calls, fetch } = fileFetch({
+    'data/index.json': { version: 'v1', buckets: { ca: oneFileBucket('ca', 'h1'), ig: oneFileBucket('ig', 'h2') } },
+    'data/ca.json?v=h1': [['casa', 'ca:0', 'casa', '', '', '']],
+    'data/forms/ca.json?v=h1f': { case: { id: 'ca:0', lemma: 'casa', label: 'plurale' } },
+    'data/ig.json?v=h2': [],
+    'data/forms/ig.json?v=h2f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
   const { segments } = tokenize('Casa case ignoto casa');
   const resolved = await reader.read(segments);
   assert.equal(resolved.get('casa')?.id, 'ca:0');
   assert.equal(resolved.get('case')?.headword, 'casa', 'a form opens its lemma');
   assert.equal(resolved.get('ignoto'), null);
-  assert.deepEqual(asked.filter((bucket) => bucket === 'ca'), ['ca'], 'one bucket, one read');
-  assert.equal(asked.filter((bucket) => bucket === 'ig').length, 1, 'the unknown bucket is read once');
+  assert.equal(calls.filter((url) => url === 'data/ca.json?v=h1').length, 1, 'one read per file, not per word');
+});
+
+test('the reader resolves a word from a split bucket, not only its base file', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: {
+        co: {
+          search: [
+            { path: 'data/co.json', hash: 's1' },
+            { path: 'data/co/com.json', hash: 's2' },
+          ],
+          forms: [
+            { path: 'data/forms/co.json', hash: 'f1' },
+            { path: 'data/forms/co/com.json', hash: 'f2' },
+          ],
+          entry: [],
+          ex: [],
+        },
+      },
+    },
+    'data/co.json?v=s1': [['cosa', 'co:0', 'cosa', '', '', '']],
+    'data/co/com.json?v=s2': [['comunque', 'co:1', 'comunque', '', '', '']],
+    'data/forms/co.json?v=f1': {},
+    'data/forms/co/com.json?v=f2': { compri: { id: 'co:0', lemma: 'comprare', label: 'presente 2s' } },
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  const resolved = await reader.read(tokenize('cosa comunque compri').segments);
+  assert.equal(resolved.get('cosa')?.id, 'co:0');
+  assert.equal(resolved.get('comunque')?.id, 'co:1', 'the longest file prefix wins');
+  assert.equal(resolved.get('compri')?.headword, 'comprare', 'the forms split with the bucket');
+});
+
+test('an elided word resolves through its parts, and each token counts once', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: {
+        ac: oneFileBucket('ac', 'a1'),
+        al: oneFileBucket('al', 'a2'),
+        un: oneFileBucket('un', 'a3'),
+        po: oneFileBucket('po', 'a4'),
+      },
+    },
+    'data/ac.json?v=a1': [['acqua', 'ac:0', 'acqua', '', '', '']],
+    'data/forms/ac.json?v=a1f': {},
+    'data/al.json?v=a2': [['altra', 'al:0', 'altra', '', '', '']],
+    'data/forms/al.json?v=a2f': {},
+    'data/un.json?v=a3': [['un', 'un:0', 'un', '', '', '']],
+    'data/forms/un.json?v=a3f': {},
+    'data/po.json?v=a4': [['po', 'po:0', 'po', '', '', '']],
+    'data/forms/po.json?v=a4f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  const { segments } = tokenize("L'acqua l'acqua un'acqua un'idea po'");
+  const resolved = await reader.read(segments);
+  assert.equal(resolved.get("l'acqua")?.id, 'ac:0', 'the part after the apostrophe resolves');
+  assert.equal(resolved.get("un'acqua")?.id, 'ac:0', 'the part after comes before the part before');
+  assert.equal(resolved.get("un'idea")?.id, 'un:0', 'the part before, when it is a word');
+  assert.equal(resolved.get('po')?.id, 'po:0', 'a trailing apostrophe stays outside the word');
+  assert.deepEqual(summarise(segments, resolved), { total: 5, known: 4, unknown: [] }, 'each token counts once');
 });
 
 test('the palette is the Italian alphabet plus the accented vowels, grouped by sound', () => {
@@ -303,6 +372,16 @@ test('the palette is the Italian alphabet plus the accented vowels, grouped by s
       if (family.sound !== '') assert.equal(fold(letter), family.sound.toLowerCase(), letter + ' belongs to ' + family.sound);
     }
   }
+});
+
+// ---------------------------------------------------------------- the back control
+
+test('the entry back control returns to the screen the app came from, and Search on a cold link', () => {
+  assert.deepEqual(backTarget(''), { label: 'Search', history: false });
+  assert.deepEqual(backTarget('entry'), { label: 'Search', history: false });
+  assert.deepEqual(backTarget('text'), { label: 'Text', history: true });
+  assert.deepEqual(backTarget('search'), { label: 'Search', history: true });
+  assert.deepEqual(backTarget('settings'), { label: 'Settings', history: true });
 });
 
 // ---------------------------------------------------------------- routes

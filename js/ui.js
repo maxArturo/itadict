@@ -80,6 +80,18 @@ export const PALETTE = [
 ];
 
 /**
+ * The Entry screen's back control. A cold deep link has no screen behind it, so it goes to
+ * Search. An entry the app opened has its screen behind it in history, so it steps back there.
+ *
+ * @param {string} from the last tab screen the app drew, or `''` for a cold link
+ * @returns {{ label: string, history: boolean }}
+ */
+export function backTarget(from) {
+  if (from === '' || from === 'entry') return { label: 'Search', history: false };
+  return { label: from.charAt(0).toUpperCase() + from.slice(1), history: true };
+}
+
+/**
  * The FORMS table: one row per person of a personal tense, one row per other tense, in the fixed
  * order, starting at the present. Pure, so the order is checked without a document.
  *
@@ -124,6 +136,7 @@ export function formRows(conj) {
  *     load: Promise<Entry | null>,
  *     examples: (indexes: number[]) => Promise<string[]>,
  *     query?: string,
+ *     back?: { label: string, go?: () => void },
  *   }) => HTMLElement,
  *   placeholder: (options: { title: string, note: string }) => HTMLElement,
  * }}
@@ -436,6 +449,7 @@ export function createUi(doc = globalThis.document) {
    *   load: Promise<Entry | null>,
    *   examples: (indexes: number[]) => Promise<string[]>,
    *   query?: string,
+   *   back?: { label: string, go?: () => void },
    * }} options
    * @returns {HTMLElement}
    */
@@ -446,8 +460,17 @@ export function createUi(doc = globalThis.document) {
     const bar = el('header', 'navbar');
     const back = el('a', 'back');
     back.href = HASH.search;
-    back.setAttribute('aria-label', 'Back to search');
-    back.textContent = '‹ Search';
+    const label = options.back?.label ?? 'Search';
+    back.textContent = '‹ ' + label;
+    back.setAttribute('aria-label', 'Back to ' + label.toLowerCase());
+    // The href stays the cold-link fallback; an in-app entry steps back to the screen behind it.
+    const go = options.back?.go;
+    if (go !== undefined) {
+      back.addEventListener('click', (event) => {
+        event.preventDefault();
+        go();
+      });
+    }
     const title = text('span', 'navbar-title', row.headword);
     const actions = el('div', 'navbar-actions');
 

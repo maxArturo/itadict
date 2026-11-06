@@ -9,11 +9,12 @@
  * Word work stops at {@link WORD_CAP}. A 100k-character paste is a long article, not a test of the
  * app; beyond the cap the rest of the text is drawn plain and the screen says so.
  *
- * `shortcut: a bucket that split into several files (over 1 MB) resolves only its base file; load
- * every file of the bucket when a bucket splits`.
+ * A word resolves through its file, not its bucket: a bucket over 1 MB splits into files named by
+ * a longer prefix, and both sides choose the file the same way. An elided token such as
+ * `l'acqua` resolves through `acqua`, and its link opens that entry.
  */
 
-import { bucketKey, foldWord } from './data.js';
+import { foldWord, pickFiles } from './data.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {{ id: string, headword: string }} Match */
@@ -30,6 +31,9 @@ export const WORD_CAP = 2000;
  * `un'altra`. Digits and punctuation split words and are not words themselves.
  */
 const WORD_SOURCE = "\\p{L}+(?:['\u2019]\\p{L}+)*";
+
+/** The apostrophes the tokeniser keeps inside a word. */
+const APOSTROPHE = /['\u2019]/;
 
 /**
  * Split a text into the words and the plain runs between them. Every segment keeps its exact
@@ -110,53 +114,75 @@ export function createReader(options) {
   const lemmas = new Map();
 
   /**
-   * One promise per bucket, kept. A failure is dropped, so a later word can try again.
+   * One promise per file, kept. A failure is dropped, so a later word can try again.
    * @param {Map<string, Promise<Map<string, Match>>>} cache
-   * @param {string} bucket
+   * @param {string} path
    * @param {() => Promise<Map<string, Match>>} load
    * @returns {Promise<Map<string, Match>>}
    */
-  function memo(cache, bucket, load) {
-    let hit = cache.get(bucket);
+  function memo(cache, path, load) {
+    let hit = cache.get(path);
     if (hit === undefined) {
       hit = load().catch((error) => {
-        cache.delete(bucket);
+        cache.delete(path);
         throw error;
       });
-      cache.set(bucket, hit);
+      cache.set(path, hit);
     }
     return hit;
   }
 
   /**
-   * A bucket's rows, keyed by folded headword. The first row of a folded form wins; the reader
-   * needs one link, not a homograph list.
-   * @param {string} bucket
-   * @returns {Promise<Map<string, Match>>}
+   * The file a folded key lives in, chosen the way js/data.js chooses it: the longest file prefix
+   * the key starts with. A bucket over 1 MB keeps its rows and forms in several files.
+   * @param {'search' | 'forms'} kind
+   * @param {string} folded
+   * @returns {Promise<string>} the file path, or `''` when the manifest has no bucket for the key
    */
-  function rowsOf(bucket) {
-    return memo(headwords, bucket, async () => {
-      /** @type {Map<string, Match>} */
-      const map = new Map();
-      for (const row of await data.rows(bucket)) {
-        if (!map.has(row.folded)) map.set(row.folded, { id: row.id, headword: row.headword });
-      }
-      return map;
-    });
+  async function fileOf(kind, folded) {
+    const manifest = await data.manifest();
+    const bucket = manifest.buckets[folded.slice(0, 2)] ?? manifest.buckets[folded.slice(0, 1)];
+    if (bucket === undefined) return '';
+    const file = pickFiles(bucket[kind], folded)[0];
+    return file === undefined ? '' : file.path;
   }
 
   /**
-   * A bucket's inflected forms, keyed by folded form, pointing at the lemma's entry.
-   * @param {string} bucket
-   * @returns {Promise<Map<string, Match>>}
+   * One entry id for one folded word, or `null`. The first row of a folded form wins; the reader
+   * needs one link, not a homograph list.
+   * @param {'search' | 'forms'} kind
+   * @param {string} folded
+   * @returns {Promise<Match | null>}
    */
-  function lemmasOf(bucket) {
-    return memo(lemmas, bucket, async () => {
+  async function lookup(kind, folded) {
+    const path = await fileOf(kind, folded);
+    if (path === '') return null;
+    const cache = kind === 'search' ? headwords : lemmas;
+    const map = await memo(cache, path, async () => {
       /** @type {Map<string, Match>} */
-      const map = new Map();
-      for (const [form, hit] of await data.forms(bucket)) map.set(form, { id: hit.id, headword: hit.lemma });
-      return map;
+      const built = new Map();
+      if (kind === 'search') {
+        for (const row of await data.rows(folded)) {
+          if (!built.has(row.folded)) built.set(row.folded, { id: row.id, headword: row.headword });
+        }
+      } else {
+        for (const [form, hit] of await data.forms(folded)) built.set(form, { id: hit.id, headword: hit.lemma });
+      }
+      return built;
     });
+    return map.get(folded) ?? null;
+  }
+
+  /**
+   * The lookups for one token, in order: the whole token, the part after an apostrophe, then the
+   * part before it. `l'acqua` resolves through `acqua`; `un'idea` through `un`.
+   * @param {string} folded
+   * @returns {string[]}
+   */
+  function partsOf(folded) {
+    const cut = folded.search(APOSTROPHE);
+    if (cut < 1) return [folded];
+    return [folded, folded.slice(cut + 1), folded.slice(0, cut)].filter((part) => part !== '');
   }
 
   /**
@@ -164,16 +190,17 @@ export function createReader(options) {
    * @returns {Promise<Match | null>}
    */
   async function one(folded) {
-    const bucket = bucketKey(folded);
-    if (bucket === '') return null;
-    try {
-      const headword = (await rowsOf(bucket)).get(folded);
-      if (headword !== undefined) return headword;
-      return (await lemmasOf(bucket)).get(folded) ?? null;
-    } catch {
-      // A bucket that did not load is read as unknown; the text still draws.
-      return null;
+    for (const part of partsOf(folded)) {
+      try {
+        const headword = await lookup('search', part);
+        if (headword !== null) return headword;
+        const lemma = await lookup('forms', part);
+        if (lemma !== null) return lemma;
+      } catch {
+        // A file that did not load is read as unknown; the text still draws.
+      }
     }
+    return null;
   }
 
   return {

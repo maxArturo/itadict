@@ -17,7 +17,7 @@ import { HASH, createRouter } from './router.js';
 import { createSearch } from './search.js';
 import { createStorage } from './storage.js';
 import { createReader } from './text.js';
-import { createUi } from './ui.js';
+import { backTarget, createUi } from './ui.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {import('./router.js').Route} Route */
@@ -115,9 +115,10 @@ export function boot(options = {}) {
    * and needs no memory of an earlier search. The row this session showed gives the headword at
    * once; a cold link draws the id until the body lands.
    * @param {string} id
+   * @param {{ label: string, go?: () => void }} back
    * @returns {HTMLElement}
    */
-  function entryView(id) {
+  function entryView(id, back) {
     const known = search.row(id);
     /** @type {Row} */
     const row = known ?? { folded: '', id, headword: id, pronunciation: '', pos: '', gloss: '' };
@@ -134,30 +135,41 @@ export function boot(options = {}) {
           .examples(bucket)
           .then((sentences) => indexes.map((index) => sentences[index] ?? '').filter((line) => line !== ''))
           .catch(() => []),
+      back,
     });
   }
+
+  /** The last tab screen drawn. The entry's back control returns to it. */
+  let from = '';
 
   /**
    * @param {Route} route
    */
   function renderRoute(route) {
     ui.setActiveTab(bar, route.name);
+    const previous = from;
+    if (route.name !== 'entry') from = route.name;
 
     if (route.name === 'entry' && route.id !== null) {
+      const target = backTarget(previous);
+      /** @type {{ label: string, go?: () => void }} */
+      const back = { label: target.label };
+      if (target.history) back.go = () => globalThis.history.back();
+
       if (matchWide()) {
         const list = doc.createElement('div');
         list.className = 'pane pane-list';
         list.append(searchView.node);
         const detail = doc.createElement('div');
         detail.className = 'pane pane-detail';
-        detail.append(entryView(route.id));
+        detail.append(entryView(route.id, back));
         const split = doc.createElement('div');
         split.className = 'split';
         split.append(list, detail);
         main.replaceChildren(split);
         return;
       }
-      main.replaceChildren(entryView(route.id));
+      main.replaceChildren(entryView(route.id, back));
       return;
     }
 
