@@ -12,8 +12,9 @@
  *     cefr: { "a1": [{ path, bytes, hash, rows }], ... },
  *     buckets: {
  *       "<key>": {                          // lowercase, diacritics removed, first two letters or digits
- *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, pos, gloss]
- *         entry:  [{ path, bytes, hash }],   // [{ id: "<bucket>:<index>", word, ipa?, cefr, pos, ex, conj? }]
+ *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, pos, gloss, en]
+ *                                            // gloss is the Italian definition; en is the first English gloss, '' if none
+ *         entry:  [{ path, bytes, hash }],   // [{ id: "<bucket>:<index>", word, ipa?, en: [{ pos, glosses }], cefr, pos, ex, conj? }]
  *         ex:     [{ path, bytes, hash }],   // [[sentenceId, sentence]] in index order
  *         forms:  [{ path, bytes, hash }],   // { foldedForm: { id, lemma, label } }
  *       }

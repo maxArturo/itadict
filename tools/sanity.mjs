@@ -296,7 +296,16 @@ test('English glosses keep their part of speech, and no English data yields no s
     [{ pos: 'noun', glosses: ['house'] }],
     'empty groups and junk are dropped',
   );
-  assert.deepEqual(toEntry({ id: 'ca:0', word: 'casa' })?.en, [], 'an old entry has an empty list');
+  const v1 = toEntry({
+    id: 'ca:1',
+    word: 'cane',
+    ipa: '/ˈkane/',
+    cefr: 'a1',
+    pos: [{ pos: 'noun', senses: ['dog'] }],
+    ex: [0],
+    conj: [],
+  });
+  assert.deepEqual(v1?.en, [], 'a v1.0 body with no "en" key reads as an empty list');
 });
 
 // ---------------------------------------------------------------- the text reader
