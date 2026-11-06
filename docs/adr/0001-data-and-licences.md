@@ -64,15 +64,22 @@ an excluded headword ships.
 An entry id is `<bucket>:<index>`, a position in the shard of one build. It is stable within a build
 and it carries its own location, so a cold deep link reads one entry file.
 
-It is not stable across builds. A rebuild reorders a shard, and the same id can name a different
-word. A stored id therefore points at a word, not at a word's identity:
+It is not stable across builds. The id is the file name and a position inside that file, so a
+different split moves every position in the file, and a word's id changes with it. A stored id names
+a place in one build, not a word.
 
-- a study card, a note and a list item all keep the id, and after a rebuild they can name the wrong
-  word;
-- a bookmarked `#/entry/<id>` link can open a different entry after a rebuild.
+Saved notes, list items and history keep the id they wrote. A rebuild is safe for saved data: nothing
+is corrupted, and nothing crashes. An id the new build does not have resolves to no entry body, and
+the app then shows the id in place of the word. So a rebuild may lose the word text on rows saved
+before it, and a stored id can name a different word:
 
-The build is the unit of the mapping. A content change that must keep stored progress would need a
-stable key, such as the headword and the part of speech, and that is a decision for a later ADR.
+- a study card, a note and a list item keep their id, and the word behind it can change;
+- a bookmarked `#/entry/<id>` link can open another entry, or show the id.
+
+A list item keeps the word text it stored, so its name survives even when its link does not.
+
+The build is the unit of the mapping. Keeping progress across a rebuild would need a stable key, such
+as the headword and the part of speech, and that is a decision for a later ADR.
 
 ## CEFR
 

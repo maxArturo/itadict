@@ -1013,3 +1013,480 @@ mark {
   margin: 20px auto 0;
 }
 
+
+/* ---------------------------------------------------------------- lists, reference, settings, sheets */
+
+/*
+ * The Lists, Reference and Settings screens reuse the row and navbar rules above. This block adds
+ * the row icons, the label filter, the list items, the alphabet grid, the settings controls, the
+ * bottom sheet and the two user themes. The theme attribute wins over the system preference when
+ * the user picks one; the text size is one zoom on the app shell.
+ */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #6e6e73;
+  --hairline: rgba(60, 60, 67, 0.29);
+  --fill: rgba(118, 118, 128, 0.12);
+  --group: #f2f2f7;
+  --match: #d70015;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --fg: #ffffff;
+  --muted: #98989f;
+  --hairline: rgba(84, 84, 88, 0.65);
+  --fill: rgba(118, 118, 128, 0.24);
+  --group: #1c1c1e;
+  --match: #ff6961;
+}
+
+:root[data-text-size="0"] {
+  --text-zoom: 0.94;
+}
+
+:root[data-text-size="2"] {
+  --text-zoom: 1.1;
+}
+
+#app {
+  zoom: var(--text-zoom, 1);
+}
+
+button.back {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.settings-link {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.navbar-slot {
+  min-width: var(--tap);
+}
+
+.lists-body,
+.settings-body {
+  padding-bottom: 32px;
+}
+
+.lists-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+.lists-row .row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.row-headword {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lists-count {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.row-icon {
+  flex: 0 0 auto;
+  display: flex;
+  width: 28px;
+}
+
+.row-glyph {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+[data-tint="verbs"] .row-glyph {
+  color: #ff9500;
+}
+
+[data-tint="nouns"] .row-glyph {
+  color: #0a84ff;
+}
+
+[data-tint="phrases"] .row-glyph {
+  color: #34c759;
+}
+
+[data-tint="exam"] .row-glyph {
+  color: #af52de;
+}
+
+[data-tint="travel"] .row-glyph {
+  color: #30b0c7;
+}
+
+[data-tint="other"] .row-glyph {
+  color: var(--muted);
+}
+
+.row-check {
+  flex: 0 0 auto;
+  min-width: 18px;
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.label-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px 4px;
+}
+
+.label-chip {
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 0;
+  border-radius: 22px;
+  background: var(--fill);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.label-chip.is-on {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.note-row {
+  gap: 2px;
+}
+
+.note-line {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-item-row {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.list-remove {
+  flex: 0 0 auto;
+  width: var(--tap);
+  min-height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--match);
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.alpha-row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.alpha-letter {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.alpha-name {
+  color: var(--fg);
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.alpha-word {
+  color: var(--accent);
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.alpha-row.is-plain .alpha-word {
+  color: var(--muted);
+}
+
+.settings-segment {
+  padding: 0 16px 12px;
+}
+
+.settings-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.settings-segment .modes {
+  margin-top: 0;
+}
+
+.settings-line {
+  margin: 8px 16px 0;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.settings-note {
+  margin: 6px 16px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.settings-button {
+  display: block;
+  width: calc(100% - 32px);
+  min-height: var(--tap);
+  margin: 10px 16px 0;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fill);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.settings-button:disabled {
+  opacity: 0.5;
+}
+
+.offline-block {
+  padding-bottom: 8px;
+}
+
+.action-list.is-on {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* The bottom sheet: one at a time, over the tab bar. */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.sheet {
+  width: 100%;
+  max-height: 85%;
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-radius: 16px 16px 0 0;
+  background: var(--bg);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.sheet-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  padding: 4px 8px 4px 16px;
+  border-bottom: 0.5px solid var(--hairline);
+  background: var(--bg);
+}
+
+.sheet-title {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.sheet-close {
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.sheet-body {
+  padding: 12px 16px 16px;
+}
+
+.sheet-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sheet-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sheet-label {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.sheet-input {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fill);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.sheet-area {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.sheet-file {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.sheet-select {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fill);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 17px;
+}
+
+.sheet-button {
+  width: 100%;
+  min-height: var(--tap);
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.sheet-button.is-danger {
+  background: var(--match);
+}
+
+.sheet-result {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.sheet-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.action-glyph {
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.action-glyph-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.list-remove-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 900px) {
+  .sheet-backdrop {
+    align-items: center;
+  }
+
+  .sheet {
+    width: 420px;
+    max-height: 80%;
+    padding-bottom: 0;
+    border-radius: 16px;
+  }
+}

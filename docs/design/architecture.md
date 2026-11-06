@@ -155,8 +155,8 @@ not break the app.
 | Study, first deck pick | `data/index.json`, then the copy of the band's deck |
 | Study, one card | the entry shard of the id's bucket, then its ex shard; the band row already carries the sense |
 | Text, one paste | one row shard per bucket the text touches, once per bucket |
-| Reference, alphabet | none today. The screen is a placeholder; the index module reads one deck band when it lands |
-| any placeholder screen | none |
+| Reference | the manifest, then all six deck bands once for the parts-of-speech table |
+| Lists, Settings | none. Both read only the stored blob |
 
 ### The memo
 
@@ -262,8 +262,8 @@ the swipe, the memory pressure, and the 7-day eviction. `docs/verification/gate-
 
 Recorded on purpose. Fix the code or the ADR; do not let the two drift.
 
-1. The Reference, Lists and Settings screens are placeholders. Their data and storage modules exist.
-2. `js/offline.js` has a tested `downloadAll()` and no screen calls it.
+1. The gate proves the download action, not the Offline button. A tap on it stays a browser or device check.
+2. `js/offline.js` is called from the Reference tab's Offline row and from the Settings screen. The gate calls it directly, so the button itself is still unproven.
 3. The memo has no bound, so a long session grows. There is no LRU.
 4. An entry body carries `cefr`, and no screen draws it. The band shows in Study and, later, in
    Reference.

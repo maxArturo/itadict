@@ -20,14 +20,44 @@ import {
   parseManifest,
   pickFiles,
   shardUrl,
+  toDeckRow,
   toEntry,
   toRow,
 } from '../js/data.js';
 import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/router.js';
 import { createSearch, editDistanceAtMost, findMatch, fold, rank } from '../js/search.js';
+import { createSpeech, RATE } from '../js/speech.js';
 import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
+import {
+  EASE_MIN,
+  EASE_START,
+  INTERVALS,
+  dueCount,
+  dueIds,
+  endOfToday,
+  gradeCard,
+  isDue,
+  newCard,
+  orderDeck,
+  readCard,
+} from '../js/study.js';
 import { WORD_CAP, createReader, summarise, tokenize } from '../js/text.js';
 import { PALETTE, backTarget, formRows } from '../js/ui.js';
+import {
+  LABELS,
+  backupFile,
+  counts,
+  firstLine,
+  noteWord,
+  labelFor,
+  mergeList,
+  packageList,
+  parseBackup,
+  parsePackage,
+  readLists,
+  uniqueName,
+} from '../js/lists.js';
+import { ALPHABET, posIndex, posLabel } from '../js/reference.js';
 
 const read = (path) => readFileSync(fileURLToPath(new URL(path, import.meta.url)), 'utf8');
 
@@ -93,7 +123,7 @@ function fileFetch(files) {
 // ---------------------------------------------------------------- the shipped files
 
 test('every module carries the typecheck pragma, and the page loads only relative URLs', () => {
-  for (const name of ['app', 'data', 'router', 'search', 'storage', 'text', 'ui']) {
+  for (const name of ['app', 'data', 'lists', 'reference', 'router', 'search', 'speech', 'storage', 'study', 'text', 'ui']) {
     const source = read('../js/' + name + '.js');
     assert.equal(source.split('\n')[0], '// @ts-check', 'js/' + name + '.js');
     assert.doesNotMatch(source, /\.innerHTML\b/, 'js/' + name + '.js writes no markup');
@@ -384,6 +414,206 @@ test('the entry back control returns to the screen the app came from, and Search
   assert.deepEqual(backTarget('settings'), { label: 'Settings', history: true });
 });
 
+// ---------------------------------------------------------------- lists, notes and files
+
+test('a list file is validated before anything is written', () => {
+  const file = {
+    app: 'itadict',
+    kind: 'list',
+    v: 1,
+    name: '  Italian  ',
+    label: 'Verbs',
+    items: [{ id: 'ca:0', word: 'casa' }, { id: 'ca:0', word: 'casa' }, { id: 'vi:1', word: 'via' }, { id: '', word: 'x' }, 'junk'],
+  };
+  assert.deepEqual(parsePackage(file), {
+    name: 'Italian',
+    label: 'Verbs',
+    items: [{ id: 'ca:0', word: 'casa' }, { id: 'vi:1', word: 'via' }],
+  });
+  assert.equal(parsePackage({ ...file, v: 2 }), null, 'a newer file is not read');
+  assert.equal(parsePackage({ ...file, kind: 'backup' }), null);
+  assert.equal(parsePackage({ ...file, items: 'junk' }), null);
+  assert.equal(parsePackage(null), null);
+  assert.equal(parsePackage({ ...file, label: 'Nope' })?.label, 'Other');
+  assert.equal(LABELS.length, 6);
+  assert.equal(labelFor('Exam'), 'Exam');
+  assert.equal(uniqueName('Italian', ['Italian']), 'Italian (2)');
+  assert.equal(uniqueName('Italian', ['Italian', 'Italian (2)']), 'Italian (3)');
+  assert.equal(uniqueName('Italian', []), 'Italian');
+  assert.deepEqual(packageList({ id: 'l-1', name: 'Italian', label: 'Verbs', folder: '', items: [{ id: 'ca:0', word: 'casa' }] }), {
+    app: 'itadict',
+    kind: 'list',
+    v: 1,
+    name: 'Italian',
+    label: 'Verbs',
+    items: [{ id: 'ca:0', word: 'casa' }],
+  });
+});
+
+test('importing a list never overwrites a name and reports added items', () => {
+  const lists = readLists([{ id: 'l-1', name: 'Italian', label: 'Verbs', folder: '', items: [{ id: 'ca:0', word: 'casa' }] }]);
+  const parsed = parsePackage({
+    app: 'itadict',
+    kind: 'list',
+    v: 1,
+    name: 'Italian',
+    label: 'Verbs',
+    items: [{ id: 'ca:0', word: 'casa' }, { id: 'vi:1', word: 'via' }],
+  });
+  assert.ok(parsed !== null);
+  const merged = mergeList(lists, parsed);
+  assert.equal(merged.list.name, 'Italian (2)', 'an existing list is never overwritten');
+  assert.equal(merged.added, 1, 'only via is new to the collection');
+  assert.equal(merged.present, 1, 'casa is already there');
+  assert.equal(merged.lists.length, 2);
+  assert.deepEqual(merged.lists[0].items.map((item) => item.id), ['ca:0'], 'the existing list keeps exactly its items');
+});
+
+test('a backup file carries the whole data and is validated', () => {
+  const file = backupFile({ history: ['casa'], lists: [] }, '2026-01-01T00:00:00.000Z');
+  assert.deepEqual(file, {
+    app: 'itadict',
+    kind: 'backup',
+    v: 1,
+    exported: '2026-01-01T00:00:00.000Z',
+    data: { history: ['casa'], lists: [] },
+  });
+  assert.deepEqual(parseBackup(JSON.parse(JSON.stringify(file))), { data: { history: ['casa'], lists: [] } });
+  assert.equal(parseBackup({ ...file, data: null }), null);
+  assert.equal(parseBackup({ ...file, kind: 'list' }), null);
+  assert.deepEqual(
+    counts({
+      history: ['a', 'b'],
+      opened: [],
+      schedule: { a: {} },
+      notes: { n: { text: 'x', at: 1 } },
+      lists: [{ id: 'l', name: 'A', label: 'Other', folder: '', items: [{ id: 'x', word: 'x' }] }],
+      folders: [],
+    }),
+    { lists: 1, folders: 0, items: 1, notes: 1, cards: 1, history: 2 },
+  );
+  assert.equal(firstLine('  first line \n second '), 'first line');
+  assert.equal(firstLine(''), '');
+});
+
+test('lists, folders and items are stored, never duplicated, and survive a reload', () => {
+  const backend = fakeBackend();
+  const clock = () => 1000;
+  const storage = createStorage(backend, clock);
+  const list = storage.addList('Italian', 'Verbs');
+  assert.equal(storage.addList('Italian', 'Nouns').name, 'Italian (2)', 'a name already taken gets a suffix');
+  const folder = storage.addFolder('Class');
+  assert.equal(storage.addItem(list.id, { id: 'ca:0', word: 'casa' }), 'added');
+  assert.equal(storage.addItem(list.id, { id: 'ca:0', word: 'casa' }), 'present');
+  assert.deepEqual(storage.listIdsWith('ca:0'), [list.id]);
+  const second = storage.lists()[1];
+  assert.equal(storage.toggleItem(second.id, { id: 'ca:0', word: 'casa' }), 'added');
+  assert.deepEqual(storage.listIdsWith('ca:0'), [list.id, second.id], 'one entry sits in many lists');
+  assert.equal(storage.toggleItem(second.id, { id: 'ca:0', word: 'casa' }), 'removed');
+
+  const again = createStorage(fakeBackend(backend.raw()), clock);
+  assert.deepEqual(again.lists(), storage.lists(), 'the lists round-trip');
+  assert.deepEqual(again.folders(), [folder]);
+  storage.removeList(list.id);
+  assert.equal(storage.lists().length, 1);
+});
+
+test('an imported list gets a new name, and a backup restores the same counts', () => {
+  const backend = fakeBackend();
+  const clock = () => 5000;
+  const storage = createStorage(backend, clock);
+  const list = storage.addList('Travel', 'Travel');
+  storage.addItem(list.id, { id: 'ca:0', word: 'casa' });
+  storage.setNote('ca:0', 'a note');
+  storage.addQuery('casa');
+
+  const file = parsePackage({
+    app: 'itadict',
+    kind: 'list',
+    v: 1,
+    name: 'Travel',
+    label: 'Travel',
+    items: [{ id: 'ca:0', word: 'casa' }, { id: 'vi:1', word: 'via' }],
+  });
+  assert.ok(file !== null);
+  const merged = storage.importList(file);
+  assert.equal(merged.list.name, 'Travel (2)');
+  assert.equal(merged.added, 1);
+  assert.equal(merged.present, 1);
+
+  const before = counts(storage.snapshot());
+  const backup = parseBackup(JSON.parse(JSON.stringify(backupFile(storage.snapshot(), 'now'))));
+  assert.ok(backup !== null);
+
+  // Wipe: a fresh envelope on the same backend, then restore the file.
+  backend.setItem(KEY, JSON.stringify({ v: VERSION, data: {} }));
+  const wiped = createStorage(fakeBackend(backend.raw()), clock);
+  assert.equal(wiped.lists().length, 0);
+  assert.equal(wiped.restore(backup.data), true);
+  assert.deepEqual(counts(wiped.snapshot()), before, 'a backup and a restore keep the same counts');
+  assert.equal(wiped.note('ca:0'), 'a note');
+  assert.deepEqual(wiped.settings(), storage.settings());
+});
+
+test('notes come back newest first, and an edit moves a note up', () => {
+  const backend = fakeBackend();
+  let clock = 100;
+  const storage = createStorage(backend, () => clock);
+  storage.setNote('ca:0', 'first');
+  clock = 200;
+  storage.setNote('vi:1', 'second');
+  clock = 300;
+  storage.setNote('ca:0', 'edited');
+  assert.deepEqual(storage.notes().map((note) => note.id), ['ca:0', 'vi:1'], 'the newest edit leads');
+  assert.equal(storage.notes()[0].text, 'edited');
+  storage.setNote('ca:0', '');
+  assert.deepEqual(storage.notes().map((note) => note.id), ['vi:1'], 'an empty note leaves no row');
+});
+
+test('settings keep known values and the envelope reports its size', () => {
+  const storage = createStorage(fakeBackend(), () => 42);
+  assert.deepEqual(storage.setSettings({ theme: 'dark', textSize: 9, speechRate: 2 }), {
+    theme: 'dark',
+    textSize: 1,
+    speechRate: 1.5,
+  });
+  assert.ok(storage.size() > 0);
+  assert.equal(storage.setSettings({ theme: 'light', textSize: 2 }).textSize, 2);
+});
+
+// ---------------------------------------------------------------- the Reference catalogue
+
+test('the alphabet lists the 21 Italian letters and the six accented vowels', () => {
+  assert.equal(ALPHABET.length, 27);
+  assert.deepEqual(
+    ALPHABET.map((row) => row.letter),
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'à', 'è', 'é', 'ì', 'ò', 'ù'],
+  );
+  for (const row of ALPHABET) {
+    assert.ok(row.name !== '' && row.word !== '', row.letter + ' has a name and an example');
+  }
+});
+
+test('the parts-of-speech index counts every row and keeps the first rows in order', () => {
+  const rows = [
+    { id: 'a', word: 'a', pos: 'verb', gloss: '' },
+    { id: 'b', word: 'b', pos: 'noun', gloss: '' },
+    { id: 'c', word: 'c', pos: 'verb', gloss: '' },
+    { id: 'd', word: 'd', pos: 'noun', gloss: '' },
+    { id: 'e', word: 'e', pos: 'noun', gloss: '' },
+    { id: 'f', word: 'f', pos: 'adj', gloss: '' },
+  ];
+  const groups = posIndex(rows, 2);
+  assert.deepEqual(groups.map((group) => [group.pos, group.label, group.count]), [
+    ['noun', 'Noun', 3],
+    ['verb', 'Verb', 2],
+    ['adj', 'Adjective', 1],
+  ]);
+  assert.deepEqual(groups[0].rows.map((row) => row.id), ['b', 'd'], 'capped at two, in the order given');
+  assert.equal(posLabel('prep_phrase'), 'Prepositional phrase');
+  assert.equal(posLabel('unknown_kind'), 'Unknown kind');
+});
+
 // ---------------------------------------------------------------- routes
 
 test('the router parses exactly the seven routes, and nothing else', () => {
@@ -461,7 +691,18 @@ test('storage de-duplicates a query and refuses a blob it cannot read', () => {
   storage.addQuery('via');
   storage.addQuery('casa');
   assert.deepEqual(storage.history(), ['casa', 'via'], 'newest first, no duplicate');
-  assert.deepEqual(JSON.parse(backend.raw()), { v: VERSION, data: { history: ['casa', 'via'] } });
+  assert.deepEqual(JSON.parse(backend.raw()), {
+    v: VERSION,
+    data: {
+      history: ['casa', 'via'],
+      opened: [],
+      schedule: {},
+      notes: {},
+      lists: [],
+      folders: [],
+      settings: { theme: 'system', textSize: 1, speechRate: 0.9 },
+    },
+  });
   assert.deepEqual(createStorage(fakeBackend(backend.raw())).history(), ['casa', 'via'], 'the blob round-trips');
 
   const brokenBlob = fakeBackend('not json');
@@ -621,3 +862,146 @@ test('ranking a 5,000-row bucket stays far below a keystroke', () => {
   console.log('rank(): ' + perQuery.toFixed(2) + ' ms per query over ' + rows.length + ' rows');
   assert.ok(perQuery < 25, 'a keystroke must stay under the 25 ms budget, got ' + perQuery.toFixed(2));
 });
+
+// ---------------------------------------------------------------- study
+
+const DAY = 24 * 60 * 60 * 1000;
+
+test('a forgot drops to step 0, lowers the ease and comes back in ten minutes', () => {
+  const now = Date.UTC(2026, 0, 5, 12);
+  const card = gradeCard({ step: 3, ease: 2.5, due: 0, reps: 5, lapses: 1 }, false, now);
+  assert.deepEqual(card, { step: 0, ease: 2.3, due: now + 10 * 60 * 1000, reps: 5, lapses: 2 });
+
+  let floor = newCard(now);
+  for (let index = 0; index < 10; index += 1) floor = gradeCard(floor, false, now);
+  assert.equal(floor.ease, EASE_MIN, 'the ease never falls under the floor');
+});
+
+test('a remembered card climbs the interval ladder, scaled by ease, and repeats the top step', () => {
+  const now = Date.UTC(2026, 0, 5, 12);
+  let card = newCard(now);
+  const days = [];
+  for (let index = 0; index < INTERVALS.length + 1; index += 1) {
+    card = gradeCard(card, true, now);
+    days.push(Math.round((card.due - now) / DAY));
+  }
+  assert.deepEqual(days.slice(0, INTERVALS.length), INTERVALS);
+  assert.equal(days[INTERVALS.length], INTERVALS[INTERVALS.length - 1], 'the top step repeats');
+  assert.equal(card.reps, INTERVALS.length + 1);
+  assert.equal(card.ease, EASE_START, 'remembering never raises the ease');
+  assert.equal(readCard(card)?.step, INTERVALS.length + 1);
+});
+
+test('due today counts a past due date, and stops at local midnight', () => {
+  const now = new Date(2026, 0, 5, 9).getTime();
+  const end = endOfToday(now);
+  const card = (due) => ({ step: 0, ease: 2.5, due, reps: 0, lapses: 0 });
+  const schedule = {
+    'ca:0': card(end - 1),
+    'ca:1': card(end),
+    'ca:2': card(end + 1),
+    'ca:3': card(new Date(2020, 0, 1).getTime()),
+  };
+  assert.equal(dueCount(schedule, now), 3, 'a made-up past date is due');
+  assert.deepEqual(dueIds(schedule, now), ['ca:3', 'ca:0', 'ca:1'], 'soonest first');
+  assert.equal(isDue(schedule['ca:2'], now), false, 'one millisecond past midnight is tomorrow');
+  assert.equal(dueCount({}, now), 0);
+  assert.equal(dueCount({ 'ca:0': 'junk' }, now), 0, 'a malformed card is not due');
+});
+
+test('a deck shows due cards first, then new ones, then the future', () => {
+  const now = new Date(2026, 0, 5, 9).getTime();
+  const end = endOfToday(now);
+  const card = (due, step) => ({ step, ease: 2.5, due, reps: step, lapses: 0 });
+  const schedule = { a: card(end - 10, 1), b: card(end + 5 * DAY, 2) };
+  assert.deepEqual(orderDeck(['c', 'b', 'a', 'd'], schedule, now), ['a', 'c', 'd', 'b']);
+});
+
+test('a graded card survives a reload, with its note and the History deck', () => {
+  const backend = fakeBackend();
+  const now = Date.UTC(2026, 0, 5, 12);
+  const first = createStorage(backend);
+  const graded = gradeCard(newCard(now), true, now);
+  first.setSchedule('co:5', graded);
+  first.setNote('co:5', 'comprare = to buy');
+  first.addOpened('co:5');
+
+  const again = createStorage(fakeBackend(backend.raw()));
+  assert.deepEqual(again.schedule()['co:5'], graded, 'the schedule is the same after a reload');
+  assert.equal(again.schedule()['co:5'].reps, 1);
+  assert.equal(again.note('co:5'), 'comprare = to buy');
+  assert.deepEqual(again.opened(), ['co:5']);
+});
+
+test('a v1 blob migrates forward with empty study collections and lists', () => {
+  const storage = createStorage(fakeBackend(JSON.stringify({ v: 1, data: { history: ['casa'] } })));
+  assert.deepEqual(storage.schedule(), {});
+  assert.deepEqual(storage.opened(), []);
+  assert.equal(storage.note('ca:0'), '');
+  assert.deepEqual(storage.lists(), []);
+  assert.deepEqual(storage.folders(), []);
+  assert.deepEqual(storage.history(), ['casa'], 'the old data survives');
+});
+
+test('a v2 note carries no word, and a missing word falls back to the id', () => {
+  const storage = createStorage(fakeBackend(JSON.stringify({ v: 2, data: { notes: { 'ca:0': 'old note' } } })));
+  assert.deepEqual(storage.notes(), [{ id: 'ca:0', text: 'old note', at: 0, word: '' }]);
+  assert.equal(noteWord('', '', 'ca:0'), 'ca:0', 'the id is the last resort');
+  assert.equal(noteWord('', 'casa', 'ca:0'), 'casa', 'a fetched headword is the next resort');
+  assert.equal(noteWord('casa', 'altra', 'ca:0'), 'casa', 'a stored word wins');
+  storage.setNote('ca:0', 'new note', 'casa');
+  assert.equal(storage.notes()[0].word, 'casa', 'a saved note keeps its headword');
+});
+
+test('a CEFR deck row reads as id, word, pos and gloss', () => {
+  assert.deepEqual(toDeckRow(['ca:0', 'casa', 'noun', 'house']), { id: 'ca:0', word: 'casa', pos: 'noun', gloss: 'house' });
+  assert.equal(toDeckRow(['ca:0']), null);
+  assert.equal(toDeckRow({ id: 'ca:0', word: 'casa', pos: 'noun', gloss: '' })?.word, 'casa');
+  assert.equal(toDeckRow({}), null);
+});
+
+test('the manifest exposes the CEFR decks with their row counts', () => {
+  const manifest = parseManifest({
+    buckets: { ca: { search: [{ path: 'data/ca.json' }] } },
+    cefr: { a1: [{ path: 'data/cefr/a1.json', bytes: 10, hash: 'abc', rows: 670 }], empty: [] },
+  });
+  assert.deepEqual(manifest?.cefr.a1, [{ path: 'data/cefr/a1.json', bytes: 10, hash: 'abc', rows: 670 }]);
+  assert.equal(manifest?.cefr.empty, undefined, 'a band with no file is not listed');
+});
+
+// ---------------------------------------------------------------- speech
+
+test('speech picks an Italian voice, speaks at 0.9 and never offers a dead button', () => {
+  const spoken = [];
+  const fake = {
+    speechSynthesis: {
+      getVoices: () => [{ lang: 'en-US', name: 'Sam' }, { lang: 'it-IT', name: 'Alice' }],
+      speak: (utterance) => spoken.push(utterance),
+      cancel: () => spoken.push('cancel'),
+    },
+    SpeechSynthesisUtterance: class {
+      constructor(text) {
+        this.text = text;
+      }
+    },
+  };
+  const speech = createSpeech(fake);
+  assert.equal(speech.available(), true);
+  assert.equal(speech.speak('casa'), true);
+  assert.equal(spoken[0], 'cancel', 'a new word cancels the old one');
+  const utterance = spoken[1];
+  assert.equal(utterance.lang, 'it-IT');
+  assert.equal(utterance.rate, RATE);
+  assert.equal(utterance.voice.name, 'Alice');
+  assert.equal(utterance.text, 'casa');
+
+  const noItalian = createSpeech({
+    speechSynthesis: { getVoices: () => [{ lang: 'en-US' }], speak() {}, cancel() {} },
+    SpeechSynthesisUtterance: class {},
+  });
+  assert.equal(noItalian.available(), false);
+  assert.equal(noItalian.speak('casa'), false, 'no Italian voice means no sound');
+
+  assert.equal(createSpeech({}).available(), false, 'a browser without synthesis hides the control');
+});
+

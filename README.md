@@ -36,10 +36,10 @@ licences, the frozen decisions and the language.
 | Search | A field with two input modes, keypad and letters. A row shows the headword, a form or the IPA, the part of speech and one gloss. |
 | Entry (`#/entry/<id>`) | The back control to the screen you came from, the headword with its IPA, Translation, Forms, and Examples with the match in red. A speaker button appears only when an Italian voice exists. |
 | Text | Paste Italian text. The screen shows a summary, the text with a link on every word the dictionary knows, and the words it does not know. |
-| Reference | The alphabet catalogue and the parts-of-speech index. The screen is a placeholder in this build; its data module is in place. |
-| Lists | Lists, folders, notes and the two portable file kinds. The screen is a placeholder in this build; the storage and the file shapes are in place. |
+| Reference | The catalogue: About, Alphabet and pronunciation, Parts of speech, CEFR, and Offline. The Offline row shows the size and runs the download. |
+| Lists | History, Notes, folders and lists, with add, remove, import and share. The top-left control opens Settings. |
 | Study | A deck picker: due today, history, and one deck per CEFR band. A card shows a headword, its sense and an example. Swipe right for remembered, left for forgot. Tap the headword to open the entry. A note field sits in the card. |
-| Settings | Theme, text size, speech rate, storage size and backup. The screen is a placeholder in this build. |
+| Settings | Theme, text size, speech rate, the stored size, a full backup, and the offline download. |
 
 The active tab is dark and the rest are grey. Study carries a badge with the number of cards due.
 
@@ -180,5 +180,4 @@ sources and the CEFR deck sizes.
 
 ## Open
 
-- The Reference, Lists and Settings screens are placeholders in this build.
-- The download action has no button yet. The function that runs it exists and its gate passes.
+- The offline gate calls the download action directly. A tap on the Download button stays a device check.

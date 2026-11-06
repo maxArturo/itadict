@@ -60,7 +60,10 @@ sequential on purpose: the number is honest, and a phone on a weak signal is not
 
 A failed fetch never stops the run. It is counted, and the run reports it at the end.
 
-The function and its gate exist. No screen calls it yet.
+The Reference tab's Offline row calls it. The row shows the size, the file count and a Download
+button, then a progress line that counts files done, total, and failures. `js/app.js` wires the button
+to `downloadAll()` over the manifest. The gate calls the action directly, so it proves the action and
+not the button.
 
 ## Storage limits and eviction
 

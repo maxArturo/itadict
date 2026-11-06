@@ -12,7 +12,10 @@
  * `tools/sanity.mjs` drives the shell with fakes and the browser path calls `boot()` with nothing.
  */
 
-import { bucketOfId, createData } from './data.js';
+import { bucketOfId, createData, foldWord } from './data.js';
+import { backupFile, counts, noteWord, packageList, parseBackup, parsePackage } from './lists.js';
+import { downloadAll, fileUrls } from './offline.js';
+import { posIndex } from './reference.js';
 import { HASH, createRouter, entryHash } from './router.js';
 import { createSearch } from './search.js';
 import { createSpeech } from './speech.js';
@@ -29,17 +32,6 @@ const ROOT_ID = 'app';
 
 /** Two panes from here up: the result list on the left, the entry on the right. */
 const WIDE = '(min-width: 900px)';
-
-/**
- * What each screen without a feature yet says. The numbers are the roadmap's; correct them when
- * a milestone moves.
- * @type {Record<string, { title: string, note: string }>}
- */
-const PLACEHOLDERS = {
-  lists: { title: 'Lists', note: 'Lists and notes arrive in a later build.' },
-  settings: { title: 'Settings', note: 'Settings arrive in a later build.' },
-  reference: { title: 'Reference', note: 'The grammar catalogue arrives in a later build.' },
-};
 
 /** The right pane of the wide layout before a row is tapped. */
 const NO_ENTRY = { title: 'No word selected', note: 'Choose a word on the left.' };
@@ -77,6 +69,7 @@ function registerWorker(container) {
  *   serviceWorker?: ServiceWorkerContainer | null,
  *   speech?: ReturnType<typeof createSpeech>,
  *   now?: () => number,
+ *   confirm?: (message: string) => boolean,
  * }} [options] injected by `tools/sanity.mjs`; the browser passes nothing
  */
 export function boot(options = {}) {
@@ -198,6 +191,319 @@ export function boot(options = {}) {
   updateDue();
 
   /**
+   * Ask before a destructive action. A browser without a dialog keeps going; the action was
+   * asked for by a tap.
+   */
+  const ask =
+    options.confirm ??
+    ((message) => (typeof globalThis.confirm === 'function' ? globalThis.confirm(message) : true));
+
+  /**
+   * Save one JSON file through a download link.
+   * @param {string} name
+   * @param {Record<string, unknown>} payload
+   */
+  function saveFile(name, payload) {
+    const text = JSON.stringify(payload, null, 2);
+    const blob = new Blob([text], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = doc.createElement('a');
+    link.href = url;
+    link.download = name;
+    doc.body.append(link);
+    link.click();
+    link.remove();
+    globalThis.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  /**
+   * Share one JSON file through the phone's own share sheet when the browser has one, and
+   * download it when it does not.
+   * @param {string} name
+   * @param {Record<string, unknown>} payload
+   * @returns {Promise<'shared' | 'downloaded' | 'cancelled'>}
+   */
+  async function shareFile(name, payload) {
+    const text = JSON.stringify(payload, null, 2);
+    const nav = globalThis.navigator;
+    if (nav && typeof nav.share === 'function' && typeof nav.canShare === 'function') {
+      const file = new File([text], name, { type: 'application/json' });
+      if (nav.canShare({ files: [file] })) {
+        try {
+          await nav.share({ files: [file], title: name });
+          return 'shared';
+        } catch (error) {
+          if (error instanceof Error && error.name === 'AbortError') return 'cancelled';
+        }
+      }
+    }
+    saveFile(name, payload);
+    return 'downloaded';
+  }
+
+  /** @returns {Promise<'shared' | 'downloaded' | 'cancelled'>} */
+  function exportBackup() {
+    return shareFile('italian-backup.json', backupFile(storage.snapshot(), new Date().toISOString()));
+  }
+
+  /**
+   * @param {import('./lists.js').UserList} list
+   * @returns {Promise<'shared' | 'downloaded' | 'cancelled'>}
+   */
+  function shareList(list) {
+    return shareFile('italian-list.json', packageList(list));
+  }
+
+  /**
+   * Validate and merge one list file. A bad file changes nothing.
+   * @param {string} text
+   */
+  function importText(text) {
+    /** @type {unknown} */
+    let value;
+    try {
+      value = JSON.parse(text);
+    } catch {
+      return { ok: false, error: 'That is not JSON.' };
+    }
+    const parsed = parsePackage(value);
+    if (parsed === null) return { ok: false, error: 'That file is not an itadict list.' };
+    const merged = storage.importList(parsed);
+    return { ok: true, name: merged.list.name, added: merged.added, present: merged.present };
+  }
+
+  /**
+   * Validate one backup, ask once, then replace every user datum.
+   * @param {string} text
+   */
+  function restoreText(text) {
+    /** @type {unknown} */
+    let value;
+    try {
+      value = JSON.parse(text);
+    } catch {
+      return { ok: false, error: 'That is not JSON.' };
+    }
+    const parsed = parseBackup(value);
+    if (parsed === null) return { ok: false, error: 'That file is not an itadict backup.' };
+    if (!ask('Replace all your data with this backup? Your current lists, notes and progress will be lost.')) {
+      return { ok: false, cancelled: true };
+    }
+    if (!storage.restore(parsed.data)) {
+      return { ok: false, error: 'The browser refused to save it. The backup is loaded for this session only.' };
+    }
+    applySettings();
+    updateDue();
+    listsView.refresh();
+    settingsView?.refresh();
+    return { ok: true, counts: counts(storage.snapshot()) };
+  }
+
+  /**
+   * The notes with the headword each one belongs to, newest first.
+   * @returns {Promise<Array<{ id: string, text: string, word: string }>>}
+   */
+  async function noteRows() {
+    return Promise.all(
+      storage.notes().map(async (note) => {
+        let fetched = '';
+        // A stored word survives a data rebuild; only a note without one asks the dictionary.
+        if (note.word === '') {
+          try {
+            const entry = await data.entry(note.id);
+            if (entry !== null) fetched = entry.headword;
+          } catch {
+            // The id stands in for the word.
+          }
+        }
+        return { ...note, word: noteWord(note.word, fetched, note.id) };
+      }),
+    );
+  }
+
+  /**
+   * The part of speech and the first gloss of each entry, for the rows of one list.
+   * @param {string[]} ids
+   * @returns {Promise<Map<string, { pos: string, gloss: string }>>}
+   */
+  async function describeItems(ids) {
+    /** @type {Map<string, { pos: string, gloss: string }>} */
+    const out = new Map();
+    await Promise.all(
+      ids.map(async (id) => {
+        try {
+          const entry = await data.entry(id);
+          if (entry === null) return;
+          const group = entry.posList[0];
+          out.set(id, { pos: group?.pos ?? '', gloss: group?.senses[0] ?? '' });
+        } catch {
+          // The row keeps the word alone.
+        }
+      }),
+    );
+    return out;
+  }
+
+  /**
+   * The entry id of each word that is a headword. The alphabet rows link only those.
+   * @param {string[]} words
+   * @returns {Promise<Map<string, string>>}
+   */
+  async function wordIds(words) {
+    /** @type {Map<string, string>} */
+    const out = new Map();
+    await Promise.all(
+      words.map(async (word) => {
+        try {
+          const { rows } = await search.search(word);
+          const hit = rows.find((row) => foldWord(row.headword) === foldWord(word));
+          if (hit !== undefined) out.set(word, hit.id);
+        } catch {
+          // The word stays plain.
+        }
+      }),
+    );
+    return out;
+  }
+
+  /** @type {ReturnType<typeof posIndex> | null} */
+  let posGroups = null;
+  /** @type {Promise<ReturnType<typeof posIndex>> | null} */
+  let posLoaded = null;
+
+  /**
+   * The parts-of-speech index, built once from the CEFR decks, which cover every entry.
+   * @returns {Promise<ReturnType<typeof posIndex>>}
+   */
+  function loadPos() {
+    if (posLoaded === null) {
+      posLoaded = Promise.all(BANDS.map((band) => data.cefr(band)))
+        .then((decks) => {
+          posGroups = posIndex(decks.flat());
+          return posGroups;
+        })
+        .catch((error) => {
+          posLoaded = null;
+          throw error;
+        });
+    }
+    return posLoaded;
+  }
+
+  /**
+   * The six bands with the number of cards the manifest lists for each.
+   * @returns {Promise<Array<{ band: string, count: number }>>}
+   */
+  function cefrRows() {
+    return Promise.all(BANDS.map(async (band) => ({ band, count: await data.cefrCount(band) })));
+  }
+
+  /**
+   * What the About screen shows, read from the manifest.
+   * @returns {Promise<{ version: string, built: string, entries: number, examples: number }>}
+   */
+  function aboutInfo() {
+    return data.manifest().then((manifest) => ({
+      version: manifest.version,
+      built: manifest.built,
+      entries: manifest.totals.entries,
+      examples: manifest.totals.examples,
+    }));
+  }
+
+  /**
+   * The size of the download the Offline screens offer.
+   * @returns {Promise<{ files: number, bytes: number }>}
+   */
+  async function offlineInfo() {
+    const manifest = await data.manifest();
+    return { files: fileUrls(manifest).length, bytes: manifest.totals.bytes };
+  }
+
+  /**
+   * Fetch every data file once, in order, reporting progress.
+   * @param {(done: number, total: number, failed: number) => void} onProgress
+   */
+  function downloadDictionary(onProgress) {
+    return data.manifest().then((manifest) => downloadAll(manifest, { onProgress }));
+  }
+
+  /** Put the stored theme and text size on the page. */
+  function applySettings() {
+    const settings = storage.settings();
+    const html = doc.documentElement;
+    if (!html) return;
+    if (settings.theme === 'system') html.removeAttribute('data-theme');
+    else html.setAttribute('data-theme', settings.theme);
+    html.setAttribute('data-text-size', String(settings.textSize));
+  }
+  applySettings();
+
+  const listsView = ui.listsScreen({
+    lists: () => storage.lists(),
+    folders: () => storage.folders(),
+    history: () => storage.history(),
+    notesCount: () => storage.notes().length,
+    notes: noteRows,
+    rows: describeItems,
+    addList: (name, label, folder) => {
+      storage.addList(name, label, folder);
+    },
+    addFolder: (name) => {
+      storage.addFolder(name);
+    },
+    removeList: (id) => storage.removeList(id),
+    removeItem: (listId, itemId) => storage.removeItem(listId, itemId),
+    importText,
+    restoreText,
+    shareList,
+    confirm: ask,
+    onSettings: () => router.navigate(HASH.settings),
+    onSearch: (query) => {
+      searchView.setQuery(query);
+      router.navigate(HASH.search);
+    },
+  });
+
+  /** @type {ReturnType<typeof ui.settingsScreen> | null} */
+  let settingsView = null;
+  /**
+   * Build the Settings screen on first use. It reads the dictionary size, and boot fetches no
+   * data file.
+   * @returns {ReturnType<typeof ui.settingsScreen>}
+   */
+  function getSettings() {
+    if (settingsView === null) {
+      settingsView = ui.settingsScreen({
+        settings: () => storage.settings(),
+        setSettings: (patch) => {
+          storage.setSettings(patch);
+          applySettings();
+        },
+        size: () => storage.size(),
+        exportBackup,
+        restoreText,
+        download: downloadDictionary,
+        offline: offlineInfo,
+      });
+    }
+    return settingsView;
+  }
+
+  const referenceView = ui.referenceScreen({
+    about: aboutInfo,
+    alphabetIds: wordIds,
+    pos: loadPos,
+    cefr: cefrRows,
+    startDeck: (band) => {
+      void studyView.start(band);
+      router.navigate(HASH.study);
+    },
+    download: downloadDictionary,
+    offline: offlineInfo,
+  });
+
+  /**
    * One entry screen. The id carries its own location, so a cold deep link costs one entry file
    * and needs no memory of an earlier search. The row this session showed gives the headword at
    * once; a cold link draws the id until the body lands.
@@ -224,6 +530,17 @@ export function boot(options = {}) {
           .then((sentences) => indexes.map((index) => sentences[index] ?? '').filter((line) => line !== ''))
           .catch(() => []),
       back,
+      lists: () => storage.lists(),
+      listIds: (id) => storage.listIdsWith(id),
+      toggleItem: (listId, item) => {
+        storage.toggleItem(listId, item);
+      },
+      addList: (name, label) => storage.addList(name, label),
+      note: (id) => storage.note(id),
+      setNote: (id, text, word) => {
+        storage.setNote(id, text, word);
+        listsView.refresh();
+      },
     });
   }
 
@@ -285,13 +602,31 @@ export function boot(options = {}) {
       return;
     }
 
+    if (route.name === 'lists') {
+      listsView.refresh();
+      main.replaceChildren(listsView.node);
+      return;
+    }
+
+    if (route.name === 'settings') {
+      const view = getSettings();
+      view.refresh();
+      main.replaceChildren(view.node);
+      return;
+    }
+
+    if (route.name === 'reference') {
+      main.replaceChildren(referenceView.node);
+      return;
+    }
+
     if (route.name === 'study') {
       studyView.refresh();
       main.replaceChildren(studyView.node);
       return () => speech.cancel();
     }
 
-    main.replaceChildren(ui.placeholder(PLACEHOLDERS[route.name] ?? NO_ENTRY));
+    main.replaceChildren(ui.placeholder(NO_ENTRY));
   }
 
   const router = createRouter({ render: renderRoute, window: options.window });

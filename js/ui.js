@@ -1,16 +1,22 @@
 // @ts-check
 /**
- * The screens: the tab bar, Search, Entry, and the placeholders. One element helper and text
- * nodes only — no `innerHTML` with data, anywhere. Icons are inline SVG built with
- * `createElementNS`, so they take `currentColor` and need no files.
+ * The screens: the tab bar, Search, Text, Entry, Study, Lists, Reference, Settings, and the
+ * placeholder. One element helper and text nodes only — no `innerHTML` with data, anywhere.
+ * Icons are inline SVG built with `createElementNS`, so they take `currentColor` and need no
+ * files. A sheet is the one overlay: a dialog over the tab bar, closed by its button, the
+ * backdrop or Escape.
  *
  * | Screen | Draws |
  * |---|---|
  * | tab bar | five tabs: a 25px icon above a 10px label, chrome last in focus order |
  * | Search | the field, the input switch and its letter palette, then history, rows or one line |
  * | Text | the textarea, the summary, the text as words with a link on each known one, and the unknown words |
- * | Entry | back control, the entry name in the nav bar, the headword block, then the sections |
- * | placeholder | a title and the one line that names its build |
+ * | Entry | back control, the entry name, the headword block, the sections, and the list and note sheets |
+ * | Study | the deck picker and one card at a time |
+ * | Lists | pinned History and Notes, folders, lists with their labels, list items, and the sheets |
+ * | Reference | the catalogue, then About, Alphabet, Parts of speech, CEFR and Offline |
+ * | Settings | theme, text size, speech rate, storage, backup and restore, and the download |
+ * | placeholder | a title and the one line that names what is missing |
  *
  * The `document` is a parameter, like every other module's environment here, so a Node check can
  * build the same DOM with a fake. This module imports no data and fetches nothing: the app hands
@@ -18,6 +24,8 @@
  * uses. `formRows` is pure and exports the conjugation order on its own.
  */
 
+import { LABELS, firstLine } from './lists.js';
+import { ALPHABET } from './reference.js';
 import { HASH, entryHash } from './router.js';
 import { findMatch, fold } from './search.js';
 import { WORD_CAP, summarise, tokenize } from './text.js';
@@ -28,6 +36,76 @@ import { WORD_CAP, summarise, tokenize } from './text.js';
 /** @typedef {import('./text.js').Match} Match */
 /** @typedef {import('./study.js').Deck} Deck */
 /** @typedef {import('./text.js').Segment} Segment */
+/** @typedef {import('./lists.js').UserList} UserList */
+/** @typedef {import('./storage.js').Settings} Settings */
+
+/** The callbacks the Lists screen needs. */
+/** @typedef {{
+ *   lists: () => UserList[],
+ *   folders: () => Array<{ id: string, name: string }>,
+ *   history: () => string[],
+ *   notesCount: () => number,
+ *   notes: () => Promise<Array<{ id: string, text: string, word: string }>>,
+ *   rows: (ids: string[]) => Promise<Map<string, { pos: string, gloss: string }>>,
+ *   addList: (name: string, label: string, folder: string) => void,
+ *   addFolder: (name: string) => void,
+ *   removeList: (id: string) => void,
+ *   removeItem: (listId: string, itemId: string) => void,
+ *   importText: (text: string) => { ok: boolean, error?: string, name?: string, added?: number, present?: number },
+ *   restoreText: (text: string) => { ok: boolean, error?: string, cancelled?: boolean, counts?: Record<string, number> },
+ *   shareList: (list: UserList) => Promise<'shared' | 'downloaded' | 'cancelled'>,
+ *   confirm: (message: string) => boolean,
+ *   onSettings: () => void,
+ *   onSearch: (query: string) => void,
+ * }} ListsOptions */
+
+/** The callbacks the Settings screen needs. */
+/** @typedef {{
+ *   settings: () => Settings,
+ *   setSettings: (patch: Partial<Settings>) => void,
+ *   size: () => number,
+ *   exportBackup: () => Promise<'shared' | 'downloaded' | 'cancelled'>,
+ *   restoreText: (text: string) => { ok: boolean, error?: string, cancelled?: boolean, counts?: Record<string, number> },
+ *   download: (onProgress: (done: number, total: number, failed: number) => void) => Promise<{ total: number, failures: unknown[] }>,
+ *   offline: () => Promise<{ files: number, bytes: number }>,
+ * }} SettingsOptions */
+
+/** The data the Reference screen reads, all through the app. */
+/** @typedef {{
+ *   about: () => Promise<{ version: string, built: string, entries: number, examples: number }>,
+ *   alphabetIds: (words: string[]) => Promise<Map<string, string>>,
+ *   pos: () => Promise<Array<{ pos: string, label: string, count: number, rows: Array<{ id: string, word: string, gloss: string }> }>>,
+ *   cefr: () => Promise<Array<{ band: string, count: number }>>,
+ *   startDeck: (band: string) => void,
+ *   download: (onProgress: (done: number, total: number, failed: number) => void) => Promise<{ total: number, failures: unknown[] }>,
+ *   offline: () => Promise<{ files: number, bytes: number }>,
+ * }} ReferenceOptions */
+
+/** The CEFR band names, shown beside the band code. @type {Record<string, string>} */
+const BANDS_NAMED = {
+  a1: 'Beginner',
+  a2: 'Elementary',
+  b1: 'Intermediate',
+  b2: 'Upper intermediate',
+  c1: 'Advanced',
+  c2: 'Mastery',
+};
+
+/** The chevron that closes a row. */
+const CHEVRON = 'M1 1.2 6.2 6.5 1 11.8';
+
+/** The row icons of the Lists and Reference screens. */
+const ICONS = {
+  history: 'M12 5a7 7 0 1 0 0 14 7 7 0 0 0 0-14M12 8v4l3 2',
+  note: 'M6 3h12v18H6zM9 8h6M9 12h6M9 16h4',
+  folder: 'M3 6h6l2 2h10v11H3z',
+  list: 'M6 3h12v18H6zM9 8h6M9 12h6M9 16h4',
+  about: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 8h.01M11 11h1v6h1',
+  alphabet: 'M4 19 9 5l5 14M6.2 14h5.6',
+  pos: 'M4 6h16M4 12h16M4 18h10',
+  cefr: 'M4 19V5M4 19h16M8 15l3-4 3 2 4-6',
+  offline: 'M12 4v10M8 10l4 4 4-4M4 20h16',
+};
 
 const NAMESPACE = 'http://www.w3.org/2000/svg';
 
@@ -129,7 +207,7 @@ export function formRows(conj) {
  *   searchScreen: (options: {
  *     search: (query: string) => Promise<{ rows: Row[], history: string[] }>,
  *     onCommit?: (query: string) => void,
- *   }) => { node: HTMLElement, query: () => string, refresh: () => void },
+ *   }) => { node: HTMLElement, query: () => string, setQuery: (value: string) => void, refresh: () => void },
  *   textScreen: (options: {
  *     read: (segments: Segment[]) => Promise<Map<string, Match | null>>,
  *   }) => HTMLElement,
@@ -140,6 +218,12 @@ export function formRows(conj) {
  *     query?: string,
  *     back?: { label: string, go?: () => void },
  *     speech?: { available: () => boolean, speak: (text: string) => boolean },
+ *     lists?: () => UserList[],
+ *     listIds?: (id: string) => string[],
+ *     toggleItem?: (listId: string, item: { id: string, word: string }) => void,
+ *     addList?: (name: string, label: string) => UserList,
+ *     note?: (id: string) => string,
+ *     setNote?: (id: string, text: string, word: string) => void,
  *   }) => HTMLElement,
  *   studyScreen: (options: {
  *     decks: () => Promise<Deck[]>,
@@ -151,7 +235,10 @@ export function formRows(conj) {
  *     speech: { available: () => boolean, speak: (text: string) => boolean },
  *     entryHref: (id: string) => string,
  *     onGrade?: () => void,
- *   }) => { node: HTMLElement, refresh: () => void },
+ *   }) => { node: HTMLElement, refresh: () => void, start: (id: string) => Promise<void> },
+ *   listsScreen: (options: ListsOptions) => { node: HTMLElement, refresh: () => void },
+ *   settingsScreen: (options: SettingsOptions) => { node: HTMLElement, refresh: () => void },
+ *   referenceScreen: (options: ReferenceOptions) => { node: HTMLElement, refresh: () => void },
  *   placeholder: (options: { title: string, note: string }) => HTMLElement,
  * }}
  */
@@ -210,6 +297,281 @@ export function createUi(doc = globalThis.document) {
    */
   function message(line) {
     return text('p', 'empty', line);
+  }
+
+  /**
+   * One tappable catalogue row: an icon, a name, an optional count or note, and a chevron.
+   * A row with an href is a link; a row without one is a button.
+   *
+   * @param {{
+   *   path: string,
+   *   tint?: string,
+   *   name: string,
+   *   count?: number,
+   *   note?: string,
+   *   checked?: boolean,
+   *   href?: string,
+   *   external?: boolean,
+   *   onOpen?: () => void,
+   * }} row
+   * @returns {HTMLElement}
+   */
+  function navRow(row) {
+    const item = el('li');
+    /** @type {HTMLElement} */
+    let node;
+    if (row.href === undefined) {
+      const button = el('button', 'row lists-row');
+      button.type = 'button';
+      if (row.onOpen !== undefined) button.addEventListener('click', row.onOpen);
+      node = button;
+    } else {
+      const link = el('a', 'row lists-row');
+      link.href = row.href;
+      if (row.external === true) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
+      node = link;
+    }
+    if (row.tint !== undefined) node.setAttribute('data-tint', row.tint);
+    const mark = el('span', 'row-icon');
+    mark.append(icon(row.path, 'row-glyph'));
+    const main = el('span', 'row-main');
+    const name = text('span', 'row-headword', row.name);
+    if (row.count !== undefined) name.append(text('span', 'lists-count', ' (' + row.count + ')'));
+    main.append(name);
+    if (row.note !== undefined && row.note !== '') main.append(text('span', 'row-pronunciation', row.note));
+    node.append(mark, main);
+    if (row.checked === true) node.append(text('span', 'row-check', '✓'));
+    else node.append(icon(CHEVRON, 'chevron', '0 0 8 13'));
+    item.append(node);
+    return item;
+  }
+
+  /**
+   * One top bar: a left control, the centred title and the right actions.
+   * @param {string} title
+   * @param {HTMLElement | null} left
+   * @param {HTMLElement[]} actions
+   * @returns {HTMLElement}
+   */
+  function headerBar(title, left, actions) {
+    const bar = el('header', 'navbar');
+    if (left !== null) bar.append(left);
+    bar.append(text('span', 'navbar-title', title));
+    const box = el('div', 'navbar-actions');
+    for (const action of actions) box.append(action);
+    bar.append(box);
+    return bar;
+  }
+
+  /**
+   * @param {string} label
+   * @param {() => void} onClick
+   * @param {string} [className]
+   * @param {string} [ariaLabel] for a glyph-only control
+   * @returns {HTMLButtonElement}
+   */
+  function barButton(label, onClick, className = 'back', ariaLabel = '') {
+    const button = el('button', className);
+    button.type = 'button';
+    button.textContent = label;
+    button.addEventListener('click', onClick);
+    if (ariaLabel !== '') {
+      button.setAttribute('aria-label', ariaLabel);
+      button.title = ariaLabel;
+    }
+    return button;
+  }
+
+  /** @param {number} size @returns {string} a short byte count */
+  function bytes(size) {
+    if (size >= 1000000) return (size / 1000000).toFixed(1) + ' MB';
+    if (size >= 1000) return Math.round(size / 1000) + ' KB';
+    return Math.max(0, Math.round(size)) + ' bytes';
+  }
+
+  /** @type {HTMLElement | null} the one open sheet */
+  let sheetNode = null;
+
+  /**
+   * A bottom sheet. One at a time. The backdrop, the close control and Escape all close it.
+   * @param {string} title
+   * @param {(close: () => void) => HTMLElement} build
+   */
+  function openSheet(title, build) {
+    if (sheetNode !== null) sheetNode.remove();
+    const backdrop = el('div', 'sheet-backdrop');
+    const sheet = el('div', 'sheet');
+    sheet.setAttribute('role', 'dialog');
+    sheet.setAttribute('aria-modal', 'true');
+    sheet.setAttribute('aria-label', title);
+    const head = el('header', 'sheet-head');
+    const titleNode = text('h2', 'sheet-title', title);
+    const closeButton = el('button', 'sheet-close');
+    closeButton.type = 'button';
+    closeButton.textContent = '×';
+    closeButton.setAttribute('aria-label', 'Close');
+    head.append(titleNode, closeButton);
+    const body = el('div', 'sheet-body');
+    const close = () => {
+      backdrop.remove();
+      if (sheetNode === backdrop) sheetNode = null;
+      doc.removeEventListener('keydown', onKey);
+    };
+    /** @param {KeyboardEvent} event */
+    const onKey = (event) => {
+      if (event.key === 'Escape') close();
+    };
+    backdrop.addEventListener('click', (event) => {
+      if (event.target === backdrop) close();
+    });
+    closeButton.addEventListener('click', close);
+    doc.addEventListener('keydown', onKey);
+    body.append(build(close));
+    sheet.append(head, body);
+    backdrop.append(sheet);
+    (doc.body ?? doc.documentElement).append(backdrop);
+    sheetNode = backdrop;
+    const first = sheet.querySelector('input, textarea, button');
+    if (first !== null && typeof /** @type {HTMLElement} */ (first).focus === 'function') {
+      /** @type {HTMLElement} */ (first).focus();
+    }
+  }
+
+  /**
+   * A sheet that takes one JSON file or a paste and reports the result.
+   * @param {string} title
+   * @param {string} action
+   * @param {(text: string) => { ok: boolean, error?: string, cancelled?: boolean, line?: string }} run
+   */
+  function jsonSheet(title, action, run) {
+    openSheet(title, () => {
+      const box = el('div', 'sheet-stack');
+      const file = el('input', 'sheet-file');
+      file.type = 'file';
+      file.accept = 'application/json,.json';
+      file.setAttribute('aria-label', 'JSON file');
+      const area = el('textarea', 'sheet-input sheet-area');
+      area.rows = 5;
+      area.placeholder = 'Paste the file here';
+      file.addEventListener('change', () => {
+        const picked = file.files?.[0];
+        if (picked === undefined) return;
+        picked.text().then(
+          (text) => {
+            area.value = text;
+          },
+          () => {
+            area.focus();
+          },
+        );
+      });
+      const result = text('p', 'sheet-result', '');
+      result.setAttribute('role', 'status');
+      result.hidden = true;
+      const go = el('button', 'sheet-button');
+      go.type = 'button';
+      go.textContent = action;
+      go.addEventListener('click', () => {
+        const outcome = run(area.value);
+        result.textContent = outcome.ok
+          ? outcome.line ?? 'Done.'
+          : outcome.cancelled === true
+            ? 'Nothing changed.'
+            : outcome.error ?? 'That file is not valid.';
+        result.hidden = false;
+      });
+      const fileField = el('label', 'sheet-field');
+      fileField.append(text('span', 'sheet-label', 'File'), file);
+      const areaField = el('label', 'sheet-field');
+      areaField.append(text('span', 'sheet-label', 'Or paste'), area);
+      box.append(fileField, areaField, go, result);
+      return box;
+    });
+  }
+
+  /**
+   * One labelled segmented control.
+   * @param {string} title
+   * @param {string[]} labels
+   * @param {string[]} values
+   * @param {string} current
+   * @param {(value: string) => void} onPick
+   * @returns {HTMLElement}
+   */
+  function segment(title, labels, values, current, onPick) {
+    const wrap = el('div', 'settings-segment');
+    wrap.append(text('span', 'settings-label', title));
+    const row = el('div', 'modes');
+    row.setAttribute('role', 'group');
+    row.setAttribute('aria-label', title);
+    labels.forEach((label, index) => {
+      const value = values[index] ?? '';
+      const button = el('button', 'mode');
+      button.type = 'button';
+      button.textContent = label;
+      const on = value === current;
+      if (on) button.className = 'mode is-on';
+      button.setAttribute('aria-pressed', String(on));
+      button.addEventListener('click', () => onPick(value));
+      row.append(button);
+    });
+    wrap.append(row);
+    return wrap;
+  }
+
+  /**
+   * The Offline section: the size, the download action and the progress line.
+   * @param {{
+   *   download: (onProgress: (done: number, total: number, failed: number) => void) => Promise<{ total: number, failures: unknown[] }>,
+   *   offline: () => Promise<{ files: number, bytes: number }>,
+   * }} options
+   * @returns {HTMLElement}
+   */
+  function offlineBlock(options) {
+    const wrap = el('section', 'offline-block');
+    wrap.append(text('h2', 'section-title', 'Offline'));
+    const size = text('p', 'settings-line', 'The dictionary size is not known yet.');
+    const note = text('p', 'settings-note', 'Download it once and the app opens with no network.');
+    const button = el('button', 'settings-button');
+    button.type = 'button';
+    button.textContent = 'Download the dictionary';
+    const progress = text('p', 'settings-line', '');
+    progress.setAttribute('role', 'status');
+    progress.hidden = true;
+    options.offline().then(
+      (info) => {
+        size.textContent = 'The dictionary is ' + bytes(info.bytes) + ', in ' + info.files + ' files.';
+      },
+      () => {
+        size.textContent = 'The dictionary size is not known yet.';
+      },
+    );
+    button.addEventListener('click', () => {
+      if (button.disabled) return;
+      button.disabled = true;
+      progress.hidden = false;
+      progress.textContent = 'Downloading…';
+      options
+        .download((done, total, failed) => {
+          progress.textContent = 'Downloading ' + done + ' / ' + total + ' files' + (failed > 0 ? ', ' + failed + ' failed' : '') + '.';
+        })
+        .then(
+          (result) => {
+            progress.textContent = result.total + ' files done, ' + result.failures.length + ' failed.';
+          },
+          () => {
+            progress.textContent = 'The download did not finish.';
+          },
+        )
+        .then(() => {
+          button.disabled = false;
+        });
+    });
+    wrap.append(size, note, button, progress);
+    return wrap;
   }
 
   /**
@@ -465,6 +827,14 @@ export function createUi(doc = globalThis.document) {
     return {
       node: section,
       query: () => input.value,
+      /**
+       * Put a query in the field and run it, for the History row on Lists.
+       * @param {string} value
+       */
+      setQuery: (value) => {
+        input.value = value;
+        void run();
+      },
       refresh: () => {
         void run();
       },
@@ -483,6 +853,12 @@ export function createUi(doc = globalThis.document) {
    *   query?: string,
    *   back?: { label: string, go?: () => void },
    *   speech?: { available: () => boolean, speak: (text: string) => boolean },
+   *   lists?: () => UserList[],
+   *   listIds?: (id: string) => string[],
+   *   toggleItem?: (listId: string, item: { id: string, word: string }) => void,
+   *   addList?: (name: string, label: string) => UserList,
+   *   note?: (id: string) => string,
+   *   setNote?: (id: string, text: string, word: string) => void,
    * }} options
    * @returns {HTMLElement}
    */
@@ -506,28 +882,6 @@ export function createUi(doc = globalThis.document) {
     }
     const title = text('span', 'navbar-title', row.headword);
     const actions = el('div', 'navbar-actions');
-
-    /**
-     * @param {string} glyph
-     * @param {string} label
-     * @param {string} notice
-     */
-    function action(glyph, label, notice) {
-      const button = el('button', 'action');
-      button.type = 'button';
-      button.textContent = glyph;
-      button.setAttribute('aria-label', label);
-      button.title = label;
-      button.addEventListener('click', () => {
-        note.textContent = notice;
-        note.hidden = false;
-      });
-      actions.append(button);
-    }
-
-    const note = text('p', 'note', '');
-    note.setAttribute('role', 'status');
-    note.hidden = true;
     // A speaker that cannot speak is never drawn.
     if (options.speech?.available()) {
       const speak = el('button', 'action');
@@ -538,8 +892,122 @@ export function createUi(doc = globalThis.document) {
       speak.addEventListener('click', () => options.speech?.speak(row.headword));
       actions.append(speak);
     }
-    action('＋', 'Add to list', 'Lists arrive in a later build.');
+    if (options.lists !== undefined && options.toggleItem !== undefined) actions.append(listAction());
+    if (options.setNote !== undefined) actions.append(noteAction());
     bar.append(back, title, actions);
+
+    /**
+     * The add-to-list control. It shows a tick when the entry sits in at least one list.
+     * @returns {HTMLButtonElement}
+     */
+    function listAction() {
+      const button = el('button', 'action action-list');
+      button.type = 'button';
+      const paint = () => {
+        const held = (options.listIds?.(row.id) ?? []).length > 0;
+        button.replaceChildren(held ? text('span', 'action-glyph', '✓') : text('span', 'action-glyph', '+'));
+        button.className = held ? 'action action-list is-on' : 'action action-list';
+        button.setAttribute('aria-label', held ? 'In a list' : 'Add to list');
+        button.title = held ? 'In a list' : 'Add to list';
+        button.setAttribute('aria-pressed', String(held));
+      };
+      button.addEventListener('click', () => openListSheet(paint));
+      paint();
+      return button;
+    }
+
+    /**
+     * The sheet: every list with its state, and a name field that creates one inline.
+     * @param {() => void} after
+     */
+    function openListSheet(after) {
+      openSheet('Add to list', () => {
+        const box = el('div', 'sheet-stack');
+        const host = el('div');
+        const refresh = () => {
+          const lists = options.lists?.() ?? [];
+          if (lists.length === 0) {
+            host.replaceChildren(message('No lists yet. Create one below.'));
+            return;
+          }
+          const held = new Set(options.listIds?.(row.id) ?? []);
+          const ul = el('ul', 'rows');
+          for (const list of lists) {
+            ul.append(
+              navRow({
+                path: ICONS.list,
+                tint: list.label.toLowerCase(),
+                name: list.name,
+                count: list.items.length,
+                checked: held.has(list.id),
+                onOpen: () => {
+                  options.toggleItem?.(list.id, { id: row.id, word: row.headword });
+                  refresh();
+                  after();
+                },
+              }),
+            );
+          }
+          host.replaceChildren(ul);
+        };
+        const name = el('input', 'sheet-input');
+        name.type = 'text';
+        name.placeholder = 'New list name';
+        name.setAttribute('aria-label', 'New list name');
+        const create = el('button', 'sheet-button');
+        create.type = 'button';
+        create.textContent = 'Create and add';
+        create.addEventListener('click', () => {
+          const value = name.value.trim();
+          if (value === '') {
+            name.focus();
+            return;
+          }
+          const list = options.addList?.(value, 'Other');
+          if (list !== undefined) options.toggleItem?.(list.id, { id: row.id, word: row.headword });
+          name.value = '';
+          refresh();
+          after();
+        });
+        const field = el('label', 'sheet-field');
+        field.append(text('span', 'sheet-label', 'New list'), name);
+        box.append(host, field, create);
+        refresh();
+        return box;
+      });
+    }
+
+    /**
+     * The note control: a sheet with the entry's note, and Save.
+     * @returns {HTMLButtonElement}
+     */
+    function noteAction() {
+      const button = el('button', 'action');
+      button.type = 'button';
+      button.append(icon('M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17v3z', 'action-glyph-icon'));
+      button.setAttribute('aria-label', 'Note');
+      button.title = 'Note';
+      button.addEventListener('click', () => {
+        openSheet('Note for ' + row.headword, (close) => {
+          const box = el('div', 'sheet-stack');
+          const area = el('textarea', 'sheet-input sheet-area');
+          area.rows = 5;
+          area.value = options.note?.(row.id) ?? '';
+          area.placeholder = 'Write a note about this entry…';
+          area.setAttribute('aria-label', 'Note');
+          const save = el('button', 'sheet-button');
+          save.type = 'button';
+          save.textContent = 'Save note';
+          save.addEventListener('click', () => {
+            options.setNote?.(row.id, area.value, row.headword);
+            close();
+          });
+          box.append(area, save, text('p', 'sheet-note', 'An empty note removes it.'));
+          return box;
+        });
+      });
+      return button;
+    }
 
     const block = el('div', 'headword-block');
     const pronunciation = text('p', 'pronunciation', row.pronunciation);
@@ -556,7 +1024,7 @@ export function createUi(doc = globalThis.document) {
     const examples = el('section', 'block');
     examples.append(text('h2', 'section-title', 'Examples'));
 
-    section.append(bar, block, note, translation, forms, examples);
+    section.append(bar, block, translation, forms, examples);
 
     /**
      * A sentence with the matched word marked in red.
@@ -775,7 +1243,7 @@ export function createUi(doc = globalThis.document) {
    *   entryHref: (id: string) => string,
    *   onGrade?: () => void,
    * }} options
-   * @returns {{ node: HTMLElement, refresh: () => void }}
+   * @returns {{ node: HTMLElement, refresh: () => void, start: (id: string) => Promise<void> }}
    */
   function studyScreen(options) {
     const section = el('section', 'screen study-screen');
@@ -1112,7 +1580,880 @@ export function createUi(doc = globalThis.document) {
       refresh: () => {
         if (screen === 'picker') void drawDecks();
       },
+      /**
+       * Open one deck by id, from a Reference CEFR row. An empty deck falls back to the picker.
+       * @param {string} id
+       */
+      async start(id) {
+        await openDeck({ id, title: id.toUpperCase(), count: 1 });
+      },
     };
+  }
+
+  /**
+   * The Lists tab. The reference layout: History and Notes pinned first, then folders, then the
+   * lists. One node holds its own sub-screens, so opening a list and coming back keeps the place.
+   * The title bar carries Settings on the left and the add and more controls on the right.
+   *
+   * @param {ListsOptions} options
+   * @returns {{ node: HTMLElement, refresh: () => void }}
+   */
+  function listsScreen(options) {
+    const section = el('section', 'screen lists-screen');
+    section.setAttribute('aria-label', 'Lists');
+
+    /** @type {'main' | 'folder' | 'list' | 'notes' | 'history'} */
+    let view = 'main';
+    let folderId = '';
+    let listId = '';
+    let filter = 'All';
+    let token = 0;
+
+    function render() {
+      token += 1;
+      const mine = token;
+      /** @type {HTMLElement} */
+      let bar;
+      /** @type {HTMLElement} */
+      let body;
+      if (view === 'history') {
+        bar = headerBar('History', barButton('‹ Lists', goMain), []);
+        body = el('div', 'lists-body');
+        const queries = options.history();
+        if (queries.length === 0) {
+          body.append(message('No searches yet.'));
+        } else {
+          const list = el('ul', 'rows');
+          for (const query of queries) {
+            const item = el('li');
+            const button = el('button', 'row history-row');
+            button.type = 'button';
+            button.textContent = query;
+            button.addEventListener('click', () => options.onSearch(query));
+            item.append(button);
+            list.append(item);
+          }
+          body.append(list);
+        }
+      } else if (view === 'notes') {
+        bar = headerBar('Notes', barButton('‹ Lists', goMain), []);
+        body = el('div', 'lists-body');
+        body.append(message('Reading notes…'));
+        options.notes().then(
+          (notes) => {
+            if (mine !== token || view !== 'notes') return;
+            if (notes.length === 0) {
+              body.replaceChildren(message('No notes yet. Add one from an entry screen.'));
+              return;
+            }
+            const list = el('ul', 'rows');
+            for (const note of notes) {
+              const item = el('li');
+              const link = el('a', 'row note-row');
+              link.href = entryHash(note.id);
+              link.append(text('span', 'row-headword', note.word), text('span', 'note-line', firstLine(note.text)));
+              item.append(link);
+              list.append(item);
+            }
+            body.replaceChildren(list);
+          },
+          () => {
+            if (mine === token) body.replaceChildren(message('Notes did not load.'));
+          },
+        );
+      } else if (view === 'folder') {
+        const folder = options.folders().find((entry) => entry.id === folderId);
+        if (folder === undefined) {
+          goMain();
+          return;
+        }
+        bar = headerBar(folder.name, barButton('‹ Lists', goMain), []);
+        body = el('div', 'lists-body');
+        const inside = options.lists().filter((list) => list.folder === folder.id);
+        body.append(inside.length === 0 ? message('No lists in this folder yet.') : listRows(inside));
+      } else if (view === 'list') {
+        const list = options.lists().find((entry) => entry.id === listId);
+        if (list === undefined) {
+          goMain();
+          return;
+        }
+        const openList = list;
+        const back = openList.folder === '' ? goMain : () => openFolder(openList.folder);
+        bar = headerBar(openList.name, barButton('‹ Lists', back), [
+          barButton('⋯', () => openListMenu(openList), 'action', 'List options'),
+        ]);
+        body = el('div', 'lists-body');
+        const status = text('p', 'note', '');
+        status.setAttribute('role', 'status');
+        status.hidden = true;
+        body.append(status);
+        if (list.items.length === 0) {
+          body.append(message('This list is empty. Add entries from an entry screen.'));
+        } else {
+          const listNode = el('ul', 'list-items');
+          /** @type {Map<string, { pos: HTMLElement, gloss: HTMLElement }>} */
+          const filled = new Map();
+          for (const item of list.items) {
+            const row = el('li', 'list-item');
+            const link = el('a', 'row list-item-row');
+            link.href = entryHash(item.id);
+            const main = el('span', 'row-main');
+            const pos = text('span', 'row-pronunciation', '');
+            const gloss = text('span', 'row-gloss', '');
+            main.append(text('span', 'row-headword', item.word), pos);
+            link.append(main, gloss);
+            const remove = el('button', 'list-remove');
+            remove.type = 'button';
+            remove.append(icon('M4 7h16M6 7l1 14h10l1-14M9 7V4h6v3', 'list-remove-icon'));
+            remove.setAttribute('aria-label', 'Remove ' + item.word);
+            remove.addEventListener('click', () => {
+              if (!options.confirm('Remove "' + item.word + '" from this list?')) return;
+              options.removeItem(list.id, item.id);
+              render();
+            });
+            row.append(link, remove);
+            listNode.append(row);
+            filled.set(item.id, { pos, gloss });
+          }
+          body.append(listNode);
+          options.rows(list.items.map((item) => item.id)).then(
+            (described) => {
+              if (mine !== token || view !== 'list') return;
+              for (const [id, detail] of described) {
+                const nodes = filled.get(id);
+                if (nodes === undefined) continue;
+                nodes.pos.textContent = detail.pos;
+                nodes.gloss.textContent = detail.gloss;
+              }
+            },
+            () => {
+              // The rows keep the word alone.
+            },
+          );
+        }
+        /**
+         * Share the list, and say what happened in one line.
+         */
+        async function shareNow() {
+          let line = 'The list could not be shared.';
+          try {
+            const how = await options.shareList(openList);
+            if (how === 'shared') line = 'List shared.';
+            else if (how === 'downloaded') line = 'List downloaded.';
+            else line = 'Share cancelled.';
+          } catch {
+            line = 'The list could not be shared.';
+          }
+          status.textContent = line;
+          status.hidden = false;
+        }
+        /** @param {UserList} target */
+        function openListMenu(target) {
+          openSheet('List options', (close) => {
+            const box = el('div', 'sheet-stack');
+            const share = el('button', 'sheet-button');
+            share.type = 'button';
+            share.textContent = 'Share list';
+            share.addEventListener('click', () => {
+              close();
+              void shareNow();
+            });
+            const remove = el('button', 'sheet-button is-danger');
+            remove.type = 'button';
+            remove.textContent = 'Delete list';
+            remove.addEventListener('click', () => {
+              if (!options.confirm('Delete "' + target.name + '"? The entries stay in the dictionary.')) return;
+              close();
+              options.removeList(target.id);
+              goMain();
+            });
+            box.append(share, remove);
+            return box;
+          });
+        }
+      } else {
+        bar = headerBar('Lists', barButton('Settings', options.onSettings), [
+          barButton('+', openNewList, 'action', 'New list'),
+          barButton('⋯', openMore, 'action', 'More'),
+        ]);
+        body = mainBody();
+      }
+      section.replaceChildren(bar, body);
+    }
+
+    /**
+     * The root screen: the label filter, the two pinned rows, the folders and the lists.
+     * @returns {HTMLElement}
+     */
+    function mainBody() {
+      const body = el('div', 'lists-body');
+      const filters = el('div', 'label-filter');
+      for (const value of ['All', ...LABELS]) {
+        const chip = el('button', 'label-chip');
+        chip.type = 'button';
+        chip.textContent = value;
+        if (filter === value) chip.className = 'label-chip is-on';
+        chip.setAttribute('aria-pressed', String(filter === value));
+        chip.addEventListener('click', () => {
+          filter = value;
+          render();
+        });
+        filters.append(chip);
+      }
+      body.append(filters);
+
+      const pinned = el('ul', 'rows');
+      pinned.append(
+        navRow({
+          path: ICONS.history,
+          tint: 'other',
+          name: 'History',
+          count: options.history().length,
+          onOpen: () => {
+            view = 'history';
+            render();
+          },
+        }),
+        navRow({
+          path: ICONS.note,
+          tint: 'other',
+          name: 'Notes',
+          count: options.notesCount(),
+          onOpen: () => {
+            view = 'notes';
+            render();
+          },
+        }),
+      );
+      body.append(pinned);
+
+      const filtering = filter !== 'All';
+      if (!filtering) {
+        const folders = options.folders();
+        if (folders.length > 0) {
+          body.append(text('h2', 'section-title', 'Folders'));
+          const list = el('ul', 'rows');
+          for (const folder of folders) {
+            const inside = options.lists().filter((entry) => entry.folder === folder.id).length;
+            list.append(
+              navRow({
+                path: ICONS.folder,
+                tint: 'other',
+                name: folder.name,
+                count: inside,
+                onOpen: () => openFolder(folder.id),
+              }),
+            );
+          }
+          body.append(list);
+        }
+      }
+
+      const lists = options.lists().filter((entry) => (filtering ? entry.label === filter : entry.folder === ''));
+      if (lists.length > 0) {
+        body.append(text('h2', 'section-title', filtering ? filter : 'Lists'));
+        body.append(listRows(lists));
+      } else if (filtering) {
+        body.append(message('No lists carry this label.'));
+      } else if (options.folders().length === 0) {
+        body.append(message('No lists yet. Tap + to make one.'));
+      } else {
+        body.append(message('No lists here yet. Tap + to make one.'));
+      }
+      return body;
+    }
+
+    /**
+     * @param {UserList[]} lists
+     * @returns {HTMLElement}
+     */
+    function listRows(lists) {
+      const ul = el('ul', 'rows');
+      for (const list of lists) {
+        ul.append(
+          navRow({
+            path: ICONS.list,
+            tint: list.label.toLowerCase(),
+            name: list.name,
+            count: list.items.length,
+            onOpen: () => openList(list.id),
+          }),
+        );
+      }
+      return ul;
+    }
+
+    function goMain() {
+      view = 'main';
+      folderId = '';
+      listId = '';
+      render();
+    }
+
+    /** @param {string} id */
+    function openFolder(id) {
+      view = 'folder';
+      folderId = id;
+      listId = '';
+      render();
+    }
+
+    /** @param {string} id */
+    function openList(id) {
+      view = 'list';
+      listId = id;
+      render();
+    }
+
+    function openNewList() {
+      const folders = options.folders();
+      let label = 'Other';
+      let folder = view === 'folder' ? folderId : '';
+      openSheet('New list', (close) => {
+        const box = el('div', 'sheet-stack');
+        const name = el('input', 'sheet-input');
+        name.type = 'text';
+        name.placeholder = 'For example: Travel words';
+        name.setAttribute('aria-label', 'List name');
+        const nameField = el('label', 'sheet-field');
+        nameField.append(text('span', 'sheet-label', 'Name'), name);
+
+        const chips = el('div', 'label-filter');
+        /** @type {Array<() => void>} */
+        const paints = [];
+        for (const value of LABELS) {
+          const chip = el('button', 'label-chip');
+          chip.type = 'button';
+          chip.textContent = value;
+          const paint = () => {
+            chip.className = label === value ? 'label-chip is-on' : 'label-chip';
+            chip.setAttribute('aria-pressed', String(label === value));
+          };
+          chip.addEventListener('click', () => {
+            label = value;
+            for (const draw of paints) draw();
+          });
+          paints.push(paint);
+          chips.append(chip);
+        }
+        for (const draw of paints) draw();
+        const labelField = el('div', 'sheet-field');
+        labelField.append(text('span', 'sheet-label', 'Label'), chips);
+
+        /** @type {HTMLElement[]} */
+        const parts = [nameField, labelField];
+        if (folders.length > 0) {
+          const select = el('select', 'sheet-select');
+          select.setAttribute('aria-label', 'Folder');
+          const none = el('option');
+          none.value = '';
+          none.textContent = 'No folder';
+          select.append(none);
+          for (const entry of folders) {
+            const option = el('option');
+            option.value = entry.id;
+            option.textContent = entry.name;
+            select.append(option);
+          }
+          select.value = folder;
+          select.addEventListener('change', () => {
+            folder = select.value;
+          });
+          const folderField = el('label', 'sheet-field');
+          folderField.append(text('span', 'sheet-label', 'Folder'), select);
+          parts.push(folderField);
+        }
+
+        const create = el('button', 'sheet-button');
+        create.type = 'button';
+        create.textContent = 'Create';
+        create.addEventListener('click', () => {
+          const value = name.value.trim();
+          if (value === '') {
+            name.focus();
+            return;
+          }
+          options.addList(value, label, folder);
+          close();
+          if (folder !== '' && folder !== folderId) openFolder(folder);
+          else render();
+        });
+        parts.push(create);
+        box.append(...parts);
+        return box;
+      });
+    }
+
+    function openNewFolder() {
+      openSheet('New folder', (close) => {
+        const box = el('div', 'sheet-stack');
+        const name = el('input', 'sheet-input');
+        name.type = 'text';
+        name.placeholder = 'For example: Class notes';
+        name.setAttribute('aria-label', 'Folder name');
+        const field = el('label', 'sheet-field');
+        field.append(text('span', 'sheet-label', 'Name'), name);
+        const create = el('button', 'sheet-button');
+        create.type = 'button';
+        create.textContent = 'Create';
+        create.addEventListener('click', () => {
+          const value = name.value.trim();
+          if (value === '') {
+            name.focus();
+            return;
+          }
+          options.addFolder(value);
+          close();
+          render();
+        });
+        box.append(field, create);
+        return box;
+      });
+    }
+
+    function openMore() {
+      openSheet('More', (close) => {
+        const box = el('div', 'sheet-stack');
+        /** @type {Array<[string, () => void]>} */
+        const entries = [
+          ['New folder', openNewFolder],
+          ['Import list', openImport],
+          ['Restore backup', openRestore],
+        ];
+        for (const [label, open] of entries) {
+          const button = el('button', 'sheet-button');
+          button.type = 'button';
+          button.textContent = label;
+          button.addEventListener('click', () => {
+            close();
+            open();
+          });
+          box.append(button);
+        }
+        return box;
+      });
+    }
+
+    function openImport() {
+      jsonSheet('Import list', 'Import', (text) => {
+        const outcome = options.importText(text);
+        if (!outcome.ok) return outcome;
+        render();
+        return {
+          ok: true,
+          line:
+            (outcome.added ?? 0) +
+            ' added, ' +
+            (outcome.present ?? 0) +
+            ' already there. Saved as "' +
+            (outcome.name ?? '') +
+            '".',
+        };
+      });
+    }
+
+    function openRestore() {
+      jsonSheet('Restore backup', 'Restore', (text) => {
+        const outcome = options.restoreText(text);
+        if (!outcome.ok) return outcome;
+        const report = outcome.counts ?? {};
+        render();
+        return {
+          ok: true,
+          line:
+            'Restored ' +
+            (report.lists ?? 0) +
+            ' lists, ' +
+            (report.notes ?? 0) +
+            ' notes, ' +
+            (report.cards ?? 0) +
+            ' cards.',
+        };
+      });
+    }
+
+    render();
+
+    return {
+      node: section,
+      refresh: () => render(),
+    };
+  }
+
+  /**
+   * The Settings screen: theme, text size, speech rate, the storage figure, backup and restore,
+   * and the explicit offline download. It is reached from the Lists tab.
+   *
+   * @param {SettingsOptions} options
+   * @returns {{ node: HTMLElement, refresh: () => void }}
+   */
+  function settingsScreen(options) {
+    const section = el('section', 'screen settings-screen');
+    section.setAttribute('aria-label', 'Settings');
+
+    function render() {
+      const back = el('a', 'back');
+      back.href = HASH.lists;
+      back.textContent = '‹ Lists';
+      const bar = headerBar('Settings', back, []);
+      const body = el('div', 'settings-body');
+      const settings = options.settings();
+
+      body.append(text('h2', 'section-title', 'Appearance'));
+      body.append(
+        segment('Theme', ['System', 'Light', 'Dark'], ['system', 'light', 'dark'], settings.theme, (value) => {
+          options.setSettings({ theme: /** @type {'system' | 'light' | 'dark'} */ (value) });
+          render();
+        }),
+        segment('Text size', ['Small', 'Medium', 'Large'], ['0', '1', '2'], String(settings.textSize), (value) => {
+          options.setSettings({ textSize: /** @type {0 | 1 | 2} */ (Number(value)) });
+          render();
+        }),
+      );
+
+      body.append(text('h2', 'section-title', 'Speech'));
+      body.append(
+        segment('Speech rate', ['Slow', 'Normal', 'Fast'], ['0.75', '0.9', '1.1'], String(settings.speechRate), (value) => {
+          options.setSettings({ speechRate: Number(value) });
+          render();
+        }),
+      );
+      body.append(text('p', 'settings-note', 'The rate is saved. The voice speaks at the app default in this build.'));
+
+      body.append(text('h2', 'section-title', 'Storage'));
+      body.append(text('p', 'settings-line', 'Storage used: ' + options.size() + ' bytes.'));
+      body.append(
+        text(
+          'p',
+          'settings-note',
+          'iOS may clear site data after 7 days without use. Export a backup to keep your lists, notes and progress.',
+        ),
+      );
+
+      const status = text('p', 'settings-line', '');
+      status.setAttribute('role', 'status');
+      status.hidden = true;
+      const exportButton = el('button', 'settings-button');
+      exportButton.type = 'button';
+      exportButton.textContent = 'Export backup';
+      exportButton.addEventListener('click', () => {
+        exportButton.disabled = true;
+        options
+          .exportBackup()
+          .then(
+            (how) => {
+              status.textContent =
+                how === 'shared' ? 'Backup shared.' : how === 'downloaded' ? 'Backup downloaded.' : 'Backup cancelled.';
+            },
+            () => {
+              status.textContent = 'The backup could not be made.';
+            },
+          )
+          .then(() => {
+            status.hidden = false;
+            exportButton.disabled = false;
+          });
+      });
+      const restoreButton = el('button', 'settings-button');
+      restoreButton.type = 'button';
+      restoreButton.textContent = 'Restore backup';
+      restoreButton.addEventListener('click', () => {
+        jsonSheet('Restore backup', 'Restore', (value) => {
+          const outcome = options.restoreText(value);
+          if (!outcome.ok) return outcome;
+          const report = outcome.counts ?? {};
+          render();
+          return {
+            ok: true,
+            line:
+              'Restored ' +
+              (report.lists ?? 0) +
+              ' lists, ' +
+              (report.notes ?? 0) +
+              ' notes, ' +
+              (report.cards ?? 0) +
+              ' cards.',
+          };
+        });
+      });
+      body.append(status, exportButton, restoreButton);
+
+      body.append(offlineBlock(options));
+      section.replaceChildren(bar, body);
+    }
+
+    render();
+    return { node: section, refresh: () => render() };
+  }
+
+  /**
+   * The Reference tab. One catalogue of rows; each row opens a real screen with its own back
+   * control. The alphabet examples resolve to entries through the app's search seam.
+   *
+   * @param {ReferenceOptions} options
+   * @returns {{ node: HTMLElement, refresh: () => void }}
+   */
+  function referenceScreen(options) {
+    const section = el('section', 'screen reference-screen');
+    section.setAttribute('aria-label', 'Reference');
+
+    /** @type {'main' | 'about' | 'alphabet' | 'pos' | 'pos-list' | 'cefr' | 'offline'} */
+    let view = 'main';
+    let posKey = '';
+    /** @type {Awaited<ReturnType<typeof options.pos>> | null} */
+    let groups = null;
+    let token = 0;
+
+    function backToMain() {
+      view = 'main';
+      render();
+    }
+
+    function render() {
+      token += 1;
+      const mine = token;
+      /** @type {HTMLElement} */
+      let bar;
+      /** @type {HTMLElement} */
+      let body;
+      if (view === 'about') {
+        bar = headerBar('About', barButton('‹ Reference', backToMain), []);
+        body = el('div', 'lists-body');
+        drawAbout(body, mine);
+      } else if (view === 'alphabet') {
+        bar = headerBar('Alphabet', barButton('‹ Reference', backToMain), []);
+        body = el('div', 'lists-body');
+        drawAlphabet(body, mine);
+      } else if (view === 'pos') {
+        bar = headerBar('Parts of speech', barButton('‹ Reference', backToMain), []);
+        body = el('div', 'lists-body');
+        drawPos(body, mine);
+      } else if (view === 'pos-list') {
+        const group = groups === null ? undefined : groups.find((entry) => entry.pos === posKey);
+        if (group === undefined) {
+          view = 'pos';
+          render();
+          return;
+        }
+        bar = headerBar(group.label, barButton('‹ Parts of speech', () => {
+          view = 'pos';
+          render();
+        }), []);
+        body = el('div', 'lists-body');
+        drawPosList(body, group);
+      } else if (view === 'cefr') {
+        bar = headerBar('CEFR', barButton('‹ Reference', backToMain), []);
+        body = el('div', 'lists-body');
+        drawCefr(body, mine);
+      } else if (view === 'offline') {
+        bar = headerBar('Offline', barButton('‹ Reference', backToMain), []);
+        body = el('div', 'lists-body');
+        body.append(offlineBlock(options));
+      } else {
+        bar = headerBar('Reference', el('span', 'navbar-slot'), []);
+        body = el('div', 'lists-body');
+        const rows = el('ul', 'rows');
+        rows.append(
+          navRow({ path: ICONS.about, name: 'About', note: 'Version, counts and licences', onOpen: open('about') }),
+          navRow({ path: ICONS.alphabet, name: 'Alphabet and pronunciation', note: '21 letters and the accented vowels', onOpen: open('alphabet') }),
+          navRow({ path: ICONS.pos, name: 'Parts of speech', note: 'Counts, and the 200 most frequent entries', onOpen: open('pos') }),
+          navRow({ path: ICONS.cefr, name: 'CEFR', note: 'Six bands, A1 to C2, each a Study deck', onOpen: open('cefr') }),
+          navRow({ path: ICONS.offline, name: 'Offline', note: 'Download the dictionary', onOpen: open('offline') }),
+        );
+        body.append(rows);
+      }
+      section.replaceChildren(bar, body);
+    }
+
+    /**
+     * @param {'about' | 'alphabet' | 'pos' | 'cefr' | 'offline'} next
+     * @returns {() => void}
+     */
+    function open(next) {
+      return () => {
+        view = next;
+        render();
+      };
+    }
+
+    /** @param {HTMLElement} body @param {number} mine */
+    function drawAbout(body, mine) {
+      body.append(message('Reading the dictionary…'));
+      options.about().then(
+        (info) => {
+          if (mine !== token) return;
+          const licences = el('ul', 'rows');
+          licences.append(
+            navRow({
+              path: ICONS.about,
+              name: 'Dictionary text',
+              note: 'Wikizionario, CC BY-SA 4.0',
+              href: 'https://creativecommons.org/licenses/by-sa/4.0/',
+              external: true,
+            }),
+            navRow({
+              path: ICONS.about,
+              name: 'Example sentences',
+              note: 'Tatoeba, CC BY 2.0 FR',
+              href: 'https://creativecommons.org/licenses/by/2.0/fr/',
+              external: true,
+            }),
+            navRow({ path: ICONS.about, name: 'App code', note: 'MIT', href: './NOTICE' }),
+          );
+          body.replaceChildren(
+            text('p', 'settings-line', 'Dictionary version ' + info.version + ', built ' + info.built + '.'),
+            text(
+              'p',
+              'settings-line',
+              info.entries.toLocaleString('en-US') + ' entries and ' + info.examples.toLocaleString('en-US') + ' example sentences.',
+            ),
+            text('h2', 'section-title', 'Licences'),
+            licences,
+            text('p', 'settings-note', 'Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0, modificato.'),
+            text(
+              'p',
+              'settings-note',
+              'CEFR bands are approximate. They come from a frequency table. They never describe a word.',
+            ),
+          );
+        },
+        () => {
+          if (mine === token) body.replaceChildren(message('The dictionary is not available yet.'));
+        },
+      );
+    }
+
+    /** @param {HTMLElement} body @param {number} mine */
+    function drawAlphabet(body, mine) {
+      const list = el('ul', 'rows');
+      /** @type {Array<{ word: string, link: HTMLAnchorElement }>} */
+      const links = [];
+      for (const entry of ALPHABET) {
+        const item = el('li');
+        const link = el('a', 'row alpha-row');
+        link.append(
+          text('span', 'alpha-letter', entry.letter),
+          text('span', 'alpha-name', entry.name),
+          text('span', 'alpha-word', entry.word),
+        );
+        item.append(link);
+        list.append(item);
+        links.push({ word: entry.word, link });
+      }
+      body.replaceChildren(
+        text('p', 'settings-note', 'The 21 Italian letters and the six accented vowels. Tap an example to open its entry.'),
+        list,
+      );
+      options.alphabetIds(ALPHABET.map((entry) => entry.word)).then(
+        (ids) => {
+          if (mine !== token) return;
+          for (const row of links) {
+            const id = ids.get(row.word);
+            if (id !== undefined) row.link.href = entryHash(id);
+            else row.link.className = 'row alpha-row is-plain';
+          }
+        },
+        () => {
+          // The rows keep the letter alone.
+        },
+      );
+    }
+
+    /** @param {HTMLElement} body @param {number} mine */
+    function drawPos(body, mine) {
+      if (groups !== null) {
+        paintPos(body, groups);
+        return;
+      }
+      body.append(message('Reading the index…'));
+      options.pos().then(
+        (found) => {
+          groups = found;
+          if (mine !== token) return;
+          paintPos(body, found);
+        },
+        () => {
+          if (mine === token) body.replaceChildren(message('The index did not load.'));
+        },
+      );
+    }
+
+    /**
+     * @param {HTMLElement} body
+     * @param {NonNullable<typeof groups>} found
+     */
+    function paintPos(body, found) {
+      const list = el('ul', 'rows');
+      for (const group of found) {
+        list.append(
+          navRow({
+            path: ICONS.pos,
+            name: group.label,
+            count: group.count,
+            onOpen: () => {
+              posKey = group.pos;
+              view = 'pos-list';
+              render();
+            },
+          }),
+        );
+      }
+      body.replaceChildren(
+        text('p', 'settings-note', 'Counts cover every entry, from the CEFR index. Each row opens its most frequent entries.'),
+        list,
+      );
+    }
+
+    /**
+     * @param {HTMLElement} body
+     * @param {{ label: string, rows: Array<{ id: string, word: string, gloss: string }> }} group
+     */
+    function drawPosList(body, group) {
+      const list = el('ul', 'rows');
+      for (const row of group.rows) {
+        const item = el('li');
+        const link = el('a', 'row');
+        link.href = entryHash(row.id);
+        const main = el('span', 'row-main');
+        main.append(text('span', 'row-headword', row.word));
+        link.append(main, text('span', 'row-gloss', row.gloss));
+        item.append(link);
+        list.append(item);
+      }
+      body.append(text('p', 'settings-note', 'The 200 most frequent entries of this part of speech.'), list);
+    }
+
+    /** @param {HTMLElement} body @param {number} mine */
+    function drawCefr(body, mine) {
+      body.append(message('Reading the decks…'));
+      options.cefr().then(
+        (bands) => {
+          if (mine !== token) return;
+          const list = el('ul', 'rows');
+          for (const entry of bands) {
+            list.append(
+              navRow({
+                path: ICONS.cefr,
+                name: entry.band.toUpperCase(),
+                note: BANDS_NAMED[entry.band] ?? '',
+                count: entry.count,
+                onOpen: () => options.startDeck(entry.band),
+              }),
+            );
+          }
+          body.replaceChildren(
+            text('p', 'settings-note', 'A band starts a Study run. CEFR bands are approximate.'),
+            list,
+          );
+        },
+        () => {
+          if (mine === token) body.replaceChildren(message('The decks did not load.'));
+        },
+      );
+    }
+
+    render();
+    return { node: section, refresh: () => render() };
   }
 
   /**
@@ -1126,5 +2467,17 @@ export function createUi(doc = globalThis.document) {
     return section;
   }
 
-  return { tabBar, setActiveTab, setTabBadge, searchScreen, textScreen, entryScreen, studyScreen, placeholder };
+  return {
+    tabBar,
+    setActiveTab,
+    setTabBadge,
+    searchScreen,
+    textScreen,
+    entryScreen,
+    studyScreen,
+    listsScreen,
+    settingsScreen,
+    referenceScreen,
+    placeholder,
+  };
 }
