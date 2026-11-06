@@ -23,7 +23,8 @@
  * memory for the session.
  */
 
-import { cleanName, labelFor, mergeList, readFolders, readLists, uniqueName } from './lists.js';
+import { foldWord } from './data.js';
+import { cleanName, hasWord, labelFor, mergeList, readFolders, readLists, uniqueName } from './lists.js';
 import { readCard } from './study.js';
 
 /** @typedef {import('./lists.js').UserList} UserList */
@@ -262,7 +263,7 @@ function open(backend) {
  *   setSchedule: (id: string, card: import('./study.js').Card) => void,
  *   note: (id: string) => string,
  *   notes: () => Array<{ id: string, text: string, at: number, word: string }>,
- *   setNote: (id: string, text: string, word?: string) => void,
+ *   setNote: (id: string, text: string, word: string) => boolean,
  *   opened: () => string[],
  *   addOpened: (id: string) => void,
  *   lists: () => UserList[],
@@ -281,8 +282,40 @@ function open(backend) {
  *   snapshot: () => Record<string, unknown>,
  *   restore: (incoming: Record<string, unknown>) => boolean,
  *   save: () => boolean,
+ *   rekeyAll: (moves: Array<{ from: string, to: string, word: string }>, fold: (text: string) => string) => number,
  * }}
  */
+/**
+ * Which moves of one batch can be applied together. A move is dropped when its destination holds
+ * a word that is not the moved word and does not leave in the same batch, or when another move
+ * brings a different word to the same destination. Dropping one move keeps its item in place, so
+ * the plan is checked again until nothing changes.
+ * @param {Array<{ from: string, to: string, word: string }>} moves
+ * @param {(id: string) => string | undefined} wordAt the word stored at an id now
+ * @param {(a: string, b: string) => boolean} same
+ * @returns {Map<string, string>} old id -> new id
+ */
+function plan(moves, wordAt, same) {
+  let accepted = moves;
+  for (let changed = true; changed; ) {
+    changed = false;
+    const leaving = new Set(accepted.map((move) => move.from));
+    /** @type {Map<string, string>} */
+    const arriving = new Map();
+    for (const move of accepted) {
+      const staying = leaving.has(move.to) ? undefined : wordAt(move.to);
+      const other = arriving.get(move.to);
+      if ((staying !== undefined && !same(staying, move.word)) || (other !== undefined && !same(other, move.word))) {
+        accepted = accepted.filter((entry) => entry !== move);
+        changed = true;
+        break;
+      }
+      arriving.set(move.to, move.word);
+    }
+  }
+  return new Map(accepted.map((move) => [move.from, move.to]));
+}
+
 export function createStorage(backend = globalThis.localStorage, now = () => Date.now()) {
   if (!backend || typeof backend.getItem !== 'function' || typeof backend.setItem !== 'function') {
     throw new Error('itadict storage: a localStorage-like backend is required');
@@ -368,16 +401,95 @@ export function createStorage(backend = globalThis.localStorage, now = () => Dat
     /**
      * Store or clear one note and write the envelope now. A cleared note leaves no row. The
      * headword is kept with the note, so a later data rebuild cannot lose the word.
+     *
+     * A note is never destroyed silently: the write is refused when no headword comes with it, and
+     * when the note stored at this id belongs to another word (a rebuild moved the id). The stored
+     * note is then left exactly as it is.
      * @param {string} id
      * @param {string} text
-     * @param {string} [word]
+     * @param {string} word the entry's headword
+     * @returns {boolean} whether the note was written
      */
     setNote(id, text, word) {
-      if (typeof id !== 'string' || id === '') return;
+      if (typeof id !== 'string' || id === '') return false;
+      const owner = typeof word === 'string' ? word.trim() : '';
+      if (!hasWord({ id, word: owner })) return false;
+      const stored = data.notes[id];
+      // A v2 note has no word (''), so it carries no owner to protect, and the first headword that
+      // writes it adopts it. That is safe because the pinned split keeps ids stable: a v2 note is
+      // still on the id where it was written, so the headword now at that id is the one it meant.
+      if (stored !== undefined && hasWord({ id, word: stored.word }) && foldWord(stored.word) !== foldWord(owner)) return false;
       const clean = typeof text === 'string' ? text : '';
       if (clean.trim() === '') delete data.notes[id];
-      else data.notes[id] = { text: clean, at: now(), word: typeof word === 'string' ? word : '' };
+      else data.notes[id] = { text: clean, at: now(), word: owner };
       persist();
+      return true;
+    },
+    /**
+     * Move the notes and list items a rebuild displaced, as one batch. Each move names an old id,
+     * the new id and the stored word; only items whose word folds to that word move.
+     *
+     * Two phases, so chained moves cannot corrupt each other (casa ca:3 -> ca:4 while caso
+     * ca:4 -> ca:5): the plan is read from a snapshot of every move, then applied once. A move is
+     * dropped when its destination would hold another word, whether that word stays there or
+     * arrives from another move; the item then stays where it is. Only items of the same word are
+     * ever merged: a note meeting a note is appended, never lost, and a list item meeting its own
+     * entry in the list is dropped. The Study schedule and the opened ids store no word, so they
+     * are not moved.
+     * @param {Array<{ from: string, to: string, word: string }>} moves
+     * @param {(text: string) => string} fold
+     * @returns {number} how many notes and list items moved
+     */
+    rekeyAll(moves, fold) {
+      const same = (/** @type {string} */ a, /** @type {string} */ b) => fold(a) === fold(b);
+      const valid = moves.filter(
+        (move) => typeof move?.from === 'string' && typeof move.to === 'string' && move.from !== '' && move.to !== '' && move.from !== move.to,
+      );
+      let count = 0;
+
+      const noteMoves = plan(
+        valid.filter((move) => data.notes[move.from] !== undefined && same(data.notes[move.from].word, move.word)),
+        (id) => data.notes[id]?.word,
+        same,
+      );
+      if (noteMoves.size > 0) {
+        /** @type {Record<string, Note>} */
+        const next = {};
+        // Notes that stay are placed first, so a moved note is appended after the one already there.
+        const entries = Object.entries(data.notes);
+        const ordered = [...entries.filter(([id]) => !noteMoves.has(id)), ...entries.filter(([id]) => noteMoves.has(id))];
+        for (const [id, note] of ordered) {
+          const to = noteMoves.get(id) ?? id;
+          const there = next[to];
+          next[to] =
+            there === undefined
+              ? { ...note }
+              : { text: there.text + '\n\n' + note.text, at: Math.max(there.at, note.at), word: there.word || note.word };
+          if (to !== id) count += 1;
+        }
+        data.notes = next;
+      }
+
+      for (const list of data.lists) {
+        const listMoves = plan(
+          valid.filter((move) => list.items.some((item) => item.id === move.from && same(item.word, move.word))),
+          (id) => list.items.find((item) => item.id === id)?.word,
+          same,
+        );
+        if (listMoves.size === 0) continue;
+        /** @type {Set<string>} */
+        const seen = new Set();
+        list.items = list.items.flatMap((item) => {
+          const to = listMoves.get(item.id) ?? item.id;
+          if (to !== item.id) count += 1;
+          if (seen.has(to)) return [];
+          seen.add(to);
+          return [{ ...item, id: to }];
+        });
+      }
+
+      if (count > 0) persist();
+      return count;
     },
     /** The entries opened most recently, newest first. A copy. */
     opened: () => [...data.opened],

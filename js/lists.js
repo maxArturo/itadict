@@ -13,6 +13,8 @@
  * Both are validated before anything is written. A bad file changes nothing.
  */
 
+import { exampleBucket } from './data.js';
+
 /** The six labels a list can carry. A new list must pick one. */
 export const LABELS = ['Verbs', 'Nouns', 'Phrases', 'Exam', 'Travel', 'Other'];
 
@@ -278,4 +280,112 @@ export function noteWord(stored, fetched, id) {
 export function firstLine(text) {
   const line = String(text ?? '').split('\n').map((part) => part.trim()).find((part) => part !== '') ?? '';
   return line.length > 90 ? line.slice(0, 89) + '…' : line;
+}
+
+/**
+ * Whether a stored item carries a usable headword. A note from before words were stored has `''`,
+ * and an item saved from a cold link before its body landed may hold its own id as the word.
+ * Neither says which entry it meant, so neither is checked or moved.
+ * @param {{ id: string, word: string }} item
+ * @returns {boolean}
+ */
+export function hasWord(item) {
+  return (
+    typeof item?.id === 'string' &&
+    item.id !== '' &&
+    typeof item.word === 'string' &&
+    item.word.trim() !== '' &&
+    item.word !== item.id
+  );
+}
+
+/**
+ * Find the stored items whose id a rebuild moved. An entry id is `<file>:<position>`, and a file
+ * split that reflows renumbers entries, so a saved id can name another headword after a rebuild.
+ * Notes and list items keep the word beside the id; this checks the two against each other.
+ *
+ * Each distinct `{ id, word }` is read once. When the entry at `id` still has the stored headword,
+ * or the item has no word (see {@link hasWord}), it stays. Otherwise the word's candidate entries
+ * are read from the dictionary, and the rule is:
+ *
+ * - Only a candidate in the same two-letter bucket as the old id counts.
+ * - Exactly one such candidate: the item moves to it.
+ * - None, or several that disagree (homographs, such as one word under two parts of speech): the
+ *   item stays where it is, and its note stays hidden there. A note on the wrong word is the bug
+ *   this guards against; a hidden note is the safe failure.
+ *
+ * A lookup that throws (offline, a file that did not load) decides nothing either. Every item
+ * that stays is reported with `to: null` and the reason.
+ *
+ * Pure: the dictionary arrives as functions, so a Node check hands it maps.
+ *
+ * @param {Array<{ id: string, word: string }>} items
+ * @param {{
+ *   headwordOf: (id: string) => Promise<string | null>,
+ *   idsOfWord: (word: string) => Promise<string[]>,
+ *   fold: (text: string) => string,
+ * }} dictionary
+ * @returns {Promise<Array<{ from: string, word: string, to: string | null, why: 'moved' | 'missing' | 'ambiguous' }>>}
+ *   each item whose id no longer holds its word, once
+ */
+export async function relocate(items, dictionary) {
+  /** @type {Array<{ from: string, word: string, to: string | null, why: 'moved' | 'missing' | 'ambiguous' }>} */
+  const moved = [];
+  /** @type {Map<string, { id: string, word: string }>} */
+  const distinct = new Map();
+  for (const item of items) {
+    if (!hasWord(item)) continue;
+    distinct.set(item.id + '\u0000' + item.word, { id: item.id, word: item.word });
+  }
+  await Promise.all(
+    [...distinct.values()].map(async (item) => {
+      try {
+        const headword = await dictionary.headwordOf(item.id);
+        if (headword !== null && dictionary.fold(headword) === dictionary.fold(item.word)) return;
+        const bucket = exampleBucket(item.id);
+        const inBucket = [...new Set(await dictionary.idsOfWord(item.word))].filter((id) => exampleBucket(id) === bucket);
+        if (inBucket.length === 1) {
+          if (inBucket[0] !== item.id) moved.push({ from: item.id, word: item.word, to: inBucket[0], why: 'moved' });
+          return;
+        }
+        moved.push({ from: item.id, word: item.word, to: null, why: inBucket.length === 0 ? 'missing' : 'ambiguous' });
+      } catch {
+        // Not known: the item stays where it is.
+      }
+    }),
+  );
+  return moved;
+}
+
+/**
+ * The dictionary {@link relocate} reads, over the app's data client. A word's candidates are
+ * every row whose headword is exactly that word; when none is, every row that folds to it. All of
+ * them are returned, so {@link relocate} can refuse a choice between homographs. The forms index
+ * is not read: it maps a form to its lemma, and landing on the lemma means landing on a different
+ * headword, which is the bug this guards against. A word with no row is missing. The client is a
+ * parameter, so this module stays free of fetches.
+ *
+ * @param {{
+ *   entry: (id: string) => Promise<{ headword: string } | null>,
+ *   rows: (key: string) => Promise<Array<{ id: string, headword: string }>>,
+ * }} data
+ * @param {(text: string) => string} fold
+ */
+export function wordDictionary(data, fold) {
+  return {
+    fold,
+    /** @param {string} id */
+    headwordOf: async (id) => (await data.entry(id))?.headword ?? null,
+    /**
+     * @param {string} word
+     * @returns {Promise<string[]>}
+     */
+    idsOfWord: async (word) => {
+      const folded = fold(word);
+      const rows = await data.rows(folded);
+      const exact = rows.filter((row) => row.headword === word);
+      const hits = exact.length > 0 ? exact : rows.filter((row) => fold(row.headword) === folded);
+      return hits.map((row) => row.id);
+    },
+  };
 }
