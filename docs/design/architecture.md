@@ -24,7 +24,7 @@ data/
   LICENSE-DATA.md       the data licence, written by the build
 js/
   app.js                boot and the screen composition
-  router.js             seven hash routes, one redirect
+  router.js             eight hash routes, one redirect
   data.js               the data contract, hashed URLs, the fetch memo
   search.js             folding, ranking, the search pipeline
   text.js               the reader: tokenise, resolve, summarise
@@ -48,8 +48,10 @@ two `theme-color` values. `styles.css` is the only stylesheet: safe areas, the t
 44px tap minimum, the study card, and the two-pane layout from 900 px.
 
 **2. The router.** `js/router.js` reads only the fragment, so the deploy subpath never reaches it.
-Seven routes: `#/search`, `#/entry/<id>`, `#/text`, `#/reference`, `#/lists`, `#/study`,
-`#/settings`. An empty fragment and `#/` mean Search. Anything else is repaired to `#/search` with
+Eight routes: `#/search`, `#/entry/<id>`, `#/sentence/<bucket>/<sentenceId>`, `#/text`,
+`#/reference`, `#/lists`, `#/study`, `#/settings`. A sentence route parses to
+`{ name: 'sentence', id: '<bucket>:<sentenceId>' }`, the bucket matching `[a-z0-9_]{1,2}` and the id
+`\d{1,10}`; see ADR 0005. An empty fragment and `#/` mean Search. Anything else is repaired to `#/search` with
 `location.replace()`. The router owns screen lifetime: whatever `render` returns is that screen's
 teardown, and it runs before the next render and on `stop()`.
 
@@ -57,7 +59,8 @@ teardown, and it runs before the next render and on `stop()`.
 the manifest, picks the file for a key, appends the file's hash to its URL, and keeps every loaded
 file in one memo.
 
-**4. The screens.** `js/ui.js` draws the tab bar, Search, Text, Entry, Study and the placeholder.
+**4. The screens.** `js/ui.js` draws the tab bar, Search, Text, Entry, Sentence, Study and the
+placeholder.
 `js/app.js` composes them: boot, the two-pane rule, the route renderer, the Study wiring. No screen
 fetches. The app hands a screen a function or a promise, which is the seam the Node checks use.
 
@@ -133,8 +136,8 @@ build: after a rebuild the same id can name a different word.
 |---|---|---|
 | search | what a result row draws and what ranking matches | `[folded, id, headword, pronunciation, pos, gloss, en]`, where `gloss` is Italian and `en` is the first English gloss or `''` |
 | entry | one entry body | `{ id, word, ipa?, cefr, pos: [{ pos, senses }], en: [{ pos, glosses }], ex: [index], conj?: [{ key, personal, forms }] }` |
-| ex | the sentences of one bucket | `[[sentenceId, sentence]]` in entry order, so `ex` holds positions |
-| forms | folded inflected form to its lemma | `{ <foldedForm>: { id, lemma, label } }` |
+| ex | the example sentences of one bucket and their English | `[[sentenceId, it, en]]` in numeric id order, so `ex` holds positions. `en` is the directly linked Tatoeba English, never empty, at most 160 characters |
+| forms | folded inflected form to its lemma | `{ <foldedForm>: { id, lemma, label, form? } }`. One lemma per form: the first claim whose gloss supports it and whose lemma ships; `form` is the raw NFC spelling when it is not the key (`"e"` holds `"form": "è"`) |
 | cefr | one deck of browse rows, one per entry | `[id, word, pos, gloss]` |
 | en | folded English token to the entries whose glosses contain it | `{ <token>: [id, ...] }`, at most 100 postings per token |
 
@@ -161,10 +164,13 @@ not break the app.
 | a search with a short result list | the forms shard of that bucket, then the row shard of the lemma's bucket |
 | opening an entry | the entry shard of the id's bucket, then the ex shard of that bucket |
 | a cold deep link | the same as opening an entry: the manifest, one entry shard, one ex shard |
+| an example row to its sentence page | none: the ex shard is in the memo from the entry |
+| a cold sentence link | the manifest and the ex shard of the route's bucket. No entry shard |
+| a word on the sentence page | at most the row shard of the word's bucket, then its forms shard when the word is not a headword. None when the session already read them |
 | Study, first deck pick | `data/index.json`, then the copy of the band's deck |
 | Study, one card | the entry shard of the id's bucket, then its ex shard; the band row already carries the sense |
 | Text, one paste | one row shard per bucket the text touches, once per bucket |
-| an English query | none today. The rule fetches `data/en/<bucket>.json` when the Italian list is short of 20 rows, and the client does not implement it yet |
+| an English query | the row shard as for any query, then `data/en/<bucket>.json` when the Italian list is short of 20 rows. None when the session already read it |
 | Reference | the manifest, then all six deck bands once for the parts-of-speech table |
 | Lists, Settings | none. Both read only the stored blob |
 
@@ -172,27 +178,31 @@ not break the app.
 
 | Measure | Value |
 |---|---|
-| Entry file, 90th percentile | 74,951 bytes |
-| Largest entry file | 244,181 bytes, 47,493 bytes gzipped |
-| Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 66,334,993 bytes in the manifest, of which 1,943,440 is the English index |
+| Entry file, 90th percentile | 74,564 bytes |
+| Largest entry file | 243,439 bytes, 47,576 bytes gzipped |
+| Entry files | 948, from 22,339,073 bytes |
+| Example file, 90th percentile | 31,656 bytes |
+| Largest example file | 169,412 bytes, 61,553 bytes gzipped |
+| Example files | 292, from 3,314,114 bytes, 33,329 rows |
+| Whole data set | 66,703,466 bytes in the manifest, of which 1,943,073 is the English index |
 
-An entry file grew by 3,379,148 bytes in total for the English glosses. One tap still costs one entry
+The entry files grew by 3,379,148 bytes in total for the English glosses. The example rows carry their
+English since the link-first build of ADR 0005, which kept fewer rows. One tap still costs one entry
 file and one example file, and both are cached forever after the first read.
 
 ### The English index
 
 The data ships an English index: `data/en/<bucket>.json` maps a folded English token to the ids of
-the entries whose glosses contain it, at most 100 postings per token. It is 415 files, 1,943,440
+the entries whose glosses contain it, at most 100 postings per token. It is 415 files, 1,943,073
 bytes raw and 0.66 MiB gzipped, a 90th percentile of 14,562 bytes, and a largest file of 76,533
 bytes. The cap dropped 50,071 postings and no token.
 
 The decided rule is: Italian matches first, an English block second, and the English index fetched
 only when the Italian list is short of 20 rows.
 
-The client does not read the index yet. `js/data.js` has no English lookup and `js/search.js` runs
-the Italian steps only, so an English query still returns only rows that happen to match in Italian.
-The data is the decision; the client is the open work.
+`js/search.js` reads it. When the Italian steps leave fewer than 20 rows, it fetches the bucket's
+English file by its hashed URL and draws up to 20 entries in an English block after the Italian
+rows: the exact token's postings first, then the tokens that start with the query.
 
 ### The memo
 
@@ -274,7 +284,12 @@ is `/itadict/` and it is frozen.
 - the Translation rows: one per English gloss, the part of speech only on its first row, and no
   section at all when the entry has no English data;
 - the tokeniser, the reader's summary and its word cap; an elided word resolving through its parts;
-- the router's seven routes, the URL repair, one render per route, and teardown;
+- the router's eight routes, the sentence route's strict bucket and id, the URL repair, one render
+  per route, and teardown;
+- the example rows: English, empty English and legacy rows, a bad row keeping its place, and
+  `sentence()` sharing one hashed fetch with `examples()`, with a second call reading no file;
+- `reader.word`: an elision, a form, an unknown word, and a file that did not load;
+- the attribution lines About reads from the manifest sources, and none when a source has none;
 - the envelope migration, the caps, a refused blob, the lists and folders, the backup round trip;
 - the study rule: a forgot, a remembered, the midnight boundary, the deck order, a card surviving a
   reload;
@@ -305,6 +320,34 @@ Recorded on purpose. Fix the code or the ADR; do not let the two drift.
    calls the action directly, so the button itself is unproven.
 2. The memo has no bound, so a long session grows. There is no LRU.
 3. An entry body carries `cefr`, and no screen draws it. The band shows in Study and in Reference.
-4. The English index ships and no client reads it. A user who downloads the whole dictionary also
-   downloads 1,943,440 bytes that no query uses.
-5. The code licence is MIT, and no `LICENSE` file is on disk yet.
+4. The code licence is MIT, and no `LICENSE` file is on disk yet.
+5. Entry ids can move. An id is `<file>:<position>`, and a rebuild that reflows a file split
+   renumbers entries. Past rebuilds were probably affected, unseen. The pinned split plan (ADR
+   0003, "Pinned split plan") reuses the previous build's splits, and kept build
+   `v1-96e792b8e32a` at 0 moved ids. A rebuild that must change a split can still move ids.
+
+   The app's containment is the safety net, for what keeps a word beside its id. Notes and list
+   items are checked against the headword now at their id, on the Entry screen, the Study card,
+   the Notes view and a list view (`relocate()` in `js/lists.js`, `rekeyAll()` in `js/storage.js`).
+   An item follows its word to a new id only when exactly one candidate sits in the old id's
+   two-letter bucket. With none, or with homographs that disagree, it stays put. A note never
+   shows on another headword. Not contained:
+   - the Study schedule and the opened ids, which store only ids. A card can wake up on another
+     word.
+   - a note from before words were stored, which has no word.
+   - an item whose word left the dictionary, which stays at its old id. Its note stays hidden
+     there.
+
+   The fix is a follow-up with its own decision. The options: a stable id keyed by the word, a
+   redirect table from old ids to new ones shipped with each build, or splits that never reflow.
+6. The manifest keys a one-character bucket differently per set. Search, entry, ex and forms pad
+   it (`e_`, `2_`, and `__` for symbols only), and English does not (`e`, `_`). `bucketFor()` in
+   `js/data.js` hides the difference for every reader. A uniform key in the build is a follow-up.
+7. The form index holds one record per folded key, so spellings that fold together and name
+   different lemmas keep only one: 203 are lost, such as `parti` (parte) under `partì` (partire),
+   `liberò` (libare) under `libero` (liberare) and `rasò` (rasare) under `raso` (radere). The
+   follow-up is an array per key, one record per spelling, about 4,209 more records and +520 KB.
+   ADR 0005, Word drilling.
+8. `contexts()` in `js/text.js` starts a sentence after any `.`, so a word after an abbreviation
+   reads as sentence-initial: in `Sig. Rossi` the name Rossi is never eligible and does not open.
+   An abbreviation list is a follow-up.

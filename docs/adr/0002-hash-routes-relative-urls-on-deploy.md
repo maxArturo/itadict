@@ -5,8 +5,8 @@ to a home screen and must work offline. So: hash routes only; every URL relative
 never `/itadict/js/app.js`); `.nojekyll` committed at the root; `sw.js` at the root of the
 subpath; the subpath fixed from day one.
 
-Routes are fragments: `#/search`, `#/entry/<id>`, `#/text`, `#/reference`, `#/lists`,
-`#/study`, `#/settings`. The router reads only the fragment, so the deployed subpath never
+Routes are fragments: `#/search`, `#/entry/<id>`, `#/sentence/<bucket>/<sentenceId>`, `#/text`,
+`#/reference`, `#/lists`, `#/study`, `#/settings`. ADR 0005 added the sentence route. The router reads only the fragment, so the deployed subpath never
 reaches it. Screen names may be renamed any day.
 
 Pages offers no rewrites, so a path route 404s on reload. Pages sets no custom headers, so the

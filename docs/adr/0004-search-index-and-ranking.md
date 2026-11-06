@@ -4,8 +4,8 @@ Ranking order is fixed: exact, then prefix, then inflected form, then fuzzy. The
 budget. A cheap step that already filled the result list stops the steps below it.
 
 The app answers an Italian query. It also ships an English lookup index, so that a query in English
-can one day find the Italian entry whose translation it matches. The Italian match always comes
-first, and the English index ships without a client that reads it yet.
+finds the Italian entry whose translation it matches. The Italian match always comes first, and the
+English rows come after it, in their own block.
 
 ## Folding
 
@@ -53,7 +53,7 @@ Each key keeps at most 100 postings. Entries sit in frequency order, so the firs
 token are the ones a learner meets first. The cap dropped 50,071 postings and no token: every English
 token in the glosses is still in the index.
 
-The index is 415 files, 1,943,440 bytes raw and 0.66 MiB gzipped, with a 90th percentile of 14,562
+The index is 415 files, 1,943,073 bytes raw and 0.66 MiB gzipped, with a 90th percentile of 14,562
 bytes and a largest file of 76,533 bytes.
 
 The lookup rule is the ranking rule, applied to two languages:
@@ -63,20 +63,40 @@ The lookup rule is the ranking rule, applied to two languages:
 3. So the English index is fetched only for a query that the Italian search left short. A common
    Italian word never pays for it.
 
-The index ships. The client does not read it yet: `js/data.js` has no English lookup and
-`js/search.js` runs the Italian steps only. Until that lands, an English query returns Italian rows
-that happen to match, and the index is dead weight that the download action still fetches. The data
-side is the decision; the client side is open.
+The client reads it. `js/search.js` runs the Italian steps, and when they leave fewer than 20 rows it
+fetches the bucket's `data/en/` file by its hashed URL. `englishIds` takes the exact token's postings
+first, then the postings of the tokens that start with the query, in alphabet order, up to 20 ids.
+Those rows form the English block. They never mix into the Italian list, and a failed English file
+drops the block, not the search.
 
 ## Form to lemma
 
-`data/forms/<bucket>.json` maps a folded inflected form to `{ id, lemma, label }`. Buckets are the
+`data/forms/<bucket>.json` maps a folded inflected form to `{ id, lemma, label, form? }`. Buckets are the
 first two letters of the form. The index is built from every form claim in the extract: the source's
 own `form_of` links, plus the tense and person tags on the lemma's form entries. It is inverted
 relative to a conjugation table, and that is on purpose: a search needs form to lemma, which is the
 direction a dictionary never stores.
 
-This index duplicates every inflected form once: 232,248 rows in the shipped build. It ships
+A folded form often has several claims: `fosse` is a plural of fossa and a subjunctive of essere. The
+build keeps one. A claim counts only when its own gloss names its lemma ("plurale di avanzo", "del
+verbo avere", "d'arco"), or at least mentions it as a word that is not a grammar term. The source
+sometimes links a grammar word instead of the lemma, and such a claim is never used: `abaliena` has
+"seconda persona singolare dell'imperativo presente di abalienare" with `form_of` "imperativo", and
+`rottami` has "terza persona singolare di rottamare del congiuntivo presente" with `form_of`
+"presente". Among the claims that count and whose lemma ships, the first one in the source wins. So
+`fosse` goes to fossa.
+
+`form` is the raw spelling, NFC, written only when it differs from the key: `"e"` holds
+`"form": "è"`, so a reader can tell the verb from the conjunction `e`.
+
+**Measured and rejected: the most frequent lemma.** Choosing, among the claims that count, the lemma
+first in the build's frequency order changed 1,170 targets. A review of 20 sampled at random scored 8
+of them worse, past the limit of 5. The rule knows frequency, not the reading: `disegni` went to
+disegnare instead of disegno, `molesti` to molestare instead of molesto, `omologhi` to omologare
+instead of omologo, and `esecutivi` to governo, which is not even a form of it. First-seen keeps
+those right, at the cost of `fosse` going to fossa.
+
+This index duplicates every inflected form once: 233,171 rows in the shipped build. It ships
 separately so that it is fetched only when a short result list needs it.
 
 ## Conjugation tables
@@ -108,7 +128,9 @@ the row's rank from the corpus, then by alphabet, so the order is stable. Prefix
 a bucket, because a bucket is the first two letters and the query is at least two characters.
 
 **Consequences:** one row carries both glosses, which is why the entry set grew from 59,877,636 to
-66,334,993 bytes in three builds. Of that, 1,943,440 bytes is the English index itself. A keystroke
+66,334,993 bytes in three builds. Of that, 1,943,073 bytes is the English index itself. The
+link-first example build of ADR 0005 then brought the whole set to 66,388,672 bytes, and the raw
+spellings in the form index to 66,703,466. A keystroke
 after the first costs no fetch, because the bucket stays in the session memo. The first search in a new bucket costs one small fetch. An inflected-form hit costs a second
 fetch. Fuzzy results are bounded, which is a quality limit, not a bug:
 `shortcut: matching scans the whole bucket; add a range index if a bucket passes 50k rows`.

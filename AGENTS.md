@@ -9,6 +9,7 @@ Repo map. Read the row before you touch that area.
 | `docs/adr/0002-hash-routes-relative-urls-on-deploy.md` | Why hash routes, relative URLs and a frozen subpath | Before changing routing or deploy paths |
 | `docs/adr/0003-sharded-lazy-content-and-offline.md` | Bucket plan and caps, the four file sets and the decks, the cache table, the download action, the eviction rules | Before changing `sw.js`, `data/` or the manifest |
 | `docs/adr/0004-search-index-and-ranking.md` | Folding, the row format, entry ids, the form index, conjugation tables, the ranking order and its cost | Before changing search or the index build |
+| `docs/adr/0005-example-sentences-and-translations.md` | The sentence page and its route, the human Tatoeba English of every example, link-first selection, the ex row shape, the English cap, why machine translation was rejected, and the B1 and B2 checklist | Before changing examples, `data/ex/` or the sentence route, and before proposing machine translation |
 | `docs/design/architecture.md` | The four layers, boot order, the data client contract, which screen fetches what, the Translation rows, the cost of one tap, the English search option, storage, the worker table, deploy, what each gate can prove | Before touching `app.js`, `router.js`, `data.js`, `ui.js` or `sw.js` |
 | `docs/verification/gate-2.md` | The browser and device acceptance record: the checks the offline gate runs, the checks a device still owns, the result table | Before claiming the deployed app works |
 
@@ -69,7 +70,7 @@ in `tools/` only.
 `js/data.js` names every path and field. `js/search.js`, `js/text.js`, `js/study.js`, `js/lists.js`,
 `js/reference.js`, `js/speech.js` and `js/offline.js` are pure or take their environment as a
 parameter, and carry their own Node checks. `js/ui.js` draws the screens and fetches nothing.
-`js/app.js` is boot and the composition of the screens. `js/router.js` parses seven hash routes.
+`js/app.js` is boot and the composition of the screens. `js/router.js` parses eight hash routes.
 
 A new pure module must be added to `sw.js`'s shell list in the same change, or it is dead offline.
 `npm run verify:offline` fails on a module that is missing from that list.

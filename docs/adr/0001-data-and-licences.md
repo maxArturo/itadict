@@ -11,6 +11,7 @@ set. The app code ships as MIT.
 | kaikki.org extract of it.wiktionary | headwords, definitions, IPA, inflected forms | CC BY-SA 4.0 |
 | kaikki.org extract of en.wiktionary, Italian entries | the English glosses of the Translation section | CC BY-SA 4.0 |
 | Tatoeba Italian sentences | example sentences | CC BY 2.0 FR |
+| Tatoeba English sentences and Italian-English links | the English of an example, always a human translation, from ADR 0005, not built | CC BY 2.0 FR |
 | FrequencyWords Italian 50k list (Hermit Dave) | the rank that sets a CEFR band | CC BY-SA 4.0 |
 
 The Italian extract holds 541,641 records, and 454,374 of them are inflected forms. A lemma becomes
@@ -27,13 +28,13 @@ headword and part of speech, and ships nothing else.
 | Entries | 61,820, every one with at least one Italian definition |
 | Entries with IPA | 56.6% |
 | Senses | 91,744 |
-| Forms that resolve to a lemma | 232,248 |
+| Forms that resolve to a lemma | 233,171 |
 | Verbs | 6,325, of which 5,471 carry a full table |
-| Tatoeba sentences | 49,283, in 49,505 example slots |
+| Tatoeba sentences | 33,329 example rows, 28,985 distinct sentences, each with its directly linked Tatoeba English; 33,450 example slots, and 13,542 entries have an example |
 | Entries with an English translation | 47,277 of 61,820, which is 76.5%. Of the 5,000 most frequent, 4,728, or 94.6% |
-| Buckets and entry files | 478 buckets, 948 entry files |
-| Entry files | 22,452,034 bytes, up 3,379,148 for the English glosses |
-| Data size | 66,334,993 bytes in the manifest, of which 1,943,440 bytes is the English lookup index; largest file 999,999 bytes |
+| Buckets and entry files | 586 buckets, 948 entry files |
+| Entry files | 22,339,073 bytes |
+| Data size | 66,703,466 bytes in the manifest, of which 1,943,073 bytes is the English lookup index and 3,314,114 the examples; largest file 999,999 bytes |
 
 The other 14,543 entries carry no English gloss, and the Entry screen then draws no Translation
 section. Coverage follows the part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective
@@ -55,6 +56,9 @@ CEFR bands, by entry: a1 670, a2 572, b1 1,489, b2 2,144, c1 5,028, c2 51,917.
   are stored inside the entry body, next to the Italian senses, and no Tatoeba text is in that file.
 - **Examples**: CC BY 2.0 FR. They ship in their own file set. An entry body stores example
   positions, never sentence text, so no Tatoeba sentence lands in a CC BY-SA shard.
+- **The English of an example** (ADR 0005, not built): a Tatoeba English sentence linked to the
+  Italian one, never machine output. It ships under CC BY 2.0 FR in the same ex row, so the ex file
+  set keeps one licence.
 - **The frequency list**: CC BY-SA 4.0. Only the derived band value ships. The word list itself does
   not.
 
@@ -66,6 +70,8 @@ CEFR bands, by entry: a1 670, a2 572, b1 1,489, b2 2,144, c1 5,028, c2 51,917.
   `Glosse in inglese da Wikizionario, en.wiktionary.org, CC BY-SA 4.0, modificato.`
 - Examples, once site-wide:
   `Frasi da Tatoeba (tatoeba.org), CC BY 2.0 FR`, with a link to <https://tatoeba.org/>.
+  ADR 0005 replaces it with `Frasi e traduzioni da Tatoeba (tatoeba.org), CC BY 2.0 FR`, which covers
+  the English sentences too, when B1 lands.
 
 The build writes the strings into `NOTICE` and `data/LICENSE-DATA.md`, so the notice cannot drift
 from the licence table. The About screen shows the Wikizionario and Tatoeba lines today. It does not
@@ -88,6 +94,9 @@ and it carries its own location, so a cold deep link reads one entry file.
 It is not stable across builds. The id is the file name and a position inside that file, so a
 different split moves every position in the file, and a word's id changes with it. A stored id names
 a place in one build, not a word.
+
+Since the link-first example build, the split plan is pinned to the previous build and a rebuild
+fails when an old id would name another word: ADR 0003, Pinned split plan.
 
 Saved notes, list items and history keep the id they wrote. A rebuild is safe for saved data: nothing
 is corrupted, and nothing crashes. An id the new build does not have resolves to no entry body, and

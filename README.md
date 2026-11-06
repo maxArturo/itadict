@@ -23,7 +23,7 @@ licences, the frozen decisions and the language.
    one keeps every definition in Italian, by decision, and adds an English translation line above it.
    A learner reads the Italian definition and checks the meaning in English when he needs to.
 2. **The count.** The reference lists 175,000 entries. This build ships 61,820 lemma entries and
-   232,248 inflected forms. Two rules cap the source: the licences limit what can ship, and a
+   233,171 inflected forms. Two rules cap the source: the licences limit what can ship, and a
    dictionary of one language counts its own lemmas, not a list of translations.
 3. **Handwriting became the letter palette.** Latin script needs no stroke recognition. The Search
    screen offers a keypad and a palette of Italian letters grouped by sound, and search ignores
@@ -40,6 +40,7 @@ licences, the frozen decisions and the language.
 |---|---|
 | Search | A field with two input modes, keypad and letters. A row shows the headword, a form or the IPA, the part of speech and one gloss. |
 | Entry (`#/entry/<id>`) | The back control to the screen you came from, then the headword with its IPA, Translation (English, by part of speech), Definitions (Italian), Forms, and Examples with the match in red. A speaker button appears only when an Italian voice exists. |
+| Sentence (`#/sentence/<bucket>/<id>`) | One example sentence, opened from its row on the Entry screen. The whole Italian, each word a button that opens its entry, or a search when it has none. Then its English, a human Tatoeba translation, and the sentence's Tatoeba id as a link. |
 | Text | Paste Italian text. The screen shows a summary, the text with a link on every word the dictionary knows, and the words it does not know. |
 | Reference | The catalogue: About, Alphabet and pronunciation, Parts of speech, CEFR, and Offline. The Offline row shows the size and runs the download. |
 | Lists | History, Notes, folders and lists, with add, remove, import and share. The top-left control opens Settings. |
@@ -64,18 +65,24 @@ The app code is MIT. The data and the code carry separate licences and never sha
 | Entries | 61,820, every one with at least one Italian definition |
 | Entries with IPA | 56.6% |
 | Senses | 91,744, 1.48 per entry |
-| Inflected forms that resolve to a lemma | 232,248 |
+| Inflected forms that resolve to a lemma | 233,171, each to one lemma: the first source claim whose gloss supports it |
 | Verbs | 6,325, of which 5,471 carry a full table |
-| Tatoeba sentences | 49,283, filling 49,505 example slots |
+| Tatoeba sentences | 33,329 example rows, 28,985 distinct sentences, each with its directly linked Tatoeba English, filling 33,450 example slots |
+| Entries with an example | 13,542. The other 48,278 draw no Examples section |
 | Entries with an English translation | 47,277, which is 76.5%. The other 14,543 draw no Translation section |
 | Entries with an English translation, 5,000 most frequent | 4,728, which is 94.6%. The common words almost always have one |
-| Buckets and entry files | 478 buckets, 948 entry files |
-| Entry files | 22,452,034 bytes |
-| Data size | 66,334,993 bytes in the manifest; 1,943,440 of that is the English lookup index; largest file 999,999 bytes |
+| Buckets and entry files | 586 buckets, 948 entry files |
+| Entry files | 22,339,073 bytes |
+| Example files | 292, 3,314,114 bytes; largest 169,412 bytes |
+| Data size | 66,703,466 bytes in the manifest; 1,943,073 of that is the English lookup index; largest file 999,999 bytes |
 
 Three builds show the growth: 59,877,636 bytes before the English glosses, 61,389,314 with the entry
 bodies carrying them, and 66,334,993 with the English index and both glosses on every row. A search
-row costs more because it now carries the Italian gloss and the English one.
+row costs more because it now carries the Italian gloss and the English one. The link-first example
+build then made it 66,388,672: every example row carries its English, a sentence without a
+Tatoeba English link that fits 160 characters is no longer an example, and a capitalised headword
+(a name, an acronym) matches only its own spelling inside a sentence. The form index then grew to
+66,703,466 by keeping the raw spelling of an accented form (`è` under `e`).
 
 English coverage is uneven by part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective
 84%, proper name 43%, preposition 46%, and phrase 0.2% (10 of 4,801). Abbreviations carry none (0 of
@@ -174,6 +181,9 @@ sources and the CEFR deck sizes.
 **Row**: one line in a result list: folded key, id, headword, IPA, part of speech, the Italian gloss
 and the English gloss. Seven fields.
 
+**Sentence**: one Tatoeba example: its Italian, its English and its Tatoeba id. The id is the only
+id a sentence has. _Avoid_: example id, quote.
+
 **Form**: one inflected form of a lemma.
 
 **Lemma**: the entry a form belongs to.
@@ -203,8 +213,8 @@ and the English gloss. Seven fields.
 - The offline gate calls the download action directly. A tap on the Download button stays a device check.
 - The About screen names two sources. It does not name en.wiktionary, and the English glosses need that
   line.
-- The English lookup index ships: 415 files, 1,943,440 bytes raw and 0.66 MiB gzipped, a 90th
-  percentile of 14,562 bytes, a largest file of 76,533 bytes, and a cap of 100 postings per token. The
-  client does not read it yet, so an English query still finds nothing on purpose. The rule is Italian
-  matches first, an English block second, and the English index fetched only when the Italian list is
-  short of 20 rows.
+- Examples are human translations only. Link-first selection keeps an example only when a Tatoeba
+  English sentence is linked to it directly, and a name or acronym takes only sentences that use it
+  with its capital. 13,542 entries have an example, down from 19,655: 6,113 lost all of theirs, and
+  2,185 went from three to one or two. Machine translation was tried
+  and rejected; ADR 0005 records why.
