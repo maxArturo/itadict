@@ -6,10 +6,12 @@
     "build:data": "node tools/build-data.mjs",
     "check": "node tools/check-data.mjs",
     "test": "node tools/sanity.mjs",
+    "verify:offline": "node tools/verify-offline.mjs",
     "typecheck": "npx tsc --noEmit",
     "serve": "python3 -m http.server 8000"
   },
   "devDependencies": {
+    "playwright": "^1.56.0",
     "typescript": "^5.6.3"
   }
 }
