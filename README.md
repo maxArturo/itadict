@@ -1,12 +1,13 @@
 # itadict
 
-A static, offline, monolingual Italian dictionary PWA. It runs on GitHub Pages at
+A static, offline Italian dictionary PWA. It runs on GitHub Pages at
 `https://maxarturo.github.io/itadict/`, installs to a home screen, and needs no server. The display
 name is "Italian".
 
 It copies the screens and the flow of the App Store app "Japanese" (id290664053, renzo Inc.), for
-Italian. The chrome is English. The content is Italian: Italian headwords, Italian definitions,
-Italian examples.
+Italian. The chrome is English. The dictionary text is Italian: Italian headwords, Italian
+definitions, Italian examples. Each entry also carries up to three English glosses per part of speech,
+as a translation aid, when the English Wiktionary has them.
 
 `AGENTS.md` indexes every document. `docs/adr/` holds the decisions that are expensive to reverse.
 `docs/design/architecture.md` holds the mechanics. `docs/verification/gate-2.md` holds the
@@ -15,11 +16,12 @@ licences, the frozen decisions and the language.
 
 ## How this differs from the reference app
 
-1. **Monolingual.** The reference goes Japanese to English. This one stays in Italian, by decision.
-   A learner reads the definition in the language he is learning.
+1. **Italian first.** The reference goes Japanese to English, and the definition is in English. This
+   one keeps every definition in Italian, by decision, and adds an English translation line above it.
+   A learner reads the Italian definition and checks the meaning in English when he needs to.
 2. **The count.** The reference lists 175,000 entries. This build ships 61,820 lemma entries and
    232,248 inflected forms. Two rules cap the source: the licences limit what can ship, and a
-   monolingual dictionary counts lemmas, not translations.
+   dictionary of one language counts its own lemmas, not a list of translations.
 3. **Handwriting became the letter palette.** Latin script needs no stroke recognition. The Search
    screen offers a keypad and a palette of Italian letters grouped by sound, and search ignores
    accents and case.
@@ -34,7 +36,7 @@ licences, the frozen decisions and the language.
 | Screen | What it does |
 |---|---|
 | Search | A field with two input modes, keypad and letters. A row shows the headword, a form or the IPA, the part of speech and one gloss. |
-| Entry (`#/entry/<id>`) | The back control to the screen you came from, the headword with its IPA, Translation, Forms, and Examples with the match in red. A speaker button appears only when an Italian voice exists. |
+| Entry (`#/entry/<id>`) | The back control to the screen you came from, then the headword with its IPA, Translation (English, by part of speech), Definitions (Italian), Forms, and Examples with the match in red. A speaker button appears only when an Italian voice exists. |
 | Text | Paste Italian text. The screen shows a summary, the text with a link on every word the dictionary knows, and the words it does not know. |
 | Reference | The catalogue: About, Alphabet and pronunciation, Parts of speech, CEFR, and Offline. The Offline row shows the size and runs the download. |
 | Lists | History, Notes, folders and lists, with add, remove, import and share. The top-left control opens Settings. |
@@ -48,6 +50,7 @@ The active tab is dark and the rest are grey. Study carries a badge with the num
 | Source | What it gives | Licence |
 |---|---|---|
 | kaikki.org extract of it.wiktionary | headwords, definitions, IPA, inflected forms | CC BY-SA 4.0 |
+| kaikki.org extract of en.wiktionary, Italian entries | the English glosses that fill a Translation section | CC BY-SA 4.0 |
 | Tatoeba Italian sentences | example sentences | CC BY 2.0 FR |
 | FrequencyWords Italian 50k list (Hermit Dave) | the rank that sets a CEFR band | CC BY-SA 4.0 |
 
@@ -61,8 +64,15 @@ The app code is MIT. The data and the code carry separate licences and never sha
 | Inflected forms that resolve to a lemma | 232,248 |
 | Verbs | 6,325, of which 5,471 carry a full table |
 | Tatoeba sentences | 49,283, filling 49,505 example slots |
-| Buckets | 478 |
-| Data size | 60,067,433 bytes of file content, 62 MB on disk, largest file 999,990 bytes |
+| Entries with an English translation | 47,277, which is 76.5%. The other 14,543 draw no Translation section |
+| Buckets and entry files | 478 buckets, 948 entry files |
+| Entry files | 22,452,034 bytes |
+| Data size | 61,389,314 bytes in the manifest, 61,769,166 as the data gate counts it with the CEFR decks; 67 MB on disk; largest file 999,999 bytes |
+
+English coverage is uneven by part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective
+84%, proper name 43%, preposition 46%, and phrase 0.2% (10 of 4,801). Abbreviations carry none (0 of
+631). The English extract has almost no multiword Italian records, so idioms and phrases ship
+Italian-only.
 
 CEFR bands, by entry: a1 670, a2 572, b1 1,489, b2 2,144, c1 5,028, c2 51,917.
 
@@ -70,6 +80,7 @@ Attribution strings ship in `NOTICE` and in `data/LICENSE-DATA.md`. The build wr
 licence change is one line of data.
 
 - **Dictionary text**, near each entry: `Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0 - <url voce>, modificato`.
+- **English glosses**: `Glosse in inglese da Wikizionario, en.wiktionary.org, CC BY-SA 4.0, modificato.`
 - **Examples**, once site-wide: `Frasi da Tatoeba (tatoeba.org), CC BY 2.0 FR`, with a link.
 - 27 pages of it.wiktionary are flagged for an unchecked copyright claim, and they do not ship. The
   list is the category `Da controllare per copyright`, read at build time.
@@ -181,3 +192,8 @@ sources and the CEFR deck sizes.
 ## Open
 
 - The offline gate calls the download action directly. A tap on the Download button stays a device check.
+- The About screen names two sources. It does not name en.wiktionary, and the English glosses need that
+  line.
+- English to Italian search is measured and not built. An English-keyed index over the same glosses
+  costs 1.81 MB raw, or 0.65 MB gzipped, in 415 files, with a 90th percentile of 14.3 KB and a largest
+  file of 74.8 KB at a cap of 100 postings per key.
