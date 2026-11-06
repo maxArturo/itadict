@@ -12,9 +12,12 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 import {
+  bucketFor,
   bucketKey,
   bucketOfId,
+  attributions,
   createData,
+  exampleBucket,
   parseExamples,
   parseForms,
   parseManifest,
@@ -24,7 +27,7 @@ import {
   toEntry,
   toRow,
 } from '../js/data.js';
-import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/router.js';
+import { HASH, createRouter, entryHash, parseRoute, resolveRoute, sentenceHash } from '../js/router.js';
 import { createSearch, editDistanceAtMost, englishIds, findMatch, fold, rank } from '../js/search.js';
 import { createSpeech, RATE } from '../js/speech.js';
 import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
@@ -41,13 +44,14 @@ import {
   orderDeck,
   readCard,
 } from '../js/study.js';
-import { WORD_CAP, createReader, summarise, tokenize } from '../js/text.js';
-import { PALETTE, backTarget, formRows, translationRows } from '../js/ui.js';
+import { WORD_CAP, contexts, createReader, pickCandidate, readKey, summarise, tokenize } from '../js/text.js';
+import { PALETTE, backFor, backTarget, formRows, translationRows } from '../js/ui.js';
 import {
   LABELS,
   backupFile,
   counts,
   firstLine,
+  hasWord,
   noteWord,
   labelFor,
   mergeList,
@@ -55,7 +59,9 @@ import {
   parseBackup,
   parsePackage,
   readLists,
+  relocate,
   uniqueName,
+  wordDictionary,
 } from '../js/lists.js';
 import { ALPHABET, posIndex, posLabel } from '../js/reference.js';
 
@@ -525,6 +531,270 @@ test('an elided word resolves through its parts, and each token counts once', as
   assert.deepEqual(summarise(segments, resolved), { total: 5, known: 4, unknown: [] }, 'each token counts once');
 });
 
+test('reader.word resolves one tapped word, an elision through its part, and a miss to null', async () => {
+  const { calls, fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { ac: oneFileBucket('ac', 'w1'), ca: oneFileBucket('ca', 'w2'), ig: oneFileBucket('ig', 'w3'), br: oneFileBucket('br', 'w4') },
+    },
+    'data/ac.json?v=w1': [['acqua', 'ac:0', 'acqua', '', '', '']],
+    'data/forms/ac.json?v=w1f': {},
+    'data/ca.json?v=w2': [['casa', 'ca:0', 'casa', '', '', '']],
+    'data/forms/ca.json?v=w2f': { case: { id: 'ca:0', lemma: 'casa', label: 'plurale' } },
+    'data/ig.json?v=w3': [],
+    'data/forms/ig.json?v=w3f': {},
+    // br: the manifest lists it, but its files answer 404.
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  assert.equal((await reader.word("l'acqua"))?.id, 'ac:0', 'an elision resolves through the part after the apostrophe');
+  assert.equal((await reader.word('Case'))?.headword, 'casa', 'a form opens its lemma, case-folded');
+  assert.equal(await reader.word('ignoto'), null, 'an unknown word');
+  assert.equal(await reader.word('brutto'), null, 'a file that did not load reads as null');
+  assert.equal(await reader.word(''), null);
+  await reader.read(tokenize('casa casa').segments);
+  assert.equal(calls.filter((url) => url === 'data/ca.json?v=w2').length, 1, 'word() and read() share one memo');
+});
+
+test('a tapped inflected form still opens its lemma: devo -> dovere, possono -> potere', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { de: oneFileBucket('de', 'd1'), po: oneFileBucket('po', 'd2'), do: oneFileBucket('do', 'd3') },
+    },
+    'data/de.json?v=d1': [],
+    'data/forms/de.json?v=d1f': { devo: { id: 'do:0', lemma: 'dovere', label: 'presente 1s' } },
+    'data/po.json?v=d2': [['potere', 'po:0', 'potere', '', 'verb', 'can']],
+    'data/forms/po.json?v=d2f': { possono: { id: 'po:0', lemma: 'potere', label: 'presente 3p' } },
+    'data/do.json?v=d3': [['dovere', 'do:0', 'dovere', '', 'verb', 'must']],
+    'data/forms/do.json?v=d3f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  assert.deepEqual(await reader.word('devo'), { id: 'do:0', headword: 'dovere' }, 'the forms index answers when no headword matches');
+  assert.deepEqual(await reader.word('Possono'), { id: 'po:0', headword: 'potere' });
+});
+
+// ---------------------------------------------------------------- which entry a tapped word opens
+
+/** @param {string} id @param {string} headword @param {string} pos */
+const cand = (id, headword, pos) => ({ id, headword, pos });
+const MID = { capitalised: false, initial: false };
+const MID_CAP = { capitalised: true, initial: false };
+const START = { capitalised: true, initial: true };
+
+test('pickCandidate: the advocate cases, by the capitalisation gate, frequency and the tie-break', () => {
+  // Frequency: within one entry file, the earlier position is the more frequent entry. No rank ships.
+  assert.equal(pickCandidate([cand('co:45', 'raro', ''), cand('co:0', 'comune', '')], MID)?.headword, 'comune', 'the earlier position in one file wins');
+  assert.equal(pickCandidate([cand('co:79', 'rarissimo', 'noun'), cand('co:0', 'comune', '')], MID)?.headword, 'comune', 'whatever the order found');
+  assert.equal(pickCandidate([cand('ra:0', 'raro', ''), cand('co:0', 'comune', '')], MID)?.headword, 'raro', 'two files are not compared: the first found');
+  assert.equal(pickCandidate([cand('fa:5', 'faccia', 'noun'), cand('fa:0', 'fare', '')], START)?.headword, 'fare', 'Faccia at sentence start -> fare: same file, the earlier position is more frequent');
+  // The gate: a lowercase or sentence-initial token never takes a name while a word matches.
+  assert.equal(pickCandidate([cand('su:1', 'SUA', 'abbrev'), cand('su:0', 'suo', '')], MID)?.headword, 'suo', 'sua -> suo, not SUA');
+  assert.equal(pickCandidate([cand('pes:4', 'Pesci', 'name'), cand('pes:0', 'pesce', '')], MID)?.headword, 'pesce', 'pesci -> the fish, not Pisces');
+  assert.equal(pickCandidate([cand('ne:1', 'Nella', 'name'), cand('in:0', 'in', '')], MID)?.headword, 'in', 'nella lowercase -> the preposition');
+  assert.equal(pickCandidate([cand('ne:1', 'Nella', 'name'), cand('in:0', 'in', '')], MID_CAP)?.headword, 'Nella', 'Nella mid-sentence -> the name');
+  assert.equal(pickCandidate([cand('i:0', 'I', 'symbol'), cand('il:0', 'il', '')], START)?.headword, 'il', 'I at sentence start -> the article');
+  assert.equal(pickCandidate([cand('i:0', 'I', 'symbol'), cand('il:0', 'il', '')], MID_CAP)?.headword, 'I', 'I mid-sentence, capitalised -> the symbol');
+  assert.equal(pickCandidate([cand('ro:0', 'Roma', 'name')], MID), null, 'a lowercase token never takes a name, even alone');
+  assert.equal(pickCandidate([cand('ro:0', 'Roma', 'name')], START), null, 'nor does a sentence-initial one');
+  assert.equal(pickCandidate([cand('ro:0', 'Roma', 'name')], MID_CAP)?.headword, 'Roma', 'a mid-sentence capital does');
+  // The tie-break: no rank and two files, so a word beats a name, then the first found wins.
+  assert.equal(pickCandidate([cand('xa:3', 'Xa', 'name'), cand('xb:1', 'xa', 'noun')], START)?.headword, 'xa');
+  assert.equal(pickCandidate([cand('xa:3', 'alpha', 'noun'), cand('xb:1', 'beta', 'noun')], MID)?.headword, 'alpha', 'no information: the first found');
+  assert.equal(pickCandidate([], MID), null);
+});
+
+test('contexts marks capitals and the first word of each sentence', () => {
+  const { segments } = tokenize('I miei capelli. Nella casa è Nella! e poi… Sì');
+  const words = segments.map((segment, index) => ({ segment, context: contexts(segments)[index] })).filter((entry) => entry.segment.word);
+  assert.deepEqual(
+    words.map((entry) => entry.segment.text + ':' + (entry.context.capitalised ? 'C' : 'c') + (entry.context.initial ? 'I' : 'm')),
+    ['I:CI', 'miei:cm', 'capelli:cm', 'Nella:CI', 'casa:cm', 'è:cm', 'Nella:Cm', 'e:cI', 'poi:cm', 'Sì:CI'],
+  );
+});
+
+test('reader.word ranks every candidate of a tapped word, single letters included', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { a: oneFileBucket('a', 'q1'), i: oneFileBucket('i', 'q2'), pe: oneFileBucket('pe', 'q3'), ne: oneFileBucket('ne', 'q4') },
+    },
+    'data/a.json?v=q1': [['a', 'a:0', 'a', '', 'prep', 'to']],
+    'data/forms/a.json?v=q1f': {},
+    'data/i.json?v=q2': [['i', 'i:0', 'I', '', 'symbol', 'iodine']],
+    'data/forms/i.json?v=q2f': { i: { id: 'il:0', lemma: 'il', label: 'plurale' } },
+    'data/pe.json?v=q3': [['pesci', 'pe:4', 'Pesci', '', 'name', 'Pisces'], ['pesce', 'pe:0', 'pesce', '', 'noun', 'fish']],
+    'data/forms/pe.json?v=q3f': { pesci: { id: 'pe:0', lemma: 'pesce', label: 'plurale' } },
+    'data/ne.json?v=q4': [['nella', 'ne:1', 'Nella', '', 'name', 'Nella']],
+    'data/forms/ne.json?v=q4f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  assert.equal((await reader.word('a'))?.headword, 'a', 'a single letter resolves like any word');
+  assert.equal((await reader.word('I', START))?.headword, 'il', 'sentence-initial I is the article');
+  assert.equal((await reader.word('I', MID_CAP))?.headword, 'I', 'a mid-sentence capital I is the symbol');
+  assert.equal((await reader.word('pesci'))?.headword, 'pesce', 'pesci is the fish');
+  assert.equal((await reader.word('Nella', MID_CAP))?.headword, 'Nella', 'a mid-sentence capital picks the name');
+  assert.equal(await reader.word('nella'), null, 'lowercase nella never opens the name: a miss, so the page searches "nella"');
+});
+
+test('a token with an accent takes the forms record written that way: è is essere, e the conjunction', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: {
+        a: oneFileBucket('a', 'r1'),
+        e: oneFileBucket('e', 'r2'),
+        i: oneFileBucket('i', 'r3'),
+        o: oneFileBucket('o', 'r4'),
+        pe: oneFileBucket('pe', 'r5'),
+      },
+    },
+    'data/a.json?v=r1': [['a', 'a:0', 'a', '', 'prep', 'to']],
+    'data/forms/a.json?v=r1f': {},
+    'data/e.json?v=r2': [['e', 'e:0', 'e', '', 'conj', 'and']],
+    'data/forms/e.json?v=r2f': { e: { id: 'es:0', lemma: 'essere', label: '3s presente', form: 'è' } },
+    'data/i.json?v=r3': [['i', 'i:0', 'i', '', 'article', 'the']],
+    'data/forms/i.json?v=r3f': {},
+    'data/o.json?v=r4': [['o', 'o:0', 'o', '', 'conj', 'or']],
+    'data/forms/o.json?v=r4f': {},
+    'data/pe.json?v=r5': [['perche', 'pe:0', 'perché', '', 'conj', 'because']],
+    'data/forms/pe.json?v=r5f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  assert.equal((await reader.word('è'))?.headword, 'essere', 'è: the accented form record wins over the folded headword');
+  assert.equal((await reader.word('È', START))?.headword, 'essere', 'È at sentence start: case does not matter');
+  assert.equal((await reader.word('e'))?.headword, 'e', 'e: no accent, the conjunction');
+  assert.equal((await reader.word('a'))?.id, 'a:0', 'a keeps its headword');
+  assert.equal((await reader.word('i'))?.headword, 'i', 'i keeps its headword');
+  assert.equal((await reader.word('o'))?.headword, 'o', 'o keeps its headword');
+  assert.equal((await reader.word('perché'))?.headword, 'perché', 'perché: no form written that way, so the headword');
+  assert.equal((await reader.word('perche'))?.headword, 'perché', 'perche: the same headword through the fold');
+});
+
+test('bucketFor pads a one-character key for every set but English, and the padded bucket wins', () => {
+  const set = (/** @type {string} */ name) => ({ search: [{ path: 'data/' + name + '.json', hash: 'h' }], entry: [], ex: [], forms: [], en: [] });
+  const english = (/** @type {string} */ name) => ({ search: [], entry: [], ex: [], forms: [], en: [{ path: 'data/en/' + name + '.json', hash: 'h' }] });
+  const manifest = /** @type {any} */ ({
+    buckets: { e: english('e'), e_: set('e_'), a_: set('a_'), 2: english('2'), '2_': set('2_'), __: set('__'), _: english('_'), ca: set('ca'), o: set('o') },
+  });
+  const name = (/** @type {any} */ bucket) => bucket?.search[0]?.path ?? bucket?.en[0]?.path ?? 'none';
+  assert.equal(name(bucketFor(manifest, 'e', 'search')), 'data/e_.json', 'a letter: the padded bucket wins over the bare English one');
+  assert.equal(name(bucketFor(manifest, 'è', 'forms')), 'data/e_.json', 'an accented letter folds, then pads');
+  assert.equal(name(bucketFor(manifest, 'à', 'entry')), 'data/a_.json');
+  assert.equal(name(bucketFor(manifest, '2', 'search')), 'data/2_.json', 'a digit pads too');
+  assert.equal(name(bucketFor(manifest, '-', 'search')), 'data/__.json', 'a bare symbol is the "__" bucket');
+  assert.equal(name(bucketFor(manifest, 'e', 'en')), 'data/en/e.json', 'English keeps the bare letter');
+  assert.equal(name(bucketFor(manifest, '-', 'en')), 'data/en/_.json', 'and "_" for symbols');
+  assert.equal(bucketFor(manifest, 'casa', 'en'), manifest.buckets.ca, 'a two-letter English lookup is unchanged: bucketKey("casa")');
+  assert.equal(name(bucketFor(manifest, 'casa', 'search')), 'data/ca.json');
+  assert.equal(name(bucketFor(manifest, 'cas', 'entry')), 'data/ca.json', 'a split file key names its bucket');
+  assert.equal(name(bucketFor(manifest, 'e_', 'ex')), 'data/e_.json', 'a padded key from an id stays padded');
+  assert.equal(name(bucketFor(manifest, 'o', 'search')), 'data/o.json', 'with no padded bucket, the bare one');
+  assert.equal(bucketFor(manifest, 'xz', 'search'), undefined);
+});
+
+test('one-letter words resolve through their padded buckets: e, è, a, à, i, o, ò', async () => {
+  const one = (/** @type {string} */ key, /** @type {string} */ hash) => ({
+    search: [{ path: 'data/' + key + '.json', hash }],
+    forms: [{ path: 'data/forms/' + key + '.json', hash: hash + 'f' }],
+    entry: [],
+    ex: [],
+    en: [],
+  });
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: {
+        e: { search: [], entry: [], ex: [], forms: [], en: [{ path: 'data/en/e.json', hash: 'x' }] },
+        e_: one('e_', 's1'),
+        a_: one('a_', 's2'),
+        i_: one('i_', 's3'),
+        o_: one('o_', 's4'),
+      },
+    },
+    'data/e_.json?v=s1': [['e', 'e_:0', 'e', '', 'conj', 'and']],
+    'data/forms/e_.json?v=s1f': { e: { id: 'es:0', lemma: 'essere', label: '3s presente', form: 'è' } },
+    'data/a_.json?v=s2': [['a', 'a_:0', 'a', '', 'prep', 'to'], ['a', 'a_:1', 'à', '', 'verb', 'obsolete ha']],
+    'data/forms/a_.json?v=s2f': {},
+    'data/i_.json?v=s3': [['i', 'i_:0', 'i', '', 'article', 'the']],
+    'data/forms/i_.json?v=s3f': {},
+    'data/o_.json?v=s4': [['o', 'o_:0', 'o', '', 'conj', 'or'], ['o', 'o_:1', 'ò', '', 'intj', 'oh']],
+    'data/forms/o_.json?v=s4f': {},
+  });
+  const data = createData({ fetch, base: '' });
+  assert.deepEqual((await data.rows('e')).map((entry) => entry.id), ['e_:0'], 'data.rows("e") reads the padded bucket');
+  const reader = createReader({ data });
+  assert.equal((await reader.word('e'))?.id, 'e_:0', 'e: the conjunction');
+  assert.equal((await reader.word('è'))?.headword, 'essere', 'è: essere, by the written form');
+  assert.equal((await reader.word('a'))?.id, 'a_:0', 'a: the preposition');
+  assert.equal((await reader.word('à'))?.id, 'a_:1', 'à: the headword written that way');
+  assert.equal((await reader.word('i'))?.id, 'i_:0');
+  assert.equal((await reader.word('o'))?.id, 'o_:0');
+  assert.equal((await reader.word('ò'))?.id, 'o_:1', 'ò: the headword written that way');
+});
+
+test('the written-form preference is NFC and shared: dà, a decomposed è, the Text reader, and rasò', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { e_: oneFileBucket('e_', 't1'), da: oneFileBucket('da', 't2'), ra: oneFileBucket('ra', 't3') },
+    },
+    'data/e_.json?v=t1': [['e', 'e_:0', 'e', '', 'conj', 'and']],
+    'data/forms/e_.json?v=t1f': { e: { id: 'es:0', lemma: 'essere', label: '3s presente', form: 'è' } },
+    'data/da.json?v=t2': [['da', 'da:0', 'da', '', 'prep', 'from'], ['dare', 'da:1', 'dare', '', 'verb', 'to give']],
+    'data/forms/da.json?v=t2f': { da: { id: 'da:1', lemma: 'dare', label: '3s presente', form: 'dà' } },
+    'data/ra.json?v=t3': [['raso', 'ra:0', 'raso', '', 'noun', 'satin']],
+    'data/forms/ra.json?v=t3f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  assert.equal((await reader.word('dà'))?.headword, 'dare', 'dà: the written form wins over the preposition');
+  assert.equal((await reader.word('da'))?.headword, 'da', 'da: the preposition');
+  assert.equal((await reader.word('e\u0300'))?.headword, 'essere', 'a decomposed è is NFC before it is compared');
+  // KNOWN GAP: one forms record per folded key. "raso" has no record written "rasò", so rasò
+  // opens the headword raso, not rasare. A record per written form would close it.
+  assert.equal((await reader.word('rasò'))?.headword, 'raso', 'known gap: rasò opens raso, not rasare');
+
+  const { segments } = tokenize('È vero, e da qui dà luce.');
+  const resolved = await reader.read(segments);
+  assert.equal(resolved.get('è')?.headword, 'essere', 'the Text reader shares the lookup: È is essere');
+  assert.equal(resolved.get('e')?.headword, 'e', 'and e stays the conjunction in the same text');
+  assert.equal(resolved.get('dà')?.headword, 'dare');
+  assert.deepEqual(summarise(segments, resolved).unknown.map((entry) => entry.word), ['luce', 'qui', 'vero'], 'è and e are counted as two words');
+});
+
+test('the Text reader takes each word in place: Roma mid-sentence links, lowercase nella does not', async () => {
+  const { fetch } = fileFetch({
+    'data/index.json': { version: 'v1', buckets: { ro: oneFileBucket('ro', 'u1'), ne: oneFileBucket('ne', 'u2'), vi: oneFileBucket('vi', 'u3') } },
+    'data/ro.json?v=u1': [['roma', 'ro:0', 'Roma', '', 'name', 'Rome']],
+    'data/forms/ro.json?v=u1f': {},
+    'data/ne.json?v=u2': [['nella', 'ne:1', 'Nella', '', 'name', 'Nella']],
+    'data/forms/ne.json?v=u2f': {},
+    'data/vi.json?v=u3': [['vivo', 'vi:0', 'vivo', '', 'adj', 'alive']],
+    'data/forms/vi.json?v=u3f': {},
+  });
+  const reader = createReader({ data: createData({ fetch, base: '' }) });
+  const { segments } = tokenize('Vivo a Roma, e nella casa. Roma.');
+  const resolved = await reader.read(segments);
+  const places = contexts(segments);
+  const at = (/** @type {string} */ word, nth = 0) => {
+    const index = segments.map((segment, i) => (segment.text === word ? i : -1)).filter((i) => i >= 0)[nth];
+    return resolved.get(readKey(segments[index].text, places[index])) ?? null;
+  };
+  assert.equal(at('Roma')?.headword, 'Roma', 'Roma mid-sentence links to the name, as on a sentence page');
+  assert.equal(at('nella'), null, 'lowercase nella mid-sentence does not link to Nella');
+  assert.equal(at('Roma', 1), null, 'Roma first in its sentence is not a name reading');
+  assert.equal(summarise(segments, resolved).known, 2, 'vivo and Roma are known; the second Roma counts once');
+});
+
+test('a sentence miss searches the token as a whole word, one letter included', async () => {
+  const storage = createStorage(fakeBackend());
+  storage.addQuery('esempio');
+  const rows = [row('e', 'e', 'and'), row('ecco', 'ecco', 'here is')];
+  const search = createSearch({ data: memoryData(rows), storage, fetch: noEnglish });
+  assert.deepEqual((await search.search('è')).rows, [], 'a typed letter still reads history');
+  assert.deepEqual((await search.search('è', { whole: true })).rows.map((entry) => entry.headword), ['e'], 'whole: the exact word only');
+  assert.deepEqual((await search.search('è', { whole: true })).history, []);
+});
+
 test('the palette is the Italian alphabet plus the accented vowels, grouped by sound', () => {
   assert.deepEqual(PALETTE.map((family) => family.sound), ['A', 'E', 'I', 'O', 'U', '']);
   const letters = PALETTE.flatMap((family) => family.letters);
@@ -548,6 +818,18 @@ test('the entry back control returns to the screen the app came from, and Search
   assert.deepEqual(backTarget('text'), { label: 'Text', history: true });
   assert.deepEqual(backTarget('search'), { label: 'Search', history: true });
   assert.deepEqual(backTarget('settings'), { label: 'Settings', history: true });
+});
+
+test('back controls come from a one-shot flag, never from the route drawn before', () => {
+  assert.deepEqual(backFor('entry', 'sentence', 'search'), { label: 'Sentence', history: true }, 'a word tap steps back to its sentence');
+  assert.deepEqual(backFor('sentence', 'entry', ''), { label: 'Entry', history: true }, 'an example row steps back to its entry');
+  assert.deepEqual(backFor('sentence', '', 'search'), { label: 'Search', history: false }, 'no flag: a link to Search, never history.back()');
+  assert.deepEqual(backFor('sentence', '', ''), { label: 'Search', history: false }, 'a cold sentence link');
+  assert.deepEqual(backFor('sentence', 'sentence', 'lists'), { label: 'Search', history: false }, 'a stale flag of the other kind does nothing');
+  // Back from a sentence lands on entry A with no flag: it is the entry's own back, not Sentence.
+  assert.deepEqual(backFor('entry', '', 'search'), { label: 'Search', history: true });
+  assert.deepEqual(backFor('entry', '', ''), { label: 'Search', history: false }, 'a cold-linked entry never leaves the app');
+  assert.deepEqual(backFor('entry', 'entry', 'lists'), { label: 'Lists', history: true });
 });
 
 // ---------------------------------------------------------------- lists, notes and files
@@ -660,7 +942,7 @@ test('an imported list gets a new name, and a backup restores the same counts', 
   const storage = createStorage(backend, clock);
   const list = storage.addList('Travel', 'Travel');
   storage.addItem(list.id, { id: 'ca:0', word: 'casa' });
-  storage.setNote('ca:0', 'a note');
+  storage.setNote('ca:0', 'a note', 'casa');
   storage.addQuery('casa');
 
   const file = parsePackage({
@@ -695,15 +977,34 @@ test('notes come back newest first, and an edit moves a note up', () => {
   const backend = fakeBackend();
   let clock = 100;
   const storage = createStorage(backend, () => clock);
-  storage.setNote('ca:0', 'first');
+  storage.setNote('ca:0', 'first', 'casa');
   clock = 200;
-  storage.setNote('vi:1', 'second');
+  storage.setNote('vi:1', 'second', 'via');
   clock = 300;
-  storage.setNote('ca:0', 'edited');
+  storage.setNote('ca:0', 'edited', 'casa');
   assert.deepEqual(storage.notes().map((note) => note.id), ['ca:0', 'vi:1'], 'the newest edit leads');
   assert.equal(storage.notes()[0].text, 'edited');
-  storage.setNote('ca:0', '');
+  storage.setNote('ca:0', '', 'casa');
   assert.deepEqual(storage.notes().map((note) => note.id), ['vi:1'], 'an empty note leaves no row');
+});
+
+test('a note is never destroyed silently: no write without a word, none over another word', () => {
+  const storage = createStorage(fakeBackend());
+  assert.equal(storage.setNote('ca:0', 'no word yet', ''), false, 'an empty word is refused');
+  assert.equal(storage.setNote('ca:0', 'cold link', 'ca:0'), false, 'a cold link id as the word is refused');
+  assert.equal(storage.note('ca:0'), '');
+  assert.equal(storage.setNote('ca:0', 'about the house', 'casa'), true);
+  assert.equal(storage.setNote('ca:0', 'about the case', 'caso'), false, 'another word cannot overwrite it');
+  assert.equal(storage.setNote('ca:0', '', 'caso'), false, 'nor clear it');
+  assert.equal(storage.note('ca:0'), 'about the house');
+  assert.equal(storage.notes()[0].word, 'casa');
+  assert.equal(storage.setNote('ca:0', 'edited', 'Casa'), true, 'its own word, folded, can edit it');
+  assert.equal(storage.note('ca:0'), 'edited');
+
+  // A note from before words were stored has no owner: the first word that writes adopts it.
+  const old = createStorage(fakeBackend(JSON.stringify({ v: 2, data: { notes: { 'ca:0': 'old note' } } })));
+  assert.equal(old.setNote('ca:0', 'old note, kept', 'casa'), true);
+  assert.equal(old.notes()[0].word, 'casa');
 });
 
 test('settings keep known values and the envelope reports its size', () => {
@@ -715,6 +1016,201 @@ test('settings keep known values and the envelope reports its size', () => {
   });
   assert.ok(storage.size() > 0);
   assert.equal(storage.setSettings({ theme: 'light', textSize: 2 }).textSize, 2);
+});
+
+// ---------------------------------------------------------------- ids a rebuild moved
+
+/**
+ * A rebuild that reflowed a split: `cas:0` was casa and is now caso, and casa moved to `cas:1`.
+ * `cas:2` is a second casa, a homograph, which must not pull anything to itself.
+ */
+function movedBuild() {
+  return fileFetch({
+    'data/index.json': {
+      version: 'v2',
+      buckets: {
+        ca: {
+          search: [{ path: 'data/ca.json', hash: 'r1' }],
+          entry: [{ path: 'data/entry/ca.json', hash: 'r2' }],
+          forms: [{ path: 'data/forms/ca.json', hash: 'r3' }],
+          ex: [],
+        },
+      },
+    },
+    'data/ca.json?v=r1': [
+      ['caso', 'ca:0', 'caso', '', 'noun', 'case'],
+      ['casa', 'ca:1', 'casa', '', 'noun', 'house'],
+      ['cane', 'ca:2', 'cane', '', 'noun', 'dog'],
+    ],
+    'data/entry/ca.json?v=r2': [
+      { id: 'ca:0', word: 'caso', pos: [{ pos: 'noun', senses: ['case'] }], ex: [] },
+      { id: 'ca:1', word: 'casa', pos: [{ pos: 'noun', senses: ['house'] }], ex: [] },
+      { id: 'ca:2', word: 'cane', pos: [{ pos: 'noun', senses: ['dog'] }], ex: [] },
+    ],
+    'data/forms/ca.json?v=r3': { case: { id: 'ca:1', lemma: 'casa', label: 'plurale' } },
+  });
+}
+
+test('an item whose id a rebuild moved resolves by its stored word to the new id', async () => {
+  const { fetch } = movedBuild();
+  const dictionary = wordDictionary(createData({ fetch, base: '' }), fold);
+  const moved = await relocate(
+    [
+      { id: 'ca:0', word: 'casa' }, // moved: ca:0 is caso now
+      { id: 'ca:0', word: 'casa' }, // the same item twice is read once
+      { id: 'ca:2', word: 'cane' }, // in place
+      { id: 'ca:1', word: 'case' }, // a form of casa, not a headword: never moved onto the lemma
+      { id: 'ca:2', word: 'gatto' }, // the word left the dictionary
+      { id: 'ca:0', word: '' }, // no word: never checked
+      { id: 'ca:0', word: 'ca:0' }, // a cold-link id stored as the word: never checked
+    ],
+    dictionary,
+  );
+  assert.deepEqual(moved.find((move) => move.word === 'casa'), { from: 'ca:0', word: 'casa', to: 'ca:1', why: 'moved' });
+  assert.equal(moved.filter((move) => move.word === 'casa').length, 1, 'one answer per distinct item');
+  assert.equal(moved.find((move) => move.word === 'cane'), undefined, 'an item still on its headword stays');
+  assert.deepEqual(
+    moved.find((move) => move.word === 'case'),
+    { from: 'ca:1', word: 'case', to: null, why: 'missing' },
+    'a word that is only a form is missing: the lemma is a different headword',
+  );
+  assert.deepEqual(
+    moved.find((move) => move.word === 'gatto'),
+    { from: 'ca:2', word: 'gatto', to: null, why: 'missing' },
+    'a lost word has nowhere to go, and stays',
+  );
+  assert.equal(moved.length, 3);
+  assert.equal(hasWord({ id: 'ca:0', word: '' }), false);
+  assert.equal(hasWord({ id: 'ca:0', word: 'ca:0' }), false);
+  assert.equal(hasWord({ id: 'ca:0', word: 'casa' }), true);
+
+  const offline = await relocate([{ id: 'ca:0', word: 'casa' }], {
+    fold,
+    headwordOf: async () => {
+      throw new Error('offline');
+    },
+    idsOfWord: async () => ['ca:1'],
+  });
+  assert.deepEqual(offline, [], 'a lookup that fails decides nothing');
+});
+
+test('homographs: a single same-bucket candidate resolves, and candidates that disagree leave the item put', async () => {
+  // Pure rule: only a candidate in the old id's two-letter bucket counts.
+  const stub = (/** @type {string[]} */ ids) => ({
+    fold,
+    headwordOf: async () => 'altro',
+    idsOfWord: async () => ids,
+  });
+  assert.deepEqual(
+    await relocate([{ id: 'cas:3', word: 'casa' }], stub(['zz:9', 'casa:4'])),
+    [{ from: 'cas:3', word: 'casa', to: 'casa:4', why: 'moved' }],
+    'one candidate in the same bucket wins, even across a file split (cas -> casa)',
+  );
+  assert.deepEqual(
+    await relocate([{ id: 'cas:3', word: 'casa' }], stub(['zz:9'])),
+    [{ from: 'cas:3', word: 'casa', to: null, why: 'missing' }],
+    'a candidate in another bucket alone does not count',
+  );
+
+  // Through the data client: pesca is two entries, a noun and a verb, and pe:2 is pesce now.
+  const { fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v2',
+      buckets: {
+        pe: {
+          search: [{ path: 'data/pe.json', hash: 'p1' }],
+          entry: [{ path: 'data/entry/pe.json', hash: 'p2' }],
+          forms: [{ path: 'data/forms/pe.json', hash: 'p3' }],
+          ex: [],
+        },
+      },
+    },
+    'data/pe.json?v=p1': [
+      ['pesca', 'pe:0', 'pesca', '', 'noun', 'peach'],
+      ['pesca', 'pe:1', 'pesca', '', 'verb', 'he fishes'],
+      ['pesce', 'pe:2', 'pesce', '', 'noun', 'fish'],
+    ],
+    'data/entry/pe.json?v=p2': [
+      { id: 'pe:0', word: 'pesca', pos: [{ pos: 'noun', senses: ['frutto'] }], ex: [] },
+      { id: 'pe:1', word: 'pesca', pos: [{ pos: 'verb', senses: ['pescare'] }], ex: [] },
+      { id: 'pe:2', word: 'pesce', pos: [{ pos: 'noun', senses: ['animale'] }], ex: [] },
+    ],
+    'data/forms/pe.json?v=p3': {},
+  });
+  const dictionary = wordDictionary(createData({ fetch, base: '' }), fold);
+  assert.deepEqual(await dictionary.idsOfWord('pesca'), ['pe:0', 'pe:1'], 'both homographs are candidates');
+  assert.deepEqual(
+    await relocate([{ id: 'pe:2', word: 'pesca' }], dictionary),
+    [{ from: 'pe:2', word: 'pesca', to: null, why: 'ambiguous' }],
+    'two candidates disagree: nothing moves',
+  );
+  assert.deepEqual(await relocate([{ id: 'pe:1', word: 'pesca' }], dictionary), [], 'an item still on one of them stays');
+
+  const storage = createStorage(fakeBackend());
+  storage.setNote('pe:2', 'a note about peaches', 'pesca');
+  for (const move of await relocate([{ id: 'pe:2', word: 'pesca' }], dictionary)) {
+    if (move.to !== null) storage.rekeyAll([{ from: move.from, to: move.to, word: move.word }], fold);
+  }
+  assert.equal(storage.note('pe:2'), 'a note about peaches', 'the note stays at its old id');
+  assert.equal(storage.note('pe:0') + storage.note('pe:1'), '', 'and lands on neither homograph');
+});
+
+test('rekeyAll moves a moved note and list item to the new id, and leaves what another word owns', () => {
+  const storage = createStorage(fakeBackend());
+  storage.setNote('ca:0', 'my house note', 'casa');
+  storage.setNote('ca:1', 'already here', 'casa');
+  storage.setNote('ca:2', 'about the dog', 'cane');
+  const words = storage.addList('Words', 'Nouns');
+  const other = storage.addList('Other', 'Other');
+  storage.addItem(words.id, { id: 'ca:0', word: 'casa' });
+  storage.addItem(other.id, { id: 'ca:0', word: 'casa' });
+  storage.addItem(other.id, { id: 'ca:1', word: 'casa' });
+  storage.addItem(words.id, { id: 'ca:2', word: 'cane' });
+
+  assert.equal(storage.rekeyAll([{ from: 'ca:0', to: 'ca:1', word: 'Casa' }], fold), 3, 'one note and two list items moved');
+  assert.equal(storage.note('ca:0'), '', 'nothing is left at the old id');
+  assert.equal(storage.note('ca:1'), 'already here\n\nmy house note', 'a note meeting a note is appended, never lost');
+  const lists = storage.lists();
+  assert.deepEqual(lists.find((list) => list.id === words.id)?.items, [
+    { id: 'ca:1', word: 'casa' },
+    { id: 'ca:2', word: 'cane' },
+  ]);
+  assert.deepEqual(lists.find((list) => list.id === other.id)?.items, [{ id: 'ca:1', word: 'casa' }], 'a duplicate is dropped');
+
+  assert.equal(storage.rekeyAll([{ from: 'ca:2', to: 'ca:1', word: 'casa' }], fold), 0, 'an item another word owns stays');
+  assert.equal(storage.note('ca:2'), 'about the dog');
+  assert.equal(storage.rekeyAll([{ from: 'ca:1', to: 'ca:1', word: 'casa' }], fold), 0);
+});
+
+test('rekeyAll applies chained shifts from one snapshot: casa ca:3 -> ca:4 while caso ca:4 -> ca:5', () => {
+  const storage = createStorage(fakeBackend());
+  storage.setNote('ca:3', 'about the house', 'casa');
+  storage.setNote('ca:4', 'about the case', 'caso');
+  const list = storage.addList('Words', 'Nouns');
+  storage.addItem(list.id, { id: 'ca:3', word: 'casa' });
+  storage.addItem(list.id, { id: 'ca:4', word: 'caso' });
+  // Either order of the moves gives the same result.
+  for (const moves of [
+    [{ from: 'ca:3', to: 'ca:4', word: 'casa' }, { from: 'ca:4', to: 'ca:5', word: 'caso' }],
+    [{ from: 'ca:4', to: 'ca:5', word: 'caso' }, { from: 'ca:3', to: 'ca:4', word: 'casa' }],
+  ]) {
+    const copy = createStorage(fakeBackend(JSON.stringify({ v: 3, data: storage.snapshot() })));
+    assert.equal(copy.rekeyAll(moves, fold), 4, 'two notes and two list items moved');
+    assert.deepEqual(
+      copy.notes().map((note) => [note.id, note.word, note.text]).sort(),
+      [['ca:4', 'casa', 'about the house'], ['ca:5', 'caso', 'about the case']],
+      'no note is merged into another word',
+    );
+    assert.deepEqual(copy.lists()[0].items, [{ id: 'ca:4', word: 'casa' }, { id: 'ca:5', word: 'caso' }], 'no list item is dropped');
+  }
+
+  // A destination another word keeps: that move is dropped and its item stays.
+  const blocked = createStorage(fakeBackend());
+  blocked.setNote('ca:3', 'about the house', 'casa');
+  blocked.setNote('ca:4', 'about the dog', 'cane');
+  assert.equal(blocked.rekeyAll([{ from: 'ca:3', to: 'ca:4', word: 'casa' }], fold), 0);
+  assert.equal(blocked.note('ca:3'), 'about the house');
+  assert.equal(blocked.note('ca:4'), 'about the dog');
 });
 
 // ---------------------------------------------------------------- the Reference catalogue
@@ -752,7 +1248,7 @@ test('the parts-of-speech index counts every row and keeps the first rows in ord
 
 // ---------------------------------------------------------------- routes
 
-test('the router parses exactly the seven routes, and nothing else', () => {
+test('the router parses exactly the eight routes, and nothing else', () => {
   assert.deepEqual(parseRoute(''), { name: 'search', id: null });
   assert.deepEqual(parseRoute('#/'), { name: 'search', id: null });
   for (const name of ['search', 'text', 'reference', 'lists', 'study', 'settings']) {
@@ -761,6 +1257,24 @@ test('the router parses exactly the seven routes, and nothing else', () => {
   assert.deepEqual(parseRoute('#/entry/casa'), { name: 'entry', id: 'casa' });
   assert.deepEqual(parseRoute(entryHash('ca:42')), { name: 'entry', id: 'ca:42' });
   for (const hash of ['#/nope', '#/entry', '#/entry/', '#/entry/a/b', '#/search/x', 'nope', '#/Entry/casa']) {
+    assert.equal(parseRoute(hash), null, hash + ' is not a route');
+  }
+  assert.deepEqual(parseRoute('#/sentence/ca/4507'), { name: 'sentence', id: 'ca:4507' });
+  assert.deepEqual(parseRoute('#/sentence/e_/1'), { name: 'sentence', id: 'e_:1' });
+  assert.deepEqual(parseRoute('#/sentence/__/1234567890'), { name: 'sentence', id: '__:1234567890' });
+  assert.equal(sentenceHash('ca', '4507'), '#/sentence/ca/4507');
+  assert.deepEqual(parseRoute(sentenceHash('co', '42')), { name: 'sentence', id: 'co:42' }, 'sentenceHash round-trips');
+  for (const hash of [
+    '#/sentence',
+    '#/sentence/ca',
+    '#/sentence/ca/',
+    '#/sentence/ca/x1',
+    '#/sentence/CA/1',
+    '#/sentence/abc/1',
+    '#/sentence/ca/1/2',
+    '#/sentence//1',
+    '#/sentence/ca/12345678901',
+  ]) {
     assert.equal(parseRoute(hash), null, hash + ' is not a route');
   }
 });
@@ -875,7 +1389,7 @@ test('the manifest parses into four file sets per bucket, with the hash of each 
   assert.equal(manifest?.version, 'v1-x');
   assert.equal(manifest?.partial, false);
   assert.deepEqual(manifest?.totals, { entries: 2, forms: 3, examples: 4, bytes: 5 });
-  assert.deepEqual(manifest?.sources, [{ name: 'kaikki', url: 'https://example.org', licence: 'CC BY-SA' }]);
+  assert.deepEqual(manifest?.sources, [{ name: 'kaikki', url: 'https://example.org', licence: 'CC BY-SA', attribution: '' }]);
   assert.deepEqual(manifest?.buckets.ca.entry, [{ path: 'data/entry/ca.json', bytes: 11, hash: 'b2' }]);
   assert.equal(manifest?.buckets.broken, undefined);
   assert.equal(manifest?.buckets.empty, undefined);
@@ -933,9 +1447,93 @@ test('a row, an entry, the forms and the examples are read from the shapes the b
   assert.equal(toEntry({ id: 'ca:1' }), null, 'an entry without a word cannot be drawn');
 
   assert.deepEqual([...parseForms({ case: { id: 'ca:0', lemma: 'casa', label: 'plurale' } }).values()], [
-    { id: 'ca:0', lemma: 'casa', label: 'plurale' },
+    { id: 'ca:0', lemma: 'casa', label: 'plurale', form: '' },
+  ], 'a record without its written form reads form as empty');
+  assert.equal(parseForms({ e: { id: 'es:0', lemma: 'essere', label: '3s', form: 'è' } }).get('e')?.form, 'è');
+  assert.deepEqual(parseExamples([['e1', 'La casa è grande.'], ['e2', 'Vado a casa.']]), [
+    { id: 'e1', it: 'La casa è grande.', en: '' },
+    { id: 'e2', it: 'Vado a casa.', en: '' },
+  ], 'a legacy two-element row reads with no English');
+});
+
+test('parseExamples keeps one record per row: English, empty English, legacy, and a bad row in place', () => {
+  const rows = parseExamples([
+    ['4411', 'La casa è grande.', 'The house is big.'],
+    ['4507', 'Vado a casa.', 'I am going home.'],
+    ['4600', "L'acqua è fredda.", ''],
+    'junk',
+    ['4700', 'Il cane dorme.'],
+    [4800, 'Il gatto mangia.', ' The cat eats. '],
   ]);
-  assert.deepEqual(parseExamples([['e1', 'La casa è grande.'], ['e2', 'Vado a casa.']]), ['La casa è grande.', 'Vado a casa.']);
+  assert.equal(rows.length, 6, 'no row is dropped, so positions hold');
+  assert.deepEqual(rows[0], { id: '4411', it: 'La casa è grande.', en: 'The house is big.' }, 'a row with English');
+  assert.deepEqual(rows[1], { id: '4507', it: 'Vado a casa.', en: 'I am going home.' });
+  assert.deepEqual(rows[2], { id: '4600', it: "L'acqua è fredda.", en: '' }, 'an empty English stays empty');
+  assert.deepEqual(rows[3], { id: '', it: '', en: '' }, 'a bad row keeps its place, empty');
+  assert.equal(rows[4].it, 'Il cane dorme.', 'the row after a bad row keeps its position');
+  assert.deepEqual(rows[5], { id: '4800', it: 'Il gatto mangia.', en: 'The cat eats.' }, 'a numeric id reads as a string, the English trimmed');
+  assert.deepEqual(parseExamples({ 9: 'Ciao.' }), [{ id: '9', it: 'Ciao.', en: '' }], 'an object keyed by id');
+  assert.deepEqual(parseExamples(null), []);
+  assert.equal(exampleBucket('com:1'), 'co');
+  assert.equal(exampleBucket('e_:0'), 'e_');
+  assert.equal(exampleBucket('ca:42'), 'ca');
+  assert.equal(exampleBucket('nope'), '');
+});
+
+test('sentence() finds a row by id through the same hashed fetch as examples()', async () => {
+  const { calls, fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { ca: { search: [], entry: [], forms: [], ex: [{ path: 'data/ex/ca.json', hash: 'x1' }] } },
+    },
+    'data/ex/ca.json?v=x1': [
+      ['4411', 'La casa è grande.', 'The house is big.'],
+      ['4507', 'Vado a casa.', 'I am going home.'],
+      ['4600', 'Casa mia.', ''],
+    ],
+  });
+  const data = createData({ fetch, base: '' });
+  assert.equal((await data.examples('ca')).length, 3);
+  assert.deepEqual(await data.sentence('ca', '4507'), { id: '4507', it: 'Vado a casa.', en: 'I am going home.' });
+  assert.equal((await data.sentence('ca', '4600'))?.en, '', 'an empty English reads as empty, not missing');
+  assert.equal(await data.sentence('ca', '9999'), null, 'an unknown id');
+  assert.equal(await data.sentence('zz', '4411'), null, 'an unknown bucket');
+  assert.equal(calls.filter((url) => url === 'data/ex/ca.json?v=x1').length, 1, 'one fetch shared by examples() and sentence()');
+});
+
+test('About reads attribution lines from the manifest sources, and none draws no blank', () => {
+  const base = { version: 'v1', buckets: { ca: { search: [{ path: 'data/ca.json', hash: 'h' }] } } };
+  const before = parseManifest({ ...base, sources: [{ url: 'https://tatoeba.org/x', licence: 'CC BY 2.0 FR' }] });
+  assert.deepEqual(attributions(/** @type {any} */ (before)), [], 'a manifest from before the rebuild has no line, and no blank');
+  const tatoeba = 'Frasi e traduzioni da Tatoeba (tatoeba.org), CC BY 2.0 FR';
+  const after = parseManifest({
+    ...base,
+    sources: [
+      { url: 'https://kaikki.org/x', licence: 'CC BY-SA 4.0' },
+      { url: 'https://tatoeba.org/ita', licence: 'CC BY 2.0 FR', attribution: tatoeba },
+      { url: 'https://tatoeba.org/eng', licence: 'CC BY 2.0 FR', attribution: ' ' + tatoeba + ' ' },
+      { url: 'https://example.org/other', licence: 'CC BY 4.0', attribution: 'Altra fonte, CC BY 4.0' },
+      { url: 'https://x', licence: '', attribution: '' },
+    ],
+  });
+  assert.deepEqual(attributions(/** @type {any} */ (after)), [tatoeba, 'Altra fonte, CC BY 4.0'], 'in source order, each once, trimmed, none blank');
+});
+
+test('a second sentence() call reads no file', async () => {
+  const { calls, fetch } = fileFetch({
+    'data/index.json': {
+      version: 'v1',
+      buckets: { ca: { search: [], entry: [], forms: [], ex: [{ path: 'data/ex/ca.json', hash: 'x2' }] } },
+    },
+    'data/ex/ca.json?v=x2': [['4507', 'Vado a casa.', 'I am going home.']],
+  });
+  const data = createData({ fetch, base: '' });
+  assert.equal((await data.sentence('ca', '4507'))?.en, 'I am going home.');
+  const before = calls.length;
+  assert.equal(before, 2, 'a cold sentence costs the manifest and one ex file');
+  assert.equal((await data.sentence('ca', '4507'))?.it, 'Vado a casa.');
+  assert.equal(await data.sentence('ca', '1'), null);
+  assert.equal(calls.length, before, 'the second and third calls fetch nothing');
 });
 
 test('createData reads the manifest once, one hashed file per lookup, and an entry from its id', async () => {
@@ -968,7 +1566,7 @@ test('createData reads the manifest once, one hashed file per lookup, and an ent
   const entry = await data.entry('ca:1');
   assert.equal(entry?.headword, 'cane', 'the id names its bucket and position');
   assert.equal(calls.filter((url) => url === 'data/entry/ca.json?v=h2').length, 1, 'one entry fetch, no search first');
-  assert.deepEqual((await data.examples('ca')).slice(0, 1), ['La casa è grande.']);
+  assert.deepEqual((await data.examples('ca')).map((example) => example.it).slice(0, 1), ['La casa è grande.']);
   assert.equal((await data.forms('case')).get('case')?.id, 'ca:0');
   assert.equal(await data.entry('ca:99'), null, 'a position past the file is not an entry');
   assert.equal(await data.entry('nope'), null, 'an id without a bucket is not an entry');
@@ -1065,7 +1663,7 @@ test('a graded card survives a reload, with its note and the History deck', () =
   const first = createStorage(backend);
   const graded = gradeCard(newCard(now), true, now);
   first.setSchedule('co:5', graded);
-  first.setNote('co:5', 'comprare = to buy');
+  first.setNote('co:5', 'comprare = to buy', 'comprare');
   first.addOpened('co:5');
 
   const again = createStorage(fakeBackend(backend.raw()));

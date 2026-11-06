@@ -26,8 +26,8 @@ when the manifest is missing.
 
 ### Checks
 
-All 22 rows below passed on build `v1-8ffb3c86b224`, and again on `v1-ff5b79f38403`, the build that
-added the English glosses.
+Rows 1 to 22 passed on build `v1-8ffb3c86b224`, and again on `v1-ff5b79f38403`, the build that
+added the English glosses. All 33 rows passed on `v1-0b0640e0c4a1`, the human-only example build.
 
 | # | Check | Pass looks like | Result |
 |---|---|---|---|
@@ -54,6 +54,40 @@ added the English glosses.
 | 21 | No failed response | No 4xx or 5xx, apart from one deliberate miss | pass |
 | 22 | A clean console | No console error while online | pass |
 
+### The sentence page checks
+
+ADR 0005 added these. The fixture is the first row of `data/ex/ca.json` whose Italian has the word
+`casa`. Every row of every ex file in the manifest must carry English: one without fails the run.
+The word-target checks add a fixture row "a e i o" to the ca ex file, in their own context.
+
+| # | Check | Pass looks like | Result |
+|---|---|---|---|
+| 23 | A `casa` row exists | `data/ex/ca.json` has one | pass |
+| 24 | Every example has English | No row of any ex file in the manifest has an empty English | pass |
+| 25 | Cold sentence link, Italian | `#/sentence/ca/<sid>` in a fresh context draws `.sentence-it` equal to the row | pass |
+| 26 | Cold sentence link, English | `.sentence-en` equals the row's English | pass |
+| 27 | No error on the cold links | The page-error list is empty | pass |
+| 28 | The target fixture draws | "a e i o" draws as four word buttons | pass |
+| 29 | Word targets are 24x44 | Every word button is at least 24 px wide and 44 px tall | pass |
+| 30 | Word targets never cross | No two boxes on a line overlap, and 1 px either side of each glyph midpoint hits the nearer word or the gap, never the other word | pass |
+| 31 | Sentence offline, Italian | After the download and the offline relaunch, the link draws the Italian | pass |
+| 32 | Sentence offline, English | The same, for the English | pass |
+| 33 | A word tap offline | A tap on `casa` draws the `casa` entry | pass |
+
+On 2026-11-06 the run over build `v1-0b0640e0c4a1`, the human-only data with the first supported
+form claim, passed 33 of 33 with the worktree's own Playwright 1.65, on the branch tip. The same day
+`npm test` passed 74 of 74, `npx tsc --noEmit` was clean, and `npm run check` passed: 61,820
+entries, 233,171 forms, 33,329 sentences, 586 buckets, 67,149,192 bytes. On the earlier build
+`v1-0ac8a1e3d95a`, whose rows carried no English, the English checks failed, as they should.
+
+Measured on that build at 390x844: the Entry row of an entry with one example (cabinato) is 112 px
+tall with its English, and its chevron's centre is the row's centre. A short first word ("I" in
+350517) starts at the margin with its 24 px target in the padding, inside the screen's edge and
+below the navbar. Screenshots: `/tmp/itadict-shots/final-entry-one.png`, `final-entry-zero.png`
+(cablogramma), `final-entry-zero-name.png` (Aarhus, a name with no examples),
+`final-sentence-v2.png`, `final-sentence-v2-zoom.png`, `final-sentence-aeio.png` and
+`final-word-tap.png`.
+
 ### How the run fakes offline
 
 Two cuts, both needed. `context.setOffline(true)` stops the page's own requests. Closing the server
@@ -72,9 +106,9 @@ device wipe removes. Not run.
 
 | Gate | Result |
 |---|---|
-| `npm test` | 48 of 48 pass |
+| `npm test` | 74 of 74 pass |
 | `npx tsc --noEmit` | clean |
-| `npm run check` | pass: 61,820 entries, 232,248 forms, 49,283 sentences, 478 buckets, 61,769,166 bytes |
+| `npm run check` | pass: 61,820 entries, 233,171 forms, 33,329 sentences, 586 buckets, 67,149,192 bytes |
 | English coverage | 76.5%, 47,277 of 61,820 entries |
 
 ## The local gate
@@ -125,12 +159,14 @@ works on either origin.
 
 | Measure | Bytes |
 |---|---|
-| Entry file, 90th percentile | 74,951 |
-| Largest entry file | 244,181 |
-| Largest entry file, gzipped | 47,493 |
-| Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 66,334,993 bytes in the manifest |
-| English lookup index | 1,943,440 bytes of the total |
+| Entry file, 90th percentile | 74,564 |
+| Largest entry file | 243,439 |
+| Largest entry file, gzipped | 47,576 |
+| Entry files | 948, from 22,339,073 bytes |
+| Example file, 90th percentile | 31,656 |
+| Largest example file | 169,412, 61,553 gzipped |
+| Whole data set | 66,703,466 bytes in the manifest |
+| English lookup index | 1,943,073 bytes of the total |
 
 One tap on a row costs one entry file and one example file. Both are cached forever after the first
 read, because their URL carries the file hash.
@@ -152,6 +188,9 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 | The full 59.8 MB download on a phone | Needs the free disk and the real network | not run |
 | Memory pressure with the whole dictionary cached | A desktop machine has different limits | not run |
 | Tap targets under a thumb | Hit areas can be measured; reach cannot | not run |
+| Sentence word targets on an iPhone | The harness measures each word button at least 24 px wide and 44 px tall; a one-letter word (`è`, `a`) under a thumb needs the phone | not run |
+| VoiceOver on a word button | Each word is a `<button>` inside `lang="it"` text; the voice and the rotor order need the device | not run |
+| The long-English clamp | The harness shows two lines and an ellipsis at 390 px; Safari's `-webkit-line-clamp` at the user's text size needs the device | not run |
 
 ## Open item: the iPhone check
 
@@ -187,12 +226,12 @@ in the same table as a failure, not as a plan.
 | Field | Value |
 |---|---|
 | Date | 2026-11-06 |
-| Build from `data/index.json` | `v1-ff5b79f38403` for the gates below. The local gate and the live origin ran on `v1-8ffb3c86b224`. The current build is `v1-7e4046481140`, and its gates are not re-run yet |
+| Build from `data/index.json` | `v1-0b0640e0c4a1` for the automated gates below. The local gate and the live origin last ran on `v1-8ffb3c86b224` |
 | Browser and version | Headless Chromium for the automated gate; a local Chromium at the iPhone 13 profile for the manual run; Firefox for the live origin |
-| `npm test` | 48 of 48 pass |
+| `npm test` | 75 of 75 pass |
 | `npx tsc --noEmit` | clean |
 | `npm run check` | pass, with the coverage line |
-| Checks 1 to 22 | 22 of 22 pass on `v1-ff5b79f38403` |
+| Checks 1 to 33 | 33 of 33 pass on `v1-0b0640e0c4a1` |
 | The local gate | 19 requests, all under `/itadict/`; 0 console errors; cold start and offline search pass |
 | The live origin | search and entry pass; worker scope and both caches as listed; 0 console errors |
 | Failures, with cause | none |
@@ -208,3 +247,7 @@ in the same table as a failure, not as a plan.
 | 2026-11-06 | `v1-8ffb3c86b224` | The local gate at iPhone 13, and the live origin | Pass. Device rows open. |
 | 2026-11-06 | `v1-ff5b79f38403` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 48 of 48, clean, pass with the coverage line, 22 of 22. |
 | 2026-11-06 | `v1-7e4046481140` | The data rebuild: the English index and both glosses on every row | not re-run. The gates above stand on the previous build |
+| 2026-11-06 | `v1-96e792b8e32a` | The link-first example rebuild: `[id, it, en]` rows, pinned split plan. `npm test`, `npx tsc --noEmit`, `npm run check`, three builds compared | 62 of 62, clean, pass, byte-identical. 0 entry ids moved. `npm run verify:offline` is B2's run |
+| 2026-11-06 | `v1-16ca5ad4c4ba` | Capitalised headwords match examples by exact case, never sentence-initial. `npm test`, `npx tsc --noEmit`, `npm run check`, three builds compared | 65 of 65, clean, pass, byte-identical. 0 entry ids moved. `npm run verify:offline` is B2's run |
+| 2026-11-06 | `v1-398a82a1a4b5` | The form index: the most frequent shipped lemma per form, and the raw spelling in `form`. `npm test`, `npx tsc --noEmit`, `npm run check`, three builds compared | 74 of 74, clean, pass, byte-identical. 0 entry ids moved. `npm run verify:offline` is B2's run |
+| 2026-11-06 | `v1-0b0640e0c4a1` | The form index back to the first supported claim, keeping the gloss filter and `form`. `npm test`, `npx tsc --noEmit`, `npm run check`, two builds compared | 74 of 74, clean, pass, byte-identical. 0 entry ids moved. `npm run verify:offline` is B2's run |

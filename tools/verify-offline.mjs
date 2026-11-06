@@ -7,6 +7,11 @@
  * docs/verification/gate-2.md for what this cannot prove: the safe areas, the home-screen install,
  * the status bar, the voices, the swipe and the eviction.
  *
+ * The sentence page is checked with a fixture read from the data: the first row of data/ex/ca.json
+ * whose Italian has the word `casa`. Online, a cold deep link draws its Italian and English;
+ * offline, after the download action, it draws them again and a tap on `casa` opens that entry.
+ * Every row of every ex file in the manifest must carry English: one without fails the run.
+ *
  * One deliberate miss is in the run: the download action is asked for a file that does not exist,
  * to prove one bad file is counted and the run goes on. Every response is checked except that one.
  */
@@ -139,6 +144,13 @@ check('every module under js/ is precached', absent.length === 0, absent.join(',
 let build;
 let caCount = 0;
 let casaId = '';
+/** The sentence fixture: the first `casa` row of ca. */
+/** @type {{ sid: string, it: string, en: string } | null} */
+let casaSentence = null;
+/** The example rows of every ex file with no English, how many rows were read, and the first miss. */
+let noEnglish = 0;
+let exRows = 0;
+let noEnglishFirst = '';
 try {
   build = JSON.parse(await readFile(join(REPO, 'data', 'index.json'), 'utf8'));
   // The bucket file list changes with the split cap, so derive the fixtures from the manifest.
@@ -149,6 +161,34 @@ try {
     if (home) {
       casaId = home.id;
       break;
+    }
+  }
+  /** @param {unknown} row */
+  const fixtureOf = (row) =>
+    Array.isArray(row) && typeof row[1] === 'string'
+      ? { sid: String(row[0]), it: row[1], en: typeof row[2] === 'string' ? row[2].trim() : '' }
+      : null;
+  for (const file of caFiles.ex) {
+    for (const row of JSON.parse(readFileSync(join(REPO, file.path), 'utf8'))) {
+      const fixture = fixtureOf(row);
+      if (fixture === null) continue;
+      const words = fixture.it.toLowerCase().split(/[^\p{L}'\u2019]+/u);
+      if (casaSentence === null && words.includes('casa')) {
+        casaSentence = fixture;
+        break;
+      }
+    }
+  }
+  // Every example the app can draw must carry its English, in every bucket.
+  for (const [bucket, files] of Object.entries(build.buckets)) {
+    for (const file of files.ex ?? []) {
+      for (const row of JSON.parse(readFileSync(join(REPO, file.path), 'utf8'))) {
+        exRows += 1;
+        const fixture = fixtureOf(row);
+        if (fixture !== null && fixture.en !== '') continue;
+        noEnglish += 1;
+        if (noEnglishFirst === '') noEnglishFirst = bucket + '/' + (fixture?.sid ?? JSON.stringify(row).slice(0, 40));
+      }
     }
   }
 } catch (error) {
@@ -239,7 +279,87 @@ try {
   }
   check('a cold deep link renders its entry', headword === 'casa', 'headword ' + headword);
   await deepPage.screenshot({ path: '/tmp/itadict-entry.png' });
+
+  // A cold sentence link: the hash, then a reload, so the page boots on the sentence route.
+  /**
+   * @param {import('playwright').Page} target
+   * @param {string} bucket
+   * @param {string} sid
+   */
+  async function openSentence(target, bucket, sid) {
+    await target.goto(app + '#/sentence/' + bucket + '/' + sid, { waitUntil: 'load' });
+    await target.reload({ waitUntil: 'load' });
+    await target.waitForSelector('.sentence-it, .sentence-screen .empty', { timeout: 20000 });
+    return {
+      it: (await target.locator('.sentence-it').textContent().catch(() => null)) ?? '',
+      en: (await target.locator('.sentence-en').textContent({ timeout: 1000 }).catch(() => null)) ?? '',
+    };
+  }
+
+  check('data/ex/ca.json has a row with the word casa', casaSentence !== null);
+  check(
+    'every example row of every bucket carries English',
+    exRows > 0 && noEnglish === 0,
+    noEnglish + ' of ' + exRows + ' rows have none, the first is ' + noEnglishFirst + ': rebuild the data',
+  );
+  if (casaSentence !== null) {
+    const drawn = await openSentence(deepPage, 'ca', casaSentence.sid);
+    check('a cold sentence link draws its Italian', drawn.it === casaSentence.it, JSON.stringify(drawn.it));
+    check(
+      'a cold sentence link draws its English',
+      casaSentence.en !== '' && drawn.en === casaSentence.en,
+      casaSentence.en === '' ? 'the row has no English: rebuild the data' : JSON.stringify(drawn.en),
+    );
+    await deepPage.screenshot({ path: '/tmp/itadict-sentence.png' });
+  }
+  check('no uncaught error on the cold links', deepRecord.pageErrors.length === 0, deepRecord.pageErrors.join(' | '));
   await deepContext.close();
+
+  // -------------------------------------------------------------- word tap targets
+  //
+  // A fixture row "a e i o", four one-letter words, is added to the ca ex file in a fresh
+  // context. Every word's box is at least 24x44, no two boxes on a line overlap, and at the
+  // midpoint between two words' glyphs, and 1px either side of it, the hit is the nearer word or
+  // the gap between them, never the other word.
+  const hitContext = await browser.newContext(DEVICE);
+  await hitContext.route('**/data/ex/ca.json*', async (route) => {
+    const response = await route.fetch();
+    const rows = await response.json();
+    rows.push(['999999999', 'a e i o', 'a and i or']);
+    await route.fulfill({ response, json: rows });
+  });
+  const hitPage = await hitContext.newPage();
+  hitPage.setDefaultTimeout(20000);
+  await hitPage.goto(app + '#/sentence/ca/999999999', { waitUntil: 'load' });
+  await hitPage.waitForSelector('.sentence-word');
+  await hitPage.waitForTimeout(300);
+  const targets = await hitPage.evaluate(() => {
+    const words = [...document.querySelectorAll('.sentence-word')];
+    const boxes = words.map((button) => {
+      const box = button.getBoundingClientRect();
+      const glyphs = (button.firstElementChild ?? button).getBoundingClientRect();
+      return { word: button.textContent ?? '', left: box.left, right: box.right, width: box.width, height: box.height, top: box.top, gl: glyphs.left, gr: glyphs.right };
+    });
+    /** @param {number} x @param {number} y */
+    const hit = (x, y) => document.elementFromPoint(x, y)?.closest('.sentence-word')?.textContent ?? 'gap';
+    const faults = [];
+    for (let i = 0; i + 1 < boxes.length; i += 1) {
+      const a = boxes[i];
+      const b = boxes[i + 1];
+      if (a.top !== b.top) continue;
+      if (a.right > b.left + 0.01) faults.push('overlap ' + a.word + '|' + b.word);
+      const y = a.top + a.height / 2;
+      const mid = (a.gr + b.gl) / 2;
+      for (const [x, wrong] of [[mid - 1, b.word], [mid + 1, a.word]]) {
+        if (hit(x, y) === wrong) faults.push(a.word + '|' + b.word + ' at ' + x.toFixed(1) + ' hits ' + wrong);
+      }
+    }
+    return { words: boxes.map((box) => box.word), minWidth: Math.min(...boxes.map((box) => box.width)), minHeight: Math.min(...boxes.map((box) => box.height)), faults };
+  });
+  check('the fixture draws a e i o as four words', targets.words.join(' ') === 'a e i o', targets.words.join(' '));
+  check('every word target is at least 24x44', targets.minWidth >= 24 && targets.minHeight >= 44, targets.minWidth + 'x' + targets.minHeight);
+  check('word targets never overlap and never answer for the other word', targets.faults.length === 0, targets.faults.join(' | '));
+  await hitContext.close();
 
   // -------------------------------------------------------------- the download action
   //
@@ -301,6 +421,38 @@ try {
   await page.waitForTimeout(3000);
   const line = ((await page.textContent('.search-body')) ?? '').replace(/\s+/g, ' ').trim();
   check('an uncached bucket offline shows one line, not a crash', /not ready|No results/.test(line), 'body: ' + line.slice(0, 120));
+
+  // The sentence page offline: the ex file and the casa entry came with the download of ca.
+  if (casaSentence !== null) {
+    await page.evaluate((sid) => {
+      location.hash = '#/sentence/ca/' + sid;
+    }, casaSentence.sid);
+    let drawnIt = '';
+    let drawnEn = '';
+    try {
+      await page.reload({ waitUntil: 'load' });
+      await page.waitForSelector('.sentence-it', { timeout: 10000 });
+      drawnIt = (await page.textContent('.sentence-it')) ?? '';
+      drawnEn = (await page.locator('.sentence-en').textContent({ timeout: 1000 }).catch(() => null)) ?? '';
+    } catch (error) {
+      drawnIt = '';
+    }
+    check('a sentence link draws its Italian offline', drawnIt === casaSentence.it, JSON.stringify(drawnIt));
+    check('a sentence link draws its English offline', casaSentence.en !== '' && drawnEn === casaSentence.en, JSON.stringify(drawnEn));
+    await page.screenshot({ path: '/tmp/itadict-sentence-offline.png' });
+
+    let tapped = '';
+    try {
+      await page.locator('.sentence-word', { hasText: /^casa$/ }).first().click();
+      await page.waitForFunction(() => document.querySelector('.entry-screen .headword')?.textContent === 'casa', null, {
+        timeout: 10000,
+      });
+      tapped = ((await page.textContent('.entry-screen .headword')) ?? '').trim();
+    } catch (error) {
+      tapped = '';
+    }
+    check('a tap on casa offline opens its entry', tapped === 'casa', 'headword ' + tapped);
+  }
 
   check('no uncaught error in the page', record.pageErrors.length === 0, record.pageErrors.join(' | '));
 
