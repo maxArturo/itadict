@@ -2334,6 +2334,13 @@ export function createUi(doc = globalThis.document) {
             }),
             navRow({
               path: ICONS.about,
+              name: 'English translations',
+              note: 'English Wiktionary, CC BY-SA 4.0',
+              href: 'https://creativecommons.org/licenses/by-sa/4.0/',
+              external: true,
+            }),
+            navRow({
+              path: ICONS.about,
               name: 'Example sentences',
               note: 'Tatoeba, CC BY 2.0 FR',
               href: 'https://creativecommons.org/licenses/by/2.0/fr/',
@@ -2351,6 +2358,11 @@ export function createUi(doc = globalThis.document) {
             text('h2', 'section-title', 'Licences'),
             licences,
             text('p', 'settings-note', 'Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0, modificato.'),
+            text(
+              'p',
+              'settings-note',
+              'English glosses from en.wiktionary, en.wiktionary.org, CC BY-SA 4.0, modified.',
+            ),
             text(
               'p',
               'settings-note',
