@@ -71,10 +71,10 @@ The app code is MIT. The data and the code carry separate licences and never sha
 | Entries with an English translation, 5,000 most frequent | 4,728, which is 94.6%. The common words almost always have one |
 | Buckets and entry files | 478 buckets, 948 entry files |
 | Entry files | 22,452,034 bytes |
-| Data size | 66,344,150 bytes in the manifest; 1,943,440 of that is the English lookup index; largest file 999,999 bytes |
+| Data size | 66,334,993 bytes in the manifest; 1,943,440 of that is the English lookup index; largest file 999,999 bytes |
 
 Three builds show the growth: 59,877,636 bytes before the English glosses, 61,389,314 with the entry
-bodies carrying them, and 66,344,150 with the English index and both glosses on every row. A search
+bodies carrying them, and 66,334,993 with the English index and both glosses on every row. A search
 row costs more because it now carries the Italian gloss and the English one.
 
 English coverage is uneven by part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective

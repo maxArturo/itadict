@@ -9,7 +9,7 @@ cost.
 One bucket per two folded letters of the headword: `aa`, `ca`, `st`. Folding is the search rule from
 0004, so the bucket of a query is the bucket of its results. A bucket that exceeds the size cap splits
 into files named by a longer prefix, for example `data/ca/cao.json`. The cap is 1 MB per file, and
-the build holds `npm run check` to it. The shipped set is 478 buckets, 66,344,150 bytes in the
+the build holds `npm run check` to it. The shipped set is 478 buckets, 66,334,993 bytes in the
 manifest, and the largest file is 999,999 bytes. Of that total, 1,943,440 bytes is the English index.
 
 `data/index.json` is the manifest: every file, its size, its hash, the counts, the CEFR deck sizes and

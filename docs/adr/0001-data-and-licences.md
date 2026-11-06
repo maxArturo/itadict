@@ -33,7 +33,7 @@ headword and part of speech, and ships nothing else.
 | Entries with an English translation | 47,277 of 61,820, which is 76.5%. Of the 5,000 most frequent, 4,728, or 94.6% |
 | Buckets and entry files | 478 buckets, 948 entry files |
 | Entry files | 22,452,034 bytes, up 3,379,148 for the English glosses |
-| Data size | 66,344,150 bytes in the manifest, of which 1,943,440 bytes is the English lookup index; largest file 999,999 bytes |
+| Data size | 66,334,993 bytes in the manifest, of which 1,943,440 bytes is the English lookup index; largest file 999,999 bytes |
 
 The other 14,543 entries carry no English gloss, and the Entry screen then draws no Translation
 section. Coverage follows the part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective

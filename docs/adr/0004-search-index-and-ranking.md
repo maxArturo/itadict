@@ -108,7 +108,7 @@ the row's rank from the corpus, then by alphabet, so the order is stable. Prefix
 a bucket, because a bucket is the first two letters and the query is at least two characters.
 
 **Consequences:** one row carries both glosses, which is why the entry set grew from 59,877,636 to
-66,344,150 bytes in three builds. Of that, 1,943,440 bytes is the English index itself. A keystroke
+66,334,993 bytes in three builds. Of that, 1,943,440 bytes is the English index itself. A keystroke
 after the first costs no fetch, because the bucket stays in the session memo. The first search in a new bucket costs one small fetch. An inflected-form hit costs a second
 fetch. Fuzzy results are bounded, which is a quality limit, not a bug:
 `shortcut: matching scans the whole bucket; add a range index if a bucket passes 50k rows`.

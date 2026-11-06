@@ -129,7 +129,7 @@ works on either origin.
 | Largest entry file | 244,181 |
 | Largest entry file, gzipped | 47,493 |
 | Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 66,344,150 bytes in the manifest |
+| Whole data set | 66,334,993 bytes in the manifest |
 | English lookup index | 1,943,440 bytes of the total |
 
 One tap on a row costs one entry file and one example file. Both are cached forever after the first

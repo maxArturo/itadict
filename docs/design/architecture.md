@@ -175,7 +175,7 @@ not break the app.
 | Entry file, 90th percentile | 74,951 bytes |
 | Largest entry file | 244,181 bytes, 47,493 bytes gzipped |
 | Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 66,344,150 bytes in the manifest, of which 1,943,440 is the English index |
+| Whole data set | 66,334,993 bytes in the manifest, of which 1,943,440 is the English index |
 
 An entry file grew by 3,379,148 bytes in total for the English glosses. One tap still costs one entry
 file and one example file, and both are cached forever after the first read.
