@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * Text to speech, in Italian, one voice, one rate.
+ * Text to speech, in Italian, one voice, the rate Settings holds.
  *
  * The voice list loads asynchronously in some browsers, so available() is asked at drawing
  * time and the screen hides the speaker when it answers false. A button that cannot speak is
@@ -10,8 +10,12 @@
  * synthesiser with no audio and no DOM.
  */
 
-/** The one rate the app speaks at. */
+/** The rate the app speaks at when Settings holds nothing. */
 export const RATE = 0.9;
+
+/** The speech rate the platform accepts, and the range a stored value is clamped to. */
+export const RATE_MIN = 0.5;
+export const RATE_MAX = 1.5;
 
 /** @typedef {{ lang: string }} VoiceLike */
 /**
@@ -30,7 +34,7 @@ export const RATE = 0.9;
  * @param {SpeechTarget} [target] defaults to the browser; inject a fake in Node checks
  * @returns {{
  *   available: () => boolean,
- *   speak: (text: string) => boolean,
+ *   speak: (text: string, rate?: number) => boolean,
  *   cancel: () => void,
  * }}
  */
@@ -63,19 +67,22 @@ export function createSpeech(target = /** @type {SpeechTarget} */ (/** @type {un
   return {
     available: () => wired && voice !== null,
     /**
-     * Speak one Italian text. Returns false when no Italian voice exists.
+     * Speak one Italian text at one rate. Returns false when no Italian voice exists.
      * @param {string} text
+     * @param {number} [rate] the stored rate; a value outside the platform range is clamped
      * @returns {boolean}
      */
-    speak(text) {
+    speak(text, rate = RATE) {
       if (!wired || voice === null || synth === undefined || Utterance === undefined) return false;
       const clean = String(text ?? '').trim();
       if (clean === '') return false;
+      const speed =
+        typeof rate === 'number' && Number.isFinite(rate) ? Math.min(RATE_MAX, Math.max(RATE_MIN, rate)) : RATE;
       synth.cancel();
       const utterance = new Utterance(clean);
       utterance.lang = 'it-IT';
       utterance.voice = voice;
-      utterance.rate = RATE;
+      utterance.rate = speed;
       synth.speak(utterance);
       return true;
     },

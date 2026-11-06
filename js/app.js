@@ -106,7 +106,20 @@ export function boot(options = {}) {
   const reader = createReader({ data });
   const textView = ui.textScreen({ read: (segments) => reader.read(segments) });
 
-  const speech = options.speech ?? createSpeech();
+  const baseSpeech = options.speech ?? createSpeech();
+  /**
+   * Speak at the rate Settings holds. The setting is read at each tap, so a change applies at
+   * once. Both the Entry and the Study screens take this wrapper.
+   */
+  const speech = {
+    available: () => baseSpeech.available(),
+    /**
+     * @param {string} text
+     * @returns {boolean}
+     */
+    speak: (text) => baseSpeech.speak(text, storage.settings().speechRate),
+    cancel: () => baseSpeech.cancel(),
+  };
   const now = options.now ?? (() => Date.now());
 
   /** The due count on the Study tab: the one number the chrome shows about study. */

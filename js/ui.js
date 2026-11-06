@@ -2118,7 +2118,7 @@ export function createUi(doc = globalThis.document) {
           render();
         }),
       );
-      body.append(text('p', 'settings-note', 'The rate is saved. The voice speaks at the app default in this build.'));
+      body.append(text('p', 'settings-note', 'The rate applies to the speaker on entries and on study cards.'));
 
       body.append(text('h2', 'section-title', 'Storage'));
       body.append(text('p', 'settings-line', 'Storage used: ' + options.size() + ' bytes.'));

@@ -995,6 +995,15 @@ test('speech picks an Italian voice, speaks at 0.9 and never offers a dead butto
   assert.equal(utterance.voice.name, 'Alice');
   assert.equal(utterance.text, 'casa');
 
+  speech.speak('via', 1.2);
+  assert.equal(spoken[3].rate, 1.2, 'the stored rate is used');
+  speech.speak('via', 9);
+  assert.equal(spoken[5].rate, 1.5, 'a fast rate is clamped');
+  speech.speak('via', 0.1);
+  assert.equal(spoken[7].rate, 0.5, 'a slow rate is clamped');
+  speech.speak('via', Number.NaN);
+  assert.equal(spoken[9].rate, RATE, 'a bad rate falls back to the default');
+
   const noItalian = createSpeech({
     speechSynthesis: { getVoices: () => [{ lang: 'en-US' }], speak() {}, cancel() {} },
     SpeechSynthesisUtterance: class {},

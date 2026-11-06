@@ -1057,6 +1057,22 @@ mark {
   zoom: var(--text-zoom, 1);
 }
 
+/*
+ * The shell is two rows: the scrollable screen area, then the tab bar. A grid row makes the bar
+ * full width and below both panes at every width; the bar paints above the pane divider, which
+ * ends at its top edge.
+ */
+#app {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.tabbar {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
 button.back {
   border: 0;
   background: none;
