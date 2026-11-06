@@ -219,11 +219,11 @@ test('the exact case-and-accent match wins its tie', () => {
 // ---------------------------------------------------------------- the search pipeline
 
 /** A data set that answers from memory, filtering by bucket the way the real one does. */
-function memoryData(rows, forms = new Map()) {
+function memoryData(rows, forms = new Map(), buckets = {}) {
   const asked = [];
   return {
     asked,
-    manifest: async () => ({ buckets: {} }),
+    manifest: async () => ({ buckets }),
     rows: async (key) => {
       asked.push('rows:' + key);
       return rows.filter((entry) => entry.folded.startsWith(key.slice(0, 2)));
@@ -291,21 +291,23 @@ test('an English hit is the Italian headword with its English gloss, in its own 
     englishRow('ca:0', 'casa', 'casa', 'house'),
     englishRow('ca:1', 'caseggiato', 'caseggiato', 'housing block'),
   ];
-  const { calls, fetch } = englishFetch({ 'data/en/ho.json': { house: ['ca:0', 'ca:1'] } });
-  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const { calls, fetch } = englishFetch({ 'data/en/ho.json?v=h1': { house: ['ca:0', 'ca:1'] } });
+  const buckets = { ho: { en: [{ path: 'data/en/ho.json', hash: 'h1' }] } };
+  const search = createSearch({ data: memoryData(rows, new Map(), buckets), storage: createStorage(fakeBackend()), fetch });
   const result = await search.search('house');
   assert.deepEqual(result.rows, [], 'no Italian headword matches');
   assert.deepEqual(result.english.map((entry) => entry.id), ['ca:0', 'ca:1']);
   assert.equal(result.english[0].headword, 'casa', 'the row title is the Italian headword');
   assert.equal(result.english[0].en, 'house', 'the secondary line is the English gloss');
   assert.equal(search.row('ca:0')?.en, 'house', 'the entry opens from the remembered row');
-  assert.deepEqual(calls, ['data/en/ho.json'], 'one English read');
+  assert.deepEqual(calls, ['data/en/ho.json?v=h1'], 'one English read, with the manifest hash');
 });
 
 test('Italian matches lead in their own list, and the English block follows separately', async () => {
   const rows = [englishRow('ho:0', 'hotel', 'hotel', 'hotel'), englishRow('ca:0', 'casa', 'casa', 'house')];
-  const { fetch } = englishFetch({ 'data/en/ho.json': { hotel: ['ca:0'] } });
-  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const { fetch } = englishFetch({ 'data/en/ho.json?v=h1': { hotel: ['ca:0'] } });
+  const buckets = { ho: { en: [{ path: 'data/en/ho.json', hash: 'h1' }] } };
+  const search = createSearch({ data: memoryData(rows, new Map(), buckets), storage: createStorage(fakeBackend()), fetch });
   const result = await search.search('hotel');
   assert.deepEqual(result.rows.map((entry) => entry.id), ['ho:0'], 'the Italian row leads its list');
   assert.deepEqual(result.english.map((entry) => entry.id), ['ca:0'], 'the English row is separate');
@@ -326,9 +328,17 @@ test('the English file is not read while the Italian list is full', async () => 
 });
 
 test('a query with no match in either list returns two empty lists', async () => {
-  const { fetch } = englishFetch({ 'data/en/zz.json': { zzzz: [] } });
-  const search = createSearch({ data: memoryData([]), storage: createStorage(fakeBackend()), fetch });
+  const search = createSearch({ data: memoryData([]), storage: createStorage(fakeBackend()), fetch: noEnglish });
   assert.deepEqual(await search.search('zzzz'), { rows: [], english: [], history: [] });
+});
+
+test('a bucket with no English set in the manifest fetches nothing and shows no block', async () => {
+  const rows = [englishRow('ca:0', 'casa', 'casa', 'house')];
+  const { calls, fetch } = englishFetch({ 'data/en/ho.json': { house: ['ca:0'] } });
+  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const result = await search.search('house');
+  assert.deepEqual(result.english, [], 'no English set means no English block');
+  assert.deepEqual(calls, [], 'and no fetch');
 });
 
 // ---------------------------------------------------------------- the FORMS table

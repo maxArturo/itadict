@@ -13,7 +13,7 @@
  * rows`.
  */
 
-import { bucketKey, bucketOfId, foldWord } from './data.js';
+import { bucketKey, bucketOfId, foldWord, pickFiles, shardUrl } from './data.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {ReturnType<typeof import('./data.js').createData>} Data */
@@ -203,31 +203,55 @@ export function createSearch(options) {
   /** Every row this session has shown, so an entry opens without a second fetch. @type {Map<string, Row>} */
   const known = new Map();
 
-  /** One promise per English bucket, kept. A failure is dropped, so a later query can retry. */
+  /** One promise per English file URL, kept. A failure is dropped, so a later query can retry. */
   /** @type {Map<string, Promise<Record<string, string[]>>>} */
   const english = new Map();
 
   /**
-   * The English token map of one bucket.
-   * @param {string} bucket
+   * One English file, read from its hashed URL so a rebuilt index is a new cache entry.
+   * @param {string} url path plus `?v=<hash>`
    * @returns {Promise<Record<string, string[]>>}
    */
-  function englishTokens(bucket) {
-    const hit = english.get(bucket);
+  function englishFile(url) {
+    const hit = english.get(url);
     if (hit !== undefined) return hit;
     const promise = (async () => {
-      const response = await doFetch(base + 'data/en/' + bucket + '.json');
-      if (!response || response.ok !== true) throw new Error('itadict search: no English file for ' + bucket);
+      const response = await doFetch(base + url);
+      if (!response || response.ok !== true) throw new Error('itadict search: ' + url + ' did not load');
       const body = await response.json();
       return body !== null && typeof body === 'object' && !Array.isArray(body)
         ? /** @type {Record<string, string[]>} */ (body)
         : {};
     })().catch((error) => {
-      english.delete(bucket);
+      english.delete(url);
       throw error;
     });
-    english.set(bucket, promise);
+    english.set(url, promise);
     return promise;
+  }
+
+  /**
+   * The English token map of one bucket, from the manifest's `en` set. A bucket with no English
+   * set returns null: there is no file to read, and that is not an error.
+   * @param {string} bucket
+   * @param {string} folded the folded query, for a split English file
+   * @returns {Promise<Record<string, string[]> | null>}
+   */
+  async function englishTokens(bucket, folded) {
+    const found = (await data.manifest()).buckets[bucket];
+    if (found === undefined || found.en.length === 0) return null;
+    const urls = pickFiles(found.en, folded).map(shardUrl);
+    if (urls.length === 0) return null;
+    const maps = await Promise.all(urls.map(englishFile));
+    if (maps.length === 1) return maps[0];
+    /** @type {Record<string, string[]>} */
+    const merged = {};
+    for (const map of maps) {
+      for (const [token, ids] of Object.entries(map)) {
+        if (Array.isArray(ids)) merged[token] = [...(merged[token] ?? []), ...ids];
+      }
+    }
+    return merged;
   }
 
   /**
@@ -329,12 +353,13 @@ export function createSearch(options) {
       let englishRows = [];
       if (rows.length < SHORT) {
         try {
-          const tokens = await englishTokens(bucketKey(folded));
-          const rowsById = await rowsForIds(englishIds(tokens, folded, SHORT));
-          englishRows = rowsById;
-          for (const row of englishRows) known.set(row.id, row);
+          const tokens = await englishTokens(bucketKey(folded), folded);
+          if (tokens !== null) {
+            englishRows = await rowsForIds(englishIds(tokens, folded, SHORT));
+            for (const row of englishRows) known.set(row.id, row);
+          }
         } catch {
-          // No English file for this bucket, or it did not load; the Italian list stands.
+          // The English file did not load; the Italian list stands.
         }
       }
 

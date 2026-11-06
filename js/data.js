@@ -37,8 +37,8 @@ export const DATA_BASE = '';
 /** One file listed by the manifest. */
 /** @typedef {{ path: string, bytes: number, hash: string, rows?: number }} Shard */
 
-/** One bucket's four file sets. */
-/** @typedef {{ search: Shard[], entry: Shard[], ex: Shard[], forms: Shard[] }} Bucket */
+/** One bucket's file sets. The English index is the fifth; a bucket without English lists none. */
+/** @typedef {{ search: Shard[], entry: Shard[], ex: Shard[], forms: Shard[], en: Shard[] }} Bucket */
 
 /** `data/index.json` once parsed. */
 /** @typedef {{
@@ -216,8 +216,8 @@ function parseBucket(value) {
   const bucket = obj(value);
   if (bucket === null) return null;
   /** @type {Bucket} */
-  const out = { search: [], entry: [], ex: [], forms: [] };
-  for (const kind of /** @type {const} */ (['search', 'entry', 'ex', 'forms'])) {
+  const out = { search: [], entry: [], ex: [], forms: [], en: [] };
+  for (const kind of /** @type {const} */ (['search', 'entry', 'ex', 'forms', 'en'])) {
     for (const raw of Array.isArray(bucket[kind]) ? bucket[kind] : []) {
       const file = obj(raw);
       const path = str(file?.path ?? file?.file);
@@ -225,7 +225,9 @@ function parseBucket(value) {
       out[kind].push({ path, bytes: num(file?.bytes), hash: str(file?.hash) });
     }
   }
-  return out.search.length + out.entry.length + out.ex.length + out.forms.length === 0 ? null : out;
+  return out.search.length + out.entry.length + out.ex.length + out.forms.length + out.en.length === 0
+    ? null
+    : out;
 }
 
 /**
