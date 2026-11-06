@@ -1,11 +1,10 @@
 # Gate 2 — acceptance record
 
-Status: the automated half runs, the device half is open. A blank row blocks the gate.
+Status: the automated checks, the local gate and the live origin pass. The device checks are open.
+A row marked "not run" blocks a full sign-off.
 
-This record covers the deployed shape of the app in a browser that behaves like an iPhone, and the
-checks only a real device can settle. The automated half is a tool, not a person: it proves the
-shell, the data paths and the offline fallback. It cannot prove safe areas, install, voices or
-eviction.
+This record covers the deployed shape of the app in a browser that behaves like an iPhone, on the
+real subpath, and on the live origin. It also lists what only a real device can settle.
 
 ## The automated half
 
@@ -27,30 +26,32 @@ when the manifest is missing.
 
 ### Checks
 
+All 22 rows below ran on build `v1-8ffb3c86b224` and passed.
+
 | # | Check | Pass looks like | Result |
 |---|---|---|---|
-| 1 | Every module under `js/` is precached | Each file is in the worker's shell list. A module left out is dead offline | — |
-| 2 | Cold load of the subpath | 200 for the document | — |
-| 3 | The tab bar | Five tabs, Search active | — |
-| 4 | The worker controls the page | `navigator.serviceWorker.controller` is not null | — |
-| 5 | Search | The query `casa` returns a row that starts with `casa` | — |
-| 6 | The manifest | Answers 200 through the worker | — |
-| 7 | The manifest is Italian | Name and short name are `Italian` | — |
-| 8 | Relative start | `start_url` and `scope` are `./` | — |
-| 9 | The icon set | 180, 192, 512 and a maskable 512 are listed | — |
-| 10 | The icons resolve | Each icon answers 200 | — |
-| 11 | A cold deep link | `#/entry/ca:0` in a fresh context draws `casa` | — |
-| 12 | Download progress | One progress line per file, zero failures | — |
-| 13 | Download coverage | Every file the bucket lists is fetched | — |
-| 14 | One bad file | Counted, and the run goes on | — |
-| 15 | Offline relaunch | The shell draws with the network cut | — |
-| 16 | Offline Search | The field is visible after the relaunch | — |
-| 17 | Cached search offline | A bucket already fetched returns rows | — |
-| 18 | Uncached bucket offline | One line, not a crash | — |
-| 19 | No uncaught error | The page-error list is empty | — |
-| 20 | The subpath | Every request starts with `/itadict/` | — |
-| 21 | No failed response | No 4xx or 5xx, apart from one deliberate miss | — |
-| 22 | A clean console | No console error while online | — |
+| 1 | Every module under `js/` is precached | Each file is in the worker's shell list. A module left out is dead offline | pass |
+| 2 | Cold load of the subpath | 200 for the document | pass |
+| 3 | The tab bar | Five tabs, Search active | pass |
+| 4 | The worker controls the page | `navigator.serviceWorker.controller` is not null | pass |
+| 5 | Search | The query `casa` returns a row that starts with `casa` | pass |
+| 6 | The manifest | Answers 200 through the worker | pass |
+| 7 | The manifest is Italian | Name and short name are `Italian` | pass |
+| 8 | Relative start | `start_url` and `scope` are `./` | pass |
+| 9 | The icon set | 180, 192, 512 and a maskable 512 are listed | pass |
+| 10 | The icons resolve | Each icon answers 200 | pass |
+| 11 | A cold deep link | `#/entry/ca:0` in a fresh context draws `casa` | pass |
+| 12 | Download progress | One progress line per file, zero failures | pass |
+| 13 | Download coverage | Every file the bucket lists is fetched | pass |
+| 14 | One bad file | Counted, and the run goes on | pass |
+| 15 | Offline relaunch | The shell draws with the network cut | pass |
+| 16 | Offline Search | The field is visible after the relaunch | pass |
+| 17 | Cached search offline | A bucket already fetched returns rows | pass |
+| 18 | Uncached bucket offline | One line, not a crash | pass |
+| 19 | No uncaught error | The page-error list is empty | pass |
+| 20 | The subpath | Every request starts with `/itadict/` | pass |
+| 21 | No failed response | No 4xx or 5xx, apart from one deliberate miss | pass |
+| 22 | A clean console | No console error while online | pass |
 
 ### How the run fakes offline
 
@@ -62,40 +63,121 @@ can answer.
 The run asks for one file that does not exist. That miss is the point: it proves one bad file is
 counted and the rest of the download continues. Every other response must be clean.
 
-A third question stays open on purpose: clear every cache and every stored blob, then reload offline.
+A third question is open on purpose: clear every cache and every stored blob, then reload offline.
 That must fail with the browser error page. It proves the app is not quietly depending on a cache a
-device wipe removes.
+device wipe removes. Not run.
 
-## What only a device can settle
+### The other automated gates
 
-| Check | Why the harness cannot settle it |
+| Gate | Result |
 |---|---|
-| Safe areas under a notch and the home indicator | Desktop Chromium reports every inset as 0 |
-| Install from the home screen | Only the real browser adds the icon and the standalone window |
-| The maskable icon crop | Needs the real home screen and the real launcher |
-| Status bar and theme colour in both schemes | Needs a real system setting |
-| Italian TTS voices | Voices are per device and per OS |
-| The swipe on a study card | A programmatic drag is not a thumb |
-| Storage eviction after a week of no use | Cannot be waited out, and iOS applies its own rule |
-| Memory pressure with the whole dictionary cached | A desktop machine has different limits |
-| Tap targets under a thumb | Hit areas can be measured; reach cannot |
+| `npm test` | 47 of 47 pass |
+| `npx tsc --noEmit` | clean |
+| `npm run check` | pass: 61,820 entries, 232,248 forms, 49,283 sentences, 478 buckets, 60,215,347 bytes |
 
-## Result
+## The local gate
 
-Fill each row with pass, fail, or fail with a reason, and keep the run's log beside the record.
+A second run, by hand, at a different device size, over the same served subpath.
 
 | Field | Value |
 |---|---|
-| Date | |
-| Build from `data/index.json` | |
-| Browser and version | |
-| Checks 1 to 22 | |
-| Failures, with cause | |
-| Device checks done, and on which device | |
-| Signed off by | |
+| Device profile | iPhone 13: 390 by 844 CSS px, DPR 3, mobile, touch |
+| URL | `http://localhost:8000/itadict/` |
+| Requests | 19, all under `/itadict/` |
+| Console errors | 0 |
+| Cold start with the HTTP server killed | the shell draws: the tab bar and the history |
+| Search offline | `casa` returns rows with no server |
+
+Screenshots from this run:
+
+- `/tmp/gate2-1-search-empty.png`
+- `/tmp/gate2-2-search-rows.png`
+- `/tmp/gate2-3-entry.png`
+- `/tmp/gate2-4-study.png`
+- `/tmp/gate2-5-lists.png`
+- `/tmp/gate2-6-reference.png`
+- `/tmp/gate2-7-offline-cold-start.png`
+- `/tmp/gate2-8-offline-search.png`
+
+## The live origin
+
+| Field | Value |
+|---|---|
+| URL | `https://maxalcala.com/itadict/` |
+| Note | `maxarturo.github.io/itadict/` answers 301 to this origin, because the account sets a custom domain on the user site |
+| Worker scope | `https://maxalcala.com/itadict/` |
+| Caches | `itadict-shell-v1` and `itadict-data` |
+| Shell cached | `index.html` and `styles.css` |
+| Manifest cached | `data/index.json` |
+| Search | works |
+| Entry | works |
+| Console errors | 0 |
+
+Screenshots from this run: `/tmp/live-search.png` and `/tmp/live-entry.png`.
+
+The 301 is a property of the host, not of the app. Every URL in the app is relative, so the subpath
+works on either origin.
+
+## The data cost of one tap
+
+| Measure | Bytes |
+|---|---|
+| Entry file, 90th percentile | 86,596 |
+| Largest entry file | 236,356 |
+| Largest entry file, gzipped | 50,651 |
+
+One tap on a row costs one entry file and one example file. Both are cached forever after the first
+read, because their URL carries the file hash.
+
+## What only a device can settle
+
+Every row here is open. A row needs a real iPhone, a real home screen, or a week of no use.
+
+| Check | Why the harness cannot settle it | Result |
+|---|---|---|
+| Safe areas under a notch and the home indicator | Desktop Chromium reports every inset as 0 | not run |
+| Install from the home screen | Only the real browser adds the icon and the standalone window | not run |
+| The maskable icon crop | Needs the real home screen and the real launcher | not run |
+| Status bar and theme colour in both schemes | Needs a real system setting | not run |
+| Italian TTS voices | Voices are per device and per OS | not run |
+| The Web Share sheet on a list | The sheet belongs to the OS | not run |
+| The swipe on a study card | A programmatic drag is not a thumb | not run |
+| Storage eviction after 7 days without use | Cannot be waited out, and iOS applies its own rule | not run |
+| The full 59.8 MB download on a phone | Needs the free disk and the real network | not run |
+| Memory pressure with the whole dictionary cached | A desktop machine has different limits | not run |
+| Tap targets under a thumb | Hit areas can be measured; reach cannot | not run |
+
+## What this run does not prove
+
+- Nothing here ran on a real iPhone. The device rows above are all open.
+- The full download was never run end to end on a phone. Only the action, its progress and its
+  error path are proved, on one bucket.
+- A tap on the Download button in the UI is not covered. The gate calls the action directly.
+- The install path, the standalone window and the maskable crop are not covered.
+- The eviction rule is not covered, and no test can wait 7 days.
+- Layout is measured at two fixed sizes. Text growth, a fold, and a large phone are not covered.
+
+## Result
+
+| Field | Value |
+|---|---|
+| Date | 2026-11-06 |
+| Build from `data/index.json` | `v1-8ffb3c86b224` |
+| Browser and version | Headless Chromium for the automated gate; a local Chromium at the iPhone 13 profile for the manual run |
+| `npm test` | 47 of 47 pass |
+| `npx tsc --noEmit` | clean |
+| `npm run check` | pass |
+| Checks 1 to 22 | 22 of 22 pass |
+| The local gate | 19 requests, all under `/itadict/`; 0 console errors; cold start and offline search pass |
+| The live origin | search and entry pass; worker scope and both caches as listed; 0 console errors |
+| Failures, with cause | none |
+| Device checks done, and on which device | none. Every device row is "not run" |
+| Signed off by | pending the device rows |
 
 ### Runs so far
 
 | Date | Build | What ran | Outcome |
 |---|---|---|---|
 | 2026-11-05 | `v1-eeb5e34d3756` | `npm run verify:offline` | 22 of 22 passed. Headless Chromium only; no device check yet. |
+| 2026-11-06 | `v1-8ffb3c86b224` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 47 of 47, clean, pass, 22 of 22. |
+| 2026-11-06 | `v1-8ffb3c86b224` | The local gate at iPhone 13, and the live origin | Pass. Device rows open. |
