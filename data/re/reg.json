@@ -1,6 +1,6 @@
 [
 ["regalo","reg:0","regalo","/reˈɡalo/","noun","oggetto che viene dato come sfoggio di affetto o di cortesia in determinate occasioni o per riconoscenza","present, gift"],
-["regno","reg:1","regno","/ˈreɲɲo/","noun","territorio o nazione sul quale un signore, detto re, o una signora, detta regina, esercita la sua autorità e la tramanda ai discendenti","kingdom (all senses)"],
+["regno","reg:1","regno","/ˈreɲɲo/","noun","territorio o nazione sul quale un signore, detto re, o una signora, detta regina, esercita la sua autorità e la tramanda ai discendenti","kingdom"],
 ["regola","reg:2","regola","/ˈrɛɡola/","noun","modalità ordinata e costante di svolgimento di un fatto","rule, norm, code, principle, order"],
 ["regina","reg:3","Regina","/reˈd͡ʒina/","noun","monarca di sesso femminile o moglie di un re","queen (monarch)"],
 ["regione","reg:4","regione","/reˈd͡ʒone/","noun","territorio caratterizzato da fattori geografici omogenei: ambiente, morfologia, fauna, flora etc.","region, area, zone, district"],
@@ -26,7 +26,7 @@
 ["regolo","reg:24","regolo","","noun","asta di legno, alluminio o altro materiale rigido, a sezione rettangolare, usata per tirare linee rette e per controllare la planarità di una superficie","ruler (straight edged measure)"],
 ["regia","reg:25","regia","/reˈd͡ʒia/","noun","direzione della preparazione e della messa in atto di un'opera artistica","direction"],
 ["registratore","reg:26","registratore","/red͡ʒistraˈtore/","noun","oggetto per registrare e riprodurre voce e suoni, diffuso prevalentemente in passato","recorder (any of several machines that record things)"],
-["regolazione","reg:27","regolazione","/reɡolatˈtsjone/","noun","messa a punto di regole per favorire il normale andamento di un'attività","regulation (all senses)"],
+["regolazione","reg:27","regolazione","/reɡolatˈtsjone/","noun","messa a punto di regole per favorire il normale andamento di un'attività","regulation"],
 ["reggia","reg:28","reggia","","noun","edificio o insieme di edifici recintati costruiti per la residenza di un sovrano, generalmente attorniato da giardini.","royal palace"],
 ["regnare","reg:29","regnare","/reɲˈɲare/","verb","esercitare il potere regale","to reign"],
 ["regolabile","reg:30","regolabile","","adj","che si può regolare","adjustable"],

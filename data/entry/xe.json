@@ -13,7 +13,7 @@
 {"id":"xe:11","word":"xenoglossofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura delle lingue straniere"]}],"en":[{"pos":"noun","glosses":["xenoglossophobia"]}]},
 {"id":"xe:12","word":"xenon","cefr":"c2","pos":[{"pos":"noun","senses":["variante di xeno"]}]},
 {"id":"xe:13","word":"xenotrapianto","cefr":"c2","pos":[{"pos":"noun","senses":["trapianto di organi i cui donatori sono di specie diversa da quella del ricevente"]}],"en":[{"pos":"noun","glosses":["xenotransplant"]}]},
-{"id":"xe:14","word":"xero-","ipa":"/ˈksɛro","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati dall'accostamento di due parole la prima delle quali significa secco"]}],"en":[{"pos":"prefix","glosses":["xero- (all senses)"]}]},
+{"id":"xe:14","word":"xero-","ipa":"/ˈksɛro","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati dall'accostamento di due parole la prima delle quali significa secco"]}],"en":[{"pos":"prefix","glosses":["xero-"]}]},
 {"id":"xe:15","word":"xerocopia","ipa":"/,ksɛroˈkɔpja/","cefr":"c2","pos":[{"pos":"noun","senses":["copia fotostatica"]}],"en":[{"pos":"noun","glosses":["photocopy, xerox"]}]},
 {"id":"xe:16","word":"xerofilo","cefr":"c2","pos":[{"pos":"noun","senses":["pianta o organismo vegetale che predilige ambienti asciutti e caldi"]}],"en":[{"pos":"noun","glosses":["xerophile"]}]},
 {"id":"xe:17","word":"xerofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura della siccità"]}],"en":[{"pos":"noun","glosses":["xerophobia"]}]},

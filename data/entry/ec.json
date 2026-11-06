@@ -67,7 +67,7 @@
 {"id":"ec:65","word":"eccellentemente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo eccellente"]}],"en":[{"pos":"adv","glosses":["excellently, optimally"]}]},
 {"id":"ec:66","word":"eccelsamente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo eccelso, ottimamente"]}],"en":[{"pos":"adv","glosses":["excellently"]}]},
 {"id":"ec:67","word":"eccelso","ipa":"/etˈt͡ʃɛlso/","cefr":"c2","pos":[{"pos":"adj","senses":["superiore ad altri per meriti, qualità","talvolta inarrivabile"]},{"pos":"noun","senses":["Dio"]}],"en":[{"pos":"adj","glosses":["(very) high, elevated","great, exceptional"]}]},
-{"id":"ec:68","word":"eccentricamente","ipa":"/ett͡ʃentrikaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in modo eccentrico"]}],"en":[{"pos":"adv","glosses":["eccentrically (all senses)"]}]},
+{"id":"ec:68","word":"eccentricamente","ipa":"/ett͡ʃentrikaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in modo eccentrico"]}],"en":[{"pos":"adv","glosses":["eccentrically"]}]},
 {"id":"ec:69","word":"eccepibilmente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo eccepibile"]}],"en":[{"pos":"adv","glosses":["questionably"]}]},
 {"id":"ec:70","word":"eccepito","ipa":"/ett͡ʃeˈpito/","cefr":"c2","pos":[{"pos":"adj","senses":["che è stato soggetto ad obiezioni"]}],"en":[{"pos":"adj","glosses":["that has been objected to"]}]},
 {"id":"ec:71","word":"eccetto che","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["tranne"]}]},

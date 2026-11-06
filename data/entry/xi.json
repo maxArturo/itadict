@@ -1,6 +1,6 @@
 [
 {"id":"xi:0","word":"xilofono","ipa":"/ksiˈlɔfono/","cefr":"c2","pos":[{"pos":"noun","senses":["strumento musicale a percussione formato da due file di barrette parallele verticali in legno o metallo, disposte in modo somigliante al pianoforte, ovvero con le note naturali nella fila inferiore e…"]}],"en":[{"pos":"noun","glosses":["xylophone (musical instrument)"]}],"ex":[0,1,2]},
-{"id":"xi:1","word":"xi","cefr":"c2","pos":[{"pos":"noun","senses":["quattordicesima lettera dell'alfabeto greco rappresentata dal simbolo Ξ, ξ, corrispondente alla lettera X, x dell'alfabeto latino"]}],"en":[{"pos":"noun","glosses":["the name of the Greek-script letter Ξ/ξ","xi (all senses)"]}],"ex":[3,4,5]},
+{"id":"xi:1","word":"xi","cefr":"c2","pos":[{"pos":"noun","senses":["quattordicesima lettera dell'alfabeto greco rappresentata dal simbolo Ξ, ξ, corrispondente alla lettera X, x dell'alfabeto latino"]}],"en":[{"pos":"noun","glosses":["the name of the Greek-script letter Ξ/ξ","xi"]}],"ex":[3,4,5]},
 {"id":"xi:2","word":"XI secolo","cefr":"c2","pos":[{"pos":"noun","senses":["secolo che va dal primo gennaio dell'anno 1001 al 31 dicembre dell'anno 1100."]}]},
 {"id":"xi:3","word":"XII secolo","cefr":"c2","pos":[{"pos":"noun","senses":["secolo che va dal primo gennaio dell'anno 1101 al 31 dicembre dell'anno 1200."]}]},
 {"id":"xi:4","word":"XIII secolo","cefr":"c2","pos":[{"pos":"noun","senses":["secolo che va dal primo gennaio dell'anno 1201 al 31 dicembre dell'anno 1300."]}]},

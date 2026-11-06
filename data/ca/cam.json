@@ -1,5 +1,5 @@
 [
-["camera","cam:0","camera","/ˈkamera/","noun","ambiente interno ad una casa","room; chamber (all senses)"],
+["camera","cam:0","camera","/ˈkamera/","noun","ambiente interno ad una casa","room; chamber"],
 ["cambiare","cam:1","cambiare","/kamˈbjare/","verb","effettuare una sostituzione, o scambio, tra due diversi elementi; rimuovere un elemento e sceglierne un altro al suo posto","to exchange"],
 ["camminare","cam:2","camminare","/kammiˈnare/","verb","spostarsi da un luogo ad un altro a piedi","to walk, to tread, to travel, to wander, to stroll, to saunter"],
 ["campo","cam:3","campo","/ˈkam.po/","noun","appezzamento di terreno destinato a coltura o al pascolo","field"],
@@ -129,7 +129,7 @@
 ["campidanese","cam:127","campidanese","/kampidaˈnese/","noun","abitante del Campidano","native or inhabitant of Campidano"],
 ["camping","cam:128","camping","/ˈkampin(g)/","noun","luogo dove si campeggia","campsite"],
 ["campionabile","cam:129","campionabile","","adj","che si può campionare","samplable"],
-["campionamento","cam:130","campionamento","/kampjonaˈmento/","noun","selezione o prelievo di campioni allo scopo di analizzarli, inventariarli o studiarli","sampling (all senses)"],
+["campionamento","cam:130","campionamento","/kampjonaˈmento/","noun","selezione o prelievo di campioni allo scopo di analizzarli, inventariarli o studiarli","sampling"],
 ["campionare","cam:131","campionare","/kampjoˈnare/","verb","estrarre un campione da una massa di merce o di materiali","to sample"],
 ["campionatore","cam:132","campionatore","","noun","strumento musicale elettronico per acquisire e riprodurre suoni in formato digitale","sampler (device)"],
 ["campionatura","cam:133","campionatura","","noun","metodo d’indagine statistica che dalla rilevazione di un certo numero di elementi rappresentativi di una totalità o di un fenomeno ricava informazioni generali su questi ultimi","sampling"],

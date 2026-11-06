@@ -2,7 +2,7 @@
 ["boston","bo:0","Boston","/ˈbɔston/","name","capitale del Massachusetts, uno dei cinquanta stati federati degli Stati Uniti d'America",""],
 ["bottiglia","bo:1","bottiglia","/botˈtiʎʎa/","noun","contenitore di vetro o plastica dalla stretta imboccatura (detta collo) utilizzato in prevalenza per contenere liquidi","bottle"],
 ["borsa","bo:2","borsa","/ˈborsa/","noun","contenitore non rigido per solidi che sia portatile e perciò dotato di opportuni manici per sostenerlo oppure a tracolla, generalmente con un arto superiore o sulla spalla","bag, handbag, purse, briefcase"],
-["bocca","bo:3","bocca","/ˈbok.ka/","noun","orifizio attraverso cui gli animali si cibano ed è anche la prima parte dell'apparato digerente","mouth (all senses)"],
+["bocca","bo:3","bocca","/ˈbok.ka/","noun","orifizio attraverso cui gli animali si cibano ed è anche la prima parte dell'apparato digerente","mouth"],
 ["bosniaca","bo:4","bosniaca","","noun","persona nata in Bosnia o che ne ha acquisito la nazionalità","female equivalent of bosniaco"],
 ["bordo","bo:5","bordo","/ˈbordo/","noun","estremità di un oggetto","edge, border, margin, hem, rim"],
 ["bosco","bo:6","bosco","/ˈbɔsko/","noun","superficie di terreno più o meno vasta coperta di alberi o arbusti, cresciuti spontaneamente o piantati dall'uomo","woodland"],
@@ -17,7 +17,7 @@
 ["botte","bo:15","botte","/ˈbotte/","noun","recipiente per il vino o per altri liquidi di grosse dimensioni a forma cilindrica solitamente bombata in centro, di legno","barrel"],
 ["bollito","bo:16","bollito","/bolˈlito/","adj","cucinato mediante bollitura","boiled"],
 ["bollente","bo:17","bollente","","adj","attributo del liquido che ha raggiunto la temperatura di ebollizione","boiling, hot"],
-["bonus","bo:18","bonus","/ˈbɔnus/","noun","gratifica che un ente concede come incentivo nei confronti di un dipendente, in aggiunta allo stipendio di base","a bonus (all senses)"],
+["bonus","bo:18","bonus","/ˈbɔnus/","noun","gratifica che un ente concede come incentivo nei confronti di un dipendente, in aggiunta allo stipendio di base","a bonus"],
 ["bordeaux","bo:19","bordeaux","/borˈdo/","adj","(aggettivo)","burgundy, maroon (color/colour)"],
 ["bosniaco","bo:20","bosniaco","/bozˈniako/","noun","persona nata in Bosnia ed Erzegovina o che ne ha acquisito la cittadinanza","Bosnian (person)"],
 ["boliviano","bo:21","boliviano","/boliˈvjano/","adj","che riguarda la Bolivia","Bolivian"],
@@ -339,7 +339,7 @@
 ["boy-friend","bo:337","boy-friend","","noun","amico del cuore",""],
 ["boyfriend","bo:338","boyfriend","/ˌbɔj'frɛnd/","noun","amico del cuore",""],
 ["bozzacchione","bo:339","bozzacchione","/bot͡sːakˈkjɔːne/","noun","susina marcia, gonfia oltre il consueto ma vacua, che è dovuto all'infezione di funghi del genere Taphrina","leaf curl in fruit such as peaches"],
-["bozzetto","bo:340","bozzetto","/botˈtsetto/","noun","diminutivo di bozza","sketch (all senses)"],
+["bozzetto","bo:340","bozzetto","/botˈtsetto/","noun","diminutivo di bozza","sketch"],
 ["bozzima","bo:341","bozzima","/ˈbɔd͡zːima/","noun","intriso di cruschello, untume e acqua, che si passa dalle tessiture mediante un granatino sui fili della canapa o del lino, dopo che sono stati imposti nel telaio, a fine di rammorbidirli","chicken feed (mash, etc., for chickens)"],
 ["bozzolo","bo:342","bozzolo","/ˈbɔttsolo/","noun","involucro protettivo delle crisalidi delle farfalle, in particolare del baco da seta","cocoon"]
 ]

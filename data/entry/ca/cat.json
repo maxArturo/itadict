@@ -58,7 +58,7 @@
 {"id":"cat:56","word":"Catterino","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
 {"id":"cat:57","word":"Catulla","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"cat:58","word":"cat-calling","cefr":"c2","pos":[{"pos":"noun","senses":["apprezzamento esplicito e volgare, da parte di un uomo, nei confronti di una donna incontrata in un luogo pubblico"]}]},
-{"id":"cat:59","word":"cata-","ipa":"/ˈkata/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi composti, il cui senso è \"giù\""]}],"en":[{"pos":"prefix","glosses":["cata- (all senses)"]}]},
+{"id":"cat:59","word":"cata-","ipa":"/ˈkata/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi composti, il cui senso è \"giù\""]}],"en":[{"pos":"prefix","glosses":["cata-"]}]},
 {"id":"cat:60","word":"catabatico","ipa":"/kataˈbatiko/","cefr":"c2","pos":[{"pos":"adj","senses":["di vento freddo la cui massa d'aria proviene da una regione situata più in alto, quindi un vento freddo discendente"]}],"en":[{"pos":"adj","glosses":["katabatic"]}]},
 {"id":"cat:61","word":"catabolico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il catabolismo"]}],"en":[{"pos":"adj","glosses":["catabolic"]}]},
 {"id":"cat:62","word":"catabolismo","cefr":"c2","pos":[{"pos":"noun","senses":["degradazione di biomolecole complesse in monomeri semplici, che si accompagna alla liberazione di calore e di energia chimica"]}],"en":[{"pos":"noun","glosses":["catabolism (destructive metabolism)"]}]},

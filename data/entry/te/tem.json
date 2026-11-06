@@ -32,7 +32,7 @@
 {"id":"tem:30","word":"Temisto","cefr":"c2","pos":[{"pos":"name","senses":["variante di Temistocle"]}]},
 {"id":"tem:31","word":"Tempio Pausania","cefr":"c2","pos":[{"pos":"name","senses":["Comune in provincia di Sassari della regione Sardegna in Italia"]}]},
 {"id":"tem:32","word":"temaki","cefr":"c2","pos":[{"pos":"noun","senses":["variante del sushi in cui gli ingredienti sono racchiusi da un avvolgimento, in genere di alga nori, di forma conica"]}]},
-{"id":"tem:33","word":"tematico","ipa":"/teˈmatiko/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente ad un determinato argomento artistico o letterario"]}],"en":[{"pos":"adj","glosses":["thematic (all senses)"]}]},
+{"id":"tem:33","word":"tematico","ipa":"/teˈmatiko/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente ad un determinato argomento artistico o letterario"]}],"en":[{"pos":"adj","glosses":["thematic"]}]},
 {"id":"tem:34","word":"temerariamente","ipa":"/temerarjaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in maniera temeraria"]}],"en":[{"pos":"adv","glosses":["rashly, recklessly","audaciously, daringly"]}]},
 {"id":"tem:35","word":"temerarietà","ipa":"/temerarjeˈta/","cefr":"c2","pos":[{"pos":"noun","senses":["portarsi al limite estremo di una scelta ed optare per la più rischiosa"]}],"en":[{"pos":"noun","glosses":["recklessness, rashness, temerity","boldness, derring-do"]}]},
 {"id":"tem:36","word":"temolo","ipa":"/ˈtɛmolo/","cefr":"c2","pos":[{"pos":"noun","senses":["figura araldica convenzionale che di norma rappresenta il pesce in fascia"]}],"en":[{"pos":"noun","glosses":["grayling (Thymallus thymallus)"]}]},

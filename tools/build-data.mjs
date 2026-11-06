@@ -395,9 +395,16 @@ function englishTokens(text) {
   return String(text).normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase().match(/[a-z0-9]+/g) ?? [];
 }
 
-/** An English gloss: whitespace collapsed, capped like an Italian sense. */
+/**
+ * A trailing Wiktionary sense marker that carries no meaning: "(all senses)", "(sense 1)".
+ * A qualifier that does carry meaning, like "(figuratively)" or "(idiomatic)", stays.
+ */
+const SENSE_MARKER = /\s*\(\s*(?:all senses|sense\s+\d+)\s*\)\s*$/i;
+
+/** An English gloss: sense markers stripped, whitespace collapsed, capped like a sense. */
 function cleanEnglish(raw) {
-  const text = String(raw ?? '').replace(/\s+/g, ' ').trim();
+  let text = String(raw ?? '').replace(/\s+/g, ' ').trim();
+  while (SENSE_MARKER.test(text)) text = text.replace(SENSE_MARKER, '').trim();
   if (text === '') return '';
   return text.length > MAX_GLOSS ? truncate(text, MAX_GLOSS) : text;
 }

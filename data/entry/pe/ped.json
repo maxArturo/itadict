@@ -49,7 +49,7 @@
 {"id":"ped:47","word":"pedoclastia","cefr":"c2","pos":[{"pos":"noun","senses":["atteggiamento educativo prodotto sul bambino da genitori o da educatori improntato a criteri non compatibili con una affettività matura"]}]},
 {"id":"ped:48","word":"pedodonzia","cefr":"c2","pos":[{"pos":"noun","senses":["ramo dell'odontoiatria che studia le malattie dei denti e della bocca proprie dell'infanzia e dell'adolescenza"]}],"en":[{"pos":"noun","glosses":["paedodontics/pedodontics (pediatric/paediatric dentistry)"]}]},
 {"id":"ped:49","word":"pedofobia","cefr":"c2","pos":[{"pos":"noun","senses":["avversione per l'infanzia"]}]},
-{"id":"ped:50","word":"pedologia","cefr":"c2","pos":[{"pos":"noun","senses":["scienza che studia l'origine, la composizione e le trasformazioni del suolo"]}],"en":[{"pos":"noun","glosses":["pedology (all senses)"]}]},
+{"id":"ped:50","word":"pedologia","cefr":"c2","pos":[{"pos":"noun","senses":["scienza che studia l'origine, la composizione e le trasformazioni del suolo"]}],"en":[{"pos":"noun","glosses":["pedology"]}]},
 {"id":"ped:51","word":"pedometro","ipa":"/pe.ˈdɔ.me.tro/","cefr":"c2","pos":[{"pos":"noun","senses":["strumento utilizzato per misurare la distanza percorsa a piedi"]}],"en":[{"pos":"noun","glosses":["pedometer"]}]},
 {"id":"ped:52","word":"pedonalizzazione","ipa":"/pedonalidz:aˈtsjone/","cefr":"c2","pos":[{"pos":"noun","senses":["serie di interventi amministrativi ed urbanistici adottati per riservare ai pedoni una determinata zona cittadina"]}],"en":[{"pos":"noun","glosses":["pedestrianization"]}]},
 {"id":"ped:53","word":"pedopornografia","cefr":"c2","pos":[{"pos":"noun","senses":["pornografia dove sono raffigurate persone minorenni"]}],"en":[{"pos":"noun","glosses":["child pornography"]}]},

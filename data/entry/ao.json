@@ -8,7 +8,7 @@
 {"id":"ao:6","word":"a occhio nudo","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["privo di occhiali o di binocolo"]}]},
 {"id":"ao:7","word":"a ogni buon conto","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in ogni caso"]}]},
 {"id":"ao:8","word":"a opera di","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["con la partecipazione di","a motivo di"]}]},
-{"id":"ao:9","word":"aonio","ipa":"/aˈɔnjo/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente ai monti Aoni in Grecia","che è attinente alle muse"]}],"en":[{"pos":"adj","glosses":["Aonian (all senses)"]}]},
+{"id":"ao:9","word":"aonio","ipa":"/aˈɔnjo/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente ai monti Aoni in Grecia","che è attinente alle muse"]}],"en":[{"pos":"adj","glosses":["Aonian"]}]},
 {"id":"ao:10","word":"aontare","cefr":"c2","pos":[{"pos":"verb","senses":["adontare"]}],"en":[{"pos":"verb","glosses":["alternative form of adontare (“to offend”)"]}]},
 {"id":"ao:11","word":"aorare","cefr":"c2","pos":[{"pos":"verb","senses":["adorare"]}]},
 {"id":"ao:12","word":"aorcare","cefr":"c2","pos":[{"pos":"verb","senses":["strangolare"]}]},

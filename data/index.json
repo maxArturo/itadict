@@ -1,5 +1,5 @@
 {
-  "version": "v1-7e4046481140",
+  "version": "v1-0ac8a1e3d95a",
   "built": "2026-11-06",
   "partial": false,
   "bucketKey": "fold to lowercase, strip diacritics, first two letters or digits",
@@ -1163,15 +1163,15 @@
       "search": [
         {
           "path": "data/ab.json",
-          "bytes": 63088,
-          "hash": "388b5340"
+          "bytes": 63075,
+          "hash": "4d24e986"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ab.json",
-          "bytes": 244181,
-          "hash": "ebee69ad"
+          "bytes": 244155,
+          "hash": "0a2b8e78"
         }
       ],
       "ex": [
@@ -1325,8 +1325,8 @@
         },
         {
           "path": "data/ac/accu.json",
-          "bytes": 3104,
-          "hash": "0f204670"
+          "bytes": 3091,
+          "hash": "30a1f2a2"
         },
         {
           "path": "data/ac/acd.json",
@@ -1447,8 +1447,8 @@
         },
         {
           "path": "data/entry/ac/accu.json",
-          "bytes": 14242,
-          "hash": "575fbcc0"
+          "bytes": 14229,
+          "hash": "08a6a572"
         },
         {
           "path": "data/entry/ac/acd.json",
@@ -1622,15 +1622,15 @@
       "search": [
         {
           "path": "data/ad.json",
-          "bytes": 47284,
-          "hash": "77f837a7"
+          "bytes": 47271,
+          "hash": "11349418"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ad.json",
-          "bytes": 160603,
-          "hash": "355345b3"
+          "bytes": 160590,
+          "hash": "bcd63c75"
         }
       ],
       "ex": [
@@ -1694,15 +1694,15 @@
       "search": [
         {
           "path": "data/ae.json",
-          "bytes": 13594,
-          "hash": "7d7531a3"
+          "bytes": 13555,
+          "hash": "ad7d1a9e"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ae.json",
-          "bytes": 27976,
-          "hash": "2ae7aa99"
+          "bytes": 27937,
+          "hash": "74340707"
         }
       ],
       "ex": [
@@ -1775,8 +1775,8 @@
       "entry": [
         {
           "path": "data/entry/ag.json",
-          "bytes": 136500,
-          "hash": "7c125bd6"
+          "bytes": 136487,
+          "hash": "db761b58"
         }
       ],
       "ex": [
@@ -1933,8 +1933,8 @@
         },
         {
           "path": "data/al/alb.json",
-          "bytes": 7857,
-          "hash": "4d2cc9ac"
+          "bytes": 7818,
+          "hash": "12367f05"
         },
         {
           "path": "data/al/alc.json",
@@ -2045,8 +2045,8 @@
         },
         {
           "path": "data/entry/al/alb.json",
-          "bytes": 19359,
-          "hash": "62075daa"
+          "bytes": 19320,
+          "hash": "6f53c11b"
         },
         {
           "path": "data/entry/al/alc.json",
@@ -2241,8 +2241,8 @@
       "en": [
         {
           "path": "data/en/al.json",
-          "bytes": 14510,
-          "hash": "6d82ccab"
+          "bytes": 14538,
+          "hash": "f732b79a"
         }
       ]
     },
@@ -2250,15 +2250,15 @@
       "search": [
         {
           "path": "data/am.json",
-          "bytes": 59868,
-          "hash": "f3f7aab2"
+          "bytes": 59842,
+          "hash": "b6b69d61"
         }
       ],
       "entry": [
         {
           "path": "data/entry/am.json",
-          "bytes": 195525,
-          "hash": "a919b75d"
+          "bytes": 195486,
+          "hash": "090b7be2"
         }
       ],
       "ex": [
@@ -2332,13 +2332,13 @@
         },
         {
           "path": "data/an/ana.json",
-          "bytes": 23442,
-          "hash": "9eb678e2"
+          "bytes": 23416,
+          "hash": "1a2ff587"
         },
         {
           "path": "data/an/anc.json",
-          "bytes": 3851,
-          "hash": "5e3a15a2"
+          "bytes": 3838,
+          "hash": "26a21d25"
         },
         {
           "path": "data/an/and.json",
@@ -2372,8 +2372,8 @@
         },
         {
           "path": "data/an/ann.json",
-          "bytes": 11818,
-          "hash": "a9ca3250"
+          "bytes": 11792,
+          "hash": "8c3af07c"
         },
         {
           "path": "data/an/ano.json",
@@ -2392,8 +2392,8 @@
         },
         {
           "path": "data/an/ant.json",
-          "bytes": 62667,
-          "hash": "554e1c92"
+          "bytes": 62654,
+          "hash": "a0abf05b"
         },
         {
           "path": "data/an/anu.json",
@@ -2419,13 +2419,13 @@
         },
         {
           "path": "data/entry/an/ana.json",
-          "bytes": 46422,
-          "hash": "eceee4bb"
+          "bytes": 46396,
+          "hash": "50add1fa"
         },
         {
           "path": "data/entry/an/anc.json",
-          "bytes": 13520,
-          "hash": "cf58c085"
+          "bytes": 13507,
+          "hash": "cec6b61c"
         },
         {
           "path": "data/entry/an/and.json",
@@ -2459,8 +2459,8 @@
         },
         {
           "path": "data/entry/an/ann.json",
-          "bytes": 54932,
-          "hash": "95655faa"
+          "bytes": 54906,
+          "hash": "637ea228"
         },
         {
           "path": "data/entry/an/ano.json",
@@ -2479,8 +2479,8 @@
         },
         {
           "path": "data/entry/an/ant.json",
-          "bytes": 119974,
-          "hash": "d95cec4e"
+          "bytes": 119948,
+          "hash": "1c106639"
         },
         {
           "path": "data/entry/an/anu.json",
@@ -2584,15 +2584,15 @@
       "search": [
         {
           "path": "data/ao.json",
-          "bytes": 1442,
-          "hash": "e9b557be"
+          "bytes": 1429,
+          "hash": "29b9add1"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ao.json",
-          "bytes": 2317,
-          "hash": "fa53f2b7"
+          "bytes": 2304,
+          "hash": "5844c4ab"
         }
       ],
       "ex": [
@@ -2621,15 +2621,15 @@
       "search": [
         {
           "path": "data/ap.json",
-          "bytes": 51241,
-          "hash": "d118e26b"
+          "bytes": 51202,
+          "hash": "0bbff3f6"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ap.json",
-          "bytes": 179493,
-          "hash": "75f03e24"
+          "bytes": 179454,
+          "hash": "b201338c"
         }
       ],
       "ex": [
@@ -2830,8 +2830,8 @@
         },
         {
           "path": "data/ar/arr.json",
-          "bytes": 15202,
-          "hash": "42ce4ed9"
+          "bytes": 15176,
+          "hash": "cf1a6f47"
         },
         {
           "path": "data/ar/ars.json",
@@ -2932,8 +2932,8 @@
         },
         {
           "path": "data/entry/ar/arr.json",
-          "bytes": 80656,
-          "hash": "57ce5ae9"
+          "bytes": 80617,
+          "hash": "060e15c0"
         },
         {
           "path": "data/entry/ar/ars.json",
@@ -2942,8 +2942,8 @@
         },
         {
           "path": "data/entry/ar/art.json",
-          "bytes": 26123,
-          "hash": "4cb02cb1"
+          "bytes": 26110,
+          "hash": "d5bc9edd"
         },
         {
           "path": "data/entry/ar/aru.json",
@@ -3062,15 +3062,15 @@
       "search": [
         {
           "path": "data/as.json",
-          "bytes": 64499,
-          "hash": "34155dcd"
+          "bytes": 64447,
+          "hash": "33a93412"
         }
       ],
       "entry": [
         {
           "path": "data/entry/as.json",
-          "bytes": 210253,
-          "hash": "f43de0c2"
+          "bytes": 210188,
+          "hash": "76019428"
         }
       ],
       "ex": [
@@ -3134,15 +3134,15 @@
       "search": [
         {
           "path": "data/at.json",
-          "bytes": 38060,
-          "hash": "46605f6c"
+          "bytes": 38047,
+          "hash": "1d6a150e"
         }
       ],
       "entry": [
         {
           "path": "data/entry/at.json",
-          "bytes": 125602,
-          "hash": "e485a7f4"
+          "bytes": 125589,
+          "hash": "c5eb42a8"
         }
       ],
       "ex": [
@@ -3171,15 +3171,15 @@
       "search": [
         {
           "path": "data/au.json",
-          "bytes": 56854,
-          "hash": "132439ef"
+          "bytes": 56828,
+          "hash": "49f9d61e"
         }
       ],
       "entry": [
         {
           "path": "data/entry/au.json",
-          "bytes": 115515,
-          "hash": "dde04d11"
+          "bytes": 115489,
+          "hash": "cc80d1f8"
         }
       ],
       "ex": [
@@ -3208,15 +3208,15 @@
       "search": [
         {
           "path": "data/av.json",
-          "bytes": 33072,
-          "hash": "8204c528"
+          "bytes": 33059,
+          "hash": "8f751d56"
         }
       ],
       "entry": [
         {
           "path": "data/entry/av.json",
-          "bytes": 112647,
-          "hash": "886babea"
+          "bytes": 112634,
+          "hash": "893e5a5a"
         }
       ],
       "ex": [
@@ -3443,8 +3443,8 @@
         },
         {
           "path": "data/ba/ban.json",
-          "bytes": 13070,
-          "hash": "c655ec1a"
+          "bytes": 13057,
+          "hash": "7f93647f"
         },
         {
           "path": "data/ba/bao.json",
@@ -3458,13 +3458,13 @@
         },
         {
           "path": "data/ba/bar.json",
-          "bytes": 22598,
-          "hash": "18a0e818"
+          "bytes": 22585,
+          "hash": "2868e1c7"
         },
         {
           "path": "data/ba/bas.json",
-          "bytes": 14538,
-          "hash": "df549ef8"
+          "bytes": 14512,
+          "hash": "88c18f28"
         },
         {
           "path": "data/ba/bat.json",
@@ -3525,8 +3525,8 @@
         },
         {
           "path": "data/entry/ba/bag.json",
-          "bytes": 11641,
-          "hash": "bc09e0a3"
+          "bytes": 11628,
+          "hash": "d2b4ab43"
         },
         {
           "path": "data/entry/ba/bah.json",
@@ -3555,8 +3555,8 @@
         },
         {
           "path": "data/entry/ba/ban.json",
-          "bytes": 25281,
-          "hash": "6c36d029"
+          "bytes": 25268,
+          "hash": "22895a82"
         },
         {
           "path": "data/entry/ba/bao.json",
@@ -3570,13 +3570,13 @@
         },
         {
           "path": "data/entry/ba/bar.json",
-          "bytes": 65080,
-          "hash": "661f1848"
+          "bytes": 65067,
+          "hash": "8abe053e"
         },
         {
           "path": "data/entry/ba/bas.json",
-          "bytes": 33528,
-          "hash": "7551cf0e"
+          "bytes": 33502,
+          "hash": "b580cfde"
         },
         {
           "path": "data/entry/ba/bat.json",
@@ -3692,15 +3692,15 @@
       "search": [
         {
           "path": "data/be.json",
-          "bytes": 48140,
-          "hash": "71a45740"
+          "bytes": 48127,
+          "hash": "1d5ed946"
         }
       ],
       "entry": [
         {
           "path": "data/entry/be.json",
-          "bytes": 111417,
-          "hash": "980dbfb6"
+          "bytes": 111391,
+          "hash": "7f663e5d"
         }
       ],
       "ex": [
@@ -3779,15 +3779,15 @@
       "search": [
         {
           "path": "data/bi.json",
-          "bytes": 84177,
-          "hash": "27b0bc23"
+          "bytes": 84164,
+          "hash": "9b5b4204"
         }
       ],
       "entry": [
         {
           "path": "data/entry/bi.json",
-          "bytes": 185446,
-          "hash": "630c66bf"
+          "bytes": 185433,
+          "hash": "c2ad5c5d"
         }
       ],
       "ex": [
@@ -3922,15 +3922,15 @@
       "search": [
         {
           "path": "data/bo.json",
-          "bytes": 47775,
-          "hash": "18ccd555"
+          "bytes": 47736,
+          "hash": "e2563a58"
         }
       ],
       "entry": [
         {
           "path": "data/entry/bo.json",
-          "bytes": 109806,
-          "hash": "479695f6"
+          "bytes": 109767,
+          "hash": "94b0d8d3"
         }
       ],
       "ex": [
@@ -4238,18 +4238,18 @@
         },
         {
           "path": "data/ca/cal.json",
-          "bytes": 37585,
-          "hash": "d6de9df8"
+          "bytes": 37572,
+          "hash": "64ffe7ff"
         },
         {
           "path": "data/ca/cam.json",
-          "bytes": 22776,
-          "hash": "d4944af1"
+          "bytes": 22750,
+          "hash": "45a4cabb"
         },
         {
           "path": "data/ca/can.json",
-          "bytes": 26840,
-          "hash": "67644c0a"
+          "bytes": 26814,
+          "hash": "fdff68fa"
         },
         {
           "path": "data/ca/cao.json",
@@ -4258,13 +4258,13 @@
         },
         {
           "path": "data/ca/cap.json",
-          "bytes": 36920,
-          "hash": "2acc4907"
+          "bytes": 36907,
+          "hash": "cc6a435c"
         },
         {
           "path": "data/ca/car.json",
-          "bytes": 65959,
-          "hash": "e710b6bf"
+          "bytes": 65933,
+          "hash": "aca30d3e"
         },
         {
           "path": "data/ca/cas.json",
@@ -4273,18 +4273,18 @@
         },
         {
           "path": "data/ca/cat.json",
-          "bytes": 20818,
-          "hash": "6b03ddbe"
+          "bytes": 20805,
+          "hash": "315f99f2"
         },
         {
           "path": "data/ca/cau.json",
-          "bytes": 3816,
-          "hash": "f9814023"
+          "bytes": 3803,
+          "hash": "1395be3e"
         },
         {
           "path": "data/ca/cav.json",
-          "bytes": 9450,
-          "hash": "88e8ddd5"
+          "bytes": 9437,
+          "hash": "6e4fd4c0"
         },
         {
           "path": "data/ca/caz.json",
@@ -4330,18 +4330,18 @@
         },
         {
           "path": "data/entry/ca/cal.json",
-          "bytes": 88248,
-          "hash": "07f0425d"
+          "bytes": 88235,
+          "hash": "51104a01"
         },
         {
           "path": "data/entry/ca/cam.json",
-          "bytes": 50962,
-          "hash": "13616d97"
+          "bytes": 50936,
+          "hash": "7203679a"
         },
         {
           "path": "data/entry/ca/can.json",
-          "bytes": 76384,
-          "hash": "fd61fbad"
+          "bytes": 76358,
+          "hash": "1cb7cb0f"
         },
         {
           "path": "data/entry/ca/cao.json",
@@ -4350,13 +4350,13 @@
         },
         {
           "path": "data/entry/ca/cap.json",
-          "bytes": 86044,
-          "hash": "2dfc5023"
+          "bytes": 86031,
+          "hash": "c41a6e82"
         },
         {
           "path": "data/entry/ca/car.json",
-          "bytes": 143987,
-          "hash": "3d0a843d"
+          "bytes": 143961,
+          "hash": "91067496"
         },
         {
           "path": "data/entry/ca/cas.json",
@@ -4365,18 +4365,18 @@
         },
         {
           "path": "data/entry/ca/cat.json",
-          "bytes": 52672,
-          "hash": "067eec8f"
+          "bytes": 52659,
+          "hash": "f80382e4"
         },
         {
           "path": "data/entry/ca/cau.json",
-          "bytes": 12176,
-          "hash": "1f9ebc95"
+          "bytes": 12163,
+          "hash": "ebd83af1"
         },
         {
           "path": "data/entry/ca/cav.json",
-          "bytes": 22911,
-          "hash": "ca753998"
+          "bytes": 22898,
+          "hash": "8fa64e5d"
         },
         {
           "path": "data/entry/ca/caz.json",
@@ -4559,15 +4559,15 @@
       "search": [
         {
           "path": "data/ce.json",
-          "bytes": 66698,
-          "hash": "99b1c64f"
+          "bytes": 66685,
+          "hash": "edcf0038"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ce.json",
-          "bytes": 154541,
-          "hash": "6f50c1b7"
+          "bytes": 154528,
+          "hash": "e604112d"
         }
       ],
       "ex": [
@@ -4640,15 +4640,15 @@
       "search": [
         {
           "path": "data/ch.json",
-          "bytes": 53125,
-          "hash": "d97afb86"
+          "bytes": 53112,
+          "hash": "7a32bac5"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ch.json",
-          "bytes": 122316,
-          "hash": "38bea614"
+          "bytes": 122303,
+          "hash": "a57e591d"
         }
       ],
       "ex": [
@@ -4677,15 +4677,15 @@
       "search": [
         {
           "path": "data/ci.json",
-          "bytes": 92673,
-          "hash": "cdec8f6f"
+          "bytes": 92660,
+          "hash": "a3b9ff7a"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ci.json",
-          "bytes": 220137,
-          "hash": "2db18922"
+          "bytes": 220111,
+          "hash": "ad047586"
         }
       ],
       "ex": [
@@ -4714,15 +4714,15 @@
       "search": [
         {
           "path": "data/cl.json",
-          "bytes": 36865,
-          "hash": "8676b9a7"
+          "bytes": 36852,
+          "hash": "7bb17a62"
         }
       ],
       "entry": [
         {
           "path": "data/entry/cl.json",
-          "bytes": 76527,
-          "hash": "86ac03e7"
+          "bytes": 76514,
+          "hash": "d337763b"
         }
       ],
       "ex": [
@@ -4827,13 +4827,13 @@
         },
         {
           "path": "data/co/cod.json",
-          "bytes": 5143,
-          "hash": "40d5f810"
+          "bytes": 5130,
+          "hash": "0675cd8a"
         },
         {
           "path": "data/co/coe.json",
-          "bytes": 3747,
-          "hash": "151e6485"
+          "bytes": 3734,
+          "hash": "edbbeb73"
         },
         {
           "path": "data/co/cof.json",
@@ -4862,13 +4862,13 @@
         },
         {
           "path": "data/co/col.json",
-          "bytes": 38279,
-          "hash": "6baf3cfb"
+          "bytes": 38266,
+          "hash": "59f09b0e"
         },
         {
           "path": "data/co/com.json",
-          "bytes": 62071,
-          "hash": "89e1da3d"
+          "bytes": 62032,
+          "hash": "7d539dec"
         },
         {
           "path": "data/co/con_.json",
@@ -4882,13 +4882,13 @@
         },
         {
           "path": "data/co/conc.json",
-          "bytes": 18963,
-          "hash": "1c3e6f61"
+          "bytes": 18950,
+          "hash": "80b7acb9"
         },
         {
           "path": "data/co/cond.json",
-          "bytes": 9732,
-          "hash": "cafa2103"
+          "bytes": 9719,
+          "hash": "69d2be90"
         },
         {
           "path": "data/co/cone.json",
@@ -4937,13 +4937,13 @@
         },
         {
           "path": "data/co/cons.json",
-          "bytes": 20145,
-          "hash": "984817fb"
+          "bytes": 20119,
+          "hash": "ee5d98a5"
         },
         {
           "path": "data/co/cont.json",
-          "bytes": 57236,
-          "hash": "44e9520e"
+          "bytes": 57210,
+          "hash": "6cb15460"
         },
         {
           "path": "data/co/conu.json",
@@ -4952,13 +4952,13 @@
         },
         {
           "path": "data/co/conv.json",
-          "bytes": 10537,
-          "hash": "344f46fd"
+          "bytes": 10498,
+          "hash": "778c8018"
         },
         {
           "path": "data/co/coo.json",
-          "bytes": 2970,
-          "hash": "f5ddf812"
+          "bytes": 2931,
+          "hash": "b9c61e47"
         },
         {
           "path": "data/co/cop.json",
@@ -4967,13 +4967,13 @@
         },
         {
           "path": "data/co/cor.json",
-          "bytes": 43050,
-          "hash": "286db487"
+          "bytes": 42998,
+          "hash": "f3885a82"
         },
         {
           "path": "data/co/cos.json",
-          "bytes": 21953,
-          "hash": "b837b812"
+          "bytes": 21940,
+          "hash": "284c33f6"
         },
         {
           "path": "data/co/cot.json",
@@ -5029,13 +5029,13 @@
         },
         {
           "path": "data/entry/co/cod.json",
-          "bytes": 10499,
-          "hash": "022b04bb"
+          "bytes": 10486,
+          "hash": "07494ef6"
         },
         {
           "path": "data/entry/co/coe.json",
-          "bytes": 9756,
-          "hash": "ecbc1800"
+          "bytes": 9743,
+          "hash": "2f5c8d39"
         },
         {
           "path": "data/entry/co/cof.json",
@@ -5064,13 +5064,13 @@
         },
         {
           "path": "data/entry/co/col.json",
-          "bytes": 106047,
-          "hash": "e9e6fda4"
+          "bytes": 106034,
+          "hash": "a5317d09"
         },
         {
           "path": "data/entry/co/com.json",
-          "bytes": 193059,
-          "hash": "4232eec1"
+          "bytes": 193020,
+          "hash": "2dd0c910"
         },
         {
           "path": "data/entry/co/con_.json",
@@ -5084,13 +5084,13 @@
         },
         {
           "path": "data/entry/co/conc.json",
-          "bytes": 67339,
-          "hash": "7f580376"
+          "bytes": 67326,
+          "hash": "d76b50f4"
         },
         {
           "path": "data/entry/co/cond.json",
-          "bytes": 30000,
-          "hash": "bae0fd76"
+          "bytes": 29987,
+          "hash": "3434d8e6"
         },
         {
           "path": "data/entry/co/cone.json",
@@ -5139,13 +5139,13 @@
         },
         {
           "path": "data/entry/co/cons.json",
-          "bytes": 72105,
-          "hash": "d3dd956e"
+          "bytes": 72079,
+          "hash": "0f58a296"
         },
         {
           "path": "data/entry/co/cont.json",
-          "bytes": 184152,
-          "hash": "9db459fe"
+          "bytes": 184126,
+          "hash": "c196a9c7"
         },
         {
           "path": "data/entry/co/conu.json",
@@ -5154,13 +5154,13 @@
         },
         {
           "path": "data/entry/co/conv.json",
-          "bytes": 37798,
-          "hash": "6b526d58"
+          "bytes": 37746,
+          "hash": "9bcfad8c"
         },
         {
           "path": "data/entry/co/coo.json",
-          "bytes": 9512,
-          "hash": "3012a0c5"
+          "bytes": 9473,
+          "hash": "0d62614e"
         },
         {
           "path": "data/entry/co/cop.json",
@@ -5169,13 +5169,13 @@
         },
         {
           "path": "data/entry/co/cor.json",
-          "bytes": 115035,
-          "hash": "4ad969b3"
+          "bytes": 114983,
+          "hash": "f926313b"
         },
         {
           "path": "data/entry/co/cos.json",
-          "bytes": 61300,
-          "hash": "7b46fb6c"
+          "bytes": 61287,
+          "hash": "cc89b3d8"
         },
         {
           "path": "data/entry/co/cot.json",
@@ -5444,15 +5444,15 @@
       "search": [
         {
           "path": "data/cr.json",
-          "bytes": 80381,
-          "hash": "dddb14ee"
+          "bytes": 80329,
+          "hash": "346f80d3"
         }
       ],
       "entry": [
         {
           "path": "data/entry/cr.json",
-          "bytes": 165306,
-          "hash": "660403bc"
+          "bytes": 165241,
+          "hash": "8e32ad00"
         }
       ],
       "ex": [
@@ -5537,15 +5537,15 @@
       "search": [
         {
           "path": "data/cu.json",
-          "bytes": 27972,
-          "hash": "58e361d6"
+          "bytes": 27959,
+          "hash": "58973301"
         }
       ],
       "entry": [
         {
           "path": "data/entry/cu.json",
-          "bytes": 67396,
-          "hash": "532d5af6"
+          "bytes": 67383,
+          "hash": "42b413f5"
         }
       ],
       "ex": [
@@ -5693,15 +5693,15 @@
       "search": [
         {
           "path": "data/da.json",
-          "bytes": 37560,
-          "hash": "ec6c4888"
+          "bytes": 37547,
+          "hash": "176f022f"
         }
       ],
       "entry": [
         {
           "path": "data/entry/da.json",
-          "bytes": 75406,
-          "hash": "56427a57"
+          "bytes": 75393,
+          "hash": "5dcf1cab"
         }
       ],
       "ex": [
@@ -5789,8 +5789,8 @@
         },
         {
           "path": "data/de/dec.json",
-          "bytes": 25288,
-          "hash": "79140a29"
+          "bytes": 25249,
+          "hash": "fcdd28a5"
         },
         {
           "path": "data/de/ded.json",
@@ -5804,8 +5804,8 @@
         },
         {
           "path": "data/de/def.json",
-          "bytes": 10801,
-          "hash": "fd733ea2"
+          "bytes": 10788,
+          "hash": "81efcf95"
         },
         {
           "path": "data/de/deg.json",
@@ -5829,8 +5829,8 @@
         },
         {
           "path": "data/de/del.json",
-          "bytes": 11512,
-          "hash": "7cadcc11"
+          "bytes": 11499,
+          "hash": "779eec8e"
         },
         {
           "path": "data/de/dem.json",
@@ -5839,8 +5839,8 @@
         },
         {
           "path": "data/de/den.json",
-          "bytes": 10079,
-          "hash": "6162df62"
+          "bytes": 10066,
+          "hash": "76dcf95a"
         },
         {
           "path": "data/de/deo.json",
@@ -5869,8 +5869,8 @@
         },
         {
           "path": "data/de/det.json",
-          "bytes": 8745,
-          "hash": "ad64ea9c"
+          "bytes": 8732,
+          "hash": "c09a2449"
         },
         {
           "path": "data/de/deu.json",
@@ -5901,8 +5901,8 @@
         },
         {
           "path": "data/entry/de/dec.json",
-          "bytes": 114327,
-          "hash": "e73cbcc4"
+          "bytes": 114288,
+          "hash": "b82c460e"
         },
         {
           "path": "data/entry/de/ded.json",
@@ -5916,8 +5916,8 @@
         },
         {
           "path": "data/entry/de/def.json",
-          "bytes": 50820,
-          "hash": "99743f1a"
+          "bytes": 50807,
+          "hash": "e12a23b2"
         },
         {
           "path": "data/entry/de/deg.json",
@@ -5941,8 +5941,8 @@
         },
         {
           "path": "data/entry/de/del.json",
-          "bytes": 38489,
-          "hash": "66f3ed93"
+          "bytes": 38476,
+          "hash": "9b328a24"
         },
         {
           "path": "data/entry/de/dem.json",
@@ -5951,8 +5951,8 @@
         },
         {
           "path": "data/entry/de/den.json",
-          "bytes": 33085,
-          "hash": "0ea26292"
+          "bytes": 33072,
+          "hash": "04724173"
         },
         {
           "path": "data/entry/de/deo.json",
@@ -5981,8 +5981,8 @@
         },
         {
           "path": "data/entry/de/det.json",
-          "bytes": 36355,
-          "hash": "48be0aa3"
+          "bytes": 36342,
+          "hash": "5298d3ef"
         },
         {
           "path": "data/entry/de/deu.json",
@@ -6149,8 +6149,8 @@
         },
         {
           "path": "data/di/dia.json",
-          "bytes": 18097,
-          "hash": "d6e79be8"
+          "bytes": 18058,
+          "hash": "6fd8a543"
         },
         {
           "path": "data/di/dib.json",
@@ -6194,8 +6194,8 @@
         },
         {
           "path": "data/di/dil.json",
-          "bytes": 7070,
-          "hash": "b7b287e6"
+          "bytes": 7057,
+          "hash": "c1795f87"
         },
         {
           "path": "data/di/dim.json",
@@ -6244,8 +6244,8 @@
         },
         {
           "path": "data/di/disc.json",
-          "bytes": 14425,
-          "hash": "8e2b1718"
+          "bytes": 14399,
+          "hash": "09ebf699"
         },
         {
           "path": "data/di/disd.json",
@@ -6289,8 +6289,8 @@
         },
         {
           "path": "data/di/diso.json",
-          "bytes": 5158,
-          "hash": "cc11232d"
+          "bytes": 5145,
+          "hash": "12179ac9"
         },
         {
           "path": "data/di/disp.json",
@@ -6309,13 +6309,13 @@
         },
         {
           "path": "data/di/diss.json",
-          "bytes": 7645,
-          "hash": "1c3315fa"
+          "bytes": 7632,
+          "hash": "2959967d"
         },
         {
           "path": "data/di/dist.json",
-          "bytes": 10232,
-          "hash": "48f1956e"
+          "bytes": 10206,
+          "hash": "f51da33e"
         },
         {
           "path": "data/di/disu.json",
@@ -6339,8 +6339,8 @@
         },
         {
           "path": "data/di/div.json",
-          "bytes": 10862,
-          "hash": "8b40c5ec"
+          "bytes": 10849,
+          "hash": "dc8d414e"
         },
         {
           "path": "data/di/diz.json",
@@ -6356,8 +6356,8 @@
         },
         {
           "path": "data/entry/di/dia.json",
-          "bytes": 41106,
-          "hash": "973a1545"
+          "bytes": 41067,
+          "hash": "9fdf7f76"
         },
         {
           "path": "data/entry/di/dib.json",
@@ -6401,8 +6401,8 @@
         },
         {
           "path": "data/entry/di/dil.json",
-          "bytes": 32334,
-          "hash": "f7e6e271"
+          "bytes": 32321,
+          "hash": "0fd2feb5"
         },
         {
           "path": "data/entry/di/dim.json",
@@ -6451,8 +6451,8 @@
         },
         {
           "path": "data/entry/di/disc.json",
-          "bytes": 59146,
-          "hash": "9457e2f5"
+          "bytes": 59120,
+          "hash": "56f0f52b"
         },
         {
           "path": "data/entry/di/disd.json",
@@ -6471,8 +6471,8 @@
         },
         {
           "path": "data/entry/di/disg.json",
-          "bytes": 10458,
-          "hash": "a977c0c2"
+          "bytes": 10445,
+          "hash": "cdcb874c"
         },
         {
           "path": "data/entry/di/disi.json",
@@ -6496,8 +6496,8 @@
         },
         {
           "path": "data/entry/di/diso.json",
-          "bytes": 20029,
-          "hash": "62419d16"
+          "bytes": 20016,
+          "hash": "309a35ed"
         },
         {
           "path": "data/entry/di/disp.json",
@@ -6516,13 +6516,13 @@
         },
         {
           "path": "data/entry/di/diss.json",
-          "bytes": 37352,
-          "hash": "a94a0a0f"
+          "bytes": 37339,
+          "hash": "27272cb1"
         },
         {
           "path": "data/entry/di/dist.json",
-          "bytes": 37979,
-          "hash": "8a138c8a"
+          "bytes": 37940,
+          "hash": "f552f59c"
         },
         {
           "path": "data/entry/di/disu.json",
@@ -6546,8 +6546,8 @@
         },
         {
           "path": "data/entry/di/div.json",
-          "bytes": 44490,
-          "hash": "4d7f1a43"
+          "bytes": 44477,
+          "hash": "e28d4218"
         },
         {
           "path": "data/entry/di/diz.json",
@@ -6863,8 +6863,8 @@
       "entry": [
         {
           "path": "data/entry/do.json",
-          "bytes": 90546,
-          "hash": "7f3e00d5"
+          "bytes": 90533,
+          "hash": "dcf21b0e"
         }
       ],
       "ex": [
@@ -7181,15 +7181,15 @@
       "search": [
         {
           "path": "data/eb.json",
-          "bytes": 4114,
-          "hash": "1dd025d9"
+          "bytes": 4101,
+          "hash": "64abb62e"
         }
       ],
       "entry": [
         {
           "path": "data/entry/eb.json",
-          "bytes": 8372,
-          "hash": "fdef2932"
+          "bytes": 8359,
+          "hash": "37ab5813"
         }
       ],
       "ex": [
@@ -7218,15 +7218,15 @@
       "search": [
         {
           "path": "data/ec.json",
-          "bytes": 31066,
-          "hash": "7c96bbfa"
+          "bytes": 31053,
+          "hash": "56bd70be"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ec.json",
-          "bytes": 60986,
-          "hash": "881f6cda"
+          "bytes": 60973,
+          "hash": "95028ed1"
         }
       ],
       "ex": [
@@ -7479,15 +7479,15 @@
       "search": [
         {
           "path": "data/el.json",
-          "bytes": 58012,
-          "hash": "66e44619"
+          "bytes": 57960,
+          "hash": "d06d2705"
         }
       ],
       "entry": [
         {
           "path": "data/entry/el.json",
-          "bytes": 113974,
-          "hash": "42d51a6b"
+          "bytes": 113922,
+          "hash": "9ecc7ed2"
         }
       ],
       "ex": [
@@ -7701,15 +7701,15 @@
       "search": [
         {
           "path": "data/er.json",
-          "bytes": 24651,
-          "hash": "7b5ef78a"
+          "bytes": 24638,
+          "hash": "edb4f566"
         }
       ],
       "entry": [
         {
           "path": "data/entry/er.json",
-          "bytes": 59698,
-          "hash": "4f555863"
+          "bytes": 59685,
+          "hash": "072fc7c8"
         }
       ],
       "ex": [
@@ -7738,15 +7738,15 @@
       "search": [
         {
           "path": "data/es.json",
-          "bytes": 77830,
-          "hash": "e7e3341e"
+          "bytes": 77778,
+          "hash": "1156f6e1"
         }
       ],
       "entry": [
         {
           "path": "data/entry/es.json",
-          "bytes": 239087,
-          "hash": "97acbe84"
+          "bytes": 239022,
+          "hash": "5cd9cd0e"
         }
       ],
       "ex": [
@@ -7815,15 +7815,15 @@
       "search": [
         {
           "path": "data/et.json",
-          "bytes": 21721,
-          "hash": "e742adb4"
+          "bytes": 21708,
+          "hash": "a48ad88f"
         }
       ],
       "entry": [
         {
           "path": "data/entry/et.json",
-          "bytes": 40388,
-          "hash": "4b874008"
+          "bytes": 40375,
+          "hash": "1ed1fadb"
         }
       ],
       "ex": [
@@ -7852,15 +7852,15 @@
       "search": [
         {
           "path": "data/eu.json",
-          "bytes": 16400,
-          "hash": "76ddc037"
+          "bytes": 16387,
+          "hash": "2ce525b0"
         }
       ],
       "entry": [
         {
           "path": "data/entry/eu.json",
-          "bytes": 27057,
-          "hash": "968816ab"
+          "bytes": 27044,
+          "hash": "553ab595"
         }
       ],
       "ex": [
@@ -8194,15 +8194,15 @@
       "search": [
         {
           "path": "data/fe.json",
-          "bytes": 45250,
-          "hash": "db280858"
+          "bytes": 45198,
+          "hash": "afdd6414"
         }
       ],
       "entry": [
         {
           "path": "data/entry/fe.json",
-          "bytes": 91868,
-          "hash": "51a10619"
+          "bytes": 91816,
+          "hash": "a8fab334"
         }
       ],
       "ex": [
@@ -8269,15 +8269,15 @@
       "search": [
         {
           "path": "data/fi.json",
-          "bytes": 83291,
-          "hash": "16c97dfa"
+          "bytes": 83265,
+          "hash": "04532ab6"
         }
       ],
       "entry": [
         {
           "path": "data/entry/fi.json",
-          "bytes": 189940,
-          "hash": "5b87cb3e"
+          "bytes": 189914,
+          "hash": "7591445d"
         }
       ],
       "ex": [
@@ -8400,15 +8400,15 @@
       "search": [
         {
           "path": "data/fo.json",
-          "bytes": 74991,
-          "hash": "4f2b09b5"
+          "bytes": 74952,
+          "hash": "5eea5c44"
         }
       ],
       "entry": [
         {
           "path": "data/entry/fo.json",
-          "bytes": 156016,
-          "hash": "28b58e0a"
+          "bytes": 155964,
+          "hash": "19dbb019"
         }
       ],
       "ex": [
@@ -8456,15 +8456,15 @@
       "search": [
         {
           "path": "data/fr.json",
-          "bytes": 49214,
-          "hash": "b2789619"
+          "bytes": 49162,
+          "hash": "2754545b"
         }
       ],
       "entry": [
         {
           "path": "data/entry/fr.json",
-          "bytes": 135853,
-          "hash": "81499e4b"
+          "bytes": 135801,
+          "hash": "8a855159"
         }
       ],
       "ex": [
@@ -8675,15 +8675,15 @@
       "search": [
         {
           "path": "data/ga.json",
-          "bytes": 53141,
-          "hash": "e6f783d9"
+          "bytes": 53102,
+          "hash": "fd806698"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ga.json",
-          "bytes": 109959,
-          "hash": "79810b94"
+          "bytes": 109920,
+          "hash": "75071d92"
         }
       ],
       "ex": [
@@ -8737,15 +8737,15 @@
       "search": [
         {
           "path": "data/ge.json",
-          "bytes": 61533,
-          "hash": "96e732f5"
+          "bytes": 61520,
+          "hash": "a8bc5534"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ge.json",
-          "bytes": 124582,
-          "hash": "2a39c999"
+          "bytes": 124556,
+          "hash": "fa85713f"
         }
       ],
       "ex": [
@@ -8837,8 +8837,8 @@
       "entry": [
         {
           "path": "data/entry/gi.json",
-          "bytes": 161967,
-          "hash": "491cec58"
+          "bytes": 161954,
+          "hash": "fd2f8e82"
         }
       ],
       "ex": [
@@ -8867,15 +8867,15 @@
       "search": [
         {
           "path": "data/gl.json",
-          "bytes": 24465,
-          "hash": "7816c39e"
+          "bytes": 24452,
+          "hash": "75871e60"
         }
       ],
       "entry": [
         {
           "path": "data/entry/gl.json",
-          "bytes": 47173,
-          "hash": "c694c7e0"
+          "bytes": 47160,
+          "hash": "78530011"
         }
       ],
       "ex": [
@@ -9028,15 +9028,15 @@
       "search": [
         {
           "path": "data/gr.json",
-          "bytes": 59216,
-          "hash": "962c89b7"
+          "bytes": 59203,
+          "hash": "d8d130ce"
         }
       ],
       "entry": [
         {
           "path": "data/entry/gr.json",
-          "bytes": 131792,
-          "hash": "d4cb809e"
+          "bytes": 131779,
+          "hash": "11472c98"
         }
       ],
       "ex": [
@@ -9103,15 +9103,15 @@
       "search": [
         {
           "path": "data/gu.json",
-          "bytes": 26846,
-          "hash": "d5c8fcab"
+          "bytes": 26833,
+          "hash": "84507efc"
         }
       ],
       "entry": [
         {
           "path": "data/entry/gu.json",
-          "bytes": 64768,
-          "hash": "a70e073b"
+          "bytes": 64755,
+          "hash": "b4f08bcc"
         }
       ],
       "ex": [
@@ -9776,15 +9776,15 @@
       "search": [
         {
           "path": "data/id.json",
-          "bytes": 29446,
-          "hash": "3c3bc2d7"
+          "bytes": 29433,
+          "hash": "31685af0"
         }
       ],
       "entry": [
         {
           "path": "data/entry/id.json",
-          "bytes": 56180,
-          "hash": "fa250f7a"
+          "bytes": 56167,
+          "hash": "bfb6ba97"
         }
       ],
       "ex": [
@@ -10196,23 +10196,23 @@
         },
         {
           "path": "data/in/inc.json",
-          "bytes": 51573,
-          "hash": "8e2445ff"
+          "bytes": 51547,
+          "hash": "1053be27"
         },
         {
           "path": "data/in/ind.json",
-          "bytes": 38831,
-          "hash": "eb898f6b"
+          "bytes": 38779,
+          "hash": "9a62f647"
         },
         {
           "path": "data/in/ine.json",
-          "bytes": 10313,
-          "hash": "b0a3d952"
+          "bytes": 10300,
+          "hash": "f32747f1"
         },
         {
           "path": "data/in/inf.json",
-          "bytes": 29073,
-          "hash": "dc837a53"
+          "bytes": 29060,
+          "hash": "cf4f3b74"
         },
         {
           "path": "data/in/ing.json",
@@ -10261,13 +10261,13 @@
         },
         {
           "path": "data/in/ins.json",
-          "bytes": 31699,
-          "hash": "2821cafa"
+          "bytes": 31686,
+          "hash": "bb1ec3ec"
         },
         {
           "path": "data/in/int.json",
-          "bytes": 69867,
-          "hash": "e340d346"
+          "bytes": 69841,
+          "hash": "f798e815"
         },
         {
           "path": "data/in/inu.json",
@@ -10276,8 +10276,8 @@
         },
         {
           "path": "data/in/inv.json",
-          "bytes": 15013,
-          "hash": "2b49b4e5"
+          "bytes": 15000,
+          "hash": "0ba25362"
         },
         {
           "path": "data/in/inz.json",
@@ -10303,23 +10303,23 @@
         },
         {
           "path": "data/entry/in/inc.json",
-          "bytes": 186966,
-          "hash": "38a86433"
+          "bytes": 186940,
+          "hash": "a4e4b2dd"
         },
         {
           "path": "data/entry/in/ind.json",
-          "bytes": 96753,
-          "hash": "44bc70bc"
+          "bytes": 96701,
+          "hash": "f75d8654"
         },
         {
           "path": "data/entry/in/ine.json",
-          "bytes": 20536,
-          "hash": "87df72dc"
+          "bytes": 20523,
+          "hash": "1a09c0b5"
         },
         {
           "path": "data/entry/in/inf.json",
-          "bytes": 102442,
-          "hash": "861a518c"
+          "bytes": 102429,
+          "hash": "f3c0ff24"
         },
         {
           "path": "data/entry/in/ing.json",
@@ -10368,13 +10368,13 @@
         },
         {
           "path": "data/entry/in/ins.json",
-          "bytes": 106484,
-          "hash": "a5c0dd38"
+          "bytes": 106471,
+          "hash": "a91c6fae"
         },
         {
           "path": "data/entry/in/int.json",
-          "bytes": 207590,
-          "hash": "5f3ffeb4"
+          "bytes": 207564,
+          "hash": "bc448c7b"
         },
         {
           "path": "data/entry/in/inu.json",
@@ -10383,8 +10383,8 @@
         },
         {
           "path": "data/entry/in/inv.json",
-          "bytes": 54517,
-          "hash": "6750a36f"
+          "bytes": 54504,
+          "hash": "9f36af90"
         },
         {
           "path": "data/entry/in/inz.json",
@@ -10585,15 +10585,15 @@
       "search": [
         {
           "path": "data/ip.json",
-          "bytes": 25672,
-          "hash": "3fcc3345"
+          "bytes": 25646,
+          "hash": "27e69ebc"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ip.json",
-          "bytes": 47598,
-          "hash": "701346f5"
+          "bytes": 47572,
+          "hash": "d02393fb"
         }
       ],
       "ex": [
@@ -10659,15 +10659,15 @@
       "search": [
         {
           "path": "data/is.json",
-          "bytes": 37679,
-          "hash": "1782aca1"
+          "bytes": 37653,
+          "hash": "e64eff80"
         }
       ],
       "entry": [
         {
           "path": "data/entry/is.json",
-          "bytes": 81857,
-          "hash": "c7e076dd"
+          "bytes": 81831,
+          "hash": "a48c0d19"
         }
       ],
       "ex": [
@@ -11675,15 +11675,15 @@
       "search": [
         {
           "path": "data/la.json",
-          "bytes": 69458,
-          "hash": "8321ce87"
+          "bytes": 69419,
+          "hash": "621303a6"
         }
       ],
       "entry": [
         {
           "path": "data/entry/la.json",
-          "bytes": 152645,
-          "hash": "546d9157"
+          "bytes": 152606,
+          "hash": "f9ebbf5f"
         }
       ],
       "ex": [
@@ -11750,15 +11750,15 @@
       "search": [
         {
           "path": "data/le.json",
-          "bytes": 49329,
-          "hash": "763c0e1a"
+          "bytes": 49303,
+          "hash": "43b4918c"
         }
       ],
       "entry": [
         {
           "path": "data/entry/le.json",
-          "bytes": 106554,
-          "hash": "2f01d677"
+          "bytes": 106528,
+          "hash": "ed6e280b"
         }
       ],
       "ex": [
@@ -11844,15 +11844,15 @@
       "search": [
         {
           "path": "data/li.json",
-          "bytes": 66464,
-          "hash": "03d7c6f1"
+          "bytes": 66451,
+          "hash": "71b79b09"
         }
       ],
       "entry": [
         {
           "path": "data/entry/li.json",
-          "bytes": 141098,
-          "hash": "c766259f"
+          "bytes": 141085,
+          "hash": "d49fada3"
         }
       ],
       "ex": [
@@ -11932,15 +11932,15 @@
       "search": [
         {
           "path": "data/lo.json",
-          "bytes": 31966,
-          "hash": "1f4254cc"
+          "bytes": 31953,
+          "hash": "b69b2fa9"
         }
       ],
       "entry": [
         {
           "path": "data/entry/lo.json",
-          "bytes": 68583,
-          "hash": "1d3e593d"
+          "bytes": 68557,
+          "hash": "a7cfd3a7"
         }
       ],
       "ex": [
@@ -12163,8 +12163,8 @@
         },
         {
           "path": "data/ma/mac.json",
-          "bytes": 19903,
-          "hash": "3daa2b03"
+          "bytes": 19890,
+          "hash": "e55bd86d"
         },
         {
           "path": "data/ma/mad.json",
@@ -12218,8 +12218,8 @@
         },
         {
           "path": "data/ma/man.json",
-          "bytes": 36164,
-          "hash": "2f6dc5bb"
+          "bytes": 36138,
+          "hash": "59bc7768"
         },
         {
           "path": "data/ma/mao.json",
@@ -12238,13 +12238,13 @@
         },
         {
           "path": "data/ma/mar.json",
-          "bytes": 39700,
-          "hash": "5b87204f"
+          "bytes": 39648,
+          "hash": "3b3c59d1"
         },
         {
           "path": "data/ma/mas.json",
-          "bytes": 18713,
-          "hash": "737882a5"
+          "bytes": 18700,
+          "hash": "4462b2a0"
         },
         {
           "path": "data/ma/mat.json",
@@ -12280,8 +12280,8 @@
         },
         {
           "path": "data/entry/ma/mac.json",
-          "bytes": 42343,
-          "hash": "8127e43f"
+          "bytes": 42330,
+          "hash": "4008136e"
         },
         {
           "path": "data/entry/ma/mad.json",
@@ -12335,8 +12335,8 @@
         },
         {
           "path": "data/entry/ma/man.json",
-          "bytes": 84459,
-          "hash": "2390d247"
+          "bytes": 84407,
+          "hash": "f430df9f"
         },
         {
           "path": "data/entry/ma/mao.json",
@@ -12355,13 +12355,13 @@
         },
         {
           "path": "data/entry/ma/mar.json",
-          "bytes": 88433,
-          "hash": "14ad9236"
+          "bytes": 88381,
+          "hash": "f4f8d6aa"
         },
         {
           "path": "data/entry/ma/mas.json",
-          "bytes": 44721,
-          "hash": "b67affaa"
+          "bytes": 44708,
+          "hash": "606c3724"
         },
         {
           "path": "data/entry/ma/mat.json",
@@ -12554,8 +12554,8 @@
         },
         {
           "path": "data/me/med.json",
-          "bytes": 13907,
-          "hash": "55859ffc"
+          "bytes": 13868,
+          "hash": "0788972a"
         },
         {
           "path": "data/me/mee.json",
@@ -12569,8 +12569,8 @@
         },
         {
           "path": "data/me/meg.json",
-          "bytes": 6966,
-          "hash": "efa1e066"
+          "bytes": 6953,
+          "hash": "7e1f31af"
         },
         {
           "path": "data/me/mei.json",
@@ -12599,8 +12599,8 @@
         },
         {
           "path": "data/me/mer.json",
-          "bytes": 19073,
-          "hash": "7f1ebc6c"
+          "bytes": 19047,
+          "hash": "f541d429"
         },
         {
           "path": "data/me/mes.json",
@@ -12609,8 +12609,8 @@
         },
         {
           "path": "data/me/met.json",
-          "bytes": 38629,
-          "hash": "17c30ba6"
+          "bytes": 38616,
+          "hash": "5f58670d"
         },
         {
           "path": "data/me/meu.json",
@@ -12651,8 +12651,8 @@
         },
         {
           "path": "data/entry/me/med.json",
-          "bytes": 27702,
-          "hash": "79bce9ee"
+          "bytes": 27663,
+          "hash": "7117cab9"
         },
         {
           "path": "data/entry/me/mee.json",
@@ -12666,8 +12666,8 @@
         },
         {
           "path": "data/entry/me/meg.json",
-          "bytes": 11132,
-          "hash": "69348f07"
+          "bytes": 11119,
+          "hash": "b92377ea"
         },
         {
           "path": "data/entry/me/mei.json",
@@ -12676,8 +12676,8 @@
         },
         {
           "path": "data/entry/me/mel.json",
-          "bytes": 20299,
-          "hash": "e179930e"
+          "bytes": 20286,
+          "hash": "3ec7d3f0"
         },
         {
           "path": "data/entry/me/mem.json",
@@ -12696,8 +12696,8 @@
         },
         {
           "path": "data/entry/me/mer.json",
-          "bytes": 39515,
-          "hash": "63f08045"
+          "bytes": 39489,
+          "hash": "1093e0f1"
         },
         {
           "path": "data/entry/me/mes.json",
@@ -12706,8 +12706,8 @@
         },
         {
           "path": "data/entry/me/met.json",
-          "bytes": 65224,
-          "hash": "a7442125"
+          "bytes": 65211,
+          "hash": "759fb3db"
         },
         {
           "path": "data/entry/me/meu.json",
@@ -12821,8 +12821,8 @@
       "entry": [
         {
           "path": "data/entry/mi.json",
-          "bytes": 199277,
-          "hash": "e3ad2aa4"
+          "bytes": 199251,
+          "hash": "e7006fb5"
         }
       ],
       "ex": [
@@ -12969,15 +12969,15 @@
       "search": [
         {
           "path": "data/mo.json",
-          "bytes": 98408,
-          "hash": "be6b5d85"
+          "bytes": 98317,
+          "hash": "139b2ce8"
         }
       ],
       "entry": [
         {
           "path": "data/entry/mo.json",
-          "bytes": 221498,
-          "hash": "53dc6e7a"
+          "bytes": 221407,
+          "hash": "fdeec0b0"
         }
       ],
       "ex": [
@@ -13107,15 +13107,15 @@
       "search": [
         {
           "path": "data/mu.json",
-          "bytes": 36162,
-          "hash": "42590462"
+          "bytes": 36149,
+          "hash": "eb1090cd"
         }
       ],
       "entry": [
         {
           "path": "data/entry/mu.json",
-          "bytes": 79331,
-          "hash": "eba3581e"
+          "bytes": 79318,
+          "hash": "8b5a09ef"
         }
       ],
       "ex": [
@@ -13251,15 +13251,15 @@
       "search": [
         {
           "path": "data/na.json",
-          "bytes": 35810,
-          "hash": "fa5fe737"
+          "bytes": 35784,
+          "hash": "0aa4304a"
         }
       ],
       "entry": [
         {
           "path": "data/entry/na.json",
-          "bytes": 79221,
-          "hash": "38d79ce1"
+          "bytes": 79182,
+          "hash": "ac716c9d"
         }
       ],
       "ex": [
@@ -13307,15 +13307,15 @@
       "search": [
         {
           "path": "data/ne.json",
-          "bytes": 62172,
-          "hash": "295b6b4e"
+          "bytes": 62133,
+          "hash": "0358e476"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ne.json",
-          "bytes": 115792,
-          "hash": "57a6bb92"
+          "bytes": 115753,
+          "hash": "c5a76f92"
         }
       ],
       "ex": [
@@ -13382,15 +13382,15 @@
       "search": [
         {
           "path": "data/ni.json",
-          "bytes": 24334,
-          "hash": "16fb7f33"
+          "bytes": 24321,
+          "hash": "8e5f37d0"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ni.json",
-          "bytes": 45100,
-          "hash": "99ecdf52"
+          "bytes": 45087,
+          "hash": "a18cb04f"
         }
       ],
       "ex": [
@@ -13457,15 +13457,15 @@
       "search": [
         {
           "path": "data/no.json",
-          "bytes": 37544,
-          "hash": "6a6cdf1a"
+          "bytes": 37518,
+          "hash": "077d3d95"
         }
       ],
       "entry": [
         {
           "path": "data/entry/no.json",
-          "bytes": 76732,
-          "hash": "6bd27495"
+          "bytes": 76706,
+          "hash": "28f18dde"
         }
       ],
       "ex": [
@@ -13544,15 +13544,15 @@
       "search": [
         {
           "path": "data/nu.json",
-          "bytes": 28593,
-          "hash": "888d3e39"
+          "bytes": 28580,
+          "hash": "f5640257"
         }
       ],
       "entry": [
         {
           "path": "data/entry/nu.json",
-          "bytes": 48465,
-          "hash": "8cbae00b"
+          "bytes": 48452,
+          "hash": "4cc64279"
         }
       ],
       "ex": [
@@ -13681,15 +13681,15 @@
       "search": [
         {
           "path": "data/ob.json",
-          "bytes": 8870,
-          "hash": "4ea0817f"
+          "bytes": 8857,
+          "hash": "034accb4"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ob.json",
-          "bytes": 25965,
-          "hash": "c887fd13"
+          "bytes": 25952,
+          "hash": "34ba30ea"
         }
       ],
       "ex": [
@@ -13817,15 +13817,15 @@
       "search": [
         {
           "path": "data/of.json",
-          "bytes": 4051,
-          "hash": "a43803c5"
+          "bytes": 4025,
+          "hash": "93fbad39"
         }
       ],
       "entry": [
         {
           "path": "data/entry/of.json",
-          "bytes": 11978,
-          "hash": "29c1c299"
+          "bytes": 11952,
+          "hash": "d767ea5f"
         }
       ],
       "ex": [
@@ -14040,15 +14040,15 @@
       "search": [
         {
           "path": "data/om.json",
-          "bytes": 16332,
-          "hash": "82eee4ba"
+          "bytes": 16293,
+          "hash": "bb77415b"
         }
       ],
       "entry": [
         {
           "path": "data/entry/om.json",
-          "bytes": 33672,
-          "hash": "df6517bf"
+          "bytes": 33633,
+          "hash": "bde2536a"
         }
       ],
       "ex": [
@@ -14077,15 +14077,15 @@
       "search": [
         {
           "path": "data/on.json",
-          "bytes": 14254,
-          "hash": "b282a39f"
+          "bytes": 14241,
+          "hash": "bd0e3c05"
         }
       ],
       "entry": [
         {
           "path": "data/entry/on.json",
-          "bytes": 32058,
-          "hash": "f468a30c"
+          "bytes": 32045,
+          "hash": "a18082d2"
         }
       ],
       "ex": [
@@ -14176,15 +14176,15 @@
       "search": [
         {
           "path": "data/or.json",
-          "bytes": 44767,
-          "hash": "41cce591"
+          "bytes": 44728,
+          "hash": "a1824ae3"
         }
       ],
       "entry": [
         {
           "path": "data/entry/or.json",
-          "bytes": 105580,
-          "hash": "a7c2dea3"
+          "bytes": 105533,
+          "hash": "0df975a2"
         }
       ],
       "ex": [
@@ -14561,8 +14561,8 @@
         },
         {
           "path": "data/pa/pan.json",
-          "bytes": 20732,
-          "hash": "41987b3b"
+          "bytes": 20719,
+          "hash": "611f75f6"
         },
         {
           "path": "data/pa/pao.json",
@@ -14576,13 +14576,13 @@
         },
         {
           "path": "data/pa/par.json",
-          "bytes": 51795,
-          "hash": "1b0e3915"
+          "bytes": 51743,
+          "hash": "d6d7aeeb"
         },
         {
           "path": "data/pa/pas.json",
-          "bytes": 22760,
-          "hash": "33e84129"
+          "bytes": 22747,
+          "hash": "99a5c134"
         },
         {
           "path": "data/pa/pat.json",
@@ -14668,8 +14668,8 @@
         },
         {
           "path": "data/entry/pa/pan.json",
-          "bytes": 39233,
-          "hash": "2973ac46"
+          "bytes": 39220,
+          "hash": "7eedd547"
         },
         {
           "path": "data/entry/pa/pao.json",
@@ -14683,13 +14683,13 @@
         },
         {
           "path": "data/entry/pa/par.json",
-          "bytes": 118274,
-          "hash": "17ff36fb"
+          "bytes": 118209,
+          "hash": "b9cbf766"
         },
         {
           "path": "data/entry/pa/pas.json",
-          "bytes": 51292,
-          "hash": "18082ad0"
+          "bytes": 51279,
+          "hash": "ddba99ad"
         },
         {
           "path": "data/entry/pa/pat.json",
@@ -14802,8 +14802,8 @@
         },
         {
           "path": "data/pe/ped.json",
-          "bytes": 7692,
-          "hash": "37ea68b6"
+          "bytes": 7679,
+          "hash": "2403b01a"
         },
         {
           "path": "data/pe/pee.json",
@@ -14817,8 +14817,8 @@
         },
         {
           "path": "data/pe/pel.json",
-          "bytes": 7356,
-          "hash": "23f8a57b"
+          "bytes": 7343,
+          "hash": "7156ce53"
         },
         {
           "path": "data/pe/pem.json",
@@ -14842,8 +14842,8 @@
         },
         {
           "path": "data/pe/per.json",
-          "bytes": 52155,
-          "hash": "509d16f1"
+          "bytes": 52077,
+          "hash": "f01accb5"
         },
         {
           "path": "data/pe/pes.json",
@@ -14889,8 +14889,8 @@
         },
         {
           "path": "data/entry/pe/ped.json",
-          "bytes": 16782,
-          "hash": "4acc8468"
+          "bytes": 16769,
+          "hash": "119e7777"
         },
         {
           "path": "data/entry/pe/pee.json",
@@ -14904,8 +14904,8 @@
         },
         {
           "path": "data/entry/pe/pel.json",
-          "bytes": 14733,
-          "hash": "a656ae5a"
+          "bytes": 14720,
+          "hash": "f07a07f5"
         },
         {
           "path": "data/entry/pe/pem.json",
@@ -14929,8 +14929,8 @@
         },
         {
           "path": "data/entry/pe/per.json",
-          "bytes": 138208,
-          "hash": "0ef16aaa"
+          "bytes": 138130,
+          "hash": "e88f3425"
         },
         {
           "path": "data/entry/pe/pes.json",
@@ -15015,15 +15015,15 @@
       "search": [
         {
           "path": "data/pi.json",
-          "bytes": 77065,
-          "hash": "6904a6ac"
+          "bytes": 77000,
+          "hash": "84a47378"
         }
       ],
       "entry": [
         {
           "path": "data/entry/pi.json",
-          "bytes": 177748,
-          "hash": "78dd89a6"
+          "bytes": 177670,
+          "hash": "907f71e8"
         }
       ],
       "ex": [
@@ -15052,15 +15052,15 @@
       "search": [
         {
           "path": "data/pl.json",
-          "bytes": 30610,
-          "hash": "25268fda"
+          "bytes": 30597,
+          "hash": "64043157"
         }
       ],
       "entry": [
         {
           "path": "data/entry/pl.json",
-          "bytes": 60230,
-          "hash": "ca6a8d97"
+          "bytes": 60204,
+          "hash": "6c1866db"
         }
       ],
       "ex": [
@@ -15151,15 +15151,15 @@
       "search": [
         {
           "path": "data/po.json",
-          "bytes": 110828,
-          "hash": "36d35eba"
+          "bytes": 110776,
+          "hash": "d4e356ec"
         }
       ],
       "entry": [
         {
           "path": "data/entry/po.json",
-          "bytes": 236581,
-          "hash": "1b79f139"
+          "bytes": 236529,
+          "hash": "1ba7d5aa"
         }
       ],
       "ex": [
@@ -15207,18 +15207,18 @@
       "search": [
         {
           "path": "data/pr/pra.json",
-          "bytes": 5455,
-          "hash": "e6e61b3e"
+          "bytes": 5442,
+          "hash": "50732cde"
         },
         {
           "path": "data/pr/pre.json",
-          "bytes": 69316,
-          "hash": "d815425b"
+          "bytes": 69290,
+          "hash": "4fd51004"
         },
         {
           "path": "data/pr/pri.json",
-          "bytes": 13601,
-          "hash": "b64fa133"
+          "bytes": 13588,
+          "hash": "cd13d159"
         },
         {
           "path": "data/pr/pro_.json",
@@ -15252,8 +15252,8 @@
         },
         {
           "path": "data/pr/prof.json",
-          "bytes": 9536,
-          "hash": "90f4ffe3"
+          "bytes": 9510,
+          "hash": "99d64135"
         },
         {
           "path": "data/pr/prog.json",
@@ -15262,8 +15262,8 @@
         },
         {
           "path": "data/pr/proi.json",
-          "bytes": 1527,
-          "hash": "8941038d"
+          "bytes": 1514,
+          "hash": "355eb536"
         },
         {
           "path": "data/pr/proj.json",
@@ -15292,8 +15292,8 @@
         },
         {
           "path": "data/pr/prop.json",
-          "bytes": 9861,
-          "hash": "f6bf1bd9"
+          "bytes": 9848,
+          "hash": "7589ba38"
         },
         {
           "path": "data/pr/pror.json",
@@ -15302,13 +15302,13 @@
         },
         {
           "path": "data/pr/pros.json",
-          "bytes": 9890,
-          "hash": "2655ebff"
+          "bytes": 9877,
+          "hash": "79a95cbb"
         },
         {
           "path": "data/pr/prot.json",
-          "bytes": 16558,
-          "hash": "ed9564db"
+          "bytes": 16532,
+          "hash": "bad382e7"
         },
         {
           "path": "data/pr/prov.json",
@@ -15327,25 +15327,25 @@
         },
         {
           "path": "data/pr/pru.json",
-          "bytes": 2809,
-          "hash": "05b98f8e"
+          "bytes": 2796,
+          "hash": "53e2b833"
         }
       ],
       "entry": [
         {
           "path": "data/entry/pr/pra.json",
-          "bytes": 12835,
-          "hash": "50c95645"
+          "bytes": 12822,
+          "hash": "4c0c2304"
         },
         {
           "path": "data/entry/pr/pre.json",
-          "bytes": 208806,
-          "hash": "78854cc0"
+          "bytes": 208767,
+          "hash": "f477bf10"
         },
         {
           "path": "data/entry/pr/pri.json",
-          "bytes": 34935,
-          "hash": "e620df21"
+          "bytes": 34922,
+          "hash": "4d3a0ba7"
         },
         {
           "path": "data/entry/pr/pro_.json",
@@ -15379,8 +15379,8 @@
         },
         {
           "path": "data/entry/pr/prof.json",
-          "bytes": 33006,
-          "hash": "ae0f9834"
+          "bytes": 32980,
+          "hash": "c5ecc949"
         },
         {
           "path": "data/entry/pr/prog.json",
@@ -15389,8 +15389,8 @@
         },
         {
           "path": "data/entry/pr/proi.json",
-          "bytes": 5666,
-          "hash": "255a425a"
+          "bytes": 5653,
+          "hash": "cbe8c595"
         },
         {
           "path": "data/entry/pr/proj.json",
@@ -15419,8 +15419,8 @@
         },
         {
           "path": "data/entry/pr/prop.json",
-          "bytes": 29225,
-          "hash": "2cb9b329"
+          "bytes": 29212,
+          "hash": "9ae5cbf1"
         },
         {
           "path": "data/entry/pr/pror.json",
@@ -15429,13 +15429,13 @@
         },
         {
           "path": "data/entry/pr/pros.json",
-          "bytes": 28931,
-          "hash": "a04ada3c"
+          "bytes": 28918,
+          "hash": "2e4d699b"
         },
         {
           "path": "data/entry/pr/prot.json",
-          "bytes": 34833,
-          "hash": "f63a5b11"
+          "bytes": 34807,
+          "hash": "23168f8a"
         },
         {
           "path": "data/entry/pr/prov.json",
@@ -15454,8 +15454,8 @@
         },
         {
           "path": "data/entry/pr/pru.json",
-          "bytes": 6035,
-          "hash": "e2f3ac19"
+          "bytes": 6022,
+          "hash": "a8c0c49a"
         }
       ],
       "ex": [
@@ -15988,15 +15988,15 @@
       "search": [
         {
           "path": "data/qu.json",
-          "bytes": 37631,
-          "hash": "fd3e94e5"
+          "bytes": 37579,
+          "hash": "2f32a575"
         }
       ],
       "entry": [
         {
           "path": "data/entry/qu.json",
-          "bytes": 85797,
-          "hash": "cbf9dc46"
+          "bytes": 85745,
+          "hash": "7015384f"
         }
       ],
       "ex": [
@@ -16092,8 +16092,8 @@
         },
         {
           "path": "data/ra/rad.json",
-          "bytes": 27530,
-          "hash": "bb6326c0"
+          "bytes": 27504,
+          "hash": "cf7814f9"
         },
         {
           "path": "data/ra/raf.json",
@@ -16137,8 +16137,8 @@
         },
         {
           "path": "data/ra/rap.json",
-          "bytes": 6892,
-          "hash": "e608691a"
+          "bytes": 6879,
+          "hash": "0293ca0c"
         },
         {
           "path": "data/ra/rar.json",
@@ -16189,8 +16189,8 @@
         },
         {
           "path": "data/entry/ra/rad.json",
-          "bytes": 58462,
-          "hash": "bc374dc4"
+          "bytes": 58423,
+          "hash": "478965c6"
         },
         {
           "path": "data/entry/ra/raf.json",
@@ -16234,8 +16234,8 @@
         },
         {
           "path": "data/entry/ra/rap.json",
-          "bytes": 24745,
-          "hash": "af2b222d"
+          "bytes": 24732,
+          "hash": "7e334ead"
         },
         {
           "path": "data/entry/ra/rar.json",
@@ -16438,8 +16438,8 @@
         },
         {
           "path": "data/re/rea.json",
-          "bytes": 4903,
-          "hash": "c002a83d"
+          "bytes": 4890,
+          "hash": "d45a811e"
         },
         {
           "path": "data/re/reb.json",
@@ -16458,13 +16458,13 @@
         },
         {
           "path": "data/re/ref.json",
-          "bytes": 3974,
-          "hash": "6e9ceb25"
+          "bytes": 3961,
+          "hash": "4777fcfe"
         },
         {
           "path": "data/re/reg.json",
-          "bytes": 11616,
-          "hash": "650df5bb"
+          "bytes": 11590,
+          "hash": "6dc79fa2"
         },
         {
           "path": "data/re/rei.json",
@@ -16478,8 +16478,8 @@
         },
         {
           "path": "data/re/rel.json",
-          "bytes": 3100,
-          "hash": "5a902801"
+          "bytes": 3087,
+          "hash": "42f128f3"
         },
         {
           "path": "data/re/rem.json",
@@ -16498,8 +16498,8 @@
         },
         {
           "path": "data/re/rep.json",
-          "bytes": 6836,
-          "hash": "2c26307f"
+          "bytes": 6797,
+          "hash": "357542e2"
         },
         {
           "path": "data/re/req.json",
@@ -16508,13 +16508,13 @@
         },
         {
           "path": "data/re/res.json",
-          "bytes": 11743,
-          "hash": "8b8c1858"
+          "bytes": 11730,
+          "hash": "8f875f4e"
         },
         {
           "path": "data/re/ret.json",
-          "bytes": 13525,
-          "hash": "11753ba4"
+          "bytes": 13486,
+          "hash": "4dbc2aa9"
         },
         {
           "path": "data/re/reu.json",
@@ -16545,8 +16545,8 @@
         },
         {
           "path": "data/entry/re/rea.json",
-          "bytes": 12669,
-          "hash": "985c1a3d"
+          "bytes": 12656,
+          "hash": "2ec3f812"
         },
         {
           "path": "data/entry/re/reb.json",
@@ -16565,13 +16565,13 @@
         },
         {
           "path": "data/entry/re/ref.json",
-          "bytes": 9903,
-          "hash": "970a4268"
+          "bytes": 9890,
+          "hash": "c544ee95"
         },
         {
           "path": "data/entry/re/reg.json",
-          "bytes": 35827,
-          "hash": "e3023080"
+          "bytes": 35801,
+          "hash": "3ec37062"
         },
         {
           "path": "data/entry/re/rei.json",
@@ -16585,8 +16585,8 @@
         },
         {
           "path": "data/entry/re/rel.json",
-          "bytes": 8137,
-          "hash": "792227ca"
+          "bytes": 8124,
+          "hash": "5d8f47ff"
         },
         {
           "path": "data/entry/re/rem.json",
@@ -16605,8 +16605,8 @@
         },
         {
           "path": "data/entry/re/rep.json",
-          "bytes": 19368,
-          "hash": "1ce23bea"
+          "bytes": 19316,
+          "hash": "6825f768"
         },
         {
           "path": "data/entry/re/req.json",
@@ -16615,13 +16615,13 @@
         },
         {
           "path": "data/entry/re/res.json",
-          "bytes": 36638,
-          "hash": "4aedd360"
+          "bytes": 36625,
+          "hash": "c19aac6d"
         },
         {
           "path": "data/entry/re/ret.json",
-          "bytes": 30723,
-          "hash": "eb918c58"
+          "bytes": 30684,
+          "hash": "6ad47c47"
         },
         {
           "path": "data/entry/re/reu.json",
@@ -16805,13 +16805,13 @@
         },
         {
           "path": "data/ri/ric.json",
-          "bytes": 21386,
-          "hash": "2e2d4f0c"
+          "bytes": 21373,
+          "hash": "e8e56852"
         },
         {
           "path": "data/ri/rid.json",
-          "bytes": 5288,
-          "hash": "fa232bfe"
+          "bytes": 5275,
+          "hash": "1b42b1ed"
         },
         {
           "path": "data/ri/rie.json",
@@ -16820,8 +16820,8 @@
         },
         {
           "path": "data/ri/rif.json",
-          "bytes": 6828,
-          "hash": "8c717360"
+          "bytes": 6815,
+          "hash": "eb82eb68"
         },
         {
           "path": "data/ri/rig.json",
@@ -16850,8 +16850,8 @@
         },
         {
           "path": "data/ri/rip.json",
-          "bytes": 10376,
-          "hash": "03b1ccee"
+          "bytes": 10350,
+          "hash": "b43d6526"
         },
         {
           "path": "data/ri/riq.json",
@@ -16907,13 +16907,13 @@
         },
         {
           "path": "data/entry/ri/ric.json",
-          "bytes": 97161,
-          "hash": "24476336"
+          "bytes": 97148,
+          "hash": "4043e644"
         },
         {
           "path": "data/entry/ri/rid.json",
-          "bytes": 28741,
-          "hash": "4f851770"
+          "bytes": 28728,
+          "hash": "4b549b96"
         },
         {
           "path": "data/entry/ri/rie.json",
@@ -16922,8 +16922,8 @@
         },
         {
           "path": "data/entry/ri/rif.json",
-          "bytes": 31887,
-          "hash": "8171fb30"
+          "bytes": 31874,
+          "hash": "624df710"
         },
         {
           "path": "data/entry/ri/rig.json",
@@ -16952,8 +16952,8 @@
         },
         {
           "path": "data/entry/ri/rip.json",
-          "bytes": 53123,
-          "hash": "c2bf4064"
+          "bytes": 53097,
+          "hash": "1aaa6d93"
         },
         {
           "path": "data/entry/ri/riq.json",
@@ -16962,8 +16962,8 @@
         },
         {
           "path": "data/entry/ri/ris.json",
-          "bytes": 91193,
-          "hash": "4a08f4db"
+          "bytes": 91167,
+          "hash": "30c798f6"
         },
         {
           "path": "data/entry/ri/rit.json",
@@ -17283,15 +17283,15 @@
       "search": [
         {
           "path": "data/ru.json",
-          "bytes": 18220,
-          "hash": "72a046fc"
+          "bytes": 18194,
+          "hash": "72d94547"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ru.json",
-          "bytes": 46994,
-          "hash": "d80578da"
+          "bytes": 46961,
+          "hash": "f2c7697c"
         }
       ],
       "ex": [
@@ -17384,15 +17384,15 @@
       "search": [
         {
           "path": "data/sa.json",
-          "bytes": 77929,
-          "hash": "6fdbd035"
+          "bytes": 77890,
+          "hash": "1f063cd2"
         }
       ],
       "entry": [
         {
           "path": "data/entry/sa.json",
-          "bytes": 189167,
-          "hash": "b7588538"
+          "bytes": 189115,
+          "hash": "e414344f"
         }
       ],
       "ex": [
@@ -17463,8 +17463,8 @@
         },
         {
           "path": "data/sc/sce.json",
-          "bytes": 6435,
-          "hash": "4cb3e8ae"
+          "bytes": 6422,
+          "hash": "09d5908b"
         },
         {
           "path": "data/sc/sch.json",
@@ -17473,8 +17473,8 @@
         },
         {
           "path": "data/sc/sci.json",
-          "bytes": 24014,
-          "hash": "f21fe974"
+          "bytes": 24001,
+          "hash": "8a640a8c"
         },
         {
           "path": "data/sc/scl.json",
@@ -17498,8 +17498,8 @@
         },
         {
           "path": "data/sc/scu.json",
-          "bytes": 10771,
-          "hash": "f6647c7c"
+          "bytes": 10758,
+          "hash": "939973f7"
         }
       ],
       "entry": [
@@ -17510,8 +17510,8 @@
         },
         {
           "path": "data/entry/sc/sce.json",
-          "bytes": 20840,
-          "hash": "37b80179"
+          "bytes": 20827,
+          "hash": "885348dd"
         },
         {
           "path": "data/entry/sc/sch.json",
@@ -17520,8 +17520,8 @@
         },
         {
           "path": "data/entry/sc/sci.json",
-          "bytes": 64321,
-          "hash": "87d9428d"
+          "bytes": 64308,
+          "hash": "8c25260e"
         },
         {
           "path": "data/entry/sc/scl.json",
@@ -17545,8 +17545,8 @@
         },
         {
           "path": "data/entry/sc/scu.json",
-          "bytes": 26621,
-          "hash": "98fc2e7d"
+          "bytes": 26608,
+          "hash": "a7c2512f"
         }
       ],
       "ex": [
@@ -17675,8 +17675,8 @@
       "en": [
         {
           "path": "data/en/se.json",
-          "bytes": 25169,
-          "hash": "9844557e"
+          "bytes": 24774,
+          "hash": "6a35cad6"
         }
       ]
     },
@@ -17795,15 +17795,15 @@
       "search": [
         {
           "path": "data/si.json",
-          "bytes": 73367,
-          "hash": "e0e277e3"
+          "bytes": 73328,
+          "hash": "b773df65"
         }
       ],
       "entry": [
         {
           "path": "data/entry/si.json",
-          "bytes": 154634,
-          "hash": "e51c348f"
+          "bytes": 154595,
+          "hash": "cf352c8a"
         }
       ],
       "ex": [
@@ -17900,15 +17900,15 @@
       "search": [
         {
           "path": "data/sm.json",
-          "bytes": 15903,
-          "hash": "5c76f0ad"
+          "bytes": 15890,
+          "hash": "5c97b511"
         }
       ],
       "entry": [
         {
           "path": "data/entry/sm.json",
-          "bytes": 70434,
-          "hash": "e0d7dc4c"
+          "bytes": 70421,
+          "hash": "fce933b1"
         }
       ],
       "ex": [
@@ -18049,13 +18049,13 @@
         },
         {
           "path": "data/so/sos.json",
-          "bytes": 6486,
-          "hash": "dd760502"
+          "bytes": 6473,
+          "hash": "39b292ad"
         },
         {
           "path": "data/so/sot.json",
-          "bytes": 16530,
-          "hash": "e00a516a"
+          "bytes": 16517,
+          "hash": "3d2e4855"
         },
         {
           "path": "data/so/sou.json",
@@ -18151,13 +18151,13 @@
         },
         {
           "path": "data/entry/so/sos.json",
-          "bytes": 26305,
-          "hash": "5806b5a7"
+          "bytes": 26279,
+          "hash": "4df0dd27"
         },
         {
           "path": "data/entry/so/sot.json",
-          "bytes": 46020,
-          "hash": "bb6bdb2c"
+          "bytes": 46007,
+          "hash": "539072e5"
         },
         {
           "path": "data/entry/so/sou.json",
@@ -18296,8 +18296,8 @@
         },
         {
           "path": "data/sp/spe.json",
-          "bytes": 21884,
-          "hash": "cb385fd8"
+          "bytes": 21858,
+          "hash": "f9fa2629"
         },
         {
           "path": "data/sp/sph.json",
@@ -18306,8 +18306,8 @@
         },
         {
           "path": "data/sp/spi.json",
-          "bytes": 17766,
-          "hash": "7910062e"
+          "bytes": 17753,
+          "hash": "ba74f374"
         },
         {
           "path": "data/sp/spl.json",
@@ -18353,8 +18353,8 @@
         },
         {
           "path": "data/entry/sp/spe.json",
-          "bytes": 68206,
-          "hash": "fd5779df"
+          "bytes": 68180,
+          "hash": "fd303c6e"
         },
         {
           "path": "data/entry/sp/sph.json",
@@ -18363,8 +18363,8 @@
         },
         {
           "path": "data/entry/sp/spi.json",
-          "bytes": 57091,
-          "hash": "f4efc70c"
+          "bytes": 57078,
+          "hash": "afac0916"
         },
         {
           "path": "data/entry/sp/spl.json",
@@ -18552,8 +18552,8 @@
         },
         {
           "path": "data/st/ste.json",
-          "bytes": 23434,
-          "hash": "c394d5ca"
+          "bytes": 23421,
+          "hash": "43efd153"
         },
         {
           "path": "data/st/sti.json",
@@ -18572,8 +18572,8 @@
         },
         {
           "path": "data/st/str.json",
-          "bytes": 37296,
-          "hash": "154caa26"
+          "bytes": 37270,
+          "hash": "1330063f"
         },
         {
           "path": "data/st/stu.json",
@@ -18589,8 +18589,8 @@
         },
         {
           "path": "data/entry/st/ste.json",
-          "bytes": 52313,
-          "hash": "754ce2d4"
+          "bytes": 52300,
+          "hash": "4d9c17c8"
         },
         {
           "path": "data/entry/st/sti.json",
@@ -18609,8 +18609,8 @@
         },
         {
           "path": "data/entry/st/str.json",
-          "bytes": 120692,
-          "hash": "171eb76d"
+          "bytes": 120666,
+          "hash": "9c6dfc3c"
         },
         {
           "path": "data/entry/st/stu.json",
@@ -18669,15 +18669,15 @@
       "search": [
         {
           "path": "data/su.json",
-          "bytes": 55434,
-          "hash": "b60ffb48"
+          "bytes": 55356,
+          "hash": "b354daf1"
         }
       ],
       "entry": [
         {
           "path": "data/entry/su.json",
-          "bytes": 150672,
-          "hash": "a2cde9b1"
+          "bytes": 150594,
+          "hash": "4f11ed1a"
         }
       ],
       "ex": [
@@ -18856,15 +18856,15 @@
       "search": [
         {
           "path": "data/ta.json",
-          "bytes": 62996,
-          "hash": "bc0f042b"
+          "bytes": 62983,
+          "hash": "4552b27f"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ta.json",
-          "bytes": 145020,
-          "hash": "c90d4b0a"
+          "bytes": 145007,
+          "hash": "79e76250"
         }
       ],
       "ex": [
@@ -18962,13 +18962,13 @@
         },
         {
           "path": "data/te/tel.json",
-          "bytes": 24006,
-          "hash": "234ed887"
+          "bytes": 23993,
+          "hash": "b6a9b847"
         },
         {
           "path": "data/te/tem.json",
-          "bytes": 8708,
-          "hash": "6318ec11"
+          "bytes": 8695,
+          "hash": "040823f9"
         },
         {
           "path": "data/te/ten.json",
@@ -18992,13 +18992,13 @@
         },
         {
           "path": "data/te/ter.json",
-          "bytes": 37973,
-          "hash": "64b6c085"
+          "bytes": 37947,
+          "hash": "4671a548"
         },
         {
           "path": "data/te/tes.json",
-          "bytes": 11774,
-          "hash": "fabd0c7b"
+          "bytes": 11761,
+          "hash": "fcfa0d02"
         },
         {
           "path": "data/te/tet.json",
@@ -19074,13 +19074,13 @@
         },
         {
           "path": "data/entry/te/tel.json",
-          "bytes": 48557,
-          "hash": "4d22b13d"
+          "bytes": 48544,
+          "hash": "bb59b662"
         },
         {
           "path": "data/entry/te/tem.json",
-          "bytes": 21633,
-          "hash": "220294e0"
+          "bytes": 21620,
+          "hash": "32b4bf51"
         },
         {
           "path": "data/entry/te/ten.json",
@@ -19104,13 +19104,13 @@
         },
         {
           "path": "data/entry/te/ter.json",
-          "bytes": 71369,
-          "hash": "a2563575"
+          "bytes": 71343,
+          "hash": "5f3ca90c"
         },
         {
           "path": "data/entry/te/tes.json",
-          "bytes": 28893,
-          "hash": "7d983ec4"
+          "bytes": 28880,
+          "hash": "8763c2dd"
         },
         {
           "path": "data/entry/te/tet.json",
@@ -19240,15 +19240,15 @@
       "search": [
         {
           "path": "data/ti.json",
-          "bytes": 33296,
-          "hash": "c880f6c9"
+          "bytes": 33283,
+          "hash": "02c7e784"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ti.json",
-          "bytes": 72868,
-          "hash": "d6ccea90"
+          "bytes": 72855,
+          "hash": "427a99d6"
         }
       ],
       "ex": [
@@ -19340,15 +19340,15 @@
       "search": [
         {
           "path": "data/to.json",
-          "bytes": 41670,
-          "hash": "bbc38aca"
+          "bytes": 41605,
+          "hash": "8e2da8a4"
         }
       ],
       "entry": [
         {
           "path": "data/entry/to.json",
-          "bytes": 92931,
-          "hash": "9f0e8df9"
+          "bytes": 92866,
+          "hash": "272d3e72"
         }
       ],
       "ex": [
@@ -19396,18 +19396,18 @@
       "search": [
         {
           "path": "data/tr/tra.json",
-          "bytes": 59136,
-          "hash": "558dcca1"
+          "bytes": 59097,
+          "hash": "6bc7e278"
         },
         {
           "path": "data/tr/tre.json",
-          "bytes": 12494,
-          "hash": "a4e206fb"
+          "bytes": 12481,
+          "hash": "62ca1a24"
         },
         {
           "path": "data/tr/tri.json",
-          "bytes": 30149,
-          "hash": "c528d962"
+          "bytes": 30123,
+          "hash": "18024289"
         },
         {
           "path": "data/tr/trn.json",
@@ -19416,8 +19416,8 @@
         },
         {
           "path": "data/tr/tro.json",
-          "bytes": 15459,
-          "hash": "97ad8a89"
+          "bytes": 15446,
+          "hash": "882becce"
         },
         {
           "path": "data/tr/tru.json",
@@ -19428,18 +19428,18 @@
       "entry": [
         {
           "path": "data/entry/tr/tra.json",
-          "bytes": 201844,
-          "hash": "56e8ebfa"
+          "bytes": 201805,
+          "hash": "cffc9195"
         },
         {
           "path": "data/entry/tr/tre.json",
-          "bytes": 24008,
-          "hash": "2e2eefbf"
+          "bytes": 23995,
+          "hash": "470740e8"
         },
         {
           "path": "data/entry/tr/tri.json",
-          "bytes": 66403,
-          "hash": "4c7fbb5d"
+          "bytes": 66351,
+          "hash": "aea7f204"
         },
         {
           "path": "data/entry/tr/trn.json",
@@ -19448,8 +19448,8 @@
         },
         {
           "path": "data/entry/tr/tro.json",
-          "bytes": 36036,
-          "hash": "40e73994"
+          "bytes": 36023,
+          "hash": "5f9cbc6e"
         },
         {
           "path": "data/entry/tr/tru.json",
@@ -20179,15 +20179,15 @@
       "search": [
         {
           "path": "data/un.json",
-          "bytes": 17458,
-          "hash": "fedf2de7"
+          "bytes": 17445,
+          "hash": "d1f95841"
         }
       ],
       "entry": [
         {
           "path": "data/entry/un.json",
-          "bytes": 37517,
-          "hash": "fe59e42c"
+          "bytes": 37504,
+          "hash": "e2303b14"
         }
       ],
       "ex": [
@@ -20565,15 +20565,15 @@
       "search": [
         {
           "path": "data/va.json",
-          "bytes": 41827,
-          "hash": "c940e77a"
+          "bytes": 41801,
+          "hash": "235f4b8c"
         }
       ],
       "entry": [
         {
           "path": "data/entry/va.json",
-          "bytes": 106096,
-          "hash": "4ed54384"
+          "bytes": 106070,
+          "hash": "6bc678cb"
         }
       ],
       "ex": [
@@ -20615,15 +20615,15 @@
       "search": [
         {
           "path": "data/ve.json",
-          "bytes": 63528,
-          "hash": "1e0eca3d"
+          "bytes": 63515,
+          "hash": "b2598f17"
         }
       ],
       "entry": [
         {
           "path": "data/entry/ve.json",
-          "bytes": 152773,
-          "hash": "e25691bf"
+          "bytes": 152760,
+          "hash": "dbbb096e"
         }
       ],
       "ex": [
@@ -20690,15 +20690,15 @@
       "search": [
         {
           "path": "data/vi.json",
-          "bytes": 64435,
-          "hash": "32fdd25f"
+          "bytes": 64370,
+          "hash": "3f80d9a6"
         }
       ],
       "entry": [
         {
           "path": "data/entry/vi.json",
-          "bytes": 153169,
-          "hash": "97de5ec0"
+          "bytes": 153104,
+          "hash": "db707dcd"
         }
       ],
       "ex": [
@@ -20777,15 +20777,15 @@
       "search": [
         {
           "path": "data/vo.json",
-          "bytes": 22539,
-          "hash": "f21c0a2c"
+          "bytes": 22526,
+          "hash": "0fa5b5aa"
         }
       ],
       "entry": [
         {
           "path": "data/entry/vo.json",
-          "bytes": 68328,
-          "hash": "1fd7fbed"
+          "bytes": 68315,
+          "hash": "cb45e61f"
         }
       ],
       "ex": [
@@ -21390,15 +21390,15 @@
       "search": [
         {
           "path": "data/xe.json",
-          "bytes": 2796,
-          "hash": "f4d89c74"
+          "bytes": 2783,
+          "hash": "db5bd5f1"
         }
       ],
       "entry": [
         {
           "path": "data/entry/xe.json",
-          "bytes": 4577,
-          "hash": "2d12a9c5"
+          "bytes": 4564,
+          "hash": "c3473831"
         }
       ],
       "ex": [
@@ -21459,8 +21459,8 @@
       "entry": [
         {
           "path": "data/entry/xi.json",
-          "bytes": 3480,
-          "hash": "150b38bb"
+          "bytes": 3467,
+          "hash": "deb9bc0e"
         }
       ],
       "ex": [
@@ -22152,15 +22152,15 @@
       "search": [
         {
           "path": "data/zu.json",
-          "bytes": 5969,
-          "hash": "bb5be984"
+          "bytes": 5956,
+          "hash": "9c255adc"
         }
       ],
       "entry": [
         {
           "path": "data/entry/zu.json",
-          "bytes": 12552,
-          "hash": "e7e431bd"
+          "bytes": 12539,
+          "hash": "ec0ca2c4"
         }
       ],
       "ex": [
@@ -22331,7 +22331,7 @@
     "entries": 61820,
     "forms": 232248,
     "examples": 49283,
-    "bytes": 66344150,
+    "bytes": 66334993,
     "enTokens": 46489
   }
 }

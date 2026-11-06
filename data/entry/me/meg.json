@@ -6,7 +6,7 @@
 {"id":"meg:4","word":"megera","ipa":"/meˈd͡ʒɛra/","cefr":"c2","pos":[{"pos":"noun","senses":["donna di carattere astioso molto brutta e vecchia"]}],"en":[{"pos":"noun","glosses":["shrew, hag, trot"]}],"ex":[384]},
 {"id":"meg:5","word":"-megalia","ipa":"/meɡaˈlia/","cefr":"c2","pos":[{"pos":"suffix","senses":["seconda parte di lemmi formati dall'accostamento di due parole la prima delle quali indica ingrossamento anomalo di una parte del corpo"]}],"en":[{"pos":"suffix","glosses":["-megaly"]}]},
 {"id":"meg:6","word":"Megattere","ipa":"/meˈɡattere/","cefr":"c2","pos":[{"pos":"noun","senses":["cetacei"]}],"en":[{"pos":"noun","glosses":["plural of megattera"]}]},
-{"id":"meg:7","word":"mega-","ipa":"/ˈmɛɡa/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati dall'accostamento di due parole la prima delle quali significa grosso, grande","un milione"]}],"en":[{"pos":"prefix","glosses":["mega- (all senses)"]}]},
+{"id":"meg:7","word":"mega-","ipa":"/ˈmɛɡa/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati dall'accostamento di due parole la prima delle quali significa grosso, grande","un milione"]}],"en":[{"pos":"prefix","glosses":["mega-"]}]},
 {"id":"meg:8","word":"megaFLOPS","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura del numero di operazioni eseguite in un secondo da un computer in virgola mobile, multiplo del a FLOPS, pari a un milione di operazioni"]}]},
 {"id":"meg:9","word":"megabar","cefr":"c2","pos":[{"pos":"noun","senses":["un milione di bar"]}]},
 {"id":"meg:10","word":"megabit","cefr":"c2","pos":[{"pos":"noun","senses":["in elettronica, unità di misura del contenuto di informazione, pari ad un milione di bit"]}],"en":[{"pos":"noun","glosses":["megabit"]}]},
