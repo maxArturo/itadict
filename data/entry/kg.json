@@ -1,0 +1,6 @@
+[
+{"id":"kg:0","word":"kg","cefr":"b2","pos":[{"pos":"abbrev","senses":["simbolo del chilogrammo"]}],"ex":[0,2,3]},
+{"id":"kg:1","word":"KGB","cefr":"c1","pos":[{"pos":"abbrev","senses":["Komitet Gosudarstvennoj Bezopasnosti «Comitato per la sicurezza dello stato», nome ufficiale della polizia segreta dell'Unione Sovietica"]}],"ex":[1]},
+{"id":"kg:2","word":"kg/l","cefr":"c2","pos":[{"pos":"abbrev","senses":["chilogrammo per litro"]}]},
+{"id":"kg:3","word":"kgm","cefr":"c2","pos":[{"pos":"abbrev","senses":["chilogrammetro"]}]}
+]

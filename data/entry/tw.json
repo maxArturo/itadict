@@ -1,0 +1,5 @@
+[
+{"id":"tw:0","word":"tweet","cefr":"c1","pos":[{"pos":"noun","senses":["breve intervento scritto inviato in Internet col sito Twitter"]}],"ex":[1,2]},
+{"id":"tw:1","word":"twist","ipa":"/ˈtwist/","cefr":"c2","pos":[{"pos":"noun","senses":["ballo di coppia caratterizzato dal tempo veloce e dalle torsioni del busto, a cui si aggiungono le oscillazioni delle braccia e delle ginocchia"]}],"ex":[0]},
+{"id":"tw:2","word":"twittare","cefr":"c2","pos":[{"pos":"verb","senses":["inviare un tweet tramite la piattaforma di microblogging Twitter"]}]}
+]

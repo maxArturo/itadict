@@ -1,0 +1,7 @@
+[
+{"id":"mm:0","word":"mmm","cefr":"b1","pos":[{"pos":"intj","senses":["sospiro che esprime dubbio, nervosismo o pregustazione"]}],"ex":[0]},
+{"id":"mm:1","word":"MMS","cefr":"c2","pos":[{"pos":"abbrev","senses":["dall'inglese Multimedia Message Service (servizio di messaggi multimediali): servizio derivato dall'evoluzione dell'SMS, che permette lo scambio a distanza di suoni, immagini e filmati con…","un messaggio inviato tramite il suddetto servizio"]}]},
+{"id":"mm:2","word":"mm","cefr":"b2","pos":[{"pos":"abbrev","senses":["mese","simbolo del millimetro"]},{"pos":"noun","senses":["millimole"]}]},
+{"id":"mm:3","word":"mmHg","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura della pressione, pari a 133,322 pascal, usata soprattutto in medicina"]}]},
+{"id":"mm:4","word":"mmol","cefr":"c2","pos":[{"pos":"abbrev","senses":["millimole"]}]}
+]

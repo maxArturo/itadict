@@ -1,0 +1,5 @@
+[
+{"id":"ky:0","word":"Kyoto","cefr":"c1","pos":[{"pos":"name","senses":["città del Giappone"]}],"ex":[0,1,2]},
+{"id":"ky:1","word":"Kyrie","ipa":"/ˈkyrje/","cefr":"c2","pos":[{"pos":"noun","senses":["nome comune di un'importante preghiera della liturgia cristiana, detta anche Kyrie eleison"]}]},
+{"id":"ky:2","word":"kyriale","cefr":"c2","pos":[{"pos":"noun","senses":["libro sacro che racchiude i testi latini che si ripetono in ogni messa"]}]}
+]

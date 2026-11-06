@@ -1,0 +1,17 @@
+[
+{"id":"wo:0","word":"wow","ipa":"/wau/","cefr":"a1","pos":[{"pos":"intj","senses":["esclamazione che indica stupore, meraviglia"]},{"pos":"noun","senses":["fluttuazione sonora, in genere di pochi hertz, dovuta a irregolarità di velocità nella riproduzione di dischi o nastri magnetici"]}],"ex":[0,1,2]},
+{"id":"wo:1","word":"workshop","ipa":"/,workˈʃɔp/","cefr":"c2","pos":[{"pos":"noun","senses":["gruppo di lavoro collettivo su uno specifico argomento"]}],"ex":[3,4,5]},
+{"id":"wo:2","word":"Wolfsburg","cefr":"c2","pos":[{"pos":"name","senses":["città della Germania nordoccidentale"]}]},
+{"id":"wo:3","word":"wok","cefr":"c2","pos":[{"pos":"noun","senses":["grossa padella di ferro a forma di cono, usata nella cucina cinese e cantonese"]}]},
+{"id":"wo:4","word":"wolof","ipa":"/ˈwɔlof/","cefr":"c2","pos":[{"pos":"noun","senses":["lingua parlata in Senegal, con influssi francesi"]}]},
+{"id":"wo:5","word":"won","ipa":"/won/","cefr":"b2","pos":[{"pos":"noun","senses":["unità monetaria della Corea del Sud"]}]},
+{"id":"wo:6","word":"woofer","cefr":"c2","pos":[{"pos":"noun","senses":["altoparlante per riprodurre basse frequenze di suono in un impianto stereofonico"]}]},
+{"id":"wo:7","word":"wop","cefr":"c2","pos":[{"pos":"noun","senses":["soprannome dato negli Stati Uniti d'America agli immigrati italiani, considerati volgari, spavaldi e violenti"]}]},
+{"id":"wo:8","word":"word processing","cefr":"c2","pos":[{"pos":"phrase","senses":["insieme di procedure che permettono di rendere testi scritti visibili su uno schermo e di elaborarli in varie fasi prima di stamparli"]}]},
+{"id":"wo:9","word":"word processor","cefr":"c2","pos":[{"pos":"phrase","senses":["programma che permette di elaborare e redigere testi con un computer"]}]},
+{"id":"wo:10","word":"work sharing","cefr":"c2","pos":[{"pos":"noun","senses":["ripartizione di lavoro a tempo pieno tra due o più lavoratori a tempo parziale"]}]},
+{"id":"wo:11","word":"workaholic","cefr":"c2","pos":[{"pos":"noun","senses":["chi ha la mania del lavoro"]}]},
+{"id":"wo:12","word":"workstation","cefr":"c2","pos":[{"pos":"noun","senses":["computer da tavolo a prestazioni sufficienti da poter essere usato a scopo professionale"]}]},
+{"id":"wo:13","word":"world car","cefr":"c2","pos":[{"pos":"phrase","senses":["autovettura prodotta e diffusa in tutto il mondo con dettagli diversi"]}]},
+{"id":"wo:14","word":"worm hole","cefr":"c2","pos":[{"pos":"phrase","senses":["in alcune teorie elaborate in fisica, collegamento ipotetico tra il mondo reale e dimensioni alternative a quest'ultimo"]}]}
+]

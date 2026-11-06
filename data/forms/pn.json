@@ -1,0 +1,8 @@
+{
+"pneumatica":{"id":"pn:0","lemma":"pneumatico","label":"femminile"},
+"pneumatiche":{"id":"pn:4","lemma":"pneumatica","label":"femminile plurale"},
+"pneumatici":{"id":"pn:0","lemma":"pneumatico","label":"plurale"},
+"pneumococchi":{"id":"pn:8","lemma":"pneumococco","label":"plurale"},
+"pneumologa":{"id":"pn:12","lemma":"pneumologo","label":"femminile"},
+"pneumologi":{"id":"pn:12","lemma":"pneumologo","label":"femminile"}
+}

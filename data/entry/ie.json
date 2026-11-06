@@ -1,0 +1,20 @@
+[
+{"id":"ie:0","word":"ieri","ipa":"/ˈjɛri/","cefr":"a1","pos":[{"pos":"adv","senses":["giorno che precede direttamente l'oggi","dieci anni fa"]}],"ex":[0,1,2]},
+{"id":"ie:1","word":"iena","ipa":"/ˈjɛna/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero carnivoro feliforme tipico degli ambienti aridi delle zone desertiche, contraddistinto da un verso simile ad una risata e dall'abitudine di consumare i resti delle specie uccise da altri…","detto di persona molto cattiva, impudente e/o sadica, anche con riferimento al verso dell'animale"]}],"ex":[3,4,5]},
+{"id":"ie:2","word":"iella","ipa":"/ˈjɛlla/","cefr":"c2","pos":[{"pos":"noun","senses":["sfortuna, iattura, coll sfiga, (volgare) sculo"]}],"ex":[6]},
+{"id":"ie:3","word":"iettatore","ipa":"//","cefr":"c2","pos":[{"pos":"noun","senses":["individuo che porta rogna"]}],"ex":[7]},
+{"id":"ie:4","word":"-iera","ipa":"/-jɛra/","cefr":"c2","pos":[{"pos":"suffix","senses":["si aggiunge ai sostantivi per formare altri sostantivi concreti"]}]},
+{"id":"ie:5","word":"IEEE","cefr":"c2","pos":[{"pos":"abbrev","senses":["Institute of Electrical and Electronic Engineers, organizzazione fondata nel 1963 per promuovere, sviluppare e diffondere conoscenze tecnologiche in vari settori dell'ingegneria elettrica…"]}]},
+{"id":"ie:6","word":"Ienidi","ipa":"/ˈjɛnidi/","cefr":"c2","pos":[{"pos":"noun","senses":["mammiferi carnivori feliformi originari dell'Asia e dell'Africa, con particolarità fisiche e di comportamento intermedie tra quelle dei canidi e quelle dei felidi"]}]},
+{"id":"ie:7","word":"i-esimo","cefr":"c2","pos":[{"pos":"adj","senses":["che si trova nella posizione i"]}]},
+{"id":"ie:8","word":"iellato","ipa":"/jelˈlato/","cefr":"c2","pos":[{"pos":"adj","senses":["sfortunato"]}]},
+{"id":"ie:9","word":"ienide","ipa":"/ˈjɛnide/","cefr":"c2","pos":[{"pos":"noun","senses":["carnivoro"]}]},
+{"id":"ie:10","word":"ieraticamente","ipa":"/jeratikaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in modo ieratico, solenne"]}]},
+{"id":"ie:11","word":"ieratico","ipa":"/jeˈratiko/","cefr":"c2","pos":[{"pos":"adj","senses":["religioso","di cosa (soprattutto di atto, aspetto, gesto, parola) improntata a una compostezza sacerdotale, solenne"]},{"pos":"noun","senses":["religioso"]}]},
+{"id":"ie:12","word":"iernotte","cefr":"c2","pos":[{"pos":"adv","senses":["ieri notte"]}]},
+{"id":"ie:13","word":"iero-","ipa":"/ˈjɛro/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati dall'accostamento di due parole la prima delle quali significa sacro"]}]},
+{"id":"ie:14","word":"ierocrazia","ipa":"/jerokratˈtsia/","cefr":"c2","pos":[{"pos":"noun","senses":["ordinamento politico fondato sul predominio della classe sacerdotale"]}]},
+{"id":"ie:15","word":"ierodulo","ipa":"/jeroˈdulo/","cefr":"c2","pos":[{"pos":"noun","senses":["Nell'antichita, schiavo o schiava al servizio di un tempio eventualmente esercitandovi la prostituzione come pratica di culto."]}]},
+{"id":"ie:16","word":"ierofania","cefr":"c2","pos":[{"pos":"noun","senses":["manifestazione della realtà sacra in quella profana. Il sacro trascende il profano"]}]},
+{"id":"ie:17","word":"ierogamia","ipa":"/ierogamie","cefr":"c2","pos":[{"pos":"noun","senses":["rito religioso che rappresentava le nozze tra due dei"]}]}
+]

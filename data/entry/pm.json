@@ -1,0 +1,6 @@
+[
+{"id":"pm:0","word":"PM","ipa":"/pi.ˈɛm.me/","cefr":"c1","pos":[{"pos":"abbrev","senses":["\"Pubblico Ministero\", i.e., nel diritto italiano, magistrato che fa parte dell’ordine giudiziario e che, in posizione autonoma e indipendente da ogni altro potere, rappresenta l'interesse pubblico…","polizia militare","peso molecolare"]}],"ex":[0]},
+{"id":"pm:1","word":"PMI","cefr":"c2","pos":[{"pos":"abbrev","senses":["Piccola e Media Impresa: gruppo economico di dimensioni incluse in determinati limiti occupazionali e finanziari"]}]},
+{"id":"pm:2","word":"PMN","ipa":"/ˌpiˌɛmmeˈɛnne/","cefr":"c2","pos":[{"pos":"abbrev","senses":["prodotto materiale netto, indicatore macroeconomico in uso in tutti gli stati socialisti fino al 1990, che teneva conto in modo esclusivo del valore finale annuo dei prodotti delle attività agricole…"]}]},
+{"id":"pm:3","word":"PMOS","cefr":"c2","pos":[{"pos":"abbrev","senses":["transistor MOS che entra in funzione se la tensione all'ingresso è più bassa di quella di soglia"]}]}
+]

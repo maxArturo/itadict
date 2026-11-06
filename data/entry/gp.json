@@ -1,0 +1,6 @@
+[
+{"id":"gp:0","word":"GPS","cefr":"b2","pos":[{"pos":"abbrev","senses":["sistema di posizionamento su base satellitare, a copertura globale e continua, gestito dal dipartimento della difesa statunitense"]}],"ex":[0,1,2]},
+{"id":"gp:1","word":"GPU","cefr":"c2","pos":[{"pos":"abbrev","senses":["Graphics Processing Unit: unità di elaborazione grafica, processore ausiliario che trasforma la descrizione matematica e geometrica di un oggetto in tre dimensioni in un'immagine digitale"]}]},
+{"id":"gp:2","word":"GPL","ipa":"/d͡ʒ,piˈɛlle/","cefr":"c2","pos":[{"pos":"abbrev","senses":["miscela di idrocarburi che a temperatura normale diventano liquidi"]}]},
+{"id":"gp:3","word":"GPRS","cefr":"c2","pos":[{"pos":"abbrev","senses":["General Packet Radio Service: servizio per lo scambio di informazioni e dati con un sistema di commutazione a pacchetto, che unisce la tecnologia radiomobile dei telefoni cellulari con quella di rete…"]}]}
+]

@@ -1,0 +1,18 @@
+[
+{"id":"je:0","word":"jeans","ipa":"/ˈd͡ʒins/","cefr":"b2","pos":[{"pos":"noun","senses":["tela composta di cotone e lino, in genere di colore blu, usata per produrre pantaloni","pantaloni prodotti con questa tela"]}],"ex":[0,1,3]},
+{"id":"je:1","word":"Jessica","cefr":"b1","pos":[{"pos":"name","senses":["nome proprio di persona femminile, dall'inglese"]}],"ex":[4,5,14]},
+{"id":"je:2","word":"jet","cefr":"b2","pos":[{"pos":"noun","senses":["aeroplano spinto da un motore a reazione"]}],"ex":[2,6,7]},
+{"id":"je:3","word":"jersey","cefr":"b1","pos":[{"pos":"noun","senses":["tessuto morbido e liscio a pettine, tipico dell'abbigliamento femminile","nel gioco del basket e nella moda hip hop, maglietta larga senza maniche"]}],"ex":[11,12,13]},
+{"id":"je:4","word":"jeep","ipa":"/ˈd͡ʒip/","cefr":"c1","pos":[{"pos":"noun","senses":["fuoristrada, veicolo militare"]}],"ex":[8,9,10]},
+{"id":"je:5","word":"Jefferson City","cefr":"c2","pos":[{"pos":"name","senses":["capitale del Missouri, uno dei cinquanta stati federati degli Stati Uniti d'America"]}]},
+{"id":"je:6","word":"Jesolo","cefr":"c2","pos":[{"pos":"name","senses":["comune situato nella pianura della provincia di Venezia."]}]},
+{"id":"je:7","word":"jeggings","ipa":"/ˈd͡ʒɛgɪŋs/","cefr":"c2","pos":[{"pos":"noun","senses":["leggings cuciti in denim che sono realizzati per assomigliare a dei jeans aderenti"]}]},
+{"id":"je:8","word":"jella","ipa":"[jɛl:a]","cefr":"c2","pos":[{"pos":"noun","senses":["sfortuna","sventura"]}]},
+{"id":"je:9","word":"jena","ipa":"[","cefr":"c2","pos":[{"pos":"noun","senses":["iena"]}]},
+{"id":"je:10","word":"jequiritina","cefr":"c2","pos":[{"pos":"noun","senses":["alcaloide presente nei semi di jequirity"]}]},
+{"id":"je:11","word":"jequirity","cefr":"c2","pos":[{"pos":"noun","senses":["pianta leguminosa delle regioni tropicali"]}]},
+{"id":"je:12","word":"jesolano","cefr":"c2","pos":[{"pos":"adj","senses":["relativo a Jesolo"]},{"pos":"noun","senses":["nativo o abitante di Jesolo"]}]},
+{"id":"je:13","word":"jet pack","ipa":"/d͡ʒɛtpak/","cefr":"c2","pos":[{"pos":"phrase","senses":["dispositivo a razzo indossato di solito sulla schiena, che permette a chi lo indossa di volare"]}]},
+{"id":"je:14","word":"jet set","cefr":"c2","pos":[{"pos":"phrase","senses":["espressione con cui si indicano, in tono ironico o critico, gli esponenti dell’alta società internazionale, che mantengono tra loro rapporti mondani e d’affari, e con l'abitudine di spostarsi da un…"]}]},
+{"id":"je:15","word":"jèrriais","cefr":"c2","pos":[{"pos":"noun","senses":["lingua parlata nelle isole del canale della Manica"]}]}
+]

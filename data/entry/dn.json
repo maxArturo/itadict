@@ -1,0 +1,6 @@
+[
+{"id":"dn:0","word":"DNA","ipa":"/,di,ɛnneˈa/","cefr":"a2","pos":[{"pos":"abbrev","senses":["sigla indicante l'acido desossiribonucleico; acido nucleico a doppia elica formato da sequenze di coppie di nucleotidi, ognuno dei quali contenente una base azotata, una molecola di desossiribosio ed…","Origine, ciò da cui una cosa o una persona proviene"]}],"ex":[0,1,2]},
+{"id":"dn:1","word":"DNA ricombinante","cefr":"c2","pos":[{"pos":"phrase","senses":["sequenza di DNA che viene ottenuta per combinazione artificiale di materiale genetico di origini differenti"]}]},
+{"id":"dn:2","word":"DNS","cefr":"c2","pos":[{"pos":"abbrev","senses":["servizio di associazione di un nome di dominio ad un indirizzo IP"]}]},
+{"id":"dn:3","word":"Dnipropetrovsk","cefr":"c2","pos":[{"pos":"name","senses":["città dell'Ucraina"]}]}
+]

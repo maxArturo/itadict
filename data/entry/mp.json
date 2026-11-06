@@ -1,0 +1,6 @@
+[
+{"id":"mp:0","word":"MP3","cefr":"c2","pos":[{"pos":"noun","senses":["sistema di compressione audio per riprodurre voce e suoni con dati limitati ma fedeli a quelli originali, diffuso prevalentemente negli anni duemila","algoritmo di compressione audio di tipo lossy, sviluppato dal gruppo MPEG, in grado di ridurre drasticamente la quantità di dati richiesti per memorizzare un suono, lasciando però una riproduzione…","algoritmo di compressione audio di tipo lossy, sviluppato dal gruppo MPEG, in grado di ridurre drasticamente la quantità di dati richiesti per memorizzare un suono, rimanendo comunque una…"]}],"ex":[0,1,2]},
+{"id":"mp:1","word":"MP4","cefr":"c2","pos":[{"pos":"abbrev","senses":["formato di dati multimediali per salvare contenuti audio e video con dati limitati ma di qualità elevata, diffuso prevalentemente negli anni duemila"]}]},
+{"id":"mp:2","word":"MPEG","cefr":"c2","pos":[{"pos":"abbrev","senses":["Moving Picture Experts Group, gruppo di esperti di immagini in movimento, nome di vari standard per operazioni di compressione e diffusione di suoni e filmati con internet"]}]},
+{"id":"mp:3","word":"MPLS","cefr":"c2","pos":[{"pos":"abbrev","senses":["Multi Protocol Label Switching: nell'ambito del networking rappresenta una tecnologia standardizzata di trasmissione dei dati per reti IP"]}]}
+]

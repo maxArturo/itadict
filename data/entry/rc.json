@@ -1,0 +1,5 @@
+[
+{"id":"rc:0","word":"RCP","cefr":"c2","pos":[{"pos":"abbrev","senses":["insieme di pratiche volte a preservare l'ossigenazione e la perfusione degli organi di un soggetto colpito da arresto cardiaco"]}],"ex":[0]},
+{"id":"rc:1","word":"RC","cefr":"c2","pos":[{"pos":"abbrev","senses":["(di) circuito elettrico dove le uniche grandezze circuitali coinvolte sono la Resistenza e la Capacità, e di conseguenza formato, in molti casi, solo da un resistore e da un condensatore"]}]},
+{"id":"rc:2","word":"RCL","cefr":"c2","pos":[{"pos":"abbrev","senses":["(di) circuito elettrico dove si trovano coinvolte tutte le grandezze circuitali fondamentali, ovvero la Resistenza, la Capacità e l’induttanza (L, dal fisico Heinrich Lenz)"]}]}
+]

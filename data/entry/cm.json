@@ -1,0 +1,5 @@
+[
+{"id":"cm:0","word":"cm","cefr":"b2","pos":[{"pos":"abbrev","senses":["come","simbolo del centimetro"]}],"ex":[0,1,2]},
+{"id":"cm:1","word":"CMOS","cefr":"c2","pos":[{"pos":"abbrev","senses":["Complementary Metal Oxide Semiconductor: tecnologia microelettronica ampiamente usata per produrre circuiti digitali, che fa uso di transistor MOS dove la corrente elettrica è dovuta al moto di…"]}]},
+{"id":"cm:2","word":"cmq","cefr":"c2","pos":[{"pos":"abbrev","senses":["centimetro quadrato","comunque"]}]}
+]

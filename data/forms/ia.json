@@ -1,0 +1,11 @@
+{
+"iacuta":{"id":"ia:11","lemma":"iacuto","label":"femminile"},
+"iacute":{"id":"ia:11","lemma":"iacuto","label":"femminile plurale"},
+"iacuti":{"id":"ia:11","lemma":"iacuto","label":"plurale"},
+"ialoplasmi":{"id":"ia:13","lemma":"ialoplasma","label":"plurale"},
+"iarde":{"id":"ia:1","lemma":"iarda","label":"plurale"},
+"iati":{"id":"ia:16","lemma":"iato","label":"plurale"},
+"iatrochimica":{"id":"ia:19","lemma":"iatrochimico","label":"femminile"},
+"iatrochimiche":{"id":"ia:18","lemma":"iatrochimica","label":"plurale"},
+"iattazioni":{"id":"ia:25","lemma":"iattazione","label":"plurale"}
+}

@@ -1,0 +1,10 @@
+[
+{"id":"cy:0","word":"cyberspazio","cefr":"c2","pos":[{"pos":"noun","senses":["insieme di informazioni circolanti attraverso le grandi reti di computer"]}],"ex":[0,1,2]},
+{"id":"cy:1","word":"cyborg","ipa":"ˈsajborɡ","cefr":"c1","pos":[{"pos":"noun","senses":["nel linguaggio della fantascienza, essere umano in cui sono innestati organi elettromeccanici in grado di estendere le proprie capacità fisiche e mentali","protesi elettronica per sostituire gli organi mancanti"]}],"ex":[3,4,6]},
+{"id":"cy:2","word":"cyberbullismo","ipa":"/ˈsajberbulˈlizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["atto di prevaricazione o molestia messo in atto con una rete di computer"]}],"ex":[5]},
+{"id":"cy:3","word":"cyber-","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di un lemma composto da due parole, la seconda delle quali varia, mentre la prima riguarda l'interazione tra l'uomo e il computer all'interno di una simulazione della realtà"]}]},
+{"id":"cy:4","word":"cyberlibro","cefr":"c2","pos":[{"pos":"noun","senses":["libro elettronico sfogliabile telematicamente"]}]},
+{"id":"cy:5","word":"cyberpirata","cefr":"c2","pos":[{"pos":"noun","senses":["autore di reati informatici"]}]},
+{"id":"cy:6","word":"cyberpunk","cefr":"c2","pos":[{"pos":"noun","senses":["genere letterario e cinematografico derivato dalla fantascienza, nato negli Stati Uniti alla fine degli anni settanta, che mette in evidenza le tensioni sociali e culturali della società…"]}]},
+{"id":"cy:7","word":"cybersesso","cefr":"c2","pos":[{"pos":"noun","senses":["simulazione di atti sessuali con Internet"]}]}
+]

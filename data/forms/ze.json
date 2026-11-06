@@ -1,0 +1,17 @@
+{
+"zebre":{"id":"ze:3","lemma":"zebra","label":"plurale"},
+"zecchini":{"id":"ze:42","lemma":"zecchino","label":"plurale"},
+"zelandesi":{"id":"ze:46","lemma":"zelandese","label":"plurale"},
+"zelanti":{"id":"ze:7","lemma":"zelante","label":"plurale"},
+"zelatori":{"id":"ze:48","lemma":"zelatore","label":"plurale"},
+"zelatrice":{"id":"ze:48","lemma":"zelatore","label":"femminile"},
+"zelatrici":{"id":"ze:48","lemma":"zelatore","label":"femminile plurale"},
+"zeli":{"id":"ze:11","lemma":"zelo","label":"plurale"},
+"zemmifobie":{"id":"ze:52","lemma":"zemmifobia","label":"plurale"},
+"zenzigli":{"id":"ze:53","lemma":"zenziglio","label":"plurale"},
+"zeppa":{"id":"ze:6","lemma":"zeppo","label":"femminile"},
+"zeppe":{"id":"ze:6","lemma":"zeppo","label":"plurale"},
+"zeppi":{"id":"ze:6","lemma":"zeppo","label":"plurale"},
+"zerbini":{"id":"ze:12","lemma":"zerbino","label":"plurale"},
+"zeugmi":{"id":"ze:64","lemma":"zeugma","label":"plurale"}
+}

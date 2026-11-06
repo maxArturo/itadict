@@ -1,0 +1,5 @@
+[
+{"id":"bm:0","word":"BMW","ipa":"/beːɛmveː/","cefr":"c1","pos":[{"pos":"abbrev","senses":["sigla di Bayerische Motoren Werke, traducibile in italiano come \"fabbrica bavarese di motori\""]}],"ex":[0,1,2]},
+{"id":"bm:1","word":"BMX","cefr":"c2","pos":[{"pos":"noun","senses":["bicicletta sportiva speciale con manubrio in posizione pressoché verticale, con gomme non lisce, sellino rialzato o meno, strumenti aggiuntivi specifici, in genere per gare sportive di cross o per…"]}]},
+{"id":"bm:2","word":"b-movie","cefr":"c2","pos":[{"pos":"noun","senses":["film senza pretese artistiche e realizzato a fini puramente commerciali, incentrato molto spesso su temi leggeri"]}]}
+]

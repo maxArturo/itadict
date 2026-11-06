@@ -1,0 +1,5 @@
+[
+{"id":"km:0","word":"km","cefr":"b1","pos":[{"pos":"symbol","senses":["chilometro"]}],"ex":[0,1,2]},
+{"id":"km:1","word":"km-h","cefr":"c2","pos":[{"pos":"abbrev","senses":["chilometro orario"]}]},
+{"id":"km:2","word":"kmq","cefr":"c2","pos":[{"pos":"abbrev","senses":["simbolo del chilometro quadrato"]}]}
+]

@@ -1,0 +1,17 @@
+[
+{"id":"ud:0","word":"udito","ipa":"/uˈdito/","cefr":"b2","pos":[{"pos":"adj","senses":["capacità sensoriale di percepire i suoni"]},{"pos":"noun","senses":["capacità sensoriale atta a percepire i suoni"]}],"ex":[2,5,6]},
+{"id":"ud:1","word":"udienza","ipa":"/uˈdjɛntsa/","cefr":"b1","pos":[{"pos":"noun","senses":["fase di un processo che si svolge davanti al giudice"]}],"ex":[3,8,13]},
+{"id":"ud:2","word":"udire","cefr":"c2","pos":[{"pos":"verb","senses":["percepire i suoni mediante l'apparato uditivo","ascoltare una voce","venire a sapere"]}],"ex":[4,7,9],"conj":[{"key":"indicativo presente","personal":true,"forms":[null,"odi","ode","udiamo","udite",null]},{"key":"indicativo futuro","personal":true,"forms":[null,null,"udrà",null,null,null]},{"key":"congiuntivo presente","personal":true,"forms":[null,null,null,"udiamo",null,null]},{"key":"indicativo passato remoto","personal":true,"forms":[null,null,"udì",null,null,null]},{"key":"imperativo","personal":true,"forms":[null,"odi",null,"udiamo","udite",null]},{"key":"gerundio","personal":false,"forms":["udendo"]},{"key":"participio passato","personal":false,"forms":["udito","udite"]}]},
+{"id":"ud:3","word":"uditorio","ipa":"/udiˈtɔrjo/","cefr":"c2","pos":[{"pos":"adj","senses":["ascoltatori, pubblico"]},{"pos":"noun","senses":["gruppo di individui che si raduna per sentire parlare di qualcosa"]}],"ex":[10,11,14]},
+{"id":"ud:4","word":"udibile","cefr":"c1","pos":[{"pos":"adj","senses":["che si può udire"]}],"ex":[1,15,16]},
+{"id":"ud:5","word":"udinese","ipa":"/udiˈnese/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda Udine"]},{"pos":"noun","senses":["varietà della lingua veneta parlata ad Udine"]}],"ex":[12]},
+{"id":"ud:6","word":"uditivo","ipa":"/udiˈtivo/","cefr":"c2","pos":[{"pos":"adj","senses":["che è inerente all'udito"]}],"ex":[0]},
+{"id":"ud:7","word":"Udilio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"ud:8","word":"Udillo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"ud:9","word":"Udina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"ud:10","word":"Udine","cefr":"c2","pos":[{"pos":"name","senses":["Capoluogo di Provincia della regione Friuli-Venezia Giulia in Italia"]}]},
+{"id":"ud:11","word":"udibilità","cefr":"c2","pos":[{"pos":"noun","senses":["percepibilità di un suono da parte dell'orecchio umano"]}]},
+{"id":"ud:12","word":"udibilmente","ipa":"/udibilˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in maniera udibile"]}]},
+{"id":"ud:13","word":"uditore","ipa":"/udiˈtore/","cefr":"c2","pos":[{"pos":"noun","senses":["chim sente attentamente"]}]},
+{"id":"ud:14","word":"uditore generale","cefr":"c2","pos":[{"pos":"phrase","senses":["giudice istruttore del Regno delle Due Sicilie"]}]}
+]

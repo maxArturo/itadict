@@ -1,0 +1,9 @@
+{
+"aquea":{"id":"aq:17","lemma":"aqueo","label":"femminile"},
+"aquee":{"id":"aq:17","lemma":"aqueo","label":"femminile plurale"},
+"aquei":{"id":"aq:17","lemma":"aqueo","label":"plurale"},
+"aquile":{"id":"aq:0","lemma":"aquila","label":"plurale"},
+"aquilonari":{"id":"aq:23","lemma":"aquilonare","label":"plurale"},
+"aquiloni":{"id":"aq:1","lemma":"aquilone","label":"plurale"},
+"aquilotti":{"id":"aq:2","lemma":"aquilotto","label":"plurale"}
+}

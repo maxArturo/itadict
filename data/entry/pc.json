@@ -1,0 +1,6 @@
+[
+{"id":"pc:0","word":"PCR","cefr":"c2","pos":[{"pos":"abbrev","senses":["proteina sintetizzata dal fegato, capace di interagire con il sistema del complemento nel contesto della risposta immunitaria innata. Viene utilizzata come indice della presenza di uno stato…"]}],"ex":[0,1,2]},
+{"id":"pc:1","word":"PCB","cefr":"c2","pos":[{"pos":"abbrev","senses":["Printed Circuit Board o circuito stampato, supporto tecnico con l'obiettivo di collegare tra loro i componenti elettrici di un circuito elettronico, realizzato con l'incisione di collegamenti…"]}]},
+{"id":"pc:2","word":"PCI","cefr":"c2","pos":[{"pos":"abbrev","senses":["Partito Comunista Italiano: partito politico costituito nel 1921 e sciolto nel 1991 per il venir meno del comunismo in Unione Sovietica","Peripheral Component Interconnect (componente di interconnessione periferiche): all'interno del computer, bus di trasferimento dati che interfaccia la CPU con scheda e periferiche","Per Capita Income: (reddito pro capite): valore indicatore dello sviluppo economico di un paese, ottenuto dal rapporto tra reddito nazionale e popolazione residente"]}]},
+{"id":"pc:3","word":"PCUS","cefr":"c2","pos":[{"pos":"abbrev","senses":["partito comunista dell'Unione Sovietica"]}]}
+]

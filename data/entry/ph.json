@@ -1,0 +1,16 @@
+[
+{"id":"ph:0","word":"PHP","cefr":"c2","pos":[{"pos":"name","senses":["linguaggio di scripting utilizzato per creare applicazioni web"]}],"ex":[1,2,3]},
+{"id":"ph:1","word":"Phoenix","ipa":"/ˈfiniks/","cefr":"b2","pos":[{"pos":"name","senses":["capitale dell'Arizona, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[0,4]},
+{"id":"ph:2","word":"pH","ipa":"/piˈakka/","cefr":"c2","pos":[{"pos":"abbrev","senses":["indice del grado di acidità di una soluzione definito come il logaritmo in base 10 cambiato di segno dell'attività dello ione idrogeno; in soluzione acquosa varia da 1 a 14"]}],"ex":[5]},
+{"id":"ph:3","word":"Philips","cefr":"c2","pos":[{"pos":"name","senses":["società olandese per lo sviluppo di elettrodomestici e prodotti elettronici, fondata nel 1891"]}]},
+{"id":"ph:4","word":"pH-metro","cefr":"c2","pos":[{"pos":"noun","senses":["apparecchio graduato per misurare il pH"]}]},
+{"id":"ph:5","word":"phablet","cefr":"c2","pos":[{"pos":"noun","senses":["dispositivo elettronico portatile provvisto di schermo tattile di dimensioni leggermente inferiori a quelle di un tablet, del quale unisce funzioni caratteristiche con quelle di base di un telefono…"]}]},
+{"id":"ph:6","word":"phi","cefr":"c2","pos":[{"pos":"noun","senses":["ventunesima lettera dell'alfabeto greco rappresentata dal simbolo Φ, φ, corrispondente alla lettera F, f dell'alfabeto latino"]}]},
+{"id":"ph:7","word":"phishing","cefr":"c2","pos":[{"pos":"noun","senses":["tentativo di appropriazione illecita dei dati personali di un utente di Internet, resa possibile dall'invio di posta elettronica falsamente intestata ad aziende commerciali"]}]},
+{"id":"ph:8","word":"phone center","cefr":"c2","pos":[{"pos":"noun","senses":["locale pubblico per telefonare"]}]},
+{"id":"ph:9","word":"photo sharing","cefr":"c2","pos":[{"pos":"phrase","senses":["servizio di Internet che permette di pubblicare e condividere immagini e foto"]}]},
+{"id":"ph:10","word":"photobombing","cefr":"c2","pos":[{"pos":"noun","senses":["nel gergo di Internet, inserimento non richiesto di sé stessi nelle foto di altri"]}]},
+{"id":"ph:11","word":"photosite","cefr":"c2","pos":[{"pos":"noun","senses":["spazio piccolissimo all'interno di un sensore di immagini, che contiene elementi fotosensibili a semiconduttore in grado di trasformare un flusso luminoso in una determinata quantità di cariche…"]}]},
+{"id":"ph:12","word":"phubbing","cefr":"c2","pos":[{"pos":"noun","senses":["atto di ignorare un interlocutore per concentrarsi sull'uso di uno smartphone"]}]},
+{"id":"ph:13","word":"phylum","ipa":"/ˈfilum/","cefr":"c2","pos":[{"pos":"noun","senses":["gruppo tassonomico inferiore al regno e superiore alla classe"]}]}
+]

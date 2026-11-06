@@ -1,0 +1,6 @@
+[
+{"id":"tc:0","word":"TC","cefr":"c1","pos":[{"pos":"abbrev","senses":["Tomografia Computerizzata"]}]},
+{"id":"tc:1","word":"TCP","cefr":"c2","pos":[{"pos":"abbrev","senses":["Transmission Control Protocol, protocollo di controllo di trasmissione, protocollo interno a TCP/IP che codifica messaggi in partenza e decodifica messaggi in arrivo"]}]},
+{"id":"tc:2","word":"TCP/IP","cefr":"c2","pos":[{"pos":"abbrev","senses":["Transmission Control Protocol/Internet Protocol, protocollo di controllo di trasmissione/protocollo Internet, protocollo che permette il passaggio di informazioni e dati da un computer a un altro in…"]}]},
+{"id":"tc:3","word":"TCS","cefr":"c2","pos":[{"pos":"abbrev","senses":["Touring Club Svizzero"]}]}
+]

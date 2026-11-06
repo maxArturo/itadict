@@ -1,0 +1,7 @@
+[
+{"id":"ok:0","word":"ok","cefr":"a1","pos":[{"pos":"noun","senses":["abbreviazione di okay"]},{"pos":"intj","senses":["\"Va bene!/Siamo d'accordo!/L'accetto!\"; consenso o conferma, probabilmente deriva dal gergo dei soldati americani che così si esprimevano: \"zero Killed...\" ovvero \"0(/O)K-illed...\""]}],"ex":[0,2,3]},
+{"id":"ok:1","word":"okay","ipa":"/oˈkɛi/","cefr":"a1","pos":[{"pos":"intj","senses":["a posto"]},{"pos":"noun","senses":["d'accordo"]}],"ex":[4,5,6]},
+{"id":"ok:2","word":"Oklahoma","ipa":"/oklaˈɔma/","cefr":"c1","pos":[{"pos":"name","senses":["stato federato degli Stati Uniti d'America, con capitale Oklahoma City"]}]},
+{"id":"ok:3","word":"okapi","ipa":"/oˈkapi/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero artiodattilo giraffide"]}],"ex":[1,7,8]},
+{"id":"ok:4","word":"Oklahoma City","cefr":"c2","pos":[{"pos":"name","senses":["capitale dell'Oklahoma, uno dei cinquanta stati federati degli Stati Uniti d'America"]}]}
+]

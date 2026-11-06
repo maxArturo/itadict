@@ -1,0 +1,15 @@
+[
+{"id":"wi:0","word":"Wikipedia","ipa":"/vikipeˈdia/","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di enciclopedia presente sul Web, multilingue, a contenuto libero, redatta in modo collaborativo da volontari e sostenuta dalla Wikimedia Foundation, un'organizzazione non-profit…"]}],"ex":[0,1,4]},
+{"id":"wi:1","word":"windsurf","ipa":"/,windˈsɛrf/","cefr":"c2","pos":[{"pos":"noun","senses":["natante composto da una tavola sulla quale, per mezzo del boma, è manovrabile una vela connessa alla tavola tramite un albero","per metonimia, la pratica dello sport d'acqua che prevede l'utilizzo dell'omonimo natante"]}],"ex":[2,3,5]},
+{"id":"wi:2","word":"Wisconsin","cefr":"c1","pos":[{"pos":"name","senses":["uno dei cinquanta Stati degli Stati Uniti d'America"]}],"ex":[6]},
+{"id":"wi:3","word":"wireless","cefr":"c1","pos":[{"pos":"adj","senses":["che riguarda dispositivi elettronici collegati tra loro non con cavi elettrici ma solo con onde radio"]}],"ex":[7]},
+{"id":"wi:4","word":"Wiesbaden","cefr":"c2","pos":[{"pos":"name","senses":["città della Germania nordoccidentale, capitale dello stato federato dell'Assia"]}]},
+{"id":"wi:5","word":"Wikizionario","cefr":"c2","pos":[{"pos":"name","senses":["wiki-dizionario supportato dalla Wikimedia Foundation"]}]},
+{"id":"wi:6","word":"Wilfrida","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"wi:7","word":"Wilma","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"wi:8","word":"Wilmo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"wi:9","word":"Winnipeg","ipa":"/ˈwinnipɛɡ/","cefr":"c2","pos":[{"pos":"name","senses":["città del Canada orientale"]}]},
+{"id":"wi:10","word":"wi-fi","cefr":"c1","pos":[{"pos":"abbrev","senses":["Wireless Fidelity: protocollo di comunicazione che prevede lo scambio di informazioni e dati a brevi distanze con onde radio"]}]},
+{"id":"wi:11","word":"wiki","ipa":"/ˈwiki/","cefr":"c2","pos":[{"pos":"noun","senses":["sito web che permette agli utenti, registrati o meno, di creare contenuti testuali in modo immediato, semplice e collaborativo"]}]},
+{"id":"wi:12","word":"wine bar","ipa":"/wajn 'bar/","cefr":"c2","pos":[{"pos":"phrase","senses":["locale specializzato nell'offerta di vini, accompagnati spesso da piccoli pasti rapidi"]}]}
+]

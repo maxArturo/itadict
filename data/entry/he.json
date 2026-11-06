@@ -1,0 +1,15 @@
+[
+{"id":"he:0","word":"henry","cefr":"a2","pos":[{"pos":"noun","senses":["unità di misura dell'induttanza elettrica nel Sistema Internazionale, pari al prodotto di un ohm per un secondo"]}],"ex":[0,1,2]},
+{"id":"he:1","word":"Helena","cefr":"b2","pos":[{"pos":"name","senses":["capitale del Montana, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[5,8,10]},
+{"id":"he:2","word":"he","cefr":"b2","pos":[{"pos":"intj","senses":["espressione di una risata","variante, vedi eh"]}],"ex":[6,7]},
+{"id":"he:3","word":"herpes","ipa":"/ˈɛrpes/","cefr":"c1","pos":[{"pos":"noun","senses":["affezione virale che si manifesta con vescicole sulle labbra"]}],"ex":[4,9]},
+{"id":"he:4","word":"hertz","ipa":"/, /","cefr":"c2","pos":[{"pos":"noun","senses":["nel Sistema Internazionale di misura, l'unità di misura derivata della frequenza, pari al reciproco di un secondo; un (periodo o ciclo di qualsiasi evento periodico) al secondo. Simbolo: Hz"]}],"ex":[3]},
+{"id":"he:5","word":"Hepburn","cefr":"c2","pos":[{"pos":"name","senses":["sistema di trascrizione dei fonemi della lingua giapponese in caratteri alfabetici latini"]}]},
+{"id":"he:6","word":"heavy metal","ipa":"/ˈhɛvi ˈmɛtal/","cefr":"c2","pos":[{"pos":"phrase","senses":["genere musicale derivato dall'hard rock, di cui rafforza ulteriormente i tratti sonori di forza e durezza, nato in Inghilterra nel 1970"]}]},
+{"id":"he:7","word":"hegeliano","ipa":"//","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda lo scrittore, storico e filosofo tedesco Hegel"]}]},
+{"id":"he:8","word":"hegelismo","ipa":"/eɡeˈlizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["filosofia di Hegel"]}]},
+{"id":"he:9","word":"hepadnavirus","cefr":"c2","pos":[{"pos":"noun","senses":["gruppo di virus a DNA che comprende specie patogene per gli animali, compreso il virus dell'epatite B nell'uomo"]}]},
+{"id":"he:10","word":"herpesvirus","cefr":"c2","pos":[{"pos":"noun","senses":["virus dell'herpes"]}]},
+{"id":"he:11","word":"hertziano","ipa":"/erˈtsjano/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il fisico tedesco Heinrich Hertz"]}]},
+{"id":"he:12","word":"hevea","ipa":"/eˈvɛa/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuna pianta tropicale ella famiglia delle Euforbiacee del genere Hevea","genere della famiglia delle Euforbiacee"]}]}
+]

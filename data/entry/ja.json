@@ -1,0 +1,17 @@
+[
+{"id":"ja:0","word":"Jackson","ipa":"/ˈd͡ʒɛkson/","cefr":"b1","pos":[{"pos":"name","senses":["un cognome","nome di varie località nei paesi anglofoni, tra cui:","un nome di persone maschile"]}],"ex":[5,6,7]},
+{"id":"ja:1","word":"jazz","ipa":"/ˈd͡ʒɛts/","cefr":"b2","pos":[{"pos":"adj","senses":["di genere musicale nato negli Stati Uniti alla fine degli anni dieci, derivato dall'unione di elementi vocali e strumentali preesistenti afroamericani ed europei"]},{"pos":"noun","senses":["genere musicale nato negli Stati Uniti alla fine degli anni dieci, derivato dall'unione di elementi vocali e strumentali preesistenti afroamericani ed europei"]}],"ex":[2,4,8]},
+{"id":"ja:2","word":"jack","ipa":"/ˈd͡ʒɛk/","cefr":"a1","pos":[{"pos":"noun","senses":["dispositivo elettrico per realizzare una commutazione circuitale in una presa"]},{"pos":"verb","senses":["sollevare sul cricco"]}],"ex":[0,1,3]},
+{"id":"ja:3","word":"Java","cefr":"c2","pos":[{"pos":"name","senses":["linguaggio di programmazione per lo sviluppo di programmi da usare in reti di computer, predisposto per dipendere meno possibile dalla piattaforma di esecuzione"]}],"ex":[11,12,13]},
+{"id":"ja:4","word":"jazzista","ipa":"/d͡ʒetˈtsista/","cefr":"c2","pos":[{"pos":"noun","senses":["musicista o compositore di musica jazz"]}],"ex":[9,14,15]},
+{"id":"ja:5","word":"jazzistico","ipa":"/d͡ʒɛtˈtsistiko/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il jazz"]}],"ex":[10]},
+{"id":"ja:6","word":"Jacopo","ipa":"/ˈjakopo/","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"ja:7","word":"Japlish","cefr":"c2","pos":[{"pos":"noun","senses":["la lingua giapponese recente, caratterizzata dal frequente uso di prestiti dall'inglese"]}]},
+{"id":"ja:8","word":"jab","cefr":"c2","pos":[{"pos":"noun","senses":["nel pugilato, colpo leggero di disturbo, condotto spesso in serie con la parte esterna del guantone"]}]},
+{"id":"ja:9","word":"jacobiano","cefr":"c2","pos":[{"pos":"adj","senses":["che si attiene alla dottrina del matematico e fisico tedesco Karl Gustav Jacob Jacobi"]}]},
+{"id":"ja:10","word":"jam session","cefr":"c2","pos":[{"pos":"phrase","senses":["improvvisazione di variazioni su un tema musicale, tipica della musica afroamericana"]}]},
+{"id":"ja:11","word":"jato","cefr":"c2","pos":[{"pos":"noun","senses":["variante di iato"]}]},
+{"id":"ja:12","word":"jazz-band","cefr":"c2","pos":[{"pos":"noun","senses":["gruppo musicale specializzato in musica jazz"]}]},
+{"id":"ja:13","word":"jazz-rap","cefr":"c2","pos":[{"pos":"noun","senses":["sottogenere di musica rap con accompagnamenti strumentali derivati dal jazz, nato negli Stati Uniti alla fine degli anni ottanta"]}]},
+{"id":"ja:14","word":"jazz-rock","cefr":"c2","pos":[{"pos":"noun","senses":["sottogenere di musica rock con elementi strumentali derivati dal jazz, nato negli Stati Uniti alla fine degli anni sessanta"]}]}
+]

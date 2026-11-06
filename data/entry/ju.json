@@ -1,0 +1,19 @@
+[
+{"id":"ju:0","word":"judo","ipa":"/ˈd͡ʒudo/","cefr":"c2","pos":[{"pos":"noun","senses":["arte marziale originaria del Giappone, che prevede tecniche di lotta mirate a rendere immobile e subalterno l'avversario","disciplina sportiva derivata dall'arte marziale omonima, dal 1964 disciplina olimpica"]}],"ex":[0,2,3]},
+{"id":"ju:1","word":"judoka","ipa":"/d͡ʒuˈdɔka/","cefr":"c2","pos":[{"pos":"noun","senses":["chi pratica judo"]}],"ex":[1,4]},
+{"id":"ju:2","word":"Judaika","cefr":"c2","pos":[{"pos":"phrase","senses":["anche Judaica, indica la disponibilità per shopping di oggettistica semi-religiosa ebraica, quali gioielli o arte in genere, ma talvolta anche espressamente del culto religioso ebraico"]}]},
+{"id":"ju:3","word":"Juneau","cefr":"c2","pos":[{"pos":"name","senses":["capitale dell'Alaska, uno dei cinquanta stati federati degli Stati Uniti d'America"]}]},
+{"id":"ju:4","word":"Jutland","cefr":"c2","pos":[{"pos":"name","senses":["piccola penisola dell'Europa del nord, che comprende la Danimarca continentale e la parte settentrionale estrema della Germania"]}]},
+{"id":"ju:5","word":"Juventus","ipa":"/juˈvɛntus/","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di squadre sportive, principalmente, calcistiche"]}]},
+{"id":"ju:6","word":"judoista","ipa":"/d͡ʒudoˈista/","cefr":"c2","pos":[{"pos":"noun","senses":["atleta che pratica lo sport del judo"]}]},
+{"id":"ju:7","word":"jugoslavo","ipa":"/jugozˈlavo/","cefr":"c2","pos":[{"pos":"adj","senses":["variante di iugoslavo"]},{"pos":"noun","senses":["variante di iugoslavo"]}]},
+{"id":"ju:8","word":"jujitsu","cefr":"c2","pos":[{"pos":"noun","senses":["arte marziale originaria del Giappone, che permette al combattente di affrontare un avversario armato col solo uso del proprio corpo"]}]},
+{"id":"ju:9","word":"juke-box","ipa":"/d͡ʒuˈbɔks/","cefr":"c2","pos":[{"pos":"noun","senses":["apparecchio elettrico pubblico per riprodurre brani musicali con l'introduzione di monete, diffuso prevalentemente in passato"]}]},
+{"id":"ju:10","word":"jumbo","ipa":"/ˈd͡ʒumbo/","cefr":"c2","pos":[{"pos":"noun","senses":["aereo a reazione di grandi dimensioni e attrezzato per lunghi voli"]}]},
+{"id":"ju:11","word":"jumbo-jet","cefr":"c2","pos":[{"pos":"noun","senses":["nome colloquiale dell'aereo a reazione Boeing 747, in grado di trasportare un numero molto elevato di passeggeri a lunghissima distanza"]}]},
+{"id":"ju:12","word":"junghiano","cefr":"c2","pos":[{"pos":"adj","senses":["relativo a Jung"]},{"pos":"noun","senses":["fautore di Jung"]}]},
+{"id":"ju:13","word":"junk bond","cefr":"c2","pos":[{"pos":"phrase","senses":["titolo ad alto rendimento emesso da un'impresa ad alto rischio"]}]},
+{"id":"ju:14","word":"junk mail","cefr":"c2","pos":[{"pos":"phrase","senses":["campagna pubblicitaria di massa inviata per posta"]}]},
+{"id":"ju:15","word":"just in time","cefr":"c2","pos":[{"pos":"phrase","senses":["filosofia industriale che propone la produzione di manufatti che si prevede di vendere in poco tempo"]}]},
+{"id":"ju:16","word":"juventino","ipa":"/juvenˈtino/","cefr":"c2","pos":[{"pos":"adj","senses":["della società sportiva e squadra di calcio con sede a Torino, Juventus"]},{"pos":"noun","senses":["giocatore o tifoso della squadra di calcio della Juventus"]}]}
+]

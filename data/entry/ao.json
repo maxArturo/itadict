@@ -1,0 +1,17 @@
+[
+{"id":"ao:0","word":"aoristo","cefr":"c2","pos":[{"pos":"noun","senses":["in greco antico e moderno, tempo non definito"]}],"ex":[1,2,3]},
+{"id":"ao:1","word":"AO","cefr":"c2","pos":[{"pos":"symbol","senses":["sigla automobilistica e burocratica per la Valle d'Aosta"]}],"ex":[0]},
+{"id":"ao:2","word":"aorta","ipa":"/aˈɔrta/","cefr":"c1","pos":[{"pos":"noun","senses":["grande arteria che nasce dal ventricolo sinistro del cuore e dalla quale si dipartono le diverse arterie collaterali"]}]},
+{"id":"ao:3","word":"Aosta","ipa":"/a.ˈɔs.ta/","cefr":"c2","pos":[{"pos":"name","senses":["capoluogo della regione Valle d'Aosta in Italia"]}]},
+{"id":"ao:4","word":"a occhi chiusi","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["senza alcuna tergiversazione"]}]},
+{"id":"ao:5","word":"a occhio e croce","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["cosa fatta in modo non preciso"]}]},
+{"id":"ao:6","word":"a occhio nudo","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["privo di occhiali o di binocolo"]}]},
+{"id":"ao:7","word":"a ogni buon conto","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in ogni caso"]}]},
+{"id":"ao:8","word":"a opera di","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["con la partecipazione di","a motivo di"]}]},
+{"id":"ao:9","word":"aonio","ipa":"/aˈɔnjo/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente ai monti Aoni in Grecia","che è attinente alle muse"]}]},
+{"id":"ao:10","word":"aontare","cefr":"c2","pos":[{"pos":"verb","senses":["adontare"]}]},
+{"id":"ao:11","word":"aorare","cefr":"c2","pos":[{"pos":"verb","senses":["adorare"]}]},
+{"id":"ao:12","word":"aorcare","cefr":"c2","pos":[{"pos":"verb","senses":["strangolare"]}]},
+{"id":"ao:13","word":"aormare","cefr":"c2","pos":[{"pos":"verb","senses":["ormare"]}]},
+{"id":"ao:14","word":"aortico","ipa":"/aˈɔrtiko","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente all'aorta"]}]}
+]

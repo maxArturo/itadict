@@ -1,0 +1,28 @@
+itadict - offline Italian dictionary
+
+The dictionary data in data/ is derived from three sources.
+
+it.wiktionary (Italian Wiktionary)
+  Site: https://it.wiktionary.org/
+  Extraction: https://kaikki.org/itwiktionary/Italiano/kaikki.org-dictionary-Italiano.jsonl
+  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
+  Changes: fields pruned, glosses cleaned and shortened, headwords sharded,
+  inflected forms moved to a separate index.
+  27 pages flagged for copyright review are excluded; the list is in
+  tools/data-exclusions.json.
+
+Tatoeba Italian sentences
+  Site: https://tatoeba.org/
+  Export: https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences.tsv.bz2
+  Licence: CC BY 2.0 FR - https://creativecommons.org/licenses/by/2.0/fr/
+  Changes: sentence text is shortened. Tatoeba sentence ids are kept, so every
+  example can be traced back to its author.
+
+FrequencyWords Italian 50k list
+  Author: Hermit Dave
+  Export: https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/it/it_50k.txt
+  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
+  Changes: used only to rank lemmas into CEFR bands. No word list is shipped.
+
+All three licences allow redistribution with attribution. This NOTICE must ship
+with the data. Derived data stays under the same licences.

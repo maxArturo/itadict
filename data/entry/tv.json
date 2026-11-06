@@ -1,0 +1,11 @@
+[
+{"id":"tv:0","word":"TV","ipa":"/tiˈvu/","cefr":"a2","pos":[{"pos":"abbrev","senses":["televisore","televisione","video"]}],"ex":[0,1,2]},
+{"id":"tv:1","word":"TVC","cefr":"c2","pos":[{"pos":"abbrev","senses":["televisore a colori"]}]},
+{"id":"tv:2","word":"TVcolor","cefr":"c2","pos":[{"pos":"noun","senses":["televisore a colori"]}]},
+{"id":"tv:3","word":"tv mobile","cefr":"c2","pos":[{"pos":"phrase","senses":["possibilità di ricevere trasmissioni televisive col telefono cellulare"]}]},
+{"id":"tv:4","word":"tv1kdb","cefr":"c2","pos":[{"pos":"abbrev","senses":["Ti Voglio un (1) casino (Kasino) di bene. (vedi voler bene)"]}]},
+{"id":"tv:5","word":"tv1mdb","cefr":"c2","pos":[{"pos":"abbrev","senses":["\"ti voglio un mondo di bene\" (vedi voler bene)"]}]},
+{"id":"tv:6","word":"tvb","cefr":"c2","pos":[{"pos":"abbrev","senses":["acronimo della frase ti voglio bene (vedi voler bene)"]}]},
+{"id":"tv:7","word":"tvtb","cefr":"c2","pos":[{"pos":"abbrev","senses":["\"ti voglio tanto bene\" (vedi voler bene)"]}]},
+{"id":"tv:8","word":"tvttb","cefr":"c2","pos":[{"pos":"abbrev","senses":["\"ti voglio tanto tanto bene\" (vedi voler bene)"]}]}
+]
