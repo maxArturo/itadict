@@ -12,17 +12,27 @@
  * `tools/sanity.mjs` drives the shell with fakes and the browser path calls `boot()` with nothing.
  */
 
-import { bucketOfId, createData, foldWord } from './data.js';
-import { backupFile, counts, noteWord, packageList, parseBackup, parsePackage } from './lists.js';
+import { attributions, bucketOfId, createData, exampleBucket, foldWord } from './data.js';
+import {
+  backupFile,
+  counts,
+  hasWord,
+  noteWord,
+  packageList,
+  parseBackup,
+  parsePackage,
+  relocate,
+  wordDictionary,
+} from './lists.js';
 import { downloadAll, fileUrls } from './offline.js';
 import { posIndex } from './reference.js';
-import { HASH, createRouter, entryHash } from './router.js';
+import { HASH, createRouter, entryHash, sentenceHash } from './router.js';
 import { createSearch } from './search.js';
 import { createSpeech } from './speech.js';
 import { createStorage } from './storage.js';
 import { BANDS, dueCount, dueIds, gradeCard, newCard, orderDeck } from './study.js';
 import { createReader } from './text.js';
-import { backTarget, createUi } from './ui.js';
+import { backFor, createUi } from './ui.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {import('./router.js').Route} Route */
@@ -112,7 +122,7 @@ export function boot(options = {}) {
   root.replaceChildren(main, bar);
 
   const searchView = ui.searchScreen({
-    search: (query) => search.search(query),
+    search: (query, searchOptions) => search.search(query, searchOptions),
     onCommit: (query) => {
       storage.addQuery(query);
     },
@@ -173,6 +183,10 @@ export function boot(options = {}) {
   }
   if (typeof globalThis.setInterval === 'function') globalThis.setInterval(remind, 15 * 60 * 1000);
 
+  /** The headword of each card Study has drawn, by id: what its note is checked against. */
+  /** @type {Map<string, string>} */
+  const studyWords = new Map();
+
   const studyView = ui.studyScreen({
     decks: async () => {
       const schedule = storage.schedule();
@@ -197,13 +211,15 @@ export function boot(options = {}) {
       }));
     },
     load: (id) =>
-      data.entry(id).then((entry) => {
+      data.entry(id).then(async (entry) => {
         if (entry === null) return null;
+        studyWords.set(id, entry.headword);
+        await containFor(id, entry.headword);
         const sense = entry.posList[0]?.senses[0] ?? '';
         const card = { word: entry.headword, ipa: entry.pronunciation, sense, example: '' };
         return data
           .examples(bucketOfId(id))
-          .then((sentences) => ({ ...card, example: sentences[entry.exampleIndexes[0]] ?? '' }))
+          .then((examples) => ({ ...card, example: examples[entry.exampleIndexes[0]]?.it ?? '' }))
           .catch(() => card);
       }),
     grade: (id, remembered) => {
@@ -211,8 +227,10 @@ export function boot(options = {}) {
       storage.setSchedule(id, gradeCard(storage.schedule()[id] ?? newCard(at), remembered, at));
       updateDue();
     },
-    note: (id) => storage.note(id),
-    setNote: (id, text) => storage.setNote(id, text),
+    note: (id) => noteFor(id, studyWords.get(id) ?? ''),
+    noteBlocked: (id) => noteBlocked(id, studyWords.get(id) ?? ''),
+    // The card's headword goes with the note, as on the Entry screen, so the note can follow it.
+    setNote: (id, text) => storage.setNote(id, text, studyWords.get(id) ?? ''),
     speech,
     entryHref: (id) => entryHash(id),
     onGrade: updateDue,
@@ -328,11 +346,88 @@ export function boot(options = {}) {
     return { ok: true, counts: counts(storage.snapshot()) };
   }
 
+  /** The dictionary `relocate()` checks stored items against. */
+  const dictionary = wordDictionary(data, foldWord);
+
+  /** The stored items that keep a word beside their id: notes and list items. */
+  function storedItems() {
+    return [
+      ...storage.notes().map((note) => ({ id: note.id, word: note.word })),
+      ...storage.lists().flatMap((list) => list.items),
+    ];
+  }
+
+  /**
+   * Move the stored items a rebuild displaced: an id that now names another headword follows its
+   * word to the new id. An item whose word left the dictionary stays where it is.
+   * @param {Array<{ id: string, word: string }>} items
+   * @returns {Promise<number>} how many notes and list items moved
+   */
+  async function contain(items) {
+    /** @type {Array<{ from: string, to: string, word: string }>} */
+    const moves = [];
+    for (const move of await relocate(items, dictionary)) {
+      if (move.to !== null) moves.push({ from: move.from, to: move.to, word: move.word });
+    }
+    return moves.length === 0 ? 0 : storage.rekeyAll(moves, foldWord);
+  }
+
+  /**
+   * Before an entry draws, move what a rebuild displaced around it: an item stored at this id for
+   * another word, and an item stored elsewhere for this word. Most entries have neither, and then
+   * this reads nothing.
+   * @param {string} id
+   * @param {string} headword
+   */
+  async function containFor(id, headword) {
+    const folded = foldWord(headword);
+    const candidates = storedItems().filter(
+      (item) => hasWord(item) && (item.id === id ? foldWord(item.word) !== folded : foldWord(item.word) === folded),
+    );
+    if (candidates.length === 0) return;
+    try {
+      if ((await contain(candidates)) > 0) listsView.refresh();
+    } catch {
+      // The items stay; the note guard still hides a note on the wrong word.
+    }
+  }
+
+  /**
+   * The note text to show on one entry: none when the note was written on another headword that
+   * a rebuild moved away, so a note never shows on the wrong word.
+   * @param {string} id
+   * @param {string} headword the entry's headword, or `''` before it is known
+   * @returns {string}
+   */
+  function noteFor(id, headword) {
+    const note = storage.notes().find((entry) => entry.id === id);
+    if (note === undefined) return '';
+    if (!hasWord(note)) return note.text;
+    return headword !== '' && foldWord(note.word) === foldWord(headword) ? note.text : '';
+  }
+
+  /**
+   * Whether the note at an id belongs to another headword, so this entry may neither show nor
+   * replace it.
+   * @param {string} id
+   * @param {string} headword `''` before it is known
+   * @returns {boolean}
+   */
+  function noteBlocked(id, headword) {
+    const note = storage.notes().find((entry) => entry.id === id);
+    return note !== undefined && hasWord(note) && headword !== '' && foldWord(note.word) !== foldWord(headword);
+  }
+
   /**
    * The notes with the headword each one belongs to, newest first.
    * @returns {Promise<Array<{ id: string, text: string, word: string }>>}
    */
   async function noteRows() {
+    try {
+      await contain(storage.notes().map((note) => ({ id: note.id, word: note.word })));
+    } catch {
+      // The notes keep their ids.
+    }
     return Promise.all(
       storage.notes().map(async (note) => {
         let fetched = '';
@@ -358,6 +453,18 @@ export function boot(options = {}) {
   async function describeItems(ids) {
     /** @type {Map<string, { pos: string, gloss: string }>} */
     const out = new Map();
+    const wanted = new Set(ids);
+    let moved = 0;
+    try {
+      moved = await contain(storage.lists().flatMap((list) => list.items.filter((item) => wanted.has(item.id))));
+    } catch {
+      moved = 0;
+    }
+    // The rows on screen carry the old ids; draw them again from the moved items.
+    if (moved > 0) {
+      globalThis.setTimeout(() => listsView.refresh(), 0);
+      return out;
+    }
     await Promise.all(
       ids.map(async (id) => {
         try {
@@ -428,8 +535,9 @@ export function boot(options = {}) {
   }
 
   /**
-   * What the About screen shows, read from the manifest.
-   * @returns {Promise<{ version: string, built: string, entries: number, examples: number }>}
+   * What the About screen shows, read from the manifest. The attribution lines come from its
+   * sources, so a new source or model changes the data, not this module.
+   * @returns {Promise<{ version: string, built: string, entries: number, examples: number, attributions: string[] }>}
    */
   function aboutInfo() {
     return data.manifest().then((manifest) => ({
@@ -437,6 +545,7 @@ export function boot(options = {}) {
       built: manifest.built,
       entries: manifest.totals.entries,
       examples: manifest.totals.examples,
+      attributions: attributions(manifest),
     }));
   }
 
@@ -544,11 +653,18 @@ export function boot(options = {}) {
     const known = search.row(id);
     /** @type {Row} */
     const row = known ?? { folded: '', id, headword: id, pronunciation: '', pos: '', gloss: '', en: '' };
-    const bucket = bucketOfId(id);
+    const bucket = exampleBucket(id);
+    /** The headword a note is checked against: the row's now, the body's once it lands. */
+    let headword = known?.headword ?? '';
     return ui.entryScreen({
       row,
       load: data.entry(id).then(
-        (entry) => entry,
+        async (entry) => {
+          if (entry === null) return entry;
+          headword = entry.headword;
+          await containFor(id, entry.headword);
+          return entry;
+        },
         () => null,
       ),
       query: searchView.query(),
@@ -556,8 +672,12 @@ export function boot(options = {}) {
       examples: (indexes) =>
         data
           .examples(bucket)
-          .then((sentences) => indexes.map((index) => sentences[index] ?? '').filter((line) => line !== ''))
+          .then((list) => indexes.flatMap((index) => (list[index] === undefined ? [] : [list[index]])))
           .catch(() => []),
+      sentenceHref: (sentenceId) => sentenceHash(bucket, sentenceId),
+      onOpenSentence: () => {
+        arrivedFrom = 'entry';
+      },
       back,
       lists: () => storage.lists(),
       listIds: (id) => storage.listIdsWith(id),
@@ -565,61 +685,129 @@ export function boot(options = {}) {
         storage.toggleItem(listId, item);
       },
       addList: (name, label) => storage.addList(name, label),
-      note: (id) => storage.note(id),
+      note: (noteId) => noteFor(noteId, headword),
+      noteBlocked: (noteId) => noteBlocked(noteId, headword),
       setNote: (id, text, word) => {
-        storage.setNote(id, text, word);
-        listsView.refresh();
+        if (storage.setNote(id, text, word)) listsView.refresh();
       },
     });
   }
 
+  /**
+   * One sentence page. The id is `<bucket>:<sentenceId>`, so a cold link costs the manifest and
+   * one ex file, and a page opened from an entry costs nothing: that ex file is in the memo.
+   * @param {string} id
+   * @param {{ label: string, go?: () => void }} back
+   * @returns {HTMLElement}
+   */
+  function sentenceView(id, back) {
+    const cut = id.indexOf(':');
+    const bucket = id.slice(0, cut);
+    const sentenceId = id.slice(cut + 1);
+    return ui.sentenceScreen({
+      load: data.sentence(bucket, sentenceId),
+      sentenceId,
+      back,
+      speech,
+      word: (text, context) => reader.word(text, context),
+      openEntry: (entryId) => {
+        arrivedFrom = 'sentence';
+        router.navigate(entryHash(entryId));
+      },
+      // A miss searches the token itself as a whole word, one letter included.
+      onSearch: (query) => {
+        searchView.setQuery(query, { whole: true });
+        router.navigate(HASH.search);
+      },
+    });
+  }
+
+  /**
+   * Show a detail screen: alone on a phone, beside the search list from 900px wide.
+   * @param {HTMLElement} detailNode
+   */
+  function showDetail(detailNode) {
+    if (!matchWide()) {
+      main.replaceChildren(detailNode);
+      return;
+    }
+    const list = doc.createElement('div');
+    list.className = 'pane pane-list';
+    list.append(searchView.node);
+    const detail = doc.createElement('div');
+    detail.className = 'pane pane-detail';
+    detail.append(detailNode);
+    const split = doc.createElement('div');
+    split.className = 'split';
+    split.append(list, detail);
+    main.replaceChildren(split);
+  }
+
   /** The last tab screen drawn. The entry's back control returns to it. */
   let from = '';
+  /**
+   * One-shot: how the app is about to step between a sentence and an entry. A word tapped on a
+   * sentence page sets 'sentence'; an example row tapped on an entry sets 'entry'. The next render
+   * reads it and clears it, so Back, a reload or a typed link never inherits it.
+   * @type {'' | 'sentence' | 'entry'}
+   */
+  let arrivedFrom = '';
+
+  /**
+   * The back control of the route on screen. Crossing the 900px breakpoint draws the same route
+   * again, and it must draw the same back control, not one inferred again.
+   * @type {{ key: string, back: { label: string, go?: () => void } | null }}
+   */
+  let shown = { key: '', back: null };
+
+  /**
+   * @param {'entry' | 'sentence'} screen
+   * @param {'' | 'sentence' | 'entry'} via
+   * @param {string} previous
+   * @returns {{ label: string, go?: () => void }}
+   */
+  function backOf(screen, via, previous) {
+    const target = backFor(screen, via, previous);
+    return target.history ? { label: target.label, go: () => globalThis.history.back() } : { label: target.label };
+  }
 
   /**
    * @param {Route} route
+   * @param {unknown} [again] `true` when the same route is drawn again at a new width; the router
+   *   passes its host object here, which is not `true`
    */
-  function renderRoute(route) {
+  function renderRoute(route, again) {
     ui.setActiveTab(bar, route.name);
+    const redraw = again === true;
+    const via = redraw ? '' : arrivedFrom;
+    if (!redraw) arrivedFrom = '';
+    const key = route.name + ':' + (route.id ?? '');
+    const kept = redraw && shown.key === key ? shown.back : null;
     const previous = from;
-    if (route.name !== 'entry') from = route.name;
+    // An entry or a sentence is not a tab screen, so neither moves the entry's back target.
+    if (route.name !== 'entry' && route.name !== 'sentence') from = route.name;
 
     if (route.name === 'entry' && route.id !== null) {
-      storage.addOpened(route.id);
-      const target = backTarget(previous);
-      /** @type {{ label: string, go?: () => void }} */
-      const back = { label: target.label };
-      if (target.history) back.go = () => globalThis.history.back();
-
-      if (matchWide()) {
-        const list = doc.createElement('div');
-        list.className = 'pane pane-list';
-        list.append(searchView.node);
-        const detail = doc.createElement('div');
-        detail.className = 'pane pane-detail';
-        detail.append(entryView(route.id, back));
-        const split = doc.createElement('div');
-        split.className = 'split';
-        split.append(list, detail);
-        main.replaceChildren(split);
-        return;
-      }
-      main.replaceChildren(entryView(route.id, back));
+      if (!redraw) storage.addOpened(route.id);
+      const back = kept ?? backOf('entry', via, previous);
+      shown = { key, back };
+      showDetail(entryView(route.id, back));
       return;
     }
 
+    if (route.name === 'sentence' && route.id !== null) {
+      // A sentence is not an entry: it adds nothing to `opened`.
+      const back = kept ?? backOf('sentence', via, previous);
+      shown = { key, back };
+      showDetail(sentenceView(route.id, back));
+      return;
+    }
+
+    shown = { key, back: null };
+
     if (route.name === 'search') {
       if (matchWide()) {
-        const list = doc.createElement('div');
-        list.className = 'pane pane-list';
-        list.append(searchView.node);
-        const detail = doc.createElement('div');
-        detail.className = 'pane pane-detail';
-        detail.append(ui.placeholder(NO_ENTRY));
-        const split = doc.createElement('div');
-        split.className = 'split';
-        split.append(list, detail);
-        main.replaceChildren(split);
+        showDetail(ui.placeholder(NO_ENTRY));
         return;
       }
       main.replaceChildren(searchView.node);
@@ -665,7 +853,7 @@ export function boot(options = {}) {
   if (typeof globalThis.matchMedia === 'function') {
     globalThis.matchMedia(WIDE).addEventListener('change', () => {
       const route = router.current();
-      if (route !== null) renderRoute(route);
+      if (route !== null) renderRoute(route, true);
     });
   }
 

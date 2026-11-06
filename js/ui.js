@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * The screens: the tab bar, Search, Text, Entry, Study, Lists, Reference, Settings, and the
+ * The screens: the tab bar, Search, Text, Entry, Sentence, Study, Lists, Reference, Settings, and the
  * placeholder. One element helper and text nodes only — no `innerHTML` with data, anywhere.
  * Icons are inline SVG built with `createElementNS`, so they take `currentColor` and need no
  * files. A sheet is the one overlay: a dialog over the tab bar, closed by its button, the
@@ -12,6 +12,7 @@
  * | Search | the field, the input switch and its letter palette, then history, rows or one line |
  * | Text | the textarea, the summary, the text as words with a link on each known one, and the unknown words |
  * | Entry | back control, the entry name, the headword block, the sections, and the list and note sheets |
+ * | Sentence | back control, the Italian with every word a button, its English, the source |
  * | Study | the deck picker and one card at a time |
  * | Lists | pinned History and Notes, folders, lists with their labels, list items, and the sheets |
  * | Reference | the catalogue, then About, Alphabet, Parts of speech, CEFR and Offline |
@@ -28,9 +29,10 @@ import { LABELS, firstLine } from './lists.js';
 import { ALPHABET } from './reference.js';
 import { HASH, entryHash } from './router.js';
 import { findMatch, fold } from './search.js';
-import { WORD_CAP, summarise, tokenize } from './text.js';
+import { WORD_CAP, contexts, readKey, summarise, tokenize } from './text.js';
 
 /** @typedef {import('./data.js').Row} Row */
+/** @typedef {import('./data.js').Example} Example */
 /** @typedef {import('./data.js').Entry} Entry */
 /** @typedef {import('./data.js').ConjGroup} ConjGroup */
 /** @typedef {import('./data.js').EnglishGroup} EnglishGroup */
@@ -71,9 +73,20 @@ import { WORD_CAP, summarise, tokenize } from './text.js';
  *   offline: () => Promise<{ files: number, bytes: number }>,
  * }} SettingsOptions */
 
+/** What the Sentence screen needs. The app reads the row through the data client; this module fetches nothing. */
+/** @typedef {{
+ *   load: Promise<Example | null>,
+ *   sentenceId: string,
+ *   back?: { label: string, go?: () => void },
+ *   speech?: { available: () => boolean, speak: (text: string) => boolean },
+ *   word: (text: string, context: { capitalised: boolean, initial: boolean }) => Promise<Match | null>,
+ *   openEntry: (id: string) => void,
+ *   onSearch: (query: string) => void,
+ * }} SentenceOptions */
+
 /** The data the Reference screen reads, all through the app. */
 /** @typedef {{
- *   about: () => Promise<{ version: string, built: string, entries: number, examples: number }>,
+ *   about: () => Promise<{ version: string, built: string, entries: number, examples: number, attributions: string[] }>,
  *   alphabetIds: (words: string[]) => Promise<Map<string, string>>,
  *   pos: () => Promise<Array<{ pos: string, label: string, count: number, rows: Array<{ id: string, word: string, gloss: string }> }>>,
  *   cefr: () => Promise<Array<{ band: string, count: number }>>,
@@ -91,6 +104,9 @@ const BANDS_NAMED = {
   c1: 'Advanced',
   c2: 'Mastery',
 };
+
+/** The smallest tap target width, in CSS px: WCAG 2.5.8. A sentence word's box is never narrower. */
+const TARGET_MIN = 24;
 
 /** The chevron that closes a row. */
 const CHEVRON = 'M1 1.2 6.2 6.5 1 11.8';
@@ -172,6 +188,26 @@ export function backTarget(from) {
 }
 
 /**
+ * The back control of an Entry or a Sentence screen, from how the app arrived there.
+ *
+ * - A word tapped on a sentence page (`via` 'sentence') gives the entry "Sentence", one step back.
+ * - An example row tapped on an entry (`via` 'entry') gives the sentence "Entry", one step back.
+ * - Otherwise a sentence goes to Search by its link and never steps back: a cold link has
+ *   nothing behind it, and an iOS home-screen app has no browser history to step through.
+ * - Otherwise an entry follows {@link backTarget}: the tab screen behind it, or Search.
+ *
+ * @param {'entry' | 'sentence'} screen
+ * @param {'' | 'sentence' | 'entry'} via the one-shot flag the app set before navigating
+ * @param {string} from the last tab screen drawn, or `''`
+ * @returns {{ label: string, history: boolean }}
+ */
+export function backFor(screen, via, from) {
+  if (screen === 'entry' && via === 'sentence') return { label: 'Sentence', history: true };
+  if (screen === 'sentence') return via === 'entry' ? { label: 'Entry', history: true } : { label: 'Search', history: false };
+  return backTarget(from);
+}
+
+/**
  * The FORMS table: one row per person of a personal tense, one row per other tense, in the fixed
  * order, starting at the present. Pure, so the order is checked without a document.
  *
@@ -232,16 +268,18 @@ export function translationRows(en) {
  *   setActiveTab: (bar: HTMLElement, name: string) => void,
  *   setTabBadge: (bar: HTMLElement, name: string, value: string) => void,
  *   searchScreen: (options: {
- *     search: (query: string) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
+ *     search: (query: string, options?: { whole?: boolean }) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
  *     onCommit?: (query: string) => void,
- *   }) => { node: HTMLElement, query: () => string, setQuery: (value: string) => void, refresh: () => void },
+ *   }) => { node: HTMLElement, query: () => string, setQuery: (value: string, options?: { whole?: boolean }) => void, refresh: () => void },
  *   textScreen: (options: {
  *     read: (segments: Segment[]) => Promise<Map<string, Match | null>>,
  *   }) => HTMLElement,
  *   entryScreen: (options: {
  *     row: Row,
  *     load: Promise<Entry | null>,
- *     examples: (indexes: number[]) => Promise<string[]>,
+ *     examples: (indexes: number[]) => Promise<Example[]>,
+ *     sentenceHref?: (sentenceId: string) => string,
+ *     onOpenSentence?: () => void,
  *     query?: string,
  *     back?: { label: string, go?: () => void },
  *     speech?: { available: () => boolean, speak: (text: string) => boolean },
@@ -250,14 +288,17 @@ export function translationRows(en) {
  *     toggleItem?: (listId: string, item: { id: string, word: string }) => void,
  *     addList?: (name: string, label: string) => UserList,
  *     note?: (id: string) => string,
+ *     noteBlocked?: (id: string) => boolean,
  *     setNote?: (id: string, text: string, word: string) => void,
  *   }) => HTMLElement,
+ *   sentenceScreen: (options: SentenceOptions) => HTMLElement,
  *   studyScreen: (options: {
  *     decks: () => Promise<Deck[]>,
  *     cards: (deckId: string) => Promise<Array<{ id: string, word?: string, gloss?: string }>>,
  *     load: (id: string) => Promise<{ word: string, ipa: string, sense: string, example: string } | null>,
  *     grade: (id: string, remembered: boolean) => void,
  *     note: (id: string) => string,
+ *     noteBlocked?: (id: string) => boolean,
  *     setNote: (id: string, text: string) => void,
  *     speech: { available: () => boolean, speak: (text: string) => boolean },
  *     entryHref: (id: string) => string,
@@ -324,6 +365,28 @@ export function createUi(doc = globalThis.document) {
    */
   function message(line) {
     return text('p', 'empty', line);
+  }
+
+  /**
+   * The back control of Entry and Sentence. Its href is the cold-link fallback, Search; a screen
+   * the app opened steps back to the screen behind it.
+   * @param {{ label: string, go?: () => void }} [target]
+   * @returns {HTMLAnchorElement}
+   */
+  function backControl(target) {
+    const back = el('a', 'back');
+    back.href = HASH.search;
+    const label = target?.label ?? 'Search';
+    back.textContent = '‹ ' + label;
+    back.setAttribute('aria-label', 'Back to ' + label.toLowerCase());
+    const go = target?.go;
+    if (go !== undefined) {
+      back.addEventListener('click', (event) => {
+        event.preventDefault();
+        go();
+      });
+    }
+    return back;
   }
 
   /**
@@ -655,7 +718,7 @@ export function createUi(doc = globalThis.document) {
    * newer query, is dropped: only the newest answer reaches the DOM.
    *
    * @param {{
-   *   search: (query: string) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
+   *   search: (query: string, options?: { whole?: boolean }) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
    *   onCommit?: (query: string) => void,
    * }} options
    */
@@ -830,12 +893,16 @@ export function createUi(doc = globalThis.document) {
         body.replaceChildren(historyView(history));
         return;
       }
-      if (trimmed.length < 2) {
+      // A word tapped on a sentence page was searched whole, so one letter is a real miss.
+      if (trimmed.length < 2 && !whole) {
         body.replaceChildren(message(trimmed === '' ? 'Type a word to search.' : 'Keep typing.'));
         return;
       }
       body.replaceChildren(message(`No results for "${trimmed}".`));
     }
+
+    /** Set by a sentence page's miss: search the next query as a whole word, even one letter. */
+    let whole = false;
 
     async function run() {
       const query = input.value;
@@ -844,7 +911,7 @@ export function createUi(doc = globalThis.document) {
       /** @type {{ rows: Row[], english: Row[], history: string[] }} */
       let result;
       try {
-        result = await options.search(query);
+        result = await options.search(query, { whole });
       } catch {
         if (mine === token) body.replaceChildren(message('The dictionary is not ready yet.'));
         return;
@@ -854,6 +921,7 @@ export function createUi(doc = globalThis.document) {
     }
 
     input.addEventListener('input', () => {
+      whole = false;
       void run();
     });
     form.addEventListener('submit', (event) => {
@@ -868,11 +936,14 @@ export function createUi(doc = globalThis.document) {
       node: section,
       query: () => input.value,
       /**
-       * Put a query in the field and run it, for the History row on Lists.
+       * Put a query in the field and run it, for the History row on Lists and a missed word on a
+       * sentence page. `whole` searches it as a whole word, so one letter is not "Keep typing".
        * @param {string} value
+       * @param {{ whole?: boolean }} [setOptions]
        */
-      setQuery: (value) => {
+      setQuery: (value, setOptions = {}) => {
         input.value = value;
+        whole = setOptions.whole === true;
         void run();
       },
       refresh: () => {
@@ -889,7 +960,9 @@ export function createUi(doc = globalThis.document) {
    * @param {{
    *   row: Row,
    *   load: Promise<Entry | null>,
-   *   examples: (indexes: number[]) => Promise<string[]>,
+   *   examples: (indexes: number[]) => Promise<Example[]>,
+   *   sentenceHref?: (sentenceId: string) => string,
+   *   onOpenSentence?: () => void,
    *   query?: string,
    *   back?: { label: string, go?: () => void },
    *   speech?: { available: () => boolean, speak: (text: string) => boolean },
@@ -898,6 +971,7 @@ export function createUi(doc = globalThis.document) {
    *   toggleItem?: (listId: string, item: { id: string, word: string }) => void,
    *   addList?: (name: string, label: string) => UserList,
    *   note?: (id: string) => string,
+   *   noteBlocked?: (id: string) => boolean,
    *   setNote?: (id: string, text: string, word: string) => void,
    * }} options
    * @returns {HTMLElement}
@@ -907,20 +981,17 @@ export function createUi(doc = globalThis.document) {
     const section = el('section', 'screen entry-screen');
 
     const bar = el('header', 'navbar');
-    const back = el('a', 'back');
-    back.href = HASH.search;
-    const label = options.back?.label ?? 'Search';
-    back.textContent = '‹ ' + label;
-    back.setAttribute('aria-label', 'Back to ' + label.toLowerCase());
-    // The href stays the cold-link fallback; an in-app entry steps back to the screen behind it.
-    const go = options.back?.go;
-    if (go !== undefined) {
-      back.addEventListener('click', (event) => {
-        event.preventDefault();
-        go();
-      });
-    }
+    const back = backControl(options.back);
     const title = text('span', 'navbar-title', row.headword);
+    /**
+     * The headword lists, notes and speech use: the row's until the body lands, then the body's.
+     * A cold link's row carries the id as its headword, which must never be stored as a word.
+     */
+    let shownWord = row.headword;
+    /** Whether `shownWord` is the entry's headword: a cold link's row only carries the id. */
+    let wordKnown = row.headword !== '' && row.headword !== row.id;
+    /** Repaints the list control once stored items may have moved to this id. */
+    let repaintList = () => {};
     const actions = el('div', 'navbar-actions');
     // A speaker that cannot speak is never drawn.
     if (options.speech?.available()) {
@@ -929,7 +1000,7 @@ export function createUi(doc = globalThis.document) {
       speak.textContent = '🔈';
       speak.setAttribute('aria-label', 'Speak');
       speak.title = 'Speak';
-      speak.addEventListener('click', () => options.speech?.speak(row.headword));
+      speak.addEventListener('click', () => options.speech?.speak(shownWord));
       actions.append(speak);
     }
     if (options.lists !== undefined && options.toggleItem !== undefined) actions.append(listAction());
@@ -953,6 +1024,7 @@ export function createUi(doc = globalThis.document) {
       };
       button.addEventListener('click', () => openListSheet(paint));
       paint();
+      repaintList = paint;
       return button;
     }
 
@@ -981,7 +1053,7 @@ export function createUi(doc = globalThis.document) {
                 count: list.items.length,
                 checked: held.has(list.id),
                 onOpen: () => {
-                  options.toggleItem?.(list.id, { id: row.id, word: row.headword });
+                  options.toggleItem?.(list.id, { id: row.id, word: shownWord });
                   refresh();
                   after();
                 },
@@ -1004,7 +1076,7 @@ export function createUi(doc = globalThis.document) {
             return;
           }
           const list = options.addList?.(value, 'Other');
-          if (list !== undefined) options.toggleItem?.(list.id, { id: row.id, word: row.headword });
+          if (list !== undefined) options.toggleItem?.(list.id, { id: row.id, word: shownWord });
           name.value = '';
           refresh();
           after();
@@ -1028,21 +1100,30 @@ export function createUi(doc = globalThis.document) {
       button.setAttribute('aria-label', 'Note');
       button.title = 'Note';
       button.addEventListener('click', () => {
-        openSheet('Note for ' + row.headword, (close) => {
+        openSheet('Note for ' + shownWord, (close) => {
           const box = el('div', 'sheet-stack');
           const area = el('textarea', 'sheet-input sheet-area');
           area.rows = 5;
           area.value = options.note?.(row.id) ?? '';
-          area.placeholder = 'Write a note about this entry…';
+          area.placeholder = wordKnown ? 'Write a note about this entry…' : 'Reading the entry…';
           area.setAttribute('aria-label', 'Note');
           const save = el('button', 'sheet-button');
           save.type = 'button';
           save.textContent = 'Save note';
           save.addEventListener('click', () => {
-            options.setNote?.(row.id, area.value, row.headword);
+            options.setNote?.(row.id, area.value, shownWord);
             close();
           });
-          box.append(area, save, text('p', 'sheet-note', 'An empty note removes it.'));
+          // A note is written with its headword, so not before the headword is known; and never
+          // over a note another word left at this id, which stays hidden and is never replaced.
+          const blocked = wordKnown && (options.noteBlocked?.(row.id) ?? false);
+          area.disabled = !wordKnown || blocked;
+          save.disabled = area.disabled;
+          box.append(
+            area,
+            save,
+            text('p', 'sheet-note', blocked ? 'This note belongs to another word.' : 'An empty note removes it.'),
+          );
           return box;
         });
       });
@@ -1090,6 +1171,44 @@ export function createUi(doc = globalThis.document) {
       return fragment;
     }
 
+    /**
+     * One example: the Italian with the match marked, the English clamped to two lines, and the
+     * chevron. The whole row links to the sentence page. An empty English draws nothing, and a row
+     * without an id or a link draws no chevron.
+     * @param {Example} example
+     * @param {string} needle
+     * @returns {HTMLElement}
+     */
+    function exampleRow(example, needle) {
+      const href = example.id !== '' ? options.sentenceHref?.(example.id) : undefined;
+      /** @type {HTMLElement} */
+      let node;
+      if (href === undefined) {
+        node = el('div', 'example');
+      } else {
+        const link = el('a', 'example');
+        link.href = href;
+        // A plain tap opens the sentence in this tab; the app notes it so the sentence steps back.
+        link.addEventListener('click', (event) => {
+          if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) options.onOpenSentence?.();
+        });
+        node = link;
+      }
+      const body = el('span', 'example-text');
+      const italian = el('span', 'example-it');
+      italian.lang = 'it';
+      italian.append(highlight(example.it, needle));
+      body.append(italian);
+      if (example.en !== '') {
+        const english = text('span', 'example-en', example.en);
+        english.lang = 'en';
+        body.append(english);
+      }
+      node.append(body);
+      if (href !== undefined) node.append(icon(CHEVRON, 'chevron', '0 0 8 13'));
+      return node;
+    }
+
     /** @param {Entry | null} entry */
     function fill(entry) {
       if (entry === null) {
@@ -1102,7 +1221,11 @@ export function createUi(doc = globalThis.document) {
       if (entry.headword !== '') {
         headword.textContent = entry.headword;
         title.textContent = entry.headword;
+        shownWord = entry.headword;
+        wordKnown = true;
       }
+      // The app moves stored items a rebuild displaced before the body arrives; show the result.
+      repaintList();
       if (entry.pronunciation !== '') {
         pronunciation.textContent = entry.pronunciation;
         pronunciation.hidden = false;
@@ -1143,17 +1266,16 @@ export function createUi(doc = globalThis.document) {
       }
       // The headword and the definition are already drawn; the sentences are their own fetch.
       Promise.resolve(options.examples(entry.exampleIndexes)).then(
-        (sentences) => {
-          if (sentences.length === 0) {
+        (rows) => {
+          const shown = rows.filter((example) => example.it !== '');
+          if (shown.length === 0) {
             examples.hidden = true;
             return;
           }
           const list = el('ul', 'examples');
-          for (const line of sentences) {
-            const item = el('li', 'example');
-            const body = el('span');
-            body.append(highlight(line, needle));
-            item.append(body, icon('M1 1.2 6.2 6.5 1 11.8', 'chevron', '0 0 8 13'));
+          for (const example of shown) {
+            const item = el('li');
+            item.append(exampleRow(example, needle));
             list.append(item);
           }
           examples.append(list);
@@ -1167,6 +1289,189 @@ export function createUi(doc = globalThis.document) {
     Promise.resolve(options.load).then(
       (entry) => fill(entry),
       () => fill(null),
+    );
+
+    return section;
+  }
+
+  /**
+   * The Sentence screen: one example, whole. The Italian is drawn as words and plain runs, and
+   * every word is a button that resolves on tap: to its entry when the dictionary has one, to a
+   * search when it does not. The newest tap wins; an earlier tap that resolves later is dropped,
+   * and so is any tap that resolves after the screen has gone. An empty English draws no line.
+   *
+   * @param {SentenceOptions} options
+   * @returns {HTMLElement}
+   */
+  function sentenceScreen(options) {
+    const section = el('section', 'screen sentence-screen');
+
+    const bar = el('header', 'navbar');
+    const title = text('span', 'navbar-title', 'Sentence');
+    const actions = el('div', 'navbar-actions');
+    bar.append(backControl(options.back), title, actions);
+
+    // The states draw the app's one-line message, which carries its own padding.
+    const body = el('div', 'sentence-body is-state');
+    body.append(message('Reading the sentence…'));
+    section.append(bar, body);
+
+    const tatoeba = 'https://tatoeba.org/sentences/show/' + options.sentenceId;
+
+    /** @returns {HTMLAnchorElement} */
+    function source() {
+      const link = el('a', 'sentence-source');
+      link.href = tatoeba;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = 'Tatoeba #' + options.sentenceId;
+      return link;
+    }
+
+    /** Only the newest tap navigates. */
+    let tap = 0;
+
+    /**
+     * @param {string} word the token as the tokeniser cut it
+     * @param {{ capitalised: boolean, initial: boolean }} context where it sits in the sentence
+     */
+    function open(word, context) {
+      const mine = (tap += 1);
+      const settle = (/** @type {Match | null} */ match) => {
+        if (mine !== tap || !section.isConnected) return;
+        if (match !== null) options.openEntry(match.id);
+        else options.onSearch(word);
+      };
+      Promise.resolve()
+        .then(() => options.word(word, context))
+        .then(settle, () => settle(null));
+    }
+
+    /**
+     * Give a short word the room its 24px target needs without reaching a neighbour. A word's box
+     * is at least 24px wide with its text centred, so a short word's box reaches (24 - w) / 2 past
+     * its glyphs. A tap must land on the word whose glyphs are nearest, so that reach may not pass
+     * the midpoint of the gap to a neighbour. An outer margin of reach minus the narrowest space
+     * (0.2em) keeps it inside, whatever the font's real space. Long words get nothing. Glyph widths
+     * do not depend on where lines break, so this runs once per draw, not on resize.
+     * @param {HTMLElement} italian
+     */
+    function spaceShortWords(italian) {
+      const em = parseFloat(globalThis.getComputedStyle?.(italian).fontSize ?? '') || 20;
+      const buttons = Array.from(italian.querySelectorAll('button.sentence-word'));
+      // A second run (fonts loaded) starts from the stylesheet, not from the first run's spacing.
+      for (const button of buttons) if (button instanceof HTMLElement) button.removeAttribute('style');
+      for (const button of buttons) {
+        if (!(button instanceof HTMLElement)) continue;
+        const glyphs = button.firstElementChild?.getBoundingClientRect().width ?? 0;
+        if (glyphs === 0) continue;
+        const reach = (TARGET_MIN - glyphs) / 2;
+        // The CSS margin is -0.1em; only a short word's margin grows past it.
+        const margin = Math.max(-0.1 * em, reach - 0.2 * em);
+        button.style.marginLeft = margin + 'px';
+        button.style.marginRight = margin + 'px';
+      }
+      spaceFirstWord(italian, em);
+    }
+
+    /**
+     * The paragraph's first word has no neighbour on its left, so a short one needs no inset
+     * there: its target overhangs into the paragraph's padding, which is dead space, and its text
+     * starts at the margin like any line. Its right side keeps the normal word gap, and its target
+     * stops at the midpoint of that gap. Only the first word: CSS cannot see where lines wrap.
+     * When the padding is too narrow for the overhang, the word keeps the spacing above.
+     * @param {HTMLElement} italian
+     * @param {number} em
+     */
+    function spaceFirstWord(italian, em) {
+      const first = italian.firstChild;
+      if (!(first instanceof HTMLElement) || !first.classList.contains('sentence-word')) return;
+      const glyphs = first.firstElementChild?.getBoundingClientRect();
+      if (glyphs === undefined || glyphs.width === 0 || glyphs.width >= TARGET_MIN - 0.2 * em) return;
+      const width = glyphs.width;
+      const reach = (TARGET_MIN - width) / 2;
+      const margin = parseFloat(first.style.marginRight) || 0;
+      const room = italian.getBoundingClientRect().left - section.getBoundingClientRect().left;
+      // The gap to the next glyph once this word's own inset and margin are gone.
+      const next = first.nextElementSibling?.firstElementChild?.getBoundingClientRect();
+      const gap = next === undefined || next.top !== glyphs.top ? 0.2 * em : next.left - glyphs.right - reach - margin;
+      // Half a pixel short of the midpoint, and a tenth of a pixel over 24, so rounding can
+      // neither reach the neighbour nor fall under the minimum.
+      const right = Math.min(gap / 2 - 0.5, TARGET_MIN - width);
+      const left = TARGET_MIN + 0.1 - width - right;
+      // The overhang must stay inside the screen's own edge, where a tap still lands.
+      if (right < 0 || left > room - 0.25) return;
+      first.style.minWidth = '0';
+      first.style.paddingLeft = left + 'px';
+      first.style.paddingRight = right + 'px';
+      first.style.marginLeft = -left + 'px';
+      first.style.marginRight = -right + 'px';
+    }
+
+    /** @param {Example} example */
+    function draw(example) {
+      const italian = el('p', 'sentence-it');
+      italian.lang = 'it';
+      const { segments } = tokenize(example.it);
+      const places = contexts(segments);
+      segments.forEach((segment, index) => {
+        if (!segment.word) {
+          italian.append(doc.createTextNode(segment.text));
+          return;
+        }
+        // The button is the tap target; the span inside carries the underline, so the dots hug
+        // the glyphs and never the target's padding or minimum width.
+        const button = el('button', 'sentence-word');
+        button.type = 'button';
+        button.append(text('span', 'sentence-word-text', segment.text));
+        button.addEventListener('click', () => open(segment.text, places[index]));
+        italian.append(button);
+      });
+      /** @type {HTMLElement[]} */
+      const parts = [italian];
+      if (example.en !== '') {
+        const english = text('p', 'sentence-en', example.en);
+        english.lang = 'en';
+        parts.push(english);
+      }
+      parts.push(source());
+      body.className = 'sentence-body';
+      body.replaceChildren(...parts);
+      spaceShortWords(italian);
+      // A web font that lands later changes glyph widths; measure again once fonts are ready.
+      doc.fonts?.ready.then(() => {
+        if (italian.isConnected) spaceShortWords(italian);
+      });
+
+      if (options.speech?.available()) {
+        const speak = el('button', 'action');
+        speak.type = 'button';
+        speak.textContent = '🔈';
+        speak.setAttribute('aria-label', 'Speak the sentence');
+        speak.title = 'Speak';
+        speak.addEventListener('click', () => options.speech?.speak(example.it));
+        actions.append(speak);
+      }
+    }
+
+    Promise.resolve(options.load).then(
+      (example) => {
+        if (example !== null && example.it !== '') {
+          draw(example);
+          return;
+        }
+        const out = el('p', 'note sentence-missing');
+        const link = el('a');
+        link.href = tatoeba;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = 'Open it on Tatoeba';
+        out.append(link);
+        body.replaceChildren(message('This sentence is not in this version of the dictionary.'), out);
+      },
+      () => {
+        body.replaceChildren(message('This sentence is not ready yet.'));
+      },
     );
 
     return section;
@@ -1221,8 +1526,9 @@ export function createUi(doc = globalThis.document) {
       if (truncated) fragment.append(text('p', 'note', `Long text: only the first ${WORD_CAP} words are read.`));
 
       const read = el('p', 'text-read');
-      for (const segment of segments) {
-        const match = segment.word ? resolved.get(fold(segment.text)) ?? null : null;
+      const places = contexts(segments);
+      for (const [index, segment] of segments.entries()) {
+        const match = segment.word ? resolved.get(readKey(segment.text, places[index])) ?? null : null;
         if (match === null) {
           read.append(doc.createTextNode(segment.text));
           continue;
@@ -1292,6 +1598,7 @@ export function createUi(doc = globalThis.document) {
    *   load: (id: string) => Promise<{ word: string, ipa: string, sense: string, example: string } | null>,
    *   grade: (id: string, remembered: boolean) => void,
    *   note: (id: string) => string,
+   *   noteBlocked?: (id: string) => boolean,
    *   setNote: (id: string, text: string) => void,
    *   speech: { available: () => boolean, speak: (text: string) => boolean },
    *   entryHref: (id: string) => string,
@@ -1486,6 +1793,13 @@ export function createUi(doc = globalThis.document) {
       field.value = options.note(id);
       field.addEventListener('input', () => options.setNote(id, field.value));
       note.append(field);
+      // A note is written with the card's headword, so a card without one cannot write.
+      field.disabled = view.word === '';
+      // A note another word left at this id stays hidden, and this card cannot overwrite it.
+      if (options.noteBlocked?.(id) ?? false) {
+        field.disabled = true;
+        note.append(text('p', 'study-note-line', 'This note belongs to another word.'));
+      }
 
       box.append(headword, ipa, sense, example, note);
 
@@ -2354,7 +2668,7 @@ export function createUi(doc = globalThis.document) {
             }),
             navRow({
               path: ICONS.about,
-              name: 'Example sentences',
+              name: 'Example sentences and translations',
               note: 'Tatoeba, CC BY 2.0 FR',
               href: 'https://creativecommons.org/licenses/by/2.0/fr/',
               external: true,
@@ -2371,6 +2685,8 @@ export function createUi(doc = globalThis.document) {
             text('h2', 'section-title', 'Licences'),
             licences,
             text('p', 'settings-note', 'Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0, modificato.'),
+            // The data's own lines, such as Tatoeba's, once the build writes them.
+            ...info.attributions.map((line) => text('p', 'settings-note', line)),
             text(
               'p',
               'settings-note',
@@ -2540,6 +2856,7 @@ export function createUi(doc = globalThis.document) {
     searchScreen,
     textScreen,
     entryScreen,
+    sentenceScreen,
     studyScreen,
     listsScreen,
     settingsScreen,

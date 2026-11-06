@@ -8,7 +8,7 @@
 
 // Bumped by hand on every deploy. GitHub Pages sends max-age=600 on sw.js itself, so this constant
 // is the only way a fix reaches an installed app.
-const CACHE = 'v1';
+const CACHE = 'v2';
 
 const SHELL_CACHE = 'itadict-shell-' + CACHE;
 const DATA_CACHE = 'itadict-data';
