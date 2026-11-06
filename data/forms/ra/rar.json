@@ -1,14 +1,14 @@
 {
-"rara":{"id":"ra:24","lemma":"raro","label":"femminile"},
-"rare":{"id":"ra:24","lemma":"raro","label":"femminile plurale"},
-"rarefatta":{"id":"ra:565","lemma":"rarefatto","label":"femminile"},
-"rarefatte":{"id":"ra:565","lemma":"rarefatto","label":"femminile plurale"},
-"rarefatti":{"id":"ra:565","lemma":"rarefatto","label":"plurale"},
-"rarefatto":{"id":"ra:564","lemma":"rarefare","label":"participio passato"},
-"rarefazioni":{"id":"ra:566","lemma":"rarefazione","label":"plurale"},
-"rari":{"id":"ra:24","lemma":"raro","label":"plurale"},
-"rarissima":{"id":"ra:24","lemma":"raro","label":"superlativo assoluto femminile singolare"},
-"rarissime":{"id":"ra:24","lemma":"raro","label":"superlativo assoluto femminile plurale"},
-"rarissimi":{"id":"ra:24","lemma":"raro","label":"superlativo assoluto plurale"},
-"rarissimo":{"id":"ra:24","lemma":"raro","label":"superlativo assoluto singolare"}
+"rara":{"id":"rar:1","lemma":"raro","label":"femminile"},
+"rare":{"id":"rar:1","lemma":"raro","label":"femminile plurale"},
+"rarefatta":{"id":"rar:4","lemma":"rarefatto","label":"femminile"},
+"rarefatte":{"id":"rar:4","lemma":"rarefatto","label":"femminile plurale"},
+"rarefatti":{"id":"rar:4","lemma":"rarefatto","label":"plurale"},
+"rarefatto":{"id":"rar:3","lemma":"rarefare","label":"participio passato"},
+"rarefazioni":{"id":"rar:5","lemma":"rarefazione","label":"plurale"},
+"rari":{"id":"rar:1","lemma":"raro","label":"plurale"},
+"rarissima":{"id":"rar:1","lemma":"raro","label":"superlativo assoluto femminile singolare"},
+"rarissime":{"id":"rar:1","lemma":"raro","label":"superlativo assoluto femminile plurale"},
+"rarissimi":{"id":"rar:1","lemma":"raro","label":"superlativo assoluto plurale"},
+"rarissimo":{"id":"rar:1","lemma":"raro","label":"superlativo assoluto singolare"}
 }

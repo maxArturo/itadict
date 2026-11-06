@@ -1,4 +1,4 @@
 [
 {"id":"i_:0","word":"i","cefr":"a1","pos":[{"pos":"article","senses":["articolo determinativo maschile plurale da usare solo con le parole di genere maschile e di numero plurale inizianti per consonante tranne che \"x\", \"z\", \"s\" seguita da consonante e i gruppi…"]},{"pos":"noun","senses":["nona lettera dell'alfabeto italiano"]}],"ex":[0,1,2]},
-{"id":"i_:1","word":"î","ipa":"[i:]","cefr":"a1","pos":[{"pos":"character","senses":["Scrittura alternativa di \"ii\" o più antico \"j\"."]}]}
+{"id":"i_:1","word":"î","ipa":"[i:]","cefr":"a1","pos":[{"pos":"character","senses":["Scrittura alternativa di \"ii\" o più antico \"j\"."]}],"en":[{"pos":"character","glosses":["The a conflation of a double letter ⟨i⟩ when pronounced as a single /i/, e.g. genî or genii ('geniuses', plural of genio) vs geni ('genes', plural of gene)."]}]}
 ]

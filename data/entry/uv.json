@@ -1,8 +1,8 @@
 [
-{"id":"uv:0","word":"uva","ipa":"/ˈuva/","cefr":"b2","pos":[{"pos":"noun","senses":["frutto della vite, costituita da acini riuniti formante un grappolo di colore viola-rossastro o giallo"]}],"ex":[0,1,2]},
-{"id":"uv:1","word":"uvetta","cefr":"c1","pos":[{"pos":"noun","senses":["diminutivo di uva","uva passa assai dolce, con acini senza semi"]}],"ex":[3,4,5]},
+{"id":"uv:0","word":"uva","ipa":"/ˈuva/","cefr":"b2","pos":[{"pos":"noun","senses":["frutto della vite, costituita da acini riuniti formante un grappolo di colore viola-rossastro o giallo"]}],"en":[{"pos":"noun","glosses":["grapes"]}],"ex":[0,1,2]},
+{"id":"uv:1","word":"uvetta","cefr":"c1","pos":[{"pos":"noun","senses":["diminutivo di uva","uva passa assai dolce, con acini senza semi"]}],"en":[{"pos":"noun","glosses":["diminutive of uva (“grape”)","raisin"]}],"ex":[3,4,5]},
 {"id":"uv:2","word":"uva fragola","cefr":"c2","pos":[{"pos":"phrase","senses":["vite di origine americana che produce dei frutti che hanno un sapore che ricorda quello della fragola; la sua classificazione scientifica è Vitis labrusca ( tassonomia)"]}]},
-{"id":"uv:3","word":"uvaggio","ipa":"/uˈvadʤo/","cefr":"c2","pos":[{"pos":"noun","senses":["miscela di uve di diversa qualità, con epoca di maturazione concomitante per creare un vino dalle qualità organolettiche particolari."]}]},
-{"id":"uv:4","word":"uvea","cefr":"c2","pos":[{"pos":"noun","senses":["tonaca vascolare dell'occhio, compresa tra il tessuto connettivo della sclera e il tessuto nervoso della retina"]}]},
-{"id":"uv:5","word":"uveite","ipa":"/uveˈite/","cefr":"c2","pos":[{"pos":"noun","senses":["arrossamento dell'uvea"]}]}
+{"id":"uv:3","word":"uvaggio","ipa":"/uˈvadʤo/","cefr":"c2","pos":[{"pos":"noun","senses":["miscela di uve di diversa qualità, con epoca di maturazione concomitante per creare un vino dalle qualità organolettiche particolari."]}],"en":[{"pos":"noun","glosses":["blend of different grapes used to make wine"]}]},
+{"id":"uv:4","word":"uvea","cefr":"c2","pos":[{"pos":"noun","senses":["tonaca vascolare dell'occhio, compresa tra il tessuto connettivo della sclera e il tessuto nervoso della retina"]}],"en":[{"pos":"noun","glosses":["uvea"]}]},
+{"id":"uv:5","word":"uveite","ipa":"/uveˈite/","cefr":"c2","pos":[{"pos":"noun","senses":["arrossamento dell'uvea"]}],"en":[{"pos":"noun","glosses":["uveitis"]}]}
 ]

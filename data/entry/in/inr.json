@@ -1,7 +1,7 @@
 [
 {"id":"inr:0","word":"in rapporto a","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["secondo un rapporto in forma di frazione"]}]},
 {"id":"inr:1","word":"in regola","cefr":"c2","pos":[{"pos":"phrase","senses":["per qualsiasi lavoro legale, non illecito, indica appunto essere a posto con le tasse, quindi con il fisco, ecc"]}]},
-{"id":"inr:2","word":"in relazione a","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["rispetto a"]}]},
+{"id":"inr:2","word":"in relazione a","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["rispetto a"]}],"en":[{"pos":"prep_phrase","glosses":["in relation to; regarding"]}]},
 {"id":"inr:3","word":"in rilievo","cefr":"c2","pos":[{"pos":"phrase","senses":["separato da un contorno"]}]},
 {"id":"inr:4","word":"in riposo","cefr":"c2","pos":[{"pos":"phrase","senses":["coricato"]}]},
 {"id":"inr:5","word":"in riscontro","cefr":"c2","pos":[{"pos":"adj","senses":["attributo araldico che si applica alla testa di animale posta di fronte e senza collo"]}]},

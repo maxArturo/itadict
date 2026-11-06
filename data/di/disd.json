@@ -1,10 +1,10 @@
 [
-["disdire","disd:0","disdire","/dizˈdire/","verb","rescindere"],
-["disdetta","disd:1","disdetta","/dizˈdetta/","noun","rifiuto o obiezione circa l'esecuzione di una richiesta o di un ordine"],
-["disdegno","disd:2","disdegno","/diˈzdeɲɲo/","noun","disprezzo, indifferenza"],
-["disdicevole","disd:3","disdicevole","/dizdiˈt͡ʃevole/","adj","che non è adeguato"],
-["disdegnare","disd:4","disdegnare","/dizdeɲˈɲare/","verb","avere disprezzo"],
-["disdegnosamente","disd:5","disdegnosamente","","adv","con disdegno; sdegnosamente"],
-["disdegnoso","disd:6","disdegnoso","/dizdeɲˈɲoso/","adj","colmo di disdegno"],
-["disdicevolmente","disd:7","disdicevolmente","","adv","in modo disdicevole"]
+["disdire","disd:0","disdire","/dizˈdire/","verb","to cancel; to call off; to annul (a booking, contract, etc.)"],
+["disdetta","disd:1","disdetta","/dizˈdetta/","noun","cancellation"],
+["disdegno","disd:2","disdegno","/diˈzdeɲɲo/","noun","disdain, contempt, scorn"],
+["disdicevole","disd:3","disdicevole","/dizdiˈt͡ʃevole/","adj","improper"],
+["disdegnare","disd:4","disdegnare","/dizdeɲˈɲare/","verb","to disdain, contemn or scorn"],
+["disdegnosamente","disd:5","disdegnosamente","","adv","disdainfully"],
+["disdegnoso","disd:6","disdegnoso","/dizdeɲˈɲoso/","adj","disdainful, scornful"],
+["disdicevolmente","disd:7","disdicevolmente","","adv","improperly"]
 ]

@@ -1,11 +1,11 @@
 [
 ["diurna","diu:0","diurna","","noun","(teatro)"],
-["diurno","diu:1","diurno","/diˈurno/","adj","che resta sveglio di giorno."],
+["diurno","diu:1","diurno","/diˈurno/","adj","diurnal"],
 ["diu","diu:2","diu","","adv","di giorno"],
-["diuresi","diu:3","diuresi","","noun","funzione naturale con cui sono espulse dal corpo, con l'emissione di urina, materie superflue"],
-["diuretico","diu:4","diuretico","/djuˈrɛtiko/","adj","di alimento o bevanda che aumenta la diuresi, cioè la produzione di urina"],
-["diurnamente","diu:5","diurnamente","","adv","giornalmente"],
-["diuturnamente","diu:6","diuturnamente","","adv","per tanto tempo"],
-["diuturnita","diu:7","diuturnità","/djuturniˈta/","noun","carattere diuturno"],
-["diuturno","diu:8","diuturno","/djuˈturno/","adj","che dura a lungo"]
+["diuresi","diu:3","diuresi","","noun","diuresis"],
+["diuretico","diu:4","diuretico","/djuˈrɛtiko/","adj","diuretic"],
+["diurnamente","diu:5","diurnamente","","adv","diurnally"],
+["diuturnamente","diu:6","diuturnamente","","adv","diuturnally"],
+["diuturnita","diu:7","diuturnità","/djuturniˈta/","noun","diuturnity"],
+["diuturno","diu:8","diuturno","/djuˈturno/","adj","diuturnal, durable, long-lasting"]
 ]

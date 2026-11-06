@@ -4,7 +4,7 @@
 {"id":"ou:2","word":"outlet","cefr":"c2","pos":[{"pos":"noun","senses":["negozio specializzato nella vendita di prodotti di marca usciti fuori produzione, soprattutto capi d'abbigliamento"]}]},
 {"id":"ou:3","word":"outlier","cefr":"c2","pos":[{"pos":"noun","senses":["campione dal valore molto diverso rispetto alla popolazione da cui è stato estratto, punto aberrante"]}]},
 {"id":"ou:4","word":"output","cefr":"c2","pos":[{"pos":"noun","senses":["sequenza di informazioni e dati in uscita da un elaboratore"]}]},
-{"id":"ou:5","word":"outsider","ipa":"/,awtˈsajder/","cefr":"c2","pos":[{"pos":"noun","senses":["nello sport, atleta rivelazione della gara","persona che si impone inaspettatamente nel proprio campo; uomo nuovo","chi sta ai margini, chi è emarginato","chi brillando nell'arte non si identifica in nessuna corrente"]}]},
-{"id":"ou:6","word":"outsourcing","cefr":"c2","pos":[{"pos":"noun","senses":["affidamento di un processo produttivo ad un ente da parte di un altro"]}]},
-{"id":"ou:7","word":"ouverture","ipa":"/uverˈtur/","cefr":"c2","pos":[{"pos":"noun","senses":["brano musicale che introduce un'opera lirica"]}]}
+{"id":"ou:5","word":"outsider","ipa":"/,awtˈsajder/","cefr":"c2","pos":[{"pos":"noun","senses":["nello sport, atleta rivelazione della gara","persona che si impone inaspettatamente nel proprio campo; uomo nuovo","chi sta ai margini, chi è emarginato","chi brillando nell'arte non si identifica in nessuna corrente"]}],"en":[{"pos":"noun","glosses":["outsider"]}]},
+{"id":"ou:6","word":"outsourcing","cefr":"c2","pos":[{"pos":"noun","senses":["affidamento di un processo produttivo ad un ente da parte di un altro"]}],"en":[{"pos":"noun","glosses":["outsourcing (transfer of business function to external party)"]}]},
+{"id":"ou:7","word":"ouverture","ipa":"/uverˈtur/","cefr":"c2","pos":[{"pos":"noun","senses":["brano musicale che introduce un'opera lirica"]}],"en":[{"pos":"noun","glosses":["overture"]}]}
 ]

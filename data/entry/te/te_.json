@@ -1,0 +1,4 @@
+[
+{"id":"te_:0","word":"te","ipa":"/te/","cefr":"a1","pos":[{"pos":"pron","senses":["in funzione di complemento di termine, quando precede un altro pronome","in funzione di complemento oggetto, quando segue il verbo, spesso in funzione enfatica"]}],"en":[{"pos":"pron","glosses":["you, thee","you, thou","alternative form of ti"]}],"ex":[5,6,9]},
+{"id":"te_:1","word":"tè","cefr":"a1","pos":[{"pos":"noun","senses":["arbusto sempreverde della famiglia delle Teacee (Camelia sinensis, Camellia thea, Thea sinesnsis), originaria dell' Asia; possiede foglie ovali e dentate e fiori bianchi","bevanda che si ottiene mettendo in infusione le foglie essiccate delle suddette piante."]}],"en":[{"pos":"noun","glosses":["tea (Camellia sinensis)","tea (drink made from infused tea leaves)"]}],"ex":[42,43,44]}
+]

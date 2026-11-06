@@ -1,5 +1,5 @@
 [
-{"id":"imo:0","word":"imo","cefr":"c2","pos":[{"pos":"noun","senses":["la zona più profonda","persona di bassa situazione sociale"]},{"pos":"adj","senses":["profondissimo, molto interno"]}]},
-{"id":"imo:1","word":"imolese","cefr":"c2","pos":[{"pos":"noun","senses":["abitante di Imola","dialetto di Imola"]},{"pos":"adj","senses":["che riguarda Imola, località della Romagna"]}]},
-{"id":"imo:2","word":"imoscapo","cefr":"c2","pos":[{"pos":"noun","senses":["diametro alla base della colonna"]}]}
+{"id":"imo:0","word":"imo","cefr":"c2","pos":[{"pos":"noun","senses":["la zona più profonda","persona di bassa situazione sociale"]},{"pos":"adj","senses":["profondissimo, molto interno"]}],"en":[{"pos":"noun","glosses":["bottom; base"]},{"pos":"adj","glosses":["located in the lowest or innermost part","low, deep","of a low social status (of people)"]}]},
+{"id":"imo:1","word":"imolese","cefr":"c2","pos":[{"pos":"noun","senses":["abitante di Imola","dialetto di Imola"]},{"pos":"adj","senses":["che riguarda Imola, località della Romagna"]}],"en":[{"pos":"noun","glosses":["native or inhabitant of Imola"]},{"pos":"adj","glosses":["of, from or relating to Imola"]}]},
+{"id":"imo:2","word":"imoscapo","cefr":"c2","pos":[{"pos":"noun","senses":["diametro alla base della colonna"]}],"en":[{"pos":"noun","glosses":["lower scape or shaft"]}]}
 ]

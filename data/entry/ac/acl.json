@@ -2,5 +2,5 @@
 {"id":"acl:0","word":"ACLI","cefr":"c2","pos":[{"pos":"abbrev","senses":["Associazione Cristiana Lavoratori Italiani, associazione nata nel 1944 come corrente dei cattolici nel sindacato unitario che comprendeva anche socialisti e comunisti"]}]},
 {"id":"acl:1","word":"Aclat","cefr":"c2","pos":[{"pos":"name","senses":["città della Turchia asiatica"]}]},
 {"id":"acl:2","word":"aclide","cefr":"c2","pos":[{"pos":"noun","senses":["specie di missile cui era attaccata una cinghia con la quale si tirava indietro dopo averlo lanciato"]}]},
-{"id":"acl:3","word":"acluofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura del buio e dell'oscurità"]}]}
+{"id":"acl:3","word":"acluofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura del buio e dell'oscurità"]}],"en":[{"pos":"noun","glosses":["achluophobia (fear of the dark)"]}]}
 ]

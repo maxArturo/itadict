@@ -1,10 +1,10 @@
 [
-["pterigoti","pt:0","Pterigoti","/pteriˈɡɔti/","noun","insetti con le ali"],
-["pteridofita","pt:1","pteridofita","/pteriˈdɔfita/","noun","ciascuna pianta del phylum delle Pteridofite"],
-["pterigote","pt:2","pterigote","/pteriˈɡɔte/","noun","ciascun insetto dell'infraclasse degli Pterigoti"],
-["pterodattilo","pt:3","pterodattilo","","noun","rettile volante predatore estinto degli Pterosauri, comparso durante il Mesozoico, col cranio allungato nella parte anteriore e con arti anteriori molto sviluppati e trasformati in organi di volo"],
-["pterosauro","pt:4","pterosauro","/pteroˈsawro/","noun","rettili fossili degli Arcosauri del mesozoico"],
-["ptialina","pt:5","ptialina","","noun","enzima idrolitico presente nella saliva, che degrada polisaccaridi complessi in polisaccaridi semplici, poi ulteriormente decomposti per idrolisi nell'intestino"],
+["pterigoti","pt:0","Pterigoti","/pteriˈɡɔti/","noun","plural of pterigote"],
+["pteridofita","pt:1","pteridofita","/pteriˈdɔfita/","noun","pteridophyte"],
+["pterigote","pt:2","pterigote","/pteriˈɡɔte/","noun","pterygote"],
+["pterodattilo","pt:3","pterodattilo","","noun","pterodactyl"],
+["pterosauro","pt:4","pterosauro","/pteroˈsawro/","noun","pterosaur"],
+["ptialina","pt:5","ptialina","","noun","ptyalin"],
 ["ptilonorinchide","pt:6","ptilonorinchide","/ptilonoˈrinkide","noun","ciascun uccello della famiglia degli Ptilonorinchidi"],
-["ptosi","pt:7","ptosi","/ˈptɔzi/","noun","spostamento patologico di un organo verso il basso"]
+["ptosi","pt:7","ptosi","/ˈptɔzi/","noun","ptosis"]
 ]

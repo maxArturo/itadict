@@ -166,7 +166,7 @@
 "sedavi":{"id":"se:341","lemma":"sedare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "sedavo":{"id":"se:341","lemma":"sedare","label":"prima persona singolare dell'indicativo imperfetto"},
 "sedazioni":{"id":"se:342","lemma":"sedazione","label":"plurale"},
-"sedemmo":{"id":"re:90","lemma":"remoto","label":"prima persona plurale dell'indicativo passato remoto di…"},
+"sedemmo":{"id":"rem:0","lemma":"remoto","label":"prima persona plurale dell'indicativo passato remoto di…"},
 "sedendo":{"id":"se:33","lemma":"sedere","label":"gerundio presente"},
 "sedentari":{"id":"se:197","lemma":"sedentario","label":"plurale"},
 "sedente":{"id":"se:33","lemma":"sedere","label":"participio presente"},

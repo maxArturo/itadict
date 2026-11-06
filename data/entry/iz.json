@@ -1,4 +1,4 @@
 [
-{"id":"iz:0","word":"-izzare","ipa":"/idˈdzare/","cefr":"c2","pos":[{"pos":"suffix","senses":["suffisso impiegato nella formazione di verbi, la cui prima parte è riconducibile a un aggettivo o sostantivo, e che indica generalmente il trasformare in, il rendere simile a o comunque l'attribuire…"]}]},
-{"id":"iz:1","word":"izza","cefr":"c2","pos":[{"pos":"noun","senses":["stizza, rabbia"]}]}
+{"id":"iz:0","word":"-izzare","ipa":"/idˈdzare/","cefr":"c2","pos":[{"pos":"suffix","senses":["suffisso impiegato nella formazione di verbi, la cui prima parte è riconducibile a un aggettivo o sostantivo, e che indica generalmente il trasformare in, il rendere simile a o comunque l'attribuire…"]}],"en":[{"pos":"suffix","glosses":["added to adjectives and nouns to form verbs; -ize"]}]},
+{"id":"iz:1","word":"izza","cefr":"c2","pos":[{"pos":"noun","senses":["stizza, rabbia"]}],"en":[{"pos":"noun","glosses":["ire, anger, fury, wrath"]}]}
 ]

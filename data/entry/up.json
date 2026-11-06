@@ -1,7 +1,7 @@
 [
 {"id":"up:0","word":"Upupidi","ipa":"/uˈpupidi/","cefr":"c2","pos":[{"pos":"noun","senses":["famiglia di Uccelli dell'ordine degli Upupiformi; la sua classificazione scientifica è Upupidae ( tassonomia)"]}]},
-{"id":"up:1","word":"uppercut","ipa":"ˈapperkat/,","cefr":"c2","pos":[{"pos":"noun","senses":["colpo al mento dal basso verso l'alto, tipico del pugilato"]}]},
-{"id":"up:2","word":"upupa","ipa":"/ˈupupa/","cefr":"c2","pos":[{"pos":"noun","senses":["uccello della famiglia degli Upupidi di medie dimensioni, con un becco lungo e sottile e un caratteristico ciuffo di penne erigibili sul capo; la sua classificazione scientifica è Upupa ( tassonomia)"]}]},
+{"id":"up:1","word":"uppercut","ipa":"ˈapperkat/,","cefr":"c2","pos":[{"pos":"noun","senses":["colpo al mento dal basso verso l'alto, tipico del pugilato"]}],"en":[{"pos":"noun","glosses":["uppercut"]}]},
+{"id":"up:2","word":"upupa","ipa":"/ˈupupa/","cefr":"c2","pos":[{"pos":"noun","senses":["uccello della famiglia degli Upupidi di medie dimensioni, con un becco lungo e sottile e un caratteristico ciuffo di penne erigibili sul capo; la sua classificazione scientifica è Upupa ( tassonomia)"]}],"en":[{"pos":"noun","glosses":["hoopoe"]}]},
 {"id":"up:3","word":"upupide","ipa":"/uˈpupide/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun uccello della famiglia degli Upupidi"]}]},
 {"id":"up:4","word":"upupiforme","ipa":"/upupiˈforme/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun uccello dell'ordine degli Upupiformi"]}]}
 ]

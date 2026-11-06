@@ -971,7 +971,7 @@
 "corteavi":{"id":"cor:272","lemma":"corteare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "corteavo":{"id":"cor:272","lemma":"corteare","label":"prima persona singolare dell'indicativo imperfetto"},
 "cortecce":{"id":"cor:46","lemma":"corteccia","label":"plurale"},
-"corteccia":{"id":"al:7","lemma":"albero","label":"strato esterno che ricopre l'albero"},
+"corteccia":{"id":"alb:1","lemma":"albero","label":"strato esterno che ricopre l'albero"},
 "corteera":{"id":"cor:272","lemma":"corteare","label":"terza persona singolare dell'indicativo futuro"},
 "corteerai":{"id":"cor:272","lemma":"corteare","label":"seconda persona singolare dell'indicativo futuro"},
 "corteeranno":{"id":"cor:272","lemma":"corteare","label":"terza persona plurale dell'indicativo futuro"},

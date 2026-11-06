@@ -1,8 +1,8 @@
 [
-{"id":"oh:0","word":"oh","ipa":"/o(ː)/","cefr":"a1","pos":[{"pos":"intj","senses":["espressione di meraviglia:","espressione di sorpresa:","espressione di sdegno:","espressione di compassione:"]},{"pos":"noun","senses":["espressione di stupore, ecc."]},{"pos":"prep","senses":["variante, vedi o:"]}],"ex":[0,1,2]},
-{"id":"oh:1","word":"Ohio","ipa":"/oˈjaɪ̯o/","cefr":"b2","pos":[{"pos":"name","senses":["uno dei cinquanta Stati degli Stati Uniti d'America"]}],"ex":[3,4,5]},
+{"id":"oh:0","word":"oh","ipa":"/o(ː)/","cefr":"a1","pos":[{"pos":"intj","senses":["espressione di meraviglia:","espressione di sorpresa:","espressione di sdegno:","espressione di compassione:"]},{"pos":"noun","senses":["espressione di stupore, ecc."]},{"pos":"prep","senses":["variante, vedi o:"]}],"en":[{"pos":"intj","glosses":["oh"]}],"ex":[0,1,2]},
+{"id":"oh:1","word":"Ohio","ipa":"/oˈjaɪ̯o/","cefr":"b2","pos":[{"pos":"name","senses":["uno dei cinquanta Stati degli Stati Uniti d'America"]}],"en":[{"pos":"name","glosses":["Ohio (a state of the United States)"]}],"ex":[3,4,5]},
 {"id":"oh:2","word":"ohm","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura del Sistema Internazionale della resistenza elettrica. Si indica con il simbolo Ω, ed è pari al rapporto di un volt ad un ampere."]}],"ex":[6]},
-{"id":"oh:3","word":"ohmetro","cefr":"c2","pos":[{"pos":"noun","senses":["variante di ohmmetro"]}]},
-{"id":"oh:4","word":"ohmico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda la resistenza elettrica"]}]},
-{"id":"oh:5","word":"ohmmetro","cefr":"c2","pos":[{"pos":"noun","senses":["apparecchio che serve per misurare la resistenza elettrica . Lo strumento, sfruttando una fonte di forza elettromotrice interna, visualizza su un display analogico o digitale il risultato del…"]}]}
+{"id":"oh:3","word":"ohmetro","cefr":"c2","pos":[{"pos":"noun","senses":["variante di ohmmetro"]}],"en":[{"pos":"noun","glosses":["ohmmeter"]}]},
+{"id":"oh:4","word":"ohmico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda la resistenza elettrica"]}],"en":[{"pos":"adj","glosses":["ohmic"]}]},
+{"id":"oh:5","word":"ohmmetro","cefr":"c2","pos":[{"pos":"noun","senses":["apparecchio che serve per misurare la resistenza elettrica . Lo strumento, sfruttando una fonte di forza elettromotrice interna, visualizza su un display analogico o digitale il risultato del…"]}],"en":[{"pos":"noun","glosses":["alternative form of ohmetro"]}]}
 ]

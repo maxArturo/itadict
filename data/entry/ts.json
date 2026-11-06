@@ -1,6 +1,6 @@
 [
-{"id":"ts:0","word":"tsunami","ipa":"/tsuˈnami/","cefr":"c1","pos":[{"pos":"noun","senses":["serie di onde di grandi dimensioni e intensità che hanno origine generalmente da terremoti e attività vulcaniche sottomarine"]}],"ex":[0,1,2]},
-{"id":"ts:1","word":"T-shirt","cefr":"c1","pos":[{"pos":"noun","senses":["maglietta a mezze maniche"]}]},
+{"id":"ts:0","word":"tsunami","ipa":"/tsuˈnami/","cefr":"c1","pos":[{"pos":"noun","senses":["serie di onde di grandi dimensioni e intensità che hanno origine generalmente da terremoti e attività vulcaniche sottomarine"]}],"en":[{"pos":"noun","glosses":["tsunami"]}],"ex":[0,1,2]},
+{"id":"ts:1","word":"T-shirt","cefr":"c1","pos":[{"pos":"noun","senses":["maglietta a mezze maniche"]}],"en":[{"pos":"noun","glosses":["T-shirt (typically printed with seemingly random English words)"]}]},
 {"id":"ts:2","word":"TSH","cefr":"c2","pos":[{"pos":"abbrev","senses":["tireotropina"]}]},
 {"id":"ts:3","word":"TSI","cefr":"c2","pos":[{"pos":"abbrev","senses":["televisione svizzera di lingua italiana, in uso fino al 2009"]}]},
 {"id":"ts:4","word":"TSO","ipa":"/,ti,ɛsseˈɔ/","cefr":"c2","pos":[{"pos":"abbrev","senses":["trattamento sanitario obbligatorio, provvedimento del comune che prevede il trattamento psichiatrico di una persona \"contro\" la sua volontà, quindi solitamente con il supporto per l'incontro e la…"]}]},

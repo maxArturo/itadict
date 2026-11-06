@@ -1,4 +1,4 @@
 [
 {"id":"uz:0","word":"Uzbekistan","cefr":"c2","pos":[{"pos":"noun","senses":["stato dell'Asia centrale"]}],"ex":[0,1]},
-{"id":"uz:1","word":"uzzolo","ipa":"/ˈuddzolo/","cefr":"c2","pos":[{"pos":"noun","senses":["desiderio intenso"]}]}
+{"id":"uz:1","word":"uzzolo","ipa":"/ˈuddzolo/","cefr":"c2","pos":[{"pos":"noun","senses":["desiderio intenso"]}],"en":[{"pos":"noun","glosses":["whim, fancy, urge, caprice"]}]}
 ]

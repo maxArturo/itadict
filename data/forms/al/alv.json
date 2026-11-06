@@ -1,5 +1,5 @@
 {
-"alveari":{"id":"al:89","lemma":"alveare","label":"plurale"},
-"alvei":{"id":"al:789","lemma":"alveo","label":"plurale"},
-"alveoli":{"id":"al:790","lemma":"alveolo","label":"plurale"}
+"alveari":{"id":"alv:0","lemma":"alveare","label":"plurale"},
+"alvei":{"id":"alv:10","lemma":"alveo","label":"plurale"},
+"alveoli":{"id":"alv:11","lemma":"alveolo","label":"plurale"}
 }

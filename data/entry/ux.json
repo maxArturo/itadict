@@ -1,4 +1,4 @@
 [
-{"id":"ux:0","word":"uxoricida","ipa":"/uksoriˈt͡ʃida","cefr":"c2","pos":[{"pos":"noun","senses":["omicida della propria moglie"]}]},
-{"id":"ux:1","word":"uxoricidio","ipa":"/uksoriˈt͡ʃidjo/","cefr":"c2","pos":[{"pos":"noun","senses":["uccisione della propria moglie","(per estensione) uccisione del proprio coniuge"]}]}
+{"id":"ux:0","word":"uxoricida","ipa":"/uksoriˈt͡ʃida","cefr":"c2","pos":[{"pos":"noun","senses":["omicida della propria moglie"]}],"en":[{"pos":"noun","glosses":["uxoricide","wife that has killed her husband"]}]},
+{"id":"ux:1","word":"uxoricidio","ipa":"/uksoriˈt͡ʃidjo/","cefr":"c2","pos":[{"pos":"noun","senses":["uccisione della propria moglie","(per estensione) uccisione del proprio coniuge"]}],"en":[{"pos":"noun","glosses":["uxoricide (the killing of one's own wife)"]}]}
 ]

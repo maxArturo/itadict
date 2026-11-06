@@ -1,5 +1,5 @@
 [
 {"id":"eh:0","word":"eh","cefr":"a1","pos":[{"pos":"intj","senses":["espressione di stupore","espressione di disapprovazione o, al contrario, affermativa","espressione di dubbio","richiesta di conferma, specialmente dopo una domanda"]}],"ex":[0,1,2]},
-{"id":"eh:1","word":"ehilà","ipa":"/ejˈla/","cefr":"b1","pos":[{"pos":"intj","senses":["interiezione che indica sorpresa o richiama l'attenzione di qualcuno"]}],"ex":[3]},
+{"id":"eh:1","word":"ehilà","ipa":"/ejˈla/","cefr":"b1","pos":[{"pos":"intj","senses":["interiezione che indica sorpresa o richiama l'attenzione di qualcuno"]}],"en":[{"pos":"intj","glosses":["hey there! (Used to attract someone's attention)"]}],"ex":[3]},
 {"id":"eh:2","word":"EHF","cefr":"c2","pos":[{"pos":"abbrev","senses":["Extremely High Frequency, frequenza estremamente elevata"]}]}
 ]

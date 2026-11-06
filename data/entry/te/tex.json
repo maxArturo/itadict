@@ -1,0 +1,5 @@
+[
+{"id":"tex:0","word":"Texas","ipa":"/ˈtɛksas/","cefr":"b1","pos":[{"pos":"name","senses":["uno dei cinquanta Stati degli Stati Uniti d'America"]}],"en":[{"pos":"name","glosses":["Texas (a state in the south-central region of the United States)"]}],"ex":[188,215,243]},
+{"id":"tex:1","word":"texano","ipa":"/tekˈsano","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente al Texas"]},{"pos":"noun","senses":["abitante o originario del Texas"]}],"en":[{"pos":"adj","glosses":["Texan"]},{"pos":"noun","glosses":["Texan"]}],"ex":[498]},
+{"id":"tex:2","word":"Tex-Mex","cefr":"c2","pos":[{"pos":"noun","senses":["insieme di abitudini, soprattutto alimentari, caratteristiche della zona di confine tra il Texas e il Messico"]}]}
+]

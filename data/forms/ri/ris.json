@@ -1379,7 +1379,7 @@
 "ristrette":{"id":"ris:41","lemma":"ristretto","label":"femminile plurale"},
 "ristrettezze":{"id":"ris:79","lemma":"ristrettezza","label":"plurale"},
 "ristretti":{"id":"ris:41","lemma":"ristretto","label":"maschile plurale"},
-"ristretto":{"id":"re:186","lemma":"restringere","label":"participio passato"},
+"ristretto":{"id":"res:35","lemma":"restringere","label":"participio passato"},
 "ristruttura":{"id":"ris:32","lemma":"ristrutturare","label":"terza persona singolare dell'indicativo presente"},
 "ristrutturai":{"id":"ris:32","lemma":"ristrutturare","label":"prima persona singolare dell'indicativo passato remoto"},
 "ristrutturammo":{"id":"ris:32","lemma":"ristrutturare","label":"prima persona plurale dell'indicativo passato remoto"},

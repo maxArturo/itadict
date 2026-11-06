@@ -1,13 +1,13 @@
 [
-{"id":"ime:0","word":"Imenotteri","ipa":"/imeˈnɔtteri/","cefr":"c2","pos":[{"pos":"noun","senses":["Insetti Pterigoti"]}],"ex":[220]},
+{"id":"ime:0","word":"Imenotteri","ipa":"/imeˈnɔtteri/","cefr":"c2","pos":[{"pos":"noun","senses":["Insetti Pterigoti"]}],"en":[{"pos":"noun","glosses":["plural of imenottero"]}],"ex":[220]},
 {"id":"ime:1","word":"Imelda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"ime:2","word":"Imeldo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
-{"id":"ime:3","word":"Imera","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"ime:3","word":"Imera","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"name","glosses":["a river in Sicily"]}]},
 {"id":"ime:4","word":"Imeria","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"ime:5","word":"Imerio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
-{"id":"ime:6","word":"imene","ipa":"/ /","cefr":"c2","pos":[{"pos":"noun","senses":["membrana che occlude parzialmente l'orifizio vaginale nella donna vergine, e che normalmente si lacera al primo amplesso o raramente in occasione di un trauma","dio del matrimonio","nozze"]}]},
-{"id":"ime:7","word":"imeneo","ipa":"/imeˈnɛo/","cefr":"c2","pos":[{"pos":"noun","senses":["canto nuziale corale cantato da giovani (maschi e femmine) che accompagnavano la sposa alla casa maritale; l'epitalamio invece veniva cantato davanti alla stanza nuziale"]}]},
-{"id":"ime:8","word":"imenio","cefr":"c2","pos":[{"pos":"noun","senses":["parte del fungo che racchiude le spore"]}]},
-{"id":"ime:9","word":"imenoplastica","cefr":"c2","pos":[{"pos":"noun","senses":["operazione chirurgica che consente la ricostruzione dell'imene"]}]},
-{"id":"ime:10","word":"imenottero","ipa":"/imeˈnɔttero/","cefr":"c2","pos":[{"pos":"noun","senses":["insetto pterigote"]}]}
+{"id":"ime:6","word":"imene","ipa":"/ /","cefr":"c2","pos":[{"pos":"noun","senses":["membrana che occlude parzialmente l'orifizio vaginale nella donna vergine, e che normalmente si lacera al primo amplesso o raramente in occasione di un trauma","dio del matrimonio","nozze"]}],"en":[{"pos":"noun","glosses":["hymen","marriage, wedding, nuptials"]}]},
+{"id":"ime:7","word":"imeneo","ipa":"/imeˈnɛo/","cefr":"c2","pos":[{"pos":"noun","senses":["canto nuziale corale cantato da giovani (maschi e femmine) che accompagnavano la sposa alla casa maritale; l'epitalamio invece veniva cantato davanti alla stanza nuziale"]}],"en":[{"pos":"noun","glosses":["hymeneal (wedding hymn)"]}]},
+{"id":"ime:8","word":"imenio","cefr":"c2","pos":[{"pos":"noun","senses":["parte del fungo che racchiude le spore"]}],"en":[{"pos":"noun","glosses":["hymenium"]}]},
+{"id":"ime:9","word":"imenoplastica","cefr":"c2","pos":[{"pos":"noun","senses":["operazione chirurgica che consente la ricostruzione dell'imene"]}],"en":[{"pos":"noun","glosses":["hymenoplasty"]}]},
+{"id":"ime:10","word":"imenottero","ipa":"/imeˈnɔttero/","cefr":"c2","pos":[{"pos":"noun","senses":["insetto pterigote"]}],"en":[{"pos":"noun","glosses":["hymenopteran"]}]}
 ]

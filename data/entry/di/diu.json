@@ -1,11 +1,11 @@
 [
 {"id":"diu:0","word":"diurna","cefr":"c2","pos":[{"pos":"noun","senses":["(teatro)"]}],"ex":[855]},
-{"id":"diu:1","word":"diurno","ipa":"/diˈurno/","cefr":"c2","pos":[{"pos":"adj","senses":["che resta sveglio di giorno."]},{"pos":"noun","senses":["libro di preghiere da recitare al mattino"]}]},
+{"id":"diu:1","word":"diurno","ipa":"/diˈurno/","cefr":"c2","pos":[{"pos":"adj","senses":["che resta sveglio di giorno."]},{"pos":"noun","senses":["libro di preghiere da recitare al mattino"]}],"en":[{"pos":"adj","glosses":["diurnal"]},{"pos":"noun","glosses":["diurnal (canonical book)","public baths and conveniences"]}]},
 {"id":"diu:2","word":"diu","cefr":"c2","pos":[{"pos":"adv","senses":["di giorno","lungamente, a lungo, per lungo tempo","da lungo tempo","largamente, estesamente, ampiamente, lontano"]}]},
-{"id":"diu:3","word":"diuresi","cefr":"c2","pos":[{"pos":"noun","senses":["funzione naturale con cui sono espulse dal corpo, con l'emissione di urina, materie superflue"]}]},
-{"id":"diu:4","word":"diuretico","ipa":"/djuˈrɛtiko/","cefr":"c2","pos":[{"pos":"adj","senses":["di alimento o bevanda che aumenta la diuresi, cioè la produzione di urina"]},{"pos":"noun","senses":["tutti i farmaci che determinano un aumento della diuresi, cioè della produzione di urina"]}]},
-{"id":"diu:5","word":"diurnamente","cefr":"c2","pos":[{"pos":"adv","senses":["giornalmente"]}]},
-{"id":"diu:6","word":"diuturnamente","cefr":"c2","pos":[{"pos":"adv","senses":["per tanto tempo"]}]},
-{"id":"diu:7","word":"diuturnità","ipa":"/djuturniˈta/","cefr":"c2","pos":[{"pos":"noun","senses":["carattere diuturno"]}]},
-{"id":"diu:8","word":"diuturno","ipa":"/djuˈturno/","cefr":"c2","pos":[{"pos":"adj","senses":["che dura a lungo","che dura a lungo e con costanza"]}]}
+{"id":"diu:3","word":"diuresi","cefr":"c2","pos":[{"pos":"noun","senses":["funzione naturale con cui sono espulse dal corpo, con l'emissione di urina, materie superflue"]}],"en":[{"pos":"noun","glosses":["diuresis"]}]},
+{"id":"diu:4","word":"diuretico","ipa":"/djuˈrɛtiko/","cefr":"c2","pos":[{"pos":"adj","senses":["di alimento o bevanda che aumenta la diuresi, cioè la produzione di urina"]},{"pos":"noun","senses":["tutti i farmaci che determinano un aumento della diuresi, cioè della produzione di urina"]}],"en":[{"pos":"adj","glosses":["diuretic"]},{"pos":"noun","glosses":["diuretic"]}]},
+{"id":"diu:5","word":"diurnamente","cefr":"c2","pos":[{"pos":"adv","senses":["giornalmente"]}],"en":[{"pos":"adv","glosses":["diurnally"]}]},
+{"id":"diu:6","word":"diuturnamente","cefr":"c2","pos":[{"pos":"adv","senses":["per tanto tempo"]}],"en":[{"pos":"adv","glosses":["diuturnally"]}]},
+{"id":"diu:7","word":"diuturnità","ipa":"/djuturniˈta/","cefr":"c2","pos":[{"pos":"noun","senses":["carattere diuturno"]}],"en":[{"pos":"noun","glosses":["diuturnity"]}]},
+{"id":"diu:8","word":"diuturno","ipa":"/djuˈturno/","cefr":"c2","pos":[{"pos":"adj","senses":["che dura a lungo","che dura a lungo e con costanza"]}],"en":[{"pos":"adj","glosses":["diuturnal, durable, long-lasting"]}]}
 ]

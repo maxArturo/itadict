@@ -1,5 +1,5 @@
 [
-{"id":"vl:0","word":"Vladimiro","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"ex":[0,1,2]},
+{"id":"vl:0","word":"Vladimiro","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Vladimir"]}],"ex":[0,1,2]},
 {"id":"vl:1","word":"VLDB","cefr":"c2","pos":[{"pos":"abbrev","senses":["Very Large Data Base, database di grandi dimensioni, banca dati in grado di lavorare con migliaia di utenti su piattaforme diverse"]}]},
 {"id":"vl:2","word":"VLF","cefr":"c2","pos":[{"pos":"abbrev","senses":["Very Low Frequency, bassissima frequenza"]}]},
 {"id":"vl:3","word":"VLM","cefr":"c2","pos":[{"pos":"abbrev","senses":["Very Large Memory, memoria di grandi dimensioni"]}]},

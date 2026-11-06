@@ -1,6 +1,6 @@
 [
-["disritmia","disr:0","disritmia","","noun","alterazione di un ritmo dell’organismo (ad es. del cuore)"],
+["disritmia","disr:0","disritmia","","noun","dysrhythmia"],
 ["disruptivo","disr:1","disruptivo","","adj","detto di scarica elettrica ad arco che si verifica tra elettrodi quando la d.d.p. tra di essi supera un determinato valore o la loro distanza si riduce oltre un certo limite"],
-["disruttivo","disr:2","disruttivo","","adj","detto di scarica elettrica brusca che avviene tra gli elettrodi quando si riduce la distanza tra di essi oltre un certo limite oppure quando la d.d.p. supera un determinato valore"],
-["disruzione","disr:3","disruzione","","noun","Termine usato nella fisica del plasma per indicare la perdita di confinamento improvvisa in un tokamak"]
+["disruttivo","disr:2","disruttivo","","adj","disruptive"],
+["disruzione","disr:3","disruzione","","noun","disruption, interruption"]
 ]

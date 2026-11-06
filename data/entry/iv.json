@@ -1,20 +1,20 @@
 [
 {"id":"iv:0","word":"Iva","ipa":"/ˈiːva/","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]},{"pos":"abbrev","senses":["Imposta sul Valore Aggiunto, percentuale di spesa destinata allo stato"]}],"ex":[0,3,4]},
-{"id":"iv:1","word":"ivi","cefr":"c2","pos":[{"pos":"adv","senses":["lì","in quel luogo"]}],"ex":[1,2]},
+{"id":"iv:1","word":"ivi","cefr":"c2","pos":[{"pos":"adv","senses":["lì","in quel luogo"]}],"en":[{"pos":"adv","glosses":["there, therein","op. cit. (used in bibliographies to indicate that the source was previously referenced)"]}],"ex":[1,2]},
 {"id":"iv:2","word":"IV secolo","cefr":"c2","pos":[{"pos":"noun","senses":["secolo che va dal primo gennaio dell'anno 301 al 31 dicembre dell'anno 400."]}]},
 {"id":"iv:3","word":"Ivalda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:4","word":"Ivana","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:5","word":"Ivanda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:6","word":"Ivania","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:7","word":"Ivanna","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
-{"id":"iv:8","word":"Ivano","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"iv:8","word":"Ivano","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["Ivan"]}]},
 {"id":"iv:9","word":"Ivetta","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:10","word":"Ivia","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:11","word":"Iviana","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:12","word":"Ivina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
-{"id":"iv:13","word":"Ivo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"iv:13","word":"Ivo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}]},
 {"id":"iv:14","word":"Ivona","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:15","word":"Ivonetta","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"iv:16","word":"Ivonia","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
-{"id":"iv:17","word":"ivoriano","ipa":"/ivoˈrjano/","cefr":"c2","pos":[{"pos":"adj","senses":["della Costa d'Avorio"]},{"pos":"noun","senses":["persona che proviene dalla Costa d'Avorio"]}]}
+{"id":"iv:17","word":"ivoriano","ipa":"/ivoˈrjano/","cefr":"c2","pos":[{"pos":"adj","senses":["della Costa d'Avorio"]},{"pos":"noun","senses":["persona che proviene dalla Costa d'Avorio"]}],"en":[{"pos":"adj","glosses":["Ivorian"]},{"pos":"noun","glosses":["Ivorian"]}]}
 ]

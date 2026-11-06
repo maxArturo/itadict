@@ -1,10 +1,10 @@
 [
-{"id":"hu:0","word":"humour","cefr":"c2","pos":[{"pos":"noun","senses":["senso dell'umorismo caratteristico degli inglesi"]}],"ex":[2,3,4]},
-{"id":"hu:1","word":"humus","ipa":"/ˈumus/","cefr":"c2","pos":[{"pos":"noun","senses":["composto del sottosuolo, utile anche alla crescita della flora","o hummus, è un piatto arabo-israeliano che consiste in una crema di ceci, pasta di sesamo, olio, prezzemolo, sale, aglio, talvolta papryka dolce e limone","situazione favorevole"]}],"ex":[0,1]},
-{"id":"hu:2","word":"hub","cefr":"c2","pos":[{"pos":"noun","senses":["aeroporto internazionale di transito, col fine di indirizzare gran parte delle rotte di volo in un dato paese","parte di una rete di computer col fine di collegare molti terminali con un solo dispositivo di indirizzamento"]}]},
-{"id":"hu:3","word":"hulok","cefr":"c2","pos":[{"pos":"noun","senses":["genere di primati della famiglia degli ilobatidi - la sua classificazione scientifica è Hoolock ( tassonomia)"]}]},
+{"id":"hu:0","word":"humour","cefr":"c2","pos":[{"pos":"noun","senses":["senso dell'umorismo caratteristico degli inglesi"]}],"en":[{"pos":"noun","glosses":["sense of humour/humor"]}],"ex":[2,3,4]},
+{"id":"hu:1","word":"humus","ipa":"/ˈumus/","cefr":"c2","pos":[{"pos":"noun","senses":["composto del sottosuolo, utile anche alla crescita della flora","o hummus, è un piatto arabo-israeliano che consiste in una crema di ceci, pasta di sesamo, olio, prezzemolo, sale, aglio, talvolta papryka dolce e limone","situazione favorevole"]}],"en":[{"pos":"noun","glosses":["humus"]}],"ex":[0,1]},
+{"id":"hu:2","word":"hub","cefr":"c2","pos":[{"pos":"noun","senses":["aeroporto internazionale di transito, col fine di indirizzare gran parte delle rotte di volo in un dato paese","parte di una rete di computer col fine di collegare molti terminali con un solo dispositivo di indirizzamento"]}],"en":[{"pos":"noun","glosses":["hub (transport, computing)"]}]},
+{"id":"hu:3","word":"hulok","cefr":"c2","pos":[{"pos":"noun","senses":["genere di primati della famiglia degli ilobatidi - la sua classificazione scientifica è Hoolock ( tassonomia)"]}],"en":[{"pos":"noun","glosses":["hoolock (gibon of genus Hoolock)"]}]},
 {"id":"hu:4","word":"hum","ipa":"'m","cefr":"c2","pos":[{"pos":"intj","senses":["sospiro che denota perplessità"]}]},
 {"id":"hu:5","word":"human relations","cefr":"c2","pos":[{"pos":"noun","senses":["branca della psicologia applicata attenta al clima relazionale aziendale onde agire in modo da ottenere la migliore collaborazione possibile tra lavoratori e azienda"]}]},
-{"id":"hu:6","word":"huomo","ipa":"[wᵝɔmo]","cefr":"c2","pos":[{"pos":"noun","senses":["essere umano","genere maschile","genere umano"]}]},
+{"id":"hu:6","word":"huomo","ipa":"[wᵝɔmo]","cefr":"c2","pos":[{"pos":"noun","senses":["essere umano","genere maschile","genere umano"]}],"en":[{"pos":"noun","glosses":["obsolete spelling of uomo (“man”)"]}]},
 {"id":"hu:7","word":"hurling","ipa":"/ˈarlinɡ/","cefr":"c2","pos":[{"pos":"noun","senses":["tipico gioco dell'Irlanda che assomiglia all'hockey su prato"]}]}
 ]

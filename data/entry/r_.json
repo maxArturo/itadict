@@ -1,4 +1,4 @@
 [
-{"id":"r_:0","word":"r","ipa":"/ˈɛrre/","cefr":"b2","pos":[{"pos":"noun","senses":["sedicesima lettera dell'alfabeto"]}],"ex":[0,1,2]},
+{"id":"r_:0","word":"r","ipa":"/ˈɛrre/","cefr":"b2","pos":[{"pos":"noun","senses":["sedicesima lettera dell'alfabeto"]}],"en":[{"pos":"noun","glosses":["abbreviation of re (“king”)"]}],"ex":[0,1,2]},
 {"id":"r_:1","word":"°R","cefr":"c2","pos":[{"pos":"symbol","senses":["grado Rankine","grado Réaumur"]}]}
 ]

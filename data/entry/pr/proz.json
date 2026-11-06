@@ -1,0 +1,5 @@
+[
+{"id":"proz:0","word":"prozio","ipa":"/prɔˈtsio/","cefr":"c1","pos":[{"pos":"noun","senses":["zio del padre o della madre","l'isotopo più abbondante tra i tre componenti l'elemento idrogeno e avente massa atomica unitaria avendo un nucleo formato dal solo protone"]}],"en":[{"pos":"noun","glosses":["great-uncle","protium (an isotope of hydrogen)"]}]},
+{"id":"proz:1","word":"prozac","cefr":"c2","pos":[{"pos":"noun","senses":["farmaco che combatte la depressione"]}]},
+{"id":"proz:2","word":"prozia","cefr":"c2","pos":[{"pos":"noun","senses":["la zia di un genitore"]}],"en":[{"pos":"noun","glosses":["great-aunt"]}]}
+]

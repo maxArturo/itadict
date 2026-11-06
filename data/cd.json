@@ -1,6 +1,6 @@
 [
 ["cd","cd:0","CD","","abbrev","Compact Disc (letteralmente: disco compatto), disco a lettura ottica laser per la registrazione digitale di suoni, immagini e dati, molto diffuso negli anni novanta e duemila"],
-["cd-rom","cd:1","CD-ROM","","noun","disco ottico compatto di sola lettura per applicazioni informatiche, in grado di rendere disponibili grandi quantità di dati e programmi, molto diffuso negli anni novanta e duemila"],
+["cd-rom","cd:1","CD-ROM","","noun","CD-ROM"],
 ["cdma","cd:2","CDMA","","abbrev","Code Division Multiple Access, multiplazione a divisione di codice, protocollo di trasmissione multiplexing dove trasmettitore e ricevitore usano la stessa sequenza per codificare e decodificare…"],
 ["cda","cd:3","cda","","abbrev","consiglio di amministrazione, organo collegiale col compito di gestire società di capitali"]
 ]

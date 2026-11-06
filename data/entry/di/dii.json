@@ -1,6 +1,6 @@
 [
 {"id":"dii:0","word":"di inchiesta","cefr":"c2","pos":[{"pos":"phrase","senses":["espressione che si applica alle armi che non rispettano la regola di contrasto dei colori e che presentano quindi le combinazioni smalto su smalto o metallo su metallo; le armi di questo tipo sono…"]}]},
-{"id":"dii:1","word":"diidrossifenilalanina","cefr":"c2","pos":[{"pos":"noun","senses":["composto chimico biologico formato dall'unione di due gruppi ossidrilici con l'amminoacido fenilalanina, importante intermedio nella sintesi di neurotrasmettitori chimici"]}]},
-{"id":"dii:2","word":"diidrotestosterone","cefr":"c2","pos":[{"pos":"noun","senses":["metabolita biologicamente attivo del testosterone"]}]},
-{"id":"dii:3","word":"diioduro","ipa":"/,dijoˈduro/","cefr":"c2","pos":[{"pos":"noun","senses":["ioduro nella cui molecola sono presenti due atomi di iodio legati a un atomo metallico"]}]}
+{"id":"dii:1","word":"diidrossifenilalanina","cefr":"c2","pos":[{"pos":"noun","senses":["composto chimico biologico formato dall'unione di due gruppi ossidrilici con l'amminoacido fenilalanina, importante intermedio nella sintesi di neurotrasmettitori chimici"]}],"en":[{"pos":"noun","glosses":["dihydroxyphenylalanine"]}]},
+{"id":"dii:2","word":"diidrotestosterone","cefr":"c2","pos":[{"pos":"noun","senses":["metabolita biologicamente attivo del testosterone"]}],"en":[{"pos":"noun","glosses":["dihydrotestosterone"]}]},
+{"id":"dii:3","word":"diioduro","ipa":"/,dijoˈduro/","cefr":"c2","pos":[{"pos":"noun","senses":["ioduro nella cui molecola sono presenti due atomi di iodio legati a un atomo metallico"]}],"en":[{"pos":"noun","glosses":["diiodide"]}]}
 ]

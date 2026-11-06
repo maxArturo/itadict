@@ -1,0 +1,12 @@
+[
+{"id":"reo:0","word":"Reo","ipa":"/ˈrɛo/","cefr":"c2","pos":[{"pos":"noun","senses":["colpa","chi ha commesso una colpa","piante appartenenti alle commelinacee"]},{"pos":"adj","senses":["che ha commesso una colpa","che ha o che è relativo alla cattiveria"]},{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"noun","glosses":["offender"]},{"pos":"adj","glosses":["guilty (of)"]},{"pos":"name","glosses":["a surname"]}]},
+{"id":"reo:1","word":"Reorniti","ipa":"/re'orniti","cefr":"c2","pos":[{"pos":"noun","senses":["Ratiti"]}]},
+{"id":"reo:2","word":"reo-","ipa":"/ˈrɛo/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di un lemma formato dall'accostamento di due parole la prima delle quali significa \"flusso, corrente\""]}],"en":[{"pos":"prefix","glosses":["rheo-"]}]},
+{"id":"reo:3","word":"reoforo","cefr":"c2","pos":[{"pos":"noun","senses":["filo in metallo per condurre corrente elettrica"]}],"en":[{"pos":"noun","glosses":["rheophore"]}]},
+{"id":"reo:4","word":"reologia","cefr":"c2","pos":[{"pos":"noun","senses":["scienza che studia l'equilibrio raggiunto dalla materia deformata dopo una sollecitazione"]}],"en":[{"pos":"noun","glosses":["rheology"]}]},
+{"id":"reo:5","word":"reologico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda lo studio dell'equilibrio raggiunto dalla materia deformata dopo una sollecitazione"]}],"en":[{"pos":"adj","glosses":["rheological"]}]},
+{"id":"reo:6","word":"reopectico","cefr":"c2","pos":[{"pos":"adj","senses":["di proprietà di alcune soluzioni in forma di colloidi di trasformarsi in gel più velocemente se sottoposte ad agitazione meccanica"]}],"en":[{"pos":"adj","glosses":["rheopectic"]}]},
+{"id":"reo:7","word":"reopessia","cefr":"c2","pos":[{"pos":"noun","senses":["proprietà di alcune soluzioni in forma di colloidi di trasformarsi in gel più velocemente se sottoposte ad agitazione meccanica"]}],"en":[{"pos":"noun","glosses":["rheopexy"]}]},
+{"id":"reo:8","word":"reostato","cefr":"c2","pos":[{"pos":"noun","senses":["resistore a resistenza variabile"]}],"en":[{"pos":"noun","glosses":["rheostat, dimmer"]}]},
+{"id":"reo:9","word":"reovirus","cefr":"c2","pos":[{"pos":"noun","senses":["virus a trasmissione orofecale responsabili di numerose affezioni non gravi respiratorie, digestive e neurologiche"]}]}
+]

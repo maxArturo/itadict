@@ -1,15 +1,15 @@
 [
 {"id":"ft:0","word":"FTM","cefr":"c2","pos":[{"pos":"abbrev","senses":["Female to Male, persona di sesso biologico femminile, che però si considera uomo"]}]},
 {"id":"ft:1","word":"FTSE","cefr":"c2","pos":[{"pos":"abbrev","senses":["Financial Times Stock Exchange, indice azionario delle società quotate presso le borse di Londra e Milano"]}]},
-{"id":"ft:2","word":"ftalammide","cefr":"c2","pos":[{"pos":"noun","senses":["diammide di acido ftalico"]}]},
-{"id":"ft:3","word":"ftalato","cefr":"c2","pos":[{"pos":"noun","senses":["sale di acido ftalico"]}]},
-{"id":"ft:4","word":"ftalazina","ipa":"/,ftaladˈdzina/","cefr":"c2","pos":[{"pos":"noun","senses":["composto aromatico che deriva dalla condensazione dell'aldeide ftalica con idrazina"]}]},
-{"id":"ft:5","word":"ftalazone","cefr":"c2","pos":[{"pos":"noun","senses":["composto chetonico derivabile dalla ftalazina"]}]},
-{"id":"ft:6","word":"ftaleina","ipa":"/ftaleˈina/","cefr":"c2","pos":[{"pos":"noun","senses":["colorante sintetico che deriva dall'unione dell'anidride ftalica con un fenolo"]}]},
-{"id":"ft:7","word":"ftalico","cefr":"c2","pos":[{"pos":"adj","senses":["di acido organico derivato della naftalina, che si usa per produrre coloranti, resine, medicinali e cosmetici"]}]},
-{"id":"ft:8","word":"ftalide","cefr":"c2","pos":[{"pos":"noun","senses":["sostanza ottenuta per azione dello zinco e dell'acido cloridrico sul cloruro di ftalile, che si usa come gelatinizzante per polvere da sparo"]}]},
-{"id":"ft:9","word":"ftalile","ipa":"/ftaˈlile/","cefr":"c2","pos":[{"pos":"noun","senses":["residuo acido bivalente di acido ftalico"]}]},
-{"id":"ft:10","word":"ftalimmide","cefr":"c2","pos":[{"pos":"noun","senses":["immide di acido ftalico che si usa in molte sintesi organiche"]}]},
-{"id":"ft:11","word":"ftalimmidina","cefr":"c2","pos":[{"pos":"noun","senses":["prodotto ottenuto per riduzione della ftalimmide, impiegato in alcune sintesi organiche"]}]},
-{"id":"ft:12","word":"ftalonitrile","ipa":"/ftaloniˈtrile/","cefr":"c2","pos":[{"pos":"noun","senses":["nitrile derivato dall'acido ftalico, che si usa nella sintesi di ftalocianine"]}]}
+{"id":"ft:2","word":"ftalammide","cefr":"c2","pos":[{"pos":"noun","senses":["diammide di acido ftalico"]}],"en":[{"pos":"noun","glosses":["phthalamide"]}]},
+{"id":"ft:3","word":"ftalato","cefr":"c2","pos":[{"pos":"noun","senses":["sale di acido ftalico"]}],"en":[{"pos":"noun","glosses":["phthalate"]}]},
+{"id":"ft:4","word":"ftalazina","ipa":"/,ftaladˈdzina/","cefr":"c2","pos":[{"pos":"noun","senses":["composto aromatico che deriva dalla condensazione dell'aldeide ftalica con idrazina"]}],"en":[{"pos":"noun","glosses":["phthalazine"]}]},
+{"id":"ft:5","word":"ftalazone","cefr":"c2","pos":[{"pos":"noun","senses":["composto chetonico derivabile dalla ftalazina"]}],"en":[{"pos":"noun","glosses":["phthalazone"]}]},
+{"id":"ft:6","word":"ftaleina","ipa":"/ftaleˈina/","cefr":"c2","pos":[{"pos":"noun","senses":["colorante sintetico che deriva dall'unione dell'anidride ftalica con un fenolo"]}],"en":[{"pos":"noun","glosses":["phthalein"]}]},
+{"id":"ft:7","word":"ftalico","cefr":"c2","pos":[{"pos":"adj","senses":["di acido organico derivato della naftalina, che si usa per produrre coloranti, resine, medicinali e cosmetici"]}],"en":[{"pos":"adj","glosses":["phthalic"]}]},
+{"id":"ft:8","word":"ftalide","cefr":"c2","pos":[{"pos":"noun","senses":["sostanza ottenuta per azione dello zinco e dell'acido cloridrico sul cloruro di ftalile, che si usa come gelatinizzante per polvere da sparo"]}],"en":[{"pos":"noun","glosses":["phthalide"]}]},
+{"id":"ft:9","word":"ftalile","ipa":"/ftaˈlile/","cefr":"c2","pos":[{"pos":"noun","senses":["residuo acido bivalente di acido ftalico"]}],"en":[{"pos":"noun","glosses":["phthaloyl, phthalyl"]}]},
+{"id":"ft:10","word":"ftalimmide","cefr":"c2","pos":[{"pos":"noun","senses":["immide di acido ftalico che si usa in molte sintesi organiche"]}],"en":[{"pos":"noun","glosses":["phthalimide"]}]},
+{"id":"ft:11","word":"ftalimmidina","cefr":"c2","pos":[{"pos":"noun","senses":["prodotto ottenuto per riduzione della ftalimmide, impiegato in alcune sintesi organiche"]}],"en":[{"pos":"noun","glosses":["phthalimidine"]}]},
+{"id":"ft:12","word":"ftalonitrile","ipa":"/ftaloniˈtrile/","cefr":"c2","pos":[{"pos":"noun","senses":["nitrile derivato dall'acido ftalico, che si usa nella sintesi di ftalocianine"]}],"en":[{"pos":"noun","glosses":["phthalonitrile"]}]}
 ]

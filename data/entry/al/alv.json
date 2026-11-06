@@ -1,0 +1,16 @@
+[
+{"id":"alv:0","word":"alveare","cefr":"c1","pos":[{"pos":"noun","senses":["nido naturale delle api","cassetta preparata dagli apicoltori per contenere le api, in funzione della produzione del miele","luogo affollato","figura araldica convenzionale a forma di cupola reticolata smaltata, abitualmente, di oro"]},{"pos":"verb","senses":["porre o instradare nell'alveo (ad es. di fiume)"]}],"en":[{"pos":"noun","glosses":["beehive"]}],"ex":[70,164,165]},
+{"id":"alv:1","word":"alveolare","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda un alveolo","(di consonante) articolata accostando la punta o apice della lingua agli alveoli dei denti incisivi superiori, in modo che l'aria, costretta dall'ostacolo, produca un rumore nella sua fuoriuscita"]},{"pos":"noun","senses":["consonante articolata accostando la punta o apice della lingua agli alveoli dei denti incisivi"]}],"en":[{"pos":"adj","glosses":["alveolar, alveolate","alveolar (articulated with the tongue against the upper alveolar ridge)"]},{"pos":"noun","glosses":["an alveolar speech sound"]}],"ex":[427,428]},
+{"id":"alv:2","word":"Alvara","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"alv:3","word":"Alvarina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"alv:4","word":"Alvaro","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}]},
+{"id":"alv:5","word":"Alvezio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}]},
+{"id":"alv:6","word":"Alvisa","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"alv:7","word":"Alvise","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}]},
+{"id":"alv:8","word":"Alvisia","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"alv:9","word":"al verde","cefr":"c2","pos":[{"pos":"phrase","senses":["privo di denaro","cotto con salsa di erbe profumate, particolarmente prezzemolo"]}]},
+{"id":"alv:10","word":"alveo","ipa":"/ˈalveo/","cefr":"c2","pos":[{"pos":"noun","senses":["cavità o letto in cui scorrono le acque di un fiume o di un torrente","corso di un processo","la cavità di un recipiente","alveare, arnia"]}],"en":[{"pos":"noun","glosses":["bed, runway (of a river)","riverbed"]}]},
+{"id":"alv:11","word":"alveolo","ipa":"/alˈvɛolo/","cefr":"c2","pos":[{"pos":"noun","senses":["spazio cavo","ciascuna delle cavità a fondo cieco che chiudono le ultime ramificazioni dei bronchi","cavità contenute nelle ossa mascellari che ospitano gli elementi dentari","celletta dell'alveare"]}],"en":[{"pos":"noun","glosses":["alveolus"]}]},
+{"id":"alv:12","word":"alverniate","cefr":"c2","pos":[{"pos":"noun","senses":["abitante dell'Alvernia"]}],"en":[{"pos":"noun","glosses":["native or inhabitant of the Auvergne"]}]},
+{"id":"alv:13","word":"alvo","ipa":"/ˈalvo/","cefr":"c2","pos":[{"pos":"noun","senses":["la cavità intestinale","defecazione"]}],"en":[{"pos":"noun","glosses":["intestine","belly"]}]}
+]

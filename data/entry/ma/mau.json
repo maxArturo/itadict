@@ -1,8 +1,8 @@
 [
-{"id":"mau:0","word":"Mauritania","cefr":"c2","pos":[{"pos":"name","senses":["stato dell'Africa settentrionale, con capitale Nouakchott, che confina con il Sahara Occidentale a nord, l'Oceano Atlantico ad ovest, il Senegal a sud-ovest, il Mali al sud e ad est e l'Algeria a…"]}],"ex":[521,838,839]},
-{"id":"mau:1","word":"Maurizio","ipa":"/mawˈritt͡sjo/","cefr":"c2","pos":[{"pos":"name","senses":["nome di persona","Mauritius"]}],"ex":[681,988,989]},
-{"id":"mau:2","word":"Mauro","cefr":"c2","pos":[{"pos":"name","senses":["nome di persona maschile"]}],"ex":[663]},
-{"id":"mau:3","word":"mausoleo","ipa":"/mawzoˈlɛo/","cefr":"c2","pos":[{"pos":"noun","senses":["tomba di elevata monumentalità, costruita in genere per conservare il corpo di un personaggio importante","costruzione imponente"]}],"ex":[1000]},
+{"id":"mau:0","word":"Mauritania","cefr":"c2","pos":[{"pos":"name","senses":["stato dell'Africa settentrionale, con capitale Nouakchott, che confina con il Sahara Occidentale a nord, l'Oceano Atlantico ad ovest, il Senegal a sud-ovest, il Mali al sud e ad est e l'Algeria a…"]}],"en":[{"pos":"name","glosses":["Mauritania (a country in West Africa)"]}],"ex":[521,838,839]},
+{"id":"mau:1","word":"Maurizio","ipa":"/mawˈritt͡sjo/","cefr":"c2","pos":[{"pos":"name","senses":["nome di persona","Mauritius"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Morris or Maurice","alternative form of Mauritius (“country”)","alternative form of Mauritius (“island”)"]}],"ex":[681,988,989]},
+{"id":"mau:2","word":"Mauro","cefr":"c2","pos":[{"pos":"name","senses":["nome di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}],"ex":[663]},
+{"id":"mau:3","word":"mausoleo","ipa":"/mawzoˈlɛo/","cefr":"c2","pos":[{"pos":"noun","senses":["tomba di elevata monumentalità, costruita in genere per conservare il corpo di un personaggio importante","costruzione imponente"]}],"en":[{"pos":"noun","glosses":["mausoleum"]}],"ex":[1000]},
 {"id":"mau:4","word":"Maurella","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"mau:5","word":"Mauretta","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"mau:6","word":"Maurilia","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
@@ -11,5 +11,5 @@
 {"id":"mau:9","word":"Maurini","ipa":"mawˈrini","cefr":"c2","pos":[{"pos":"noun","senses":["che fa parte di una congregazione di frati benedettini nata in Francia nel 1618 e abolita durante la rivoluzione francese"]}]},
 {"id":"mau:10","word":"Mauritius","ipa":"/mauˈriːt͡sjus/","cefr":"c2","pos":[{"pos":"noun","senses":["stato insulare dell'Africa orientale"]}]},
 {"id":"mau:11","word":"Mauronto","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
-{"id":"mau:12","word":"maurino","ipa":"mawˈrino","cefr":"c2","pos":[{"pos":"adj","senses":["che fa parte dei Maurini, la congregazione benedettina di san Mauro nata in Francia nel 1618 nell’ abbazia parigina di St. Germain-des-Prés e abolita durante la rivoluzione francese"]},{"pos":"noun","senses":["chi fa parte dei Maurini, la ongregazione benedettina di san Mauro nata in Francia nel 1618 nell’ abbazia parigina di St. Germain-des-Prés e abolita durante la rivoluzione francese"]}]}
+{"id":"mau:12","word":"maurino","ipa":"mawˈrino","cefr":"c2","pos":[{"pos":"adj","senses":["che fa parte dei Maurini, la congregazione benedettina di san Mauro nata in Francia nel 1618 nell’ abbazia parigina di St. Germain-des-Prés e abolita durante la rivoluzione francese"]},{"pos":"noun","senses":["chi fa parte dei Maurini, la ongregazione benedettina di san Mauro nata in Francia nel 1618 nell’ abbazia parigina di St. Germain-des-Prés e abolita durante la rivoluzione francese"]}],"en":[{"pos":"noun","glosses":["a Benedictine monk of an order founded by Saint Maurus"]}]}
 ]

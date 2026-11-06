@@ -548,7 +548,7 @@
 "fregante":{"id":"fr:41","lemma":"fregare","label":"participio presente"},
 "freganti":{"id":"fr:41","lemma":"fregare","label":"participio presente plurale"},
 "fregarono":{"id":"fr:41","lemma":"fregare","label":"terza persona plurale dell'indicativo passato remoto"},
-"fregarsene":{"id":"pe:19","lemma":"pena","label":"curarsi poco di qualcosa o qualcuno, non darsi pena, non…"},
+"fregarsene":{"id":"pen:4","lemma":"pena","label":"curarsi poco di qualcosa o qualcuno, non darsi pena, non…"},
 "fregasse":{"id":"fr:41","lemma":"fregare","label":"terza persona singolare del congiuntivo imperfetto"},
 "fregassero":{"id":"fr:41","lemma":"fregare","label":"terza persona plurale del congiuntivo imperfetto"},
 "fregassi":{"id":"fr:41","lemma":"fregare","label":"prima persona singolare del congiuntivo imperfetto"},

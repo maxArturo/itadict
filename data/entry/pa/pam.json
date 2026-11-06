@@ -1,8 +1,8 @@
 [
-{"id":"pam:0","word":"pamphlet","ipa":"/pamˈflɛ/","cefr":"c2","pos":[{"pos":"noun","senses":["breve scritto di carattere polemico o satirico"]}],"ex":[261]},
+{"id":"pam:0","word":"pamphlet","ipa":"/pamˈflɛ/","cefr":"c2","pos":[{"pos":"noun","senses":["breve scritto di carattere polemico o satirico"]}],"en":[{"pos":"noun","glosses":["pamphlet (essay on a current topic)"]}],"ex":[261]},
 {"id":"pam:1","word":"Pamela","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
-{"id":"pam:2","word":"pampa","cefr":"c2","pos":[{"pos":"noun","senses":["vasta pianura erbosa senz'alberi, tipica del sud dell'America meridionale"]}]},
-{"id":"pam:3","word":"pampino","ipa":"/ˈpampino/","cefr":"c2","pos":[{"pos":"noun","senses":["foglia della vite","figura araldica convenzionale costituita da un tralcio di vite completo di foglie e viticci"]}]},
-{"id":"pam:4","word":"pampinoso","cefr":"c2","pos":[{"pos":"adj","senses":["attributo araldico che si applica alla vite, o al grappolo, con le foglie"]}]},
-{"id":"pam:5","word":"pampsichismo","ipa":"/pampsiˈkizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["variante di panpsichismo"]}]}
+{"id":"pam:2","word":"pampa","cefr":"c2","pos":[{"pos":"noun","senses":["vasta pianura erbosa senz'alberi, tipica del sud dell'America meridionale"]}],"en":[{"pos":"noun","glosses":["pampas"]}]},
+{"id":"pam:3","word":"pampino","ipa":"/ˈpampino/","cefr":"c2","pos":[{"pos":"noun","senses":["foglia della vite","figura araldica convenzionale costituita da un tralcio di vite completo di foglie e viticci"]}],"en":[{"pos":"noun","glosses":["vine leaf"]}]},
+{"id":"pam:4","word":"pampinoso","cefr":"c2","pos":[{"pos":"adj","senses":["attributo araldico che si applica alla vite, o al grappolo, con le foglie"]}],"en":[{"pos":"adj","glosses":["covered, or decorated with vine leaves"]}]},
+{"id":"pam:5","word":"pampsichismo","ipa":"/pampsiˈkizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["variante di panpsichismo"]}],"en":[{"pos":"noun","glosses":["synonym of panpsichismo"]}]}
 ]

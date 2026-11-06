@@ -44,6 +44,37 @@ const MAX_FILE = 1_000_000;
 /** Entry and form files split at 250 KB: one cold tap must not pull a whole fat bucket. */
 const ENTRY_CAP = 250_000;
 const FORM_CAP = 250_000;
+
+/** English glosses: three per part of speech, each as short as an Italian sense. */
+const MAX_EN_GLOSSES = 3;
+
+/**
+ * The en.wiktionary part-of-speech names this app joins on, mapped to ours. Every name not
+ * listed here is reported and not joined: an Italian entry never carries those pos values.
+ */
+const POS_MAP = new Map([
+  ['verb', 'verb'],
+  ['noun', 'noun'],
+  ['adj', 'adj'],
+  ['adv', 'adv'],
+  ['adv_phrase', 'adv_phrase'],
+  ['name', 'name'],
+  ['phrase', 'phrase'],
+  ['prep', 'prep'],
+  ['prep_phrase', 'prep_phrase'],
+  ['pron', 'pron'],
+  ['conj', 'conj'],
+  ['intj', 'intj'],
+  ['prefix', 'prefix'],
+  ['suffix', 'suffix'],
+  ['abbrev', 'abbrev'],
+  ['article', 'article'],
+  ['num', 'num'],
+  ['symbol', 'symbol'],
+  ['character', 'character'],
+  ['affix', 'affix'],
+  ['particle', 'particle'],
+]);
 const MAX_SENSES = 4;
 const MAX_GLOSS = 200;
 const MAX_LABEL = 60;
@@ -84,6 +115,12 @@ const SOURCES = [
     name: 'it.wiktionary via kaikki.org',
     url: 'https://kaikki.org/itwiktionary/Italiano/kaikki.org-dictionary-Italiano.jsonl',
     file: 'kaikki.org-dictionary-Italiano.jsonl',
+    licence: 'CC BY-SA 4.0',
+  },
+  {
+    name: 'English Wiktionary Italian entries via kaikki.org',
+    url: 'https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl',
+    file: 'kaikki.org-dictionary-Italian.jsonl',
     licence: 'CC BY-SA 4.0',
   },
   {
@@ -349,6 +386,55 @@ function formOfText(gloss, lemma) {
  * (lowercase spelling, not accent-folded: "si" and "sì" are different words),
  * with one POS group per part of speech.
  */
+/** An English gloss: whitespace collapsed, capped like an Italian sense. */
+function cleanEnglish(raw) {
+  const text = String(raw ?? '').replace(/\s+/g, ' ').trim();
+  if (text === '') return '';
+  return text.length > MAX_GLOSS ? truncate(text, MAX_GLOSS) : text;
+}
+
+/**
+ * Read the en.wiktionary Italian extract once. It keeps word, pos and the senses' glosses and
+ * nothing else: three short English glosses per headword and part of speech.
+ *
+ * @param {string} file
+ * @param {Map<string, number>} unmapped en pos names this app cannot join
+ * @returns {Promise<Map<string, Map<string, string[]>>>} lowercase headword -> pos -> glosses
+ */
+async function readEnglish(file, unmapped) {
+  /** @type {Map<string, Map<string, string[]>>} */
+  const byWord = new Map();
+  for await (const line of createInterface({ input: createReadStream(file), crlfDelay: Infinity })) {
+    let raw;
+    try {
+      raw = JSON.parse(line);
+    } catch {
+      continue;
+    }
+    if (raw.lang_code !== undefined && raw.lang_code !== 'it') continue;
+    if (typeof raw.word !== 'string' || raw.word === '' || typeof raw.pos !== 'string') continue;
+    const pos = POS_MAP.get(raw.pos);
+    if (pos === undefined) {
+      unmapped.set(raw.pos, (unmapped.get(raw.pos) ?? 0) + 1);
+      continue;
+    }
+    const key = raw.word.toLowerCase();
+    let groups = byWord.get(key);
+    if (groups === undefined) byWord.set(key, (groups = new Map()));
+    let glosses = groups.get(pos);
+    if (glosses === undefined) groups.set(pos, (glosses = []));
+    if (glosses.length >= MAX_EN_GLOSSES) continue;
+    for (const sense of raw.senses ?? []) {
+      for (const text of sense.glosses ?? []) {
+        if (glosses.length >= MAX_EN_GLOSSES) break;
+        const gloss = cleanEnglish(text);
+        if (gloss !== '' && !glosses.includes(gloss)) glosses.push(gloss);
+      }
+    }
+  }
+  return byWord;
+}
+
 /**
  * Person hints from the source verb tables. That field is partial and noisy, so
  * it never adds a form; it only tells which person an already attested form
@@ -497,6 +583,8 @@ function entryJson(entry, id, examples) {
   if (entry.ipa) out.ipa = entry.ipa;
   out.cefr = entry.cefr;
   out.pos = entry.pos;
+  // No English match means no key at all, so the screen draws no section.
+  if (entry.en) out.en = entry.en;
   if (examples.length) out.ex = examples;
   if (entry.conj.length) out.conj = entry.conj;
   return JSON.stringify(out);
@@ -541,11 +629,14 @@ function licenceText() {
     'The files in this directory are built by tools/build-data.mjs from three sources.\n\n' +
     '| Source | Licence | URL |\n| --- | --- | --- |\n' +
     '| it.wiktionary | CC BY-SA 4.0 | https://it.wiktionary.org/ |\n' +
+    '| en.wiktionary (Italian entries) | CC BY-SA 4.0 | https://en.wiktionary.org/ |\n' +
     '| Tatoeba | CC BY 2.0 FR | https://tatoeba.org/ |\n' +
     '| FrequencyWords 50k list (Hermit Dave) | CC BY-SA 4.0 | https://github.com/hermitdave/FrequencyWords |\n\n' +
     '## Required attribution\n\n' +
     '- Italian definitions and inflected forms come from it.wiktionary, CC BY-SA 4.0.\n' +
     '  The extraction is https://kaikki.org/itwiktionary/Italiano/kaikki.org-dictionary-Italiano.jsonl\n' +
+    '- English translations come from en.wiktionary, CC BY-SA 4.0.\n' +
+    '  The extraction is https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl\n' +
     '- Italian example sentences come from Tatoeba, CC BY 2.0 FR. Entries keep\n' +
     '  positions; every sentence in data/ex/ keeps its Tatoeba id.\n' +
     '- CEFR bands come from the FrequencyWords Italian 50k list by Hermit Dave,\n' +
@@ -560,7 +651,7 @@ function licenceText() {
 async function main() {
   const started = Date.now();
   const opts = parseArgs(process.argv.slice(2));
-  const [jsonl, tsv, frequencyFile] = await Promise.all(SOURCES.map((source) => ensureSource(source, opts.download)));
+  const [jsonl, enJsonl, tsv, frequencyFile] = await Promise.all(SOURCES.map((source) => ensureSource(source, opts.download)));
   const excluded = new Set((JSON.parse(await readFile(EXCLUSIONS, 'utf8')).titles ?? []).map(foldWord));
 
   const corpus = await countCorpus(tsv);
@@ -579,6 +670,31 @@ async function main() {
   });
   const shipped = opts.limit > 0 ? kept.slice(0, opts.limit) : kept;
   for (const entry of shipped) entry.cefr = bandOf(ranks.get(foldWord(entry.word)));
+
+  // English glosses: join on the lowercase headword and the mapped part of speech.
+  const unmappedPos = new Map();
+  const english = await readEnglish(enJsonl, unmappedPos);
+  const perPos = new Map();
+  let withEnglish = 0;
+  for (const entry of shipped) {
+    const groups = english.get(entry.word.toLowerCase());
+    /** @type {Array<{ pos: string, glosses: string[] }>} */
+    const en = [];
+    for (const group of entry.pos) {
+      const stat = perPos.get(group.pos) ?? { total: 0, matched: 0 };
+      stat.total += 1;
+      perPos.set(group.pos, stat);
+      const glosses = groups?.get(group.pos);
+      if (glosses !== undefined && glosses.length > 0) {
+        en.push({ pos: group.pos, glosses });
+        stat.matched += 1;
+      }
+    }
+    if (en.length > 0) {
+      entry.en = en;
+      withEnglish += 1;
+    }
+  }
   const lemmaWords = new Set(shipped.map((entry) => entry.word));
 
   // The form index only points at lemmas we ship.
@@ -689,7 +805,9 @@ async function main() {
     addFile('entry', file.key, body);
     addFile('search', file.key, renderArray(file.items.map((item) => {
       const entry = item.entry;
-      return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, entry.pos[0].senses[0]]);
+      // The row speaks English when the entry has it, and falls back to Italian when it does not.
+      const gloss = entry.en?.[0]?.glosses[0] ?? entry.pos[0].senses[0];
+      return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, gloss]);
     })));
   }
 
@@ -819,6 +937,10 @@ async function main() {
     'excluded headwords    ' + excludedHits + ' of ' + excluded.size + ' listed',
     'entries shipped       ' + shipped.length + ' (' + merged + ' with more than one POS)' + (opts.limit > 0 ? ' --limit ' + opts.limit : ''),
     'with IPA              ' + shipped.filter((entry) => entry.ipa).length + ' (' + percent(shipped.filter((entry) => entry.ipa).length, shipped.length) + '%)',
+    'en coverage           ' + percent(withEnglish, shipped.length) + '% (' + withEnglish + ' of ' + shipped.length + '), none ' + (shipped.length - withEnglish),
+    'en per pos            ' + [...perPos.entries()].sort((a, b) => b[1].total - a[1].total)
+      .map(([pos, stat]) => pos + ' ' + stat.matched + '/' + stat.total + ' (' + percent(stat.matched, stat.total) + '%)').join(', '),
+    'en unmapped pos       ' + ([...unmappedPos.entries()].sort((a, b) => b[1] - a[1]).map(([pos, count]) => pos + ':' + count).join(' ') || 'none'),
     'CEFR bands            ' + bands,
     'verbs                 ' + verbs.length + ', with a table ' + verbs.filter((entry) => entry.conj.length > 0).length + ', with 30+ forms ' + with30,
     'conj rows             ' + verbs.reduce((total, entry) => total + entry.conj.reduce((n, group) => n + group.forms.filter(Boolean).length, 0), 0),

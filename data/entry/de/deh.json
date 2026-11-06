@@ -1,4 +1,4 @@
 [
-{"id":"deh:0","word":"dehoniano","ipa":"/deoˈnjano/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente alla congregazione dei Sacerdoti del Sacro Cuore"]},{"pos":"noun","senses":["chi fa parte della congregazione dei Sacerdoti del Sacro Cuore"]}]},
-{"id":"deh:1","word":"dehors","ipa":"/deˈr/","cefr":"c2","pos":[{"pos":"noun","senses":["area esterna di un locale attrezzata con tavolini o sedie, generalmente situata su una strada o una piazza"]}]}
+{"id":"deh:0","word":"dehoniano","ipa":"/deoˈnjano/","cefr":"c2","pos":[{"pos":"adj","senses":["che è attinente alla congregazione dei Sacerdoti del Sacro Cuore"]},{"pos":"noun","senses":["chi fa parte della congregazione dei Sacerdoti del Sacro Cuore"]}],"en":[{"pos":"noun","glosses":["dahonian (A member of the Sacerdoti del Sacro Cuore di Gesù)"]}]},
+{"id":"deh:1","word":"dehors","ipa":"/deˈr/","cefr":"c2","pos":[{"pos":"noun","senses":["area esterna di un locale attrezzata con tavolini o sedie, generalmente situata su una strada o una piazza"]}],"en":[{"pos":"noun","glosses":["outdoor seating area"]}]}
 ]

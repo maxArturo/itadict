@@ -4,5 +4,5 @@
 {"id":"ku:2","word":"Ku Klux Klan","cefr":"c2","pos":[{"pos":"name","senses":["nome usato da diverse organizzazioni segrete esistenti negli Stati Uniti d'America a partire dalla fine del diciannovesimo secolo, con finalità politiche e terroristiche a contenuti socialmente…"]}]},
 {"id":"ku:3","word":"Kulturkampf","cefr":"c2","pos":[{"pos":"noun","senses":["contrasto culturale e politico tra lo Stato e la Chiesa cattolica, nato in Germania dopo la proclamazione dell'impero nel 1871"]}]},
 {"id":"ku:4","word":"kung fu","cefr":"c2","pos":[{"pos":"phrase","senses":["locuzione di uso comune per definire l'insieme di arti marziali cinesi che hanno dato origine al karate giapponese","genere di film d'azione e sportivo dove i protagonisti sono coinvolti in combattimenti spettacolari ispirati dalla suddetta disciplina"]}]},
-{"id":"ku:5","word":"kuwaitiano","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il Kuwait"]},{"pos":"noun","senses":["abitante del Kuwait"]}]}
+{"id":"ku:5","word":"kuwaitiano","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il Kuwait"]},{"pos":"noun","senses":["abitante del Kuwait"]}],"en":[{"pos":"adj","glosses":["Kuwaiti"]},{"pos":"noun","glosses":["Kuwaiti"]}]}
 ]

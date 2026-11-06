@@ -998,7 +998,7 @@
 "rinsanguiate":{"id":"rin:97","lemma":"rinsanguare","label":"seconda persona plurale del congiuntivo presente"},
 "rinsanguino":{"id":"rin:97","lemma":"rinsanguare","label":"terza persona plurale del congiuntivo presente"},
 "rinsanguo":{"id":"rin:97","lemma":"rinsanguare","label":"prima persona singolare dell'indicativo presente"},
-"rinsavire":{"id":"ra:0","lemma":"ragione","label":"tornar savio, riprendere la ragione"},
+"rinsavire":{"id":"rag:0","lemma":"ragione","label":"tornar savio, riprendere la ragione"},
 "rintana":{"id":"rin:98","lemma":"rintanare","label":"terza persona singolare dell'indicativo presente"},
 "rintanai":{"id":"rin:98","lemma":"rintanare","label":"prima persona singolare dell'indicativo passato remoto"},
 "rintanammo":{"id":"rin:98","lemma":"rintanare","label":"prima persona plurale dell'indicativo passato remoto"},

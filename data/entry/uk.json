@@ -1,5 +1,5 @@
 [
 {"id":"uk:0","word":"ukulele","ipa":"/ukuˈlɛle/","cefr":"c2","pos":[{"pos":"noun","senses":["strumento cordofono a corde pizzicate originario delle isole Hawaii, simile ad una piccola chitarra, avente un lungo manico e quattro corde"]}],"ex":[0,1,2]},
 {"id":"uk:1","word":"ukelele","ipa":"/ukeˈlɛle/","cefr":"c2","pos":[{"pos":"noun","senses":["variante di ukulele"]}]},
-{"id":"uk:2","word":"ukulelista","cefr":"c2","pos":[{"pos":"noun","senses":["suonatore di ukulele"]}]}
+{"id":"uk:2","word":"ukulelista","cefr":"c2","pos":[{"pos":"noun","senses":["suonatore di ukulele"]}],"en":[{"pos":"noun","glosses":["ukulelist"]}]}
 ]
