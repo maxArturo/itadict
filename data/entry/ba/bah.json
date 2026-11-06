@@ -1,5 +1,5 @@
 [
-{"id":"bah:0","word":"Bahrein","cefr":"c2","pos":[{"pos":"noun","senses":["stato monarchico dell'Asia sudoccidentale"]}],"ex":[622,623,624]},
+{"id":"bah:0","word":"Bahrein","cefr":"c2","pos":[{"pos":"noun","senses":["stato monarchico dell'Asia sudoccidentale"]}],"ex":[356,357,358]},
 {"id":"bah:1","word":"Bahamas","cefr":"c1","pos":[{"pos":"noun","senses":["stato insulare dell'America centrale, la cui capitale è Nassau"]}]},
 {"id":"bah:2","word":"bahamense","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda le Bahamas"]},{"pos":"noun","senses":["abitante delle Bahamas"]}],"en":[{"pos":"adj","glosses":["Bahamian"]},{"pos":"noun","glosses":["Bahamian"]}]},
 {"id":"bah:3","word":"baht","cefr":"c2","pos":[{"pos":"noun","senses":["unità monetaria della Thailandia"]}],"en":[{"pos":"noun","glosses":["baht (“currency of Thailand”)"]}]}

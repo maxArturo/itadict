@@ -1,7 +1,7 @@
 [
-{"id":"ia:0","word":"IA","ipa":"/ˈɑːi/","cefr":"a2","pos":[{"pos":"abbrev","senses":["abbreviazione di intelligenza artificiale"]}],"ex":[4,5,6]},
+{"id":"ia:0","word":"IA","ipa":"/ˈɑːi/","cefr":"a2","pos":[{"pos":"abbrev","senses":["abbreviazione di intelligenza artificiale"]}],"ex":[3,4,5]},
 {"id":"ia:1","word":"iarda","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura di lunghezza in uso nei paesi di lingua inglese, pari a 91,44 centimetri"]}],"en":[{"pos":"noun","glosses":["yard (unit of length)"]}],"ex":[0,1,2]},
-{"id":"ia:2","word":"ialuronico","ipa":"/jaluˈrɔniko/","cefr":"c2","pos":[{"pos":"adj","senses":["(chimica)"]}],"en":[{"pos":"adj","glosses":["hyaluronic"]}],"ex":[3]},
+{"id":"ia:2","word":"ialuronico","ipa":"/jaluˈrɔniko/","cefr":"c2","pos":[{"pos":"adj","senses":["(chimica)"]}],"en":[{"pos":"adj","glosses":["hyaluronic"]}]},
 {"id":"ia:3","word":"-iatria","ipa":"/jaˈtria/","cefr":"c2","pos":[{"pos":"suffix","senses":["secondo elemento di termini composti col significato di specialità medica, cura"]}],"en":[{"pos":"suffix","glosses":["-iatry"]}]},
 {"id":"ia:4","word":"IAT","ipa":"/ˈjat/","cefr":"c2","pos":[{"pos":"abbrev","senses":["Informazione e Accoglienza Turistica"]}]},
 {"id":"ia:5","word":"IATA","cefr":"c2","pos":[{"pos":"abbrev","senses":["International Air Transport Association, associazione internazionale per il trasporto aereo"]}]},

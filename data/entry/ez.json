@@ -1,6 +1,6 @@
 [
-{"id":"ez:0","word":"eziologia","ipa":"/ettsjoloˈd͡ʒia/","cefr":"c2","pos":[{"pos":"noun","senses":["insieme di principi teorici e pratici per lo studio delle cause di alcuni eventi","ramo della medicina che si occupa dei motivi delle malattie"]}],"en":[{"pos":"noun","glosses":["etiology"]}],"ex":[1]},
-{"id":"ez:1","word":"eziopatogenetico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda l'eziopatogenesi"]}],"en":[{"pos":"adj","glosses":["etiopathogenetic"]}],"ex":[0]},
+{"id":"ez:0","word":"eziologia","ipa":"/ettsjoloˈd͡ʒia/","cefr":"c2","pos":[{"pos":"noun","senses":["insieme di principi teorici e pratici per lo studio delle cause di alcuni eventi","ramo della medicina che si occupa dei motivi delle malattie"]}],"en":[{"pos":"noun","glosses":["etiology"]}]},
+{"id":"ez:1","word":"eziopatogenetico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda l'eziopatogenesi"]}],"en":[{"pos":"adj","glosses":["etiopathogenetic"]}]},
 {"id":"ez:2","word":"EZLN","cefr":"c2","pos":[{"pos":"abbrev","senses":["Esercito Zapatista di Liberazione Nazionale"]}]},
 {"id":"ez:3","word":"Ezechiela","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"ez:4","word":"Ezechiele","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile","ventiseiesimo libro dalla Bibbia, composto di quarantotto capitoli"]}],"en":[{"pos":"name","glosses":["Ezekiel (biblical character)","Ezekiel (the Book of Ezekiel)","a male given name, equivalent to English Ezekiel"]}]},

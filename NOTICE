@@ -1,6 +1,7 @@
 itadict - offline Italian dictionary
 
-The dictionary data in data/ is derived from four sources.
+This file is written by tools/build-data.mjs. The dictionary data in data/ is
+derived from the sources below.
 
 it.wiktionary (Italian Wiktionary)
   Site: https://it.wiktionary.org/
@@ -18,12 +19,18 @@ en.wiktionary (English Wiktionary, Italian entries)
   Changes: only word, part of speech and the senses' glosses are kept. Three
   glosses per part of speech, shortened, and joined to the Italian entry.
 
-Tatoeba Italian sentences
+Tatoeba sentences and translations
+  Frasi e traduzioni da Tatoeba (tatoeba.org), CC BY 2.0 FR
   Site: https://tatoeba.org/
-  Export: https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences.tsv.bz2
+  Exports: https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences.tsv.bz2
+           https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2
+           https://downloads.tatoeba.org/exports/per_language/ita/ita-eng_links.tsv.bz2
   Licence: CC BY 2.0 FR - https://creativecommons.org/licenses/by/2.0/fr/
-  Changes: sentence text is shortened. Tatoeba sentence ids are kept, so every
-  example can be traced back to its author.
+  Changes: an Italian sentence ships with its directly linked English sentence
+  of the lowest id that fits 160 characters. Sentences over 120 characters,
+  or with no such English, are left out, and a headword keeps at most 3.
+  Tatoeba ids of the Italian sentences are kept, so every example can be traced
+  back to its author. English ids are not shipped.
 
 FrequencyWords Italian 50k list
   Author: Hermit Dave
@@ -31,5 +38,5 @@ FrequencyWords Italian 50k list
   Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
   Changes: used only to rank lemmas into CEFR bands. No word list is shipped.
 
-All four licences allow redistribution with attribution. This NOTICE must ship
+All these licences allow redistribution with attribution. This NOTICE must ship
 with the data. Derived data stays under the same licences.

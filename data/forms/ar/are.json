@@ -27,7 +27,7 @@
 "arenavate":{"id":"are:11","lemma":"arenare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "arenavi":{"id":"are:11","lemma":"arenare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "arenavo":{"id":"are:11","lemma":"arenare","label":"prima persona singolare dell'indicativo imperfetto"},
-"arenera":{"id":"are:11","lemma":"arenare","label":"terza persona singolare dell'indicativo futuro"},
+"arenera":{"id":"are:11","lemma":"arenare","label":"terza persona singolare dell'indicativo futuro","form":"arenerà"},
 "arenerai":{"id":"are:11","lemma":"arenare","label":"seconda persona singolare dell'indicativo futuro"},
 "areneranno":{"id":"are:11","lemma":"arenare","label":"terza persona plurale dell'indicativo futuro"},
 "arenerebbe":{"id":"are:11","lemma":"arenare","label":"terza persona singolare del condizionale presente"},
@@ -38,14 +38,14 @@
 "arenereste":{"id":"are:11","lemma":"arenare","label":"seconda persona plurale del condizionale presente"},
 "areneresti":{"id":"are:11","lemma":"arenare","label":"seconda persona singolare del condizionale presente"},
 "arenerete":{"id":"are:11","lemma":"arenare","label":"seconda persona plurale dell'indicativo futuro"},
-"arenero":{"id":"are:11","lemma":"arenare","label":"prima persona singolare dell'indicativo futuro"},
+"arenero":{"id":"are:11","lemma":"arenare","label":"prima persona singolare dell'indicativo futuro","form":"arenerò"},
 "areni":{"id":"are:11","lemma":"arenare","label":"seconda persona singolare dell'indicativo presente"},
 "areniamo":{"id":"are:11","lemma":"arenare","label":"prima persona plurale dell'indicativo presente"},
 "areniate":{"id":"are:11","lemma":"arenare","label":"seconda persona plurale del congiuntivo presente"},
 "arenino":{"id":"are:11","lemma":"arenare","label":"terza persona plurale del congiuntivo presente"},
 "areno":{"id":"are:11","lemma":"arenare","label":"prima persona singolare dell'indicativo presente"},
 "areopaghi":{"id":"are:14","lemma":"areopago","label":"plurale"},
-"arera":{"id":"ara:9","lemma":"arare","label":"terza persona singolare dell'indicativo futuro"},
+"arera":{"id":"ara:9","lemma":"arare","label":"terza persona singolare dell'indicativo futuro","form":"arerà"},
 "arerai":{"id":"ara:9","lemma":"arare","label":"seconda persona singolare dell'indicativo futuro"},
 "areranno":{"id":"ara:9","lemma":"arare","label":"terza persona plurale dell'indicativo futuro"},
 "arerebbe":{"id":"ara:9","lemma":"arare","label":"terza persona singolare del condizionale presente"},
@@ -56,5 +56,5 @@
 "arereste":{"id":"ara:9","lemma":"arare","label":"seconda persona plurale del condizionale presente"},
 "areresti":{"id":"ara:9","lemma":"arare","label":"seconda persona singolare del condizionale presente"},
 "arerete":{"id":"ara:9","lemma":"arare","label":"seconda persona plurale dell'indicativo futuro"},
-"arero":{"id":"ara:9","lemma":"arare","label":"prima persona singolare dell'indicativo futuro"}
+"arero":{"id":"ara:9","lemma":"arare","label":"prima persona singolare dell'indicativo futuro","form":"arerò"}
 }

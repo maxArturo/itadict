@@ -1,4 +1,4 @@
 [
-{"id":"pak:0","word":"Pakistan","cefr":"c1","pos":[{"pos":"name","senses":["stato dell'Asia meridionale, la cui capitale è Islamabad, e confinante con l'Iran ad ovest, con l'Afghanistan a nord, con la Cina a nord-est, con l'India ad est e con il Mar Arabico a sud"]}],"en":[{"pos":"name","glosses":["Pakistan (a country in South Asia)"]}],"ex":[450,451,452]},
-{"id":"pak:1","word":"pakistano","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il Pakistan"]},{"pos":"noun","senses":["abitante del Pakistan"]}],"en":[{"pos":"adj","glosses":["Pakistani"]},{"pos":"noun","glosses":["Pakistani"]}],"ex":[842,843,844]}
+{"id":"pak:0","word":"Pakistan","cefr":"c1","pos":[{"pos":"name","senses":["stato dell'Asia meridionale, la cui capitale è Islamabad, e confinante con l'Iran ad ovest, con l'Afghanistan a nord, con la Cina a nord-est, con l'India ad est e con il Mar Arabico a sud"]}],"en":[{"pos":"name","glosses":["Pakistan (a country in South Asia)"]}],"ex":[325,326,327]},
+{"id":"pak:1","word":"pakistano","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il Pakistan"]},{"pos":"noun","senses":["abitante del Pakistan"]}],"en":[{"pos":"adj","glosses":["Pakistani"]},{"pos":"noun","glosses":["Pakistani"]}],"ex":[562]}
 ]

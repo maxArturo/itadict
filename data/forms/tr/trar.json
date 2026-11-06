@@ -1,5 +1,5 @@
 {
-"trarra":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare dell'indicativo futuro"},
+"trarra":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare dell'indicativo futuro","form":"trarrà"},
 "trarrai":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare dell'indicativo futuro"},
 "trarranno":{"id":"tra:47","lemma":"trarre","label":"terza persona plurale dell'indicativo futuro"},
 "trarrebbe":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare del condizionale presente"},
@@ -10,5 +10,5 @@
 "trarreste":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale del condizionale presente"},
 "trarresti":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare del condizionale presente"},
 "trarrete":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale dell'indicativo futuro"},
-"trarro":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare dell'indicativo futuro"}
+"trarro":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare dell'indicativo futuro","form":"trarrò"}
 }

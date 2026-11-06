@@ -27,7 +27,7 @@
 "cofinanziavate":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "cofinanziavi":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "cofinanziavo":{"id":"cof:5","lemma":"cofinanziare","label":"prima persona singolare dell'indicativo imperfetto"},
-"cofinanziera":{"id":"cof:5","lemma":"cofinanziare","label":"terza persona singolare dell'indicativo futuro"},
+"cofinanziera":{"id":"cof:5","lemma":"cofinanziare","label":"terza persona singolare dell'indicativo futuro","form":"cofinanzierà"},
 "cofinanzierai":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona singolare dell'indicativo futuro"},
 "cofinanzieranno":{"id":"cof:5","lemma":"cofinanziare","label":"terza persona plurale dell'indicativo futuro"},
 "cofinanzierebbe":{"id":"cof:5","lemma":"cofinanziare","label":"terza persona singolare del condizionale presente"},
@@ -38,7 +38,7 @@
 "cofinanziereste":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona plurale del condizionale presente"},
 "cofinanzieresti":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona singolare del condizionale presente"},
 "cofinanzierete":{"id":"cof:5","lemma":"cofinanziare","label":"seconda persona plurale dell'indicativo futuro"},
-"cofinanziero":{"id":"cof:5","lemma":"cofinanziare","label":"prima persona singolare dell'indicativo futuro"},
+"cofinanziero":{"id":"cof:5","lemma":"cofinanziare","label":"prima persona singolare dell'indicativo futuro","form":"cofinanzierò"},
 "cofinanzino":{"id":"cof:5","lemma":"cofinanziare","label":"terza persona plurale del congiuntivo presente"},
 "cofinanzio":{"id":"cof:5","lemma":"cofinanziare","label":"prima persona singolare dell'indicativo presente"}
 }

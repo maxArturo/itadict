@@ -23,7 +23,7 @@
 "almanaccavate":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "almanaccavi":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "almanaccavo":{"id":"alm:10","lemma":"almanaccare","label":"prima persona singolare dell'indicativo imperfetto"},
-"almanacchera":{"id":"alm:10","lemma":"almanaccare","label":"terza persona singolare dell'indicativo futuro"},
+"almanacchera":{"id":"alm:10","lemma":"almanaccare","label":"terza persona singolare dell'indicativo futuro","form":"almanaccherà"},
 "almanaccherai":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona singolare dell'indicativo futuro"},
 "almanaccheranno":{"id":"alm:10","lemma":"almanaccare","label":"terza persona plurale dell'indicativo futuro"},
 "almanaccherebbe":{"id":"alm:10","lemma":"almanaccare","label":"terza persona singolare del condizionale presente"},
@@ -34,10 +34,10 @@
 "almanacchereste":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona plurale del condizionale presente"},
 "almanaccheresti":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona singolare del condizionale presente"},
 "almanaccherete":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona plurale dell'indicativo futuro"},
-"almanacchero":{"id":"alm:10","lemma":"almanaccare","label":"prima persona singolare dell'indicativo futuro"},
+"almanacchero":{"id":"alm:10","lemma":"almanaccare","label":"prima persona singolare dell'indicativo futuro","form":"almanaccherò"},
 "almanacchi":{"id":"alm:1","lemma":"almanacco","label":"plurale"},
 "almanacchiamo":{"id":"alm:10","lemma":"almanaccare","label":"prima persona plurale dell'indicativo presente"},
 "almanacchiate":{"id":"alm:10","lemma":"almanaccare","label":"seconda persona plurale del congiuntivo presente"},
 "almanacchino":{"id":"alm:10","lemma":"almanaccare","label":"terza persona plurale del congiuntivo presente"},
-"almanacco":{"id":"alm:10","lemma":"almanaccare","label":"terza persona singolare dell'indicativo passato remoto"}
+"almanacco":{"id":"alm:10","lemma":"almanaccare","label":"terza persona singolare dell'indicativo passato remoto","form":"almanaccò"}
 }

@@ -1,7 +1,7 @@
 [
-{"id":"ald:0","word":"aldilà","ipa":"/aldiˈla/","cefr":"c1","pos":[{"pos":"noun","senses":["vita ultraterrena"]}],"en":[{"pos":"noun","glosses":["the afterlife, the hereafter"]}],"ex":[91,167,473]},
-{"id":"ald:1","word":"aldeide","ipa":"/alˈdɛide/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun membro della classe di composti organici contenenti un gruppo carbonilico terminale (-CHO)"]}],"en":[{"pos":"noun","glosses":["aldehyde"]}],"ex":[515]},
-{"id":"ald:2","word":"Aldo","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Aldous"]}],"ex":[388]},
+{"id":"ald:0","word":"aldilà","ipa":"/aldiˈla/","cefr":"c1","pos":[{"pos":"noun","senses":["vita ultraterrena"]}],"en":[{"pos":"noun","glosses":["the afterlife, the hereafter"]}],"ex":[328]},
+{"id":"ald:1","word":"aldeide","ipa":"/alˈdɛide/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun membro della classe di composti organici contenenti un gruppo carbonilico terminale (-CHO)"]}],"en":[{"pos":"noun","glosses":["aldehyde"]}],"ex":[337]},
+{"id":"ald:2","word":"Aldo","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Aldous"]}],"ex":[249]},
 {"id":"ald:3","word":"Alda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"name","glosses":["a female given name"]}]},
 {"id":"ald:4","word":"Aldeandra","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"ald:5","word":"Aldemara","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},

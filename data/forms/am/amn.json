@@ -1,5 +1,5 @@
 {
-"amnioti":{"id":"am:402","lemma":"amniote","label":"plurale"},
+"amnioti":{"id":"am:402","lemma":"amniote","label":"plurale","form":"Amnioti"},
 "amniotica":{"id":"am:403","lemma":"amniotico","label":"femminile"},
 "amniotiche":{"id":"am:403","lemma":"amniotico","label":"femminile plurale"},
 "amniotici":{"id":"am:403","lemma":"amniotico","label":"plurale"},
@@ -29,7 +29,7 @@
 "amnistiavi":{"id":"am:404","lemma":"amnistiare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "amnistiavo":{"id":"am:404","lemma":"amnistiare","label":"prima persona singolare dell'indicativo imperfetto"},
 "amnistie":{"id":"am:48","lemma":"amnistia","label":"plurale"},
-"amnistiera":{"id":"am:404","lemma":"amnistiare","label":"terza persona singolare dell'indicativo futuro"},
+"amnistiera":{"id":"am:404","lemma":"amnistiare","label":"terza persona singolare dell'indicativo futuro","form":"amnistierà"},
 "amnistierai":{"id":"am:404","lemma":"amnistiare","label":"seconda persona singolare dell'indicativo futuro"},
 "amnistieranno":{"id":"am:404","lemma":"amnistiare","label":"terza persona plurale dell'indicativo futuro"},
 "amnistierebbe":{"id":"am:404","lemma":"amnistiare","label":"terza persona singolare del condizionale presente"},
@@ -40,7 +40,7 @@
 "amnistiereste":{"id":"am:404","lemma":"amnistiare","label":"seconda persona plurale del condizionale presente"},
 "amnistieresti":{"id":"am:404","lemma":"amnistiare","label":"seconda persona singolare del condizionale presente"},
 "amnistierete":{"id":"am:404","lemma":"amnistiare","label":"seconda persona plurale dell'indicativo futuro"},
-"amnistiero":{"id":"am:404","lemma":"amnistiare","label":"prima persona singolare dell'indicativo futuro"},
+"amnistiero":{"id":"am:404","lemma":"amnistiare","label":"prima persona singolare dell'indicativo futuro","form":"amnistierò"},
 "amnistino":{"id":"am:404","lemma":"amnistiare","label":"terza persona plurale del congiuntivo presente"},
 "amnistio":{"id":"am:404","lemma":"amnistiare","label":"prima persona singolare dell'indicativo presente"}
 }

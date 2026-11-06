@@ -7,7 +7,7 @@
  *
  *   data/<bucket>.json         search rows  [folded, id, word, ipa, pos, gloss]
  *   data/entry/<bucket>.json   entry bodies, one per headword
- *   data/ex/<bucket>.json      Tatoeba sentences: [ [id, text] ]
+ *   data/ex/<bucket>.json      Tatoeba sentences and their English: [ [id, it, en] ]
  *   data/forms/<bucket>.json   folded form -> { id, lemma, label }
  *   data/index.json            manifest, the one file the app reads first
  *
@@ -23,6 +23,18 @@
  *   node tools/build-data.mjs                 # full build
  *   node tools/build-data.mjs --limit 2000    # fixture: the 2000 most frequent headwords
  *   node tools/build-data.mjs --no-download   # fail instead of downloading
+ *   node tools/build-data.mjs --accept-id-moves   # build even when an old id would name another word
+ *   node tools/build-data.mjs --fresh         # start a new id baseline: plan from scratch, every id new
+ *
+ * Entry ids are pinned to the previous build. The build reads the committed data/index.json and
+ * entry files first, keeps their entry-file split plan, and re-splits a file only when it would
+ * pass MAX_FILE. An old id that would name a different word is a collision, and the build fails.
+ * With no previous build it plans from scratch and warns that every id is new. A missing data/
+ * that git HEAD still tracks is an error: a build that died after clearing data/ must not renumber
+ * every id on the next run. --fresh is the deliberate way to start over.
+ *
+ * Every example row carries English: the Tatoeba English sentence directly linked to the
+ * Italian one. A candidate without one that fits MAX_EXAMPLE_EN is dropped at selection.
  */
 
 import { createReadStream, createWriteStream } from 'node:fs';
@@ -80,6 +92,10 @@ const MAX_GLOSS = 200;
 const MAX_LABEL = 60;
 const MAX_EXAMPLE = 120;
 const MAX_EXAMPLES = 3;
+/** The English of an example: never cut. Over the cap, the next translation or candidate wins. */
+const MAX_EXAMPLE_EN = 160;
+/** The Tatoeba attribution line. check-data holds the same string. */
+const TATOEBA_LINE = 'Frasi e traduzioni da Tatoeba (tatoeba.org), CC BY 2.0 FR';
 const MAX_PREFIX = 4;
 
 const SETS = [['search', ''], ['entry', 'entry/'], ['ex', 'ex/'], ['forms', 'forms/'], ['en', 'en/']];
@@ -128,6 +144,7 @@ const SOURCES = [
     url: 'https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences.tsv.bz2',
     file: 'ita_sentences.tsv.bz2',
     licence: 'CC BY 2.0 FR',
+    attribution: TATOEBA_LINE,
   },
   {
     name: 'FrequencyWords Italian 50k (Hermit Dave)',
@@ -135,17 +152,33 @@ const SOURCES = [
     file: 'it_50k.txt',
     licence: 'CC BY-SA 4.0',
   },
+  {
+    name: 'Tatoeba English sentences',
+    url: 'https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2',
+    file: 'eng_sentences.tsv.bz2',
+    licence: 'CC BY 2.0 FR',
+    attribution: TATOEBA_LINE,
+  },
+  {
+    name: 'Tatoeba Italian-English links',
+    url: 'https://downloads.tatoeba.org/exports/per_language/ita/ita-eng_links.tsv.bz2',
+    file: 'ita-eng_links.tsv.bz2',
+    licence: 'CC BY 2.0 FR',
+    attribution: TATOEBA_LINE,
+  },
 ];
 
 /* ------------------------------------------------------------------ args */
 
 function parseArgs(argv) {
-  const opts = { limit: 0, download: true };
+  const opts = { limit: 0, download: true, acceptIdMoves: false, fresh: false };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === '--limit') opts.limit = Number(argv[(i += 1)]);
     else if (arg.startsWith('--limit=')) opts.limit = Number(arg.slice('--limit='.length));
     else if (arg === '--no-download') opts.download = false;
+    else if (arg === '--accept-id-moves') opts.acceptIdMoves = true;
+    else if (arg === '--fresh') opts.fresh = true;
     else throw new Error('unknown argument: ' + arg);
   }
   if (!Number.isInteger(opts.limit) || opts.limit < 0) throw new Error('--limit needs a whole number');
@@ -217,23 +250,92 @@ function tokensOf(text) {
   return text.toLowerCase().match(WORD) ?? [];
 }
 
-async function* corpusLines(file) {
+async function* bzipLines(file) {
   const child = spawn('bzip2', ['-dc', file], { stdio: ['ignore', 'pipe', 'inherit'] });
   const closed = new Promise((resolve) => child.on('close', resolve));
   const lines = createInterface({ input: child.stdout, crlfDelay: Infinity });
   try {
-    for await (const line of lines) {
-      const first = line.indexOf('\t');
-      const second = line.indexOf('\t', first + 1);
-      if (first < 0 || second < 0) continue;
-      yield { id: line.slice(0, first), text: line.slice(second + 1) };
-    }
+    for await (const line of lines) yield line;
   } finally {
     lines.close();
     if (child.exitCode === null) child.kill();
   }
   const code = await closed;
   if (code !== 0 && code !== null) throw new Error('bzip2 exited with ' + code);
+}
+
+/** Whether a headword is capitalised: its first letter is uppercase. */
+function isCapitalised(word) {
+  return /^\p{Lu}/u.test(word);
+}
+
+/** The key a headword's examples are picked under: its exact spelling when capitalised, else lowercase. */
+function exampleKey(word) {
+  return isCapitalised(word) ? word : word.toLowerCase();
+}
+
+/**
+ * The keys a sentence offers to example selection: every token in lowercase, and every capitalised
+ * token in its exact spelling unless it starts a sentence. A token starts a sentence when it is the
+ * first, or when a full stop, "!", "?" or "…" comes between it and the token before ("Hai mangiato
+ * dei frutti di mare? Crostacei, diciamo."). A capitalised key never equals a lowercase one.
+ */
+function exampleTokens(text) {
+  /** @type {string[]} */
+  const keys = [];
+  let end = -1;
+  for (const match of text.matchAll(WORD)) {
+    const token = match[0];
+    const initial = end < 0 || /[.!?\u2026]/.test(text.slice(end, match.index));
+    keys.push(token.toLowerCase());
+    if (!initial && isCapitalised(token)) keys.push(token);
+    end = match.index + token.length;
+  }
+  return keys;
+}
+
+/** A Tatoeba sentences export: id, language, text. */
+async function* corpusLines(file) {
+  for await (const line of bzipLines(file)) {
+    const first = line.indexOf('\t');
+    const second = line.indexOf('\t', first + 1);
+    if (first < 0 || second < 0) continue;
+    yield { id: line.slice(0, first), text: line.slice(second + 1) };
+  }
+}
+
+/**
+ * The direct Italian to English links, and the text of every linked English sentence.
+ * The English ids of one Italian sentence come back in ascending numeric order.
+ *
+ * @param {string} linksFile
+ * @param {string} engFile
+ * @returns {Promise<{ links: Map<string, string[]>, engText: Map<string, string> }>}
+ */
+async function readTranslations(linksFile, engFile) {
+  /** @type {Map<string, string[]>} */
+  const links = new Map();
+  /** @type {Set<string>} */
+  const wanted = new Set();
+  for await (const line of bzipLines(linksFile)) {
+    const [ita, eng] = line.split('\t');
+    if (!/^\d+$/.test(ita ?? '') || !/^\d+$/.test(eng ?? '')) continue;
+    const list = links.get(ita);
+    if (list) list.push(eng);
+    else links.set(ita, [eng]);
+    wanted.add(eng);
+  }
+  for (const list of links.values()) list.sort((a, b) => Number(a) - Number(b));
+  /** @type {Map<string, string>} */
+  const engText = new Map();
+  for await (const { id, text } of corpusLines(engFile)) if (wanted.has(id)) engText.set(id, text);
+  return { links, engText };
+}
+
+/** An English line fit to ship: trimmed, one line, not empty, at most MAX_EXAMPLE_EN. */
+function fitEnglish(text) {
+  const en = String(text ?? '').trim();
+  return en !== '' && !/[\r\n]/.test(en) && en.length <= MAX_EXAMPLE_EN ? en : '';
 }
 
 async function countCorpus(file) {
@@ -370,6 +472,31 @@ function formOfLemma(sense) {
   return { isForm: true, lemma: named ?? (at < 0 ? '' : gloss.slice(at + 4).trim()) };
 }
 
+/** The words a form-of gloss uses to describe grammar. A claim whose lemma is one of them is suspect. */
+const GRAMMAR_WORDS = new Set([
+  ...MOODS, ...TENSES.flatMap((tense) => tense.split(' ')),
+  'plurale', 'singolare', 'femminile', 'maschile', 'persona', 'prima', 'seconda', 'terza', 'verbo',
+]);
+
+/**
+ * How well a form-of gloss supports the claim's lemma. 0: it names the lemma ("plurale di avanzo",
+ * "del verbo avere", "d'arco"). 1: it mentions the lemma as a word, and the lemma is not a grammar
+ * word ("di arrendere, arrendersi"). 2: neither, so the claim contradicts its gloss. The source
+ * sometimes links a grammar word: "seconda persona singolare dell'imperativo presente di
+ * abalienare" with form_of "imperativo", or "terza persona singolare di rottamare del congiuntivo
+ * presente" with form_of "presente".
+ */
+function claimTier(gloss, lemma) {
+  const text = String(gloss ?? '').replace(/\s+/g, ' ');
+  const word = lemma.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // A superscript homograph mark may follow the lemma ("plurale di pomo¹"), and the source sometimes
+  // glues "di" to it ("plurale didegradante") or writes English ("Plural form of maschile").
+  const end = '(?![\\p{L}0-9])';
+  if (new RegExp("(?:^|[\\s,])(?:di\\s*|d'|verbo\\s+|of\\s+)" + word + end, 'u').test(text)) return 0;
+  if (!GRAMMAR_WORDS.has(lemma) && new RegExp('(?<![\\p{L}0-9])' + word + end, 'u').test(text)) return 1;
+  return 2;
+}
+
 /** "plurale di Cosa, vedi Coso" -> "plurale". This is the source's own wording. */
 function formOfText(gloss, lemma) {
   const text = String(gloss ?? '').replace(/\s+/g, ' ').trim();
@@ -487,10 +614,14 @@ async function readDictionary(file, hints) {
   const slots = new Map();
   const stats = { lines: 0, lemmaRecords: 0, formRecords: 0, lost: 0, rescued: 0, lemmaWords: new Set() };
 
-  const claim = (word, lemma, label, info) => {
+  const claim = (word, lemma, label, info, gloss) => {
     const key = foldWord(word);
     if (!key || key === foldWord(lemma) || word.length > 40 || /[\s()]/.test(word)) return;
-    if (!forms.has(key)) forms.set(key, { form: word, lemma, label, mood: info.mood, tense: info.tense, person: info.person, rank: info.rank });
+    // Every claim is kept, in source order. main() picks one per key among the lemmas that ship.
+    const record = { form: word, lemma, label, mood: info.mood, tense: info.tense, person: info.person, rank: info.rank, tier: claimTier(gloss, lemma) };
+    const list = forms.get(key);
+    if (list) list.push(record);
+    else forms.set(key, [record]);
   };
 
   for await (const line of createInterface({ input: createReadStream(file), crlfDelay: Infinity })) {
@@ -509,7 +640,7 @@ async function readDictionary(file, hints) {
       if (!isForm || !lemma) continue;
       const source = formOfText(sense.glosses?.[0], lemma);
       const info = describe(source);
-      claim(raw.word, lemma, source, info);
+      claim(raw.word, lemma, source, info, sense.glosses?.[0]);
       if (!info.mood) continue;
       // Number missing in the label: the hint wins when it agrees with the named
       // person, then singular is the safe default.
@@ -606,14 +737,88 @@ function entryJson(entry, id, examples) {
   return JSON.stringify(out);
 }
 
-/** Entry bodies, split until every file fits. The file name is the id prefix. */
-function planEntryFiles(items) {
+/**
+ * The previous build's entry files: their keys, which pin the split plan, and the word at every
+ * id, which the collision guard compares. Null when there is no readable previous build.
+ *
+ * @returns {Promise<{ keys: Set<string>, words: Map<string, string> } | null>}
+ */
+async function readPreviousBuild() {
+  const file = path.join(DATA, 'index.json');
+  let text;
+  try {
+    text = await readFile(file, 'utf8');
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    // The build writes the manifest last, so a build that died after clearing data/ leaves none.
+    // When git still tracks it, that is a lost baseline, not a fresh clone.
+    if (await trackedInHead('data/index.json')) {
+      throw new Error('data/ is missing but tracked in git: run `git checkout -- data/` first, or pass --fresh to accept new entry ids');
+    }
+    // No git, or no tracked data/: no previous build, and the caller warns once.
+    return null;
+  }
+  let manifest;
+  try {
+    manifest = JSON.parse(text);
+  } catch (err) {
+    throw new Error('data/index.json exists but does not parse (' + err.message + '); restore data/ with `git checkout -- data/`');
+  }
+  // A --limit build is a fixture. Pinning a full build to it would plan from a fraction of the
+  // entries and break the ids of the rest.
+  if (manifest.partial === true) {
+    throw new Error('data/ holds a partial --limit build, and a build pins its ids to the previous one. ' +
+      'Restore the committed data/ with `git checkout -- data/` and build again. Do not use --accept-id-moves for this');
+  }
+  const keys = new Set();
+  const words = new Map();
+  for (const bucket of Object.values(manifest.buckets ?? {})) {
+    for (const file of bucket.entry ?? []) {
+      keys.add(path.basename(file.path, '.json'));
+      let entries;
+      try {
+        entries = JSON.parse(await readFile(path.join(ROOT, file.path), 'utf8'));
+      } catch {
+        throw new Error('the previous build lists ' + file.path + ' but it does not read; restore data/ from git, or delete data/ to renumber every id');
+      }
+      for (const entry of entries) words.set(entry.id, entry.word);
+    }
+  }
+  return keys.size > 0 ? { keys, words } : null;
+}
+
+/** Whether git HEAD tracks a path. False when git or the repository is missing. */
+function trackedInHead(rel) {
+  return new Promise((resolve) => {
+    const child = spawn('git', ['cat-file', '-e', 'HEAD:' + rel], { cwd: ROOT, stdio: 'ignore' });
+    child.on('error', () => resolve(false));
+    child.on('close', (code) => resolve(code === 0));
+  });
+}
+
+/**
+ * Entry bodies, split until every file fits. The file name is the id prefix.
+ *
+ * With a previous plan, a group whose key was a previous file stays one file unless it passes
+ * MAX_FILE, and a group the previous build split is split again. A group the previous build
+ * never saw follows the ENTRY_CAP rule. So a body that shrinks never moves a split point.
+ *
+ * @param {Array<{ key: string, entry: any }>} items
+ * @param {Set<string> | null} pinned the previous build's entry-file keys
+ */
+function planEntryFiles(items, pinned) {
   const files = [];
-  for (const [, list] of groupBy(items, (item) => prefixKey(item.key, 2))) files.push(...splitEntryList(list, 2));
+  for (const [, list] of groupBy(items, (item) => prefixKey(item.key, 2))) files.push(...splitEntryList(list, 2, pinned));
   return files;
 }
 
-function splitEntryList(list, length) {
+/** Whether the previous build split this prefix into longer keys. */
+function pinnedSplit(pinned, prefix) {
+  for (const key of pinned) if (key.length > prefix.length && key.startsWith(prefix)) return true;
+  return false;
+}
+
+function splitEntryList(list, length, pinned = null) {
   const prefix = prefixKey(list[0].key, length);
   // A word shorter than the split prefix ("in") would take the bucket's own file name and
   // shadow every split file for a two-letter query. Such a group gets a name no query matches,
@@ -621,10 +826,17 @@ function splitEntryList(list, length) {
   const key = prefix.length < length ? prefix + '_' : prefix;
   const body = renderArray(list.map((item, index) => entryJson(item.entry, key + ':' + index, item.entry.ex)));
   const files = [{ key, items: list, body }];
-  if (Buffer.byteLength(body) <= ENTRY_CAP || length >= MAX_PREFIX) return files;
+  const bytes = Buffer.byteLength(body);
+  if (length >= MAX_PREFIX) return files;
+  let split = bytes > ENTRY_CAP;
+  if (pinned !== null && bytes <= MAX_FILE) {
+    if (pinned.has(key)) split = false;
+    else if (pinnedSplit(pinned, prefixKey(list[0].key, length))) split = true;
+  }
+  if (!split) return files;
   const parts = groupBy(list, (item) => prefixKey(item.key, length + 1));
   if (parts.size === 1) return files;
-  return [...parts.values()].flatMap((group) => splitEntryList(group, length + 1));
+  return [...parts.values()].flatMap((group) => splitEntryList(group, length + 1, pinned));
 }
 
 /** Object files (forms) split the same way, keyed by the form itself. */
@@ -642,18 +854,19 @@ function planObjectFiles(list, length, shortSuffix = true) {
 
 function licenceText() {
   return '# Data licence\n\n' +
-    'The files in this directory are built by tools/build-data.mjs from three sources.\n\n' +
+    'The files in this directory are built by tools/build-data.mjs from these sources.\n\n' +
     '| Source | Licence | URL |\n| --- | --- | --- |\n' +
     '| it.wiktionary | CC BY-SA 4.0 | https://it.wiktionary.org/ |\n' +
     '| en.wiktionary (Italian entries) | CC BY-SA 4.0 | https://en.wiktionary.org/ |\n' +
-    '| Tatoeba | CC BY 2.0 FR | https://tatoeba.org/ |\n' +
+    '| Tatoeba (Italian sentences, English sentences, Italian-English links) | CC BY 2.0 FR | https://tatoeba.org/ |\n' +
     '| FrequencyWords 50k list (Hermit Dave) | CC BY-SA 4.0 | https://github.com/hermitdave/FrequencyWords |\n\n' +
     '## Required attribution\n\n' +
     '- Italian definitions and inflected forms come from it.wiktionary, CC BY-SA 4.0.\n' +
     '  The extraction is https://kaikki.org/itwiktionary/Italiano/kaikki.org-dictionary-Italiano.jsonl\n' +
     '- English translations come from en.wiktionary, CC BY-SA 4.0.\n' +
     '  The extraction is https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl\n' +
-    '- Italian example sentences come from Tatoeba, CC BY 2.0 FR. Entries keep\n' +
+    '- ' + TATOEBA_LINE + ' - https://tatoeba.org/\n' +
+    '  Italian example sentences and their English translations. Entries keep\n' +
     '  positions; every sentence in data/ex/ keeps its Tatoeba id.\n' +
     '- CEFR bands come from the FrequencyWords Italian 50k list by Hermit Dave,\n' +
     '  CC BY-SA 4.0.\n' +
@@ -662,12 +875,53 @@ function licenceText() {
     'See NOTICE at the repository root for the full text.\n';
 }
 
+function noticeText() {
+  return 'itadict - offline Italian dictionary\n\n' +
+    'This file is written by tools/build-data.mjs. The dictionary data in data/ is\n' +
+    'derived from the sources below.\n\n' +
+    'it.wiktionary (Italian Wiktionary)\n' +
+    '  Site: https://it.wiktionary.org/\n' +
+    '  Extraction: https://kaikki.org/itwiktionary/Italiano/kaikki.org-dictionary-Italiano.jsonl\n' +
+    '  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/\n' +
+    '  Changes: fields pruned, glosses cleaned and shortened, headwords sharded,\n' +
+    '  inflected forms moved to a separate index.\n' +
+    '  27 pages flagged for copyright review are excluded; the list is in\n' +
+    '  tools/data-exclusions.json.\n\n' +
+    'en.wiktionary (English Wiktionary, Italian entries)\n' +
+    '  Site: https://en.wiktionary.org/\n' +
+    '  Extraction: https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl\n' +
+    '  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/\n' +
+    '  Changes: only word, part of speech and the senses\' glosses are kept. Three\n' +
+    '  glosses per part of speech, shortened, and joined to the Italian entry.\n\n' +
+    'Tatoeba sentences and translations\n' +
+    '  ' + TATOEBA_LINE + '\n' +
+    '  Site: https://tatoeba.org/\n' +
+    '  Exports: https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences.tsv.bz2\n' +
+    '           https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2\n' +
+    '           https://downloads.tatoeba.org/exports/per_language/ita/ita-eng_links.tsv.bz2\n' +
+    '  Licence: CC BY 2.0 FR - https://creativecommons.org/licenses/by/2.0/fr/\n' +
+    '  Changes: an Italian sentence ships with its directly linked English sentence\n' +
+    '  of the lowest id that fits ' + MAX_EXAMPLE_EN + ' characters. Sentences over ' + MAX_EXAMPLE + ' characters,\n' +
+    '  or with no such English, are left out, and a headword keeps at most ' + MAX_EXAMPLES + '.\n' +
+    '  Tatoeba ids of the Italian sentences are kept, so every example can be traced\n' +
+    '  back to its author. English ids are not shipped.\n\n' +
+    'FrequencyWords Italian 50k list\n' +
+    '  Author: Hermit Dave\n' +
+    '  Export: https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/it/it_50k.txt\n' +
+    '  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/\n' +
+    '  Changes: used only to rank lemmas into CEFR bands. No word list is shipped.\n\n' +
+    'All these licences allow redistribution with attribution. This NOTICE must ship\n' +
+    'with the data. Derived data stays under the same licences.\n';
+}
+
 /* ------------------------------------------------------------------- main */
 
 async function main() {
   const started = Date.now();
   const opts = parseArgs(process.argv.slice(2));
-  const [jsonl, enJsonl, tsv, frequencyFile] = await Promise.all(SOURCES.map((source) => ensureSource(source, opts.download)));
+  const [jsonl, enJsonl, tsv, frequencyFile, engTsv, linksTsv] = await Promise.all(SOURCES.map((source) => ensureSource(source, opts.download)));
+  // Read before anything else: the build replaces data/, and the old ids pin the new ones.
+  const previous = opts.fresh ? null : await readPreviousBuild();
   const excluded = new Set((JSON.parse(await readFile(EXCLUSIONS, 'utf8')).titles ?? []).map(foldWord));
 
   const corpus = await countCorpus(tsv);
@@ -714,12 +968,18 @@ async function main() {
   const top5000 = shipped.slice(0, 5000).filter((entry) => entry.en).length;
   const lemmaWords = new Set(shipped.map((entry) => entry.word));
 
-  // The form index only points at lemmas we ship.
+  // The form index points one folded form at one lemma we ship: the first claim in the source whose
+  // gloss supports its lemma (claimTier 0 or 1) and whose lemma ships. A claim whose gloss
+  // contradicts it is never used: the source sometimes links a grammar word ("…dell'imperativo
+  // presente di abalienare" with form_of "imperativo"). Choosing the most frequent lemma instead
+  // was measured and rejected (ADR 0004, Form to lemma).
   const formMisses = { unshipped: 0, unknown: 0 };
-  for (const [key, claim] of forms) {
-    if (lemmaWords.has(claim.lemma)) continue;
-    forms.delete(key);
-    if (stats.lemmaWords.has(claim.lemma)) formMisses.unshipped += 1;
+  /** @type {Map<string, any>} folded form -> the chosen claim */
+  const chosenForms = new Map();
+  for (const [key, claims] of forms) {
+    const best = claims.find((claim) => claim.tier !== 2 && lemmaWords.has(claim.lemma)) ?? null;
+    if (best !== null) chosenForms.set(key, best);
+    else if (claims.some((claim) => stats.lemmaWords.has(claim.lemma))) formMisses.unshipped += 1;
     else formMisses.unknown += 1;
   }
 
@@ -738,35 +998,50 @@ async function main() {
     entry.conj = buildConjugation(list);
   }
 
-  // Examples: three Tatoeba sentences per headword, matched on the lowercase token.
-  const headwords = new Set(shipped.map((entry) => entry.word.toLowerCase()));
-  const examples = new Map();
-  const textById = new Map();
+  // Examples: three Tatoeba sentences per headword, matched on a token as below, at most
+  // MAX_EXAMPLE characters, with a directly linked English sentence that fits MAX_EXAMPLE_EN,
+  // in corpus order. A candidate that fails either test is dropped here, before any position
+  // exists, and the next candidate takes its slot.
+  const { links, engText } = await readTranslations(linksTsv, engTsv);
+  // A lowercase headword matches any token, folded to lowercase. A capitalised headword (a name,
+  // an acronym: "SUA", "Nella", "Pesci") matches only its exact spelling, and never as a token
+  // that starts a sentence, whose capital comes from grammar: "Nella bacinella" is not Nella.
+  const headwords = new Set(shipped.map((entry) => exampleKey(entry.word)));
+  /** @type {Map<string, string[]>} token -> sentence ids, MAX_EXAMPLES at most */
+  const picks = new Map();
+  /** @type {Map<string, { it: string, en: string }>} */
+  const rowById = new Map();
+  /** A dropped candidate counts once per reason when it would have taken a slot. */
+  const dropped = { it: new Set(), en: new Set() };
   for await (const { id, text } of corpusLines(tsv)) {
-    if (text.length > MAX_EXAMPLE) continue;
-    const used = new Set();
-    for (const token of tokensOf(text)) {
-      if (used.has(token) || !headwords.has(token)) continue;
-      used.add(token);
-      const list = examples.get(token) ?? [];
-      if (!examples.has(token)) examples.set(token, list);
-      if (list.length < MAX_EXAMPLES) {
-        list.push(id);
-        textById.set(id, text);
-      }
+    const room = [...new Set(exampleTokens(text))]
+      .filter((token) => headwords.has(token) && (picks.get(token)?.length ?? 0) < MAX_EXAMPLES);
+    if (room.length === 0) continue;
+    if (text.length > MAX_EXAMPLE) {
+      dropped.it.add(id);
+      continue;
     }
+    const en = (links.get(id) ?? []).map((engId) => fitEnglish(engText.get(engId))).find((value) => value !== '') ?? '';
+    if (en === '') {
+      dropped.en.add(id);
+      continue;
+    }
+    for (const token of room) {
+      let list = picks.get(token);
+      if (!list) picks.set(token, (list = []));
+      list.push(id);
+    }
+    rowById.set(id, { it: text, en });
   }
   let attachments = 0;
+  let withExamples = 0;
   for (const entry of shipped) {
-    const list = examples.get(entry.word.toLowerCase());
-    if (!list) continue;
+    const list = picks.get(exampleKey(entry.word)) ?? [];
     entry.ex = list;
     attachments += list.length;
+    if (list.length > 0) withExamples += 1;
   }
 
-  await rm(DATA, { recursive: true, force: true });
-  await mkdir(DATA, { recursive: true });
-  await writeFile(path.join(DATA, 'LICENSE-DATA.md'), licenceText());
 
   // Bucket keys are always two characters. A split file keeps its longer name, but it is
   // listed under its two-character bucket, so the app finds it by longest prefix.
@@ -777,7 +1052,7 @@ async function main() {
     if (!list) files.get(name).set(bucket, (list = []));
     list.push({ key, body });
   };
-  const entryFiles = planEntryFiles(shipped.map((entry) => ({ key: entry.word, entry })));
+  const entryFiles = planEntryFiles(shipped.map((entry) => ({ key: entry.word, entry })), previous?.keys ?? null);
   let exampleRows = 0;
 
   // Ids are <file>:<position>.
@@ -786,6 +1061,36 @@ async function main() {
       item.entry.id = file.key + ':' + index;
     });
   }
+
+  // Saved state holds bare ids. An old id that now names another word would re-attach a
+  // schedule or a history line to the wrong entry, so that is a collision and the build stops
+  // before data/ is touched. An id that is gone only leaves a dead reference.
+  const ids = { kept: 0, gone: 0, collisions: /** @type {string[]} */ ([]) };
+  if (previous === null) {
+    console.warn('warning: ' + (opts.fresh ? '--fresh' : 'no previous build in data/') + '; the split plan starts over and every entry id is new');
+  } else {
+    const wordAt = new Map(shipped.map((entry) => [entry.id, entry.word]));
+    for (const [id, word] of previous.words) {
+      const now = wordAt.get(id);
+      if (now === undefined) ids.gone += 1;
+      else if (now !== word) ids.collisions.push(id + ' ' + word + ' -> ' + now);
+      else ids.kept += 1;
+    }
+    if (ids.gone > 0) console.warn('warning: ' + ids.gone + ' entry ids of the previous build are gone');
+    if (ids.collisions.length > 0) {
+      const sample = ids.collisions.slice(0, 10).join('; ');
+      if (!opts.acceptIdMoves && opts.limit === 0) {
+        throw new Error(ids.collisions.length + ' entry ids would name another word (' + sample + '). data/ is untouched. ' +
+          'Saved schedules and history would re-attach to those words; pass --accept-id-moves only on purpose');
+      }
+      console.warn('warning: ' + ids.collisions.length + ' entry ids name another word, accepted (' + sample + ')');
+    }
+  }
+
+  await rm(DATA, { recursive: true, force: true });
+  await mkdir(DATA, { recursive: true });
+  await writeFile(path.join(DATA, 'LICENSE-DATA.md'), licenceText());
+  await writeFile(path.join(ROOT, 'NOTICE'), noticeText());
 
   // Example ids are positions in the bucket's one example file. A split would shift every
   // position after the split point, so the build fails instead of splitting. The gate
@@ -803,7 +1108,11 @@ async function main() {
     const sentences = [...set].sort((a, b) => Number(a) - Number(b));
     examplePositions.set(bucket, new Map(sentences.map((id, index) => [id, index])));
     if (sentences.length === 0) continue;
-    const body = renderArray(sentences.map((id) => JSON.stringify([id, textById.get(id)])));
+    const body = renderArray(sentences.map((id) => {
+      const row = rowById.get(id);
+      if (row.en === '') throw new Error('sentence ' + id + ' has no English');
+      return JSON.stringify([id, row.it, row.en]);
+    }));
     const bytes = Buffer.byteLength(body);
     if (bytes > MAX_FILE) {
       throw new Error('data/ex/' + bucket + '.json would need a split (' + bytes + ' bytes); example positions cannot survive it');
@@ -862,12 +1171,15 @@ async function main() {
   }
 
   const idByWord = new Map(shipped.map((entry) => [entry.word, entry.id]));
-  const formItems = [...forms.entries()]
+  const formItems = [...chosenForms.entries()]
     .sort(([a], [b]) => (a < b ? -1 : 1))
-    .map(([form, claim]) => ({
-      key: form,
-      body: JSON.stringify(form) + ':' + JSON.stringify({ id: idByWord.get(claim.lemma), lemma: claim.lemma, label: claim.label }),
-    }));
+    .map(([form, claim]) => {
+      // The raw spelling, NFC, only when it is not the key itself: "e" holds { form: "è" } so a
+      // reader can tell the verb from the conjunction "e". A plain spelling costs nothing.
+      const raw = claim.form.normalize('NFC');
+      const record = { id: idByWord.get(claim.lemma), lemma: claim.lemma, label: claim.label, ...(raw !== form ? { form: raw } : {}) };
+      return { key: form, body: JSON.stringify(form) + ':' + JSON.stringify(record) };
+    });
   for (const [, list] of groupBy(formItems, (item) => prefixKey(item.key, 2))) {
     for (const file of planObjectFiles(list, 2)) addFile('forms', file.key, file.body);
   }
@@ -961,11 +1273,12 @@ async function main() {
     bucketKey: 'fold to lowercase, strip diacritics, first two letters or digits',
     idShape: '<file>:<position> in data/entry/<file>.json',
     persons: PERSON_LABELS,
-    sources: SOURCES.map((source) => ({ url: source.url, licence: source.licence })),
+    // About draws every distinct attribution, in this order.
+    sources: SOURCES.map((source) => ({ url: source.url, licence: source.licence, ...(source.attribution ? { attribution: source.attribution } : {}) })),
     buckets: Object.fromEntries(keys.map((key) => [key, buckets.get(key)])),
     cefr,
     coverage: { withEnglish, top5000 },
-    totals: { entries: shipped.length, forms: forms.size, examples: exampleRows, bytes, enTokens: enTokens.size },
+    totals: { entries: shipped.length, forms: chosenForms.size, examples: exampleRows, bytes, enTokens: enTokens.size },
   };
   const manifestText = JSON.stringify(manifest, null, 2) + '\n';
   await writeFile(path.join(DATA, 'index.json'), manifestText);
@@ -997,11 +1310,17 @@ async function main() {
     'CEFR bands            ' + bands,
     'verbs                 ' + verbs.length + ', with a table ' + verbs.filter((entry) => entry.conj.length > 0).length + ', with 30+ forms ' + with30,
     'conj rows             ' + verbs.reduce((total, entry) => total + entry.conj.reduce((n, group) => n + group.forms.filter(Boolean).length, 0), 0),
-    'form index            ' + forms.size + ' rows, ' + formBytes + ' bytes; dropped targets ' +
+    'form index            ' + chosenForms.size + ' rows, ' + formBytes + ' bytes; dropped targets ' +
       (formMisses.unshipped + formMisses.unknown) + ' (lemma not shipped ' + formMisses.unshipped + ', no lemma record ' + formMisses.unknown + ')',
-    'examples              ' + attachments + ' attachments, ' + textById.size + ' distinct sentences, ' + exampleRows + ' rows, ' + exBytes + ' bytes',
+    'examples              ' + exampleRows + ' rows, all with human English; ' + rowById.size + ' distinct sentences, ' +
+      attachments + ' attachments, ' + exBytes + ' bytes',
+    'example entries       ' + withExamples + ' of ' + shipped.length + ' entries have an example',
+    'example drops         Italian over ' + MAX_EXAMPLE + ' ' + dropped.it.size + ', no English that fits ' + MAX_EXAMPLE_EN + ' ' +
+      dropped.en.size + ' (candidates that would have taken a slot)',
     'bytes                 search ' + searchBytes + ', entry ' + entryBytes + ', forms ' + formBytes + ', ex ' + exBytes + ', en ' + setBytes.en + ', total ' + bytes,
     'cefr decks            ' + BAND_ORDER.map((band) => band + ':' + cefr[band].reduce((n, file) => n + 1, 0) + 'f/' + cefr[band].reduce((n, file) => n + file.bytes, 0) + 'B').join(' '),
+    'entry ids             ' + (previous === null ? 'all new, no previous build' :
+      ids.kept + ' kept, ' + ids.gone + ' gone, ' + ids.collisions.length + ' name another word, ' + (shipped.length - ids.kept - ids.collisions.length) + ' new'),
     'files                 ' + written.length + ', largest ' + largest + ', buckets ' + keys.length,
     'build time            ' + ((Date.now() - started) / 1000).toFixed(1) + 's',
     'manifest              ' + Buffer.byteLength(manifestText) + ' bytes, ' + version,

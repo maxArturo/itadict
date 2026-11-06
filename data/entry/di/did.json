@@ -1,7 +1,7 @@
 [
-{"id":"did:0","word":"didattica","ipa":"/diˈdattika/","cefr":"c2","pos":[{"pos":"noun","senses":["scienza dell'insegnamento"]}],"en":[{"pos":"noun","glosses":["didactics, education"]}],"ex":[755,1069]},
-{"id":"did:1","word":"didattico","ipa":"/diˈdattiko/","cefr":"c2","pos":[{"pos":"adj","senses":["concernente l'insegnamento, che insegna"]}],"en":[{"pos":"adj","glosses":["didactic","teaching","educational"]}],"ex":[527,1086]},
-{"id":"did:2","word":"didascalia","ipa":"/didaskaˈlia/","cefr":"c2","pos":[{"pos":"noun","senses":["spiegazione scritta di un'immagine, posta accanto ad essa, per renderla comprensibile a chi la guarda"]}],"en":[{"pos":"noun","glosses":["caption","stage direction","caption, closed caption"]}],"ex":[459]},
+{"id":"did:0","word":"didattica","ipa":"/diˈdattika/","cefr":"c2","pos":[{"pos":"noun","senses":["scienza dell'insegnamento"]}],"en":[{"pos":"noun","glosses":["didactics, education"]}],"ex":[532]},
+{"id":"did:1","word":"didattico","ipa":"/diˈdattiko/","cefr":"c2","pos":[{"pos":"adj","senses":["concernente l'insegnamento, che insegna"]}],"en":[{"pos":"adj","glosses":["didactic","teaching","educational"]}]},
+{"id":"did:2","word":"didascalia","ipa":"/didaskaˈlia/","cefr":"c2","pos":[{"pos":"noun","senses":["spiegazione scritta di un'immagine, posta accanto ad essa, per renderla comprensibile a chi la guarda"]}],"en":[{"pos":"noun","glosses":["caption","stage direction","caption, closed caption"]}]},
 {"id":"did:3","word":"didietro","cefr":"c1","pos":[{"pos":"noun","senses":["fondoschiena","la parte posteriore"]},{"pos":"adj","senses":["fondoschiena"]},{"pos":"adv","senses":["fondoschiena"]}],"en":[{"pos":"noun","glosses":["rear","backside, hind"]},{"pos":"adj","glosses":["back, rear"]},{"pos":"adv","glosses":["behind"]}]},
 {"id":"did:4","word":"Didaco","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
 {"id":"did:5","word":"Didima","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},

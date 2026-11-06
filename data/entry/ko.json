@@ -1,6 +1,6 @@
 [
-{"id":"ko:0","word":"Kobe","cefr":"c1","pos":[{"pos":"name","senses":["città del Giappone"]}],"ex":[0,1,2]},
-{"id":"ko:1","word":"koala","ipa":"/koˈala/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero australiano che assomiglia ad un orso, privo di coda"]}],"en":[{"pos":"noun","glosses":["koala"]}],"ex":[3,4,5]},
+{"id":"ko:0","word":"Kobe","cefr":"c1","pos":[{"pos":"name","senses":["città del Giappone"]}],"ex":[0,1,3]},
+{"id":"ko:1","word":"koala","ipa":"/koˈala/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero australiano che assomiglia ad un orso, privo di coda"]}],"en":[{"pos":"noun","glosses":["koala"]}],"ex":[2,4,5]},
 {"id":"ko:2","word":"kosher","cefr":"c2","pos":[{"pos":"adj","senses":["che concerne la kasherùt","luogo in cui si può mangiare kosher","studio permesso","kosher Torah: testi di Torah senza aggiunte né \"cancellazioni\", cioè con i commenti secondo verità"]},{"pos":"noun","senses":["nella religione ebraica indica gli alimenti permessi secondo le regole della stessa, tra essi anche salumi kòsher"]}],"ex":[10,11,12]},
 {"id":"ko:3","word":"Kolkata","cefr":"c2","pos":[{"pos":"name","senses":["nome moderno di Calcutta, città dell'India"]}],"ex":[13,14]},
 {"id":"ko:4","word":"kotava","cefr":"c2","pos":[{"pos":"adj","senses":["relativo alla lingua kotava"]},{"pos":"noun","senses":["lingua artificiale a priori, cioè senza relazione alcuna con le lingue naturali, creata tra il 1975 e il 1978 da Staren Fetcey"]}],"ex":[8,9]},

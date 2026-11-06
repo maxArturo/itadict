@@ -1,5 +1,5 @@
 [
-{"id":"mei:0","word":"meitnerio","cefr":"c2","pos":[{"pos":"noun","senses":["elemento chimico artificiale, sintetizzato per la prima volta il 29 agosto 1982, facente parte del gruppo dei metalli del gruppo d, avente numero atomico 109, peso atomico 268 e simbolo chimico Mt"]}],"en":[{"pos":"noun","glosses":["meitnerium"]}],"ex":[425]},
+{"id":"mei:0","word":"meitnerio","cefr":"c2","pos":[{"pos":"noun","senses":["elemento chimico artificiale, sintetizzato per la prima volta il 29 agosto 1982, facente parte del gruppo dei metalli del gruppo d, avente numero atomico 109, peso atomico 268 e simbolo chimico Mt"]}],"en":[{"pos":"noun","glosses":["meitnerium"]}]},
 {"id":"mei:1","word":"Meinardo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
 {"id":"mei:2","word":"meiosi","ipa":"/meˈjɔzi/","cefr":"c2","pos":[{"pos":"noun","senses":["serie di operazioni di divisione della cellula da cui nascono i gameti, dove i cromosomi sono la metà di quelli della cellula di partenza, e che permette di mantenere invariati i cromosomi di una…"]}],"en":[{"pos":"noun","glosses":["meiosis"]}]},
 {"id":"mei:3","word":"meiotico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda la meiosi"]}],"en":[{"pos":"adj","glosses":["meiotic"]}]}

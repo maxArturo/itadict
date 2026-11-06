@@ -1,7 +1,7 @@
 [
-{"id":"teg:0","word":"Tegucigalpa","cefr":"c2","pos":[{"pos":"name","senses":["capitale dell'Honduras"]}],"ex":[237,238,252]},
-{"id":"teg:1","word":"teglia","ipa":"/ˈteʎʎa/","cefr":"c2","pos":[{"pos":"noun","senses":["recipiente usato per cucinare alimenti in forno"]}],"en":[{"pos":"noun","glosses":["tin, tray or sheet for baking","the quantity of food contained in such tin etc.","large-brimmed hat worn by some priests"]}],"ex":[190,384,430]},
-{"id":"teg:2","word":"tegola","ipa":"/ˈteɡola/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuno dei componenti geometrici di un tetto, realizzato in materiali resistenti ma leggeri","disgrazia o danno inaspettati"]}],"en":[{"pos":"noun","glosses":["tile (roofing)"]}],"ex":[278]},
+{"id":"teg:0","word":"Tegucigalpa","cefr":"c2","pos":[{"pos":"name","senses":["capitale dell'Honduras"]}],"ex":[184,185,192]},
+{"id":"teg:1","word":"teglia","ipa":"/ˈteʎʎa/","cefr":"c2","pos":[{"pos":"noun","senses":["recipiente usato per cucinare alimenti in forno"]}],"en":[{"pos":"noun","glosses":["tin, tray or sheet for baking","the quantity of food contained in such tin etc.","large-brimmed hat worn by some priests"]}],"ex":[310]},
+{"id":"teg:2","word":"tegola","ipa":"/ˈteɡola/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuno dei componenti geometrici di un tetto, realizzato in materiali resistenti ma leggeri","disgrazia o danno inaspettati"]}],"en":[{"pos":"noun","glosses":["tile (roofing)"]}]},
 {"id":"teg:3","word":"tegolato","cefr":"c2","pos":[{"pos":"adj","senses":["coperto"]}]},
 {"id":"teg:4","word":"tegumentale","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda i rivestimenti esterni degli esseri viventi"]}],"en":[{"pos":"adj","glosses":["integumental"]}]},
 {"id":"teg:5","word":"tegumentario","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda gli apparati di rivestimento degli esseri viventi superiori"]}],"en":[{"pos":"adj","glosses":["integumental"]}]},

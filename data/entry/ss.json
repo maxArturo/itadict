@@ -1,5 +1,5 @@
 [
-{"id":"ss:0","word":"SS","cefr":"c1","pos":[{"pos":"abbrev","senses":["Santa Sede:","sigla automobilistica di Sassari","Strada Statale","Sua Santità"]}],"ex":[0,1]},
+{"id":"ss:0","word":"SS","cefr":"c1","pos":[{"pos":"abbrev","senses":["Santa Sede:","sigla automobilistica di Sassari","Strada Statale","Sua Santità"]}]},
 {"id":"ss:1","word":"S. S.","cefr":"c2","pos":[{"pos":"abbrev","senses":["abbreviatura assiografica di: Sua Santità"]}]},
 {"id":"ss:2","word":"S. S. R. M.","cefr":"c2","pos":[{"pos":"abbrev","senses":["abbreviatura assiografica di: Sua Sacra Real Maestà"]}]}
 ]

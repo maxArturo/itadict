@@ -1,7 +1,7 @@
 [
-{"id":"ph:0","word":"PHP","cefr":"c2","pos":[{"pos":"name","senses":["linguaggio di scripting utilizzato per creare applicazioni web"]}],"ex":[1,2,3]},
-{"id":"ph:1","word":"Phoenix","ipa":"/ˈfiniks/","cefr":"b2","pos":[{"pos":"name","senses":["capitale dell'Arizona, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[0,4]},
-{"id":"ph:2","word":"pH","ipa":"/piˈakka/","cefr":"c2","pos":[{"pos":"abbrev","senses":["indice del grado di acidità di una soluzione definito come il logaritmo in base 10 cambiato di segno dell'attività dello ione idrogeno; in soluzione acquosa varia da 1 a 14"]}],"ex":[5]},
+{"id":"ph:0","word":"PHP","cefr":"c2","pos":[{"pos":"name","senses":["linguaggio di scripting utilizzato per creare applicazioni web"]}],"ex":[0]},
+{"id":"ph:1","word":"Phoenix","ipa":"/ˈfiniks/","cefr":"b2","pos":[{"pos":"name","senses":["capitale dell'Arizona, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[1]},
+{"id":"ph:2","word":"pH","ipa":"/piˈakka/","cefr":"c2","pos":[{"pos":"abbrev","senses":["indice del grado di acidità di una soluzione definito come il logaritmo in base 10 cambiato di segno dell'attività dello ione idrogeno; in soluzione acquosa varia da 1 a 14"]}]},
 {"id":"ph:3","word":"Philips","cefr":"c2","pos":[{"pos":"name","senses":["società olandese per lo sviluppo di elettrodomestici e prodotti elettronici, fondata nel 1891"]}]},
 {"id":"ph:4","word":"pH-metro","cefr":"c2","pos":[{"pos":"noun","senses":["apparecchio graduato per misurare il pH"]}],"en":[{"pos":"noun","glosses":["pH meter"]}]},
 {"id":"ph:5","word":"phablet","cefr":"c2","pos":[{"pos":"noun","senses":["dispositivo elettronico portatile provvisto di schermo tattile di dimensioni leggermente inferiori a quelle di un tablet, del quale unisce funzioni caratteristiche con quelle di base di un telefono…"]}]},

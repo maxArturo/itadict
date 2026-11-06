@@ -1,6 +1,6 @@
 [
-{"id":"cof:0","word":"cofano","ipa":"/ˈkɔfano/","cefr":"c1","pos":[{"pos":"noun","senses":["portellone del vano-motore"]}],"en":[{"pos":"noun","glosses":["coffer, chest","bonnet (UK, Australia), hood (US) (of a car)"]}],"ex":[1241,1242,1243]},
-{"id":"cof:1","word":"cofanetto","ipa":"/kofaˈnetto/","cefr":"c2","pos":[{"pos":"noun","senses":["diminutivo di cofano"]}],"en":[{"pos":"noun","glosses":["casket"]}],"ex":[2136,2137,2138]},
+{"id":"cof:0","word":"cofano","ipa":"/ˈkɔfano/","cefr":"c1","pos":[{"pos":"noun","senses":["portellone del vano-motore"]}],"en":[{"pos":"noun","glosses":["coffer, chest","bonnet (UK, Australia), hood (US) (of a car)"]}],"ex":[916,917,918]},
+{"id":"cof:1","word":"cofanetto","ipa":"/kofaˈnetto/","cefr":"c2","pos":[{"pos":"noun","senses":["diminutivo di cofano"]}],"en":[{"pos":"noun","glosses":["casket"]}]},
 {"id":"cof:2","word":"cofattore","cefr":"c2","pos":[{"pos":"noun","senses":["sostanza inorganica che fa funzionare un enzima"]}],"en":[{"pos":"noun","glosses":["cofactor"]}]},
 {"id":"cof:3","word":"coffa","ipa":"/ˈkɔffa/","cefr":"c2","pos":[{"pos":"noun","senses":["piattaforma semicircolare che si trova quasi sulla sommità di ogni albero dei velieri a vele quadre, con la parte rotonda rivolta verso prua."]}],"en":[{"pos":"noun","glosses":["top (framework at the top of a ship's mast)"]}]},
 {"id":"cof:4","word":"cofinanziamento","cefr":"c2","pos":[{"pos":"noun","senses":["fornitura di denaro da parte di più soggetti"]}],"en":[{"pos":"noun","glosses":["co-financing"]}]},

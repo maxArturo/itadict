@@ -5,5 +5,5 @@
 "didattica":{"id":"did:1","lemma":"didattico","label":"femminile"},
 "didattiche":{"id":"did:1","lemma":"didattico","label":"femminile plurale"},
 "didattici":{"id":"did:1","lemma":"didattico","label":"plurale"},
-"didelfidi":{"id":"did:11","lemma":"didelfide","label":"plurale"}
+"didelfidi":{"id":"did:11","lemma":"didelfide","label":"plurale","form":"Didelfidi"}
 }

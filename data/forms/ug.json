@@ -37,7 +37,7 @@
 "uguagliavate":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "uguagliavi":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "uguagliavo":{"id":"ug:17","lemma":"uguagliare","label":"prima persona singolare dell'indicativo imperfetto"},
-"uguagliera":{"id":"ug:17","lemma":"uguagliare","label":"terza persona singolare dell'indicativo futuro"},
+"uguagliera":{"id":"ug:17","lemma":"uguagliare","label":"terza persona singolare dell'indicativo futuro","form":"uguaglierà"},
 "uguaglierai":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona singolare dell'indicativo futuro"},
 "uguaglieranno":{"id":"ug:17","lemma":"uguagliare","label":"terza persona plurale dell'indicativo futuro"},
 "uguaglierebbe":{"id":"ug:17","lemma":"uguagliare","label":"terza persona singolare del condizionale presente"},
@@ -48,7 +48,7 @@
 "uguagliereste":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona plurale del condizionale presente"},
 "uguaglieresti":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona singolare del condizionale presente"},
 "uguaglierete":{"id":"ug:17","lemma":"uguagliare","label":"seconda persona plurale dell'indicativo futuro"},
-"uguagliero":{"id":"ug:17","lemma":"uguagliare","label":"prima persona singolare dell'indicativo futuro"},
+"uguagliero":{"id":"ug:17","lemma":"uguagliare","label":"prima persona singolare dell'indicativo futuro","form":"uguaglierò"},
 "uguaglino":{"id":"ug:17","lemma":"uguagliare","label":"terza persona plurale del congiuntivo presente"},
 "uguaglio":{"id":"ug:17","lemma":"uguagliare","label":"prima persona singolare dell'indicativo presente"},
 "uguali":{"id":"ug:1","lemma":"uguale","label":"plurale"}

@@ -1,6 +1,6 @@
 {
 "amo":{"id":"am:10","lemma":"amare","label":"prima persona singolare indicativo presente"},
-"amoreggera":{"id":"am:409","lemma":"amoreggiare","label":"terza persona singolare dell'indicativo futuro"},
+"amoreggera":{"id":"am:409","lemma":"amoreggiare","label":"terza persona singolare dell'indicativo futuro","form":"amoreggerà"},
 "amoreggerai":{"id":"am:409","lemma":"amoreggiare","label":"seconda persona singolare dell'indicativo futuro"},
 "amoreggeranno":{"id":"am:409","lemma":"amoreggiare","label":"terza persona plurale dell'indicativo futuro"},
 "amoreggerebbe":{"id":"am:409","lemma":"amoreggiare","label":"terza persona singolare del condizionale presente"},
@@ -11,7 +11,7 @@
 "amoreggereste":{"id":"am:409","lemma":"amoreggiare","label":"seconda persona plurale del condizionale presente"},
 "amoreggeresti":{"id":"am:409","lemma":"amoreggiare","label":"seconda persona singolare del condizionale presente"},
 "amoreggerete":{"id":"am:409","lemma":"amoreggiare","label":"seconda persona plurale dell'indicativo futuro"},
-"amoreggero":{"id":"am:409","lemma":"amoreggiare","label":"prima persona singolare dell'indicativo futuro"},
+"amoreggero":{"id":"am:409","lemma":"amoreggiare","label":"prima persona singolare dell'indicativo futuro","form":"amoreggerò"},
 "amoreggi":{"id":"am:409","lemma":"amoreggiare","label":"seconda persona singolare dell'indicativo presente"},
 "amoreggia":{"id":"am:409","lemma":"amoreggiare","label":"terza persona singolare dell'indicativo presente"},
 "amoreggiai":{"id":"am:409","lemma":"amoreggiare","label":"prima persona singolare dell'indicativo passato remoto"},

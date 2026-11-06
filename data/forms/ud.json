@@ -1,6 +1,6 @@
 {
 "udendo":{"id":"ud:2","lemma":"udire","label":"gerundio presente"},
-"udi":{"id":"ud:2","lemma":"udire","label":"terza persona singolare dell'indicativo passato remoto"},
+"udi":{"id":"ud:2","lemma":"udire","label":"terza persona singolare dell'indicativo passato remoto","form":"udì"},
 "udiamo":{"id":"ud:2","lemma":"udire","label":"prima persona plurale dell'indicativo presente"},
 "udibili":{"id":"ud:4","lemma":"udibile","label":"plurale"},
 "udienze":{"id":"ud:1","lemma":"udienza","label":"plurale"},
@@ -11,5 +11,5 @@
 "uditive":{"id":"ud:6","lemma":"uditivo","label":"femminile plurale"},
 "uditivi":{"id":"ud:6","lemma":"uditivo","label":"plurale"},
 "udito":{"id":"ud:2","lemma":"udire","label":"participio passato maschile singolare"},
-"udra":{"id":"ud:2","lemma":"udire","label":"terza persona singolare dell'indicativo futuro semplice"}
+"udra":{"id":"ud:2","lemma":"udire","label":"terza persona singolare dell'indicativo futuro semplice","form":"udrà"}
 }

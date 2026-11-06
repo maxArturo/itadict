@@ -1,18 +1,12 @@
 [
-["799135","Questo yacht è molto costoso."],
-["799141","Sei uno yankee?"],
-["1098324","A Yang non piace il mio amico."],
-["1098326","A Yang non piace la mia amica."],
-["1964338","Molti yacht sono nel porto."],
-["1964340","C'è qualche yacht nel mare calmo."],
-["2947563","Tom lavora per Scotland Yard."],
-["3163767","Molti studiosi ritengono che il Tetragramma dovrebbe essere pronunciato \"Yahweh\"."],
-["5482385","Gli yankee non sono amici nostri."],
-["6606044","Questo è uno yak."],
-["6606045","Questo è uno yak?"],
-["6606046","Questo non è uno yak."],
-["11399198","Lo yin è femminile e lo yang è maschile."],
-["11729041","Yamoussoukro è la capitale della Costa d'Avorio."],
-["13292240","La capitale della Costa d'Avorio è Yamoussoukro."],
-["13947080","Chiamate Scotland Yard."]
+["799135","Questo yacht è molto costoso.","This yacht is very expensive."],
+["799141","Sei uno yankee?","Are you a yankee?"],
+["1098324","A Yang non piace il mio amico.","Yang doesn't like my friend."],
+["1098326","A Yang non piace la mia amica.","Yang doesn't like my friend."],
+["1964338","Molti yacht sono nel porto.","Many yachts are in the harbor."],
+["1964340","C'è qualche yacht nel mare calmo.","There are a few yachts on the calm sea."],
+["2947563","Tom lavora per Scotland Yard.","Tom works for Scotland Yard."],
+["3163767","Molti studiosi ritengono che il Tetragramma dovrebbe essere pronunciato \"Yahweh\".","Most scholars believe that the Tetragrammaton should be pronounced \"Yahweh\"."],
+["11399198","Lo yin è femminile e lo yang è maschile.","The yin is feminine and the yang is masculine."],
+["13292240","La capitale della Costa d'Avorio è Yamoussoukro.","The Capital of Ivory Coast is Yamoussoukro."]
 ]

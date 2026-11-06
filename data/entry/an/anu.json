@@ -1,5 +1,5 @@
 [
-{"id":"anu:0","word":"anulare","cefr":"c2","pos":[{"pos":"adj","senses":["con la forma di un anello","che porta l'anello","detto di volta di forma emisferica poggiante sulle pareti disposte in circolo"]},{"pos":"noun","senses":["il quarto dito della mano"]}],"en":[{"pos":"adj","glosses":["ring","annular, ring-shaped"]},{"pos":"noun","glosses":["ring finger"]}],"ex":[70,104,324]},
+{"id":"anu:0","word":"anulare","cefr":"c2","pos":[{"pos":"adj","senses":["con la forma di un anello","che porta l'anello","detto di volta di forma emisferica poggiante sulle pareti disposte in circolo"]},{"pos":"noun","senses":["il quarto dito della mano"]}],"en":[{"pos":"adj","glosses":["ring","annular, ring-shaped"]},{"pos":"noun","glosses":["ring finger"]}],"ex":[184,185,276]},
 {"id":"anu:1","word":"Anuri","ipa":"/aˈnuri/","cefr":"c2","pos":[{"pos":"noun","senses":["ordine di anfibi"]}]},
 {"id":"anu:2","word":"anubi","ipa":"/aˈnubi/","cefr":"c2","pos":[{"pos":"noun","senses":["babbuini verdi"]}],"en":[{"pos":"noun","glosses":["olive baboon (Papio anubis)"]}]},
 {"id":"anu:3","word":"anucleato","cefr":"c2","pos":[{"pos":"adj","senses":["(di) cellula senza nucleo"]}],"en":[{"pos":"adj","glosses":["anucleate"]}]},

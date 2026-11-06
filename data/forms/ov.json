@@ -27,7 +27,7 @@
 "ovattavate":{"id":"ov:26","lemma":"ovattare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "ovattavi":{"id":"ov:26","lemma":"ovattare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "ovattavo":{"id":"ov:26","lemma":"ovattare","label":"prima persona singolare dell'indicativo imperfetto"},
-"ovattera":{"id":"ov:26","lemma":"ovattare","label":"terza persona singolare dell'indicativo futuro"},
+"ovattera":{"id":"ov:26","lemma":"ovattare","label":"terza persona singolare dell'indicativo futuro","form":"ovatterà"},
 "ovatterai":{"id":"ov:26","lemma":"ovattare","label":"seconda persona singolare dell'indicativo futuro"},
 "ovatteranno":{"id":"ov:26","lemma":"ovattare","label":"terza persona plurale dell'indicativo futuro"},
 "ovatterebbe":{"id":"ov:26","lemma":"ovattare","label":"terza persona singolare del condizionale presente"},
@@ -38,7 +38,7 @@
 "ovattereste":{"id":"ov:26","lemma":"ovattare","label":"seconda persona plurale del condizionale presente"},
 "ovatteresti":{"id":"ov:26","lemma":"ovattare","label":"seconda persona singolare del condizionale presente"},
 "ovatterete":{"id":"ov:26","lemma":"ovattare","label":"seconda persona plurale dell'indicativo futuro"},
-"ovattero":{"id":"ov:26","lemma":"ovattare","label":"prima persona singolare dell'indicativo futuro"},
+"ovattero":{"id":"ov:26","lemma":"ovattare","label":"prima persona singolare dell'indicativo futuro","form":"ovatterò"},
 "ovatti":{"id":"ov:26","lemma":"ovattare","label":"seconda persona singolare dell'indicativo presente"},
 "ovattiamo":{"id":"ov:26","lemma":"ovattare","label":"prima persona plurale dell'indicativo presente"},
 "ovattiate":{"id":"ov:26","lemma":"ovattare","label":"seconda persona plurale del congiuntivo presente"},
@@ -77,7 +77,7 @@
 "ovulavi":{"id":"ov:39","lemma":"ovulare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "ovulavo":{"id":"ov:39","lemma":"ovulare","label":"prima persona singolare dell'indicativo imperfetto"},
 "ovulazioni":{"id":"ov:12","lemma":"ovulazione","label":"plurale"},
-"ovulera":{"id":"ov:39","lemma":"ovulare","label":"terza persona singolare dell'indicativo futuro"},
+"ovulera":{"id":"ov:39","lemma":"ovulare","label":"terza persona singolare dell'indicativo futuro","form":"ovulerà"},
 "ovulerai":{"id":"ov:39","lemma":"ovulare","label":"seconda persona singolare dell'indicativo futuro"},
 "ovuleranno":{"id":"ov:39","lemma":"ovulare","label":"terza persona plurale dell'indicativo futuro"},
 "ovulerebbe":{"id":"ov:39","lemma":"ovulare","label":"terza persona singolare del condizionale presente"},
@@ -88,7 +88,7 @@
 "ovulereste":{"id":"ov:39","lemma":"ovulare","label":"seconda persona plurale del condizionale presente"},
 "ovuleresti":{"id":"ov:39","lemma":"ovulare","label":"seconda persona singolare del condizionale presente"},
 "ovulerete":{"id":"ov:39","lemma":"ovulare","label":"seconda persona plurale dell'indicativo futuro"},
-"ovulero":{"id":"ov:39","lemma":"ovulare","label":"prima persona singolare dell'indicativo futuro"},
+"ovulero":{"id":"ov:39","lemma":"ovulare","label":"prima persona singolare dell'indicativo futuro","form":"ovulerò"},
 "ovuli":{"id":"ov:39","lemma":"ovulare","label":"seconda persona singolare dell'indicativo presente"},
 "ovuliamo":{"id":"ov:39","lemma":"ovulare","label":"prima persona plurale dell'indicativo presente"},
 "ovuliate":{"id":"ov:39","lemma":"ovulare","label":"seconda persona plurale del congiuntivo presente"},
@@ -120,5 +120,5 @@
 "ovviavi":{"id":"ov:41","lemma":"ovviare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "ovviavo":{"id":"ov:41","lemma":"ovviare","label":"prima persona singolare dell'indicativo imperfetto"},
 "ovvie":{"id":"ov:2","lemma":"ovvio","label":"femminile plurale"},
-"ovvio":{"id":"ov:41","lemma":"ovviare","label":"terza persona singolare dell'indicativo passato remoto"}
+"ovvio":{"id":"ov:41","lemma":"ovviare","label":"terza persona singolare dell'indicativo passato remoto","form":"ovviò"}
 }

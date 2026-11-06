@@ -1,5 +1,5 @@
 [
-{"id":"dib:0","word":"dibattito","ipa":"/diˈbattito/","cefr":"b2","pos":[{"pos":"noun","senses":["discussione pubblica su un determinato argomento"]}],"en":[{"pos":"noun","glosses":["debate, discussion"]}],"ex":[105,324,396]},
+{"id":"dib:0","word":"dibattito","ipa":"/diˈbattito/","cefr":"b2","pos":[{"pos":"noun","senses":["discussione pubblica su un determinato argomento"]}],"en":[{"pos":"noun","glosses":["debate, discussion"]}],"ex":[312,401,421]},
 {"id":"dib:1","word":"di bocca buona","cefr":"c2","pos":[{"pos":"phrase","senses":["(di persona) che mangia qualunque cosa, senza distinzione","agevolmente esaudibile"]}]},
 {"id":"dib:2","word":"di botto","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in modo inaspettato"]}]},
 {"id":"dib:3","word":"di buona famiglia","cefr":"c2","pos":[{"pos":"phrase","senses":["di ottimo status sociale"]}]},

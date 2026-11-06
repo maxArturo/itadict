@@ -1,7 +1,7 @@
 [
 {"id":"xe:0","word":"xenofobia","ipa":"/kse.no.foˈbi.a/","cefr":"c2","pos":[{"pos":"noun","senses":["avversione per le persone straniere","intolleranza verso gli stranieri"]}],"en":[{"pos":"noun","glosses":["xenophobia"]}],"ex":[0,1,2]},
-{"id":"xe:1","word":"xenofobo","cefr":"c2","pos":[{"pos":"adj","senses":["che nutre avversione per tutto ciò che è straniero"]},{"pos":"noun","senses":["chi nutre avversione per tutto ciò che è straniero"]}],"en":[{"pos":"adj","glosses":["xenophobic"]},{"pos":"noun","glosses":["xenophobe"]}],"ex":[3,4,7]},
-{"id":"xe:2","word":"xeno","ipa":"/ˈksɛno/","cefr":"c2","pos":[{"pos":"noun","senses":["elemento chimico gassoso facente parte del gruppo dei gas nobili, avente numero atomico 54, peso atomico 131,3 e simbolo chimico Xe"]}],"en":[{"pos":"noun","glosses":["xenon"]}],"ex":[5,6]},
+{"id":"xe:1","word":"xenofobo","cefr":"c2","pos":[{"pos":"adj","senses":["che nutre avversione per tutto ciò che è straniero"]},{"pos":"noun","senses":["chi nutre avversione per tutto ciò che è straniero"]}],"en":[{"pos":"adj","glosses":["xenophobic"]},{"pos":"noun","glosses":["xenophobe"]}],"ex":[5,6]},
+{"id":"xe:2","word":"xeno","ipa":"/ˈksɛno/","cefr":"c2","pos":[{"pos":"noun","senses":["elemento chimico gassoso facente parte del gruppo dei gas nobili, avente numero atomico 54, peso atomico 131,3 e simbolo chimico Xe"]}],"en":[{"pos":"noun","glosses":["xenon"]}],"ex":[3,4]},
 {"id":"xe:3","word":"Xenartri","ipa":"/kseˈnartri/","cefr":"c2","pos":[{"pos":"noun","senses":["mammiferi Euteri Sdentati"]}],"en":[{"pos":"noun","glosses":["plural of xenartro"]}]},
 {"id":"xe:4","word":"xenartro","ipa":"/kseˈnartro/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero euterio sdentato"]}],"en":[{"pos":"noun","glosses":["xenarthran"]}]},
 {"id":"xe:5","word":"xenobiologia","cefr":"c2","pos":[{"pos":"noun","senses":["branca della biologia che studia le possibilità di vita extraterrestre"]}],"en":[{"pos":"noun","glosses":["xenobiology"]}]},

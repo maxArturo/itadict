@@ -1,5 +1,5 @@
 [
-["828363","La tastiera svizzera non ha ß."],
-["5766915","La lettera ß non esiste in una tastiera svizzera."],
-["5766917","La tastiera svizzera non ha la ß."]
+["5766915","La lettera ß non esiste in una tastiera svizzera.","The letter ß does not exist on a Swiss keyboard."],
+["5766917","La tastiera svizzera non ha la ß.","The Swiss keyboard doesn't have a ß."],
+["5766918","La tastiera svizzera non ha la lettera ß.","The Swiss keyboard doesn't have the letter ß."]
 ]

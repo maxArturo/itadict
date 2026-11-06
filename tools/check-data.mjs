@@ -10,18 +10,33 @@
  * position with no sentence, sentence text inside an entry, a shipped headword on
  * the copyright exclusion list, and a missing licence line.
  *
+ * Example rows are strict: exactly [id, it, en], en a trimmed one-line string of at most
+ * MAX_EXAMPLE_EN characters, ids ascending, a sentence the same in every bucket. The client
+ * reader is tolerant on purpose; this gate keeps bad rows from shipping. The Tatoeba
+ * attribution line must be in NOTICE, data/LICENSE-DATA.md and every Tatoeba sources record.
+ *
  * It never judges Italian and never re-derives the data.
+ *
+ * Usage
+ *   node tools/check-data.mjs                 # the repository
+ *   node tools/check-data.mjs --root <dir>    # a copy holding data/, NOTICE and tools/
  */
 
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
-const ROOT = path.resolve(import.meta.dirname, '..');
+const rootAt = process.argv.indexOf('--root');
+const ROOT = rootAt > 0 ? path.resolve(process.argv[rootAt + 1] ?? '.') : path.resolve(import.meta.dirname, '..');
 const DATA = path.join(ROOT, 'data');
 const MAX_FILE = 1_000_000;
 const MAX_TOTAL = 150_000_000;
 const MAX_ERRORS = 100;
+const MAX_EXAMPLE = 120;
+/** The English of an example. tools/build-data.mjs holds the same constant. */
+const MAX_EXAMPLE_EN = 160;
+/** The Tatoeba attribution line. tools/build-data.mjs holds the same string. */
+const TATOEBA_LINE = 'Frasi e traduzioni da Tatoeba (tatoeba.org), CC BY 2.0 FR';
 
 const BANDS = new Set(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']);
 const SETS = ['search', 'entry', 'ex', 'forms', 'en'];
@@ -101,7 +116,7 @@ function checkManifest(manifest) {
   }
 }
 
-async function checkLicences() {
+async function checkLicences(manifest) {
   const notice = (await readText(path.join(ROOT, 'NOTICE'))) ?? '';
   const dataLicence = (await readText(path.join(DATA, 'LICENSE-DATA.md'))) ?? '';
   if (!notice) fail('NOTICE: is missing');
@@ -109,6 +124,18 @@ async function checkLicences() {
   for (const licence of LICENCES) {
     if (!notice.includes(licence)) fail('NOTICE: misses the licence line "' + licence + '"');
     if (!dataLicence.includes(licence)) fail('data/LICENSE-DATA.md: misses the licence line "' + licence + '"');
+  }
+  const lines = [TATOEBA_LINE];
+  const tatoeba = (manifest.sources ?? []).filter((source) => /tatoeba\.org/.test(source?.url ?? ''));
+  if (tatoeba.length === 0) fail('index.json: sources has no tatoeba.org record carrying "' + TATOEBA_LINE + '"');
+  for (const source of tatoeba) {
+    if (source.attribution !== TATOEBA_LINE) {
+      fail('index.json: the Tatoeba record ' + source.url + ' needs the attribution "' + TATOEBA_LINE + '"');
+    }
+  }
+  for (const line of lines) {
+    if (!notice.includes(line)) fail('NOTICE: misses the attribution line "' + line + '"');
+    if (!dataLicence.includes(line)) fail('data/LICENSE-DATA.md: misses the attribution line "' + line + '"');
   }
 }
 
@@ -212,7 +239,10 @@ function pickFile(files, key) {
 async function checkBodies(manifest, exclusions, byId) {
   let entryCount = 0;
   let sentenceCount = 0;
+  let englishRows = 0;
   let withEnglish = 0;
+  /** @type {Map<string, string>} sentence id -> its row past the id, as JSON, from the first bucket that holds it */
+  const sentenceRows = new Map();
   /** @type {Map<string, { total: number, matched: number }>} */
   const enPos = new Map();
   for (const [key, bucket] of Object.entries(manifest.buckets)) {
@@ -225,18 +255,33 @@ async function checkBodies(manifest, exclusions, byId) {
     for (const file of bucket.ex) {
       const list = await readJson(path.join(ROOT, file.path));
       if (!Array.isArray(list)) {
-        fail(file.path + ': must be a JSON array of [id, text]');
+        fail(file.path + ': must be a JSON array of [id, it, en] rows');
         continue;
       }
       if (list.length === 0) fail(file.path + ': is listed but holds no sentence');
       /** @type {string[]} */
       const rows = [];
+      let previous = -1;
       list.forEach((row, index) => {
-        if (!Array.isArray(row) || row.length !== 2) return fail(file.path + ': row ' + index + ' must be [id, text]');
-        const [id, text] = row;
+        if (!Array.isArray(row) || row.length !== 3) {
+          return fail(file.path + ': row ' + index + ' must be exactly [id, it, en]');
+        }
+        const [id, text, en] = row;
+        const where = file.path + ': row ' + index + ' (sentence ' + id + ')';
         if (!isText(id) || !/^\d+$/.test(id)) fail(file.path + ': row ' + index + ' has a bad Tatoeba id');
-        if (!isText(text)) fail(file.path + ': sentence ' + id + ' has no text');
-        else if (text.length > 120) fail(file.path + ': sentence ' + id + ' is longer than 120 characters');
+        else if (Number(id) <= previous) fail(where + ' does not ascend: ids must be unique and in numeric order');
+        else previous = Number(id);
+        if (!isText(text)) fail(where + ' has no Italian text');
+        else if (text.length > MAX_EXAMPLE) fail(where + ' has Italian longer than ' + MAX_EXAMPLE + ' characters');
+        if (typeof en !== 'string' || en.trim() === '') fail(where + ' has no English');
+        else if (en !== en.trim()) fail(where + ' has English with leading or trailing space');
+        else if (/[\r\n]/.test(en)) fail(where + ' has English with a line break');
+        else if (en.length > MAX_EXAMPLE_EN) fail(where + ' has English longer than ' + MAX_EXAMPLE_EN + ' characters');
+        else englishRows += 1;
+        const shape = JSON.stringify(row.slice(1));
+        const seen = sentenceRows.get(id);
+        if (seen === undefined) sentenceRows.set(id, shape);
+        else if (seen !== shape) fail(where + ' differs from the same sentence in another bucket');
         if (rows[index] !== undefined) fail(file.path + ': row ' + index + ' is listed twice');
         rows[index] = text;
       });
@@ -330,7 +375,9 @@ async function checkBodies(manifest, exclusions, byId) {
       });
     }
   }
-  return { entryCount, sentenceCount, withEnglish, enPos };
+  // An empty example set would pass every row check above. The app ships examples with English.
+  if (englishRows === 0) fail('data/ex: no example row has English; the example set is empty');
+  return { entryCount, sentenceCount, distinctSentences: sentenceRows.size, withEnglish, enPos };
 }
 
 /**
@@ -460,6 +507,14 @@ async function checkIndexes(manifest, byId) {
           fail(file.path + ': form "' + form + '" needs an id, a lemma and a label');
           continue;
         }
+        // The raw spelling is optional, written only when it is not the key: "e" -> { form: "è" }.
+        if (claim.form !== undefined) {
+          const raw = claim.form;
+          if (typeof raw !== 'string' || raw === '') fail(file.path + ': form "' + form + '" has a "form" that is not a non-empty string');
+          else if (/\p{Cc}/u.test(raw)) fail(file.path + ': form "' + form + '" has a "form" with a control character or line break');
+          else if (raw !== raw.normalize('NFC')) fail(file.path + ': form "' + form + '" has a "form" that is not NFC');
+          else if (foldWord(raw) !== form) fail(file.path + ': form "' + form + '" has a "form" ' + JSON.stringify(raw) + ' that does not fold to its key');
+        }
         const entry = byId.get(claim.id);
         if (!entry) fail(file.path + ': form "' + form + '" points at unknown entry ' + claim.id);
         else if (entry.word !== claim.lemma) fail(file.path + ': form "' + form + '" says lemma "' + claim.lemma + '" but ' + claim.id + ' is "' + entry.word + '"');
@@ -482,13 +537,13 @@ async function main() {
     return report({});
   }
   checkManifest(manifest);
-  await checkLicences();
+  await checkLicences(manifest);
   const listed = await checkBuckets(manifest);
   checkCefrFiles(manifest, listed);
   const bytes = await checkFiles(listed);
   const exclusions = new Set(((await readJson(path.join(ROOT, 'tools', 'data-exclusions.json')))?.titles ?? []).map(foldWord));
   const byId = new Map();
-  const { entryCount, sentenceCount, withEnglish, enPos } = await checkBodies(manifest, exclusions, byId);
+  const { entryCount, sentenceCount, distinctSentences, withEnglish, enPos } = await checkBodies(manifest, exclusions, byId);
   await checkCefr(manifest, byId);
   const { formRows, searchRows } = await checkIndexes(manifest, byId);
   const { tokens: enTokens, postings: enPostings } = await checkEn(manifest, byId);
@@ -504,6 +559,7 @@ async function main() {
   }
   const top5000 = manifest.coverage?.top5000;
   console.log('en coverage: ' + withEnglish + ' / ' + entryCount + ' (' + share.toFixed(1) + '%), top 5000 ' + top5000 + ' / 5000');
+  console.log('examples: ' + sentenceCount + ' rows, ' + distinctSentences + ' distinct sentences');
   console.log('en index: ' + enTokens + ' tokens, ' + enPostings + ' postings');
   console.log('en per pos: ' + [...enPos.entries()].sort((a, b) => b[1].total - a[1].total)
     .map(([pos, stat]) => pos + ' ' + stat.matched + '/' + stat.total).join(', '));

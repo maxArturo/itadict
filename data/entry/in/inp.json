@@ -1,6 +1,6 @@
 [
-{"id":"inp:0","word":"input","cefr":"c2","pos":[{"pos":"noun","senses":["sequenza di informazioni e dati immessi con un'apposita periferica oppure con un riferimento comune, per esempio del web, informatico oppure proprio un prodotto tecnologico, e poi elaborati","idea, suggerimento, \"dare il la\""]}],"ex":[1974,2118]},
-{"id":"inp:1","word":"INPS","cefr":"c2","pos":[{"pos":"abbrev","senses":["ente pubblico il cui compito principale è raccogliere i contributi di lavoratori in attività per poi erogarli a quelli in pensione"]}],"ex":[1080]},
+{"id":"inp:0","word":"input","cefr":"c2","pos":[{"pos":"noun","senses":["sequenza di informazioni e dati immessi con un'apposita periferica oppure con un riferimento comune, per esempio del web, informatico oppure proprio un prodotto tecnologico, e poi elaborati","idea, suggerimento, \"dare il la\""]}],"ex":[1465]},
+{"id":"inp:1","word":"INPS","cefr":"c2","pos":[{"pos":"abbrev","senses":["ente pubblico il cui compito principale è raccogliere i contributi di lavoratori in attività per poi erogarli a quelli in pensione"]}]},
 {"id":"inp:2","word":"in palo","cefr":"c2","pos":[{"pos":"phrase","senses":["termine araldico che si applica a:"]}]},
 {"id":"inp:3","word":"in panciolle","cefr":"c2","pos":[{"pos":"phrase","senses":["sdraiato confortevolmente"]}]},
 {"id":"inp:4","word":"in parte","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["non del tutto"]}]},

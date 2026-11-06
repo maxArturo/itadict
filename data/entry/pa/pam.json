@@ -1,5 +1,5 @@
 [
-{"id":"pam:0","word":"pamphlet","ipa":"/pamˈflɛ/","cefr":"c2","pos":[{"pos":"noun","senses":["breve scritto di carattere polemico o satirico"]}],"en":[{"pos":"noun","glosses":["pamphlet (essay on a current topic)"]}],"ex":[261]},
+{"id":"pam:0","word":"pamphlet","ipa":"/pamˈflɛ/","cefr":"c2","pos":[{"pos":"noun","senses":["breve scritto di carattere polemico o satirico"]}],"en":[{"pos":"noun","glosses":["pamphlet (essay on a current topic)"]}]},
 {"id":"pam:1","word":"Pamela","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"pam:2","word":"pampa","cefr":"c2","pos":[{"pos":"noun","senses":["vasta pianura erbosa senz'alberi, tipica del sud dell'America meridionale"]}],"en":[{"pos":"noun","glosses":["pampas"]}]},
 {"id":"pam:3","word":"pampino","ipa":"/ˈpampino/","cefr":"c2","pos":[{"pos":"noun","senses":["foglia della vite","figura araldica convenzionale costituita da un tralcio di vite completo di foglie e viticci"]}],"en":[{"pos":"noun","glosses":["vine leaf"]}]},

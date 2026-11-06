@@ -1,5 +1,5 @@
 [
-{"id":"mg:0","word":"mg","cefr":"c1","pos":[{"pos":"abbrev","senses":["simbolo del milligrammo"]}],"ex":[0]},
+{"id":"mg:0","word":"mg","cefr":"c1","pos":[{"pos":"abbrev","senses":["simbolo del milligrammo"]}]},
 {"id":"mg:1","word":"M.gre","cefr":"c2","pos":[{"pos":"abbrev","senses":["abbreviatura assiografica di: Monsignore"]}]},
 {"id":"mg:2","word":"mg/dl","cefr":"c2","pos":[{"pos":"abbrev","senses":["milligrammo per decilitro"]}]},
 {"id":"mg:3","word":"mg/l","cefr":"c2","pos":[{"pos":"abbrev","senses":["milligrammo per litro"]}]},

@@ -1,7 +1,7 @@
 [
-{"id":"alm:0","word":"almeno","ipa":"/alˈmeno/","cefr":"a1","pos":[{"pos":"adv","senses":["se non altro"]}],"en":[{"pos":"adv","glosses":["at least"]}],"ex":[20,30,31]},
-{"id":"alm:1","word":"almanacco","cefr":"c2","pos":[{"pos":"noun","senses":["pubblicazione annuale contenente la successione dei giorni, dei mesi e delle festività (calendario) dei principali fenomeni astronomici (effemeride) e delle fasi lunari (lunario).","pubblicazione annuale contenente notizie statistiche e di cronaca relative a una data materia o a un'istituzione (annuario)."]}],"en":[{"pos":"noun","glosses":["almanac"]}],"ex":[90,310,311]},
-{"id":"alm:2","word":"alma","ipa":"/ˈalma/","cefr":"c1","pos":[{"pos":"noun","senses":["anima"]},{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"noun","glosses":["soul","halma"]}],"ex":[109]},
+{"id":"alm:0","word":"almeno","ipa":"/alˈmeno/","cefr":"a1","pos":[{"pos":"adv","senses":["se non altro"]}],"en":[{"pos":"adv","glosses":["at least"]}],"ex":[19,30,36]},
+{"id":"alm:1","word":"almanacco","cefr":"c2","pos":[{"pos":"noun","senses":["pubblicazione annuale contenente la successione dei giorni, dei mesi e delle festività (calendario) dei principali fenomeni astronomici (effemeride) e delle fasi lunari (lunario).","pubblicazione annuale contenente notizie statistiche e di cronaca relative a una data materia o a un'istituzione (annuario)."]}],"en":[{"pos":"noun","glosses":["almanac"]}],"ex":[72,202,203]},
+{"id":"alm:2","word":"alma","ipa":"/ˈalma/","cefr":"c1","pos":[{"pos":"noun","senses":["anima"]},{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"noun","glosses":["soul","halma"]}]},
 {"id":"alm:3","word":"Almeria","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"alm:4","word":"Almerina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"alm:5","word":"Almerinda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile","colei che viene da Almeria (Spagna)"]}]},

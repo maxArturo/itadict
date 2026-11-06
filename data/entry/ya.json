@@ -1,10 +1,10 @@
 [
 {"id":"ya:0","word":"yacht","ipa":"/ˈjɔt/","cefr":"b2","pos":[{"pos":"noun","senses":["imbarcazione da diporto a vela o a motore"]}],"en":[{"pos":"noun","glosses":["yacht","the letter Y in the Italian spelling alphabet"]}],"ex":[0,4,5]},
-{"id":"ya:1","word":"yak","ipa":"/ˈjak/","cefr":"c2","pos":[{"pos":"noun","senses":["grosso mammifero asiatico, proveniente dal Tibet, addomesticabile di grandi dimensioni, con corna arcuate lunghe anche sino a novantacinque centimetri, appartenente alla famiglia dei Bovidi; la sua…"]}],"en":[{"pos":"noun","glosses":["a yak (bovine)"]}],"ex":[9,10,11]},
-{"id":"ya:2","word":"yang","cefr":"b2","pos":[{"pos":"noun","senses":["nella filosofia cinese, il principio donatore della realtà, associato al genere maschile"]}],"ex":[2,3,12]},
-{"id":"ya:3","word":"Yamoussoukro","cefr":"c2","pos":[{"pos":"noun","senses":["capitale della Costa d'Avorio"]}],"ex":[13,14]},
-{"id":"ya:4","word":"yankee","ipa":"/ˈjɛnki/","cefr":"c1","pos":[{"pos":"noun","senses":["abitante degli Stati Uniti d'America"]}],"en":[{"pos":"noun","glosses":["Yankee","synonym of uccellina (“jigger topgallant staysail”)"]}],"ex":[1,8]},
-{"id":"ya:5","word":"yard","cefr":"c1","pos":[{"pos":"noun","senses":["misura di lunghezza inglese, pari a 91,44 centimetri"]}],"en":[{"pos":"noun","glosses":["yard (unit of length)"]}],"ex":[6,15]},
+{"id":"ya:1","word":"yak","ipa":"/ˈjak/","cefr":"c2","pos":[{"pos":"noun","senses":["grosso mammifero asiatico, proveniente dal Tibet, addomesticabile di grandi dimensioni, con corna arcuate lunghe anche sino a novantacinque centimetri, appartenente alla famiglia dei Bovidi; la sua…"]}],"en":[{"pos":"noun","glosses":["a yak (bovine)"]}]},
+{"id":"ya:2","word":"yang","cefr":"b2","pos":[{"pos":"noun","senses":["nella filosofia cinese, il principio donatore della realtà, associato al genere maschile"]}],"ex":[2,3,8]},
+{"id":"ya:3","word":"Yamoussoukro","cefr":"c2","pos":[{"pos":"noun","senses":["capitale della Costa d'Avorio"]}],"ex":[9]},
+{"id":"ya:4","word":"yankee","ipa":"/ˈjɛnki/","cefr":"c1","pos":[{"pos":"noun","senses":["abitante degli Stati Uniti d'America"]}],"en":[{"pos":"noun","glosses":["Yankee","synonym of uccellina (“jigger topgallant staysail”)"]}],"ex":[1]},
+{"id":"ya:5","word":"yard","cefr":"c1","pos":[{"pos":"noun","senses":["misura di lunghezza inglese, pari a 91,44 centimetri"]}],"en":[{"pos":"noun","glosses":["yard (unit of length)"]}],"ex":[6]},
 {"id":"ya:6","word":"Yahweh","ipa":"/ja.ˈhwɛh/","cefr":"c2","pos":[{"pos":"name","senses":["nell'ebraismo e nel cristianesimo: il nome personale di Dio nelle scritture ebraiche, secondo una possibile ipotesi"]}],"ex":[7]},
 {"id":"ya:7","word":"Yaren","cefr":"c2","pos":[{"pos":"name","senses":["capitale di Nauru."]}]},
 {"id":"ya:8","word":"yachtsman","ipa":"/ˈjɔtsmen/","cefr":"c2","pos":[{"pos":"noun","senses":["uomo che guida uno yacht","chi fa yachting"]}]}

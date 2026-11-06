@@ -1,6 +1,6 @@
 [
-{"id":"arn:0","word":"arnese","ipa":"/arˈneze/","cefr":"c1","pos":[{"pos":"noun","senses":["strumento da lavoro","un attrezzo o un oggetto generico","vestito, abbigliamento","armatura"]}],"en":[{"pos":"noun","glosses":["armour/armor","a part of an armour/armor","weapon"]}],"ex":[321,322,323]},
-{"id":"arn:1","word":"Arno","ipa":"/ˈarno/","cefr":"c2","pos":[{"pos":"name","senses":["secondo fiume più grande della penisola italiana, dopo il Tevere, si trova in Toscana"]}],"en":[{"pos":"name","glosses":["Arno (a river in Tuscany)"]}],"ex":[256]},
+{"id":"arn:0","word":"arnese","ipa":"/arˈneze/","cefr":"c1","pos":[{"pos":"noun","senses":["strumento da lavoro","un attrezzo o un oggetto generico","vestito, abbigliamento","armatura"]}],"en":[{"pos":"noun","glosses":["armour/armor","a part of an armour/armor","weapon"]}]},
+{"id":"arn:1","word":"Arno","ipa":"/ˈarno/","cefr":"c2","pos":[{"pos":"name","senses":["secondo fiume più grande della penisola italiana, dopo il Tevere, si trova in Toscana"]}],"en":[{"pos":"name","glosses":["Arno (a river in Tuscany)"]}]},
 {"id":"arn:2","word":"ARN","cefr":"c2","pos":[{"pos":"abbrev","senses":["acido ribonucleico"]}]},
 {"id":"arn:3","word":"Arnalda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"arn:4","word":"Arnaldina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},

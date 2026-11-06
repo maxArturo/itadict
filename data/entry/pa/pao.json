@@ -1,7 +1,7 @@
 [
-{"id":"pao:0","word":"Paolo","cefr":"b2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["Paul (biblical character)","a male given name from Latin, equivalent to English Paul"]}],"ex":[86,140,143]},
-{"id":"pao:1","word":"Paola","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"name","glosses":["a female given name, equivalent to English Paula","a town in the province of Cosenza, Calabria, Italy","a habitational surname"]}],"ex":[113,286,687]},
-{"id":"pao:2","word":"paonazzo","ipa":"/paoˈnattso/","cefr":"c2","pos":[{"pos":"adj","senses":["di colore rosso-violaceo"]}],"en":[{"pos":"adj","glosses":["purple"]}],"ex":[295,771,982]},
+{"id":"pao:0","word":"Paolo","cefr":"b2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["Paul (biblical character)","a male given name from Latin, equivalent to English Paul"]}],"ex":[185,186,247]},
+{"id":"pao:1","word":"Paola","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}],"en":[{"pos":"name","glosses":["a female given name, equivalent to English Paula","a town in the province of Cosenza, Calabria, Italy","a habitational surname"]}],"ex":[97,482,483]},
+{"id":"pao:2","word":"paonazzo","ipa":"/paoˈnattso/","cefr":"c2","pos":[{"pos":"adj","senses":["di colore rosso-violaceo"]}],"en":[{"pos":"adj","glosses":["purple"]}]},
 {"id":"pao:3","word":"Paoletta","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
 {"id":"pao:4","word":"Paoletto","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
 {"id":"pao:5","word":"Paolica","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},

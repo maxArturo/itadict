@@ -1,8 +1,8 @@
 [
 {"id":"sk:0","word":"skateboard","ipa":"/skeitˈbɔrd/","cefr":"c1","pos":[{"pos":"noun","senses":["monopattino senza manubrio provvisto di quattro piccole ruote, in grado di essere orientato con la pressione dei piedi"]}],"ex":[0,1,3]},
-{"id":"sk:1","word":"Skopje","ipa":"/ˈ [ˈskɔpjɛ/","cefr":"c2","pos":[{"pos":"name","senses":["capitale della Macedonia del Nord"]}],"ex":[2]},
-{"id":"sk:2","word":"skipper","ipa":"/ˈskipper/","cefr":"c1","pos":[{"pos":"noun","senses":["su una barca a vela è colui che ne comanda le manovre, non necessariamente il proprietario"]}],"en":[{"pos":"noun","glosses":["skipper (person in charge of a vessel)"]}],"ex":[4]},
-{"id":"sk:3","word":"skyline","ipa":"/ˈskajlajn/","cefr":"c2","pos":[{"pos":"noun","senses":["linea di profilo presentata all'orizzonte da un certo panorama"]}],"en":[{"pos":"noun","glosses":["skyline"]}],"ex":[5]},
+{"id":"sk:1","word":"Skopje","ipa":"/ˈ [ˈskɔpjɛ/","cefr":"c2","pos":[{"pos":"name","senses":["capitale della Macedonia del Nord"]}]},
+{"id":"sk:2","word":"skipper","ipa":"/ˈskipper/","cefr":"c1","pos":[{"pos":"noun","senses":["su una barca a vela è colui che ne comanda le manovre, non necessariamente il proprietario"]}],"en":[{"pos":"noun","glosses":["skipper (person in charge of a vessel)"]}],"ex":[2]},
+{"id":"sk:3","word":"skyline","ipa":"/ˈskajlajn/","cefr":"c2","pos":[{"pos":"noun","senses":["linea di profilo presentata all'orizzonte da un certo panorama"]}],"en":[{"pos":"noun","glosses":["skyline"]}],"ex":[4]},
 {"id":"sk:4","word":"ska","ipa":"/ska/","cefr":"c2","pos":[{"pos":"noun","senses":["genere musicale nato in Giamaica all'inizio degli anni sessanta, derivato dalla fusione di elementi vocali e strumentali nordamericani e locali, considerato precursore del reggae"]}]},
 {"id":"sk:5","word":"skate punk","cefr":"c2","pos":[{"pos":"phrase","senses":["sottogenere di musica punk nato negli Stati Uniti alla fine degli anni ottanta, i cui testi traggono ispirazione dalla predilezione degli interpreti originari per lo skateboard"]}]},
 {"id":"sk:6","word":"skateboarding","cefr":"c2","pos":[{"pos":"noun","senses":["sport estremo stradale nato negli Stati Uniti negli anni sessanta, che prevede l'attraversamento di piste terrestri a vari livelli con un apposito monopattino senza manubrio, detto skateboard"]}]},

@@ -1,5 +1,5 @@
 [
-{"id":"alu:0","word":"alunno","ipa":"/aˈlunno/","cefr":"c2","pos":[{"pos":"noun","senses":["studente di scuola elementare, media o superiore","bambino che cresce con persone che non sono i suoi genitori"]}],"en":[{"pos":"noun","glosses":["schoolchild, schoolboy"]}],"ex":[97,160,334]},
+{"id":"alu:0","word":"alunno","ipa":"/aˈlunno/","cefr":"c2","pos":[{"pos":"noun","senses":["studente di scuola elementare, media o superiore","bambino che cresce con persone che non sono i suoi genitori"]}],"en":[{"pos":"noun","glosses":["schoolchild, schoolboy"]}],"ex":[77,306,309]},
 {"id":"alu:1","word":"ALU","cefr":"c2","pos":[{"pos":"abbrev","senses":["Arithmetic Logic Unit: unità aritmetica e logica, parte di un microprocessore con l'obiettivo di compiere operazioni logiche e calcoli numerici"]}]},
 {"id":"alu:2","word":"a lungo","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["per tanto tempo"]}]},
 {"id":"alu:3","word":"a lungo andare","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["con il trascorrere del tempo"]}]},

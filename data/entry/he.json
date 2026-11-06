@@ -1,9 +1,9 @@
 [
 {"id":"he:0","word":"henry","cefr":"a2","pos":[{"pos":"noun","senses":["unità di misura dell'induttanza elettrica nel Sistema Internazionale, pari al prodotto di un ohm per un secondo"]}],"ex":[0,1,2]},
-{"id":"he:1","word":"Helena","cefr":"b2","pos":[{"pos":"name","senses":["capitale del Montana, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[5,8,10]},
-{"id":"he:2","word":"he","cefr":"b2","pos":[{"pos":"intj","senses":["espressione di una risata","variante, vedi eh"]}],"ex":[6,7]},
-{"id":"he:3","word":"herpes","ipa":"/ˈɛrpes/","cefr":"c1","pos":[{"pos":"noun","senses":["affezione virale che si manifesta con vescicole sulle labbra"]}],"en":[{"pos":"noun","glosses":["herpes"]}],"ex":[4,9]},
-{"id":"he:4","word":"hertz","ipa":"/, /","cefr":"c2","pos":[{"pos":"noun","senses":["nel Sistema Internazionale di misura, l'unità di misura derivata della frequenza, pari al reciproco di un secondo; un (periodo o ciclo di qualsiasi evento periodico) al secondo. Simbolo: Hz"]}],"en":[{"pos":"noun","glosses":["hertz"]}],"ex":[3]},
+{"id":"he:1","word":"Helena","cefr":"b2","pos":[{"pos":"name","senses":["capitale del Montana, uno dei cinquanta stati federati degli Stati Uniti d'America"]}],"ex":[4,5]},
+{"id":"he:2","word":"he","cefr":"b2","pos":[{"pos":"intj","senses":["espressione di una risata","variante, vedi eh"]}]},
+{"id":"he:3","word":"herpes","ipa":"/ˈɛrpes/","cefr":"c1","pos":[{"pos":"noun","senses":["affezione virale che si manifesta con vescicole sulle labbra"]}],"en":[{"pos":"noun","glosses":["herpes"]}],"ex":[3]},
+{"id":"he:4","word":"hertz","ipa":"/, /","cefr":"c2","pos":[{"pos":"noun","senses":["nel Sistema Internazionale di misura, l'unità di misura derivata della frequenza, pari al reciproco di un secondo; un (periodo o ciclo di qualsiasi evento periodico) al secondo. Simbolo: Hz"]}],"en":[{"pos":"noun","glosses":["hertz"]}]},
 {"id":"he:5","word":"Hepburn","cefr":"c2","pos":[{"pos":"name","senses":["sistema di trascrizione dei fonemi della lingua giapponese in caratteri alfabetici latini"]}],"en":[{"pos":"name","glosses":["a surname in English"]}]},
 {"id":"he:6","word":"heavy metal","ipa":"/ˈhɛvi ˈmɛtal/","cefr":"c2","pos":[{"pos":"phrase","senses":["genere musicale derivato dall'hard rock, di cui rafforza ulteriormente i tratti sonori di forza e durezza, nato in Inghilterra nel 1970"]}]},
 {"id":"he:7","word":"hegeliano","ipa":"//","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda lo scrittore, storico e filosofo tedesco Hegel"]}],"en":[{"pos":"adj","glosses":["Hegelian (relating to Hegel or his philosophical system)"]}]},

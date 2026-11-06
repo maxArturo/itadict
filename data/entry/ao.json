@@ -1,6 +1,6 @@
 [
-{"id":"ao:0","word":"aoristo","cefr":"c2","pos":[{"pos":"noun","senses":["in greco antico e moderno, tempo non definito"]}],"en":[{"pos":"noun","glosses":["aorist"]}],"ex":[1,2,3]},
-{"id":"ao:1","word":"AO","cefr":"c2","pos":[{"pos":"symbol","senses":["sigla automobilistica e burocratica per la Valle d'Aosta"]}],"ex":[0]},
+{"id":"ao:0","word":"aoristo","cefr":"c2","pos":[{"pos":"noun","senses":["in greco antico e moderno, tempo non definito"]}],"en":[{"pos":"noun","glosses":["aorist"]}]},
+{"id":"ao:1","word":"AO","cefr":"c2","pos":[{"pos":"symbol","senses":["sigla automobilistica e burocratica per la Valle d'Aosta"]}]},
 {"id":"ao:2","word":"aorta","ipa":"/aˈɔrta/","cefr":"c1","pos":[{"pos":"noun","senses":["grande arteria che nasce dal ventricolo sinistro del cuore e dalla quale si dipartono le diverse arterie collaterali"]}],"en":[{"pos":"noun","glosses":["aorta"]}]},
 {"id":"ao:3","word":"Aosta","ipa":"/a.ˈɔs.ta/","cefr":"c2","pos":[{"pos":"name","senses":["capoluogo della regione Valle d'Aosta in Italia"]}],"en":[{"pos":"name","glosses":["Aosta (the capital city of Aosta Valley, Italy)","Aosta (the sole province of Valle d'Aosta, Italy)"]}]},
 {"id":"ao:4","word":"a occhi chiusi","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["senza alcuna tergiversazione"]}]},

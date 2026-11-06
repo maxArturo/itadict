@@ -49,7 +49,7 @@
 "eguagliavate":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "eguagliavi":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "eguagliavo":{"id":"eg:54","lemma":"eguagliare","label":"prima persona singolare dell'indicativo imperfetto"},
-"eguagliera":{"id":"eg:54","lemma":"eguagliare","label":"terza persona singolare dell'indicativo futuro"},
+"eguagliera":{"id":"eg:54","lemma":"eguagliare","label":"terza persona singolare dell'indicativo futuro","form":"eguaglierà"},
 "eguaglierai":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona singolare dell'indicativo futuro"},
 "eguaglieranno":{"id":"eg:54","lemma":"eguagliare","label":"terza persona plurale dell'indicativo futuro"},
 "eguaglierebbe":{"id":"eg:54","lemma":"eguagliare","label":"terza persona singolare del condizionale presente"},
@@ -60,7 +60,7 @@
 "eguagliereste":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona plurale del condizionale presente"},
 "eguaglieresti":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona singolare del condizionale presente"},
 "eguaglierete":{"id":"eg:54","lemma":"eguagliare","label":"seconda persona plurale dell'indicativo futuro"},
-"eguagliero":{"id":"eg:54","lemma":"eguagliare","label":"prima persona singolare dell'indicativo futuro"},
+"eguagliero":{"id":"eg:54","lemma":"eguagliare","label":"prima persona singolare dell'indicativo futuro","form":"eguaglierò"},
 "eguaglino":{"id":"eg:54","lemma":"eguagliare","label":"terza persona plurale del congiuntivo presente"},
 "eguaglio":{"id":"eg:54","lemma":"eguagliare","label":"prima persona singolare dell'indicativo presente"}
 }

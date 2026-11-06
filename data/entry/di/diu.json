@@ -1,5 +1,5 @@
 [
-{"id":"diu:0","word":"diurna","cefr":"c2","pos":[{"pos":"noun","senses":["(teatro)"]}],"ex":[855]},
+{"id":"diu:0","word":"diurna","cefr":"c2","pos":[{"pos":"noun","senses":["(teatro)"]}]},
 {"id":"diu:1","word":"diurno","ipa":"/diˈurno/","cefr":"c2","pos":[{"pos":"adj","senses":["che resta sveglio di giorno."]},{"pos":"noun","senses":["libro di preghiere da recitare al mattino"]}],"en":[{"pos":"adj","glosses":["diurnal"]},{"pos":"noun","glosses":["diurnal (canonical book)","public baths and conveniences"]}]},
 {"id":"diu:2","word":"diu","cefr":"c2","pos":[{"pos":"adv","senses":["di giorno","lungamente, a lungo, per lungo tempo","da lungo tempo","largamente, estesamente, ampiamente, lontano"]}]},
 {"id":"diu:3","word":"diuresi","cefr":"c2","pos":[{"pos":"noun","senses":["funzione naturale con cui sono espulse dal corpo, con l'emissione di urina, materie superflue"]}],"en":[{"pos":"noun","glosses":["diuresis"]}]},

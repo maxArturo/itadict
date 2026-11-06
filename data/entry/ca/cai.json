@@ -1,6 +1,6 @@
 [
-{"id":"cai:0","word":"Caio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Gaius"]}],"ex":[774,1418]},
-{"id":"cai:1","word":"caimano","ipa":"/kaiˈmano/","cefr":"c2","pos":[{"pos":"noun","senses":["rettile anfibio della famiglia degli Alligatoridi, diffuso in America centrale e meridionale"]}],"en":[{"pos":"noun","glosses":["caiman"]}],"ex":[351]},
+{"id":"cai:0","word":"Caio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name, equivalent to English Gaius"]}],"ex":[555]},
+{"id":"cai:1","word":"caimano","ipa":"/kaiˈmano/","cefr":"c2","pos":[{"pos":"noun","senses":["rettile anfibio della famiglia degli Alligatoridi, diffuso in America centrale e meridionale"]}],"en":[{"pos":"noun","glosses":["caiman"]}]},
 {"id":"cai:2","word":"caicco","ipa":"/kaˈikko/","cefr":"c2","pos":[{"pos":"noun","senses":["goletta in legno di derivazione turca"]}],"en":[{"pos":"noun","glosses":["caique"]}]},
 {"id":"cai:3","word":"caipirinha","ipa":"/kaipiˈrinja/","cefr":"c2","pos":[{"pos":"noun","senses":["cocktail di cachaça, limetta, acqua, zucchero di canna raffinato e ghiaccio"]}]},
 {"id":"cai:4","word":"cairn","cefr":"c2","pos":[{"pos":"noun","senses":["costruzione formata da pietre impilate a secco, tipica della preistoria"]}]}

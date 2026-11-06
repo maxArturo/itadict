@@ -1,5 +1,5 @@
 [
-{"id":"rf:0","word":"RF","cefr":"c2","pos":[{"pos":"abbrev","senses":["radiofrequenza"]}],"ex":[0]},
+{"id":"rf:0","word":"RF","cefr":"c2","pos":[{"pos":"abbrev","senses":["radiofrequenza"]}]},
 {"id":"rf:1","word":"RFI","cefr":"c2","pos":[{"pos":"abbrev","senses":["Rete Ferroviaria Italiana"]}]},
 {"id":"rf:2","word":"RFT","cefr":"c2","pos":[{"pos":"abbrev","senses":["Radio Fiume Ticino"]}]}
 ]

@@ -1,6 +1,6 @@
 [
-{"id":"alo:0","word":"alo","cefr":"c2","pos":[{"pos":"noun","senses":["alone"]}],"ex":[437,450]},
-{"id":"alo:1","word":"alone","ipa":"/aˈlone/","cefr":"c1","pos":[{"pos":"noun","senses":["accrescitivo di ala","cerchio o arco luminoso a volte presente intorno al Sole o alla Luna, dovuto a condizioni particolari dell'atmosfera terrestre","il contorno di luce intorno a una qualsiasi sorgente luminosa","atmosfera, aura"]}],"en":[{"pos":"noun","glosses":["halo","glow"]}],"ex":[399]},
+{"id":"alo:0","word":"alo","cefr":"c2","pos":[{"pos":"noun","senses":["alone"]}],"ex":[314]},
+{"id":"alo:1","word":"alone","ipa":"/aˈlone/","cefr":"c1","pos":[{"pos":"noun","senses":["accrescitivo di ala","cerchio o arco luminoso a volte presente intorno al Sole o alla Luna, dovuto a condizioni particolari dell'atmosfera terrestre","il contorno di luce intorno a una qualsiasi sorgente luminosa","atmosfera, aura"]}],"en":[{"pos":"noun","glosses":["halo","glow"]}]},
 {"id":"alo:2","word":"-alo","ipa":"/ˈalo/","cefr":"c2","pos":[{"pos":"suffix","senses":["seconda parte di lemmi formati dall'accostamento di due parole la prima delle quali significa sale o mare"]}]},
 {"id":"alo:3","word":"Aloisa","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile."]}]},
 {"id":"alo:4","word":"Aloisia","ipa":"/ˈaːlɔjsia/","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile, corrispondente all'italiano Luigia"]}]},

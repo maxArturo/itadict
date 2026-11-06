@@ -1,7 +1,7 @@
 [
 {"id":"uo:0","word":"uomo","ipa":"/ˈwɔ.mo/","cefr":"a1","pos":[{"pos":"noun","senses":["individuo adulto di sesso maschile della specie umana; la sua classificazione scientifica è Homo sapiens ( tassonomia)","la specie umana, l'umanità: anche la maggioranza o una grande parte di essa"]}],"en":[{"pos":"noun","glosses":["person, man (human being)","man, mankind, humankind","man (male human)"]}],"ex":[0,1,2]},
 {"id":"uo:1","word":"uovo","ipa":"/ˈwɔ.vo/","cefr":"b1","pos":[{"pos":"noun","senses":["gamete femminile negli animali","uovo di gallina, usato per l'alimentazione umana","oggetto di forma e dimensioni simili all'uovo di gallina, usato come gioiello o soprammobile","forma dell'uovo di gallina"]}],"en":[{"pos":"noun","glosses":["egg"]}],"ex":[3,4,5]},
-{"id":"uo:2","word":"uopo","ipa":"/ˈwɔpo/","cefr":"c2","pos":[{"pos":"noun","senses":["bisogno"]}],"en":[{"pos":"noun","glosses":["need"]}],"ex":[6,7,8]},
+{"id":"uo:2","word":"uopo","ipa":"/ˈwɔpo/","cefr":"c2","pos":[{"pos":"noun","senses":["bisogno"]}],"en":[{"pos":"noun","glosses":["need"]}]},
 {"id":"uo:3","word":"uomo d'affari","cefr":"c2","pos":[{"pos":"phrase","senses":["uomo che realizza guadagni con la proprietà o la compravendita di aziende"]}]},
 {"id":"uo:4","word":"uomo d'onore","cefr":"c2","pos":[{"pos":"phrase","senses":["chi è affiliato alla mafia"]}]},
 {"id":"uo:5","word":"uomo mascherato","cefr":"c2","pos":[{"pos":"phrase","senses":["eroe mascherato in calzamaglia senza superpoteri dei fumetti statunitensi","personaggio mascherato che appariva nell'immagine d'antenna della TSI (oggi RSI)"]}]},
