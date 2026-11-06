@@ -252,7 +252,8 @@ dead offline, and `npm run verify:offline` fails on it.
 
 ## Deploy
 
-The site is `https://maxarturo.github.io/itadict/`. The subpath is `/itadict/` and it is frozen.
+The site is `https://maxalcala.com/itadict/`. The `github.io` name redirects to it. The subpath
+is `/itadict/` and it is frozen.
 
 1. **Every URL is relative.** `./js/app.js`, `data/index.json`. An absolute path works on a root dev
    server and 404s on Pages.

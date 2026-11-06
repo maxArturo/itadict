@@ -15,6 +15,25 @@ Repo map. Read the row before you touch that area.
 `docs/design/architecture.md` ends with the list of gaps between the code and the ADRs. Read that
 list before you trust an ADR over the code.
 
+## Delivered
+
+A feature is not delivered until it is on `main` and served by GitHub Pages. Work on a branch, in a
+worktree or in a local clone is not delivered, even when every gate passes.
+
+Pages serves the root of `main`. There is no workflow file, so a push to `main` is the deploy. The
+site is `https://maxalcala.com/itadict/`, and `https://maxarturo.github.io/itadict/` redirects to it.
+An installed app keeps the old shell until `sw.js` updates, so a fix reaches users after the deploy.
+
+1. Run every gate on the commit you mean to ship.
+2. Merge or fast-forward it into `main`, then `git push origin main`.
+3. Wait for the build:
+   `gh api repos/maxArturo/itadict/pages/builds/latest --jq '.status + " " + .commit'` reads
+   `built` and your sha.
+4. Check the served copy. `https://maxalcala.com/itadict/data/index.json` carries a `version`, and
+   `npm run verify:offline` prints the build it tested. They match.
+
+Call a feature delivered after step 4, not before. Say which step failed when one fails.
+
 ## Development gates
 
 | Command | What it does |
@@ -58,5 +77,5 @@ A new pure module must be added to `sw.js`'s shell list in the same change, or i
 Status: shipped. Shell, router, data client, search, storage, the Text reader, Study with its
 schedule, speech, every screen, the data build and its gate, the shell precache, and the offline gate.
 The Entry screen draws an English translation above the Italian definitions, and 76.5% of entries
-have one, or 94.6% of the 5,000 most frequent. The English lookup index ships in the data, and no
-client reads it yet.
+have one, or 94.6% of the 5,000 most frequent. The English lookup index ships in the data, and the
+search field reads it.

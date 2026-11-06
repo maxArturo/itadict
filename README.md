@@ -1,7 +1,7 @@
 # itadict
 
 A static, offline Italian dictionary PWA. It runs on GitHub Pages at
-`https://maxarturo.github.io/itadict/`, installs to a home screen, and needs no server. The display
+`https://maxalcala.com/itadict/`, installs to a home screen, and needs no server. The display
 name is "Italian".
 
 It copies the screens and the flow of the App Store app "Japanese" (id290664053, renzo Inc.), for
