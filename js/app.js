@@ -100,7 +100,7 @@ export function boot(options = {}) {
 
   const storage = options.storage ?? createStorage();
   const data = options.data ?? createData({ fetch: options.fetch, base: options.base });
-  const search = createSearch({ data, storage });
+  const search = createSearch({ data, storage, fetch: options.fetch, base: options.base });
   const ui = createUi(doc);
   const matchWide =
     options.matchWide ??

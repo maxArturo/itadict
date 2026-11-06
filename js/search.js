@@ -13,7 +13,7 @@
  * rows`.
  */
 
-import { foldWord } from './data.js';
+import { bucketKey, bucketOfId, foldWord } from './data.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {ReturnType<typeof import('./data.js').createData>} Data */
@@ -21,6 +21,12 @@ import { foldWord } from './data.js';
 
 /** The result cap. One screenful and a half, which is the point where a query reads as vague. */
 export const LIMIT = 50;
+
+/**
+ * The English trigger and cap. The English file is read only when the Italian list is shorter
+ * than this, and the English block stops at this many rows.
+ */
+export const SHORT = 20;
 
 /**
  * Fold one string for matching: NFD, drop the combining marks, lowercase. `perché` and `PERCHE`
@@ -140,32 +146,142 @@ export function rank(rows, query, limit = LIMIT) {
 }
 
 /**
+ * The entry ids an English bucket offers for one folded query: the exact token first, then the
+ * tokens that start with it, in alphabet order, until the cap. Each token keeps the postings
+ * order the build wrote. Junk is ignored.
+ *
+ * @param {Record<string, string[]>} tokens one English bucket
+ * @param {string} folded the folded query
+ * @param {number} [cap]
+ * @returns {string[]}
+ */
+export function englishIds(tokens, folded, cap = SHORT) {
+  /** @type {string[]} */
+  const ids = [];
+  /** @type {Set<string>} */
+  const seen = new Set();
+  /** @param {unknown} value */
+  const add = (value) => {
+    if (typeof value !== 'string' || value === '' || seen.has(value) || ids.length >= cap) return;
+    seen.add(value);
+    ids.push(value);
+  };
+  const exact = tokens[folded];
+  if (Array.isArray(exact)) exact.forEach(add);
+  if (ids.length < cap) {
+    for (const token of Object.keys(tokens).sort()) {
+      if (token === folded || !token.startsWith(folded)) continue;
+      const list = tokens[token];
+      if (Array.isArray(list)) list.forEach(add);
+      if (ids.length >= cap) break;
+    }
+  }
+  return ids;
+}
+
+/**
  * The search pipeline: one bucket, the three cheap steps, and the forms index only when needed.
  *
- * A query of one character reads history, not the dictionary.
+ * A query of one character reads history, not the dictionary. The English index is read only
+ * when the Italian list is short, and it never mixes into that list.
  *
- * @param {{ data: Data, storage: Storage, limit?: number }} options
+ * @param {{
+ *   data: Data,
+ *   storage: Storage,
+ *   limit?: number,
+ *   fetch?: (url: string) => Promise<{ ok: boolean, status?: number, json: () => Promise<unknown> }>,
+ *   base?: string,
+ * }} options
  */
 export function createSearch(options) {
   const { data, storage } = options;
   const limit = options.limit ?? LIMIT;
+  const base = typeof options.base === 'string' ? options.base : '';
+  const doFetch =
+    typeof options.fetch === 'function' ? options.fetch : (/** @type {string} */ url) => globalThis.fetch(url);
 
   /** Every row this session has shown, so an entry opens without a second fetch. @type {Map<string, Row>} */
   const known = new Map();
+
+  /** One promise per English bucket, kept. A failure is dropped, so a later query can retry. */
+  /** @type {Map<string, Promise<Record<string, string[]>>>} */
+  const english = new Map();
+
+  /**
+   * The English token map of one bucket.
+   * @param {string} bucket
+   * @returns {Promise<Record<string, string[]>>}
+   */
+  function englishTokens(bucket) {
+    const hit = english.get(bucket);
+    if (hit !== undefined) return hit;
+    const promise = (async () => {
+      const response = await doFetch(base + 'data/en/' + bucket + '.json');
+      if (!response || response.ok !== true) throw new Error('itadict search: no English file for ' + bucket);
+      const body = await response.json();
+      return body !== null && typeof body === 'object' && !Array.isArray(body)
+        ? /** @type {Record<string, string[]>} */ (body)
+        : {};
+    })().catch((error) => {
+      english.delete(bucket);
+      throw error;
+    });
+    english.set(bucket, promise);
+    return promise;
+  }
+
+  /**
+   * The rows of a list of ids, in that order. One read per bucket, and a missing row is skipped.
+   * @param {string[]} ids
+   * @returns {Promise<Row[]>}
+   */
+  async function rowsForIds(ids) {
+    /** @type {Map<string, string[]>} */
+    const byBucket = new Map();
+    for (const id of ids) {
+      const bucket = bucketOfId(id);
+      if (bucket === '') continue;
+      const list = byBucket.get(bucket);
+      if (list === undefined) byBucket.set(bucket, [id]);
+      else list.push(id);
+    }
+    /** @type {Map<string, Row>} */
+    const found = new Map();
+    await Promise.all(
+      [...byBucket.keys()].map(async (bucket) => {
+        try {
+          for (const row of await data.rows(bucket)) found.set(row.id, row);
+        } catch {
+          // The English row is skipped; the block keeps the rest.
+        }
+      }),
+    );
+    /** @type {Row[]} */
+    const out = [];
+    for (const id of ids) {
+      const row = found.get(id);
+      if (row !== undefined) out.push(row);
+    }
+    return out;
+  }
 
 
   return {
     /**
      * @param {string} query as typed
-     * @returns {Promise<{ rows: Row[], history: string[] }>} rows, and the history to draw when
-     *   the field is empty or holds one character
+     * @returns {Promise<{ rows: Row[], english: Row[], history: string[] }>} the Italian rows,
+     *   the English block, and the history to draw when the field is empty or holds one character
      */
     async search(query) {
       const text = typeof query === 'string' ? query.trim() : '';
       const folded = fold(text);
       if (folded.length < 2) {
         const history = storage.history();
-        return { rows: [], history: folded === '' ? history : history.filter((entry) => fold(entry).startsWith(folded)) };
+        return {
+          rows: [],
+          english: [],
+          history: folded === '' ? history : history.filter((entry) => fold(entry).startsWith(folded)),
+        };
       }
 
       const { exact, prefix, fuzzy } = rank(await data.rows(folded), text, limit);
@@ -206,7 +322,23 @@ export function createSearch(options) {
       }
 
       fuzzy.forEach(push);
-      return { rows, history: [] };
+
+      // The English index is a second read, only when the Italian list came up short. It stays a
+      // separate block, so the two result lists never interleave.
+      /** @type {Row[]} */
+      let englishRows = [];
+      if (rows.length < SHORT) {
+        try {
+          const tokens = await englishTokens(bucketKey(folded));
+          const rowsById = await rowsForIds(englishIds(tokens, folded, SHORT));
+          englishRows = rowsById;
+          for (const row of englishRows) known.set(row.id, row);
+        } catch {
+          // No English file for this bucket, or it did not load; the Italian list stands.
+        }
+      }
+
+      return { rows, english: englishRows, history: [] };
     },
     /**
      * The row this session already showed for an id, or `null`.

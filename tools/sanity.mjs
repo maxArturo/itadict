@@ -25,7 +25,7 @@ import {
   toRow,
 } from '../js/data.js';
 import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/router.js';
-import { createSearch, editDistanceAtMost, findMatch, fold, rank } from '../js/search.js';
+import { createSearch, editDistanceAtMost, englishIds, findMatch, fold, rank } from '../js/search.js';
 import { createSpeech, RATE } from '../js/speech.js';
 import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
 import {
@@ -108,6 +108,31 @@ function oneFileBucket(key, hash) {
     ex: [],
   };
 }
+
+/** A fetch that serves nothing: every English read misses. */
+const noEnglish = async () => ({ ok: false, status: 404, json: async () => null });
+
+/** A fetch over the English files it is given, counting every call. @param {Record<string, unknown>} files */
+function englishFetch(files) {
+  const calls = [];
+  const fetch = async (url) => {
+    calls.push(url);
+    if (!(url in files)) return { ok: false, status: 404, json: async () => null };
+    return { ok: true, status: 200, json: async () => files[url] };
+  };
+  return { calls, fetch };
+}
+
+/** One search row with its English gloss, shaped as js/data.js hands one out. */
+const englishRow = (id, folded, headword, en) => ({
+  folded,
+  id,
+  headword,
+  pronunciation: '',
+  pos: 'noun',
+  gloss: 'definizione italiana',
+  en,
+});
 
 /** A fetch over an in-memory file map, counting every call. @param {Record<string, unknown>} files */
 function fileFetch(files) {
@@ -217,9 +242,9 @@ test('a query of one character reads history, not the dictionary', async () => {
   storage.addQuery('casa');
   storage.addQuery('via');
   const data = memoryData([]);
-  const search = createSearch({ data, storage });
+  const search = createSearch({ data, storage, fetch: noEnglish });
 
-  assert.deepEqual(await search.search(''), { rows: [], history: ['via', 'casa'] });
+  assert.deepEqual(await search.search(''), { rows: [], english: [], history: ['via', 'casa'] });
   const one = await search.search('c');
   assert.deepEqual(one.rows, []);
   assert.deepEqual(one.history, ['casa'], 'history is filtered by the one character');
@@ -229,7 +254,7 @@ test('a query of one character reads history, not the dictionary', async () => {
 test('exact beats prefix, and an inflected form resolves to its lemma row', async () => {
   const rows = [row('casetta', 'casetta', 'little house'), row('casa', 'casa', 'house'), row('cassa', 'cassa', 'box')];
   const forms = new Map([['case', { id: 'casa', lemma: 'casa', label: 'plurale' }]]);
-  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()) });
+  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()), fetch: noEnglish });
 
   const result = await search.search('case');
   assert.deepEqual(result.rows.map((entry) => entry.id), ['casetta', 'casa'], 'the lemma row follows the prefix rows');
@@ -240,11 +265,70 @@ test('exact beats prefix, and an inflected form resolves to its lemma row', asyn
 test('an inflected form resolves to a lemma in another bucket, by its id', async () => {
   const rows = [row('andare', 'andare', 'to go')];
   const forms = new Map([['vado', { id: 'andare', lemma: 'andare', label: 'presente 1s' }]]);
-  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()) });
+  const search = createSearch({ data: memoryData(rows, forms), storage: createStorage(fakeBackend()), fetch: noEnglish });
   const result = await search.search('vado');
   assert.deepEqual(result.rows.map((entry) => entry.id), ['andare']);
   assert.equal(result.rows[0].gloss, 'to go');
   assert.equal(result.rows[0].matched, 'vado');
+});
+
+// ---------------------------------------------------------------- English lookup
+
+test('the English index takes the exact token first, then prefixes of the same bucket', () => {
+  const tokens = { house: ['ca:0', 'ca:1'], houseboat: ['ca:2'], housing: ['ca:3', 'ca:0'] };
+  assert.deepEqual(
+    englishIds(tokens, 'house', 3),
+    ['ca:0', 'ca:1', 'ca:2'],
+    'exact first, then alphabet order, and no duplicate',
+  );
+  assert.deepEqual(englishIds(tokens, 'hous', 2), ['ca:0', 'ca:1'], 'prefixes fill the cap');
+  assert.deepEqual(englishIds({}, 'house'), [], 'no token, no ids');
+  assert.deepEqual(englishIds({ house: ['ca:0', 4, null] }, 'house'), ['ca:0'], 'junk postings are dropped');
+});
+
+test('an English hit is the Italian headword with its English gloss, in its own list', async () => {
+  const rows = [
+    englishRow('ca:0', 'casa', 'casa', 'house'),
+    englishRow('ca:1', 'caseggiato', 'caseggiato', 'housing block'),
+  ];
+  const { calls, fetch } = englishFetch({ 'data/en/ho.json': { house: ['ca:0', 'ca:1'] } });
+  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const result = await search.search('house');
+  assert.deepEqual(result.rows, [], 'no Italian headword matches');
+  assert.deepEqual(result.english.map((entry) => entry.id), ['ca:0', 'ca:1']);
+  assert.equal(result.english[0].headword, 'casa', 'the row title is the Italian headword');
+  assert.equal(result.english[0].en, 'house', 'the secondary line is the English gloss');
+  assert.equal(search.row('ca:0')?.en, 'house', 'the entry opens from the remembered row');
+  assert.deepEqual(calls, ['data/en/ho.json'], 'one English read');
+});
+
+test('Italian matches lead in their own list, and the English block follows separately', async () => {
+  const rows = [englishRow('ho:0', 'hotel', 'hotel', 'hotel'), englishRow('ca:0', 'casa', 'casa', 'house')];
+  const { fetch } = englishFetch({ 'data/en/ho.json': { hotel: ['ca:0'] } });
+  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const result = await search.search('hotel');
+  assert.deepEqual(result.rows.map((entry) => entry.id), ['ho:0'], 'the Italian row leads its list');
+  assert.deepEqual(result.english.map((entry) => entry.id), ['ca:0'], 'the English row is separate');
+  const italian = new Set(result.rows.map((entry) => entry.id));
+  assert.equal(result.english.some((entry) => italian.has(entry.id)), false, 'the two lists do not share a row');
+});
+
+test('the English file is not read while the Italian list is full', async () => {
+  const rows = Array.from({ length: 25 }, (_, index) =>
+    englishRow('ca:' + index, 'casa' + index, 'casa' + index, 'house'),
+  );
+  const { calls, fetch } = englishFetch({ 'data/en/ca.json': { house: ['ca:0'] } });
+  const search = createSearch({ data: memoryData(rows), storage: createStorage(fakeBackend()), fetch });
+  const result = await search.search('casa');
+  assert.equal(result.rows.length, 25);
+  assert.deepEqual(result.english, [], 'a full Italian list stops the English read');
+  assert.deepEqual(calls, [], 'no English file was fetched');
+});
+
+test('a query with no match in either list returns two empty lists', async () => {
+  const { fetch } = englishFetch({ 'data/en/zz.json': { zzzz: [] } });
+  const search = createSearch({ data: memoryData([]), storage: createStorage(fakeBackend()), fetch });
+  assert.deepEqual(await search.search('zzzz'), { rows: [], english: [], history: [] });
 });
 
 // ---------------------------------------------------------------- the FORMS table

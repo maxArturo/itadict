@@ -232,7 +232,7 @@ export function translationRows(en) {
  *   setActiveTab: (bar: HTMLElement, name: string) => void,
  *   setTabBadge: (bar: HTMLElement, name: string, value: string) => void,
  *   searchScreen: (options: {
- *     search: (query: string) => Promise<{ rows: Row[], history: string[] }>,
+ *     search: (query: string) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
  *     onCommit?: (query: string) => void,
  *   }) => { node: HTMLElement, query: () => string, setQuery: (value: string) => void, refresh: () => void },
  *   textScreen: (options: {
@@ -655,7 +655,7 @@ export function createUi(doc = globalThis.document) {
    * newer query, is dropped: only the newest answer reaches the DOM.
    *
    * @param {{
-   *   search: (query: string) => Promise<{ rows: Row[], history: string[] }>,
+   *   search: (query: string) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
    *   onCommit?: (query: string) => void,
    * }} options
    */
@@ -804,15 +804,26 @@ export function createUi(doc = globalThis.document) {
 
     /**
      * @param {string} query
-     * @param {Row[]} rows
+     * @param {Row[]} rows the Italian matches
+     * @param {Row[]} english the English block, drawn after the Italian rows and never inside them
      * @param {string[]} history
      */
-    function draw(query, rows, history) {
+    function draw(query, rows, english, history) {
       const trimmed = query.trim();
-      if (rows.length > 0) {
-        const list = el('ul', 'rows');
-        for (const row of rows) list.append(rowView(row));
-        body.replaceChildren(list);
+      if (rows.length > 0 || english.length > 0) {
+        const fragment = doc.createDocumentFragment();
+        if (rows.length > 0) {
+          const list = el('ul', 'rows');
+          for (const row of rows) list.append(rowView(row));
+          fragment.append(list);
+        }
+        if (english.length > 0) {
+          const list = el('ul', 'rows');
+          list.setAttribute('aria-label', 'English matches');
+          for (const row of english) list.append(rowView(row));
+          fragment.append(text('h2', 'section-title', 'English matches'), list);
+        }
+        body.replaceChildren(fragment);
         return;
       }
       if (history.length > 0) {
@@ -830,7 +841,7 @@ export function createUi(doc = globalThis.document) {
       const query = input.value;
       const mine = (token += 1);
       clear.className = query === '' ? 'search-clear' : 'search-clear is-shown';
-      /** @type {{ rows: Row[], history: string[] }} */
+      /** @type {{ rows: Row[], english: Row[], history: string[] }} */
       let result;
       try {
         result = await options.search(query);
@@ -839,7 +850,7 @@ export function createUi(doc = globalThis.document) {
         return;
       }
       if (mine !== token) return;
-      draw(query, result.rows, result.history);
+      draw(query, result.rows, result.english, result.history);
     }
 
     input.addEventListener('input', () => {
