@@ -1,68 +1,72 @@
 # Sharded, lazy content and offline
 
-The dictionary is too large to load at boot and too useful offline to leave half downloaded.
-Content ships as shards. The app fetches the shard it needs. Full offline is an explicit action,
-not a boot cost.
+The dictionary is too large to load at boot and too useful offline to leave half downloaded. Content
+ships as shards. The app fetches the shard it needs. Full offline is an explicit action, not a boot
+cost.
 
 ## Shards
 
-One bucket per two folded letters of the headword: `aa`, `ab`, `ca`. Folding is the search rule from
+One bucket per two folded letters of the headword: `aa`, `ca`, `st`. Folding is the search rule from
 0004, so the bucket of a query is the bucket of its results. A bucket that exceeds the size cap splits
-into numbered files. The cap is 1 MB per file, because one file is one fetch and a phone on a weak
-signal must finish it. Total content stays under 150 MB.
+into files named by a longer prefix, for example `data/ca/cao.json`. The cap is 1 MB per file, and
+the build holds `npm run check` to it. The shipped set is 478 buckets, 60,067,433 bytes of file content, 62 MB on
+disk, and the largest file is 999,990 bytes.
 
-`data/index.json` is the manifest: every file, its bucket, its byte size, the counts, and the source
-list with licences.
+`data/index.json` is the manifest: every file, its size, its hash, the counts, the CEFR deck sizes and
+the source list with licences.
 
-Four file sets, fetched for four different reasons:
+Four file sets per bucket, and one set outside a bucket:
 
 | Set | Holds | Fetched when |
 |---|---|---|
-| `data/<bucket>.json` | search rows: folded key, id, headword, pronunciation, one gloss | a query reaches that bucket |
-| `data/entry/<bucket>.json` | entry bodies: senses, forms, example ids | an entry opens |
-| `data/ex/<bucket>.json` | example sentences, keyed by Tatoeba sentence id | with the entry body |
-| `data/forms/<bucket>.json` | folded inflected form to its lemmas | short result list, or an entry with a conjugation |
+| `data/<key>.json` | search rows: folded key, id, headword, IPA, part of speech, one gloss | a query reaches that bucket |
+| `data/entry/<key>.json` | entry bodies: senses, conjugation, example positions | an entry opens |
+| `data/ex/<key>.json` | example sentences in entry order, keyed by position | with the entry body |
+| `data/forms/<key>.json` | folded inflected form to its lemma | a short result list, or a form search |
+| `data/cefr/<band>.json` | deck rows: id, word, part of speech, gloss | a deck is picked in Study |
 
-An entry body stores example ids, never example text. That is what keeps the CC BY 2.0 FR sentences in
+An entry body stores example positions, never example text. That keeps the CC BY 2.0 FR sentences in
 their own files and out of the CC BY-SA shards. See 0001.
 
-The content hash lives in the filename, never in a query string. A changed file is therefore a new URL,
-and an unchanged file keeps its URL across deploys. The manifest's `version` is not a cache key; only
-the per-file hash is.
+Every data URL carries `?v=<hash>` from the manifest. A rebuilt file is a new URL, so a cache-first
+read can never serve old bytes. The manifest's `version` is not part of any URL.
 
 ## Cache rules
 
 | Request | Strategy | Why |
 |---|---|---|
-| shell (`./`, `./index.html`, `./styles.css`, `./manifest.webmanifest`) | precached on install, cache-first | an installed app must open with no network |
-| navigations | the cached `./index.html`, network fallback | never a browser error page |
-| app code (`js/**`, `sw.js`, CSS, the webmanifest) | network-first, cache fallback | a fix lands on the first online load |
-| content files (`data/**`, except the manifest) | cache-first, cached forever | the URL carries the hash, so a revalidation can never change the bytes |
-| `data/index.json` | stale-while-revalidate | a new file list arrives on the next load, offline keeps the old one |
+| shell, precached on install | cache-first | an installed app must open with no network |
+| `data/index.json`, also precached | stale-while-revalidate | a new file list arrives on the next load, offline keeps the old one |
+| content files (`data/**` other) | cache-first, cached forever | the URL carries the hash |
+| navigations | the cached `./index.html`, network fallback, then 504 | never a browser error page |
+| app code (`.js`, `.css`, `.webmanifest`) | network-first, cache fallback | a fix lands on the first online load |
+| activate | drop the last shell cache, sweep files the new manifest does not list | a rebuild leaves no orphans |
 
 App code is matched before the shell, so `styles.css` and the manifest are precached and also
 network-first, as they must be to take a fix.
 
 Two caches, not one. `itadict-shell-<v>` holds the shell and the app code and is dropped on every
-deploy. `itadict-data` holds content and is never dropped by a deploy; activate sweeps only the URLs
-the new manifest no longer lists. One cache per deploy would delete a downloaded dictionary every
-time a line of CSS changes.
+deploy. `itadict-data` holds content and the manifest and is never dropped by a deploy. One cache per
+deploy would delete a downloaded dictionary every time a line of CSS changes.
+
+A sweep that cannot read the manifest leaves the data cache alone. Offline, a sweep would otherwise
+delete the whole downloaded dictionary.
 
 ## Download all
 
-Offline use is an explicit action, next to the content list. It fetches every file URL in the manifest
-through the normal fetch path, so the worker caches each one. Progress is files done out of files
-listed. The action is explicit because the full set is large and most searches need one bucket or
-two. After it, search works with no network for every letter.
+`js/offline.js` holds the action: it fetches every data URL the manifest lists, one at a time, through
+the normal path, so the worker caches each one. Progress is files done out of files listed. It is
+sequential on purpose: the number is honest, and a phone on a weak signal is not flooded.
 
-A failed fetch inside the download never stops the run. It is counted and reported at the end, so one
-bad file does not throw away the rest.
+A failed fetch never stops the run. It is counted, and the run reports it at the end.
+
+The function and its gate exist. No screen calls it yet.
 
 ## Storage limits and eviction
 
 Two measured facts decide the rules.
 
-Safari gives an origin 60% of the free disk space. The full dictionary fits inside that on any phone
+Safari gives an origin 60% of the free disk space. The whole dictionary fits inside that on any phone
 with room to install an app, so the download is safe to offer.
 
 Intelligent Tracking Prevention clears the service-worker caches of a site that goes 7 days without
@@ -72,14 +76,12 @@ Three rules follow.
 
 - Every cached file must be re-fetchable, so a cache is never the only copy of anything that ships.
 - A missing cache entry is a network miss, not an error. The app must open after a wipe.
-- A home-screen install is the durable state. The About screen says so in one line, and says that a
-  browser tab may lose its offline copy after a week of no use.
+- A home-screen install is the durable state. The About screen says so in one line.
 
-Notes, history and study progress live in `localStorage` and are not re-fetchable. Their loss is
+Notes, lists and study progress live in `localStorage` and are not re-fetchable. Their loss is
 accepted; the app must open, not crash, when the blob is gone.
 
-**Consequences:** a cold search in a new bucket costs one manifest read and then one row fetch.
-`data/index.json` must be rebuilt with the files by `tools/build-data.mjs`, and a stale manifest is
-the one way to request a file that no longer exists. The build must put the content hash in the
-filename: until it does, a cache-first rule serves a stale file after a rebuild. The service worker
-must fall back to the network on a cache miss, or the app dead-ends after an eviction.
+**Consequences:** a cold search in a new bucket costs one manifest read and one row fetch. An entry
+costs one entry file and one example file. `data/index.json` must be rebuilt with the files by
+`npm run build:data`, and a stale manifest is the one way to request a file that no longer exists.
+The worker must fall back to the network on a cache miss, or the app dead-ends after an eviction.
