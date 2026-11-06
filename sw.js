@@ -26,10 +26,14 @@ const SHELL = [
   './manifest.webmanifest',
   './js/app.js',
   './js/data.js',
+  './js/lists.js',
   './js/offline.js',
+  './js/reference.js',
   './js/router.js',
   './js/search.js',
+  './js/speech.js',
   './js/storage.js',
+  './js/study.js',
   './js/text.js',
   './js/ui.js',
   './icons/icon-180.png',
@@ -75,10 +79,18 @@ self.addEventListener('fetch', (event) => {
   }
 });
 
-/** Precache the shell, then take over without waiting for the old worker to idle. */
+/**
+ * Precache the shell, then take over without waiting for the old worker to idle.
+ *
+ * The manifest goes in the data cache too. Boot reads it before the worker controls the page,
+ * so a fetch the page makes at boot is never cached by the strategies below. Without this, an
+ * offline boot has the shell and no file list.
+ */
 async function precache() {
-  const cache = await caches.open(SHELL_CACHE);
-  await Promise.all(SHELL.map((path) => putIfOk(cache, path)));
+  const shell = await caches.open(SHELL_CACHE);
+  await Promise.all(SHELL.map((path) => putIfOk(shell, path)));
+  const data = await caches.open(DATA_CACHE);
+  await putIfOk(data, MANIFEST);
   await self.skipWaiting();
 }
 
