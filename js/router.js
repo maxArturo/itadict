@@ -1,18 +1,19 @@
 // @ts-check
 /**
- * The hash router: seven routes, one default, one redirect.
+ * The hash router: eight routes, one default, one redirect.
  *
  * | URL | Screen |
  * |---|---|
  * | `#/search` | the field, the history and the result rows — the default screen |
  * | `#/entry/<id>` | one entry |
+ * | `#/sentence/<bucket>/<sentenceId>` | one example sentence, its English and its words |
  * | `#/text` `#/reference` `#/lists` `#/study` | placeholder screens, each naming its milestone |
  * | `#/settings` | a placeholder, reached from Lists later |
  *
  * The fragment never leaves the browser, so GitHub Pages needs no rewrite, a reload never 404s,
  * and the deploy subpath never reaches this module: every URL in the app is relative.
  *
- * One rule keeps hand-typed and stale links safe: a fragment that is not one of the seven is
+ * One rule keeps hand-typed and stale links safe: a fragment that is not one of the eight is
  * replaced with `#/search` in the address bar, through `location.replace()` — never pushed — so
  * Back leaves the app instead of bouncing off a dead route.
  *
@@ -33,10 +34,10 @@ export const HASH = Object.freeze({
   settings: '#/settings',
 });
 
-/** @typedef {'search' | 'entry' | 'text' | 'reference' | 'lists' | 'study' | 'settings'} RouteName */
+/** @typedef {'search' | 'entry' | 'sentence' | 'text' | 'reference' | 'lists' | 'study' | 'settings'} RouteName */
 /** @typedef {{ name: RouteName, id: string | null }} Route */
 
-/** @type {Array<Exclude<RouteName, 'entry'>>} */
+/** @type {Array<Exclude<RouteName, 'entry' | 'sentence'>>} */
 const NAMES = ['search', 'text', 'reference', 'lists', 'study', 'settings'];
 
 /** The six id-less routes, frozen and shared, so a screen cannot poison one. */
@@ -54,6 +55,21 @@ export function entryHash(id) {
   return `#/entry/${encodeURIComponent(id)}`;
 }
 
+/** A sentence route's bucket: a manifest key, as `ca`, `e_` or `__`. */
+const SENTENCE_BUCKET = /^[a-z0-9_]{1,2}$/;
+
+/** A sentence route's id: a Tatoeba sentence id. */
+const SENTENCE_ID = /^\d{1,10}$/;
+
+/**
+ * @param {string} bucket the manifest bucket whose ex file holds the row
+ * @param {string} sentenceId the Tatoeba id
+ * @returns {string} its route
+ */
+export function sentenceHash(bucket, sentenceId) {
+  return `#/sentence/${bucket}/${sentenceId}`;
+}
+
 /**
  * Parse one fragment. Deliberately strict: a trailing slash, an empty id or a fourth segment is
  * not "close enough", it is an unknown route.
@@ -68,6 +84,10 @@ export function parseRoute(hash) {
   const parts = fragment.split('/');
   if (parts[0] !== '') return null;
   if (parts.length === 2) return PLAIN.get(parts[1]) ?? null;
+  if (parts[1] === 'sentence') {
+    if (parts.length !== 4 || !SENTENCE_BUCKET.test(parts[2]) || !SENTENCE_ID.test(parts[3])) return null;
+    return { name: 'sentence', id: parts[2] + ':' + parts[3] };
+  }
   if (parts.length !== 3 || parts[1] !== 'entry' || parts[2] === '') return null;
   try {
     const id = decodeURIComponent(parts[2]);

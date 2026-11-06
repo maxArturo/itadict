@@ -13,7 +13,7 @@
  * rows`.
  */
 
-import { bucketKey, bucketOfId, foldWord, pickFiles, shardUrl } from './data.js';
+import { bucketFor, bucketOfId, foldWord, pickFiles, shardUrl } from './data.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {ReturnType<typeof import('./data.js').createData>} Data */
@@ -231,14 +231,13 @@ export function createSearch(options) {
   }
 
   /**
-   * The English token map of one bucket, from the manifest's `en` set. A bucket with no English
-   * set returns null: there is no file to read, and that is not an error.
-   * @param {string} bucket
-   * @param {string} folded the folded query, for a split English file
+   * The English token map of a query's bucket, from the manifest's `en` set. A bucket with no
+   * English set returns null: there is no file to read, and that is not an error.
+   * @param {string} folded the folded query: it names the bucket and picks a split English file
    * @returns {Promise<Record<string, string[]> | null>}
    */
-  async function englishTokens(bucket, folded) {
-    const found = (await data.manifest()).buckets[bucket];
+  async function englishTokens(folded) {
+    const found = bucketFor(await data.manifest(), folded, 'en');
     if (found === undefined || found.en.length === 0) return null;
     const urls = pickFiles(found.en, folded).map(shardUrl);
     if (urls.length === 0) return null;
@@ -293,13 +292,16 @@ export function createSearch(options) {
   return {
     /**
      * @param {string} query as typed
+     * @param {{ whole?: boolean }} [options] `whole` searches a one-letter query as a whole word,
+     *   for a word tapped on a sentence page; a typed letter still reads the history
      * @returns {Promise<{ rows: Row[], english: Row[], history: string[] }>} the Italian rows,
      *   the English block, and the history to draw when the field is empty or holds one character
      */
-    async search(query) {
+    async search(query, options = {}) {
       const text = typeof query === 'string' ? query.trim() : '';
       const folded = fold(text);
-      if (folded.length < 2) {
+      const whole = options.whole === true && folded.length === 1;
+      if (folded.length < 2 && !whole) {
         const history = storage.history();
         return {
           rows: [],
@@ -308,7 +310,10 @@ export function createSearch(options) {
         };
       }
 
-      const { exact, prefix, fuzzy } = rank(await data.rows(folded), text, limit);
+      const bucketRows = await data.rows(folded);
+      const { exact, prefix, fuzzy } = whole
+        ? { exact: bucketRows.filter((row) => row.folded === folded), prefix: [], fuzzy: [] }
+        : rank(bucketRows, text, limit);
 
       /** @type {Row[]} */
       const rows = [];
@@ -351,9 +356,10 @@ export function createSearch(options) {
       // separate block, so the two result lists never interleave.
       /** @type {Row[]} */
       let englishRows = [];
-      if (rows.length < SHORT) {
+      // A whole-word search is an Italian word from a sentence: English matches are not asked for.
+      if (rows.length < SHORT && !whole) {
         try {
-          const tokens = await englishTokens(bucketKey(folded), folded);
+          const tokens = await englishTokens(folded);
           if (tokens !== null) {
             englishRows = await rowsForIds(englishIds(tokens, folded, SHORT));
             for (const row of englishRows) known.set(row.id, row);

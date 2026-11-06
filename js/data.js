@@ -7,7 +7,7 @@
  * data/index.json
  *   {
  *     version, built, partial, bucketKey,
- *     sources: [{ name, url, licence }],
+ *     sources: [{ name, url, licence, attribution? }],   // attribution: the line About shows, verbatim
  *     totals: { entries, forms, examples, bytes },
  *     cefr: { "a1": [{ path, bytes, hash, rows }], ... },
  *     buckets: {
@@ -15,7 +15,8 @@
  *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, pos, gloss, en]
  *                                            // gloss is the Italian definition; en is the first English gloss, '' if none
  *         entry:  [{ path, bytes, hash }],   // [{ id: "<bucket>:<index>", word, ipa?, en: [{ pos, glosses }], cefr, pos, ex, conj? }]
- *         ex:     [{ path, bytes, hash }],   // [[sentenceId, sentence]] in index order
+ *         ex:     [{ path, bytes, hash }],   // [[sentenceId, it, en]], en a human Tatoeba translation,
+ *                                            // ascending by numeric id; an entry's ex positions index it
  *         forms:  [{ path, bytes, hash }],   // { foldedForm: { id, lemma, label } }
  *       }
  *     }
@@ -45,7 +46,7 @@ export const DATA_BASE = '';
  *   version: string,
  *   built: string,
  *   partial: boolean,
- *   sources: Array<{ name: string, url: string, licence: string }>,
+ *   sources: Array<{ name: string, url: string, licence: string, attribution: string }>,
  *   totals: { entries: number, forms: number, examples: number, bytes: number },
  *   cefr: Record<string, Shard[]>,
  *   buckets: Record<string, Bucket>,
@@ -95,8 +96,20 @@ export const DATA_BASE = '';
  *   exampleIndexes: number[],
  * }} Entry */
 
+/**
+ * One example sentence: the Tatoeba id, the Italian, and its human English translation. A legacy
+ * two-element row reads with `en: ''`, and a row that cannot be read at all keeps its place with
+ * every field empty, so an entry's positions never shift.
+ * @typedef {{ id: string, it: string, en: string }} Example
+ */
+
 /** What an inflected form points at. */
-/** @typedef {{ id: string, lemma: string, label: string }} Form */
+/**
+ * What an inflected form points at. `form` is the form as written, accents kept, when the data
+ * carries it (`''` otherwise): "è" and "e" fold to one key, and only the written form tells them
+ * apart.
+ * @typedef {{ id: string, lemma: string, label: string, form: string }} Form
+ */
 
 /** @param {unknown} value @returns {boolean} */
 function isObject(value) {
@@ -146,6 +159,31 @@ export function bucketKey(word) {
 }
 
 /**
+ * The manifest bucket that holds a key's files of one set. The one place a key becomes a bucket:
+ * the data client, the Text reader and the English lookup all ask here.
+ *
+ * The build keys a bucket by the first two characters of the folded key, letters and digits only,
+ * as `prefixKey` in tools/build-data.mjs does. A key shorter than that is padded with `_` for the
+ * search, entry, ex and forms sets: splitEntryList and planObjectFiles add the `_`, so "e" and
+ * "è" live in "e_", "2" in "2_", and a key of symbols only in "__". The English set is written by
+ * planObjectFiles without padding, so its one-letter bucket is the bare "e", and a key of symbols
+ * only is "_". When a manifest has both a padded and a bare bucket, the padded one wins for every
+ * set but English: the bare one holds only the English file.
+ *
+ * @param {Manifest} manifest
+ * @param {string} key a folded key, or a file key such as "ca", "cas" or "e_"
+ * @param {'search' | 'entry' | 'ex' | 'forms' | 'en'} kind
+ * @returns {Bucket | undefined}
+ */
+export function bucketFor(manifest, key, kind) {
+  const prefix = foldWord(typeof key === 'string' ? key : '').replace(/[^a-z0-9]/g, '').slice(0, 2);
+  if (kind === 'en') return manifest.buckets[prefix || '_'];
+  if (prefix.length === 2) return manifest.buckets[prefix];
+  const bare = prefix || '_';
+  return manifest.buckets[bare + '_'] ?? manifest.buckets[bare];
+}
+
+/**
  * The bucket an entry id names: `ca:42` -> `ca`.
  * @param {string} id
  * @returns {string}
@@ -178,7 +216,14 @@ export function parseManifest(json) {
   const sources = [];
   for (const raw of Array.isArray(root.sources) ? root.sources : []) {
     const source = obj(raw);
-    if (source !== null) sources.push({ name: str(source.name), url: str(source.url), licence: str(source.licence) });
+    if (source !== null) {
+      sources.push({
+        name: str(source.name),
+        url: str(source.url),
+        licence: str(source.licence),
+        attribution: str(source.attribution).trim(),
+      });
+    }
   }
 
   /** @type {Record<string, Shard[]>} */
@@ -228,6 +273,16 @@ function parseBucket(value) {
   return out.search.length + out.entry.length + out.ex.length + out.forms.length + out.en.length === 0
     ? null
     : out;
+}
+
+/**
+ * The attribution lines a manifest carries, in source order, each once. A source without one
+ * adds nothing, so a manifest built before a source had its line draws no blank.
+ * @param {Manifest} manifest
+ * @returns {string[]}
+ */
+export function attributions(manifest) {
+  return [...new Set(manifest.sources.map((source) => source.attribution).filter((line) => line !== ''))];
 }
 
 /**
@@ -398,34 +453,56 @@ export function parseForms(body) {
     const named = obj(value);
     const lemma = str(named?.lemma);
     if (lemma === '') continue;
-    map.set(key, { id: str(named?.id), lemma, label: str(named?.label) });
+    map.set(key, { id: str(named?.id), lemma, label: str(named?.label), form: str(named?.form) });
   }
   return map;
 }
 
 /**
- * The examples set, in file order: `[[sentenceId, sentence]]`. An object keyed by id is read too.
+ * The examples set, in file order, one record per row: `[sentenceId, it, en]`, and the legacy
+ * `[sentenceId, it]` with `en: ''`. A row that cannot be read stays as an empty record, because an entry's example
+ * positions index this list and a dropped row would shift every later one. An object keyed by id
+ * is read too.
+ *
  * @param {unknown} body
- * @returns {string[]}
+ * @returns {Example[]}
  */
 export function parseExamples(body) {
-  /** @type {string[]} */
-  const out = [];
-  if (Array.isArray(body)) {
-    for (const raw of body) {
-      const pair = Array.isArray(raw) ? raw : null;
-      const sentence = pair ? str(pair[1]) : str(obj(raw)?.it ?? obj(raw)?.text);
-      if (sentence !== '') out.push(sentence);
-    }
-    return out;
-  }
+  if (Array.isArray(body)) return body.map((raw) => toExample(raw));
   const root = obj(body);
-  if (root === null) return out;
-  for (const value of Object.values(root)) {
-    const sentence = typeof value === 'string' ? value : str(obj(value)?.it ?? obj(value)?.text);
-    if (sentence !== '') out.push(sentence);
+  if (root === null) return [];
+  return Object.entries(root).map(([id, value]) =>
+    typeof value === 'string' ? { id, it: value, en: '' } : { ...toExample(value), id },
+  );
+}
+
+/**
+ * @param {unknown} raw one row, as an array or as an `{ id, it, en }` object
+ * @returns {Example}
+ */
+function toExample(raw) {
+  if (Array.isArray(raw)) {
+    const id = typeof raw[0] === 'number' && Number.isFinite(raw[0]) ? String(raw[0]) : str(raw[0]);
+    return { id, it: str(raw[1]), en: str(raw[2]).trim() };
   }
-  return out;
+  const named = obj(raw);
+  return {
+    id: str(named?.id),
+    it: str(named?.it ?? named?.text),
+    en: str(named?.en).trim(),
+  };
+}
+
+/**
+ * The bucket whose ex file holds an entry's examples: the first two characters of the id's
+ * bucket. `com:1` lives in `co`, and `e_:0` in `e_`. The sentence route names this key.
+ *
+ * @param {string} entryId
+ * @returns {string}
+ */
+export function exampleBucket(entryId) {
+  // A file key's bucket is its first two characters, as the build's addFile names it.
+  return bucketOfId(entryId).slice(0, 2);
 }
 
 /**
@@ -490,7 +567,7 @@ export function createData(options = {}) {
    * @returns {Promise<Shard[]>}
    */
   async function files(key, kind, pick) {
-    const found = (await manifest()).buckets[key.slice(0, 2)] ?? (await manifest()).buckets[key.slice(0, 1)];
+    const found = bucketFor(await manifest(), key, kind);
     if (!found) return [];
     return pick ? pickFiles(found[kind], key) : found[kind];
   }
@@ -592,15 +669,30 @@ export function createData(options = {}) {
       return null;
     },
     /**
-     * The sentences of one bucket, in file order. An entry's example positions index this list.
+     * The examples of one bucket, in file order. An entry's example positions index this list.
      * @param {string} bucket
-     * @returns {Promise<string[]>}
+     * @returns {Promise<Example[]>}
      */
     async examples(bucket) {
-      /** @type {string[]} */
+      /** @type {Example[]} */
       const out = [];
       for (const body of await read(await files(bucket, 'ex', false))) out.push(...parseExamples(body));
       return out;
+    },
+    /**
+     * One example by its Tatoeba id, read from the same memoised files as {@link examples}, so the
+     * sentence page opened from an entry costs no request. `null` when the bucket or the id is not
+     * in this build.
+     * @param {string} bucket
+     * @param {string} sentenceId
+     * @returns {Promise<Example | null>}
+     */
+    async sentence(bucket, sentenceId) {
+      if (sentenceId === '') return null;
+      for (const body of await read(await files(bucket, 'ex', false))) {
+        for (const example of parseExamples(body)) if (example.id === sentenceId) return example;
+      }
+      return null;
     },
   };
 }
