@@ -1,6 +1,6 @@
 [
-{"id":"ah:0","word":"ah","ipa":"/a(ː)/","cefr":"a1","pos":[{"pos":"intj","senses":["espressione di gioia o soddisfazione:","espressione di rassegnazione o di sdegno:","espressione di stupore o meraviglia:","espressione di dolore o di rammarico:"]},{"pos":"noun","senses":["espressione di gioia, ecc., solitamente virgolettato:"]}],"ex":[0,1,2]},
-{"id":"ah:1","word":"ahimè","ipa":"/aiˈmɛ/","cefr":"c1","pos":[{"pos":"intj","senses":["comunemente usato per rappresentare una condizione d'animo di dolore, sofferenza o rammarico"]}],"ex":[3,4,5]},
+{"id":"ah:0","word":"ah","ipa":"/a(ː)/","cefr":"a1","pos":[{"pos":"intj","senses":["espressione di gioia o soddisfazione:","espressione di rassegnazione o di sdegno:","espressione di stupore o meraviglia:","espressione di dolore o di rammarico:"]},{"pos":"noun","senses":["espressione di gioia, ecc., solitamente virgolettato:"]}],"en":[{"pos":"intj","glosses":["ah! (usually ironic or sarcastic)"]}],"ex":[0,1,2]},
+{"id":"ah:1","word":"ahimè","ipa":"/aiˈmɛ/","cefr":"c1","pos":[{"pos":"intj","senses":["comunemente usato per rappresentare una condizione d'animo di dolore, sofferenza o rammarico"]}],"en":[{"pos":"intj","glosses":["alas!, woe is me!"]}],"ex":[3,4,5]},
 {"id":"ah:2","word":"ahimé","ipa":"/aiˈme/","cefr":"c1","pos":[{"pos":"intj","senses":["variante di ahimè (torna frequente oggi)"]}],"ex":[6,7]},
 {"id":"ah:3","word":"Ahmed-nagar","cefr":"c2","pos":[{"pos":"name","senses":["città dell'India; il nome significa città di Ahmed"]}]},
 {"id":"ah:4","word":"Ahmed-nuggur","cefr":"c2","pos":[{"pos":"name","senses":["Ahmed-nagar"]}]},

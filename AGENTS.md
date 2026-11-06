@@ -5,11 +5,11 @@ Repo map. Read the row before you touch that area.
 | Path | What it holds | Read it when |
 |---|---|---|
 | `README.md` | Purpose, the differences from the reference app, the data counts and licences, the frozen decisions, the language | Before changing anything |
-| `docs/adr/0001-data-and-licences.md` | The three sources, the licence split, the counts, the attribution strings, the exclusions, the CEFR rule | Before choosing a source, a field, an example or an attribution |
+| `docs/adr/0001-data-and-licences.md` | The four sources, the licence split, the counts, the English coverage and its gap, the attribution strings, the exclusions, the CEFR rule | Before choosing a source, a field, an example or an attribution |
 | `docs/adr/0002-hash-routes-relative-urls-on-deploy.md` | Why hash routes, relative URLs and a frozen subpath | Before changing routing or deploy paths |
 | `docs/adr/0003-sharded-lazy-content-and-offline.md` | Bucket plan and caps, the four file sets and the decks, the cache table, the download action, the eviction rules | Before changing `sw.js`, `data/` or the manifest |
 | `docs/adr/0004-search-index-and-ranking.md` | Folding, the row format, entry ids, the form index, conjugation tables, the ranking order and its cost | Before changing search or the index build |
-| `docs/design/architecture.md` | The four layers, boot order, the data client contract, which screen fetches what, storage, the worker table, deploy, what each gate can prove | Before touching `app.js`, `router.js`, `data.js`, `ui.js` or `sw.js` |
+| `docs/design/architecture.md` | The four layers, boot order, the data client contract, which screen fetches what, the Translation rows, the cost of one tap, the English search option, storage, the worker table, deploy, what each gate can prove | Before touching `app.js`, `router.js`, `data.js`, `ui.js` or `sw.js` |
 | `docs/verification/gate-2.md` | The browser and device acceptance record: the checks the offline gate runs, the checks a device still owns, the result table | Before claiming the deployed app works |
 
 `docs/design/architecture.md` ends with the list of gaps between the code and the ADRs. Read that
@@ -21,7 +21,7 @@ list before you trust an ADR over the code.
 |---|---|
 | `npm install` | Installs the two devDependencies: `typescript` and `playwright`. No runtime dependency. |
 | `npm run build:data` | `node tools/build-data.mjs`. Build of `data/` from the cached sources. Writes the manifest, the four file sets per bucket, the CEFR decks, `NOTICE` and `data/LICENSE-DATA.md`. |
-| `npm run check` | `node tools/check-data.mjs`. The structural gate over `data/`: manifest, byte counts, hashes, size caps, ids, form targets, example positions, licence lines. |
+| `npm run check` | `node tools/check-data.mjs`. The structural gate over `data/`: manifest, byte counts, hashes, size caps, ids, form targets, example positions, licence lines, and the English coverage line. |
 | `npm test` | `node tools/sanity.mjs`. Node checks over `js/`: fold, ranking, reader, router, storage, lists, study, speech, reference, the manifest and the fetch memo. No browser. |
 | `npm run typecheck` | `npx tsc --noEmit`. |
 | `npm run verify:offline` | `node tools/verify-offline.mjs`. Headless Chromium at iPhone size, over the app served on its real `/itadict/` subpath: the shell, search, a cold deep link, the download action, the offline relaunch, the request log. |
@@ -56,6 +56,6 @@ A new pure module must be added to `sw.js`'s shell list in the same change, or i
 `npm run verify:offline` fails on a module that is missing from that list.
 
 Status: shipped. Shell, router, data client, search, storage, the Text reader, Study with its
-schedule, speech, the Search, Text, Entry and Study screens, the data build and its gate, the shell
-precache, and the offline gate. Reference, Lists and Settings are placeholders whose data modules
-and storage already exist. The download action has a tested function and no button.
+schedule, speech, every screen, the data build and its gate, the shell precache, and the offline gate.
+The Entry screen draws an English translation above the Italian definitions, and 76.5% of entries
+have one. The About screen does not credit en.wiktionary yet.

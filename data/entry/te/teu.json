@@ -1,0 +1,5 @@
+[
+{"id":"teu:0","word":"teurgo","ipa":"/teˈurgo/","cefr":"c2","pos":[{"pos":"noun","senses":["tipo di magia paraticata dai neoplatonici"]}],"en":[{"pos":"noun","glosses":["theurgist"]}]},
+{"id":"teu:1","word":"teutone","ipa":"/ˈtɛwtone/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda i Teutoni, antica popolazione germanica della penisola dello Jutland, che poi si stabilì in gran parte nell'occidente estremo dell'odierna Germania"]},{"pos":"noun","senses":["facente parte della popolazione dei Teutoni"]}],"en":[{"pos":"noun","glosses":["Teuton"]}]},
+{"id":"teu:2","word":"teutonico","ipa":"/tewˈtɔniko/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda i Teutoni","tedesco"]}],"en":[{"pos":"adj","glosses":["Teutonic"]}]}
+]

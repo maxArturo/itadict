@@ -1,5 +1,5 @@
 [
 {"id":"dv:0","word":"DVD","cefr":"b2","pos":[{"pos":"abbrev","senses":["Digital Video Disk, disco compatto a capacità molto elevata per la registrazione digitale di suoni, immagini e filmati, molto diffuso negli anni duemila e duemiladieci","successivamente rinominato come Digital Versatile Disk"]}],"ex":[0,1,2]},
-{"id":"dv:1","word":"DVD-ROM","cefr":"c2","pos":[{"pos":"noun","senses":["DVD di sola lettura per applicazioni informatiche molto simile al CD-ROM"]}]},
+{"id":"dv:1","word":"DVD-ROM","cefr":"c2","pos":[{"pos":"noun","senses":["DVD di sola lettura per applicazioni informatiche molto simile al CD-ROM"]}],"en":[{"pos":"noun","glosses":["DVD-ROM"]}]},
 {"id":"dv:2","word":"dv","cefr":"c2","pos":[{"pos":"abbrev","senses":["dove","devo (vedi dovere)"]}]}
 ]

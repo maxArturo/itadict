@@ -64,6 +64,9 @@ export const DATA_BASE = '';
 /** One part of speech and its senses. */
 /** @typedef {{ pos: string, senses: string[] }} PosGroup */
 
+/** The English glosses of one part of speech. The Translation section draws these. */
+/** @typedef {{ pos: string, glosses: string[] }} EnglishGroup */
+
 /** One conjugation group. `forms` keeps the person slots: a missing form is "". */
 /** @typedef {{ key: string, personal: boolean, forms: string[] }} ConjGroup */
 
@@ -77,6 +80,7 @@ export const DATA_BASE = '';
  *   pronunciation: string,
  *   cefr: string,
  *   posList: PosGroup[],
+ *   en: EnglishGroup[],
  *   conj: ConjGroup[],
  *   exampleIndexes: number[],
  * }} Entry */
@@ -322,6 +326,18 @@ export function toEntry(raw) {
     posList.push({ pos: str(group.pos), senses });
   }
 
+  /** @type {EnglishGroup[]} */
+  const en = [];
+  for (const rawEn of Array.isArray(source.en) ? source.en : []) {
+    const group = obj(rawEn);
+    if (group === null) continue;
+    const glosses = strings(group.glosses)
+      .map((gloss) => gloss.trim())
+      .filter((gloss) => gloss !== '');
+    if (glosses.length === 0) continue;
+    en.push({ pos: str(group.pos), glosses });
+  }
+
   /** @type {ConjGroup[]} */
   const conj = [];
   for (const rawGroup of Array.isArray(source.conj) ? source.conj : []) {
@@ -339,6 +355,7 @@ export function toEntry(raw) {
     pronunciation: str(source.ipa ?? source.pronunciation),
     cefr: str(source.cefr),
     posList,
+    en,
     conj,
     exampleIndexes: /** @type {any[]} */ (Array.isArray(source.ex) ? source.ex : []).filter(
       (value) => typeof value === 'number' && Number.isInteger(value) && value >= 0,

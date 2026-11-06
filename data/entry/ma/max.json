@@ -2,9 +2,9 @@
 {"id":"max:0","word":"maxwell","cefr":"c1","pos":[{"pos":"noun","senses":["vecchia unità di misura del flusso magnetico nel sistema centimetro grammo secondo͵ pari alla centomilionesima parte di un weber"]}],"ex":[1198]},
 {"id":"max:1","word":"Maximiliano","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile."]}]},
 {"id":"max:2","word":"maxi-inchiesta","cefr":"c2","pos":[{"pos":"noun","senses":["inchiesta giudiziaria su vasta scala"]}]},
-{"id":"max:3","word":"maxillofacciale","ipa":"/maksillofatˈt͡ʃale/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il volto e la mascella"]}]},
+{"id":"max:3","word":"maxillofacciale","ipa":"/maksillofatˈt͡ʃale/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il volto e la mascella"]}],"en":[{"pos":"adj","glosses":["maxillofacial"]}]},
 {"id":"max:4","word":"maxillofrontale","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda la fronte e la mascella"]}]},
-{"id":"max:5","word":"maxillolabiale","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il labbro e la mascella"]}]},
-{"id":"max:6","word":"maximoto","cefr":"c2","pos":[{"pos":"noun","senses":["motocicletta di grossa cilindrata"]}]},
-{"id":"max:7","word":"maxwelliano","cefr":"c2","pos":[{"pos":"adj","senses":["che si attiene alla dottrina del matematico e fisico scozzese James Clerk Maxwell"]}]}
+{"id":"max:5","word":"maxillolabiale","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il labbro e la mascella"]}],"en":[{"pos":"adj","glosses":["maxillolabial"]}]},
+{"id":"max:6","word":"maximoto","cefr":"c2","pos":[{"pos":"noun","senses":["motocicletta di grossa cilindrata"]}],"en":[{"pos":"noun","glosses":["a powerful motorcycle"]}]},
+{"id":"max:7","word":"maxwelliano","cefr":"c2","pos":[{"pos":"adj","senses":["che si attiene alla dottrina del matematico e fisico scozzese James Clerk Maxwell"]}],"en":[{"pos":"adj","glosses":["Maxwellian"]}]}
 ]

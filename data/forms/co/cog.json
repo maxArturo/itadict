@@ -102,7 +102,7 @@
 "coglionavate":{"id":"cog:16","lemma":"coglionare","label":"seconda persona plurale dell'indicativo imperfetto"},
 "coglionavi":{"id":"cog:16","lemma":"coglionare","label":"seconda persona singolare dell'indicativo imperfetto"},
 "coglionavo":{"id":"cog:16","lemma":"coglionare","label":"prima persona singolare dell'indicativo imperfetto"},
-"coglione":{"id":"te:219","lemma":"testicolo","label":"(specie al plurale) testicolo"},
+"coglione":{"id":"tes:32","lemma":"testicolo","label":"(specie al plurale) testicolo"},
 "coglionera":{"id":"cog:16","lemma":"coglionare","label":"terza persona singolare dell'indicativo futuro"},
 "coglionerai":{"id":"cog:16","lemma":"coglionare","label":"seconda persona singolare dell'indicativo futuro"},
 "coglioneranno":{"id":"cog:16","lemma":"coglionare","label":"terza persona plurale dell'indicativo futuro"},

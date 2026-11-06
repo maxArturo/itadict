@@ -33,6 +33,7 @@ import { WORD_CAP, summarise, tokenize } from './text.js';
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {import('./data.js').Entry} Entry */
 /** @typedef {import('./data.js').ConjGroup} ConjGroup */
+/** @typedef {import('./data.js').EnglishGroup} EnglishGroup */
 /** @typedef {import('./text.js').Match} Match */
 /** @typedef {import('./study.js').Deck} Deck */
 /** @typedef {import('./text.js').Segment} Segment */
@@ -192,6 +193,32 @@ export function formRows(conj) {
       const value = group.forms.filter((form) => form !== '').join(', ');
       if (value !== '') rows.push({ label: name, value });
     }
+  }
+  return rows;
+}
+
+/**
+ * The TRANSLATION rows: one row per English gloss, with the part of speech on the first row of
+ * its group. The label is drawn only when an entry has more than one group, as the reference
+ * does. An entry with no English data returns no rows, so the section is never drawn empty.
+ *
+ * @param {EnglishGroup[]} en
+ * @returns {Array<{ pos: string, gloss: string }>}
+ */
+export function translationRows(en) {
+  const groups = (Array.isArray(en) ? en : [])
+    .map((group) => ({
+      pos: typeof group.pos === 'string' ? group.pos : '',
+      glosses: group.glosses.filter((gloss) => typeof gloss === 'string' && gloss.trim() !== ''),
+    }))
+    .filter((group) => group.glosses.length > 0);
+  const labelled = groups.length > 1;
+  /** @type {Array<{ pos: string, gloss: string }>} */
+  const rows = [];
+  for (const group of groups) {
+    group.glosses.forEach((gloss, index) => {
+      rows.push({ pos: labelled && index === 0 ? group.pos : '', gloss: gloss.trim() });
+    });
   }
   return rows;
 }
@@ -1018,13 +1045,16 @@ export function createUi(doc = globalThis.document) {
     const translation = el('section', 'block');
     translation.append(text('h2', 'section-title', 'Translation'));
 
+    const definitions = el('section', 'block');
+    definitions.append(text('h2', 'section-title', 'Definitions'));
+
     const forms = el('section', 'block');
     forms.append(text('h2', 'section-title', 'Forms'));
 
     const examples = el('section', 'block');
     examples.append(text('h2', 'section-title', 'Examples'));
 
-    section.append(bar, block, translation, forms, examples);
+    section.append(bar, block, translation, definitions, forms, examples);
 
     /**
      * A sentence with the matched word marked in red.
@@ -1050,7 +1080,8 @@ export function createUi(doc = globalThis.document) {
     /** @param {Entry | null} entry */
     function fill(entry) {
       if (entry === null) {
-        translation.append(message('This entry is not ready yet.'));
+        translation.hidden = true;
+        definitions.append(message('This entry is not ready yet.'));
         forms.hidden = true;
         examples.hidden = true;
         return;
@@ -1064,12 +1095,22 @@ export function createUi(doc = globalThis.document) {
         pronunciation.hidden = false;
       }
 
+      const english = translationRows(entry.en);
+      if (english.length === 0) {
+        translation.hidden = true;
+      } else {
+        for (const row of english) {
+          if (row.pos !== '') translation.append(text('p', 'sense-pos', row.pos));
+          translation.append(text('p', 'sense', row.gloss));
+        }
+      }
+
       const labelled = entry.posList.length > 1;
       for (const group of entry.posList) {
-        if (labelled && group.pos !== '') translation.append(text('p', 'sense-pos', group.pos));
-        for (const sense of group.senses) translation.append(text('p', 'sense', sense));
+        if (labelled && group.pos !== '') definitions.append(text('p', 'sense-pos', group.pos));
+        for (const sense of group.senses) definitions.append(text('p', 'sense', sense));
       }
-      if (entry.posList.length === 0) translation.append(message('No definition yet.'));
+      if (entry.posList.length === 0) definitions.append(message('No definition yet.'));
 
       const rows = formRows(entry.conj);
       if (rows.length === 0) {
@@ -2293,6 +2334,13 @@ export function createUi(doc = globalThis.document) {
             }),
             navRow({
               path: ICONS.about,
+              name: 'English translations',
+              note: 'English Wiktionary, CC BY-SA 4.0',
+              href: 'https://creativecommons.org/licenses/by-sa/4.0/',
+              external: true,
+            }),
+            navRow({
+              path: ICONS.about,
               name: 'Example sentences',
               note: 'Tatoeba, CC BY 2.0 FR',
               href: 'https://creativecommons.org/licenses/by/2.0/fr/',
@@ -2310,6 +2358,11 @@ export function createUi(doc = globalThis.document) {
             text('h2', 'section-title', 'Licences'),
             licences,
             text('p', 'settings-note', 'Testo da Wikizionario, it.wiktionary.org, CC BY-SA 4.0, modificato.'),
+            text(
+              'p',
+              'settings-note',
+              'English glosses from en.wiktionary, en.wiktionary.org, CC BY-SA 4.0, modified.',
+            ),
             text(
               'p',
               'settings-note',

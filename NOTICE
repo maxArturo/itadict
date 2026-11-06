@@ -1,6 +1,6 @@
 itadict - offline Italian dictionary
 
-The dictionary data in data/ is derived from three sources.
+The dictionary data in data/ is derived from four sources.
 
 it.wiktionary (Italian Wiktionary)
   Site: https://it.wiktionary.org/
@@ -10,6 +10,13 @@ it.wiktionary (Italian Wiktionary)
   inflected forms moved to a separate index.
   27 pages flagged for copyright review are excluded; the list is in
   tools/data-exclusions.json.
+
+en.wiktionary (English Wiktionary, Italian entries)
+  Site: https://en.wiktionary.org/
+  Extraction: https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl
+  Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
+  Changes: only word, part of speech and the senses' glosses are kept. Three
+  glosses per part of speech, shortened, and joined to the Italian entry.
 
 Tatoeba Italian sentences
   Site: https://tatoeba.org/
@@ -24,5 +31,5 @@ FrequencyWords Italian 50k list
   Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
   Changes: used only to rank lemmas into CEFR bands. No word list is shipped.
 
-All three licences allow redistribution with attribution. This NOTICE must ship
+All four licences allow redistribution with attribution. This NOTICE must ship
 with the data. Derived data stays under the same licences.

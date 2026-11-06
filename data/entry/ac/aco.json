@@ -7,8 +7,8 @@
 {"id":"aco:5","word":"a conti fatti","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["considerando tutti i fatti accaduti"]}]},
 {"id":"aco:6","word":"a corona","cefr":"c2","pos":[{"pos":"phrase","senses":["detto di figura posta in cerchio, talora intorno a un'altra figura; non dovrebbe essere impiegato per indicare più figure poste a formare una corona circolare"]}]},
 {"id":"aco:7","word":"a corpo morto","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["con l'intera pesantezza del corpo"]}]},
-{"id":"aco:8","word":"acondroplasia","cefr":"c2","pos":[{"pos":"noun","senses":["mancanza di sviluppo delle cartilagini e delle ossa degli arti, di origine ereditaria"]}]},
-{"id":"aco:9","word":"aconito","ipa":"aˈkɔnito/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuna pianta della famiglia delle Ranuncolacee, del genere Aconito; la sua classificazione scientifica è Aconitum napellus ( tassonomia) o la sua classificazione scientifica è Aconitum variegatum…","genere della famiglia delle Ranuncolacee"]}]},
-{"id":"aco:10","word":"acori","cefr":"c2","pos":[{"pos":"noun","senses":["ulcera che occupa il cuoio capelluto e la pelle della fronte"]}]},
-{"id":"aco:11","word":"acotiledone","cefr":"c2","pos":[{"pos":"adj","senses":["(di) pianta senza foglie embrionali nutritive"]},{"pos":"noun","senses":["pianta senza foglie embrionali nutritive"]}]}
+{"id":"aco:8","word":"acondroplasia","cefr":"c2","pos":[{"pos":"noun","senses":["mancanza di sviluppo delle cartilagini e delle ossa degli arti, di origine ereditaria"]}],"en":[{"pos":"noun","glosses":["achondroplasia (a genetic disorder, the most common form of short limb dwarfism)"]}]},
+{"id":"aco:9","word":"aconito","ipa":"aˈkɔnito/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuna pianta della famiglia delle Ranuncolacee, del genere Aconito; la sua classificazione scientifica è Aconitum napellus ( tassonomia) o la sua classificazione scientifica è Aconitum variegatum…","genere della famiglia delle Ranuncolacee"]}],"en":[{"pos":"noun","glosses":["aconite (plant and herbal preparation), monkshood"]}]},
+{"id":"aco:10","word":"acori","cefr":"c2","pos":[{"pos":"noun","senses":["ulcera che occupa il cuoio capelluto e la pelle della fronte"]}],"en":[{"pos":"noun","glosses":["plural of acoro"]}]},
+{"id":"aco:11","word":"acotiledone","cefr":"c2","pos":[{"pos":"adj","senses":["(di) pianta senza foglie embrionali nutritive"]},{"pos":"noun","senses":["pianta senza foglie embrionali nutritive"]}],"en":[{"pos":"adj","glosses":["acotyledonous"]},{"pos":"noun","glosses":["acotyledon"]}]}
 ]

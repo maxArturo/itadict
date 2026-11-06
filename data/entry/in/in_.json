@@ -1,4 +1,4 @@
 [
-{"id":"in_:0","word":"in","cefr":"a1","pos":[{"pos":"prep","senses":["indica stato in luogo","indica stato in luogo figurato","indica moto a luogo","indica moto a luogo circoscritto"]},{"pos":"adj","senses":["alla moda"]}],"ex":[1,2,5]},
-{"id":"in_:1","word":"in-","ipa":"ˈin/","cefr":"c2","pos":[{"pos":"prefix","senses":["prefisso relativo a ciò che entra o che si oppone a qualcosa"]}]}
+{"id":"in_:0","word":"in","cefr":"a1","pos":[{"pos":"prep","senses":["indica stato in luogo","indica stato in luogo figurato","indica moto a luogo","indica moto a luogo circoscritto"]},{"pos":"adj","senses":["alla moda"]}],"en":[{"pos":"prep","glosses":["in","to","into"]}],"ex":[1,2,5]},
+{"id":"in_:1","word":"in-","ipa":"ˈin/","cefr":"c2","pos":[{"pos":"prefix","senses":["prefisso relativo a ciò che entra o che si oppone a qualcosa"]}],"en":[{"pos":"prefix","glosses":["used to denote derivation","used as an intensifier","used to denote negation or opposition or privation; un-; in-; a-"]}]}
 ]

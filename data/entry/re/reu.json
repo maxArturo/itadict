@@ -1,0 +1,7 @@
+[
+{"id":"reu:0","word":"reumatoide","ipa":"/rewmaˈtɔjde/","cefr":"c2","pos":[{"pos":"adj","senses":["di affezione di natura infiammatoria che riguarda soprattutto le parti molli delle articolazioni","di autoanticorpo che forma immunocomplessi responsabili di tale affezione"]}],"en":[{"pos":"adj","glosses":["rheumatoid"]}],"ex":[478]},
+{"id":"reu:1","word":"reumatico","ipa":"/rewˈmatiko/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda un reumatismo"]}],"en":[{"pos":"adj","glosses":["rheumatic"]}]},
+{"id":"reu:2","word":"reumatismo","ipa":"/reumaˈtizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["qualsiasi manifestazione dolorosa discontinua a carico dell'apparato locomotore, del sistema nervoso, del cuore, dei polmoni o dei reni"]}],"en":[{"pos":"noun","glosses":["rheumatism"]}]},
+{"id":"reu:3","word":"reumato-","ipa":"/ˈrɛwmato/","cefr":"c2","pos":[{"pos":"prefix","senses":["prima parte di lemmi formati da due parole la prima delle quali significa reumatismo"]}]},
+{"id":"reu:4","word":"reumatologia","ipa":"/rewmatoloˈd͡ʒia/","cefr":"c2","pos":[{"pos":"noun","senses":["ramo della medicina interna con l'obiettivo di riconoscere, curare, prevenire e riabilitare le infiammazioni acute e croniche del tessuto connettivo, soprattutto dell'apparato locomotore"]}],"en":[{"pos":"noun","glosses":["rheumatology"]}]}
+]

@@ -26,7 +26,8 @@ when the manifest is missing.
 
 ### Checks
 
-All 22 rows below ran on build `v1-8ffb3c86b224` and passed.
+All 22 rows below passed on build `v1-8ffb3c86b224`, and again on `v1-ff5b79f38403`, the build that
+added the English glosses.
 
 | # | Check | Pass looks like | Result |
 |---|---|---|---|
@@ -71,9 +72,10 @@ device wipe removes. Not run.
 
 | Gate | Result |
 |---|---|
-| `npm test` | 47 of 47 pass |
+| `npm test` | 48 of 48 pass |
 | `npx tsc --noEmit` | clean |
-| `npm run check` | pass: 61,820 entries, 232,248 forms, 49,283 sentences, 478 buckets, 60,215,347 bytes |
+| `npm run check` | pass: 61,820 entries, 232,248 forms, 49,283 sentences, 478 buckets, 61,769,166 bytes |
+| English coverage | 76.5%, 47,277 of 61,820 entries |
 
 ## The local gate
 
@@ -122,9 +124,11 @@ works on either origin.
 
 | Measure | Bytes |
 |---|---|
-| Entry file, 90th percentile | 86,596 |
-| Largest entry file | 236,356 |
-| Largest entry file, gzipped | 50,651 |
+| Entry file, 90th percentile | 74,951 |
+| Largest entry file | 244,181 |
+| Largest entry file, gzipped | 47,493 |
+| Entry files | 948, from 22,452,034 bytes |
+| Whole data set | 61,389,314 bytes in the manifest |
 
 One tap on a row costs one entry file and one example file. Both are cached forever after the first
 read, because their URL carries the file hash.
@@ -156,18 +160,22 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 - The install path, the standalone window and the maskable crop are not covered.
 - The eviction rule is not covered, and no test can wait 7 days.
 - Layout is measured at two fixed sizes. Text growth, a fold, and a large phone are not covered.
+- The Translation section is checked at the data and DOM level, not against the live origin. The
+  live run predates the English glosses.
+- The English-keyed search index is measured and not built, so no run covers English to Italian
+  search.
 
 ## Result
 
 | Field | Value |
 |---|---|
 | Date | 2026-11-06 |
-| Build from `data/index.json` | `v1-8ffb3c86b224` |
+| Build from `data/index.json` | `v1-ff5b79f38403` (the English glosses). The local gate and the live origin ran on `v1-8ffb3c86b224` |
 | Browser and version | Headless Chromium for the automated gate; a local Chromium at the iPhone 13 profile for the manual run |
-| `npm test` | 47 of 47 pass |
+| `npm test` | 48 of 48 pass |
 | `npx tsc --noEmit` | clean |
-| `npm run check` | pass |
-| Checks 1 to 22 | 22 of 22 pass |
+| `npm run check` | pass, with the coverage line |
+| Checks 1 to 22 | 22 of 22 pass on `v1-ff5b79f38403` |
 | The local gate | 19 requests, all under `/itadict/`; 0 console errors; cold start and offline search pass |
 | The live origin | search and entry pass; worker scope and both caches as listed; 0 console errors |
 | Failures, with cause | none |
@@ -181,3 +189,4 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 | 2026-11-05 | `v1-eeb5e34d3756` | `npm run verify:offline` | 22 of 22 passed. Headless Chromium only; no device check yet. |
 | 2026-11-06 | `v1-8ffb3c86b224` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 47 of 47, clean, pass, 22 of 22. |
 | 2026-11-06 | `v1-8ffb3c86b224` | The local gate at iPhone 13, and the live origin | Pass. Device rows open. |
+| 2026-11-06 | `v1-ff5b79f38403` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 48 of 48, clean, pass with the coverage line, 22 of 22. |

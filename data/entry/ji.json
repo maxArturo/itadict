@@ -1,5 +1,5 @@
 [
-{"id":"ji:0","word":"jihad","ipa":"/d͡ʒɪˈhɑ:d/","cefr":"c1","pos":[{"pos":"noun","senses":["impegno a condurre una vita conforme ai doveri prescritti dall'islam","la “guerra santa” dei musulmani per la difesa e la diffusione dell'islam"]}],"ex":[0,1]},
+{"id":"ji:0","word":"jihad","ipa":"/d͡ʒɪˈhɑ:d/","cefr":"c1","pos":[{"pos":"noun","senses":["impegno a condurre una vita conforme ai doveri prescritti dall'islam","la “guerra santa” dei musulmani per la difesa e la diffusione dell'islam"]}],"en":[{"pos":"noun","glosses":["jihad"]}],"ex":[0,1]},
 {"id":"ji:1","word":"jiddisch","cefr":"c2","pos":[{"pos":"noun","senses":["lingua germanica ebraica, parlata dagli Ebrei di etnia europea"]}]},
 {"id":"ji:2","word":"jivadaya","cefr":"c2","pos":[{"pos":"noun","senses":["nella morale indù: gentilezza verso gli animali"]}]},
 {"id":"ji:3","word":"jive","ipa":"/d͡ʒaɪv/","cefr":"c2","pos":[{"pos":"noun","senses":["musica simile allo swing","torneo di ballo dell'America del Nord"]}]}

@@ -212,6 +212,9 @@ function pickFile(files, key) {
 async function checkBodies(manifest, exclusions, byId) {
   let entryCount = 0;
   let sentenceCount = 0;
+  let withEnglish = 0;
+  /** @type {Map<string, { total: number, matched: number }>} */
+  const enPos = new Map();
   for (const [key, bucket] of Object.entries(manifest.buckets)) {
     // Example ids are positions in this one file. A split would shift them, so it is an error.
     if (bucket.ex.length > 1) {
@@ -270,6 +273,24 @@ async function checkBodies(manifest, exclusions, byId) {
             else if (BARE_FORM.some((pattern) => pattern.test(sense))) fail(where + ' ships a bare form gloss: ' + sense);
           }
         }
+        if (entry.en !== undefined) {
+          if (!Array.isArray(entry.en) || entry.en.length === 0) fail(where + ' has a bad "en"');
+          else {
+            for (const group of entry.en) {
+              if (!isText(group?.pos)) fail(where + ' has an English group without "pos"');
+              else if (!entry.pos.some((own) => own.pos === group.pos)) fail(where + ' has English glosses for a POS it does not carry: ' + group.pos);
+              if (!Array.isArray(group?.glosses) || group.glosses.length === 0) {
+                fail(where + ' has an empty English gloss list');
+                continue;
+              }
+              if (group.glosses.length > 3) fail(where + ' has more than three English glosses for ' + group.pos);
+              for (const gloss of group.glosses) {
+                if (!isText(gloss)) fail(where + ' has an empty English gloss');
+                else if (gloss.length > 200) fail(where + ' has an English gloss longer than 200 characters');
+              }
+            }
+          }
+        }
         const match = ID.exec(entry.id ?? '');
         if (!match) fail(where + ' has a malformed id ' + JSON.stringify(entry.id));
         else {
@@ -298,10 +319,18 @@ async function checkBodies(manifest, exclusions, byId) {
           }
         }
         if (exclusions.has(foldWord(entry.word))) fail(where + ' is on the copyright exclusion list');
+        const enGroups = Array.isArray(entry.en) ? entry.en : [];
+        if (enGroups.length > 0) withEnglish += 1;
+        for (const own of Array.isArray(entry.pos) ? entry.pos : []) {
+          const stat = enPos.get(own.pos) ?? { total: 0, matched: 0 };
+          stat.total += 1;
+          if (enGroups.some((group) => group?.pos === own.pos)) stat.matched += 1;
+          enPos.set(own.pos, stat);
+        }
       });
     }
   }
-  return { entryCount, sentenceCount };
+  return { entryCount, sentenceCount, withEnglish, enPos };
 }
 
 /**
@@ -369,6 +398,8 @@ async function checkIndexes(manifest, byId) {
         if ((entry.ipa ?? '') !== (ipa ?? '')) fail(file.path + ': search row ' + word + ' has a different pronunciation than its entry');
         if (!entry.pos.some((group) => group.pos === pos)) fail(file.path + ': search row ' + word + ' has POS ' + pos + ' that the entry does not carry');
         if (!isText(gloss)) fail(file.path + ': search row ' + word + ' has an empty gloss');
+        const expected = entry.en?.[0]?.glosses?.[0] ?? entry.pos[0].senses[0];
+        if (gloss !== expected) fail(file.path + ': search row ' + word + ' has a gloss that is not the first English or Italian gloss');
         const picked = pickFile(bucket.search, foldWord(word));
         if (picked !== null && picked.path !== file.path) fail(file.path + ': search row ' + word + ' belongs in ' + picked.path);
         searchRows += 1;
@@ -416,7 +447,7 @@ async function main() {
   const bytes = await checkFiles(listed);
   const exclusions = new Set(((await readJson(path.join(ROOT, 'tools', 'data-exclusions.json')))?.titles ?? []).map(foldWord));
   const byId = new Map();
-  const { entryCount, sentenceCount } = await checkBodies(manifest, exclusions, byId);
+  const { entryCount, sentenceCount, withEnglish, enPos } = await checkBodies(manifest, exclusions, byId);
   await checkCefr(manifest, byId);
   const { formRows, searchRows } = await checkIndexes(manifest, byId);
   if (manifest.totals?.entries !== entryCount) fail('index.json: totals.entries is ' + manifest.totals?.entries + ', counted ' + entryCount);
@@ -425,6 +456,10 @@ async function main() {
   if (searchRows !== entryCount) fail('there are ' + searchRows + ' search rows for ' + entryCount + ' entries');
   const split = Object.values(manifest.buckets).some((bucket) => SETS.some((set) => bucket[set].length > 1));
   if (!split) fail('no bucket lists more than one file: the longest-prefix rule is never exercised');
+  const share = entryCount === 0 ? 0 : (withEnglish / entryCount) * 100;
+  console.log('en coverage: ' + share.toFixed(1) + '% (' + withEnglish + ' of ' + entryCount + ' entries)');
+  console.log('en per pos: ' + [...enPos.entries()].sort((a, b) => b[1].total - a[1].total)
+    .map(([pos, stat]) => pos + ' ' + stat.matched + '/' + stat.total).join(', '));
   return report({ bytes, entryCount, formRows, sentenceCount, buckets: Object.keys(manifest.buckets ?? {}).length });
 }
 

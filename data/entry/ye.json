@@ -1,8 +1,8 @@
 [
 {"id":"ye:0","word":"yen","cefr":"b2","pos":[{"pos":"noun","senses":["unità monetaria del Giappone"]}],"ex":[0,1,2]},
-{"id":"ye:1","word":"yeti","ipa":"/ˈjɛti/","cefr":"c1","pos":[{"pos":"noun","senses":["mitico uomo delle nevi, molto alto e peloso, dell'Himalaya"]}],"ex":[6,7,8]},
+{"id":"ye:1","word":"yeti","ipa":"/ˈjɛti/","cefr":"c1","pos":[{"pos":"noun","senses":["mitico uomo delle nevi, molto alto e peloso, dell'Himalaya"]}],"en":[{"pos":"noun","glosses":["yeti"]}],"ex":[6,7,8]},
 {"id":"ye:2","word":"Yemen","cefr":"c1","pos":[{"pos":"noun","senses":["stato dell'Asia sudoccidentale, situato sulla Penisola Arabica, confinante con Arabia Saudita e Oman, e la cui capitale è San'a."]}],"ex":[3,4,5]},
 {"id":"ye:3","word":"Yeshivah","cefr":"c2","pos":[{"pos":"noun","senses":["quasi come accademia o “scuola”, è il luogo di studio della Torah nella religione ebraica, in genere della comunità israelita ortodossa, non soltanto Haredi o Chassidica dei Hassidim di oggi… ma…"]}]},
-{"id":"ye:4","word":"yemenita","cefr":"c2","pos":[{"pos":"adj","senses":["riferito allo Yemen"]},{"pos":"noun","senses":["nativo o nativa dello Yemen"]}]},
+{"id":"ye:4","word":"yemenita","cefr":"c2","pos":[{"pos":"adj","senses":["riferito allo Yemen"]},{"pos":"noun","senses":["nativo o nativa dello Yemen"]}],"en":[{"pos":"adj","glosses":["Yemeni"]},{"pos":"noun","glosses":["Yemeni"]}]},
 {"id":"ye:5","word":"yersinia","ipa":"/jɛrˈzɪnɪə/","cefr":"c2","pos":[{"pos":"noun","senses":["genere di batteri gram negativi, in passato compreso nel genere Pasteurella, che comprende specie responsabili di gravi malattie tra cui la peste"]}]}
 ]

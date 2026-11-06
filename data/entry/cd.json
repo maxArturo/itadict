@@ -1,6 +1,6 @@
 [
 {"id":"cd:0","word":"CD","cefr":"b2","pos":[{"pos":"abbrev","senses":["Compact Disc (letteralmente: disco compatto), disco a lettura ottica laser per la registrazione digitale di suoni, immagini e dati, molto diffuso negli anni novanta e duemila","Cluster of Differentiation, molecola di differenziamento situata sulla superficie dei linfociti, con la funzione di tradurre segnali cellulari o riconoscere antigeni"]}],"ex":[0,1,2]},
-{"id":"cd:1","word":"CD-ROM","cefr":"c2","pos":[{"pos":"noun","senses":["disco ottico compatto di sola lettura per applicazioni informatiche, in grado di rendere disponibili grandi quantità di dati e programmi, molto diffuso negli anni novanta e duemila"]}]},
+{"id":"cd:1","word":"CD-ROM","cefr":"c2","pos":[{"pos":"noun","senses":["disco ottico compatto di sola lettura per applicazioni informatiche, in grado di rendere disponibili grandi quantità di dati e programmi, molto diffuso negli anni novanta e duemila"]}],"en":[{"pos":"noun","glosses":["CD-ROM"]}]},
 {"id":"cd:2","word":"CDMA","cefr":"c2","pos":[{"pos":"abbrev","senses":["Code Division Multiple Access, multiplazione a divisione di codice, protocollo di trasmissione multiplexing dove trasmettitore e ricevitore usano la stessa sequenza per codificare e decodificare…"]}]},
 {"id":"cd:3","word":"cda","cefr":"c2","pos":[{"pos":"abbrev","senses":["consiglio di amministrazione, organo collegiale col compito di gestire società di capitali"]}]}
 ]

@@ -1,0 +1,8 @@
+[
+{"id":"aru:0","word":"Aruba","cefr":"c2","pos":[{"pos":"name","senses":["isola autonoma appartenente ai Paesi Bassi, situata nei Caraibi"]}]},
+{"id":"aru:1","word":"a ruota","cefr":"c2","pos":[{"pos":"phrase","senses":["a pochissima distanza","immediatamente dietro il ciclista che è avanti","(di pantalone) di forma circolare","in modo ravvicinato"]}]},
+{"id":"aru:2","word":"a ruota libera","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["senza utilizzare i freni","privo di riscontro"]}]},
+{"id":"aru:3","word":"arunduco","cefr":"c2","pos":[{"pos":"noun","senses":["sorta di rettile non più noto"]}]},
+{"id":"aru:4","word":"aruspice","ipa":"/aˈruspit͡ʃe/","cefr":"c2","pos":[{"pos":"noun","senses":["sacerdote etrusco e romano dedito alla divinazione, che anticipava il futuro con l'analisi delle viscere degli animali."]}],"en":[{"pos":"noun","glosses":["haruspex (one who practices divination by inspecting entrails)"]}]},
+{"id":"aru:5","word":"aruspicio","cefr":"c2","pos":[{"pos":"noun","senses":["azione consistente nell'esaminare e interpretare le interiora delle vittime sacrificate nel tentativo di predire il futuro"]}],"en":[{"pos":"noun","glosses":["prediction resulting from haruspicy"]}]}
+]

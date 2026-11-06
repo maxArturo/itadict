@@ -1,0 +1,12 @@
+[
+{"id":"rai:0","word":"RAI","cefr":"c2","pos":[{"pos":"abbrev","senses":["servizio radiofonico pubblico sorto nel secondo dopoguerra"]}]},
+{"id":"rai:1","word":"Raimonda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"rai:2","word":"Raimondina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"rai:3","word":"Raimondo","ipa":"/rajˈmondo/","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona italiano maschile"]}],"en":[{"pos":"name","glosses":["a male given name from Latin, equivalent to English Raymond"]}]},
+{"id":"rai:4","word":"Rainalda","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"rai:5","word":"Rainardo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"rai:6","word":"Rainera","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"rai:7","word":"raid","ipa":"/ˈrajd/","cefr":"c1","pos":[{"pos":"noun","senses":["impiego di forze militari dell'aeronautica, di terra, ecc senza obiettivi specifici, in genere quindi per captarli nel corso della \"manovra\" stessa spesso appunto celere o \"sbrigativa\"","grande vittoria"]}],"en":[{"pos":"noun","glosses":["raid, incursion","long-distance race or rally"]}]},
+{"id":"rai:8","word":"raider","cefr":"c2","pos":[{"pos":"noun","senses":["chi dispone di capacità imprenditoriali e finanziarie tali da poter comprare aziende indebitate, per poi venderle a prezzi superiori dopo aver cercato di rinnovarne il personale e la produzione"]}]},
+{"id":"rai:9","word":"raion","cefr":"c2","pos":[{"pos":"noun","senses":["una prodotto simile alla seta"]}]}
+]

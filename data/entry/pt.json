@@ -1,10 +1,10 @@
 [
-{"id":"pt:0","word":"Pterigoti","ipa":"/pteriˈɡɔti/","cefr":"c2","pos":[{"pos":"noun","senses":["insetti con le ali"]}]},
-{"id":"pt:1","word":"pteridofita","ipa":"/pteriˈdɔfita/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuna pianta del phylum delle Pteridofite"]}]},
-{"id":"pt:2","word":"pterigote","ipa":"/pteriˈɡɔte/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun insetto dell'infraclasse degli Pterigoti"]}]},
-{"id":"pt:3","word":"pterodattilo","cefr":"c2","pos":[{"pos":"noun","senses":["rettile volante predatore estinto degli Pterosauri, comparso durante il Mesozoico, col cranio allungato nella parte anteriore e con arti anteriori molto sviluppati e trasformati in organi di volo"]}]},
-{"id":"pt:4","word":"pterosauro","ipa":"/pteroˈsawro/","cefr":"c2","pos":[{"pos":"noun","senses":["rettili fossili degli Arcosauri del mesozoico"]}]},
-{"id":"pt:5","word":"ptialina","cefr":"c2","pos":[{"pos":"noun","senses":["enzima idrolitico presente nella saliva, che degrada polisaccaridi complessi in polisaccaridi semplici, poi ulteriormente decomposti per idrolisi nell'intestino"]}]},
+{"id":"pt:0","word":"Pterigoti","ipa":"/pteriˈɡɔti/","cefr":"c2","pos":[{"pos":"noun","senses":["insetti con le ali"]}],"en":[{"pos":"noun","glosses":["plural of pterigote"]}]},
+{"id":"pt:1","word":"pteridofita","ipa":"/pteriˈdɔfita/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascuna pianta del phylum delle Pteridofite"]}],"en":[{"pos":"noun","glosses":["pteridophyte"]}]},
+{"id":"pt:2","word":"pterigote","ipa":"/pteriˈɡɔte/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun insetto dell'infraclasse degli Pterigoti"]}],"en":[{"pos":"noun","glosses":["pterygote"]}]},
+{"id":"pt:3","word":"pterodattilo","cefr":"c2","pos":[{"pos":"noun","senses":["rettile volante predatore estinto degli Pterosauri, comparso durante il Mesozoico, col cranio allungato nella parte anteriore e con arti anteriori molto sviluppati e trasformati in organi di volo"]}],"en":[{"pos":"noun","glosses":["pterodactyl"]}]},
+{"id":"pt:4","word":"pterosauro","ipa":"/pteroˈsawro/","cefr":"c2","pos":[{"pos":"noun","senses":["rettili fossili degli Arcosauri del mesozoico"]}],"en":[{"pos":"noun","glosses":["pterosaur"]}]},
+{"id":"pt:5","word":"ptialina","cefr":"c2","pos":[{"pos":"noun","senses":["enzima idrolitico presente nella saliva, che degrada polisaccaridi complessi in polisaccaridi semplici, poi ulteriormente decomposti per idrolisi nell'intestino"]}],"en":[{"pos":"noun","glosses":["ptyalin"]}]},
 {"id":"pt:6","word":"ptilonorinchide","ipa":"/ptilonoˈrinkide","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun uccello della famiglia degli Ptilonorinchidi"]}]},
-{"id":"pt:7","word":"ptosi","ipa":"/ˈptɔzi/","cefr":"c2","pos":[{"pos":"noun","senses":["spostamento patologico di un organo verso il basso"]}]}
+{"id":"pt:7","word":"ptosi","ipa":"/ˈptɔzi/","cefr":"c2","pos":[{"pos":"noun","senses":["spostamento patologico di un organo verso il basso"]}],"en":[{"pos":"noun","glosses":["ptosis"]}]}
 ]

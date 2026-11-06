@@ -1,7 +1,7 @@
 [
-["maori","mao:0","maori","//","noun","chi appartiene ai Maori, popolazione indigena della Nuova Zelanda"],
-["maoismo","mao:1","maoismo","/maoˈizmo/","noun","insieme di dottrine economiche e politiche d'ispirazione autoritaria e collettivista, elaborate in Cina da Mao Tse-Tung, presidente del partito comunista cinese dal 1945 al 1976"],
-["maoista","mao:2","maoista","/maoˈista/","adj","che riguarda l'esperienza politica di Mao Tse Tung, fondatore della Repubblica Popolare di Cina"],
-["maomettano","mao:3","maomettano","/maometˈtano/","adj","dell'Islam"],
-["maomettismo","mao:4","maomettismo","/maometˈtizmo/","noun","religione di Maometto"]
+["maori","mao:0","maori","//","noun","Maori"],
+["maoismo","mao:1","maoismo","/maoˈizmo/","noun","Maoism"],
+["maoista","mao:2","maoista","/maoˈista/","adj","Maoist"],
+["maomettano","mao:3","maomettano","/maometˈtano/","adj","Mohammedan: Muslim"],
+["maomettismo","mao:4","maomettismo","/maometˈtizmo/","noun","Mohammedanism: Islam"]
 ]

@@ -1,5 +1,5 @@
 [
-{"id":"sy:0","word":"Sydney","cefr":"b2","pos":[{"pos":"name","senses":["città australiana nella regione del Nuovo Galles del Sud, prima per popolazione"]}],"ex":[0,1,2]},
+{"id":"sy:0","word":"Sydney","cefr":"b2","pos":[{"pos":"name","senses":["città australiana nella regione del Nuovo Galles del Sud, prima per popolazione"]}],"en":[{"pos":"name","glosses":["Sydney (a major port city, the state capital of New South Wales, Australia, and the most populous city in Australia)","Sydney (a seaport and former city in Nova Scotia, Canada, now part of the amalgamated Cape Breton Regional Municipality on Cape Breton Island)"]}],"ex":[0,1,2]},
 {"id":"sy:1","word":"symposium","ipa":"/simˈpɔzjum/","cefr":"c2","pos":[{"pos":"noun","senses":["conferenza di studiosi specialisti, simposio","beviamo insieme, simposio"]}]},
 {"id":"sy:2","word":"syndet","cefr":"c2","pos":[{"pos":"noun","senses":["sapone sintetico acido per pelli sensibili"]}]},
 {"id":"sy:3","word":"synfuel","cefr":"c2","pos":[{"pos":"noun","senses":["carburante sintetico ottenuto dal trattamento di combustibili fossili non liquidi o biomasse"]}]},

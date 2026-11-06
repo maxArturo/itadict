@@ -1,0 +1,8 @@
+[
+{"id":"tep:0","word":"tepore","ipa":"/teˈpore/","cefr":"c2","pos":[{"pos":"noun","senses":["leggero e piacevole caldo"]}],"en":[{"pos":"noun","glosses":["warmth"]}],"ex":[485,486,487]},
+{"id":"tep:1","word":"teppista","ipa":"/tep.ˈpis.ta/","cefr":"c1","pos":[{"pos":"noun","senses":["chi commette atti di violenza"]}],"en":[{"pos":"noun","glosses":["thug, hoodlum, hooligan"]}],"ex":[394,395,548]},
+{"id":"tep:2","word":"teppismo","ipa":"/tepˈpizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["compimento di atti di violenza e vandalismo da parte di persone associate o singole, tipico delle grandi città"]}],"en":[{"pos":"noun","glosses":["hooliganism, violence, vandalism"]}],"ex":[291]},
+{"id":"tep:3","word":"tep","cefr":"c2","pos":[{"pos":"noun","senses":["tonnellata equivalente di petrolio, unità di misura dell'energia che equivale all'energia termica fornita dalla combustione di una tonnellata di petrolio greggio, pari a dieci milioni di chilocalorie"]}]},
+{"id":"tep:4","word":"tepidario","ipa":"//","cefr":"c2","pos":[{"pos":"noun","senses":["ambiente di passaggio delle terme romane, che faceva comunicare gli ambienti per il bagno caldo con quelli per il bagno freddo, e serviva a volte anche da spogliatoio"]}],"en":[{"pos":"noun","glosses":["tepidarium"]}]},
+{"id":"tep:5","word":"teppa","ipa":"/ˈteppa/","cefr":"c2","pos":[{"pos":"noun","senses":["ragazzo lievemente pericoloso"]}],"en":[{"pos":"noun","glosses":["mob"]}]}
+]

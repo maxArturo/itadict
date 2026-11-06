@@ -1,0 +1,17 @@
+[
+{"id":"bai:0","word":"baia","ipa":"/ˈbaja/","cefr":"b2","pos":[{"pos":"noun","senses":["insenatura della costa con entrata relativamente ristretta, dove le barche trovano riparo","burla, beffa, celia"]}],"en":[{"pos":"noun","glosses":["mockery, teasing","trifle, whiffle, bagatelle","a washtub for clothes, formerly used on ships"]}],"ex":[395,580,625]},
+{"id":"bai:1","word":"baita","ipa":"/ˈbaita/","cefr":"c1","pos":[{"pos":"noun","senses":["piccola abitazione di montagna, costruita interamente in legno o in pietra, utilizzata dai pastori o come ripostiglio"]}],"en":[{"pos":"noun","glosses":["refuge (hut in the mountains)"]}],"ex":[593,639,666]},
+{"id":"bai:2","word":"baionetta","ipa":"/bajoˈnetta/","cefr":"c2","pos":[{"pos":"noun","senses":["arma da taglio che si innesta sulla punta di un fucile","fucile che monta un'arma da taglio nella canna"]}],"en":[{"pos":"noun","glosses":["bayonet"]}],"ex":[617,618]},
+{"id":"bai:3","word":"bailamme","ipa":"/baiˈlamme/","cefr":"c2","pos":[{"pos":"noun","senses":["confusione, caos, specialmente di rumore o fracasso prodotto dalla folla"]}],"en":[{"pos":"noun","glosses":["uproar, hullabaloo"]}],"ex":[592]},
+{"id":"bai:4","word":"Baingia","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"bai:5","word":"Baiulo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"en":[{"pos":"name","glosses":["a male given name"]}]},
+{"id":"bai:6","word":"bail in","cefr":"c2","pos":[{"pos":"noun","senses":["salvataggio del sistema bancario di un paese dall'interno"]}],"en":[{"pos":"noun","glosses":["bail in"]}]},
+{"id":"bai:7","word":"bailo","ipa":"/ˈbajlo/","cefr":"c2","pos":[{"pos":"noun","senses":["ambasciatore della Repubblica di Venezia a Costantinopoli"]}],"en":[{"pos":"noun","glosses":["title and function borne by an envoy of the Most Serene Republic of Venice"]}]},
+{"id":"bai:8","word":"bailonante","cefr":"c2","pos":[{"pos":"adj","senses":["attributo che si applica alla figura che esce dalla bocca di un animale o di una figura umana"]}]},
+{"id":"bai:9","word":"bailonato","cefr":"c2","pos":[{"pos":"adj","senses":["imbavagliato"]}]},
+{"id":"bai:10","word":"bailout","cefr":"c2","pos":[{"pos":"noun","senses":["situazione in cui un soggetto in bancarotta, o vicino alla bancarotta, riceve un'iniezione di liquidità, al fine di soddisfare i suoi obblighi a breve termine"]}],"en":[{"pos":"noun","glosses":["bailout"]}]},
+{"id":"bai:11","word":"baio","ipa":"/ˈbajo/","cefr":"c2","pos":[{"pos":"adj","senses":["di cavallo di color castagno"]}],"en":[{"pos":"adj","glosses":["bay"]}]},
+{"id":"bai:12","word":"baioccare","cefr":"c2","pos":[{"pos":"verb","senses":["schioccare le dita"]}]},
+{"id":"bai:13","word":"baiocco","ipa":"/baˈjɔkko/","cefr":"c2","pos":[{"pos":"noun","senses":["moneta di piccolo peso utilizzata nello Stato Pontificio"]}],"en":[{"pos":"noun","glosses":["bajocco (coin used in the Papal States)","dough (money)"]}]},
+{"id":"bai:14","word":"baionettata","cefr":"c2","pos":[{"pos":"noun","senses":["colpo di baionetta"]}],"en":[{"pos":"noun","glosses":["bayonet thrust or wound"]}]}
+]

@@ -132,13 +132,21 @@ build: after a rebuild the same id can name a different word.
 | Set | Holds | Shape |
 |---|---|---|
 | search | what a result row draws and what ranking matches | `[folded, id, headword, pronunciation, pos, gloss]` |
-| entry | one entry body | `{ id, word, ipa?, cefr, pos: [{ pos, senses }], ex: [index], conj?: [{ key, personal, forms }] }` |
+| entry | one entry body | `{ id, word, ipa?, cefr, pos: [{ pos, senses }], en: [{ pos, glosses }], ex: [index], conj?: [{ key, personal, forms }] }` |
 | ex | the sentences of one bucket | `[[sentenceId, sentence]]` in entry order, so `ex` holds positions |
 | forms | folded inflected form to its lemma | `{ <foldedForm>: { id, lemma, label } }` |
 | cefr | one deck of browse rows, one per entry | `[id, word, pos, gloss]` |
 
 An entry body holds example positions, never example text. That is what keeps the CC BY 2.0 FR
 sentences out of the CC BY-SA shards. See ADR 0001.
+
+`en` holds the English glosses of one part of speech, at most three, and `pos.senses` holds the
+Italian definitions. The Entry screen draws them in this order: the headword with its IPA, then
+TRANSLATION from `en`, then DEFINITIONS from `pos`, then FORMS from `conj`, then EXAMPLES. An entry
+with no `en` draws no Translation section: 14,543 of 61,820 entries, or 23.5%.
+
+A search row carries one gloss. It is the English gloss when the entry has one, and the first Italian
+sense when it does not, so a result list reads the same way for every row.
 
 The parsers also read named shapes, so a build change from a compact array to a named object does
 not break the app.
@@ -157,6 +165,29 @@ not break the app.
 | Text, one paste | one row shard per bucket the text touches, once per bucket |
 | Reference | the manifest, then all six deck bands once for the parts-of-speech table |
 | Lists, Settings | none. Both read only the stored blob |
+
+### The cost of one tap
+
+| Measure | Value |
+|---|---|
+| Entry file, 90th percentile | 74,951 bytes |
+| Largest entry file | 244,181 bytes, 47,493 bytes gzipped |
+| Entry files | 948, from 22,452,034 bytes |
+| Whole data set | 61,389,314 bytes in the manifest |
+
+An entry file grew by 3,379,148 bytes in total for the English glosses. One tap still costs one entry
+file and one example file, and both are cached forever after the first read.
+
+### A measured option that does not ship: English to Italian search
+
+An English-keyed index over the same glosses was measured, not built. It would map a folded English
+word to the entries whose glosses contain it: 1.81 MB raw, 0.65 MB gzipped, 415 files, a 90th
+percentile of 14.3 KB and a largest file of 74.8 KB, at a cap of 100 postings per key.
+
+The cost is small enough to ship. It is not shipped, because the Search screen is an Italian search
+and an English query would need its own mode, its own ranking and its own result copy. Until that
+decision is taken, an English query finds nothing, and the numbers above are the whole price of the
+feature.
 
 ### The memo
 
@@ -234,6 +265,8 @@ The site is `https://maxarturo.github.io/itadict/`. The subpath is `/itadict/` a
 - the fold and the bucket key; the mapped offsets of a highlighted match; the edit-distance budget;
 - ranking order, the tie rules, the result cap, and a one-character query that reads history;
 - an inflected form resolving to its lemma, across buckets, by id;
+- the Translation rows: one per English gloss, the part of speech only on its first row, and no
+  section at all when the entry has no English data;
 - the tokeniser, the reader's summary and its word cap; an elided word resolving through its parts;
 - the router's seven routes, the URL repair, one render per route, and teardown;
 - the envelope migration, the caps, a refused blob, the lists and folders, the backup round trip;
@@ -262,9 +295,10 @@ the swipe, the memory pressure, and the 7-day eviction. `docs/verification/gate-
 
 Recorded on purpose. Fix the code or the ADR; do not let the two drift.
 
-1. The gate proves the download action, not the Offline button. A tap on it stays a browser or device check.
-2. `js/offline.js` is called from the Reference tab's Offline row and from the Settings screen. The gate calls it directly, so the button itself is still unproven.
-3. The memo has no bound, so a long session grows. There is no LRU.
-4. An entry body carries `cefr`, and no screen draws it. The band shows in Study and, later, in
-   Reference.
+1. `js/offline.js` runs from the Reference tab's Offline row and from the Settings screen. The gate
+   calls the action directly, so the button itself is unproven.
+2. The memo has no bound, so a long session grows. There is no LRU.
+3. An entry body carries `cefr`, and no screen draws it. The band shows in Study and in Reference.
+4. The About screen credits Wikizionario and Tatoeba, and not en.wiktionary. The English glosses are
+   CC BY-SA and need that line. See ADR 0001.
 5. The code licence is MIT, and no `LICENSE` file is on disk yet.

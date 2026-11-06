@@ -765,7 +765,7 @@
 "finiamo":{"id":"fi:9","lemma":"finire","label":"prima persona plurale dell'indicativo presente"},
 "finiate":{"id":"fi:9","lemma":"finire","label":"seconda persona plurale del congiuntivo presente"},
 "finii":{"id":"fi:9","lemma":"finire","label":"prima persona singolare dell'indicativo passato remoto"},
-"finimenti":{"id":"ba:605","lemma":"bardatura","label":"bardatura"},
+"finimenti":{"id":"bar:116","lemma":"bardatura","label":"bardatura"},
 "finimmo":{"id":"fi:9","lemma":"finire","label":"prima persona plurale dell'indicativo passato remoto"},
 "finira":{"id":"fi:9","lemma":"finire","label":"terza persona singolare dell'indicativo futuro"},
 "finirai":{"id":"fi:9","lemma":"finire","label":"seconda persona singolare dell'indicativo futuro"},

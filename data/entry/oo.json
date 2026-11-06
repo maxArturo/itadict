@@ -1,4 +1,4 @@
 [
-{"id":"oo:0","word":"ooforo","cefr":"c2","pos":[{"pos":"adj","senses":["che contiene le uova"]}]},
-{"id":"oo:1","word":"oosfera","ipa":"/oosˈfɛra/","cefr":"c2","pos":[{"pos":"noun","senses":["gamete femminile vegetale"]}]}
+{"id":"oo:0","word":"ooforo","cefr":"c2","pos":[{"pos":"adj","senses":["che contiene le uova"]}],"en":[{"pos":"adj","glosses":["oophorous"]}]},
+{"id":"oo:1","word":"oosfera","ipa":"/oosˈfɛra/","cefr":"c2","pos":[{"pos":"noun","senses":["gamete femminile vegetale"]}],"en":[{"pos":"noun","glosses":["oosphere"]}]}
 ]

@@ -1,6 +1,6 @@
 [
 {"id":"ko:0","word":"Kobe","cefr":"c1","pos":[{"pos":"name","senses":["città del Giappone"]}],"ex":[0,1,2]},
-{"id":"ko:1","word":"koala","ipa":"/koˈala/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero australiano che assomiglia ad un orso, privo di coda"]}],"ex":[3,4,5]},
+{"id":"ko:1","word":"koala","ipa":"/koˈala/","cefr":"c2","pos":[{"pos":"noun","senses":["mammifero australiano che assomiglia ad un orso, privo di coda"]}],"en":[{"pos":"noun","glosses":["koala"]}],"ex":[3,4,5]},
 {"id":"ko:2","word":"kosher","cefr":"c2","pos":[{"pos":"adj","senses":["che concerne la kasherùt","luogo in cui si può mangiare kosher","studio permesso","kosher Torah: testi di Torah senza aggiunte né \"cancellazioni\", cioè con i commenti secondo verità"]},{"pos":"noun","senses":["nella religione ebraica indica gli alimenti permessi secondo le regole della stessa, tra essi anche salumi kòsher"]}],"ex":[10,11,12]},
 {"id":"ko:3","word":"Kolkata","cefr":"c2","pos":[{"pos":"name","senses":["nome moderno di Calcutta, città dell'India"]}],"ex":[13,14]},
 {"id":"ko:4","word":"kotava","cefr":"c2","pos":[{"pos":"adj","senses":["relativo alla lingua kotava"]},{"pos":"noun","senses":["lingua artificiale a priori, cioè senza relazione alcuna con le lingue naturali, creata tra il 1975 e il 1978 da Staren Fetcey"]}],"ex":[8,9]},
@@ -10,11 +10,11 @@
 {"id":"ko:8","word":"Koror","cefr":"c2","pos":[{"pos":"name","senses":["vecchia capitale di Palau, sostituita nel 2006 da Ngerulmud."]}]},
 {"id":"ko:9","word":"Kovylkino","cefr":"c2","pos":[{"pos":"name","senses":["città mordvina nella Federazione Russa"]}]},
 {"id":"ko:10","word":"kob","ipa":"/ˈkɔb/","cefr":"c2","pos":[{"pos":"noun","senses":["bovide; la sua classificazione scientifica è Kobus kob ( tassonomia)"]}]},
-{"id":"ko:11","word":"kobret","cefr":"c2","pos":[{"pos":"noun","senses":["droga sintetica ottenuta dagli scarti dell'eroina"]}]},
-{"id":"ko:12","word":"koinè","cefr":"c2","pos":[{"pos":"noun","senses":["fase della lingua greca nata in seguito all'espansione dell'antica Grecia in Africa del nord e in medio oriente, ad opera di Alessandro Magno"]}]},
+{"id":"ko:11","word":"kobret","cefr":"c2","pos":[{"pos":"noun","senses":["droga sintetica ottenuta dagli scarti dell'eroina"]}],"en":[{"pos":"noun","glosses":["a low-grade of heroin"]}]},
+{"id":"ko:12","word":"koinè","cefr":"c2","pos":[{"pos":"noun","senses":["fase della lingua greca nata in seguito all'espansione dell'antica Grecia in Africa del nord e in medio oriente, ad opera di Alessandro Magno"]}],"en":[{"pos":"noun","glosses":["koine","Koine (language)"]}]},
 {"id":"ko:13","word":"kokyū","ipa":"/koˈkju/","cefr":"c2","pos":[{"pos":"noun","senses":["strumento musicale ad arco a tre corde originario del Giappone, somigliante allo shamisen ma di dimensioni minori, introdotto dalla Cina imperiale nel sedicesimo secolo"]}]},
-{"id":"ko:14","word":"kolchoz","ipa":"/ˈkɔlkos/","cefr":"c2","pos":[{"pos":"noun","senses":["fattoria collettiva sovietica fondata sul cooperativismo"]}]},
-{"id":"ko:15","word":"kombinat","ipa":"/kombiˈnat/","cefr":"c2","pos":[{"pos":"noun","senses":["complesso industriale caratteristico dell'ex Unione Sovietica, formato da un insieme d’imprese stanziate in genere nella stessa regione economica, complementari tra loro per produrre manufatti e…"]}]},
+{"id":"ko:14","word":"kolchoz","ipa":"/ˈkɔlkos/","cefr":"c2","pos":[{"pos":"noun","senses":["fattoria collettiva sovietica fondata sul cooperativismo"]}],"en":[{"pos":"noun","glosses":["kolkhoz, kolkoz"]}]},
+{"id":"ko:15","word":"kombinat","ipa":"/kombiˈnat/","cefr":"c2","pos":[{"pos":"noun","senses":["complesso industriale caratteristico dell'ex Unione Sovietica, formato da un insieme d’imprese stanziate in genere nella stessa regione economica, complementari tra loro per produrre manufatti e…"]}],"en":[{"pos":"noun","glosses":["an industrial business conglomerate in the former Soviet Union"]}]},
 {"id":"ko:16","word":"komsomol","ipa":"/komsoˈmɔl/","cefr":"c2","pos":[{"pos":"noun","senses":["associazione giovanile del PCUS"]}]},
 {"id":"ko:17","word":"konokol","cefr":"c2","pos":[{"pos":"noun","senses":["metodo indiano per raggiungere la padronanza del ritmo. Si basa su sette moduli ritmici, di differente lunghezza, che vengono scanditi con la voce mentre con il battito delle mani si tiene il tempo"]}]}
 ]

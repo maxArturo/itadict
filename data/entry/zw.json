@@ -1,5 +1,5 @@
 [
-{"id":"zw:0","word":"zwinglismo","ipa":"/dzwinˈglizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["dottrina riformata, fondata in Svizzera dal teologo Ulrico Zwingli sulle basi del luteranesimo, ma più intransigente in alcuni aspetti, precorritrice della calvinismo"]}]},
-{"id":"zw:1","word":"zwinglista","cefr":"c2","pos":[{"pos":"adj","senses":["zwingliano"]},{"pos":"noun","senses":["zwingliano"]}]},
-{"id":"zw:2","word":"zwitterione","cefr":"c2","pos":[{"pos":"noun","senses":["ione con carica elettrica neutra"]}]}
+{"id":"zw:0","word":"zwinglismo","ipa":"/dzwinˈglizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["dottrina riformata, fondata in Svizzera dal teologo Ulrico Zwingli sulle basi del luteranesimo, ma più intransigente in alcuni aspetti, precorritrice della calvinismo"]}],"en":[{"pos":"noun","glosses":["Zwinglianism"]}]},
+{"id":"zw:1","word":"zwinglista","cefr":"c2","pos":[{"pos":"adj","senses":["zwingliano"]},{"pos":"noun","senses":["zwingliano"]}],"en":[{"pos":"adj","glosses":["alternative form of zwingliano"]}]},
+{"id":"zw:2","word":"zwitterione","cefr":"c2","pos":[{"pos":"noun","senses":["ione con carica elettrica neutra"]}],"en":[{"pos":"noun","glosses":["zwitterion"]}]}
 ]

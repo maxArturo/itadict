@@ -1,9 +1,9 @@
 [
-["mafia","maf:0","mafia","/ˈmafja/","noun","organizzazione criminale formata da associazioni rette dalla legge dell'omertà e della segretezza, che controllano attività economiche illecite e di governo parallelo, diffusa in origine in Sicilia"],
-["mafioso","maf:1","mafioso","/maˈfjozo/","adj","della mafia"],
+["mafia","maf:0","mafia","/ˈmafja/","noun","the Mafia (International organized crime organization)"],
+["mafioso","maf:1","mafioso","/maˈfjozo/","adj","mafia, Mafia; Mafioso"],
 ["mafalda","maf:2","Mafalda","","name","nome proprio di persona femminile"],
 ["mafaldo","maf:3","Mafaldo","","name","nome proprio di persona maschile"],
 ["maffeo","maf:4","Maffeo","","name","nome proprio di persona maschile."],
-["mafiosamente","maf:5","mafiosamente","","adv","in modo mafioso, da mafioso"],
-["mafiosita","maf:6","mafiosità","","noun","qualità di ciò che riguarda o ricorda la mafia"]
+["mafiosamente","maf:5","mafiosamente","","adv","in a mafia-style way"],
+["mafiosita","maf:6","mafiosità","","noun","mafia-style behaviour/behavior or mentality"]
 ]

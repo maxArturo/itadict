@@ -1,12 +1,12 @@
 [
-["cobalto","cob:0","cobalto","/koˈbalto/","noun","elemento chimico solido, di colore grigio, facente parte del gruppo dei metalli del gruppo d, avente numero atomico 27, peso atomico 58,9 e simbolo chimico Co"],
-["cobra","cob:1","cobra","/ˈkɔbra/","noun","serpente dei Colubridi molto velenoso che vive in Africa ed Asia meridionale"],
-["cobalamina","cob:2","cobalamina","","noun","vitamina B12, sostanza organica formata da un anello corrinico contenente cobalto, indispensabile per la maturazione dei globuli rossi"],
-["cobaltico","cob:3","cobaltico","/koˈbaltiko/","adj","(di) composto del cobalto trivalente"],
-["cobaltocalcite","cob:4","cobaltocalcite","/ko,baltokalˈt͡ʃite/","noun","calcite rosa rossastra"],
-["cobaltoso","cob:5","cobaltoso","/kobalˈtoso/","adj","di composto che contenente cobalto bivalente"],
+["cobalto","cob:0","cobalto","/koˈbalto/","noun","cobalt"],
+["cobra","cob:1","cobra","/ˈkɔbra/","noun","cobra"],
+["cobalamina","cob:2","cobalamina","","noun","cobalamin"],
+["cobaltico","cob:3","cobaltico","/koˈbaltiko/","adj","containing trivalent cobalt"],
+["cobaltocalcite","cob:4","cobaltocalcite","/ko,baltokalˈt͡ʃite/","noun","cobaltocalcite"],
+["cobaltoso","cob:5","cobaltoso","/kobalˈtoso/","adj","containing bivalent cobalt"],
 ["cobea","cob:6","cobea","/koˈbɛa/","noun","pianta della famiglia delle Polemoniacee; la sua classificazione scientifica è Cobaea scandens ( tassonomia)"],
-["cobelligeranza","cob:7","cobelligeranza","","noun","condizione di uno stato che si trovi in guerra contro lo stesso nemico di uno o più altri stati, senza tuttavia gli impegni e i diritti dell'alleato"],
-["cobo","cob:8","cobo","/ˈkɔbo/","noun","ciascuna antilope del genere Cobo"],
-["coboldo","cob:9","coboldo","/koˈbɔldo","noun","folletto poco socievole, a volte cattivo altre buono, tipico dell'immaginario folkloristico germanico"]
+["cobelligeranza","cob:7","cobelligeranza","","noun","alliance (in a war)"],
+["cobo","cob:8","cobo","/ˈkɔbo/","noun","kob, sing-sing (Kobus kob)"],
+["coboldo","cob:9","coboldo","/koˈbɔldo","noun","kobold"]
 ]

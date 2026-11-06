@@ -1,7 +1,7 @@
 [
-{"id":"anu:0","word":"anulare","cefr":"c2","pos":[{"pos":"adj","senses":["con la forma di un anello","che porta l'anello","detto di volta di forma emisferica poggiante sulle pareti disposte in circolo"]},{"pos":"noun","senses":["il quarto dito della mano"]}],"ex":[70,104,324]},
+{"id":"anu:0","word":"anulare","cefr":"c2","pos":[{"pos":"adj","senses":["con la forma di un anello","che porta l'anello","detto di volta di forma emisferica poggiante sulle pareti disposte in circolo"]},{"pos":"noun","senses":["il quarto dito della mano"]}],"en":[{"pos":"adj","glosses":["ring","annular, ring-shaped"]},{"pos":"noun","glosses":["ring finger"]}],"ex":[70,104,324]},
 {"id":"anu:1","word":"Anuri","ipa":"/aˈnuri/","cefr":"c2","pos":[{"pos":"noun","senses":["ordine di anfibi"]}]},
-{"id":"anu:2","word":"anubi","ipa":"/aˈnubi/","cefr":"c2","pos":[{"pos":"noun","senses":["babbuini verdi"]}]},
-{"id":"anu:3","word":"anucleato","cefr":"c2","pos":[{"pos":"adj","senses":["(di) cellula senza nucleo"]}]},
+{"id":"anu:2","word":"anubi","ipa":"/aˈnubi/","cefr":"c2","pos":[{"pos":"noun","senses":["babbuini verdi"]}],"en":[{"pos":"noun","glosses":["olive baboon (Papio anubis)"]}]},
+{"id":"anu:3","word":"anucleato","cefr":"c2","pos":[{"pos":"adj","senses":["(di) cellula senza nucleo"]}],"en":[{"pos":"adj","glosses":["anucleate"]}]},
 {"id":"anu:4","word":"anuro","ipa":"/aˈnuro/","cefr":"c2","pos":[{"pos":"adj","senses":["che è senza coda"]},{"pos":"noun","senses":["ogni anfibio dell'ordine degli Anuri, comprendente rane, rospi e raganelle, tutti privi di coda in età adulta e di denti nella mascella inferiore e provvisti di occhi sporgenti e di lunghe zampe…"]}]}
 ]

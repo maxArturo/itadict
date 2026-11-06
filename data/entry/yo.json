@@ -1,12 +1,12 @@
 [
-{"id":"yo:0","word":"yogurt","ipa":"/ˈjɔɡurt/","cefr":"b2","pos":[{"pos":"noun","senses":["alimento ottenuto dal latte coagulato, dal sapore acido"]}],"ex":[0,3,5]},
-{"id":"yo:1","word":"yoga","ipa":"/ˈjɔɡa/","cefr":"b2","pos":[{"pos":"adj","senses":["che concerne lo yoga"]},{"pos":"noun","senses":["insieme di pratiche ascetiche e meditative caratteristiche delle religioni originarie dell'India, ritenute mezzi di salvezza spirituale, in grado di avvicinare il corpo e la mente a Dio"]}],"ex":[6,7,8]},
+{"id":"yo:0","word":"yogurt","ipa":"/ˈjɔɡurt/","cefr":"b2","pos":[{"pos":"noun","senses":["alimento ottenuto dal latte coagulato, dal sapore acido"]}],"en":[{"pos":"noun","glosses":["yogurt"]}],"ex":[0,3,5]},
+{"id":"yo:1","word":"yoga","ipa":"/ˈjɔɡa/","cefr":"b2","pos":[{"pos":"adj","senses":["che concerne lo yoga"]},{"pos":"noun","senses":["insieme di pratiche ascetiche e meditative caratteristiche delle religioni originarie dell'India, ritenute mezzi di salvezza spirituale, in grado di avvicinare il corpo e la mente a Dio"]}],"en":[{"pos":"noun","glosses":["yoga"]}],"ex":[6,7,8]},
 {"id":"yo:2","word":"Yokohama","cefr":"c2","pos":[{"pos":"name","senses":["città del Giappone"]}],"ex":[1,2,4]},
 {"id":"yo:3","word":"youtuber","ipa":"/ˈjuːtjuːbə/","cefr":"c2","pos":[{"pos":"noun","senses":["chi è regolarmente iscritto alla comunità del sito di condivisione di filmati YouTube®"]}],"ex":[9]},
 {"id":"yo:4","word":"Yom haShoah","cefr":"c2","pos":[{"pos":"phrase","senses":["nel mese di Nisan del calendario ebraico ricorda la \"ribellione in Varsavia\" durante la seconda guerra mondiale \"nel disperato tentativo\" di opporsi all'assedio nazista"]}]},
 {"id":"yo:5","word":"Yowl","cefr":"c2","pos":[{"pos":"name","senses":["Aiou"]}]},
 {"id":"yo:6","word":"yoghurt","ipa":"/'jɔ:.gurt/","cefr":"c1","pos":[{"pos":"noun","senses":["alimento ottenuto dal latte coagulato, dal sapore acido"]}]},
-{"id":"yo:7","word":"yogurtiera","ipa":"/jogurˈtjɛra/","cefr":"c2","pos":[{"pos":"noun","senses":["macchina per preparare e conservare yogurt"]}]},
+{"id":"yo:7","word":"yogurtiera","ipa":"/jogurˈtjɛra/","cefr":"c2","pos":[{"pos":"noun","senses":["macchina per preparare e conservare yogurt"]}],"en":[{"pos":"noun","glosses":["yogurt maker (small household appliance that makes yoghurt)"]}]},
 {"id":"yo:8","word":"yoruba","cefr":"c2","pos":[{"pos":"noun","senses":["lingua sudanese di tipo isolante, formata da alcuni dialetti indigeni parlati in Africa nordoccidentale, soprattutto in Nigeria, Benin e Togo"]}]},
 {"id":"yo:9","word":"yottabyte","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura dell'informazione, pari a mille zettabyte"]}]}
 ]

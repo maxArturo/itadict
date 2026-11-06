@@ -1,10 +1,10 @@
 [
-{"id":"xa:0","word":"xantato","cefr":"c2","pos":[{"pos":"noun","senses":["sale dell' acido xantico"]}]},
-{"id":"xa:1","word":"xantelasma","cefr":"c2","pos":[{"pos":"noun","senses":["xantoma localizzato sulle palpebre"]}]},
-{"id":"xa:2","word":"xantene","cefr":"c2","pos":[{"pos":"noun","senses":["composto organico eterociclo la cui formula atomica è C₁₃H₁₀O"]}]},
-{"id":"xa:3","word":"xantenico","cefr":"c2","pos":[{"pos":"adj","senses":["derivato dallo xantene"]}]},
-{"id":"xa:4","word":"xantico","cefr":"c2","pos":[{"pos":"adj","senses":["acido xantico"]}]},
-{"id":"xa:5","word":"xantina","ipa":"/ksanˈtina/","cefr":"c2","pos":[{"pos":"noun","senses":["base purinica naturale, presente negli animali superiori come precursore dell'acido urico, e nei vegetali come parte di alcuni alcaloidi metilati, usati in medicina come broncodilatatori"]}]},
-{"id":"xa:6","word":"xantofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura del giallo"]}]},
-{"id":"xa:7","word":"xantoforo","ipa":"/ksanˈtɔforo/","cefr":"c2","pos":[{"pos":"noun","senses":["cromatoforo che contiene pigmento giallo"]}]}
+{"id":"xa:0","word":"xantato","cefr":"c2","pos":[{"pos":"noun","senses":["sale dell' acido xantico"]}],"en":[{"pos":"noun","glosses":["xanthate"]}]},
+{"id":"xa:1","word":"xantelasma","cefr":"c2","pos":[{"pos":"noun","senses":["xantoma localizzato sulle palpebre"]}],"en":[{"pos":"noun","glosses":["xanthelasma"]}]},
+{"id":"xa:2","word":"xantene","cefr":"c2","pos":[{"pos":"noun","senses":["composto organico eterociclo la cui formula atomica è C₁₃H₁₀O"]}],"en":[{"pos":"noun","glosses":["xanthene"]}]},
+{"id":"xa:3","word":"xantenico","cefr":"c2","pos":[{"pos":"adj","senses":["derivato dallo xantene"]}],"en":[{"pos":"adj","glosses":["xanthenic"]}]},
+{"id":"xa:4","word":"xantico","cefr":"c2","pos":[{"pos":"adj","senses":["acido xantico"]}],"en":[{"pos":"adj","glosses":["xanthic"]}]},
+{"id":"xa:5","word":"xantina","ipa":"/ksanˈtina/","cefr":"c2","pos":[{"pos":"noun","senses":["base purinica naturale, presente negli animali superiori come precursore dell'acido urico, e nei vegetali come parte di alcuni alcaloidi metilati, usati in medicina come broncodilatatori"]}],"en":[{"pos":"noun","glosses":["xanthine"]}]},
+{"id":"xa:6","word":"xantofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura del giallo"]}],"en":[{"pos":"noun","glosses":["xanthophobia"]}]},
+{"id":"xa:7","word":"xantoforo","ipa":"/ksanˈtɔforo/","cefr":"c2","pos":[{"pos":"noun","senses":["cromatoforo che contiene pigmento giallo"]}],"en":[{"pos":"noun","glosses":["xanthophore"]}]}
 ]

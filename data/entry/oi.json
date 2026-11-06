@@ -1,5 +1,5 @@
 [
-{"id":"oi:0","word":"-oide","ipa":"/ˈɔjde/","cefr":"c2","pos":[{"pos":"suffix","senses":["seconda parte di lemmi composti che indicano somiglianza con quanto è racchiuso nella prima parte della parola"]}]},
+{"id":"oi:0","word":"-oide","ipa":"/ˈɔjde/","cefr":"c2","pos":[{"pos":"suffix","senses":["seconda parte di lemmi composti che indicano somiglianza con quanto è racchiuso nella prima parte della parola"]}],"en":[{"pos":"suffix","glosses":["-oid (both nouns and adjectives)"]}]},
 {"id":"oi:1","word":"oi","cefr":"c1","pos":[{"pos":"intj","senses":["espressione, spesso spontanea ma paziente ed amorevole, che indica come qualcosa venga compreso nel suo significato profondo, persino con novità nello stesso momento ma con alcune variazioni dovute…","quando si rivela qualcosa e, ormai risaputa la cosa, si continua comunque con trepidazione"]}]},
-{"id":"oi:2","word":"oibò","cefr":"c2","pos":[{"pos":"intj","senses":["indica disapprovazione, talvolta anche negazione"]}]}
+{"id":"oi:2","word":"oibò","cefr":"c2","pos":[{"pos":"intj","senses":["indica disapprovazione, talvolta anche negazione"]}],"en":[{"pos":"intj","glosses":["alternative spelling of ohibò"]}]}
 ]

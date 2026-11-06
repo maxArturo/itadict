@@ -418,7 +418,7 @@
 "governino":{"id":"go:16","lemma":"governare","label":"terza persona plurale del congiuntivo presente"},
 "governo":{"id":"go:16","lemma":"governare","label":"prima persona singolare dell'indicativo presente"},
 "gozzovigli":{"id":"go:143","lemma":"gozzovigliare","label":"seconda persona singolare dell'indicativo presente"},
-"gozzoviglia":{"id":"ba:203","lemma":"baldoria","label":"pranzo ove i partecipanti mangiano e bevono in abbondanza…"},
+"gozzoviglia":{"id":"bal:29","lemma":"baldoria","label":"pranzo ove i partecipanti mangiano e bevono in abbondanza…"},
 "gozzovigliai":{"id":"go:143","lemma":"gozzovigliare","label":"prima persona singolare dell'indicativo passato remoto"},
 "gozzovigliammo":{"id":"go:143","lemma":"gozzovigliare","label":"prima persona plurale dell'indicativo passato remoto"},
 "gozzovigliamo":{"id":"go:143","lemma":"gozzovigliare","label":"prima persona plurale dell'indicativo presente"},

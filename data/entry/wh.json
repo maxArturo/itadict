@@ -1,5 +1,5 @@
 [
-{"id":"wh:0","word":"whisky","ipa":"/ˈwiski/","cefr":"b1","pos":[{"pos":"noun","senses":["distillato d'orzo originario della Scozia"]}],"ex":[0,1,2]},
+{"id":"wh:0","word":"whisky","ipa":"/ˈwiski/","cefr":"b1","pos":[{"pos":"noun","senses":["distillato d'orzo originario della Scozia"]}],"en":[{"pos":"noun","glosses":["whisky, whiskey","whisky (a kind of light carriage)"]}],"ex":[0,1,2]},
 {"id":"wh:1","word":"Wh","cefr":"c2","pos":[{"pos":"abbrev","senses":["wattora"]}]},
 {"id":"wh:2","word":"Wheatwin1","cefr":"c2","pos":[{"pos":"name","senses":["proteina estratta dal frumento tenero"]}]}
 ]

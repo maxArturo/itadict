@@ -1,4 +1,4 @@
 [
-{"id":"o_:0","word":"o","cefr":"a1","pos":[{"pos":"conj","senses":["oppure","ovvero"]},{"pos":"intj","senses":["variante, vedi oh:"]},{"pos":"character","senses":["tredicesima lettera dell'alfabeto latino"]},{"pos":"prep","senses":["introduce e rafforza il vocativo:"]}],"ex":[0,1,2]},
-{"id":"o_:1","word":"ò","cefr":"a1","pos":[{"pos":"verb","senses":["variante grafica, vedi ho"]}]}
+{"id":"o_:0","word":"o","cefr":"a1","pos":[{"pos":"conj","senses":["oppure","ovvero"]},{"pos":"intj","senses":["variante, vedi oh:"]},{"pos":"character","senses":["tredicesima lettera dell'alfabeto latino"]},{"pos":"prep","senses":["introduce e rafforza il vocativo:"]}],"en":[{"pos":"conj","glosses":["or"]},{"pos":"character","glosses":["The thirteenth letter of the Italian alphabet, called o and written in the Latin script."]}],"ex":[0,1,2]},
+{"id":"o_:1","word":"ò","cefr":"a1","pos":[{"pos":"verb","senses":["variante grafica, vedi ho"]}],"en":[{"pos":"verb","glosses":["obsolete spelling of ho, first-person singular present indicative of avere"]}]}
 ]

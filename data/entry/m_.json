@@ -1,4 +1,4 @@
 [
-{"id":"m_:0","word":"m","ipa":"/m/","cefr":"b1","pos":[{"pos":"character","senses":["undicesima lettera dell'alfabeto italiano","undicesima lettera maiuscola dell'alfabeto italiano"]},{"pos":"noun","senses":["undicesima lettera dell'alfabeto italiano"]},{"pos":"symbol","senses":["metro"]}],"ex":[0,1,2]},
+{"id":"m_:0","word":"m","ipa":"/m/","cefr":"b1","pos":[{"pos":"character","senses":["undicesima lettera dell'alfabeto italiano","undicesima lettera maiuscola dell'alfabeto italiano"]},{"pos":"noun","senses":["undicesima lettera dell'alfabeto italiano"]},{"pos":"symbol","senses":["metro"]}],"en":[{"pos":"character","glosses":["The eleventh letter of the Italian alphabet, called emme and written in the Latin script."]},{"pos":"symbol","glosses":["down with"]}],"ex":[0,1,2]},
 {"id":"m_:1","word":"μm","cefr":"c2","pos":[{"pos":"abbrev","senses":["micrometro, micron"]}]}
 ]

@@ -1,0 +1,13 @@
+[
+{"id":"bau:0","word":"baule","ipa":"/baˈule/","cefr":"b2","pos":[{"pos":"noun","senses":["cassa abbastanza capiente, generalmente di legno, rivestita di cuoio e dotata di maniglie per facilitarne il trasporto, utilizzata per contenere oggetti diversi e, in particolare, abiti e biancheria","bagagliaio delle autovetture"]}],"en":[{"pos":"noun","glosses":["trunk (luggage)","trunk or boot (of a car)","case"]}],"ex":[281,282,373]},
+{"id":"bau:1","word":"bau","ipa":"/ˈbaw/","cefr":"c1","pos":[{"pos":"noun","senses":["termine onomatopeico per indicare il caratteristico verso del cane, o il suono che esso produce"]}],"ex":[426,665,671]},
+{"id":"bau:2","word":"bauxite","ipa":"/ˈbaui:te/","cefr":"c2","pos":[{"pos":"noun","senses":["minerale composto da allumino, di colore bianco-giallastro o rosso-bruno."]}],"en":[{"pos":"noun","glosses":["bauxite"]}],"ex":[544,545]},
+{"id":"bau:3","word":"Baudelio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"bau:4","word":"Baudino","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"bau:5","word":"Baudolina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"bau:6","word":"Baudolino","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"bau:7","word":"Bauhaus","cefr":"c2","pos":[{"pos":"name","senses":["scuola di architettura e arti sorta in Germania nel 1919, trasferita negli Stati Uniti nel 1933 e rimasta in attività fino al 1938","corrente di pensiero architettonico che ha preso il nome dalla scuola omonima e che è considerata la più influente del modernismo; proponeva di unificare la progettazione con la produzione e di…"]}]},
+{"id":"bau:8","word":"baud","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura della velocità di un flusso di informazioni, pari a un bit al secondo"]}]},
+{"id":"bau:9","word":"baugonda","cefr":"c2","pos":[{"pos":"noun","senses":["maschera clonata da una maschera bauta e dalla prora della gondola veneziana"]}],"en":[{"pos":"noun","glosses":["a carnival mask in the form of a cobweb"]}]},
+{"id":"bau:10","word":"bauletto","ipa":"/bauˈletto/","cefr":"c2","pos":[{"pos":"noun","senses":["piccolo baule delle motociclette"]}],"en":[{"pos":"noun","glosses":["travelling/traveling case","vanity case"]}]}
+]

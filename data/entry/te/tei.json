@@ -1,0 +1,5 @@
+[
+{"id":"tei:0","word":"teiera","ipa":"/teˈjɛra/","cefr":"c1","pos":[{"pos":"noun","senses":["recipiente per il tè"]}],"en":[{"pos":"noun","glosses":["teapot"]}],"ex":[118,175,279]},
+{"id":"tei:1","word":"teicoltore","ipa":"/teikolˈtore/","cefr":"c2","pos":[{"pos":"noun","senses":["chi coltiva tè (Camellia sinensis)"]}],"en":[{"pos":"noun","glosses":["tea grower"]}]},
+{"id":"tei:2","word":"teismo","ipa":"/teˈizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["dottrina filosofica o religiosa che ammette l'esistenza di un dio unico e che trascende gli uomini"]}],"en":[{"pos":"noun","glosses":["theism"]}]}
+]
