@@ -50,7 +50,12 @@ export const DATA_BASE = '';
  *   buckets: Record<string, Bucket>,
  * }} Manifest */
 
-/** One search row: what the result list draws, and what ranking matches. */
+/**
+ * One search row: what the result list draws, and what ranking matches. The build writes
+ * `[folded, id, headword, pronunciation, pos, gloss, en]`; `gloss` is the Italian definition
+ * and `en` is the first English gloss, `''` when the entry has none. Parsing always returns
+ * both fields, so a row never carries `undefined`.
+ */
 /** @typedef {{
  *   folded: string,
  *   id: string,
@@ -58,13 +63,17 @@ export const DATA_BASE = '';
  *   pronunciation: string,
  *   pos: string,
  *   gloss: string,
+ *   en: string,
  *   matched?: string,
  * }} Row */
 
 /** One part of speech and its senses. */
 /** @typedef {{ pos: string, senses: string[] }} PosGroup */
 
-/** The English glosses of one part of speech. The Translation section draws these. */
+/**
+ * The English glosses of one part of speech, from en.wiktionary. The Translation section draws
+ * these. Parsing always returns the field on an Entry, as `[]` when the data has none.
+ */
 /** @typedef {{ pos: string, glosses: string[] }} EnglishGroup */
 
 /** One conjugation group. `forms` keeps the person slots: a missing form is "". */
@@ -269,7 +278,15 @@ export function shardUrl(shard) {
  */
 export function toRow(raw) {
   const source = Array.isArray(raw)
-    ? { folded: raw[0], id: raw[1], headword: raw[2], pronunciation: raw[3], pos: raw[4], gloss: raw[5] }
+    ? {
+        folded: raw[0],
+        id: raw[1],
+        headword: raw[2],
+        pronunciation: raw[3],
+        pos: raw[4],
+        gloss: raw[5],
+        en: raw[6],
+      }
     : obj(raw);
   if (source === null) return null;
   const row = {
@@ -279,6 +296,7 @@ export function toRow(raw) {
     pronunciation: str(source.pronunciation ?? source.ipa),
     pos: str(source.pos),
     gloss: str(source.gloss),
+    en: str(source.en).trim(),
   };
   return row.id === '' || row.headword === '' ? null : row;
 }

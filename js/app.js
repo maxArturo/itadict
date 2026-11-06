@@ -543,7 +543,7 @@ export function boot(options = {}) {
   function entryView(id, back) {
     const known = search.row(id);
     /** @type {Row} */
-    const row = known ?? { folded: '', id, headword: id, pronunciation: '', pos: '', gloss: '' };
+    const row = known ?? { folded: '', id, headword: id, pronunciation: '', pos: '', gloss: '', en: '' };
     const bucket = bucketOfId(id);
     return ui.entryScreen({
       row,

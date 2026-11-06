@@ -772,7 +772,9 @@ export function createUi(doc = globalThis.document) {
       if (secondary !== '') main.append(text('span', 'row-pronunciation', secondary));
       if (row.pos !== '') main.append(text('span', 'row-pos', row.pos));
       link.append(main);
-      if (row.gloss !== '') link.append(text('span', 'row-gloss', row.gloss));
+      // The English gloss leads; the Italian definition is the fallback.
+      const gloss = row.en !== '' ? row.en : row.gloss;
+      if (gloss !== '') link.append(text('span', 'row-gloss', gloss));
       link.addEventListener('click', () => options.onCommit?.(input.value));
       item.append(link);
       return item;

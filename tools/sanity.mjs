@@ -803,7 +803,13 @@ test('a row, an entry, the forms and the examples are read from the shapes the b
     pronunciation: '/ˈkasa/',
     pos: 'noun',
     gloss: 'edificio',
+    en: '',
   });
+  assert.equal(
+    toRow(['casa', 'ca:0', 'casa', '/ˈkasa/', 'noun', 'edificio', 'house'])?.en,
+    'house',
+    'the seventh field is the English gloss',
+  );
   assert.equal(toRow(['casa', '', 'casa']), null, 'a row without an id cannot be opened');
 
   const entry = toEntry({
