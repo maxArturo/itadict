@@ -26,7 +26,8 @@ import {
 import { HASH, createRouter, entryHash, parseRoute, resolveRoute } from '../js/router.js';
 import { createSearch, editDistanceAtMost, findMatch, fold, rank } from '../js/search.js';
 import { HISTORY_MAX, KEY, VERSION, createStorage, migrate } from '../js/storage.js';
-import { formRows } from '../js/ui.js';
+import { WORD_CAP, createReader, summarise, tokenize } from '../js/text.js';
+import { PALETTE, formRows } from '../js/ui.js';
 
 const read = (path) => readFileSync(fileURLToPath(new URL(path, import.meta.url)), 'utf8');
 
@@ -82,7 +83,7 @@ function fileFetch(files) {
 // ---------------------------------------------------------------- the shipped files
 
 test('every module carries the typecheck pragma, and the page loads only relative URLs', () => {
-  for (const name of ['app', 'data', 'router', 'search', 'storage', 'ui']) {
+  for (const name of ['app', 'data', 'router', 'search', 'storage', 'text', 'ui']) {
     const source = read('../js/' + name + '.js');
     assert.equal(source.split('\n')[0], '// @ts-check', 'js/' + name + '.js');
     assert.doesNotMatch(source, /\.innerHTML\b/, 'js/' + name + '.js writes no markup');
@@ -223,6 +224,85 @@ test('the FORMS table starts at the present tense, and persons keep their slots'
     { label: 'participio passato', value: 'andato' },
   ], 'present first, gerundio before participio, imperativo not drawn');
   assert.deepEqual(formRows([]), []);
+});
+
+// ---------------------------------------------------------------- the text reader
+
+test('the tokeniser keeps an apostrophe inside a word and drops numbers and punctuation', () => {
+  const input = "L'acqua è fredda. Ho 3 gatti; l’altra no!";
+  const { segments, truncated } = tokenize(input);
+  assert.deepEqual(
+    segments.filter((segment) => segment.word).map((segment) => segment.text),
+    ["L'acqua", 'è', 'fredda', 'Ho', 'gatti', 'l’altra', 'no'],
+  );
+  assert.equal(segments.map((segment) => segment.text).join(''), input, 'the segments join back to the input');
+  assert.equal(truncated, false);
+  assert.deepEqual(tokenize('').segments, []);
+  assert.equal(tokenize('123 — !? …').segments.some((segment) => segment.word), false, 'punctuation is not a word');
+  assert.deepEqual(
+    tokenize("l'").segments.filter((segment) => segment.word).map((segment) => segment.text),
+    ['l'],
+    'a trailing apostrophe is not part of a word',
+  );
+});
+
+test('the tokeniser stops at the word cap and leaves the rest plain', () => {
+  const cut = tokenize('casa '.repeat(WORD_CAP + 10));
+  assert.equal(cut.segments.filter((segment) => segment.word).length, WORD_CAP);
+  assert.equal(cut.truncated, true);
+  assert.equal(cut.segments[cut.segments.length - 1].word, false, 'everything past the cap is one plain run');
+  assert.equal(tokenize('casa').truncated, false);
+  assert.equal(tokenize('casa '.repeat(WORD_CAP).trimEnd()).truncated, false, 'a text that ends at the cap is not cut');
+});
+
+test('the summary counts every word but lists each unknown word once, most frequent first', () => {
+  const { segments } = tokenize('casa via via xyz xyz xyz abc abc');
+  const resolved = new Map([
+    ['casa', { id: 'ca:0', headword: 'casa' }],
+    ['via', { id: 'vi:0', headword: 'via' }],
+  ]);
+  assert.deepEqual(summarise(segments, resolved), {
+    total: 8,
+    known: 2,
+    unknown: [
+      { word: 'xyz', count: 3 },
+      { word: 'abc', count: 2 },
+    ],
+  });
+});
+
+test('the reader resolves a headword and a form, and reads an unknown word as null', async () => {
+  const asked = [];
+  const data = {
+    rows: async (bucket) => {
+      asked.push(bucket);
+      return [{ folded: 'casa', id: 'ca:0', headword: 'casa', pronunciation: '', pos: '', gloss: '' }];
+    },
+    forms: async () => new Map([['case', { id: 'ca:0', lemma: 'casa', label: 'plurale' }]]),
+  };
+  const reader = createReader({ data });
+  const { segments } = tokenize('Casa case ignoto casa');
+  const resolved = await reader.read(segments);
+  assert.equal(resolved.get('casa')?.id, 'ca:0');
+  assert.equal(resolved.get('case')?.headword, 'casa', 'a form opens its lemma');
+  assert.equal(resolved.get('ignoto'), null);
+  assert.deepEqual(asked.filter((bucket) => bucket === 'ca'), ['ca'], 'one bucket, one read');
+  assert.equal(asked.filter((bucket) => bucket === 'ig').length, 1, 'the unknown bucket is read once');
+});
+
+test('the palette is the Italian alphabet plus the accented vowels, grouped by sound', () => {
+  assert.deepEqual(PALETTE.map((family) => family.sound), ['A', 'E', 'I', 'O', 'U', '']);
+  const letters = PALETTE.flatMap((family) => family.letters);
+  assert.equal(letters.length, 27, '21 letters plus 6 accented vowels');
+  assert.equal(new Set(letters).size, letters.length, 'no letter appears twice');
+  for (const letter of ['à', 'è', 'é', 'ì', 'ò', 'ù']) assert.ok(letters.includes(letter), letter);
+  for (const letter of ['j', 'k', 'w', 'x', 'y']) assert.ok(!letters.includes(letter), letter + ' is not in the Italian alphabet');
+  for (const family of PALETTE) {
+    for (const letter of family.letters) {
+      assert.equal(letter, letter.toLowerCase());
+      if (family.sound !== '') assert.equal(fold(letter), family.sound.toLowerCase(), letter + ' belongs to ' + family.sound);
+    }
+  }
 });
 
 // ---------------------------------------------------------------- routes

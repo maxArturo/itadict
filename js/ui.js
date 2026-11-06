@@ -7,7 +7,8 @@
  * | Screen | Draws |
  * |---|---|
  * | tab bar | five tabs: a 25px icon above a 10px label, chrome last in focus order |
- * | Search | the field with its magnifier and clear control, then history, rows or one line |
+ * | Search | the field, the input switch and its letter palette, then history, rows or one line |
+ * | Text | the textarea, the summary, the text as words with a link on each known one, and the unknown words |
  * | Entry | back control, the entry name in the nav bar, the headword block, then the sections |
  * | placeholder | a title and the one line that names its build |
  *
@@ -19,10 +20,13 @@
 
 import { HASH, entryHash } from './router.js';
 import { findMatch, fold } from './search.js';
+import { WORD_CAP, summarise, tokenize } from './text.js';
 
 /** @typedef {import('./data.js').Row} Row */
 /** @typedef {import('./data.js').Entry} Entry */
 /** @typedef {import('./data.js').ConjGroup} ConjGroup */
+/** @typedef {import('./text.js').Match} Match */
+/** @typedef {import('./text.js').Segment} Segment */
 
 const NAMESPACE = 'http://www.w3.org/2000/svg';
 
@@ -61,6 +65,21 @@ const TENSES = [
 const PERSONS = ['io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'];
 
 /**
+ * The spell-it-by-ear palette: the five vowels with their accents, then the sixteen consonants
+ * of the Italian alphabet. One tap appends one letter, so a learner who heard a word can build it
+ * without a keyboard. The sound column is the vowel the accents belong to.
+ * @type {Array<{ sound: string, letters: string[] }>}
+ */
+export const PALETTE = [
+  { sound: 'A', letters: ['a', 'à'] },
+  { sound: 'E', letters: ['e', 'è', 'é'] },
+  { sound: 'I', letters: ['i', 'ì'] },
+  { sound: 'O', letters: ['o', 'ò'] },
+  { sound: 'U', letters: ['u', 'ù'] },
+  { sound: '', letters: ['b', 'c', 'd', 'f', 'g', 'h', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'z'] },
+];
+
+/**
  * The FORMS table: one row per person of a personal tense, one row per other tense, in the fixed
  * order, starting at the present. Pure, so the order is checked without a document.
  *
@@ -97,6 +116,9 @@ export function formRows(conj) {
  *     search: (query: string) => Promise<{ rows: Row[], history: string[] }>,
  *     onCommit?: (query: string) => void,
  *   }) => { node: HTMLElement, query: () => string, refresh: () => void },
+ *   textScreen: (options: {
+ *     read: (segments: Segment[]) => Promise<Map<string, Match | null>>,
+ *   }) => HTMLElement,
  *   entryScreen: (options: {
  *     row: Row,
  *     load: Promise<Entry | null>,
@@ -233,10 +255,74 @@ export function createUi(doc = globalThis.document) {
     field.append(icon(MAGNIFIER, 'search-icon'), input, clear);
     form.append(field);
 
+    /**
+     * The two input modes. `letters` shows the palette under the field.
+     * @type {'keypad' | 'letters'}
+     */
+    let mode = 'keypad';
+
+    const modes = el('div', 'modes');
+    modes.setAttribute('role', 'group');
+    modes.setAttribute('aria-label', 'Input method');
+
+    // The palette is built once and hidden in keypad mode, so a mode change costs no DOM work.
+    const palette = el('div', 'palette');
+    palette.setAttribute('role', 'group');
+    palette.setAttribute('aria-label', 'Italian letters');
+    for (const family of PALETTE) {
+      const group = el('div', 'palette-group');
+      if (family.sound === '') group.className = 'palette-group is-consonants';
+      else group.append(text('span', 'palette-sound', family.sound));
+      for (const letter of family.letters) {
+        const key = el('button', 'key');
+        key.type = 'button';
+        key.textContent = letter;
+        key.setAttribute('aria-label', 'Add ' + letter);
+        key.addEventListener('click', () => {
+          input.value += letter;
+          void run();
+        });
+        group.append(key);
+      }
+      palette.append(group);
+    }
+
+    /**
+     * @param {'keypad' | 'letters'} name
+     * @param {string} label
+     * @returns {HTMLButtonElement}
+     */
+    function modeButton(name, label) {
+      const button = el('button', 'mode');
+      button.type = 'button';
+      button.textContent = label;
+      button.addEventListener('click', () => {
+        mode = name;
+        paintModes();
+        // The palette stands in for the software keyboard, so the keyboard goes away.
+        if (name === 'letters') input.blur();
+        else input.focus();
+      });
+      modes.append(button);
+      return button;
+    }
+
+    const keypadButton = modeButton('keypad', 'Keypad');
+    const lettersButton = modeButton('letters', 'Letters');
+
+    function paintModes() {
+      keypadButton.className = mode === 'keypad' ? 'mode is-on' : 'mode';
+      lettersButton.className = mode === 'letters' ? 'mode is-on' : 'mode';
+      keypadButton.setAttribute('aria-pressed', String(mode === 'keypad'));
+      lettersButton.setAttribute('aria-pressed', String(mode === 'letters'));
+      palette.hidden = mode !== 'letters';
+    }
+    paintModes();
+
     const head = el('header', 'search-head');
-    head.append(form);
+    head.append(form, modes);
     const body = el('div', 'search-body');
-    section.append(head, body);
+    section.append(head, palette, body);
 
     let token = 0;
 
@@ -500,6 +586,113 @@ export function createUi(doc = globalThis.document) {
   }
 
   /**
+   * The Text reader. The textarea stays on screen, so a paste can be fixed and read again. The
+   * result is one summary line, the text as flowing words, and the words the dictionary misses.
+   *
+   * @param {{ read: (segments: Segment[]) => Promise<Map<string, Match | null>> }} options
+   * @returns {HTMLElement}
+   */
+  function textScreen(options) {
+    const section = el('section', 'screen text-screen');
+    section.setAttribute('aria-label', 'Text');
+
+    const head = el('header', 'text-head');
+    const form = el('form', 'text-form');
+    const input = el('textarea', 'text-input');
+    input.rows = 4;
+    input.placeholder = 'Paste Italian text';
+    input.setAttribute('aria-label', 'Italian text');
+    input.spellcheck = false;
+    const submit = el('button', 'text-submit');
+    submit.type = 'submit';
+    submit.textContent = 'Read';
+    form.append(input, submit);
+    head.append(text('h1', 'page-title', 'Text'), form);
+
+    const result = el('div', 'text-result');
+    section.append(head, result);
+
+    /** Only the newest paste reaches the screen. */
+    let token = 0;
+
+    /**
+     * @param {Map<string, Match | null>} resolved
+     * @param {Segment[]} segments
+     * @param {boolean} truncated
+     * @param {{ total: number, known: number, unknown: Array<{ word: string, count: number }> }} summary
+     */
+    function draw(resolved, segments, truncated, summary) {
+      const fragment = doc.createDocumentFragment();
+      const words = summary.total === 1 ? 'word' : 'words';
+      fragment.append(
+        text(
+          'p',
+          'text-summary',
+          `${summary.total} ${words}, ${summary.known} in the dictionary, ${summary.unknown.length} not found`,
+        ),
+      );
+      if (truncated) fragment.append(text('p', 'note', `Long text: only the first ${WORD_CAP} words are read.`));
+
+      const read = el('p', 'text-read');
+      for (const segment of segments) {
+        const match = segment.word ? resolved.get(fold(segment.text)) ?? null : null;
+        if (match === null) {
+          read.append(doc.createTextNode(segment.text));
+          continue;
+        }
+        const link = el('a', 'text-word');
+        link.href = entryHash(match.id);
+        link.textContent = segment.text;
+        read.append(link);
+      }
+      fragment.append(read);
+
+      if (summary.unknown.length > 0) {
+        fragment.append(text('h2', 'section-title', 'Not in the dictionary'));
+        const list = el('ul', 'unknown');
+        for (const item of summary.unknown) {
+          const rowNode = el('li', 'unknown-row');
+          rowNode.append(text('span', 'unknown-word', item.word), text('span', 'unknown-count', '×' + item.count));
+          list.append(rowNode);
+        }
+        fragment.append(list);
+      }
+      result.replaceChildren(fragment);
+    }
+
+    async function read() {
+      const mine = (token += 1);
+      if (input.value.trim() === '') {
+        result.replaceChildren(message('Paste some Italian text.'));
+        return;
+      }
+      const { segments, truncated } = tokenize(input.value);
+      if (!segments.some((segment) => segment.word)) {
+        result.replaceChildren(message('No words in this text.'));
+        return;
+      }
+      result.replaceChildren(message('Reading…'));
+      /** @type {Map<string, Match | null>} */
+      let resolved;
+      try {
+        resolved = await options.read(segments);
+      } catch {
+        if (mine === token) result.replaceChildren(message('The dictionary is not ready yet.'));
+        return;
+      }
+      if (mine !== token) return;
+      draw(resolved, segments, truncated, summarise(segments, resolved));
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      void read();
+    });
+
+    return section;
+  }
+
+  /**
    * A screen whose feature is a later build. It says so, so nothing is a dead end.
    * @param {{ title: string, note: string }} options
    * @returns {HTMLElement}
@@ -510,5 +703,5 @@ export function createUi(doc = globalThis.document) {
     return section;
   }
 
-  return { tabBar, setActiveTab, searchScreen, entryScreen, placeholder };
+  return { tabBar, setActiveTab, searchScreen, textScreen, entryScreen, placeholder };
 }

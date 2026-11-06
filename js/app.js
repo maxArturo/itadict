@@ -16,6 +16,7 @@ import { bucketOfId, createData } from './data.js';
 import { HASH, createRouter } from './router.js';
 import { createSearch } from './search.js';
 import { createStorage } from './storage.js';
+import { createReader } from './text.js';
 import { createUi } from './ui.js';
 
 /** @typedef {import('./data.js').Row} Row */
@@ -33,7 +34,6 @@ const WIDE = '(min-width: 900px)';
  * @type {Record<string, { title: string, note: string }>}
  */
 const PLACEHOLDERS = {
-  text: { title: 'Text', note: 'Text reader arrives in the next build.' },
   study: { title: 'Study', note: 'Flashcards arrive in a later build.' },
   lists: { title: 'Lists', note: 'Lists and notes arrive in a later build.' },
   settings: { title: 'Settings', note: 'Settings arrive in a later build.' },
@@ -106,6 +106,10 @@ export function boot(options = {}) {
     },
   });
 
+  // Built once beside the search screen, so a pasted text and its result survive a tab change.
+  const reader = createReader({ data });
+  const textView = ui.textScreen({ read: (segments) => reader.read(segments) });
+
   /**
    * One entry screen. The id carries its own location, so a cold deep link costs one entry file
    * and needs no memory of an earlier search. The row this session showed gives the headword at
@@ -172,6 +176,11 @@ export function boot(options = {}) {
         return;
       }
       main.replaceChildren(searchView.node);
+      return;
+    }
+
+    if (route.name === 'text') {
+      main.replaceChildren(textView);
       return;
     }
 
