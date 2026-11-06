@@ -105,6 +105,7 @@ Screenshots from this run:
 
 | Field | Value |
 |---|---|
+| Browser | Firefox, on the live origin. The automated gate uses Chromium |
 | URL | `https://maxalcala.com/itadict/` |
 | Note | `maxarturo.github.io/itadict/` answers 301 to this origin, because the account sets a custom domain on the user site |
 | Worker scope | `https://maxalcala.com/itadict/` |
@@ -128,7 +129,8 @@ works on either origin.
 | Largest entry file | 244,181 |
 | Largest entry file, gzipped | 47,493 |
 | Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 61,389,314 bytes in the manifest |
+| Whole data set | 66,344,150 bytes in the manifest |
+| English lookup index | 1,943,440 bytes of the total |
 
 One tap on a row costs one entry file and one example file. Both are cached forever after the first
 read, because their URL carries the file hash.
@@ -151,6 +153,21 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 | Memory pressure with the whole dictionary cached | A desktop machine has different limits | not run |
 | Tap targets under a thumb | Hit areas can be measured; reach cannot | not run |
 
+## Open item: the iPhone check
+
+Nobody has run this on an iPhone yet. One person can close it in about ten minutes.
+
+1. Open `https://maxalcala.com/itadict/` in Safari.
+2. Tap Share, then Add to Home Screen.
+3. Turn Airplane Mode on.
+4. Launch the app from the new icon.
+5. Confirm the shell draws, and a search returns rows.
+6. Look at the safe areas under the notch and the home indicator, and at the status bar in both
+   schemes.
+
+Record the result in the table below, with the device model and the iOS version. A failure here goes
+in the same table as a failure, not as a plan.
+
 ## What this run does not prove
 
 - Nothing here ran on a real iPhone. The device rows above are all open.
@@ -170,8 +187,8 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 | Field | Value |
 |---|---|
 | Date | 2026-11-06 |
-| Build from `data/index.json` | `v1-ff5b79f38403` (the English glosses). The local gate and the live origin ran on `v1-8ffb3c86b224` |
-| Browser and version | Headless Chromium for the automated gate; a local Chromium at the iPhone 13 profile for the manual run |
+| Build from `data/index.json` | `v1-ff5b79f38403` for the gates below. The local gate and the live origin ran on `v1-8ffb3c86b224`. The current build is `v1-7e4046481140`, and its gates are not re-run yet |
+| Browser and version | Headless Chromium for the automated gate; a local Chromium at the iPhone 13 profile for the manual run; Firefox for the live origin |
 | `npm test` | 48 of 48 pass |
 | `npx tsc --noEmit` | clean |
 | `npm run check` | pass, with the coverage line |
@@ -190,3 +207,4 @@ Every row here is open. A row needs a real iPhone, a real home screen, or a week
 | 2026-11-06 | `v1-8ffb3c86b224` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 47 of 47, clean, pass, 22 of 22. |
 | 2026-11-06 | `v1-8ffb3c86b224` | The local gate at iPhone 13, and the live origin | Pass. Device rows open. |
 | 2026-11-06 | `v1-ff5b79f38403` | `npm test`, `npx tsc --noEmit`, `npm run check`, `npm run verify:offline` | 48 of 48, clean, pass with the coverage line, 22 of 22. |
+| 2026-11-06 | `v1-7e4046481140` | The data rebuild: the English index and both glosses on every row | not re-run. The gates above stand on the previous build |

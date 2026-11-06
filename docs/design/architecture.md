@@ -131,11 +131,12 @@ build: after a rebuild the same id can name a different word.
 
 | Set | Holds | Shape |
 |---|---|---|
-| search | what a result row draws and what ranking matches | `[folded, id, headword, pronunciation, pos, gloss]` |
+| search | what a result row draws and what ranking matches | `[folded, id, headword, pronunciation, pos, gloss, en]`, where `gloss` is Italian and `en` is the first English gloss or `''` |
 | entry | one entry body | `{ id, word, ipa?, cefr, pos: [{ pos, senses }], en: [{ pos, glosses }], ex: [index], conj?: [{ key, personal, forms }] }` |
 | ex | the sentences of one bucket | `[[sentenceId, sentence]]` in entry order, so `ex` holds positions |
 | forms | folded inflected form to its lemma | `{ <foldedForm>: { id, lemma, label } }` |
 | cefr | one deck of browse rows, one per entry | `[id, word, pos, gloss]` |
+| en | folded English token to the entries whose glosses contain it | `{ <token>: [id, ...] }`, at most 100 postings per token |
 
 An entry body holds example positions, never example text. That is what keeps the CC BY 2.0 FR
 sentences out of the CC BY-SA shards. See ADR 0001.
@@ -145,8 +146,8 @@ Italian definitions. The Entry screen draws them in this order: the headword wit
 TRANSLATION from `en`, then DEFINITIONS from `pos`, then FORMS from `conj`, then EXAMPLES. An entry
 with no `en` draws no Translation section: 14,543 of 61,820 entries, or 23.5%.
 
-A search row carries one gloss. It is the English gloss when the entry has one, and the first Italian
-sense when it does not, so a result list reads the same way for every row.
+A search row carries both glosses in separate fields. The row draws the English gloss first and falls
+back to the Italian one, so a result line reads the same way for every row without an entry fetch.
 
 The parsers also read named shapes, so a build change from a compact array to a named object does
 not break the app.
@@ -163,6 +164,7 @@ not break the app.
 | Study, first deck pick | `data/index.json`, then the copy of the band's deck |
 | Study, one card | the entry shard of the id's bucket, then its ex shard; the band row already carries the sense |
 | Text, one paste | one row shard per bucket the text touches, once per bucket |
+| an English query | none today. The rule fetches `data/en/<bucket>.json` when the Italian list is short of 20 rows, and the client does not implement it yet |
 | Reference | the manifest, then all six deck bands once for the parts-of-speech table |
 | Lists, Settings | none. Both read only the stored blob |
 
@@ -173,21 +175,24 @@ not break the app.
 | Entry file, 90th percentile | 74,951 bytes |
 | Largest entry file | 244,181 bytes, 47,493 bytes gzipped |
 | Entry files | 948, from 22,452,034 bytes |
-| Whole data set | 61,389,314 bytes in the manifest |
+| Whole data set | 66,344,150 bytes in the manifest, of which 1,943,440 is the English index |
 
 An entry file grew by 3,379,148 bytes in total for the English glosses. One tap still costs one entry
 file and one example file, and both are cached forever after the first read.
 
-### A measured option that does not ship: English to Italian search
+### The English index
 
-An English-keyed index over the same glosses was measured, not built. It would map a folded English
-word to the entries whose glosses contain it: 1.81 MB raw, 0.65 MB gzipped, 415 files, a 90th
-percentile of 14.3 KB and a largest file of 74.8 KB, at a cap of 100 postings per key.
+The data ships an English index: `data/en/<bucket>.json` maps a folded English token to the ids of
+the entries whose glosses contain it, at most 100 postings per token. It is 415 files, 1,943,440
+bytes raw and 0.66 MiB gzipped, a 90th percentile of 14,562 bytes, and a largest file of 76,533
+bytes. The cap dropped 50,071 postings and no token.
 
-The cost is small enough to ship. It is not shipped, because the Search screen is an Italian search
-and an English query would need its own mode, its own ranking and its own result copy. Until that
-decision is taken, an English query finds nothing, and the numbers above are the whole price of the
-feature.
+The decided rule is: Italian matches first, an English block second, and the English index fetched
+only when the Italian list is short of 20 rows.
+
+The client does not read the index yet. `js/data.js` has no English lookup and `js/search.js` runs
+the Italian steps only, so an English query still returns only rows that happen to match in Italian.
+The data is the decision; the client is the open work.
 
 ### The memo
 
@@ -299,6 +304,6 @@ Recorded on purpose. Fix the code or the ADR; do not let the two drift.
    calls the action directly, so the button itself is unproven.
 2. The memo has no bound, so a long session grows. There is no LRU.
 3. An entry body carries `cefr`, and no screen draws it. The band shows in Study and in Reference.
-4. The About screen credits Wikizionario and Tatoeba, and not en.wiktionary. The English glosses are
-   CC BY-SA and need that line. See ADR 0001.
+4. The English index ships and no client reads it. A user who downloads the whole dictionary also
+   downloads 1,943,440 bytes that no query uses.
 5. The code licence is MIT, and no `LICENSE` file is on disk yet.

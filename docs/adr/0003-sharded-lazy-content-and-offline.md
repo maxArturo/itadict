@@ -9,21 +9,22 @@ cost.
 One bucket per two folded letters of the headword: `aa`, `ca`, `st`. Folding is the search rule from
 0004, so the bucket of a query is the bucket of its results. A bucket that exceeds the size cap splits
 into files named by a longer prefix, for example `data/ca/cao.json`. The cap is 1 MB per file, and
-the build holds `npm run check` to it. The shipped set is 478 buckets, 61,389,314 bytes in the manifest, 67 MB on
-disk, and the largest file is 999,999 bytes.
+the build holds `npm run check` to it. The shipped set is 478 buckets, 66,344,150 bytes in the
+manifest, and the largest file is 999,999 bytes. Of that total, 1,943,440 bytes is the English index.
 
 `data/index.json` is the manifest: every file, its size, its hash, the counts, the CEFR deck sizes and
 the source list with licences.
 
-Four file sets per bucket, and one set outside a bucket:
+Five file sets per bucket, and one set outside a bucket:
 
 | Set | Holds | Fetched when |
 |---|---|---|
-| `data/<key>.json` | search rows: folded key, id, headword, IPA, part of speech, one gloss | a query reaches that bucket |
-| `data/entry/<key>.json` | entry bodies: senses, conjugation, example positions | an entry opens |
+| `data/<key>.json` | search rows: folded key, id, headword, IPA, part of speech, Italian gloss, English gloss | a query reaches that bucket |
+| `data/entry/<key>.json` | entry bodies: English groups `en`, Italian senses, conjugation, example positions | an entry opens |
 | `data/ex/<key>.json` | example sentences in entry order, keyed by position | with the entry body |
 | `data/forms/<key>.json` | folded inflected form to its lemma | a short result list, or a form search |
 | `data/cefr/<band>.json` | deck rows: id, word, part of speech, gloss | a deck is picked in Study |
+| `data/en/<key>.json` | folded English token to entry ids, at most 100 per token | an English query that the Italian search left short. The client does not read this set yet |
 
 An entry body stores example positions, never example text. That keeps the CC BY 2.0 FR sentences in
 their own files and out of the CC BY-SA shards. See 0001.

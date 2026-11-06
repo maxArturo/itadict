@@ -58,4 +58,5 @@ A new pure module must be added to `sw.js`'s shell list in the same change, or i
 Status: shipped. Shell, router, data client, search, storage, the Text reader, Study with its
 schedule, speech, every screen, the data build and its gate, the shell precache, and the offline gate.
 The Entry screen draws an English translation above the Italian definitions, and 76.5% of entries
-have one. The About screen does not credit en.wiktionary yet.
+have one, or 94.6% of the 5,000 most frequent. The English lookup index ships in the data, and no
+client reads it yet.

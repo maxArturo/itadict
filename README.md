@@ -5,9 +5,12 @@ A static, offline Italian dictionary PWA. It runs on GitHub Pages at
 name is "Italian".
 
 It copies the screens and the flow of the App Store app "Japanese" (id290664053, renzo Inc.), for
-Italian. The chrome is English. The dictionary text is Italian: Italian headwords, Italian
-definitions, Italian examples. Each entry also carries up to three English glosses per part of speech,
-as a translation aid, when the English Wiktionary has them.
+Italian. The chrome is English.
+
+The app is Italian to English. An Italian headword opens an entry with its English translation above
+its Italian definition, so a learner can check the meaning without leaving the app. The definitions
+stay Italian, by decision. Each entry carries up to three English glosses per part of speech, when the
+English Wiktionary has them.
 
 `AGENTS.md` indexes every document. `docs/adr/` holds the decisions that are expensive to reverse.
 `docs/design/architecture.md` holds the mechanics. `docs/verification/gate-2.md` holds the
@@ -65,9 +68,14 @@ The app code is MIT. The data and the code carry separate licences and never sha
 | Verbs | 6,325, of which 5,471 carry a full table |
 | Tatoeba sentences | 49,283, filling 49,505 example slots |
 | Entries with an English translation | 47,277, which is 76.5%. The other 14,543 draw no Translation section |
+| Entries with an English translation, 5,000 most frequent | 4,728, which is 94.6%. The common words almost always have one |
 | Buckets and entry files | 478 buckets, 948 entry files |
 | Entry files | 22,452,034 bytes |
-| Data size | 61,389,314 bytes in the manifest, 61,769,166 as the data gate counts it with the CEFR decks; 67 MB on disk; largest file 999,999 bytes |
+| Data size | 66,344,150 bytes in the manifest; 1,943,440 of that is the English lookup index; largest file 999,999 bytes |
+
+Three builds show the growth: 59,877,636 bytes before the English glosses, 61,389,314 with the entry
+bodies carrying them, and 66,344,150 with the English index and both glosses on every row. A search
+row costs more because it now carries the Italian gloss and the English one.
 
 English coverage is uneven by part of speech: verb 95%, adverb 97%, pronoun 90%, noun 84%, adjective
 84%, proper name 43%, preposition 46%, and phrase 0.2% (10 of 4,801). Abbreviations carry none (0 of
@@ -163,7 +171,8 @@ _Avoid_: chunk, piece, part.
 **Manifest**: `data/index.json`. It lists every file, its size and its hash, plus the counts, the
 sources and the CEFR deck sizes.
 
-**Row**: one line in a result list: folded key, id, headword, IPA, part of speech, one gloss.
+**Row**: one line in a result list: folded key, id, headword, IPA, part of speech, the Italian gloss
+and the English gloss. Seven fields.
 
 **Form**: one inflected form of a lemma.
 
@@ -194,6 +203,8 @@ sources and the CEFR deck sizes.
 - The offline gate calls the download action directly. A tap on the Download button stays a device check.
 - The About screen names two sources. It does not name en.wiktionary, and the English glosses need that
   line.
-- English to Italian search is measured and not built. An English-keyed index over the same glosses
-  costs 1.81 MB raw, or 0.65 MB gzipped, in 415 files, with a 90th percentile of 14.3 KB and a largest
-  file of 74.8 KB at a cap of 100 postings per key.
+- The English lookup index ships: 415 files, 1,943,440 bytes raw and 0.66 MiB gzipped, a 90th
+  percentile of 14,562 bytes, a largest file of 76,533 bytes, and a cap of 100 postings per token. The
+  client does not read it yet, so an English query still finds nothing on purpose. The rule is Italian
+  matches first, an English block second, and the English index fetched only when the Italian list is
+  short of 20 rows.
