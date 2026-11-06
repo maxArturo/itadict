@@ -1,0 +1,16 @@
+[
+{"id":"did:0","word":"didattica","ipa":"/diˈdattika/","cefr":"c2","pos":[{"pos":"noun","senses":["scienza dell'insegnamento"]}],"ex":[755,1069]},
+{"id":"did:1","word":"didattico","ipa":"/diˈdattiko/","cefr":"c2","pos":[{"pos":"adj","senses":["concernente l'insegnamento, che insegna"]}],"ex":[527,1086]},
+{"id":"did:2","word":"didascalia","ipa":"/didaskaˈlia/","cefr":"c2","pos":[{"pos":"noun","senses":["spiegazione scritta di un'immagine, posta accanto ad essa, per renderla comprensibile a chi la guarda"]}],"ex":[459]},
+{"id":"did:3","word":"didietro","cefr":"c1","pos":[{"pos":"noun","senses":["fondoschiena","la parte posteriore"]},{"pos":"adj","senses":["fondoschiena"]},{"pos":"adv","senses":["fondoschiena"]}]},
+{"id":"did:4","word":"Didaco","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"did:5","word":"Didima","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"did:6","word":"Didimo","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"did:7","word":"didascalicamente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo didascalico"]}]},
+{"id":"did:8","word":"didascalico","ipa":"/didasˈkaliko/","cefr":"c2","pos":[{"pos":"adj","senses":["che ha come scopo la spiegazione di concetti","studiato appositamente per essere di facile comprensione","volto a trasmettere o a spiegare"]}]},
+{"id":"did:9","word":"didatticamente","ipa":"/didattikaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in modo didattico","dal punto di vista della didattica"]}]},
+{"id":"did:10","word":"didatticismo","ipa":"ditattiˈt͡ʃizmo","cefr":"c2","pos":[{"pos":"noun","senses":["didattismo"]}]},
+{"id":"did:11","word":"didelfide","ipa":"diˈdɛlfide/","cefr":"c2","pos":[{"pos":"noun","senses":["ciascun marsupiale della famiglia dei Didelfidi che appartengono alla famiglia dei Marsupiali"]}]},
+{"id":"did:12","word":"didgeridù","cefr":"c2","pos":[{"pos":"noun","senses":["strumento areofono aborigeno australiano"]}]},
+{"id":"did:13","word":"didramma","cefr":"c2","pos":[{"pos":"noun","senses":["moneta d'argento in uso nell'antica Grecia, di peso e valore pari a due dracme"]}]}
+]

@@ -1,0 +1,10 @@
+{
+"aperiodici":{"id":"ap:168","lemma":"aperiodico","label":"plurale"},
+"aperitiva":{"id":"ap:28","lemma":"aperitivo","label":"femminile"},
+"aperitivi":{"id":"ap:28","lemma":"aperitivo","label":"plurale"},
+"aperta":{"id":"ap:1","lemma":"aperto","label":"femminile"},
+"aperte":{"id":"ap:1","lemma":"aperto","label":"femminile plurale"},
+"aperti":{"id":"ap:1","lemma":"aperto","label":"plurale"},
+"aperto":{"id":"ap:3","lemma":"aprire","label":"participio passato maschile singolare"},
+"aperture":{"id":"ap:14","lemma":"apertura","label":"plurale"}
+}

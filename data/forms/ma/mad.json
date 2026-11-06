@@ -1,0 +1,19 @@
+{
+"madida":{"id":"mad:10","lemma":"madido","label":"femminile"},
+"madide":{"id":"mad:10","lemma":"madido","label":"femminile plurale"},
+"madidi":{"id":"mad:10","lemma":"madido","label":"plurale"},
+"madie":{"id":"mad:15","lemma":"madia","label":"plurale"},
+"madornali":{"id":"mad:7","lemma":"madornale","label":"plurale"},
+"madreperlacea":{"id":"mad:24","lemma":"madreperlaceo","label":"femminile"},
+"madreperlacee":{"id":"mad:24","lemma":"madreperlaceo","label":"femminile plurale"},
+"madreperlacei":{"id":"mad:24","lemma":"madreperlaceo","label":"plurale"},
+"madreperlata":{"id":"mad:25","lemma":"madreperlato","label":"femminile"},
+"madreperlate":{"id":"mad:25","lemma":"madreperlato","label":"femminile plurale"},
+"madreperlati":{"id":"mad:25","lemma":"madreperlato","label":"plurale"},
+"madreporica":{"id":"mad:27","lemma":"madreporico","label":"femminile"},
+"madreporiche":{"id":"mad:27","lemma":"madreporico","label":"femminile plurale"},
+"madreporici":{"id":"mad:27","lemma":"madreporico","label":"plurale"},
+"madri":{"id":"mad:0","lemma":"madre","label":"plurale"},
+"madrigali":{"id":"mad:30","lemma":"madrigale","label":"plurale"},
+"madrine":{"id":"mad:6","lemma":"madrina","label":"plurale"}
+}

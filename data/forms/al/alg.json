@@ -1,0 +1,18 @@
+{
+"algebrica":{"id":"al:158","lemma":"algebrico","label":"femminile singolare"},
+"algebriche":{"id":"al:158","lemma":"algebrico","label":"femminile plurale"},
+"algebrici":{"id":"al:158","lemma":"algebrico","label":"maschile plurale"},
+"algebriste":{"id":"al:502","lemma":"algebrista","label":"femminile plurale"},
+"algebristi":{"id":"al:502","lemma":"algebrista","label":"plurale"},
+"algerina":{"id":"al:29","lemma":"algerino","label":"femminile"},
+"algerine":{"id":"al:29","lemma":"algerino","label":"femminile plurale"},
+"algerini":{"id":"al:29","lemma":"algerino","label":"plurale"},
+"alghe":{"id":"al:103","lemma":"alga","label":"plurale"},
+"algida":{"id":"al:505","lemma":"algido","label":"femminile"},
+"algide":{"id":"al:505","lemma":"algido","label":"femminile plurale"},
+"algidi":{"id":"al:505","lemma":"algido","label":"plurale"},
+"algoritmi":{"id":"al:64","lemma":"algoritmo","label":"maschile plurale"},
+"algosa":{"id":"al:515","lemma":"algoso","label":"femminile"},
+"algose":{"id":"al:515","lemma":"algoso","label":"femminile plurale"},
+"algosi":{"id":"al:515","lemma":"algoso","label":"plurale"}
+}

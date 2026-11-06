@@ -2233,7 +2233,7 @@
 "petalose":{"id":"pe:299","lemma":"petaloso","label":"femminile plurale"},
 "petalosi":{"id":"pe:299","lemma":"petaloso","label":"plurale"},
 "petauri":{"id":"pe:784","lemma":"petauro","label":"plurale"},
-"petente":{"id":"co:89","lemma":"colui","label":"colui che pone delle richieste"},
+"petente":{"id":"col:9","lemma":"colui","label":"colui che pone delle richieste"},
 "peti":{"id":"pe:246","lemma":"peto","label":"plurale"},
 "petizioni":{"id":"pe:56","lemma":"petizione","label":"plurale"},
 "petrarchesca":{"id":"pe:789","lemma":"petrarchesco","label":"femminile"},

@@ -1,0 +1,7 @@
+[
+{"id":"mao:0","word":"maori","ipa":"//","cefr":"c2","pos":[{"pos":"noun","senses":["chi appartiene ai Maori, popolazione indigena della Nuova Zelanda","lingua parlata da tale popolazione"]},{"pos":"adj","senses":["che appartiene ai Maori, popolazione indigena della Nuova Zelanda"]}],"ex":[389,837,1050]},
+{"id":"mao:1","word":"maoismo","ipa":"/maoˈizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["insieme di dottrine economiche e politiche d'ispirazione autoritaria e collettivista, elaborate in Cina da Mao Tse-Tung, presidente del partito comunista cinese dal 1945 al 1976","dottrina politica che fa riferimento a Mao, specie nell'intento di incoraggiare le sfide dei paesi meno sviluppati"]}]},
+{"id":"mao:2","word":"maoista","ipa":"/maoˈista/","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda l'esperienza politica di Mao Tse Tung, fondatore della Repubblica Popolare di Cina"]},{"pos":"noun","senses":["seguace dell'esperienza politica di Mao Tse Tung, fondatore della Repubblica Popolare di Cina"]}]},
+{"id":"mao:3","word":"maomettano","ipa":"/maometˈtano/","cefr":"c2","pos":[{"pos":"adj","senses":["dell'Islam"]},{"pos":"noun","senses":["fedele della religione di Maometto"]}]},
+{"id":"mao:4","word":"maomettismo","ipa":"/maometˈtizmo/","cefr":"c2","pos":[{"pos":"noun","senses":["religione di Maometto"]}]}
+]

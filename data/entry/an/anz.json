@@ -1,0 +1,10 @@
+[
+{"id":"anz:0","word":"anziano","ipa":"/anˈtsjano/","cefr":"b2","pos":[{"pos":"noun","senses":["chi ha molti anni","chi ha più anni di frequenza, per esempio in luoghi lontani da casa come in ambito militare, accademico, talvolta lavorativo"]},{"pos":"adj","senses":["che è in età avanzata rispetto ad altre persone"]}],"ex":[31,44,47]},
+{"id":"anz:1","word":"anziché","cefr":"c1","pos":[{"pos":"conj","senses":["piuttosto che"]}],"ex":[91,115,132]},
+{"id":"anz:2","word":"anzi","ipa":"/ˈantsi/","cefr":"a2","pos":[{"pos":"conj","senses":["Con valore avversativo dopo una frase di senso negativo","Con valore rafforzativo","O meglio"]},{"pos":"adv","senses":["prima"]},{"pos":"prep","senses":["prima di"]}],"ex":[152,164,177]},
+{"id":"anz:3","word":"anzianità","ipa":"/antsjaniˈta/","cefr":"c2","pos":[{"pos":"noun","senses":["l'esser vecchio","tempo trascorso dall'inizio di un rapporto di lavoro","per l'età avanzata, purtroppo non sempre, è comunque spesso sinonimo di saggezza e sapienza quindi non soltanto di esperienza"]}],"ex":[159,361,417]},
+{"id":"anz:4","word":"anzitutto","ipa":"/antsiˈtutto/","cefr":"c2","pos":[{"pos":"adv","senses":["prima d'ogni altra cosa, prima di tutto"]}],"ex":[175,176,425]},
+{"id":"anz:5","word":"anzianatico","cefr":"c2","pos":[{"pos":"noun","senses":["dignità di anziano"]}]},
+{"id":"anz:6","word":"anzianotto","ipa":"/antsjaˈnɔtto/","cefr":"c2","pos":[{"pos":"adj","senses":["che è alquanto anziano","oggetto utilizzato per tanto tempo, che però ha ancora pregio"]}]},
+{"id":"anz:7","word":"anzitempo","ipa":"/ant͡siˈtɛmpo/","cefr":"c2","pos":[{"pos":"adv","senses":["prima di un tempo stabilito","prematuramente"]}]}
+]

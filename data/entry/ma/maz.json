@@ -1,0 +1,18 @@
+[
+{"id":"maz:0","word":"mazza","ipa":"/ˈmat.tsa/","cefr":"b2","pos":[{"pos":"noun","senses":["attrezzo a forma di grosso martello utilizzato nei lavori edili e stradali per spaccare pietre, costituito da un'asta fissata ad una testa contundente per mezzo di un occhiello centrale; anche…","bastone utilizzato nel baseball, nel golf, nell'hockey e nel cricket","nulla"]}],"ex":[438,446,453]},
+{"id":"maz:1","word":"mazzo","ipa":"/ˈmattso/","cefr":"b2","pos":[{"pos":"noun","senses":["insieme di più cose omogenee tenute insieme","fortuna","insieme di fiori e erbe","fondoschiena"]}],"ex":[581,582,583]},
+{"id":"maz:2","word":"mazzetta","cefr":"c1","pos":[{"pos":"noun","senses":["denaro versato per ottenere illegalmente particolari favori o privilegi","mazzo di banconote di uguale taglio"]}],"ex":[184,185,186]},
+{"id":"maz:3","word":"mazzata","ipa":"/matˈtsata/","cefr":"c2","pos":[{"pos":"noun","senses":["grave colpo"]}],"ex":[993]},
+{"id":"maz:4","word":"Mazzarrone","cefr":"c2","pos":[{"pos":"name","senses":["Comune della Provincia di Catania (3.685 residenti)"]}]},
+{"id":"maz:5","word":"maza","cefr":"c2","pos":[{"pos":"noun","senses":["antico cibo greco consistente in frammenti di pane d'orzo intinti in olio e vino, tipico della cucina povera dell'antica Grecia"]}]},
+{"id":"maz:6","word":"mazel tov","cefr":"c2","pos":[{"pos":"intj","senses":["buona fortuna"]}]},
+{"id":"maz:7","word":"mazurka","cefr":"c2","pos":[{"pos":"noun","senses":["danza nazionale della Polonia, di ritmo ternario e moto lento"]}]},
+{"id":"maz:8","word":"mazza d'armi","cefr":"c2","pos":[{"pos":"noun","senses":["figura araldica formata da un lungo manico metallico con una testa formata da lunghe coste, pure metalliche, uscenti a raggiera o anche da una testa sferica da cui escono spuntoni appuntiti"]}]},
+{"id":"maz:9","word":"mazzafrusto","cefr":"c2","pos":[{"pos":"noun","senses":["arma offensiva costituita da un bastone cui è appesa, con una catena, una grossa palla di ferro chiodata"]}]},
+{"id":"maz:10","word":"mazzapicchio","cefr":"c2","pos":[{"pos":"noun","senses":["figura araldica convenzionale che rappresenta uno strumento utilizzato per battere il suolo che ha la forma di un fuso allungato, con due anelli posti al quarto della lunghezza, uno in alto a destra…"]}]},
+{"id":"maz:11","word":"mazzeranga","cefr":"c2","pos":[{"pos":"phrase","senses":["mazzapicchio"]}]},
+{"id":"maz:12","word":"mazzeratura","ipa":"/mat͡s:ɛraˈtura/","cefr":"c2","pos":[{"pos":"noun","senses":["tipo di condanna a morte diffusa nel medioevo che prevedeva l'annegamento del condannato, precedentemente legato a un peso per evitare il galleggiamento dello stesso"]}]},
+{"id":"maz:13","word":"mazzettone","ipa":"/mattsetˈtone/","cefr":"c2","pos":[{"pos":"noun","senses":["genere della famiglia delle Cariofillacee; la sua classificazione scientifica è Agrostemma githago ( tassonomia)"]}]},
+{"id":"maz:14","word":"mazziere","ipa":"/matˈtsjɛre/","cefr":"c2","pos":[{"pos":"noun","senses":["chi tiene il mazzo e distribuisce le carte, giocando per ultimo"]}]},
+{"id":"maz:15","word":"mazziniano","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda il patriota italiano Giuseppe Mazzini"]}]}
+]

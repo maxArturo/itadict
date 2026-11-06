@@ -1,0 +1,10 @@
+{
+"acacie":{"id":"aca:0","lemma":"acacia","label":"plurale"},
+"academica":{"id":"aca:23","lemma":"academico","label":"femminile"},
+"academiche":{"id":"aca:23","lemma":"academico","label":"femminile plurale"},
+"academici":{"id":"aca:23","lemma":"academico","label":"plurale"},
+"acalasie":{"id":"aca:24","lemma":"acalasia","label":"plurale"},
+"acari":{"id":"aca:30","lemma":"acaro","label":"plurale"},
+"acarofobie":{"id":"aca:31","lemma":"acarofobia","label":"plurale"},
+"acatartofobie":{"id":"aca:32","lemma":"acatartofobia","label":"plurale"}
+}

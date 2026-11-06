@@ -1,0 +1,20 @@
+[
+{"id":"inp:0","word":"input","cefr":"c2","pos":[{"pos":"noun","senses":["sequenza di informazioni e dati immessi con un'apposita periferica oppure con un riferimento comune, per esempio del web, informatico oppure proprio un prodotto tecnologico, e poi elaborati","idea, suggerimento, \"dare il la\""]}],"ex":[1974,2118]},
+{"id":"inp:1","word":"INPS","cefr":"c2","pos":[{"pos":"abbrev","senses":["ente pubblico il cui compito principale è raccogliere i contributi di lavoratori in attività per poi erogarli a quelli in pensione"]}],"ex":[1080]},
+{"id":"inp:2","word":"in palo","cefr":"c2","pos":[{"pos":"phrase","senses":["termine araldico che si applica a:"]}]},
+{"id":"inp:3","word":"in panciolle","cefr":"c2","pos":[{"pos":"phrase","senses":["sdraiato confortevolmente"]}]},
+{"id":"inp:4","word":"in parte","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["non del tutto"]}]},
+{"id":"inp:5","word":"in pectore","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in petto","segretamente"]}]},
+{"id":"inp:6","word":"in pergola","cefr":"c2","pos":[{"pos":"phrase","senses":["termine araldico che si applica a tre figure che si affrontano, o si toccano, nel cuore dello scudo e sono dirette una verso in cantone destro del capo, una verso il cantone sinistro del capo e una…"]}]},
+{"id":"inp:7","word":"in piedi","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in posizione verticale","(di condizione fisica) in stato abbastanza attivo"]}]},
+{"id":"inp:8","word":"in più","cefr":"c2","pos":[{"pos":"phrase","senses":["che si possiede in aggiunta a quanto già si ha","per di più"]}]},
+{"id":"inp:9","word":"in pratica","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["nella concreta realtà"]}]},
+{"id":"inp:10","word":"in precedenza","ipa":"/im‿.pre.t͡ʃe.ˈdɛn.t͡sa/","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in un momento precedente, in un momento avvenuto prima di quello a cui si fa riferimento"]}]},
+{"id":"inp:11","word":"in preparazione","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["che non è ancora stato compiuto"]}]},
+{"id":"inp:12","word":"in prima persona","ipa":"[ĩmˈpriːma perˈsoːna]","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in un modo che coinvolge uno o più individui e che generalmente esclude o limita fortemente il coinvolgimento da parte di qualcun altro"]}]},
+{"id":"inp:13","word":"in primis","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["letteralmente significa \"tra le prime cose\". Viene utilizzata nei casi in cui si vuole evidenziare una cosa di particolare importanza, oppure quando in un ragionamento un argomento viene posto alla…"]}]},
+{"id":"inp:14","word":"in procinto di","cefr":"c2","pos":[{"pos":"prep_phrase","senses":["azione, o fatto, imminente"]}]},
+{"id":"inp:15","word":"in profilo","cefr":"c2","pos":[{"pos":"adj","senses":["attributo araldico che si applica alle figure che dovrebbero essere viste di fronte"]}]},
+{"id":"inp:16","word":"in proporzione","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["in misura adeguata"]}]},
+{"id":"inp:17","word":"in prossimità di","cefr":"c2","pos":[{"pos":"adv_phrase","senses":["vicino"]}]}
+]

@@ -44,7 +44,7 @@
 "zodiaci":{"id":"zo:7","lemma":"zodiaco","label":"plurale"},
 "zolle":{"id":"zo:4","lemma":"zolla","label":"plurale"},
 "zollette":{"id":"zo:3","lemma":"zolletta","label":"plurale"},
-"zombi":{"id":"de:61","lemma":"defunto","label":"in alcune credenze popolari del mar dei Caraibi, spirito di…"},
+"zombi":{"id":"def:2","lemma":"defunto","label":"in alcune credenze popolari del mar dei Caraibi, spirito di…"},
 "zompetta":{"id":"zo:34","lemma":"zompettare","label":"terza persona singolare dell'indicativo presente"},
 "zompettai":{"id":"zo:34","lemma":"zompettare","label":"prima persona singolare dell'indicativo passato remoto"},
 "zompettammo":{"id":"zo:34","lemma":"zompettare","label":"prima persona plurale dell'indicativo passato remoto"},

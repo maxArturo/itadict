@@ -1383,7 +1383,7 @@
 "frustrino":{"id":"fr:340","lemma":"frustrare","label":"terza persona plurale del congiuntivo presente"},
 "frustro":{"id":"fr:340","lemma":"frustrare","label":"prima persona singolare dell'indicativo presente"},
 "frutici":{"id":"fr:341","lemma":"frutice","label":"plurale"},
-"frutta":{"id":"co:263","lemma":"commestibili","label":"un insieme di frutti commestibili"},
+"frutta":{"id":"com:60","lemma":"commestibili","label":"un insieme di frutti commestibili"},
 "fruttai":{"id":"fr:343","lemma":"fruttare","label":"prima persona singolare dell'indicativo passato remoto"},
 "fruttammo":{"id":"fr:343","lemma":"fruttare","label":"prima persona plurale dell'indicativo passato remoto"},
 "fruttando":{"id":"fr:343","lemma":"fruttare","label":"gerundio presente"},

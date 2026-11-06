@@ -1,0 +1,8 @@
+[
+{"id":"pai:0","word":"paio","ipa":"/ˈpajo/","cefr":"a1","pos":[{"pos":"noun","senses":["un gruppo di due oggetti appartenenti alla stessa categoria"]}],"ex":[74,108,165]},
+{"id":"pai:1","word":"paideia","ipa":"/pajˈdɛja/","cefr":"c2","pos":[{"pos":"noun","senses":["tutto ciò che nell'antica Grecia riguardava e concorreva alla formazione fisica, psichica e socioculturale dei ragazzi"]}]},
+{"id":"pai:2","word":"paidofilia","cefr":"c2","pos":[{"pos":"noun","senses":["pedofilia"]}]},
+{"id":"pai:3","word":"paidofilo","cefr":"c2","pos":[{"pos":"adj","senses":["pedofilo"]},{"pos":"noun","senses":["pedofilo"]}]},
+{"id":"pai:4","word":"paillette","ipa":"/paˈjɛt/","cefr":"c2","pos":[{"pos":"noun","senses":["foglia di metallo lucido cucita su tessuto"]}]},
+{"id":"pai:5","word":"paiolo","ipa":"/paˈjɔlo/","cefr":"c2","pos":[{"pos":"noun","senses":["grossa pentola metallica, solitamente rame o alluminio, con forma caratteristica utilizzata esclusivamente per la preparazione della polenta"]}]}
+]

@@ -1,0 +1,11 @@
+{
+"arsa":{"id":"ar:102","lemma":"arso","label":"femminile singolare"},
+"arse":{"id":"ar:102","lemma":"arso","label":"femminile plurale"},
+"arsenali":{"id":"ar:78","lemma":"arsenale","label":"plurale"},
+"arsenica":{"id":"ar:95","lemma":"arsenico","label":"femminile singolare"},
+"arseniche":{"id":"ar:95","lemma":"arsenico","label":"femminile plurale"},
+"arsenici":{"id":"ar:95","lemma":"arsenico","label":"maschile plurale"},
+"arsero":{"id":"ar:68","lemma":"ardere","label":"terza persona plurale dell'indicativo passato remoto"},
+"arsi":{"id":"ar:102","lemma":"arso","label":"maschile plurale"},
+"arso":{"id":"ar:68","lemma":"ardere","label":"participio passato"}
+}

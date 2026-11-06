@@ -1,0 +1,19 @@
+{
+"asiatica":{"id":"as:35","lemma":"asiatico","label":"femminile"},
+"asiatiche":{"id":"as:35","lemma":"asiatico","label":"femminile plurale"},
+"asiatici":{"id":"as:35","lemma":"asiatico","label":"plurale"},
+"asili":{"id":"as:23","lemma":"asilo","label":"plurale"},
+"asimmetrica":{"id":"as:119","lemma":"asimmetrico","label":"femminile"},
+"asimmetrici":{"id":"as:119","lemma":"asimmetrico","label":"plurale"},
+"asimmetrie":{"id":"as:136","lemma":"asimmetria","label":"plurale"},
+"asina":{"id":"as:26","lemma":"asino","label":"femminile"},
+"asincrona":{"id":"as:271","lemma":"asincrono","label":"femminile"},
+"asincrone":{"id":"as:271","lemma":"asincrono","label":"femminile plurale"},
+"asincroni":{"id":"as:271","lemma":"asincrono","label":"plurale"},
+"asine":{"id":"as:26","lemma":"asino","label":"femminile plurale"},
+"asinelli":{"id":"as:137","lemma":"asinello","label":"plurale"},
+"asini":{"id":"as:26","lemma":"asino","label":"plurale"},
+"asintomatica":{"id":"as:138","lemma":"asintomatico","label":"femminile"},
+"asintomatiche":{"id":"as:138","lemma":"asintomatico","label":"femminile plurale"},
+"asintomatici":{"id":"as:138","lemma":"asintomatico","label":"plurale"}
+}

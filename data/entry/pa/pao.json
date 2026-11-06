@@ -1,0 +1,16 @@
+[
+{"id":"pao:0","word":"Paolo","cefr":"b2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}],"ex":[86,140,143]},
+{"id":"pao:1","word":"Paola","cefr":"c1","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}],"ex":[113,286,687]},
+{"id":"pao:2","word":"paonazzo","ipa":"/paoˈnattso/","cefr":"c2","pos":[{"pos":"adj","senses":["di colore rosso-violaceo"]}],"ex":[295,771,982]},
+{"id":"pao:3","word":"Paoletta","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"pao:4","word":"Paoletto","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"pao:5","word":"Paolica","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"pao:6","word":"Paolico","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"pao:7","word":"Paolina","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona femminile"]}]},
+{"id":"pao:8","word":"Paolini","cefr":"c2","pos":[{"pos":"noun","senses":["congregazione religiosa facente parte congregazione della Pia Società di san Paolo o della Compagnia di san Paolo"]}]},
+{"id":"pao:9","word":"Paolino","ipa":"/paoˈlino/","cefr":"c2","pos":[{"pos":"noun","senses":["chi fa parte dei Paolini, i preti della congregazione della Pia Società di san Paolo o alla Compagnia di san Paolo","scudo d'oro stampato nel 1535 da papa Paolo III (1468-1549), in cui si trova la faccia di San Paolo"]},{"pos":"name","senses":["nome proprio di persona maschile"]},{"pos":"adj","senses":["che è inerente all'apostolo Paolo o ai papi che ne presero il nome"]}]},
+{"id":"pao:10","word":"Paolotti","cefr":"c2","pos":[{"pos":"noun","senses":["seguaci della Compagnia, della Società o delle Conferenze di san San Vincenzo de'Paoli, fondate nel 1833 da Federico Ozanam per aiutare i poveri"]}]},
+{"id":"pao:11","word":"Paoluccio","cefr":"c2","pos":[{"pos":"name","senses":["nome proprio di persona maschile"]}]},
+{"id":"pao:12","word":"paolinismo","ipa":"/paoliˈnizmo","cefr":"c2","pos":[{"pos":"noun","senses":["analisi del pensiero di Paolo"]}]},
+{"id":"pao:13","word":"paolotto","ipa":"/paoˈlɔtto/","cefr":"c2","pos":[{"pos":"noun","senses":["chi fa parte della congregazione religiosa dei Minimi istituita nel 1435 da san Francesco da Paola","seguace della società di San Vincenzo de' Paoli, istituita nel 1833 da Federico Ozanam"]},{"pos":"adj","senses":["che è attinente ai Paolotti"]}]}
+]

@@ -1,0 +1,19 @@
+{
+"disfa":{"id":"disf:0","lemma":"disfare","label":"terza persona singolare dell'indicativo presente"},
+"disfacendo":{"id":"disf:0","lemma":"disfare","label":"gerundio presente"},
+"disfacimenti":{"id":"disf:9","lemma":"disfacimento","label":"plurale"},
+"disfai":{"id":"disf:0","lemma":"disfare","label":"seconda persona singolare dell'indicativo presente"},
+"disfara":{"id":"disf:0","lemma":"disfare","label":"terza persona singolare dell'indicativo futuro semplice"},
+"disfatta":{"id":"disf:2","lemma":"disfatto","label":"femminile"},
+"disfatti":{"id":"disf:2","lemma":"disfatto","label":"plurale"},
+"disfattismi":{"id":"disf:4","lemma":"disfattismo","label":"plurale"},
+"disfatto":{"id":"disf:0","lemma":"disfare","label":"participio passato maschile singolare"},
+"disfece":{"id":"disf:0","lemma":"disfare","label":"terza persona singolare dell'indicativo passato remoto"},
+"disfeci":{"id":"disf:0","lemma":"disfare","label":"prima persona singolare dell'indicativo passato remoto"},
+"disfemismi":{"id":"disf:11","lemma":"disfemismo","label":"plurale"},
+"disfi":{"id":"disf:0","lemma":"disfare","label":"seconda persona singolare dell'indicativo presente"},
+"disfide":{"id":"disf:13","lemma":"disfida","label":"plurale"},
+"disfo":{"id":"disf:0","lemma":"disfare","label":"prima persona singolare dell'indicativo presente"},
+"disforie":{"id":"disf:7","lemma":"disforia","label":"plurale"},
+"disfunzioni":{"id":"disf:8","lemma":"disfunzione","label":"plurale"}
+}

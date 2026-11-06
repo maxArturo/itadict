@@ -1,0 +1,6 @@
+{
+"mafie":{"id":"maf:0","lemma":"mafia","label":"plurale"},
+"mafiosa":{"id":"maf:1","lemma":"mafioso","label":"femminile"},
+"mafiose":{"id":"maf:1","lemma":"mafioso","label":"femminile plurale"},
+"mafiosi":{"id":"maf:1","lemma":"mafioso","label":"plurale"}
+}

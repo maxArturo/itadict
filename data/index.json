@@ -1,5 +1,5 @@
 {
-  "version": "v1-eeb5e34d3756",
+  "version": "v1-8ffb3c86b224",
   "built": "2026-11-06",
   "partial": false,
   "bucketKey": "fold to lowercase, strip diacritics, first two letters or digits",
@@ -27,252 +27,6 @@
     }
   ],
   "buckets": {
-    "0": {
-      "search": [
-        {
-          "path": "data/0.json",
-          "bytes": 47,
-          "hash": "adf107d0"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/0.json",
-          "bytes": 666,
-          "hash": "4e186c2e"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/0.json",
-          "bytes": 166,
-          "hash": "6427a026"
-        }
-      ],
-      "forms": []
-    },
-    "1": {
-      "search": [
-        {
-          "path": "data/1.json",
-          "bytes": 46,
-          "hash": "a9054d58"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/1.json",
-          "bytes": 679,
-          "hash": "d5ed2f46"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/1.json",
-          "bytes": 176,
-          "hash": "3f9c0ae9"
-        }
-      ],
-      "forms": []
-    },
-    "2": {
-      "search": [
-        {
-          "path": "data/2.json",
-          "bytes": 47,
-          "hash": "c96e6c82"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/2.json",
-          "bytes": 642,
-          "hash": "447b5a8d"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/2.json",
-          "bytes": 130,
-          "hash": "cdaa1449"
-        }
-      ],
-      "forms": []
-    },
-    "3": {
-      "search": [
-        {
-          "path": "data/3.json",
-          "bytes": 47,
-          "hash": "65585c38"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/3.json",
-          "bytes": 638,
-          "hash": "c1375803"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/3.json",
-          "bytes": 205,
-          "hash": "8589acd7"
-        }
-      ],
-      "forms": []
-    },
-    "4": {
-      "search": [
-        {
-          "path": "data/4.json",
-          "bytes": 51,
-          "hash": "01b25b41"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/4.json",
-          "bytes": 667,
-          "hash": "c22666b3"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/4.json",
-          "bytes": 172,
-          "hash": "f1fb8171"
-        }
-      ],
-      "forms": []
-    },
-    "5": {
-      "search": [
-        {
-          "path": "data/5.json",
-          "bytes": 50,
-          "hash": "b3ace47e"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/5.json",
-          "bytes": 661,
-          "hash": "62c8e05c"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/5.json",
-          "bytes": 146,
-          "hash": "29ded036"
-        }
-      ],
-      "forms": []
-    },
-    "6": {
-      "search": [
-        {
-          "path": "data/6.json",
-          "bytes": 53,
-          "hash": "96fda7d3"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/6.json",
-          "bytes": 651,
-          "hash": "5fc965e3"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/6.json",
-          "bytes": 136,
-          "hash": "1c99ee3c"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/6.json",
-          "bytes": 109,
-          "hash": "c99c9455"
-        }
-      ]
-    },
-    "7": {
-      "search": [
-        {
-          "path": "data/7.json",
-          "bytes": 49,
-          "hash": "c39b1ae2"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/7.json",
-          "bytes": 656,
-          "hash": "9d3330ee"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/7.json",
-          "bytes": 124,
-          "hash": "ab7a9e67"
-        }
-      ],
-      "forms": []
-    },
-    "8": {
-      "search": [
-        {
-          "path": "data/8.json",
-          "bytes": 48,
-          "hash": "d5eaafcc"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/8.json",
-          "bytes": 644,
-          "hash": "02af4aac"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/8.json",
-          "bytes": 172,
-          "hash": "d5ba9121"
-        }
-      ],
-      "forms": []
-    },
-    "9": {
-      "search": [
-        {
-          "path": "data/9.json",
-          "bytes": 48,
-          "hash": "8c31f895"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/9.json",
-          "bytes": 643,
-          "hash": "6800cb8b"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/9.json",
-          "bytes": 157,
-          "hash": "4560ac10"
-        }
-      ],
-      "forms": []
-    },
     "00": {
       "search": [
         {
@@ -289,6 +43,126 @@
         }
       ],
       "ex": [],
+      "forms": []
+    },
+    "0_": {
+      "search": [
+        {
+          "path": "data/0_.json",
+          "bytes": 48,
+          "hash": "8df2c1a7"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/0_.json",
+          "bytes": 667,
+          "hash": "6ff48f91"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/0_.json",
+          "bytes": 166,
+          "hash": "6427a026"
+        }
+      ],
+      "forms": []
+    },
+    "1_": {
+      "search": [
+        {
+          "path": "data/1_.json",
+          "bytes": 47,
+          "hash": "9e08d1e3"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/1_.json",
+          "bytes": 680,
+          "hash": "5538601f"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/1_.json",
+          "bytes": 176,
+          "hash": "3f9c0ae9"
+        }
+      ],
+      "forms": []
+    },
+    "2_": {
+      "search": [
+        {
+          "path": "data/2_.json",
+          "bytes": 48,
+          "hash": "b7530304"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/2_.json",
+          "bytes": 643,
+          "hash": "1d0f0664"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/2_.json",
+          "bytes": 130,
+          "hash": "cdaa1449"
+        }
+      ],
+      "forms": []
+    },
+    "3_": {
+      "search": [
+        {
+          "path": "data/3_.json",
+          "bytes": 48,
+          "hash": "c6221f8d"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/3_.json",
+          "bytes": 639,
+          "hash": "09ee077d"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/3_.json",
+          "bytes": 205,
+          "hash": "8589acd7"
+        }
+      ],
+      "forms": []
+    },
+    "4_": {
+      "search": [
+        {
+          "path": "data/4_.json",
+          "bytes": 52,
+          "hash": "d8c984bc"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/4_.json",
+          "bytes": 668,
+          "hash": "cecf08c4"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/4_.json",
+          "bytes": 172,
+          "hash": "f1fb8171"
+        }
+      ],
       "forms": []
     },
     "4g": {
@@ -309,6 +183,30 @@
       "ex": [],
       "forms": []
     },
+    "5_": {
+      "search": [
+        {
+          "path": "data/5_.json",
+          "bytes": 51,
+          "hash": "46abd900"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/5_.json",
+          "bytes": 662,
+          "hash": "c7a440c0"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/5_.json",
+          "bytes": 146,
+          "hash": "29ded036"
+        }
+      ],
+      "forms": []
+    },
     "5g": {
       "search": [
         {
@@ -327,48 +225,150 @@
       "ex": [],
       "forms": []
     },
-    "_": {
+    "6_": {
       "search": [
         {
-          "path": "data/_.json",
-          "bytes": 284,
-          "hash": "48519ad2"
+          "path": "data/6_.json",
+          "bytes": 54,
+          "hash": "c4f809e1"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/_.json",
-          "bytes": 427,
-          "hash": "b185bb07"
+          "path": "data/entry/6_.json",
+          "bytes": 652,
+          "hash": "c37ed464"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/_.json",
+          "path": "data/ex/6_.json",
+          "bytes": 136,
+          "hash": "1c99ee3c"
+        }
+      ],
+      "forms": [
+        {
+          "path": "data/forms/6_.json",
+          "bytes": 109,
+          "hash": "c99c9455"
+        }
+      ]
+    },
+    "7_": {
+      "search": [
+        {
+          "path": "data/7_.json",
+          "bytes": 50,
+          "hash": "abe2a4b9"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/7_.json",
+          "bytes": 657,
+          "hash": "f2c4f260"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/7_.json",
+          "bytes": 124,
+          "hash": "ab7a9e67"
+        }
+      ],
+      "forms": []
+    },
+    "8_": {
+      "search": [
+        {
+          "path": "data/8_.json",
+          "bytes": 49,
+          "hash": "87ad1b48"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/8_.json",
+          "bytes": 645,
+          "hash": "0bd9b4ef"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/8_.json",
+          "bytes": 172,
+          "hash": "d5ba9121"
+        }
+      ],
+      "forms": []
+    },
+    "9_": {
+      "search": [
+        {
+          "path": "data/9_.json",
+          "bytes": 49,
+          "hash": "a3bb1a73"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/9_.json",
+          "bytes": 644,
+          "hash": "dc08bb78"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/9_.json",
+          "bytes": 157,
+          "hash": "4560ac10"
+        }
+      ],
+      "forms": []
+    },
+    "__": {
+      "search": [
+        {
+          "path": "data/__.json",
+          "bytes": 286,
+          "hash": "0d9b01bc"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/__.json",
+          "bytes": 429,
+          "hash": "d0a823ad"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/__.json",
           "bytes": 165,
           "hash": "6e468a51"
         }
       ],
       "forms": []
     },
-    "a": {
+    "a_": {
       "search": [
         {
-          "path": "data/a.json",
-          "bytes": 327,
-          "hash": "48892cd3"
+          "path": "data/a_.json",
+          "bytes": 332,
+          "hash": "6b5e826b"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/a.json",
-          "bytes": 1369,
-          "hash": "3741ea0d"
+          "path": "data/entry/a_.json",
+          "bytes": 1374,
+          "hash": "4207d593"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/a.json",
+          "path": "data/ex/a_.json",
           "bytes": 252,
           "hash": "a848604d"
         }
@@ -423,25 +423,260 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ab.json",
-          "bytes": 412667,
-          "hash": "63c63b69"
+          "path": "data/forms/ab/aba.json",
+          "bytes": 9992,
+          "hash": "8864f8fb"
+        },
+        {
+          "path": "data/forms/ab/abba.json",
+          "bytes": 102082,
+          "hash": "bf3d526d"
+        },
+        {
+          "path": "data/forms/ab/abbe.json",
+          "bytes": 13016,
+          "hash": "fef84fd1"
+        },
+        {
+          "path": "data/forms/ab/abbi.json",
+          "bytes": 43309,
+          "hash": "b77f23dd"
+        },
+        {
+          "path": "data/forms/ab/abbo.json",
+          "bytes": 71526,
+          "hash": "2e65b14d"
+        },
+        {
+          "path": "data/forms/ab/abbr.json",
+          "bytes": 82802,
+          "hash": "f8568c71"
+        },
+        {
+          "path": "data/forms/ab/abbu.json",
+          "bytes": 17620,
+          "hash": "e64421c6"
+        },
+        {
+          "path": "data/forms/ab/abd.json",
+          "bytes": 9021,
+          "hash": "4f09c21c"
+        },
+        {
+          "path": "data/forms/ab/abe.json",
+          "bytes": 4318,
+          "hash": "77f7bfe4"
+        },
+        {
+          "path": "data/forms/ab/abi.json",
+          "bytes": 27217,
+          "hash": "a15944f7"
+        },
+        {
+          "path": "data/forms/ab/abl.json",
+          "bytes": 634,
+          "hash": "20e7fe89"
+        },
+        {
+          "path": "data/forms/ab/abn.json",
+          "bytes": 135,
+          "hash": "b981e9d4"
+        },
+        {
+          "path": "data/forms/ab/abo.json",
+          "bytes": 17380,
+          "hash": "c39a5782"
+        },
+        {
+          "path": "data/forms/ab/abr.json",
+          "bytes": 9015,
+          "hash": "94369042"
+        },
+        {
+          "path": "data/forms/ab/abs.json",
+          "bytes": 135,
+          "hash": "c3ce691b"
+        },
+        {
+          "path": "data/forms/ab/abu.json",
+          "bytes": 4509,
+          "hash": "40ff33bd"
         }
       ]
     },
     "ac": {
       "search": [
         {
-          "path": "data/ac.json",
-          "bytes": 99467,
-          "hash": "685e1a0e"
+          "path": "data/ac/ac_.json",
+          "bytes": 62,
+          "hash": "25822e0b"
+        },
+        {
+          "path": "data/ac/aca.json",
+          "bytes": 3553,
+          "hash": "61827807"
+        },
+        {
+          "path": "data/ac/acb.json",
+          "bytes": 106,
+          "hash": "59c27389"
+        },
+        {
+          "path": "data/ac/acc.json",
+          "bytes": 43081,
+          "hash": "603291ed"
+        },
+        {
+          "path": "data/ac/acd.json",
+          "bytes": 129,
+          "hash": "f0e5d9cd"
+        },
+        {
+          "path": "data/ac/ace.json",
+          "bytes": 8488,
+          "hash": "aa4830cc"
+        },
+        {
+          "path": "data/ac/ach.json",
+          "bytes": 1602,
+          "hash": "73efc2c8"
+        },
+        {
+          "path": "data/ac/aci.json",
+          "bytes": 18235,
+          "hash": "6af0826e"
+        },
+        {
+          "path": "data/ac/acl.json",
+          "bytes": 501,
+          "hash": "a44d83e4"
+        },
+        {
+          "path": "data/ac/acm.json",
+          "bytes": 82,
+          "hash": "d4f00f94"
+        },
+        {
+          "path": "data/ac/acn.json",
+          "bytes": 171,
+          "hash": "664ae363"
+        },
+        {
+          "path": "data/ac/aco.json",
+          "bytes": 1530,
+          "hash": "0bcd5ef1"
+        },
+        {
+          "path": "data/ac/acq.json",
+          "bytes": 13671,
+          "hash": "8b5f575e"
+        },
+        {
+          "path": "data/ac/acr.json",
+          "bytes": 5006,
+          "hash": "00bb83e5"
+        },
+        {
+          "path": "data/ac/acs.json",
+          "bytes": 369,
+          "hash": "e1b44871"
+        },
+        {
+          "path": "data/ac/act.json",
+          "bytes": 737,
+          "hash": "96286603"
+        },
+        {
+          "path": "data/ac/acu.json",
+          "bytes": 2509,
+          "hash": "edc60b59"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/ac.json",
-          "bytes": 330867,
-          "hash": "f43412ba"
+          "path": "data/entry/ac/ac_.json",
+          "bytes": 126,
+          "hash": "94f0b062"
+        },
+        {
+          "path": "data/entry/ac/aca.json",
+          "bytes": 5199,
+          "hash": "31cf1068"
+        },
+        {
+          "path": "data/entry/ac/acb.json",
+          "bytes": 142,
+          "hash": "357aba44"
+        },
+        {
+          "path": "data/entry/ac/acc.json",
+          "bytes": 227153,
+          "hash": "443918c5"
+        },
+        {
+          "path": "data/entry/ac/acd.json",
+          "bytes": 164,
+          "hash": "a3794b85"
+        },
+        {
+          "path": "data/entry/ac/ace.json",
+          "bytes": 14639,
+          "hash": "edd9a99a"
+        },
+        {
+          "path": "data/entry/ac/ach.json",
+          "bytes": 2777,
+          "hash": "cb2050a6"
+        },
+        {
+          "path": "data/entry/ac/aci.json",
+          "bytes": 25953,
+          "hash": "ad0d1cff"
+        },
+        {
+          "path": "data/entry/ac/acl.json",
+          "bytes": 656,
+          "hash": "bc7cab99"
+        },
+        {
+          "path": "data/entry/ac/acm.json",
+          "bytes": 153,
+          "hash": "9b876c0a"
+        },
+        {
+          "path": "data/entry/ac/acn.json",
+          "bytes": 240,
+          "hash": "b6586ca2"
+        },
+        {
+          "path": "data/entry/ac/aco.json",
+          "bytes": 2059,
+          "hash": "7d0e1634"
+        },
+        {
+          "path": "data/entry/ac/acq.json",
+          "bytes": 33066,
+          "hash": "b86e7710"
+        },
+        {
+          "path": "data/entry/ac/acr.json",
+          "bytes": 9385,
+          "hash": "18271fd2"
+        },
+        {
+          "path": "data/entry/ac/acs.json",
+          "bytes": 527,
+          "hash": "79473960"
+        },
+        {
+          "path": "data/entry/ac/act.json",
+          "bytes": 1021,
+          "hash": "0e990aac"
+        },
+        {
+          "path": "data/entry/ac/acu.json",
+          "bytes": 7972,
+          "hash": "2e1add4a"
         }
       ],
       "ex": [
@@ -453,9 +688,89 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ac.json",
-          "bytes": 579482,
-          "hash": "212d0137"
+          "path": "data/forms/ac/aca.json",
+          "bytes": 545,
+          "hash": "f85ff9ae"
+        },
+        {
+          "path": "data/forms/ac/acca.json",
+          "bytes": 201618,
+          "hash": "acda0e25"
+        },
+        {
+          "path": "data/forms/ac/acce.json",
+          "bytes": 72031,
+          "hash": "9c4f1032"
+        },
+        {
+          "path": "data/forms/ac/acch.json",
+          "bytes": 14073,
+          "hash": "58b1e807"
+        },
+        {
+          "path": "data/forms/ac/acci.json",
+          "bytes": 42183,
+          "hash": "3eae5766"
+        },
+        {
+          "path": "data/forms/ac/accl.json",
+          "bytes": 21777,
+          "hash": "349311a7"
+        },
+        {
+          "path": "data/forms/ac/acco.json",
+          "bytes": 116716,
+          "hash": "29d63e99"
+        },
+        {
+          "path": "data/forms/ac/accr.json",
+          "bytes": 9199,
+          "hash": "b3fb318b"
+        },
+        {
+          "path": "data/forms/ac/accu.json",
+          "bytes": 26816,
+          "hash": "aa131966"
+        },
+        {
+          "path": "data/forms/ac/ace.json",
+          "bytes": 10258,
+          "hash": "68aabe6a"
+        },
+        {
+          "path": "data/forms/ac/ach.json",
+          "bytes": 65,
+          "hash": "f8064245"
+        },
+        {
+          "path": "data/forms/ac/aci.json",
+          "bytes": 9514,
+          "hash": "76de149b"
+        },
+        {
+          "path": "data/forms/ac/acl.json",
+          "bytes": 71,
+          "hash": "88c1de4a"
+        },
+        {
+          "path": "data/forms/ac/acq.json",
+          "bytes": 38889,
+          "hash": "5a8f5d21"
+        },
+        {
+          "path": "data/forms/ac/acr.json",
+          "bytes": 6291,
+          "hash": "0bd4f834"
+        },
+        {
+          "path": "data/forms/ac/act.json",
+          "bytes": 69,
+          "hash": "147b92c1"
+        },
+        {
+          "path": "data/forms/ac/acu.json",
+          "bytes": 13928,
+          "hash": "4df860cf"
         }
       ]
     },
@@ -483,9 +798,44 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ad.json",
-          "bytes": 253591,
-          "hash": "df90a14b"
+          "path": "data/forms/ad/ada.json",
+          "bytes": 13174,
+          "hash": "ed7cbdef"
+        },
+        {
+          "path": "data/forms/ad/add.json",
+          "bytes": 111527,
+          "hash": "6e875cce"
+        },
+        {
+          "path": "data/forms/ad/ade.json",
+          "bytes": 31942,
+          "hash": "c1480f67"
+        },
+        {
+          "path": "data/forms/ad/adi.json",
+          "bytes": 21689,
+          "hash": "54997d41"
+        },
+        {
+          "path": "data/forms/ad/ado.json",
+          "bytes": 43140,
+          "hash": "52d5ed09"
+        },
+        {
+          "path": "data/forms/ad/adr.json",
+          "bytes": 362,
+          "hash": "143a3c10"
+        },
+        {
+          "path": "data/forms/ad/ads.json",
+          "bytes": 5121,
+          "hash": "bfc41ca2"
+        },
+        {
+          "path": "data/forms/ad/adu.json",
+          "bytes": 26657,
+          "hash": "9281b985"
         }
       ]
     },
@@ -693,9 +1043,89 @@
       ],
       "forms": [
         {
-          "path": "data/forms/al.json",
-          "bytes": 304235,
-          "hash": "e9043b09"
+          "path": "data/forms/al/ala.json",
+          "bytes": 2528,
+          "hash": "d6baf2a4"
+        },
+        {
+          "path": "data/forms/al/alb.json",
+          "bytes": 18328,
+          "hash": "c59b900d"
+        },
+        {
+          "path": "data/forms/al/alc.json",
+          "bytes": 24611,
+          "hash": "47ad6aca"
+        },
+        {
+          "path": "data/forms/al/ald.json",
+          "bytes": 127,
+          "hash": "6c36c08a"
+        },
+        {
+          "path": "data/forms/al/ale.json",
+          "bytes": 14529,
+          "hash": "b043233c"
+        },
+        {
+          "path": "data/forms/al/alf.json",
+          "bytes": 5352,
+          "hash": "44aebd21"
+        },
+        {
+          "path": "data/forms/al/alg.json",
+          "bytes": 1111,
+          "hash": "8908e215"
+        },
+        {
+          "path": "data/forms/al/ali.json",
+          "bytes": 13392,
+          "hash": "9c074304"
+        },
+        {
+          "path": "data/forms/al/all.json",
+          "bytes": 185570,
+          "hash": "35afc36b"
+        },
+        {
+          "path": "data/forms/al/alm.json",
+          "bytes": 4500,
+          "hash": "86b48e50"
+        },
+        {
+          "path": "data/forms/al/alo.json",
+          "bytes": 5443,
+          "hash": "aae46768"
+        },
+        {
+          "path": "data/forms/al/alp.json",
+          "bytes": 4648,
+          "hash": "05b951ee"
+        },
+        {
+          "path": "data/forms/al/alq.json",
+          "bytes": 143,
+          "hash": "cd24d155"
+        },
+        {
+          "path": "data/forms/al/alt.json",
+          "bytes": 19573,
+          "hash": "e070ee2d"
+        },
+        {
+          "path": "data/forms/al/alu.json",
+          "bytes": 125,
+          "hash": "e2afffb4"
+        },
+        {
+          "path": "data/forms/al/alv.json",
+          "bytes": 187,
+          "hash": "b1828f34"
+        },
+        {
+          "path": "data/forms/al/alz.json",
+          "bytes": 4116,
+          "hash": "2225e1a2"
         }
       ]
     },
@@ -723,25 +1153,225 @@
       ],
       "forms": [
         {
-          "path": "data/forms/am.json",
-          "bytes": 291922,
-          "hash": "54e3378b"
+          "path": "data/forms/am/ama.json",
+          "bytes": 16333,
+          "hash": "6d274487"
+        },
+        {
+          "path": "data/forms/am/amb.json",
+          "bytes": 25268,
+          "hash": "5ef54cf2"
+        },
+        {
+          "path": "data/forms/am/ame.json",
+          "bytes": 6823,
+          "hash": "bb01eb43"
+        },
+        {
+          "path": "data/forms/am/ami.json",
+          "bytes": 861,
+          "hash": "5cc3e668"
+        },
+        {
+          "path": "data/forms/am/amm.json",
+          "bytes": 219033,
+          "hash": "6dd943bb"
+        },
+        {
+          "path": "data/forms/am/amn.json",
+          "bytes": 4560,
+          "hash": "d27e0bb6"
+        },
+        {
+          "path": "data/forms/am/amo.json",
+          "bytes": 5204,
+          "hash": "9a08fc79"
+        },
+        {
+          "path": "data/forms/am/amp.json",
+          "bytes": 13800,
+          "hash": "8c846332"
+        },
+        {
+          "path": "data/forms/am/amu.json",
+          "bytes": 65,
+          "hash": "f9209d42"
         }
       ]
     },
     "an": {
       "search": [
         {
-          "path": "data/an.json",
-          "bytes": 131779,
-          "hash": "24c11204"
+          "path": "data/an/an_.json",
+          "bytes": 225,
+          "hash": "052ddef3"
+        },
+        {
+          "path": "data/an/ana.json",
+          "bytes": 21154,
+          "hash": "a5deda57"
+        },
+        {
+          "path": "data/an/anc.json",
+          "bytes": 3282,
+          "hash": "5f421cf9"
+        },
+        {
+          "path": "data/an/and.json",
+          "bytes": 9791,
+          "hash": "d07a4cf4"
+        },
+        {
+          "path": "data/an/ane.json",
+          "bytes": 5357,
+          "hash": "63fb71b2"
+        },
+        {
+          "path": "data/an/anf.json",
+          "bytes": 2817,
+          "hash": "fb3e5e70"
+        },
+        {
+          "path": "data/an/ang.json",
+          "bytes": 11723,
+          "hash": "a4c4a140"
+        },
+        {
+          "path": "data/an/ani.json",
+          "bytes": 6336,
+          "hash": "e7461e84"
+        },
+        {
+          "path": "data/an/ank.json",
+          "bytes": 67,
+          "hash": "06629223"
+        },
+        {
+          "path": "data/an/ann.json",
+          "bytes": 9791,
+          "hash": "9eacc1ea"
+        },
+        {
+          "path": "data/an/ano.json",
+          "bytes": 3128,
+          "hash": "9da16369"
+        },
+        {
+          "path": "data/an/anp.json",
+          "bytes": 276,
+          "hash": "29f75c9e"
+        },
+        {
+          "path": "data/an/ans.json",
+          "bytes": 2332,
+          "hash": "8bd7f52a"
+        },
+        {
+          "path": "data/an/ant.json",
+          "bytes": 54688,
+          "hash": "acc6ddda"
+        },
+        {
+          "path": "data/an/anu.json",
+          "bytes": 336,
+          "hash": "1b4f73ed"
+        },
+        {
+          "path": "data/an/anv.json",
+          "bytes": 138,
+          "hash": "565da4c5"
+        },
+        {
+          "path": "data/an/anz.json",
+          "bytes": 664,
+          "hash": "3c17ac30"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/an.json",
-          "bytes": 284944,
-          "hash": "7d14d464"
+          "path": "data/entry/an/an_.json",
+          "bytes": 380,
+          "hash": "e54075c5"
+        },
+        {
+          "path": "data/entry/an/ana.json",
+          "bytes": 39998,
+          "hash": "3b9ce8d3"
+        },
+        {
+          "path": "data/entry/an/anc.json",
+          "bytes": 11535,
+          "hash": "9906e1fe"
+        },
+        {
+          "path": "data/entry/an/and.json",
+          "bytes": 18218,
+          "hash": "04cb3430"
+        },
+        {
+          "path": "data/entry/an/ane.json",
+          "bytes": 13589,
+          "hash": "262e65e2"
+        },
+        {
+          "path": "data/entry/an/anf.json",
+          "bytes": 4561,
+          "hash": "a5b6db73"
+        },
+        {
+          "path": "data/entry/an/ang.json",
+          "bytes": 23162,
+          "hash": "edff834b"
+        },
+        {
+          "path": "data/entry/an/ani.json",
+          "bytes": 11940,
+          "hash": "ba946bfb"
+        },
+        {
+          "path": "data/entry/an/ank.json",
+          "bytes": 124,
+          "hash": "b768a6c0"
+        },
+        {
+          "path": "data/entry/an/ann.json",
+          "bytes": 48895,
+          "hash": "605f607f"
+        },
+        {
+          "path": "data/entry/an/ano.json",
+          "bytes": 7055,
+          "hash": "beb1f4c9"
+        },
+        {
+          "path": "data/entry/an/anp.json",
+          "bytes": 359,
+          "hash": "d83d7296"
+        },
+        {
+          "path": "data/entry/an/ans.json",
+          "bytes": 6633,
+          "hash": "5766b5db"
+        },
+        {
+          "path": "data/entry/an/ant.json",
+          "bytes": 95949,
+          "hash": "bf2b1ff9"
+        },
+        {
+          "path": "data/entry/an/anu.json",
+          "bytes": 957,
+          "hash": "abbdcffa"
+        },
+        {
+          "path": "data/entry/an/anv.json",
+          "bytes": 233,
+          "hash": "2155c5d0"
+        },
+        {
+          "path": "data/entry/an/anz.json",
+          "bytes": 1682,
+          "hash": "7521b54a"
         }
       ],
       "ex": [
@@ -753,9 +1383,69 @@
       ],
       "forms": [
         {
-          "path": "data/forms/an.json",
-          "bytes": 269889,
-          "hash": "118d5176"
+          "path": "data/forms/an/ana.json",
+          "bytes": 32112,
+          "hash": "e0b49870"
+        },
+        {
+          "path": "data/forms/an/anc.json",
+          "bytes": 17814,
+          "hash": "85e1b6b0"
+        },
+        {
+          "path": "data/forms/an/and.json",
+          "bytes": 8904,
+          "hash": "37ff6417"
+        },
+        {
+          "path": "data/forms/an/ane.json",
+          "bytes": 18380,
+          "hash": "f126d0cc"
+        },
+        {
+          "path": "data/forms/an/anf.json",
+          "bytes": 621,
+          "hash": "86e42435"
+        },
+        {
+          "path": "data/forms/an/ang.json",
+          "bytes": 14948,
+          "hash": "ed6cb536"
+        },
+        {
+          "path": "data/forms/an/ani.json",
+          "bytes": 5035,
+          "hash": "f4a206ad"
+        },
+        {
+          "path": "data/forms/an/ann.json",
+          "bytes": 105052,
+          "hash": "d2739971"
+        },
+        {
+          "path": "data/forms/an/ano.json",
+          "bytes": 5719,
+          "hash": "ea712a60"
+        },
+        {
+          "path": "data/forms/an/ans.json",
+          "bytes": 8497,
+          "hash": "74de7fa2"
+        },
+        {
+          "path": "data/forms/an/ant.json",
+          "bytes": 52816,
+          "hash": "8e3755a2"
+        },
+        {
+          "path": "data/forms/an/anu.json",
+          "bytes": 65,
+          "hash": "82a1f3a9"
+        },
+        {
+          "path": "data/forms/an/anz.json",
+          "bytes": 417,
+          "hash": "e41e64f7"
         }
       ]
     },
@@ -813,9 +1503,74 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ap.json",
-          "bytes": 282324,
-          "hash": "6dadd3b6"
+          "path": "data/forms/ap/apa.json",
+          "bytes": 202,
+          "hash": "17d3fc21"
+        },
+        {
+          "path": "data/forms/ap/ape.json",
+          "bytes": 548,
+          "hash": "07fe4afb"
+        },
+        {
+          "path": "data/forms/ap/api.json",
+          "bytes": 178,
+          "hash": "d8eef857"
+        },
+        {
+          "path": "data/forms/ap/apl.json",
+          "bytes": 131,
+          "hash": "da494780"
+        },
+        {
+          "path": "data/forms/ap/apo.json",
+          "bytes": 14765,
+          "hash": "f33673c2"
+        },
+        {
+          "path": "data/forms/ap/appa.json",
+          "bytes": 73973,
+          "hash": "713cd054"
+        },
+        {
+          "path": "data/forms/ap/appe.json",
+          "bytes": 26870,
+          "hash": "cf3e1e2a"
+        },
+        {
+          "path": "data/forms/ap/appi.json",
+          "bytes": 26803,
+          "hash": "7d54de22"
+        },
+        {
+          "path": "data/forms/ap/appl.json",
+          "bytes": 9683,
+          "hash": "105a539f"
+        },
+        {
+          "path": "data/forms/ap/appo.json",
+          "bytes": 26085,
+          "hash": "15f933e9"
+        },
+        {
+          "path": "data/forms/ap/appr.json",
+          "bytes": 72980,
+          "hash": "40d85d31"
+        },
+        {
+          "path": "data/forms/ap/appu.json",
+          "bytes": 21753,
+          "hash": "bc1ac170"
+        },
+        {
+          "path": "data/forms/ap/apr.json",
+          "bytes": 8328,
+          "hash": "30c2e927"
+        },
+        {
+          "path": "data/forms/ap/aps.json",
+          "bytes": 64,
+          "hash": "a60c0a72"
         }
       ]
     },
@@ -873,9 +1628,84 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ar.json",
-          "bytes": 300149,
-          "hash": "1f90f82d"
+          "path": "data/forms/ar/ara.json",
+          "bytes": 8395,
+          "hash": "fdea4401"
+        },
+        {
+          "path": "data/forms/ar/arb.json",
+          "bytes": 4858,
+          "hash": "f31dd853"
+        },
+        {
+          "path": "data/forms/ar/arc.json",
+          "bytes": 33874,
+          "hash": "fee5a7e6"
+        },
+        {
+          "path": "data/forms/ar/ard.json",
+          "bytes": 7749,
+          "hash": "c36cb1dd"
+        },
+        {
+          "path": "data/forms/ar/are.json",
+          "bytes": 5719,
+          "hash": "ee26021c"
+        },
+        {
+          "path": "data/forms/ar/arg.json",
+          "bytes": 13411,
+          "hash": "c943e9a9"
+        },
+        {
+          "path": "data/forms/ar/ari.json",
+          "bytes": 5892,
+          "hash": "0538cfc6"
+        },
+        {
+          "path": "data/forms/ar/arm.json",
+          "bytes": 14155,
+          "hash": "442405e6"
+        },
+        {
+          "path": "data/forms/ar/arn.json",
+          "bytes": 177,
+          "hash": "9b806b91"
+        },
+        {
+          "path": "data/forms/ar/aro.json",
+          "bytes": 4786,
+          "hash": "c62d557b"
+        },
+        {
+          "path": "data/forms/ar/arp.json",
+          "bytes": 8980,
+          "hash": "33597e28"
+        },
+        {
+          "path": "data/forms/ar/arr.json",
+          "bytes": 171835,
+          "hash": "75292a8a"
+        },
+        {
+          "path": "data/forms/ar/ars.json",
+          "bytes": 667,
+          "hash": "2bbf2bdd"
+        },
+        {
+          "path": "data/forms/ar/art.json",
+          "bytes": 14840,
+          "hash": "05198e8c"
+        },
+        {
+          "path": "data/forms/ar/arv.json",
+          "bytes": 68,
+          "hash": "9bfc3984"
+        },
+        {
+          "path": "data/forms/ar/arz.json",
+          "bytes": 4788,
+          "hash": "c7b12897"
         }
       ]
     },
@@ -903,9 +1733,44 @@
       ],
       "forms": [
         {
-          "path": "data/forms/as.json",
-          "bytes": 290164,
-          "hash": "a96416be"
+          "path": "data/forms/as/asc.json",
+          "bytes": 26316,
+          "hash": "68835a14"
+        },
+        {
+          "path": "data/forms/as/ase.json",
+          "bytes": 345,
+          "hash": "4f858ee8"
+        },
+        {
+          "path": "data/forms/as/asf.json",
+          "bytes": 8771,
+          "hash": "a9f6f800"
+        },
+        {
+          "path": "data/forms/as/asi.json",
+          "bytes": 1175,
+          "hash": "e0eee512"
+        },
+        {
+          "path": "data/forms/as/aso.json",
+          "bytes": 126,
+          "hash": "b23fed0c"
+        },
+        {
+          "path": "data/forms/as/asp.json",
+          "bytes": 18288,
+          "hash": "36b5bd71"
+        },
+        {
+          "path": "data/forms/as/ass.json",
+          "bytes": 210079,
+          "hash": "e8737343"
+        },
+        {
+          "path": "data/forms/as/ast.json",
+          "bytes": 25086,
+          "hash": "b6ba92e2"
         }
       ]
     },
@@ -1065,24 +1930,24 @@
         }
       ]
     },
-    "b": {
+    "b_": {
       "search": [
         {
-          "path": "data/b.json",
-          "bytes": 68,
-          "hash": "d8320485"
+          "path": "data/b_.json",
+          "bytes": 69,
+          "hash": "650aa843"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/b.json",
-          "bytes": 134,
-          "hash": "2d4dc34c"
+          "path": "data/entry/b_.json",
+          "bytes": 135,
+          "hash": "e02671d3"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/b.json",
+          "path": "data/ex/b_.json",
           "bytes": 221,
           "hash": "c4264179"
         }
@@ -1114,8 +1979,8 @@
       "forms": [
         {
           "path": "data/forms/ba.json",
-          "bytes": 238944,
-          "hash": "d008eebd"
+          "bytes": 238945,
+          "hash": "c04ccfc2"
         }
       ]
     },
@@ -1569,24 +2434,24 @@
       "ex": [],
       "forms": []
     },
-    "c": {
+    "c_": {
       "search": [
         {
-          "path": "data/c.json",
-          "bytes": 82,
-          "hash": "ec6bb696"
+          "path": "data/c_.json",
+          "bytes": 83,
+          "hash": "0e37a3b3"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/c.json",
-          "bytes": 479,
-          "hash": "9cc15967"
+          "path": "data/entry/c_.json",
+          "bytes": 480,
+          "hash": "5ba43e3d"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/c.json",
+          "path": "data/ex/c_.json",
           "bytes": 150,
           "hash": "63e98378"
         }
@@ -1596,16 +2461,186 @@
     "ca": {
       "search": [
         {
-          "path": "data/ca.json",
-          "bytes": 236830,
-          "hash": "528802a8"
+          "path": "data/ca/ca_.json",
+          "bytes": 129,
+          "hash": "23a5f896"
+        },
+        {
+          "path": "data/ca/cab.json",
+          "bytes": 3254,
+          "hash": "0ea0f77b"
+        },
+        {
+          "path": "data/ca/cac.json",
+          "bytes": 6847,
+          "hash": "c473f5fc"
+        },
+        {
+          "path": "data/ca/cad.json",
+          "bytes": 3231,
+          "hash": "279f79a6"
+        },
+        {
+          "path": "data/ca/caf.json",
+          "bytes": 1828,
+          "hash": "12734cf2"
+        },
+        {
+          "path": "data/ca/cag.json",
+          "bytes": 1998,
+          "hash": "922451f7"
+        },
+        {
+          "path": "data/ca/cai.json",
+          "bytes": 560,
+          "hash": "6646b3b2"
+        },
+        {
+          "path": "data/ca/cal.json",
+          "bytes": 33001,
+          "hash": "13e0103a"
+        },
+        {
+          "path": "data/ca/cam.json",
+          "bytes": 19992,
+          "hash": "c5aa8af6"
+        },
+        {
+          "path": "data/ca/can.json",
+          "bytes": 22704,
+          "hash": "d10cbe96"
+        },
+        {
+          "path": "data/ca/cao.json",
+          "bytes": 472,
+          "hash": "d62e6c30"
+        },
+        {
+          "path": "data/ca/cap.json",
+          "bytes": 32284,
+          "hash": "431e3cbc"
+        },
+        {
+          "path": "data/ca/car.json",
+          "bytes": 57569,
+          "hash": "b67a50bd"
+        },
+        {
+          "path": "data/ca/cas.json",
+          "bytes": 21089,
+          "hash": "da117488"
+        },
+        {
+          "path": "data/ca/cat.json",
+          "bytes": 18389,
+          "hash": "803795cd"
+        },
+        {
+          "path": "data/ca/cau.json",
+          "bytes": 3328,
+          "hash": "c6e62c5a"
+        },
+        {
+          "path": "data/ca/cav.json",
+          "bytes": 8168,
+          "hash": "4ae03179"
+        },
+        {
+          "path": "data/ca/caz.json",
+          "bytes": 2022,
+          "hash": "16183e40"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/ca.json",
-          "bytes": 545035,
-          "hash": "4ffb62d3"
+          "path": "data/entry/ca/ca_.json",
+          "bytes": 194,
+          "hash": "a4fb9e38"
+        },
+        {
+          "path": "data/entry/ca/cab.json",
+          "bytes": 8802,
+          "hash": "019ccaf0"
+        },
+        {
+          "path": "data/entry/ca/cac.json",
+          "bytes": 13451,
+          "hash": "d7620f37"
+        },
+        {
+          "path": "data/entry/ca/cad.json",
+          "bytes": 10470,
+          "hash": "1c6b52a8"
+        },
+        {
+          "path": "data/entry/ca/caf.json",
+          "bytes": 2985,
+          "hash": "7fd1bc36"
+        },
+        {
+          "path": "data/entry/ca/cag.json",
+          "bytes": 7130,
+          "hash": "4a63cb97"
+        },
+        {
+          "path": "data/entry/ca/cai.json",
+          "bytes": 807,
+          "hash": "332ed29d"
+        },
+        {
+          "path": "data/entry/ca/cal.json",
+          "bytes": 75230,
+          "hash": "f6303182"
+        },
+        {
+          "path": "data/entry/ca/cam.json",
+          "bytes": 43096,
+          "hash": "ea498646"
+        },
+        {
+          "path": "data/entry/ca/can.json",
+          "bytes": 64232,
+          "hash": "334e9365"
+        },
+        {
+          "path": "data/entry/ca/cao.json",
+          "bytes": 943,
+          "hash": "08310c40"
+        },
+        {
+          "path": "data/entry/ca/cap.json",
+          "bytes": 72589,
+          "hash": "07973a89"
+        },
+        {
+          "path": "data/entry/ca/car.json",
+          "bytes": 120512,
+          "hash": "9ef7367a"
+        },
+        {
+          "path": "data/entry/ca/cas.json",
+          "bytes": 42225,
+          "hash": "83dec09f"
+        },
+        {
+          "path": "data/entry/ca/cat.json",
+          "bytes": 44848,
+          "hash": "d29af9fb"
+        },
+        {
+          "path": "data/entry/ca/cau.json",
+          "bytes": 10690,
+          "hash": "823115bd"
+        },
+        {
+          "path": "data/entry/ca/cav.json",
+          "bytes": 18269,
+          "hash": "8e04037c"
+        },
+        {
+          "path": "data/entry/ca/caz.json",
+          "bytes": 8597,
+          "hash": "07c32da5"
         }
       ],
       "ex": [
@@ -1617,9 +2652,89 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ca.json",
-          "bytes": 591754,
-          "hash": "a25ff905"
+          "path": "data/forms/ca/cab.json",
+          "bytes": 12968,
+          "hash": "64baf3eb"
+        },
+        {
+          "path": "data/forms/ca/cac.json",
+          "bytes": 9327,
+          "hash": "53d02b99"
+        },
+        {
+          "path": "data/forms/ca/cad.json",
+          "bytes": 17241,
+          "hash": "71de9dda"
+        },
+        {
+          "path": "data/forms/ca/caf.json",
+          "bytes": 283,
+          "hash": "685db7a2"
+        },
+        {
+          "path": "data/forms/ca/cag.json",
+          "bytes": 13107,
+          "hash": "d44ec2b0"
+        },
+        {
+          "path": "data/forms/ca/cai.json",
+          "bytes": 126,
+          "hash": "6750cab9"
+        },
+        {
+          "path": "data/forms/ca/cal.json",
+          "bytes": 88341,
+          "hash": "5faabdd2"
+        },
+        {
+          "path": "data/forms/ca/cam.json",
+          "bytes": 35101,
+          "hash": "7c847cc1"
+        },
+        {
+          "path": "data/forms/ca/can.json",
+          "bytes": 84308,
+          "hash": "2f746ea8"
+        },
+        {
+          "path": "data/forms/ca/cao.json",
+          "bytes": 285,
+          "hash": "dab7edda"
+        },
+        {
+          "path": "data/forms/ca/cap.json",
+          "bytes": 72841,
+          "hash": "65dd54b3"
+        },
+        {
+          "path": "data/forms/ca/car.json",
+          "bytes": 120004,
+          "hash": "4798fa22"
+        },
+        {
+          "path": "data/forms/ca/cas.json",
+          "bytes": 34268,
+          "hash": "bbfe100a"
+        },
+        {
+          "path": "data/forms/ca/cat.json",
+          "bytes": 53416,
+          "hash": "ae5ba529"
+        },
+        {
+          "path": "data/forms/ca/cau.json",
+          "bytes": 18224,
+          "hash": "14ef3c6d"
+        },
+        {
+          "path": "data/forms/ca/cav.json",
+          "bytes": 14422,
+          "hash": "2488e77d"
+        },
+        {
+          "path": "data/forms/ca/caz.json",
+          "bytes": 17326,
+          "hash": "c7095233"
         }
       ]
     },
@@ -1697,7 +2812,7 @@
         {
           "path": "data/forms/ce.json",
           "bytes": 129431,
-          "hash": "2e71631a"
+          "hash": "09879097"
         }
       ]
     },
@@ -1878,16 +2993,406 @@
     "co": {
       "search": [
         {
-          "path": "data/co.json",
-          "bytes": 316559,
-          "hash": "dcfec2b6"
+          "path": "data/co/co_.json",
+          "bytes": 99,
+          "hash": "44df89ab"
+        },
+        {
+          "path": "data/co/coa.json",
+          "bytes": 3168,
+          "hash": "f5a3663e"
+        },
+        {
+          "path": "data/co/cob.json",
+          "bytes": 1431,
+          "hash": "7f2f0bea"
+        },
+        {
+          "path": "data/co/coc.json",
+          "bytes": 5730,
+          "hash": "c493279f"
+        },
+        {
+          "path": "data/co/cod.json",
+          "bytes": 4628,
+          "hash": "e4ee9ae0"
+        },
+        {
+          "path": "data/co/coe.json",
+          "bytes": 3421,
+          "hash": "6ce303b3"
+        },
+        {
+          "path": "data/co/cof.json",
+          "bytes": 714,
+          "hash": "96359716"
+        },
+        {
+          "path": "data/co/cog.json",
+          "bytes": 2785,
+          "hash": "b1a7e41e"
+        },
+        {
+          "path": "data/co/coh.json",
+          "bytes": 171,
+          "hash": "4823b192"
+        },
+        {
+          "path": "data/co/coi.json",
+          "bytes": 2231,
+          "hash": "95e4f333"
+        },
+        {
+          "path": "data/co/cok.json",
+          "bytes": 222,
+          "hash": "377e67dc"
+        },
+        {
+          "path": "data/co/col.json",
+          "bytes": 33331,
+          "hash": "86eb3914"
+        },
+        {
+          "path": "data/co/com.json",
+          "bytes": 52920,
+          "hash": "72319835"
+        },
+        {
+          "path": "data/co/con_.json",
+          "bytes": 181,
+          "hash": "487bba7c"
+        },
+        {
+          "path": "data/co/cona.json",
+          "bytes": 144,
+          "hash": "817c61de"
+        },
+        {
+          "path": "data/co/conc.json",
+          "bytes": 16393,
+          "hash": "c4f8a50e"
+        },
+        {
+          "path": "data/co/cond.json",
+          "bytes": 8378,
+          "hash": "a3322513"
+        },
+        {
+          "path": "data/co/cone.json",
+          "bytes": 443,
+          "hash": "115dc555"
+        },
+        {
+          "path": "data/co/conf.json",
+          "bytes": 11654,
+          "hash": "954cbdec"
+        },
+        {
+          "path": "data/co/cong.json",
+          "bytes": 7905,
+          "hash": "7679867c"
+        },
+        {
+          "path": "data/co/coni.json",
+          "bytes": 2453,
+          "hash": "2cdd4c92"
+        },
+        {
+          "path": "data/co/conl.json",
+          "bytes": 487,
+          "hash": "49547a2e"
+        },
+        {
+          "path": "data/co/conn.json",
+          "bytes": 3363,
+          "hash": "57759998"
+        },
+        {
+          "path": "data/co/cono.json",
+          "bytes": 1522,
+          "hash": "0ca0a2e0"
+        },
+        {
+          "path": "data/co/conp.json",
+          "bytes": 82,
+          "hash": "b7c73411"
+        },
+        {
+          "path": "data/co/conq.json",
+          "bytes": 913,
+          "hash": "a6828b71"
+        },
+        {
+          "path": "data/co/cons.json",
+          "bytes": 16823,
+          "hash": "22531f10"
+        },
+        {
+          "path": "data/co/cont.json",
+          "bytes": 50199,
+          "hash": "80dc7d69"
+        },
+        {
+          "path": "data/co/conu.json",
+          "bytes": 411,
+          "hash": "63cad3c7"
+        },
+        {
+          "path": "data/co/conv.json",
+          "bytes": 9187,
+          "hash": "d9789178"
+        },
+        {
+          "path": "data/co/coo.json",
+          "bytes": 2636,
+          "hash": "45affedf"
+        },
+        {
+          "path": "data/co/cop.json",
+          "bytes": 7807,
+          "hash": "b5f9149e"
+        },
+        {
+          "path": "data/co/cor.json",
+          "bytes": 37236,
+          "hash": "27ad0f8b"
+        },
+        {
+          "path": "data/co/cos.json",
+          "bytes": 18809,
+          "hash": "64220e40"
+        },
+        {
+          "path": "data/co/cot.json",
+          "bytes": 4243,
+          "hash": "f4540bcf"
+        },
+        {
+          "path": "data/co/cou.json",
+          "bytes": 1836,
+          "hash": "84af8656"
+        },
+        {
+          "path": "data/co/cov.json",
+          "bytes": 2053,
+          "hash": "afb74c66"
+        },
+        {
+          "path": "data/co/cow.json",
+          "bytes": 375,
+          "hash": "f5a019ba"
+        },
+        {
+          "path": "data/co/coy.json",
+          "bytes": 214,
+          "hash": "00b14a7d"
+        },
+        {
+          "path": "data/co/coz.json",
+          "bytes": 483,
+          "hash": "7f878168"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/co.json",
-          "bytes": 973829,
-          "hash": "712e5031"
+          "path": "data/entry/co/co_.json",
+          "bytes": 163,
+          "hash": "fac11865"
+        },
+        {
+          "path": "data/entry/co/coa.json",
+          "bytes": 13839,
+          "hash": "95f8616c"
+        },
+        {
+          "path": "data/entry/co/cob.json",
+          "bytes": 1932,
+          "hash": "a4acfb4f"
+        },
+        {
+          "path": "data/entry/co/coc.json",
+          "bytes": 11768,
+          "hash": "a176409f"
+        },
+        {
+          "path": "data/entry/co/cod.json",
+          "bytes": 9112,
+          "hash": "3ad25f4b"
+        },
+        {
+          "path": "data/entry/co/coe.json",
+          "bytes": 8421,
+          "hash": "2ccf2afe"
+        },
+        {
+          "path": "data/entry/co/cof.json",
+          "bytes": 2423,
+          "hash": "b544ff7a"
+        },
+        {
+          "path": "data/entry/co/cog.json",
+          "bytes": 8433,
+          "hash": "bcbeec15"
+        },
+        {
+          "path": "data/entry/co/coh.json",
+          "bytes": 207,
+          "hash": "abaef509"
+        },
+        {
+          "path": "data/entry/co/coi.json",
+          "bytes": 10713,
+          "hash": "75dc24fe"
+        },
+        {
+          "path": "data/entry/co/cok.json",
+          "bytes": 306,
+          "hash": "f954e327"
+        },
+        {
+          "path": "data/entry/co/col.json",
+          "bytes": 90009,
+          "hash": "0a18c63d"
+        },
+        {
+          "path": "data/entry/co/com.json",
+          "bytes": 166083,
+          "hash": "8b698f5f"
+        },
+        {
+          "path": "data/entry/co/con_.json",
+          "bytes": 348,
+          "hash": "bef523fd"
+        },
+        {
+          "path": "data/entry/co/cona.json",
+          "bytes": 236,
+          "hash": "34166890"
+        },
+        {
+          "path": "data/entry/co/conc.json",
+          "bytes": 58822,
+          "hash": "01ee6c1f"
+        },
+        {
+          "path": "data/entry/co/cond.json",
+          "bytes": 25382,
+          "hash": "d3e230ed"
+        },
+        {
+          "path": "data/entry/co/cone.json",
+          "bytes": 548,
+          "hash": "9545234e"
+        },
+        {
+          "path": "data/entry/co/conf.json",
+          "bytes": 49613,
+          "hash": "bb926d12"
+        },
+        {
+          "path": "data/entry/co/cong.json",
+          "bytes": 31035,
+          "hash": "8e59a722"
+        },
+        {
+          "path": "data/entry/co/coni.json",
+          "bytes": 6868,
+          "hash": "322e6e56"
+        },
+        {
+          "path": "data/entry/co/conl.json",
+          "bytes": 558,
+          "hash": "e5a94aca"
+        },
+        {
+          "path": "data/entry/co/conn.json",
+          "bytes": 10066,
+          "hash": "ae64cbbc"
+        },
+        {
+          "path": "data/entry/co/cono.json",
+          "bytes": 4203,
+          "hash": "7649c60f"
+        },
+        {
+          "path": "data/entry/co/conp.json",
+          "bytes": 113,
+          "hash": "19f31ab6"
+        },
+        {
+          "path": "data/entry/co/conq.json",
+          "bytes": 4314,
+          "hash": "a8746ca1"
+        },
+        {
+          "path": "data/entry/co/cons.json",
+          "bytes": 61832,
+          "hash": "491953c5"
+        },
+        {
+          "path": "data/entry/co/cont.json",
+          "bytes": 162943,
+          "hash": "d22b0639"
+        },
+        {
+          "path": "data/entry/co/conu.json",
+          "bytes": 524,
+          "hash": "59c4ffc9"
+        },
+        {
+          "path": "data/entry/co/conv.json",
+          "bytes": 33245,
+          "hash": "a11e3b6a"
+        },
+        {
+          "path": "data/entry/co/coo.json",
+          "bytes": 8609,
+          "hash": "d9948f94"
+        },
+        {
+          "path": "data/entry/co/cop.json",
+          "bytes": 21780,
+          "hash": "15c9a301"
+        },
+        {
+          "path": "data/entry/co/cor.json",
+          "bytes": 97910,
+          "hash": "50f6afd4"
+        },
+        {
+          "path": "data/entry/co/cos.json",
+          "bytes": 52181,
+          "hash": "e6d56d3d"
+        },
+        {
+          "path": "data/entry/co/cot.json",
+          "bytes": 7501,
+          "hash": "a92fbca4"
+        },
+        {
+          "path": "data/entry/co/cou.json",
+          "bytes": 2593,
+          "hash": "69c46ad1"
+        },
+        {
+          "path": "data/entry/co/cov.json",
+          "bytes": 6923,
+          "hash": "4bf369c6"
+        },
+        {
+          "path": "data/entry/co/cow.json",
+          "bytes": 490,
+          "hash": "49bb15dc"
+        },
+        {
+          "path": "data/entry/co/coy.json",
+          "bytes": 279,
+          "hash": "266c3c7e"
+        },
+        {
+          "path": "data/entry/co/coz.json",
+          "bytes": 2026,
+          "hash": "725b6b25"
         }
       ],
       "ex": [
@@ -1900,98 +3405,193 @@
       "forms": [
         {
           "path": "data/forms/co/coa.json",
-          "bytes": 26990,
-          "hash": "92ad2d70"
+          "bytes": 26653,
+          "hash": "5d6d682c"
         },
         {
           "path": "data/forms/co/coc.json",
-          "bytes": 9948,
-          "hash": "a20f74d2"
+          "bytes": 9888,
+          "hash": "240360b9"
         },
         {
           "path": "data/forms/co/cod.json",
-          "bytes": 5558,
-          "hash": "5d8a3c49"
+          "bytes": 5501,
+          "hash": "1cedaecb"
         },
         {
           "path": "data/forms/co/coe.json",
-          "bytes": 10406,
-          "hash": "a8e9676b"
+          "bytes": 10304,
+          "hash": "7f449dbf"
         },
         {
           "path": "data/forms/co/cof.json",
-          "bytes": 4655,
-          "hash": "e951ea33"
+          "bytes": 4573,
+          "hash": "4519f62f"
         },
         {
           "path": "data/forms/co/cog.json",
-          "bytes": 13268,
-          "hash": "60674e09"
+          "bytes": 13143,
+          "hash": "f4df61e2"
         },
         {
           "path": "data/forms/co/coi.json",
-          "bytes": 23190,
-          "hash": "2bb3586e"
+          "bytes": 22937,
+          "hash": "0f514d2c"
         },
         {
           "path": "data/forms/co/cok.json",
-          "bytes": 75,
-          "hash": "d0c5b864"
+          "bytes": 73,
+          "hash": "16393468"
         },
         {
           "path": "data/forms/co/col.json",
-          "bytes": 121943,
-          "hash": "1f86eb7d"
+          "bytes": 121937,
+          "hash": "0bdf240b"
         },
         {
-          "path": "data/forms/co/com.json",
-          "bytes": 255738,
-          "hash": "91a16553"
+          "path": "data/forms/co/coma.json",
+          "bytes": 4348,
+          "hash": "ce07ea45"
         },
         {
-          "path": "data/forms/co/con.json",
-          "bytes": 782326,
-          "hash": "3ca46919"
+          "path": "data/forms/co/comb.json",
+          "bytes": 14020,
+          "hash": "db4ea094"
+        },
+        {
+          "path": "data/forms/co/come.json",
+          "bytes": 65,
+          "hash": "4bc9c899"
+        },
+        {
+          "path": "data/forms/co/comi.json",
+          "bytes": 9292,
+          "hash": "0e7a1f40"
+        },
+        {
+          "path": "data/forms/co/comm.json",
+          "bytes": 65705,
+          "hash": "45f649f8"
+        },
+        {
+          "path": "data/forms/co/como.json",
+          "bytes": 263,
+          "hash": "1ba67de5"
+        },
+        {
+          "path": "data/forms/co/comp.json",
+          "bytes": 152735,
+          "hash": "e9708033"
+        },
+        {
+          "path": "data/forms/co/comu.json",
+          "bytes": 10080,
+          "hash": "ff5b8cd3"
+        },
+        {
+          "path": "data/forms/co/cona.json",
+          "bytes": 64,
+          "hash": "1aa97ae5"
+        },
+        {
+          "path": "data/forms/co/conc.json",
+          "bytes": 104327,
+          "hash": "ce710f6c"
+        },
+        {
+          "path": "data/forms/co/cond.json",
+          "bytes": 37193,
+          "hash": "fdcc4a92"
+        },
+        {
+          "path": "data/forms/co/conf.json",
+          "bytes": 100764,
+          "hash": "762550cd"
+        },
+        {
+          "path": "data/forms/co/cong.json",
+          "bytes": 61296,
+          "hash": "2dca367c"
+        },
+        {
+          "path": "data/forms/co/coni.json",
+          "bytes": 9033,
+          "hash": "c9d9de83"
+        },
+        {
+          "path": "data/forms/co/conn.json",
+          "bytes": 14480,
+          "hash": "5708a1b8"
+        },
+        {
+          "path": "data/forms/co/cono.json",
+          "bytes": 5045,
+          "hash": "2f749247"
+        },
+        {
+          "path": "data/forms/co/conq.json",
+          "bytes": 9117,
+          "hash": "df9ddb80"
+        },
+        {
+          "path": "data/forms/co/cons.json",
+          "bytes": 105965,
+          "hash": "93a837c1"
+        },
+        {
+          "path": "data/forms/co/cont.json",
+          "bytes": 280206,
+          "hash": "3ea12843"
+        },
+        {
+          "path": "data/forms/co/conu.json",
+          "bytes": 76,
+          "hash": "86d79311"
+        },
+        {
+          "path": "data/forms/co/conv.json",
+          "bytes": 59924,
+          "hash": "534b9cd1"
         },
         {
           "path": "data/forms/co/coo.json",
-          "bytes": 13927,
-          "hash": "13dbffb8"
+          "bytes": 13794,
+          "hash": "a1296315"
         },
         {
           "path": "data/forms/co/cop.json",
-          "bytes": 32778,
-          "hash": "10d54e6d"
+          "bytes": 32475,
+          "hash": "f9efe8b3"
         },
         {
           "path": "data/forms/co/cor.json",
-          "bytes": 118084,
-          "hash": "87512c66"
+          "bytes": 118123,
+          "hash": "456e2d04"
         },
         {
           "path": "data/forms/co/cos.json",
-          "bytes": 74535,
-          "hash": "bfec9e9f"
+          "bytes": 74496,
+          "hash": "b8941a7d"
         },
         {
           "path": "data/forms/co/cot.json",
-          "bytes": 4933,
-          "hash": "9558c599"
+          "bytes": 4884,
+          "hash": "99e9bafe"
         },
         {
           "path": "data/forms/co/cou.json",
-          "bytes": 157,
-          "hash": "33c81de6"
+          "bytes": 154,
+          "hash": "8adcda31"
         },
         {
           "path": "data/forms/co/cov.json",
-          "bytes": 13610,
-          "hash": "da972df0"
+          "bytes": 13443,
+          "hash": "e6fc7199"
         },
         {
           "path": "data/forms/co/coz.json",
-          "bytes": 4053,
-          "hash": "8abab8c7"
+          "bytes": 3975,
+          "hash": "ff9e1bd3"
         }
       ]
     },
@@ -2181,24 +3781,24 @@
       "ex": [],
       "forms": []
     },
-    "d": {
+    "d_": {
       "search": [
         {
-          "path": "data/d.json",
-          "bytes": 231,
-          "hash": "a4eaa453"
+          "path": "data/d_.json",
+          "bytes": 234,
+          "hash": "70bc7c61"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/d.json",
-          "bytes": 691,
-          "hash": "88097608"
+          "path": "data/entry/d_.json",
+          "bytes": 694,
+          "hash": "644b6637"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/d.json",
+          "path": "data/ex/d_.json",
           "bytes": 148,
           "hash": "2076b456"
         }
@@ -2280,16 +3880,226 @@
     "de": {
       "search": [
         {
-          "path": "data/de.json",
-          "bytes": 118355,
-          "hash": "cd7de430"
+          "path": "data/de/de_.json",
+          "bytes": 62,
+          "hash": "d1234391"
+        },
+        {
+          "path": "data/de/dea.json",
+          "bytes": 1815,
+          "hash": "e82c6e14"
+        },
+        {
+          "path": "data/de/deb.json",
+          "bytes": 3082,
+          "hash": "058339ad"
+        },
+        {
+          "path": "data/de/dec.json",
+          "bytes": 21630,
+          "hash": "1eac8335"
+        },
+        {
+          "path": "data/de/ded.json",
+          "bytes": 1229,
+          "hash": "a3f7c085"
+        },
+        {
+          "path": "data/de/dee.json",
+          "bytes": 185,
+          "hash": "166290f6"
+        },
+        {
+          "path": "data/de/def.json",
+          "bytes": 9458,
+          "hash": "e6df3668"
+        },
+        {
+          "path": "data/de/deg.json",
+          "bytes": 3050,
+          "hash": "0d9650d6"
+        },
+        {
+          "path": "data/de/deh.json",
+          "bytes": 282,
+          "hash": "2e1ddc4d"
+        },
+        {
+          "path": "data/de/dei.json",
+          "bytes": 3383,
+          "hash": "37158418"
+        },
+        {
+          "path": "data/de/dej.json",
+          "bytes": 112,
+          "hash": "2c98aca5"
+        },
+        {
+          "path": "data/de/del.json",
+          "bytes": 10155,
+          "hash": "c5ee1b32"
+        },
+        {
+          "path": "data/de/dem.json",
+          "bytes": 9567,
+          "hash": "4328d209"
+        },
+        {
+          "path": "data/de/den.json",
+          "bytes": 9055,
+          "hash": "3b98d664"
+        },
+        {
+          "path": "data/de/deo.json",
+          "bytes": 1080,
+          "hash": "5d0afb59"
+        },
+        {
+          "path": "data/de/dep.json",
+          "bytes": 8613,
+          "hash": "44f44f9a"
+        },
+        {
+          "path": "data/de/deq.json",
+          "bytes": 117,
+          "hash": "f55afc68"
+        },
+        {
+          "path": "data/de/der.json",
+          "bytes": 8968,
+          "hash": "a0ba5b6b"
+        },
+        {
+          "path": "data/de/des.json",
+          "bytes": 13619,
+          "hash": "04601c29"
+        },
+        {
+          "path": "data/de/det.json",
+          "bytes": 7419,
+          "hash": "547ac1a1"
+        },
+        {
+          "path": "data/de/deu.json",
+          "bytes": 1826,
+          "hash": "5113072a"
+        },
+        {
+          "path": "data/de/dev.json",
+          "bytes": 3724,
+          "hash": "d2671e17"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/de.json",
-          "bytes": 504012,
-          "hash": "5ad0e930"
+          "path": "data/entry/de/de_.json",
+          "bytes": 104,
+          "hash": "6464757d"
+        },
+        {
+          "path": "data/entry/de/dea.json",
+          "bytes": 6594,
+          "hash": "cfb3b9ae"
+        },
+        {
+          "path": "data/entry/de/deb.json",
+          "bytes": 10349,
+          "hash": "3b0474f4"
+        },
+        {
+          "path": "data/entry/de/dec.json",
+          "bytes": 103573,
+          "hash": "08d42a13"
+        },
+        {
+          "path": "data/entry/de/ded.json",
+          "bytes": 5165,
+          "hash": "92b33ef8"
+        },
+        {
+          "path": "data/entry/de/dee.json",
+          "bytes": 222,
+          "hash": "2dcb1cca"
+        },
+        {
+          "path": "data/entry/de/def.json",
+          "bytes": 46475,
+          "hash": "215f3bbd"
+        },
+        {
+          "path": "data/entry/de/deg.json",
+          "bytes": 16615,
+          "hash": "0382c52b"
+        },
+        {
+          "path": "data/entry/de/deh.json",
+          "bytes": 466,
+          "hash": "fb941811"
+        },
+        {
+          "path": "data/entry/de/dei.json",
+          "bytes": 13336,
+          "hash": "28df40b3"
+        },
+        {
+          "path": "data/entry/de/dej.json",
+          "bytes": 150,
+          "hash": "0294b23e"
+        },
+        {
+          "path": "data/entry/de/del.json",
+          "bytes": 34471,
+          "hash": "7c1dc168"
+        },
+        {
+          "path": "data/entry/de/dem.json",
+          "bytes": 39025,
+          "hash": "f6037896"
+        },
+        {
+          "path": "data/entry/de/den.json",
+          "bytes": 29786,
+          "hash": "5bb2f75f"
+        },
+        {
+          "path": "data/entry/de/deo.json",
+          "bytes": 5504,
+          "hash": "8c931533"
+        },
+        {
+          "path": "data/entry/de/dep.json",
+          "bytes": 45713,
+          "hash": "083c6749"
+        },
+        {
+          "path": "data/entry/de/deq.json",
+          "bytes": 1658,
+          "hash": "1a21a495"
+        },
+        {
+          "path": "data/entry/de/der.json",
+          "bytes": 33747,
+          "hash": "16bab3f8"
+        },
+        {
+          "path": "data/entry/de/des.json",
+          "bytes": 60741,
+          "hash": "d1dcae98"
+        },
+        {
+          "path": "data/entry/de/det.json",
+          "bytes": 31913,
+          "hash": "2a698fbb"
+        },
+        {
+          "path": "data/entry/de/deu.json",
+          "bytes": 3811,
+          "hash": "764db513"
+        },
+        {
+          "path": "data/entry/de/dev.json",
+          "bytes": 14670,
+          "hash": "4f9d83ce"
         }
       ],
       "ex": [
@@ -2302,93 +4112,93 @@
       "forms": [
         {
           "path": "data/forms/de/dea.json",
-          "bytes": 13499,
-          "hash": "43e695cd"
+          "bytes": 13375,
+          "hash": "ba4a06e4"
         },
         {
           "path": "data/forms/de/deb.json",
-          "bytes": 18118,
-          "hash": "cb3489e3"
+          "bytes": 18076,
+          "hash": "19316097"
         },
         {
           "path": "data/forms/de/dec.json",
-          "bytes": 225848,
-          "hash": "594e0fc3"
+          "bytes": 226820,
+          "hash": "e3b29cef"
         },
         {
           "path": "data/forms/de/ded.json",
-          "bytes": 9134,
-          "hash": "18d6bdfb"
+          "bytes": 9086,
+          "hash": "e13ca11e"
         },
         {
           "path": "data/forms/de/def.json",
-          "bytes": 108624,
-          "hash": "7866ff24"
+          "bytes": 108619,
+          "hash": "e90784c0"
         },
         {
           "path": "data/forms/de/deg.json",
-          "bytes": 40331,
-          "hash": "2df506c6"
+          "bytes": 40284,
+          "hash": "2783da84"
         },
         {
           "path": "data/forms/de/dei.json",
-          "bytes": 28250,
-          "hash": "09dbee71"
+          "bytes": 28164,
+          "hash": "ce29b22a"
         },
         {
           "path": "data/forms/de/del.json",
-          "bytes": 58707,
-          "hash": "4cc8ed7e"
+          "bytes": 58713,
+          "hash": "e6d13891"
         },
         {
           "path": "data/forms/de/dem.json",
-          "bytes": 80741,
-          "hash": "ec01fb9f"
+          "bytes": 80696,
+          "hash": "680c82fc"
         },
         {
           "path": "data/forms/de/den.json",
-          "bytes": 51874,
-          "hash": "a6209317"
+          "bytes": 51875,
+          "hash": "61591832"
         },
         {
           "path": "data/forms/de/deo.json",
-          "bytes": 13466,
-          "hash": "79f36751"
+          "bytes": 13341,
+          "hash": "1b06eae4"
         },
         {
           "path": "data/forms/de/dep.json",
-          "bytes": 107954,
-          "hash": "46121d98"
+          "bytes": 107870,
+          "hash": "0568bcfc"
         },
         {
           "path": "data/forms/de/deq.json",
-          "bytes": 4617,
-          "hash": "3e7c77ce"
+          "bytes": 4577,
+          "hash": "2bed3b29"
         },
         {
           "path": "data/forms/de/der.json",
-          "bytes": 64845,
-          "hash": "f585a817"
+          "bytes": 64721,
+          "hash": "46b8b493"
         },
         {
           "path": "data/forms/de/des.json",
-          "bytes": 126986,
-          "hash": "0cc3f849"
+          "bytes": 127077,
+          "hash": "4aeb1f9a"
         },
         {
           "path": "data/forms/de/det.json",
-          "bytes": 64084,
-          "hash": "cf831376"
+          "bytes": 64088,
+          "hash": "672e869a"
         },
         {
           "path": "data/forms/de/deu.json",
-          "bytes": 4954,
-          "hash": "95ccf557"
+          "bytes": 4910,
+          "hash": "211889f6"
         },
         {
           "path": "data/forms/de/dev.json",
-          "bytes": 26823,
-          "hash": "2ead13a0"
+          "bytes": 26759,
+          "hash": "44949a82"
         }
       ]
     },
@@ -2431,16 +4241,416 @@
     "di": {
       "search": [
         {
-          "path": "data/di.json",
-          "bytes": 165059,
-          "hash": "23034c17"
+          "path": "data/di/di_.json",
+          "bytes": 137,
+          "hash": "f2ba5a9a"
+        },
+        {
+          "path": "data/di/dia.json",
+          "bytes": 16246,
+          "hash": "ef22dd09"
+        },
+        {
+          "path": "data/di/dib.json",
+          "bytes": 886,
+          "hash": "13d19f46"
+        },
+        {
+          "path": "data/di/dic.json",
+          "bytes": 5464,
+          "hash": "d764c4fa"
+        },
+        {
+          "path": "data/di/did.json",
+          "bytes": 1369,
+          "hash": "4127de8c"
+        },
+        {
+          "path": "data/di/die.json",
+          "bytes": 3787,
+          "hash": "769701de"
+        },
+        {
+          "path": "data/di/dif.json",
+          "bytes": 7142,
+          "hash": "0c117b6b"
+        },
+        {
+          "path": "data/di/dig.json",
+          "bytes": 5340,
+          "hash": "e6a07093"
+        },
+        {
+          "path": "data/di/dii.json",
+          "bytes": 760,
+          "hash": "fc4515e4"
+        },
+        {
+          "path": "data/di/dik.json",
+          "bytes": 362,
+          "hash": "b117a983"
+        },
+        {
+          "path": "data/di/dil.json",
+          "bytes": 6198,
+          "hash": "34ef078e"
+        },
+        {
+          "path": "data/di/dim.json",
+          "bytes": 6842,
+          "hash": "981cb161"
+        },
+        {
+          "path": "data/di/din.json",
+          "bytes": 4024,
+          "hash": "0c21f830"
+        },
+        {
+          "path": "data/di/dio.json",
+          "bytes": 3749,
+          "hash": "8f0e430b"
+        },
+        {
+          "path": "data/di/dip.json",
+          "bytes": 5127,
+          "hash": "d6ae73c5"
+        },
+        {
+          "path": "data/di/diq.json",
+          "bytes": 71,
+          "hash": "fda9b58d"
+        },
+        {
+          "path": "data/di/dir.json",
+          "bytes": 16089,
+          "hash": "0d365cf2"
+        },
+        {
+          "path": "data/di/dis_.json",
+          "bytes": 118,
+          "hash": "49ce1e45"
+        },
+        {
+          "path": "data/di/disa.json",
+          "bytes": 10000,
+          "hash": "dc13125f"
+        },
+        {
+          "path": "data/di/disb.json",
+          "bytes": 454,
+          "hash": "e46413be"
+        },
+        {
+          "path": "data/di/disc.json",
+          "bytes": 12361,
+          "hash": "0241aaa5"
+        },
+        {
+          "path": "data/di/disd.json",
+          "bytes": 703,
+          "hash": "a4a912b2"
+        },
+        {
+          "path": "data/di/dise.json",
+          "bytes": 3334,
+          "hash": "74de8a49"
+        },
+        {
+          "path": "data/di/disf.json",
+          "bytes": 1854,
+          "hash": "c9bba46e"
+        },
+        {
+          "path": "data/di/disg.json",
+          "bytes": 2446,
+          "hash": "84a20593"
+        },
+        {
+          "path": "data/di/disi.json",
+          "bytes": 4813,
+          "hash": "a2fe58dd"
+        },
+        {
+          "path": "data/di/disl.json",
+          "bytes": 952,
+          "hash": "ab183057"
+        },
+        {
+          "path": "data/di/dism.json",
+          "bytes": 1122,
+          "hash": "c9e98109"
+        },
+        {
+          "path": "data/di/disn.json",
+          "bytes": 141,
+          "hash": "b0543587"
+        },
+        {
+          "path": "data/di/diso.json",
+          "bytes": 4303,
+          "hash": "dc199041"
+        },
+        {
+          "path": "data/di/disp.json",
+          "bytes": 7237,
+          "hash": "1172e1be"
+        },
+        {
+          "path": "data/di/disq.json",
+          "bytes": 216,
+          "hash": "8fadc9c3"
+        },
+        {
+          "path": "data/di/disr.json",
+          "bytes": 716,
+          "hash": "5fd6eb78"
+        },
+        {
+          "path": "data/di/diss.json",
+          "bytes": 6403,
+          "hash": "445c3b3e"
+        },
+        {
+          "path": "data/di/dist.json",
+          "bytes": 8727,
+          "hash": "983953e0"
+        },
+        {
+          "path": "data/di/disu.json",
+          "bytes": 1271,
+          "hash": "75c0ff11"
+        },
+        {
+          "path": "data/di/disv.json",
+          "bytes": 287,
+          "hash": "5100695f"
+        },
+        {
+          "path": "data/di/dit.json",
+          "bytes": 2960,
+          "hash": "d8794a22"
+        },
+        {
+          "path": "data/di/diu.json",
+          "bytes": 737,
+          "hash": "c05cab6d"
+        },
+        {
+          "path": "data/di/div.json",
+          "bytes": 9340,
+          "hash": "26d89039"
+        },
+        {
+          "path": "data/di/diz.json",
+          "bytes": 1135,
+          "hash": "ab248c6d"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/di.json",
-          "bytes": 586050,
-          "hash": "dfb88c4d"
+          "path": "data/entry/di/di_.json",
+          "bytes": 348,
+          "hash": "284ed5da"
+        },
+        {
+          "path": "data/entry/di/dia.json",
+          "bytes": 35216,
+          "hash": "65746ec0"
+        },
+        {
+          "path": "data/entry/di/dib.json",
+          "bytes": 2591,
+          "hash": "2c79bc11"
+        },
+        {
+          "path": "data/entry/di/dic.json",
+          "bytes": 10993,
+          "hash": "28783a00"
+        },
+        {
+          "path": "data/entry/di/did.json",
+          "bytes": 2205,
+          "hash": "bdaf97b7"
+        },
+        {
+          "path": "data/entry/di/die.json",
+          "bytes": 9195,
+          "hash": "7f96e89d"
+        },
+        {
+          "path": "data/entry/di/dif.json",
+          "bytes": 26200,
+          "hash": "ad78aff2"
+        },
+        {
+          "path": "data/entry/di/dig.json",
+          "bytes": 22664,
+          "hash": "b24ef658"
+        },
+        {
+          "path": "data/entry/di/dii.json",
+          "bytes": 890,
+          "hash": "f790051f"
+        },
+        {
+          "path": "data/entry/di/dik.json",
+          "bytes": 507,
+          "hash": "aba3b2d7"
+        },
+        {
+          "path": "data/entry/di/dil.json",
+          "bytes": 29483,
+          "hash": "b1d8d728"
+        },
+        {
+          "path": "data/entry/di/dim.json",
+          "bytes": 26961,
+          "hash": "78f6af5d"
+        },
+        {
+          "path": "data/entry/di/din.json",
+          "bytes": 9478,
+          "hash": "a37df71c"
+        },
+        {
+          "path": "data/entry/di/dio.json",
+          "bytes": 5872,
+          "hash": "998d0794"
+        },
+        {
+          "path": "data/entry/di/dip.json",
+          "bytes": 15387,
+          "hash": "b8bacd20"
+        },
+        {
+          "path": "data/entry/di/diq.json",
+          "bytes": 106,
+          "hash": "06d966a9"
+        },
+        {
+          "path": "data/entry/di/dir.json",
+          "bytes": 39454,
+          "hash": "3f2bcec5"
+        },
+        {
+          "path": "data/entry/di/dis_.json",
+          "bytes": 304,
+          "hash": "19dbd679"
+        },
+        {
+          "path": "data/entry/di/disa.json",
+          "bytes": 64710,
+          "hash": "f6890dcc"
+        },
+        {
+          "path": "data/entry/di/disb.json",
+          "bytes": 4683,
+          "hash": "7a8a2054"
+        },
+        {
+          "path": "data/entry/di/disc.json",
+          "bytes": 52773,
+          "hash": "c441ee46"
+        },
+        {
+          "path": "data/entry/di/disd.json",
+          "bytes": 3810,
+          "hash": "944b7403"
+        },
+        {
+          "path": "data/entry/di/dise.json",
+          "bytes": 11450,
+          "hash": "040ab2dc"
+        },
+        {
+          "path": "data/entry/di/disf.json",
+          "bytes": 3502,
+          "hash": "220e7507"
+        },
+        {
+          "path": "data/entry/di/disg.json",
+          "bytes": 9193,
+          "hash": "51faef1e"
+        },
+        {
+          "path": "data/entry/di/disi.json",
+          "bytes": 23569,
+          "hash": "a7671eb8"
+        },
+        {
+          "path": "data/entry/di/disl.json",
+          "bytes": 3033,
+          "hash": "76ac4a83"
+        },
+        {
+          "path": "data/entry/di/dism.json",
+          "bytes": 3314,
+          "hash": "a3aa9961"
+        },
+        {
+          "path": "data/entry/di/disn.json",
+          "bytes": 298,
+          "hash": "3bb7891d"
+        },
+        {
+          "path": "data/entry/di/diso.json",
+          "bytes": 17665,
+          "hash": "542f8ccc"
+        },
+        {
+          "path": "data/entry/di/disp.json",
+          "bytes": 23592,
+          "hash": "5a49d8a1"
+        },
+        {
+          "path": "data/entry/di/disq.json",
+          "bytes": 1660,
+          "hash": "e71dd0dd"
+        },
+        {
+          "path": "data/entry/di/disr.json",
+          "bytes": 951,
+          "hash": "8326d984"
+        },
+        {
+          "path": "data/entry/di/diss.json",
+          "bytes": 33042,
+          "hash": "18ee0d1b"
+        },
+        {
+          "path": "data/entry/di/dist.json",
+          "bytes": 32709,
+          "hash": "cb243a7e"
+        },
+        {
+          "path": "data/entry/di/disu.json",
+          "bytes": 6054,
+          "hash": "2ef3725c"
+        },
+        {
+          "path": "data/entry/di/disv.json",
+          "bytes": 2629,
+          "hash": "1089d85f"
+        },
+        {
+          "path": "data/entry/di/dit.json",
+          "bytes": 6761,
+          "hash": "a052584b"
+        },
+        {
+          "path": "data/entry/di/diu.json",
+          "bytes": 1441,
+          "hash": "59cfa161"
+        },
+        {
+          "path": "data/entry/di/div.json",
+          "bytes": 39679,
+          "hash": "637762a4"
+        },
+        {
+          "path": "data/entry/di/diz.json",
+          "bytes": 1842,
+          "hash": "e028926c"
         }
       ],
       "ex": [
@@ -2452,99 +4662,184 @@
       ],
       "forms": [
         {
-          "path": "data/forms/di.json",
-          "bytes": 187,
-          "hash": "1339eef6"
+          "path": "data/forms/di/di_.json",
+          "bytes": 189,
+          "hash": "417867dc"
         },
         {
           "path": "data/forms/di/dia.json",
-          "bytes": 34757,
-          "hash": "3b38cfe4"
+          "bytes": 34798,
+          "hash": "5437e520"
         },
         {
           "path": "data/forms/di/dib.json",
-          "bytes": 4514,
-          "hash": "1010d191"
+          "bytes": 4472,
+          "hash": "4e676a6b"
         },
         {
           "path": "data/forms/di/dic.json",
-          "bytes": 12072,
-          "hash": "82b8e280"
+          "bytes": 12055,
+          "hash": "c5595f35"
         },
         {
           "path": "data/forms/di/did.json",
-          "bytes": 497,
-          "hash": "bebf4a92"
+          "bytes": 491,
+          "hash": "2117660c"
         },
         {
           "path": "data/forms/di/die.json",
-          "bytes": 9307,
-          "hash": "6314695e"
+          "bytes": 9304,
+          "hash": "5a6f46ff"
         },
         {
           "path": "data/forms/di/dif.json",
-          "bytes": 45874,
-          "hash": "8634f3a5"
+          "bytes": 45872,
+          "hash": "cd6a28f4"
         },
         {
           "path": "data/forms/di/dig.json",
-          "bytes": 44899,
-          "hash": "249c8475"
+          "bytes": 44773,
+          "hash": "558753d6"
         },
         {
           "path": "data/forms/di/dil.json",
-          "bytes": 65221,
-          "hash": "138510a6"
+          "bytes": 65177,
+          "hash": "a059d931"
         },
         {
           "path": "data/forms/di/dim.json",
-          "bytes": 51935,
-          "hash": "c02dfcbd"
+          "bytes": 51894,
+          "hash": "111f6c31"
         },
         {
           "path": "data/forms/di/din.json",
-          "bytes": 18613,
-          "hash": "93ee4538"
+          "bytes": 18606,
+          "hash": "cf8a6cd1"
         },
         {
           "path": "data/forms/di/dio.json",
           "bytes": 190,
-          "hash": "90843c2b"
+          "hash": "9f75f9f3"
         },
         {
           "path": "data/forms/di/dip.json",
-          "bytes": 22618,
-          "hash": "dc5c7ee7"
+          "bytes": 22615,
+          "hash": "1491b2b6"
         },
         {
           "path": "data/forms/di/dir.json",
-          "bytes": 54409,
-          "hash": "eac235f3"
+          "bytes": 54541,
+          "hash": "7f504429"
         },
         {
-          "path": "data/forms/di/dis.json",
-          "bytes": 626386,
-          "hash": "de90d292"
+          "path": "data/forms/di/disa.json",
+          "bytes": 162044,
+          "hash": "4d079eba"
+        },
+        {
+          "path": "data/forms/di/disb.json",
+          "bytes": 13238,
+          "hash": "fbe0fa1a"
+        },
+        {
+          "path": "data/forms/di/disc.json",
+          "bytes": 106437,
+          "hash": "f8876094"
+        },
+        {
+          "path": "data/forms/di/disd.json",
+          "bytes": 9188,
+          "hash": "31a62e29"
+        },
+        {
+          "path": "data/forms/di/dise.json",
+          "bytes": 22482,
+          "hash": "12ac9fd6"
+        },
+        {
+          "path": "data/forms/di/disf.json",
+          "bytes": 1463,
+          "hash": "c41de1d0"
+        },
+        {
+          "path": "data/forms/di/disg.json",
+          "bytes": 18767,
+          "hash": "173aa3d9"
+        },
+        {
+          "path": "data/forms/di/disi.json",
+          "bytes": 52225,
+          "hash": "ac861a02"
+        },
+        {
+          "path": "data/forms/di/disl.json",
+          "bytes": 4406,
+          "hash": "b18ef596"
+        },
+        {
+          "path": "data/forms/di/dism.json",
+          "bytes": 5833,
+          "hash": "a03ac4d5"
+        },
+        {
+          "path": "data/forms/di/diso.json",
+          "bytes": 38008,
+          "hash": "e0d1e185"
+        },
+        {
+          "path": "data/forms/di/disp.json",
+          "bytes": 38056,
+          "hash": "143d1082"
+        },
+        {
+          "path": "data/forms/di/disq.json",
+          "bytes": 4765,
+          "hash": "d8971073"
+        },
+        {
+          "path": "data/forms/di/disr.json",
+          "bytes": 72,
+          "hash": "f84991cb"
+        },
+        {
+          "path": "data/forms/di/diss.json",
+          "bytes": 73600,
+          "hash": "80c4f2f5"
+        },
+        {
+          "path": "data/forms/di/dist.json",
+          "bytes": 56468,
+          "hash": "d489193d"
+        },
+        {
+          "path": "data/forms/di/disu.json",
+          "bytes": 14544,
+          "hash": "f000fcda"
+        },
+        {
+          "path": "data/forms/di/disv.json",
+          "bytes": 7058,
+          "hash": "02de5a36"
         },
         {
           "path": "data/forms/di/dit.json",
-          "bytes": 5352,
-          "hash": "1b5b371d"
+          "bytes": 5305,
+          "hash": "381bc261"
         },
         {
           "path": "data/forms/di/diu.json",
-          "bytes": 615,
-          "hash": "2af70fc8"
+          "bytes": 600,
+          "hash": "44e055f3"
         },
         {
           "path": "data/forms/di/div.json",
-          "bytes": 78578,
-          "hash": "40583247"
+          "bytes": 78379,
+          "hash": "3d07f299"
         },
         {
           "path": "data/forms/di/diz.json",
-          "bytes": 133,
-          "hash": "30c25431"
+          "bytes": 132,
+          "hash": "7b80eadc"
         }
       ]
     },
@@ -2812,36 +5107,6 @@
       "ex": [],
       "forms": []
     },
-    "e": {
-      "search": [
-        {
-          "path": "data/e.json",
-          "bytes": 59,
-          "hash": "3dace185"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/e.json",
-          "bytes": 579,
-          "hash": "7710c09f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/e.json",
-          "bytes": 111,
-          "hash": "9a0e0ee2"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/e.json",
-          "bytes": 98,
-          "hash": "a6ad8e09"
-        }
-      ]
-    },
     "e9": {
       "search": [
         {
@@ -2859,6 +5124,36 @@
       ],
       "ex": [],
       "forms": []
+    },
+    "e_": {
+      "search": [
+        {
+          "path": "data/e_.json",
+          "bytes": 60,
+          "hash": "19656ca3"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/e_.json",
+          "bytes": 580,
+          "hash": "a10f89f5"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/e_.json",
+          "bytes": 111,
+          "hash": "9a0e0ee2"
+        }
+      ],
+      "forms": [
+        {
+          "path": "data/forms/e_.json",
+          "bytes": 98,
+          "hash": "a6ad8e09"
+        }
+      ]
     },
     "ea": {
       "search": [
@@ -3334,9 +5629,49 @@
       ],
       "forms": [
         {
-          "path": "data/forms/es.json",
-          "bytes": 318431,
-          "hash": "99671039"
+          "path": "data/forms/es/esa.json",
+          "bytes": 41090,
+          "hash": "b4dcf2a5"
+        },
+        {
+          "path": "data/forms/es/esc.json",
+          "bytes": 19403,
+          "hash": "1f1d824d"
+        },
+        {
+          "path": "data/forms/es/ese.json",
+          "bytes": 26947,
+          "hash": "68d9b16d"
+        },
+        {
+          "path": "data/forms/es/esi.json",
+          "bytes": 31481,
+          "hash": "83e72aeb"
+        },
+        {
+          "path": "data/forms/es/eso.json",
+          "bytes": 32257,
+          "hash": "457d4725"
+        },
+        {
+          "path": "data/forms/es/esp.json",
+          "bytes": 84459,
+          "hash": "12ffd67f"
+        },
+        {
+          "path": "data/forms/es/ess.json",
+          "bytes": 4967,
+          "hash": "9190ba13"
+        },
+        {
+          "path": "data/forms/es/est.json",
+          "bytes": 64806,
+          "hash": "ac13c7c5"
+        },
+        {
+          "path": "data/forms/es/esu.json",
+          "bytes": 13045,
+          "hash": "63591d07"
         }
       ]
     },
@@ -3366,7 +5701,7 @@
         {
           "path": "data/forms/et.json",
           "bytes": 17510,
-          "hash": "f5bfa6be"
+          "hash": "efbc1531"
         }
       ]
     },
@@ -3520,24 +5855,24 @@
       ],
       "forms": []
     },
-    "f": {
+    "f_": {
       "search": [
         {
-          "path": "data/f.json",
-          "bytes": 78,
-          "hash": "2e8ecec8"
+          "path": "data/f_.json",
+          "bytes": 79,
+          "hash": "43ea36ab"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/f.json",
-          "bytes": 334,
-          "hash": "bfa1ddb2"
+          "path": "data/entry/f_.json",
+          "bytes": 335,
+          "hash": "f4849bc0"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/f.json",
+          "path": "data/ex/f_.json",
           "bytes": 178,
           "hash": "1aa76145"
         }
@@ -3569,8 +5904,8 @@
       "forms": [
         {
           "path": "data/forms/fa.json",
-          "bytes": 105126,
-          "hash": "f2643c5b"
+          "bytes": 105123,
+          "hash": "2764944f"
         }
       ]
     },
@@ -3882,7 +6217,7 @@
         {
           "path": "data/forms/fr.json",
           "bytes": 150575,
-          "hash": "ab7c2eb7"
+          "hash": "c5f4edce"
         }
       ]
     },
@@ -3970,30 +6305,6 @@
       "ex": [],
       "forms": []
     },
-    "g": {
-      "search": [
-        {
-          "path": "data/g.json",
-          "bytes": 74,
-          "hash": "88744c32"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/g.json",
-          "bytes": 131,
-          "hash": "f1f92450"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/g.json",
-          "bytes": 244,
-          "hash": "32d7264a"
-        }
-      ],
-      "forms": []
-    },
     "g7": {
       "search": [
         {
@@ -4036,6 +6347,30 @@
       "ex": [],
       "forms": []
     },
+    "g_": {
+      "search": [
+        {
+          "path": "data/g_.json",
+          "bytes": 75,
+          "hash": "da4f091e"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/g_.json",
+          "bytes": 132,
+          "hash": "15243125"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/g_.json",
+          "bytes": 244,
+          "hash": "32d7264a"
+        }
+      ],
+      "forms": []
+    },
     "ga": {
       "search": [
         {
@@ -4062,7 +6397,7 @@
         {
           "path": "data/forms/ga.json",
           "bytes": 65648,
-          "hash": "100e69d7"
+          "hash": "b0a9f74c"
         }
       ]
     },
@@ -4350,7 +6685,7 @@
         {
           "path": "data/forms/gr.json",
           "bytes": 99858,
-          "hash": "22291e17"
+          "hash": "9031746c"
         }
       ]
     },
@@ -4456,24 +6791,24 @@
       "ex": [],
       "forms": []
     },
-    "h": {
+    "h_": {
       "search": [
         {
-          "path": "data/h.json",
-          "bytes": 82,
-          "hash": "704516f9"
+          "path": "data/h_.json",
+          "bytes": 83,
+          "hash": "a20071c5"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/h.json",
-          "bytes": 148,
-          "hash": "44a823a6"
+          "path": "data/entry/h_.json",
+          "bytes": 149,
+          "hash": "9f32aa32"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/h.json",
+          "path": "data/ex/h_.json",
           "bytes": 178,
           "hash": "98ba945c"
         }
@@ -4822,24 +7157,24 @@
       "ex": [],
       "forms": []
     },
-    "i": {
+    "i_": {
       "search": [
         {
-          "path": "data/i.json",
-          "bytes": 326,
-          "hash": "4bfb1c90"
+          "path": "data/i_.json",
+          "bytes": 328,
+          "hash": "f764cc76"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/i.json",
-          "bytes": 500,
-          "hash": "bd011842"
+          "path": "data/entry/i_.json",
+          "bytes": 502,
+          "hash": "b2d02111"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/i.json",
+          "path": "data/ex/i_.json",
           "bytes": 197,
           "hash": "24b3aebe"
         }
@@ -5040,7 +7375,7 @@
         {
           "path": "data/forms/ig.json",
           "bytes": 10104,
-          "hash": "8a3a6bf4"
+          "hash": "6b4fb3a8"
         }
       ]
     },
@@ -5137,16 +7472,86 @@
     "im": {
       "search": [
         {
-          "path": "data/im.json",
-          "bytes": 76155,
-          "hash": "f2837670"
+          "path": "data/im/ima.json",
+          "bytes": 300,
+          "hash": "cfe828ee"
+        },
+        {
+          "path": "data/im/imb.json",
+          "bytes": 10094,
+          "hash": "b016779f"
+        },
+        {
+          "path": "data/im/ime.json",
+          "bytes": 1160,
+          "hash": "3d036953"
+        },
+        {
+          "path": "data/im/imi.json",
+          "bytes": 1429,
+          "hash": "9ea171cc"
+        },
+        {
+          "path": "data/im/imm.json",
+          "bytes": 22001,
+          "hash": "eeef81d8"
+        },
+        {
+          "path": "data/im/imo.json",
+          "bytes": 199,
+          "hash": "1c2094db"
+        },
+        {
+          "path": "data/im/imp.json",
+          "bytes": 41156,
+          "hash": "cd3d82ea"
+        },
+        {
+          "path": "data/im/imu.json",
+          "bytes": 230,
+          "hash": "2eefe694"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/im.json",
-          "bytes": 264413,
-          "hash": "34a0ce8c"
+          "path": "data/entry/im/ima.json",
+          "bytes": 398,
+          "hash": "84594cdd"
+        },
+        {
+          "path": "data/entry/im/imb.json",
+          "bytes": 52572,
+          "hash": "872f043b"
+        },
+        {
+          "path": "data/entry/im/ime.json",
+          "bytes": 1652,
+          "hash": "02d00a58"
+        },
+        {
+          "path": "data/entry/im/imi.json",
+          "bytes": 3492,
+          "hash": "f779002f"
+        },
+        {
+          "path": "data/entry/im/imm.json",
+          "bytes": 50889,
+          "hash": "2528c3b0"
+        },
+        {
+          "path": "data/entry/im/imo.json",
+          "bytes": 501,
+          "hash": "29637bdd"
+        },
+        {
+          "path": "data/entry/im/imp.json",
+          "bytes": 155051,
+          "hash": "8fec5c2c"
+        },
+        {
+          "path": "data/entry/im/imu.json",
+          "bytes": 272,
+          "hash": "61da70a6"
         }
       ],
       "ex": [
@@ -5158,25 +7563,275 @@
       ],
       "forms": [
         {
-          "path": "data/forms/im.json",
-          "bytes": 477396,
-          "hash": "703fcdd1"
+          "path": "data/forms/im/imb.json",
+          "bytes": 118438,
+          "hash": "501e5fcf"
+        },
+        {
+          "path": "data/forms/im/ime.json",
+          "bytes": 136,
+          "hash": "a8dec148"
+        },
+        {
+          "path": "data/forms/im/imi.json",
+          "bytes": 4465,
+          "hash": "0a067c1e"
+        },
+        {
+          "path": "data/forms/im/imm.json",
+          "bytes": 64004,
+          "hash": "dc9e7327"
+        },
+        {
+          "path": "data/forms/im/impa.json",
+          "bytes": 90341,
+          "hash": "d69fface"
+        },
+        {
+          "path": "data/forms/im/impe.json",
+          "bytes": 47858,
+          "hash": "61b0d36f"
+        },
+        {
+          "path": "data/forms/im/impi.json",
+          "bytes": 49757,
+          "hash": "e49e3f6e"
+        },
+        {
+          "path": "data/forms/im/impl.json",
+          "bytes": 18260,
+          "hash": "42178377"
+        },
+        {
+          "path": "data/forms/im/impo.json",
+          "bytes": 27428,
+          "hash": "f88b182c"
+        },
+        {
+          "path": "data/forms/im/impr.json",
+          "bytes": 44180,
+          "hash": "c23df2ec"
+        },
+        {
+          "path": "data/forms/im/impu.json",
+          "bytes": 15262,
+          "hash": "e837f964"
         }
       ]
     },
     "in": {
       "search": [
         {
-          "path": "data/in.json",
-          "bytes": 267907,
-          "hash": "06ca6680"
+          "path": "data/in/in_.json",
+          "bytes": 162,
+          "hash": "40cc786f"
+        },
+        {
+          "path": "data/in/ina.json",
+          "bytes": 10162,
+          "hash": "fb9ea9a1"
+        },
+        {
+          "path": "data/in/inb.json",
+          "bytes": 713,
+          "hash": "1018d8ea"
+        },
+        {
+          "path": "data/in/inc.json",
+          "bytes": 42921,
+          "hash": "d632cf7e"
+        },
+        {
+          "path": "data/in/ind.json",
+          "bytes": 33024,
+          "hash": "f6573687"
+        },
+        {
+          "path": "data/in/ine.json",
+          "bytes": 8161,
+          "hash": "29b5c7ed"
+        },
+        {
+          "path": "data/in/inf.json",
+          "bytes": 24747,
+          "hash": "b2f18ba3"
+        },
+        {
+          "path": "data/in/ing.json",
+          "bytes": 22892,
+          "hash": "2a4d76e6"
+        },
+        {
+          "path": "data/in/ini.json",
+          "bytes": 3396,
+          "hash": "02d4f5d6"
+        },
+        {
+          "path": "data/in/inl.json",
+          "bytes": 90,
+          "hash": "f9bed4a8"
+        },
+        {
+          "path": "data/in/inm.json",
+          "bytes": 474,
+          "hash": "5ed03b19"
+        },
+        {
+          "path": "data/in/inn.json",
+          "bytes": 5862,
+          "hash": "a8c1f9e4"
+        },
+        {
+          "path": "data/in/ino.json",
+          "bytes": 5843,
+          "hash": "46e13f1a"
+        },
+        {
+          "path": "data/in/inp.json",
+          "bytes": 2343,
+          "hash": "081904e4"
+        },
+        {
+          "path": "data/in/inq.json",
+          "bytes": 4386,
+          "hash": "7ec36cf1"
+        },
+        {
+          "path": "data/in/inr.json",
+          "bytes": 742,
+          "hash": "d2db043c"
+        },
+        {
+          "path": "data/in/ins.json",
+          "bytes": 26452,
+          "hash": "df3bb779"
+        },
+        {
+          "path": "data/in/int.json",
+          "bytes": 60106,
+          "hash": "19bde5f9"
+        },
+        {
+          "path": "data/in/inu.json",
+          "bytes": 2407,
+          "hash": "b9c9258d"
+        },
+        {
+          "path": "data/in/inv.json",
+          "bytes": 12487,
+          "hash": "25eee427"
+        },
+        {
+          "path": "data/in/inz.json",
+          "bytes": 388,
+          "hash": "c6d0da19"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/in.json",
-          "bytes": 845370,
-          "hash": "6a2876bc"
+          "path": "data/entry/in/in_.json",
+          "bytes": 396,
+          "hash": "259b63dc"
+        },
+        {
+          "path": "data/entry/in/ina.json",
+          "bytes": 31656,
+          "hash": "e48f71e6"
+        },
+        {
+          "path": "data/entry/in/inb.json",
+          "bytes": 1206,
+          "hash": "c005c253"
+        },
+        {
+          "path": "data/entry/in/inc.json",
+          "bytes": 162071,
+          "hash": "8e82e749"
+        },
+        {
+          "path": "data/entry/in/ind.json",
+          "bytes": 80994,
+          "hash": "2a1f1144"
+        },
+        {
+          "path": "data/entry/in/ine.json",
+          "bytes": 15024,
+          "hash": "1a241525"
+        },
+        {
+          "path": "data/entry/in/inf.json",
+          "bytes": 88844,
+          "hash": "93000388"
+        },
+        {
+          "path": "data/entry/in/ing.json",
+          "bytes": 67176,
+          "hash": "aa498c33"
+        },
+        {
+          "path": "data/entry/in/ini.json",
+          "bytes": 12145,
+          "hash": "1a34d548"
+        },
+        {
+          "path": "data/entry/in/inl.json",
+          "bytes": 116,
+          "hash": "292b30c4"
+        },
+        {
+          "path": "data/entry/in/inm.json",
+          "bytes": 608,
+          "hash": "82f057c9"
+        },
+        {
+          "path": "data/entry/in/inn.json",
+          "bytes": 22378,
+          "hash": "fabd301e"
+        },
+        {
+          "path": "data/entry/in/ino.json",
+          "bytes": 18895,
+          "hash": "caf8fddd"
+        },
+        {
+          "path": "data/entry/in/inp.json",
+          "bytes": 3131,
+          "hash": "1d4b3f0e"
+        },
+        {
+          "path": "data/entry/in/inq.json",
+          "bytes": 13511,
+          "hash": "634f6e1c"
+        },
+        {
+          "path": "data/entry/in/inr.json",
+          "bytes": 1055,
+          "hash": "63b2cd46"
+        },
+        {
+          "path": "data/entry/in/ins.json",
+          "bytes": 91169,
+          "hash": "a0e2f879"
+        },
+        {
+          "path": "data/entry/in/int.json",
+          "bytes": 178740,
+          "hash": "4da20d64"
+        },
+        {
+          "path": "data/entry/in/inu.json",
+          "bytes": 5968,
+          "hash": "72ee0d4e"
+        },
+        {
+          "path": "data/entry/in/inv.json",
+          "bytes": 46954,
+          "hash": "8c7dd48d"
+        },
+        {
+          "path": "data/entry/in/inz.json",
+          "bytes": 3184,
+          "hash": "5015bf5c"
         }
       ],
       "ex": [
@@ -5189,78 +7844,138 @@
       "forms": [
         {
           "path": "data/forms/in/ina.json",
-          "bytes": 58337,
-          "hash": "47ac9f85"
+          "bytes": 57890,
+          "hash": "decf369d"
         },
         {
-          "path": "data/forms/in/inc.json",
-          "bytes": 316060,
-          "hash": "6f9ae402"
+          "path": "data/forms/in/inca.json",
+          "bytes": 85699,
+          "hash": "ab03bd1a"
+        },
+        {
+          "path": "data/forms/in/ince.json",
+          "bytes": 41761,
+          "hash": "1a53b743"
+        },
+        {
+          "path": "data/forms/in/inch.json",
+          "bytes": 14193,
+          "hash": "80d099ed"
+        },
+        {
+          "path": "data/forms/in/inci.json",
+          "bytes": 27174,
+          "hash": "e91c3c1a"
+        },
+        {
+          "path": "data/forms/in/incl.json",
+          "bytes": 8884,
+          "hash": "59a72301"
+        },
+        {
+          "path": "data/forms/in/inco.json",
+          "bytes": 68853,
+          "hash": "119169a4"
+        },
+        {
+          "path": "data/forms/in/incr.json",
+          "bytes": 38491,
+          "hash": "52b9fc81"
+        },
+        {
+          "path": "data/forms/in/incu.json",
+          "bytes": 31763,
+          "hash": "dfa4fb09"
         },
         {
           "path": "data/forms/in/ind.json",
-          "bytes": 99986,
-          "hash": "8b1c909c"
+          "bytes": 100085,
+          "hash": "8006384b"
         },
         {
           "path": "data/forms/in/ine.json",
-          "bytes": 7483,
-          "hash": "6ea8a54c"
+          "bytes": 7457,
+          "hash": "26c95d0e"
         },
         {
           "path": "data/forms/in/inf.json",
-          "bytes": 166239,
-          "hash": "92f4e648"
+          "bytes": 166282,
+          "hash": "0464774a"
         },
         {
           "path": "data/forms/in/ing.json",
-          "bytes": 117098,
-          "hash": "790a4047"
+          "bytes": 117010,
+          "hash": "751eb0d3"
         },
         {
           "path": "data/forms/in/ini.json",
-          "bytes": 19029,
-          "hash": "790a0bce"
+          "bytes": 18932,
+          "hash": "3a000db6"
         },
         {
           "path": "data/forms/in/inn.json",
-          "bytes": 40803,
-          "hash": "fd3e3eb5"
+          "bytes": 40668,
+          "hash": "b76f795a"
         },
         {
           "path": "data/forms/in/ino.json",
-          "bytes": 33390,
-          "hash": "5318fd4f"
+          "bytes": 33111,
+          "hash": "3e5bc217"
         },
         {
           "path": "data/forms/in/inq.json",
-          "bytes": 22903,
-          "hash": "f30fd914"
+          "bytes": 22729,
+          "hash": "e5e02234"
         },
         {
           "path": "data/forms/in/ins.json",
-          "bytes": 160382,
-          "hash": "3b3d5a15"
+          "bytes": 160423,
+          "hash": "f497c114"
         },
         {
-          "path": "data/forms/in/int.json",
-          "bytes": 290818,
-          "hash": "1b7a0a45"
+          "path": "data/forms/in/inta.json",
+          "bytes": 26643,
+          "hash": "250202d6"
+        },
+        {
+          "path": "data/forms/in/inte.json",
+          "bytes": 129064,
+          "hash": "2e7e3963"
+        },
+        {
+          "path": "data/forms/in/inti.json",
+          "bytes": 22742,
+          "hash": "6d254c83"
+        },
+        {
+          "path": "data/forms/in/into.json",
+          "bytes": 22700,
+          "hash": "1665a544"
+        },
+        {
+          "path": "data/forms/in/intr.json",
+          "bytes": 75668,
+          "hash": "50873b70"
+        },
+        {
+          "path": "data/forms/in/intu.json",
+          "bytes": 14617,
+          "hash": "933e61c7"
         },
         {
           "path": "data/forms/in/inu.json",
-          "bytes": 9666,
-          "hash": "889ca4cd"
+          "bytes": 9571,
+          "hash": "c8ddc5c5"
         },
         {
           "path": "data/forms/in/inv.json",
-          "bytes": 82608,
-          "hash": "46267452"
+          "bytes": 82380,
+          "hash": "cb14dce5"
         },
         {
           "path": "data/forms/in/inz.json",
-          "bytes": 8731,
-          "hash": "bc764c2b"
+          "bytes": 8567,
+          "hash": "c72bd680"
         }
       ]
     },
@@ -5510,24 +8225,24 @@
       "ex": [],
       "forms": []
     },
-    "j": {
+    "j_": {
       "search": [
         {
-          "path": "data/j.json",
-          "bytes": 241,
-          "hash": "24041eae"
+          "path": "data/j_.json",
+          "bytes": 242,
+          "hash": "2e082c21"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/j.json",
-          "bytes": 298,
-          "hash": "112b2d4e"
+          "path": "data/entry/j_.json",
+          "bytes": 299,
+          "hash": "815f3677"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/j.json",
+          "path": "data/ex/j_.json",
           "bytes": 275,
           "hash": "c2c23fb3"
         }
@@ -5702,24 +8417,24 @@
         }
       ]
     },
-    "k": {
+    "k_": {
       "search": [
         {
-          "path": "data/k.json",
-          "bytes": 95,
-          "hash": "03bd5646"
+          "path": "data/k_.json",
+          "bytes": 96,
+          "hash": "d4dc3e2d"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/k.json",
-          "bytes": 186,
-          "hash": "010b992c"
+          "path": "data/entry/k_.json",
+          "bytes": 187,
+          "hash": "bdc844b2"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/k.json",
+          "path": "data/ex/k_.json",
           "bytes": 229,
           "hash": "e4ff5a9f"
         }
@@ -6122,24 +8837,24 @@
       ],
       "forms": []
     },
-    "l": {
+    "l_": {
       "search": [
         {
-          "path": "data/l.json",
-          "bytes": 130,
-          "hash": "e466816a"
+          "path": "data/l_.json",
+          "bytes": 132,
+          "hash": "98857c18"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/l.json",
-          "bytes": 666,
-          "hash": "fd9aef6d"
+          "path": "data/entry/l_.json",
+          "bytes": 668,
+          "hash": "d3584f81"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/l.json",
+          "path": "data/ex/l_.json",
           "bytes": 191,
           "hash": "cdbcd761"
         }
@@ -6458,30 +9173,6 @@
       "ex": [],
       "forms": []
     },
-    "m": {
-      "search": [
-        {
-          "path": "data/m.json",
-          "bytes": 136,
-          "hash": "adc19abe"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/m.json",
-          "bytes": 404,
-          "hash": "93bdcff1"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/m.json",
-          "bytes": 272,
-          "hash": "99adc50d"
-        }
-      ],
-      "forms": []
-    },
     "m5": {
       "search": [
         {
@@ -6500,19 +9191,263 @@
       "ex": [],
       "forms": []
     },
-    "ma": {
+    "m_": {
       "search": [
         {
-          "path": "data/ma.json",
-          "bytes": 169923,
-          "hash": "0923cea6"
+          "path": "data/m_.json",
+          "bytes": 138,
+          "hash": "d07e2a8c"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/ma.json",
-          "bytes": 351524,
-          "hash": "c207f4ad"
+          "path": "data/entry/m_.json",
+          "bytes": 406,
+          "hash": "8a236320"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/m_.json",
+          "bytes": 272,
+          "hash": "99adc50d"
+        }
+      ],
+      "forms": []
+    },
+    "ma": {
+      "search": [
+        {
+          "path": "data/ma/ma_.json",
+          "bytes": 133,
+          "hash": "2c704142"
+        },
+        {
+          "path": "data/ma/mac.json",
+          "bytes": 17278,
+          "hash": "7f601001"
+        },
+        {
+          "path": "data/ma/mad.json",
+          "bytes": 3838,
+          "hash": "9da3050f"
+        },
+        {
+          "path": "data/ma/mae.json",
+          "bytes": 1709,
+          "hash": "9be9f1b0"
+        },
+        {
+          "path": "data/ma/maf.json",
+          "bytes": 721,
+          "hash": "a89051e2"
+        },
+        {
+          "path": "data/ma/mag.json",
+          "bytes": 17952,
+          "hash": "f3767670"
+        },
+        {
+          "path": "data/ma/mah.json",
+          "bytes": 241,
+          "hash": "27530413"
+        },
+        {
+          "path": "data/ma/mai.json",
+          "bytes": 2818,
+          "hash": "2616b476"
+        },
+        {
+          "path": "data/ma/maj.json",
+          "bytes": 75,
+          "hash": "4e6cf5f2"
+        },
+        {
+          "path": "data/ma/mak.json",
+          "bytes": 194,
+          "hash": "e0ca23a4"
+        },
+        {
+          "path": "data/ma/mal.json",
+          "bytes": 20379,
+          "hash": "312f781a"
+        },
+        {
+          "path": "data/ma/mam.json",
+          "bytes": 2540,
+          "hash": "7e3d69d8"
+        },
+        {
+          "path": "data/ma/man.json",
+          "bytes": 31252,
+          "hash": "af5264ea"
+        },
+        {
+          "path": "data/ma/mao.json",
+          "bytes": 652,
+          "hash": "cc9673c4"
+        },
+        {
+          "path": "data/ma/map.json",
+          "bytes": 1466,
+          "hash": "49a4d5f1"
+        },
+        {
+          "path": "data/ma/maq.json",
+          "bytes": 119,
+          "hash": "1bc889af"
+        },
+        {
+          "path": "data/ma/mar.json",
+          "bytes": 34509,
+          "hash": "4ff6c9b2"
+        },
+        {
+          "path": "data/ma/mas.json",
+          "bytes": 16185,
+          "hash": "f18dfa2d"
+        },
+        {
+          "path": "data/ma/mat.json",
+          "bytes": 13037,
+          "hash": "094cf50c"
+        },
+        {
+          "path": "data/ma/mau.json",
+          "bytes": 1563,
+          "hash": "437ab1df"
+        },
+        {
+          "path": "data/ma/max.json",
+          "bytes": 872,
+          "hash": "0cf32b78"
+        },
+        {
+          "path": "data/ma/may.json",
+          "bytes": 219,
+          "hash": "4045afe8"
+        },
+        {
+          "path": "data/ma/maz.json",
+          "bytes": 2320,
+          "hash": "83eb4720"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/ma/ma_.json",
+          "bytes": 503,
+          "hash": "8752b716"
+        },
+        {
+          "path": "data/entry/ma/mac.json",
+          "bytes": 34547,
+          "hash": "5ed78f7d"
+        },
+        {
+          "path": "data/entry/ma/mad.json",
+          "bytes": 6501,
+          "hash": "474b3f12"
+        },
+        {
+          "path": "data/entry/ma/mae.json",
+          "bytes": 3060,
+          "hash": "afdad608"
+        },
+        {
+          "path": "data/entry/ma/maf.json",
+          "bytes": 1788,
+          "hash": "58a9cb2d"
+        },
+        {
+          "path": "data/entry/ma/mag.json",
+          "bytes": 34474,
+          "hash": "8e21f213"
+        },
+        {
+          "path": "data/entry/ma/mah.json",
+          "bytes": 335,
+          "hash": "b21b9a88"
+        },
+        {
+          "path": "data/entry/ma/mai.json",
+          "bytes": 4612,
+          "hash": "0ec9003b"
+        },
+        {
+          "path": "data/entry/ma/maj.json",
+          "bytes": 114,
+          "hash": "974309f9"
+        },
+        {
+          "path": "data/entry/ma/mak.json",
+          "bytes": 280,
+          "hash": "ae94b122"
+        },
+        {
+          "path": "data/entry/ma/mal.json",
+          "bytes": 39926,
+          "hash": "dfc8dc76"
+        },
+        {
+          "path": "data/entry/ma/mam.json",
+          "bytes": 5056,
+          "hash": "3f194ff2"
+        },
+        {
+          "path": "data/entry/ma/man.json",
+          "bytes": 69328,
+          "hash": "94c8f5ad"
+        },
+        {
+          "path": "data/entry/ma/mao.json",
+          "bytes": 1334,
+          "hash": "bac092e0"
+        },
+        {
+          "path": "data/entry/ma/map.json",
+          "bytes": 3573,
+          "hash": "d20aa8c8"
+        },
+        {
+          "path": "data/entry/ma/maq.json",
+          "bytes": 156,
+          "hash": "8acf18ed"
+        },
+        {
+          "path": "data/entry/ma/mar.json",
+          "bytes": 73906,
+          "hash": "1d38006d"
+        },
+        {
+          "path": "data/entry/ma/mas.json",
+          "bytes": 37028,
+          "hash": "60f93a58"
+        },
+        {
+          "path": "data/entry/ma/mat.json",
+          "bytes": 28044,
+          "hash": "2e10a842"
+        },
+        {
+          "path": "data/entry/ma/mau.json",
+          "bytes": 2471,
+          "hash": "463703f1"
+        },
+        {
+          "path": "data/entry/ma/max.json",
+          "bytes": 1158,
+          "hash": "8eda637a"
+        },
+        {
+          "path": "data/entry/ma/may.json",
+          "bytes": 288,
+          "hash": "27018df0"
+        },
+        {
+          "path": "data/entry/ma/maz.json",
+          "bytes": 3191,
+          "hash": "df97c4ef"
         }
       ],
       "ex": [
@@ -6524,9 +9459,84 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ma.json",
-          "bytes": 284771,
-          "hash": "5c134f6d"
+          "path": "data/forms/ma/mac.json",
+          "bytes": 30351,
+          "hash": "5d7febc8"
+        },
+        {
+          "path": "data/forms/ma/mad.json",
+          "bytes": 1204,
+          "hash": "b7fd320f"
+        },
+        {
+          "path": "data/forms/ma/mae.json",
+          "bytes": 543,
+          "hash": "56675d53"
+        },
+        {
+          "path": "data/forms/ma/maf.json",
+          "bytes": 259,
+          "hash": "03b95893"
+        },
+        {
+          "path": "data/forms/ma/mag.json",
+          "bytes": 27270,
+          "hash": "21e41bcf"
+        },
+        {
+          "path": "data/forms/ma/mai.json",
+          "bytes": 479,
+          "hash": "3f4f082a"
+        },
+        {
+          "path": "data/forms/ma/mal.json",
+          "bytes": 30225,
+          "hash": "edb767ad"
+        },
+        {
+          "path": "data/forms/ma/mam.json",
+          "bytes": 4494,
+          "hash": "4db683bb"
+        },
+        {
+          "path": "data/forms/ma/man.json",
+          "bytes": 66690,
+          "hash": "7ff1b712"
+        },
+        {
+          "path": "data/forms/ma/map.json",
+          "bytes": 4212,
+          "hash": "e45076a5"
+        },
+        {
+          "path": "data/forms/ma/mar.json",
+          "bytes": 59984,
+          "hash": "19c564b4"
+        },
+        {
+          "path": "data/forms/ma/mas.json",
+          "bytes": 38474,
+          "hash": "da065d30"
+        },
+        {
+          "path": "data/forms/ma/mat.json",
+          "bytes": 20332,
+          "hash": "b6f9b25b"
+        },
+        {
+          "path": "data/forms/ma/mau.json",
+          "bytes": 67,
+          "hash": "f1c37dea"
+        },
+        {
+          "path": "data/forms/ma/may.json",
+          "bytes": 125,
+          "hash": "ef89f2d6"
+        },
+        {
+          "path": "data/forms/ma/maz.json",
+          "bytes": 183,
+          "hash": "5ea08859"
         }
       ]
     },
@@ -6591,8 +9601,8 @@
       "forms": [
         {
           "path": "data/forms/me.json",
-          "bytes": 128285,
-          "hash": "6c3363fa"
+          "bytes": 128286,
+          "hash": "41368780"
         }
       ]
     },
@@ -6682,7 +9692,7 @@
         {
           "path": "data/forms/mi.json",
           "bytes": 138696,
-          "hash": "72ff0b33"
+          "hash": "6fad5d97"
         }
       ]
     },
@@ -6808,7 +9818,7 @@
         {
           "path": "data/forms/mo.json",
           "bytes": 152783,
-          "hash": "f1a6a8ad"
+          "hash": "b613a203"
         }
       ]
     },
@@ -6916,7 +9926,7 @@
         {
           "path": "data/forms/mu.json",
           "bytes": 69954,
-          "hash": "db08e7cf"
+          "hash": "848a6c46"
         }
       ]
     },
@@ -6980,24 +9990,24 @@
       ],
       "forms": []
     },
-    "n": {
+    "n_": {
       "search": [
         {
-          "path": "data/n.json",
-          "bytes": 89,
-          "hash": "86ff4c3c"
+          "path": "data/n_.json",
+          "bytes": 90,
+          "hash": "575baa6c"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/n.json",
-          "bytes": 155,
-          "hash": "db8f5954"
+          "path": "data/entry/n_.json",
+          "bytes": 156,
+          "hash": "41a42564"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/n.json",
+          "path": "data/ex/n_.json",
           "bytes": 355,
           "hash": "4aceae88"
         }
@@ -7030,7 +10040,7 @@
         {
           "path": "data/forms/na.json",
           "bytes": 47507,
-          "hash": "575bd51f"
+          "hash": "ec6be29a"
         }
       ]
     },
@@ -7304,24 +10314,24 @@
       ],
       "forms": []
     },
-    "o": {
+    "o_": {
       "search": [
         {
-          "path": "data/o.json",
-          "bytes": 95,
-          "hash": "8157c8e6"
+          "path": "data/o_.json",
+          "bytes": 97,
+          "hash": "833a0645"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/o.json",
-          "bytes": 388,
-          "hash": "89e0a0fd"
+          "path": "data/entry/o_.json",
+          "bytes": 390,
+          "hash": "c58c3375"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/o.json",
+          "path": "data/ex/o_.json",
           "bytes": 288,
           "hash": "a4c2a75f"
         }
@@ -7768,7 +10778,7 @@
         {
           "path": "data/forms/or.json",
           "bytes": 75615,
-          "hash": "8fb1c749"
+          "hash": "a3ca88bf"
         }
       ]
     },
@@ -7934,30 +10944,6 @@
         }
       ]
     },
-    "p": {
-      "search": [
-        {
-          "path": "data/p.json",
-          "bytes": 79,
-          "hash": "10033ac4"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/p.json",
-          "bytes": 230,
-          "hash": "ba422b84"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/p.json",
-          "bytes": 161,
-          "hash": "e50b1441"
-        }
-      ],
-      "forms": []
-    },
     "p2": {
       "search": [
         {
@@ -7976,19 +10962,243 @@
       "ex": [],
       "forms": []
     },
-    "pa": {
+    "p_": {
       "search": [
         {
-          "path": "data/pa.json",
-          "bytes": 149435,
-          "hash": "a14e234c"
+          "path": "data/p_.json",
+          "bytes": 80,
+          "hash": "08cfc4a9"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/pa.json",
-          "bytes": 305325,
-          "hash": "2283d3f1"
+          "path": "data/entry/p_.json",
+          "bytes": 231,
+          "hash": "aa81968d"
+        }
+      ],
+      "ex": [
+        {
+          "path": "data/ex/p_.json",
+          "bytes": 161,
+          "hash": "e50b1441"
+        }
+      ],
+      "forms": []
+    },
+    "pa": {
+      "search": [
+        {
+          "path": "data/pa/pa_.json",
+          "bytes": 58,
+          "hash": "f38bd16a"
+        },
+        {
+          "path": "data/pa/pab.json",
+          "bytes": 78,
+          "hash": "8e5bbb7b"
+        },
+        {
+          "path": "data/pa/pac.json",
+          "bytes": 4689,
+          "hash": "460f42f5"
+        },
+        {
+          "path": "data/pa/pad.json",
+          "bytes": 2040,
+          "hash": "b25d7103"
+        },
+        {
+          "path": "data/pa/pae.json",
+          "bytes": 1538,
+          "hash": "c54263e0"
+        },
+        {
+          "path": "data/pa/paf.json",
+          "bytes": 86,
+          "hash": "73f0f8cd"
+        },
+        {
+          "path": "data/pa/pag.json",
+          "bytes": 4378,
+          "hash": "048f3b14"
+        },
+        {
+          "path": "data/pa/pai.json",
+          "bytes": 690,
+          "hash": "a75da282"
+        },
+        {
+          "path": "data/pa/pak.json",
+          "bytes": 308,
+          "hash": "fa167f94"
+        },
+        {
+          "path": "data/pa/pal.json",
+          "bytes": 27171,
+          "hash": "df40706f"
+        },
+        {
+          "path": "data/pa/pam.json",
+          "bytes": 579,
+          "hash": "0be9d2da"
+        },
+        {
+          "path": "data/pa/pan.json",
+          "bytes": 17847,
+          "hash": "378581bd"
+        },
+        {
+          "path": "data/pa/pao.json",
+          "bytes": 1469,
+          "hash": "5c3d2370"
+        },
+        {
+          "path": "data/pa/pap.json",
+          "bytes": 6134,
+          "hash": "bc88c4e6"
+        },
+        {
+          "path": "data/pa/par.json",
+          "bytes": 45426,
+          "hash": "25c38c91"
+        },
+        {
+          "path": "data/pa/pas.json",
+          "bytes": 20381,
+          "hash": "667059b5"
+        },
+        {
+          "path": "data/pa/pat.json",
+          "bytes": 11688,
+          "hash": "cd1e6327"
+        },
+        {
+          "path": "data/pa/pau.json",
+          "bytes": 1364,
+          "hash": "6f5930e9"
+        },
+        {
+          "path": "data/pa/pav.json",
+          "bytes": 2448,
+          "hash": "2e7d19ab"
+        },
+        {
+          "path": "data/pa/pay.json",
+          "bytes": 377,
+          "hash": "aeeef4b5"
+        },
+        {
+          "path": "data/pa/paz.json",
+          "bytes": 977,
+          "hash": "bb5a3b7f"
+        }
+      ],
+      "entry": [
+        {
+          "path": "data/entry/pa/pa_.json",
+          "bytes": 127,
+          "hash": "86af7577"
+        },
+        {
+          "path": "data/entry/pa/pab.json",
+          "bytes": 158,
+          "hash": "447d6670"
+        },
+        {
+          "path": "data/entry/pa/pac.json",
+          "bytes": 9336,
+          "hash": "53b1c265"
+        },
+        {
+          "path": "data/entry/pa/pad.json",
+          "bytes": 5684,
+          "hash": "c2bad37e"
+        },
+        {
+          "path": "data/entry/pa/pae.json",
+          "bytes": 2252,
+          "hash": "7b0adf42"
+        },
+        {
+          "path": "data/entry/pa/paf.json",
+          "bytes": 221,
+          "hash": "59e509fc"
+        },
+        {
+          "path": "data/entry/pa/pag.json",
+          "bytes": 9845,
+          "hash": "78c495c5"
+        },
+        {
+          "path": "data/entry/pa/pai.json",
+          "bytes": 1006,
+          "hash": "580dea36"
+        },
+        {
+          "path": "data/entry/pa/pak.json",
+          "bytes": 469,
+          "hash": "e99f68bb"
+        },
+        {
+          "path": "data/entry/pa/pal.json",
+          "bytes": 50165,
+          "hash": "8c784f9e"
+        },
+        {
+          "path": "data/entry/pa/pam.json",
+          "bytes": 934,
+          "hash": "fa1d5ab9"
+        },
+        {
+          "path": "data/entry/pa/pan.json",
+          "bytes": 30957,
+          "hash": "fa1e2b4c"
+        },
+        {
+          "path": "data/entry/pa/pao.json",
+          "bytes": 2491,
+          "hash": "c65fb3f8"
+        },
+        {
+          "path": "data/entry/pa/pap.json",
+          "bytes": 10320,
+          "hash": "7bd1bdc4"
+        },
+        {
+          "path": "data/entry/pa/par.json",
+          "bytes": 97776,
+          "hash": "c032af66"
+        },
+        {
+          "path": "data/entry/pa/pas.json",
+          "bytes": 44173,
+          "hash": "7ad304ad"
+        },
+        {
+          "path": "data/entry/pa/pat.json",
+          "bytes": 26474,
+          "hash": "b8133265"
+        },
+        {
+          "path": "data/entry/pa/pau.json",
+          "bytes": 2291,
+          "hash": "3e75bee9"
+        },
+        {
+          "path": "data/entry/pa/pav.json",
+          "bytes": 6710,
+          "hash": "7839a3f1"
+        },
+        {
+          "path": "data/entry/pa/pay.json",
+          "bytes": 449,
+          "hash": "4ce839b7"
+        },
+        {
+          "path": "data/entry/pa/paz.json",
+          "bytes": 3778,
+          "hash": "e318f482"
         }
       ],
       "ex": [
@@ -8001,8 +11211,8 @@
       "forms": [
         {
           "path": "data/forms/pa.json",
-          "bytes": 214155,
-          "hash": "d16e0eef"
+          "bytes": 214520,
+          "hash": "1a460f8b"
         }
       ]
     },
@@ -8074,7 +11284,7 @@
         {
           "path": "data/forms/pe.json",
           "bytes": 233072,
-          "hash": "729c6281"
+          "hash": "36eccaee"
         }
       ]
     },
@@ -8267,16 +11477,56 @@
     "pr": {
       "search": [
         {
-          "path": "data/pr.json",
-          "bytes": 159105,
-          "hash": "c3ddaff3"
+          "path": "data/pr/pra.json",
+          "bytes": 4514,
+          "hash": "542054c9"
+        },
+        {
+          "path": "data/pr/pre.json",
+          "bytes": 59338,
+          "hash": "609a16a7"
+        },
+        {
+          "path": "data/pr/pri.json",
+          "bytes": 12144,
+          "hash": "00be4986"
+        },
+        {
+          "path": "data/pr/pro.json",
+          "bytes": 81494,
+          "hash": "2158706e"
+        },
+        {
+          "path": "data/pr/pru.json",
+          "bytes": 2328,
+          "hash": "f2929a3a"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/pr.json",
-          "bytes": 436150,
-          "hash": "f7158676"
+          "path": "data/entry/pr/pra.json",
+          "bytes": 9970,
+          "hash": "f53bd045"
+        },
+        {
+          "path": "data/entry/pr/pre.json",
+          "bytes": 178386,
+          "hash": "071c30fd"
+        },
+        {
+          "path": "data/entry/pr/pri.json",
+          "bytes": 29556,
+          "hash": "77ae0d2d"
+        },
+        {
+          "path": "data/entry/pr/pro.json",
+          "bytes": 214268,
+          "hash": "757446cc"
+        },
+        {
+          "path": "data/entry/pr/pru.json",
+          "bytes": 4683,
+          "hash": "669380f2"
         }
       ],
       "ex": [
@@ -8288,9 +11538,194 @@
       ],
       "forms": [
         {
-          "path": "data/forms/pr.json",
-          "bytes": 601049,
-          "hash": "282788b7"
+          "path": "data/forms/pr/pra.json",
+          "bytes": 9546,
+          "hash": "88f8d26e"
+        },
+        {
+          "path": "data/forms/pr/prea.json",
+          "bytes": 13877,
+          "hash": "4f1e64e6"
+        },
+        {
+          "path": "data/forms/pr/preb.json",
+          "bytes": 69,
+          "hash": "8c647e3e"
+        },
+        {
+          "path": "data/forms/pr/prec.json",
+          "bytes": 37611,
+          "hash": "6f35c5e8"
+        },
+        {
+          "path": "data/forms/pr/pred.json",
+          "bytes": 28523,
+          "hash": "b7df858c"
+        },
+        {
+          "path": "data/forms/pr/pree.json",
+          "bytes": 5117,
+          "hash": "5d146d06"
+        },
+        {
+          "path": "data/forms/pr/pref.json",
+          "bytes": 14523,
+          "hash": "a70f478a"
+        },
+        {
+          "path": "data/forms/pr/preg.json",
+          "bytes": 13429,
+          "hash": "34e436db"
+        },
+        {
+          "path": "data/forms/pr/prei.json",
+          "bytes": 222,
+          "hash": "1df80682"
+        },
+        {
+          "path": "data/forms/pr/prel.json",
+          "bytes": 8772,
+          "hash": "472f1e84"
+        },
+        {
+          "path": "data/forms/pr/prem.json",
+          "bytes": 18850,
+          "hash": "cc28ed35"
+        },
+        {
+          "path": "data/forms/pr/pren.json",
+          "bytes": 12859,
+          "hash": "8f3dae87"
+        },
+        {
+          "path": "data/forms/pr/preo.json",
+          "bytes": 9150,
+          "hash": "293342e9"
+        },
+        {
+          "path": "data/forms/pr/prep.json",
+          "bytes": 14729,
+          "hash": "a7a4a1ce"
+        },
+        {
+          "path": "data/forms/pr/prer.json",
+          "bytes": 4884,
+          "hash": "9c51f460"
+        },
+        {
+          "path": "data/forms/pr/pres.json",
+          "bytes": 61865,
+          "hash": "c9f3ff17"
+        },
+        {
+          "path": "data/forms/pr/pret.json",
+          "bytes": 9872,
+          "hash": "6d2d3e96"
+        },
+        {
+          "path": "data/forms/pr/preu.json",
+          "bytes": 230,
+          "hash": "59c00618"
+        },
+        {
+          "path": "data/forms/pr/prev.json",
+          "bytes": 16555,
+          "hash": "a759fc32"
+        },
+        {
+          "path": "data/forms/pr/prez.json",
+          "bytes": 4680,
+          "hash": "b7383386"
+        },
+        {
+          "path": "data/forms/pr/pri.json",
+          "bytes": 28834,
+          "hash": "0aa339dc"
+        },
+        {
+          "path": "data/forms/pr/prob.json",
+          "bytes": 852,
+          "hash": "8c847800"
+        },
+        {
+          "path": "data/forms/pr/proc.json",
+          "bytes": 33499,
+          "hash": "23590906"
+        },
+        {
+          "path": "data/forms/pr/prod.json",
+          "bytes": 6065,
+          "hash": "7fe375fa"
+        },
+        {
+          "path": "data/forms/pr/proe.json",
+          "bytes": 66,
+          "hash": "34dd0e84"
+        },
+        {
+          "path": "data/forms/pr/prof.json",
+          "bytes": 46298,
+          "hash": "c5a290a0"
+        },
+        {
+          "path": "data/forms/pr/prog.json",
+          "bytes": 14706,
+          "hash": "9d2dbd21"
+        },
+        {
+          "path": "data/forms/pr/proi.json",
+          "bytes": 8810,
+          "hash": "4b98f45c"
+        },
+        {
+          "path": "data/forms/pr/prol.json",
+          "bytes": 14579,
+          "hash": "dde74bcc"
+        },
+        {
+          "path": "data/forms/pr/prom.json",
+          "bytes": 14078,
+          "hash": "dc099530"
+        },
+        {
+          "path": "data/forms/pr/pron.json",
+          "bytes": 14448,
+          "hash": "aa53213c"
+        },
+        {
+          "path": "data/forms/pr/proo.json",
+          "bytes": 71,
+          "hash": "920b9856"
+        },
+        {
+          "path": "data/forms/pr/prop.json",
+          "bytes": 42790,
+          "hash": "5c9e9b66"
+        },
+        {
+          "path": "data/forms/pr/pror.json",
+          "bytes": 8835,
+          "hash": "5577630b"
+        },
+        {
+          "path": "data/forms/pr/pros.json",
+          "bytes": 38071,
+          "hash": "16fe8499"
+        },
+        {
+          "path": "data/forms/pr/prot.json",
+          "bytes": 30218,
+          "hash": "17af063b"
+        },
+        {
+          "path": "data/forms/pr/prov.json",
+          "bytes": 16358,
+          "hash": "f77864e5"
+        },
+        {
+          "path": "data/forms/pr/pru.json",
+          "bytes": 658,
+          "hash": "81a66393"
         }
       ]
     },
@@ -8373,8 +11808,8 @@
       "forms": [
         {
           "path": "data/forms/pu.json",
-          "bytes": 96963,
-          "hash": "c9e73728"
+          "bytes": 96964,
+          "hash": "965efd67"
         }
       ]
     },
@@ -8420,24 +11855,24 @@
       ],
       "forms": []
     },
-    "q": {
+    "q_": {
       "search": [
         {
-          "path": "data/q.json",
-          "bytes": 76,
-          "hash": "b553a548"
+          "path": "data/q_.json",
+          "bytes": 77,
+          "hash": "4cf98506"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/q.json",
-          "bytes": 133,
-          "hash": "8ff1ba44"
+          "path": "data/entry/q_.json",
+          "bytes": 134,
+          "hash": "099586db"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/q.json",
+          "path": "data/ex/q_.json",
           "bytes": 142,
           "hash": "467e9528"
         }
@@ -8606,24 +12041,24 @@
       "ex": [],
       "forms": []
     },
-    "r": {
+    "r_": {
       "search": [
         {
-          "path": "data/r.json",
-          "bytes": 123,
-          "hash": "ee23ae9d"
+          "path": "data/r_.json",
+          "bytes": 125,
+          "hash": "7edf4a84"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/r.json",
-          "bytes": 248,
-          "hash": "ade90556"
+          "path": "data/entry/r_.json",
+          "bytes": 250,
+          "hash": "b5f7a69e"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/r.json",
+          "path": "data/ex/r_.json",
           "bytes": 231,
           "hash": "eec46282"
         }
@@ -8654,9 +12089,74 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ra.json",
-          "bytes": 384987,
-          "hash": "893eb135"
+          "path": "data/forms/ra/rab.json",
+          "bytes": 18894,
+          "hash": "44c2b014"
+        },
+        {
+          "path": "data/forms/ra/rac.json",
+          "bytes": 36525,
+          "hash": "44b18be7"
+        },
+        {
+          "path": "data/forms/ra/rad.json",
+          "bytes": 51911,
+          "hash": "98475cf5"
+        },
+        {
+          "path": "data/forms/ra/raf.json",
+          "bytes": 27507,
+          "hash": "a6b2bf21"
+        },
+        {
+          "path": "data/forms/ra/rag.json",
+          "bytes": 61169,
+          "hash": "5827193c"
+        },
+        {
+          "path": "data/forms/ra/ral.json",
+          "bytes": 8827,
+          "hash": "ab89869c"
+        },
+        {
+          "path": "data/forms/ra/ram.json",
+          "bytes": 27276,
+          "hash": "c244601c"
+        },
+        {
+          "path": "data/forms/ra/ran.json",
+          "bytes": 9364,
+          "hash": "e0d6ca65"
+        },
+        {
+          "path": "data/forms/ra/rap.json",
+          "bytes": 40759,
+          "hash": "8beef0fc"
+        },
+        {
+          "path": "data/forms/ra/rar.json",
+          "bytes": 896,
+          "hash": "1cd71e5e"
+        },
+        {
+          "path": "data/forms/ra/ras.json",
+          "bytes": 52998,
+          "hash": "3ce791c7"
+        },
+        {
+          "path": "data/forms/ra/rat.json",
+          "bytes": 18345,
+          "hash": "32c584f3"
+        },
+        {
+          "path": "data/forms/ra/rav.json",
+          "bytes": 21738,
+          "hash": "2b5d26be"
+        },
+        {
+          "path": "data/forms/ra/raz.json",
+          "bytes": 8817,
+          "hash": "e049376e"
         }
       ]
     },
@@ -8744,9 +12244,79 @@
       ],
       "forms": [
         {
-          "path": "data/forms/re.json",
-          "bytes": 283096,
-          "hash": "1fdd6214"
+          "path": "data/forms/re/rea.json",
+          "bytes": 9795,
+          "hash": "8da252ab"
+        },
+        {
+          "path": "data/forms/re/rec.json",
+          "bytes": 64214,
+          "hash": "d37f83b4"
+        },
+        {
+          "path": "data/forms/re/red.json",
+          "bytes": 14211,
+          "hash": "fba6d1b5"
+        },
+        {
+          "path": "data/forms/re/ref.json",
+          "bytes": 9975,
+          "hash": "3c4871ac"
+        },
+        {
+          "path": "data/forms/re/reg.json",
+          "bytes": 40509,
+          "hash": "f9615c92"
+        },
+        {
+          "path": "data/forms/re/rei.json",
+          "bytes": 13682,
+          "hash": "51a05be8"
+        },
+        {
+          "path": "data/forms/re/rel.json",
+          "bytes": 5017,
+          "hash": "0fe8b2db"
+        },
+        {
+          "path": "data/forms/re/rem.json",
+          "bytes": 9197,
+          "hash": "1c76cd3e"
+        },
+        {
+          "path": "data/forms/re/ren.json",
+          "bytes": 5041,
+          "hash": "652b1a33"
+        },
+        {
+          "path": "data/forms/re/rep.json",
+          "bytes": 23573,
+          "hash": "8be9304b"
+        },
+        {
+          "path": "data/forms/re/req.json",
+          "bytes": 4703,
+          "hash": "3b4f0f20"
+        },
+        {
+          "path": "data/forms/re/res.json",
+          "bytes": 52270,
+          "hash": "640bb3a9"
+        },
+        {
+          "path": "data/forms/re/ret.json",
+          "bytes": 21651,
+          "hash": "a74921bd"
+        },
+        {
+          "path": "data/forms/re/reu.json",
+          "bytes": 141,
+          "hash": "f15f24db"
+        },
+        {
+          "path": "data/forms/re/rev.json",
+          "bytes": 9161,
+          "hash": "4d48e300"
         }
       ]
     },
@@ -8795,16 +12365,206 @@
     "ri": {
       "search": [
         {
-          "path": "data/ri.json",
-          "bytes": 107725,
-          "hash": "09f9e372"
+          "path": "data/ri/ri_.json",
+          "bytes": 79,
+          "hash": "9a845bef"
+        },
+        {
+          "path": "data/ri/ria.json",
+          "bytes": 3892,
+          "hash": "2b5e3a37"
+        },
+        {
+          "path": "data/ri/rib.json",
+          "bytes": 4554,
+          "hash": "198cb4dc"
+        },
+        {
+          "path": "data/ri/ric.json",
+          "bytes": 18205,
+          "hash": "6e16bdae"
+        },
+        {
+          "path": "data/ri/rid.json",
+          "bytes": 4547,
+          "hash": "be6dc605"
+        },
+        {
+          "path": "data/ri/rie.json",
+          "bytes": 2479,
+          "hash": "1a105cc8"
+        },
+        {
+          "path": "data/ri/rif.json",
+          "bytes": 5727,
+          "hash": "aa82659a"
+        },
+        {
+          "path": "data/ri/rig.json",
+          "bytes": 5347,
+          "hash": "02b79202"
+        },
+        {
+          "path": "data/ri/ril.json",
+          "bytes": 2819,
+          "hash": "e3625f9f"
+        },
+        {
+          "path": "data/ri/rim.json",
+          "bytes": 8061,
+          "hash": "e0fea996"
+        },
+        {
+          "path": "data/ri/rin.json",
+          "bytes": 11733,
+          "hash": "0b878a50"
+        },
+        {
+          "path": "data/ri/rio.json",
+          "bytes": 864,
+          "hash": "5ebba9f8"
+        },
+        {
+          "path": "data/ri/rip.json",
+          "bytes": 8634,
+          "hash": "03ab70b6"
+        },
+        {
+          "path": "data/ri/riq.json",
+          "bytes": 324,
+          "hash": "a0bad306"
+        },
+        {
+          "path": "data/ri/ris.json",
+          "bytes": 15925,
+          "hash": "70ffbaf6"
+        },
+        {
+          "path": "data/ri/rit.json",
+          "bytes": 5576,
+          "hash": "2fd5f60c"
+        },
+        {
+          "path": "data/ri/riu.json",
+          "bytes": 1189,
+          "hash": "7c423950"
+        },
+        {
+          "path": "data/ri/riv.json",
+          "bytes": 6795,
+          "hash": "692bf2ef"
+        },
+        {
+          "path": "data/ri/riy.json",
+          "bytes": 115,
+          "hash": "38943ad9"
+        },
+        {
+          "path": "data/ri/riz.json",
+          "bytes": 964,
+          "hash": "81e9922f"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/ri.json",
-          "bytes": 552584,
-          "hash": "36bd2c18"
+          "path": "data/entry/ri/ri_.json",
+          "bytes": 189,
+          "hash": "3fc30dfe"
+        },
+        {
+          "path": "data/entry/ri/ria.json",
+          "bytes": 26122,
+          "hash": "964a4900"
+        },
+        {
+          "path": "data/entry/ri/rib.json",
+          "bytes": 14945,
+          "hash": "df235399"
+        },
+        {
+          "path": "data/entry/ri/ric.json",
+          "bytes": 86754,
+          "hash": "4d5234ed"
+        },
+        {
+          "path": "data/entry/ri/rid.json",
+          "bytes": 26135,
+          "hash": "fae754c0"
+        },
+        {
+          "path": "data/entry/ri/rie.json",
+          "bytes": 15606,
+          "hash": "97889198"
+        },
+        {
+          "path": "data/entry/ri/rif.json",
+          "bytes": 27635,
+          "hash": "ada67f2e"
+        },
+        {
+          "path": "data/entry/ri/rig.json",
+          "bytes": 19069,
+          "hash": "19ea943f"
+        },
+        {
+          "path": "data/entry/ri/ril.json",
+          "bytes": 13505,
+          "hash": "f8a6e110"
+        },
+        {
+          "path": "data/entry/ri/rim.json",
+          "bytes": 60862,
+          "hash": "10d4368a"
+        },
+        {
+          "path": "data/entry/ri/rin.json",
+          "bytes": 63020,
+          "hash": "b4dd545a"
+        },
+        {
+          "path": "data/entry/ri/rio.json",
+          "bytes": 4587,
+          "hash": "752e7bb5"
+        },
+        {
+          "path": "data/entry/ri/rip.json",
+          "bytes": 47060,
+          "hash": "14b667a1"
+        },
+        {
+          "path": "data/entry/ri/riq.json",
+          "bytes": 1789,
+          "hash": "d0e3a6ad"
+        },
+        {
+          "path": "data/entry/ri/ris.json",
+          "bytes": 81162,
+          "hash": "347c5a51"
+        },
+        {
+          "path": "data/entry/ri/rit.json",
+          "bytes": 23138,
+          "hash": "84a59c4e"
+        },
+        {
+          "path": "data/entry/ri/riu.json",
+          "bytes": 6304,
+          "hash": "bec842bd"
+        },
+        {
+          "path": "data/entry/ri/riv.json",
+          "bytes": 32129,
+          "hash": "488706ed"
+        },
+        {
+          "path": "data/entry/ri/riy.json",
+          "bytes": 155,
+          "hash": "bc4baf16"
+        },
+        {
+          "path": "data/entry/ri/riz.json",
+          "bytes": 2522,
+          "hash": "d041b3b9"
         }
       ],
       "ex": [
@@ -8817,98 +12577,98 @@
       "forms": [
         {
           "path": "data/forms/ri/ria.json",
-          "bytes": 61198,
-          "hash": "8b9bac3c"
+          "bytes": 61090,
+          "hash": "d8e6f2e5"
         },
         {
           "path": "data/forms/ri/rib.json",
-          "bytes": 26400,
-          "hash": "dfcd1142"
+          "bytes": 26276,
+          "hash": "12ed5af5"
         },
         {
           "path": "data/forms/ri/ric.json",
-          "bytes": 180872,
-          "hash": "d1f287d6"
+          "bytes": 181513,
+          "hash": "7a2a3419"
         },
         {
           "path": "data/forms/ri/rid.json",
-          "bytes": 58523,
-          "hash": "2c1cfa41"
+          "bytes": 58513,
+          "hash": "6e745435"
         },
         {
           "path": "data/forms/ri/rie.json",
-          "bytes": 37776,
-          "hash": "3f04863d"
+          "bytes": 37600,
+          "hash": "480ce1d9"
         },
         {
           "path": "data/forms/ri/rif.json",
           "bytes": 55470,
-          "hash": "1758cd62"
+          "hash": "dd079602"
         },
         {
           "path": "data/forms/ri/rig.json",
-          "bytes": 36558,
-          "hash": "e62b92a8"
+          "bytes": 36507,
+          "hash": "2e0deb13"
         },
         {
           "path": "data/forms/ri/rii.json",
           "bytes": 57,
-          "hash": "3af52a90"
+          "hash": "c6e4fe48"
         },
         {
           "path": "data/forms/ri/ril.json",
-          "bytes": 26929,
-          "hash": "408e3249"
+          "bytes": 26848,
+          "hash": "4727390f"
         },
         {
           "path": "data/forms/ri/rim.json",
-          "bytes": 155942,
-          "hash": "5cf28768"
+          "bytes": 155867,
+          "hash": "65ff6071"
         },
         {
           "path": "data/forms/ri/rin.json",
-          "bytes": 144331,
-          "hash": "7e9cf760"
+          "bytes": 144453,
+          "hash": "f31931c0"
         },
         {
           "path": "data/forms/ri/rio.json",
-          "bytes": 9321,
-          "hash": "e4f917e1"
+          "bytes": 9236,
+          "hash": "3f9e9441"
         },
         {
           "path": "data/forms/ri/rip.json",
           "bytes": 104613,
-          "hash": "844af52d"
+          "hash": "45eb3185"
         },
         {
           "path": "data/forms/ri/riq.json",
-          "bytes": 4522,
-          "hash": "24ec21c7"
+          "bytes": 4480,
+          "hash": "30a04d35"
         },
         {
           "path": "data/forms/ri/ris.json",
-          "bytes": 174000,
-          "hash": "c6bff824"
+          "bytes": 174590,
+          "hash": "aeb7333e"
         },
         {
           "path": "data/forms/ri/rit.json",
-          "bytes": 44640,
-          "hash": "9e7e096a"
+          "bytes": 44638,
+          "hash": "c2b592b5"
         },
         {
           "path": "data/forms/ri/riu.json",
-          "bytes": 14119,
-          "hash": "5ccdef4d"
+          "bytes": 14032,
+          "hash": "4958b691"
         },
         {
           "path": "data/forms/ri/riv.json",
-          "bytes": 65317,
-          "hash": "70475b42"
+          "bytes": 65273,
+          "hash": "6447fd90"
         },
         {
           "path": "data/forms/ri/riz.json",
-          "bytes": 4373,
-          "hash": "05afd24d"
+          "bytes": 4329,
+          "hash": "5ec4cf08"
         }
       ]
     },
@@ -9086,24 +12846,24 @@
         }
       ]
     },
-    "s": {
+    "s_": {
       "search": [
         {
-          "path": "data/s.json",
-          "bytes": 190,
-          "hash": "03d45717"
+          "path": "data/s_.json",
+          "bytes": 192,
+          "hash": "ab0b2159"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/s.json",
-          "bytes": 496,
-          "hash": "eabaada1"
+          "path": "data/entry/s_.json",
+          "bytes": 498,
+          "hash": "96126dea"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/s.json",
+          "path": "data/ex/s_.json",
           "bytes": 166,
           "hash": "b694663b"
         }
@@ -9173,16 +12933,96 @@
     "sc": {
       "search": [
         {
-          "path": "data/sc.json",
-          "bytes": 119331,
-          "hash": "3c12c9cb"
+          "path": "data/sc/sca.json",
+          "bytes": 32856,
+          "hash": "4519ab8f"
+        },
+        {
+          "path": "data/sc/sce.json",
+          "bytes": 5409,
+          "hash": "8689e403"
+        },
+        {
+          "path": "data/sc/sch.json",
+          "bytes": 13315,
+          "hash": "6da2cdbd"
+        },
+        {
+          "path": "data/sc/sci.json",
+          "bytes": 21324,
+          "hash": "ea637ec2"
+        },
+        {
+          "path": "data/sc/scl.json",
+          "bytes": 672,
+          "hash": "e9d66686"
+        },
+        {
+          "path": "data/sc/scm.json",
+          "bytes": 90,
+          "hash": "f8ec7b98"
+        },
+        {
+          "path": "data/sc/sco.json",
+          "bytes": 28331,
+          "hash": "0afb5387"
+        },
+        {
+          "path": "data/sc/scr.json",
+          "bytes": 8112,
+          "hash": "2b7347fd"
+        },
+        {
+          "path": "data/sc/scu.json",
+          "bytes": 9679,
+          "hash": "31623034"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/sc.json",
-          "bytes": 429107,
-          "hash": "28e9ad42"
+          "path": "data/entry/sc/sca.json",
+          "bytes": 125678,
+          "hash": "8468cc55"
+        },
+        {
+          "path": "data/entry/sc/sce.json",
+          "bytes": 17569,
+          "hash": "d1daefa0"
+        },
+        {
+          "path": "data/entry/sc/sch.json",
+          "bytes": 52209,
+          "hash": "f3de901d"
+        },
+        {
+          "path": "data/entry/sc/sci.json",
+          "bytes": 55646,
+          "hash": "047ca0f2"
+        },
+        {
+          "path": "data/entry/sc/scl.json",
+          "bytes": 2348,
+          "hash": "079efc4b"
+        },
+        {
+          "path": "data/entry/sc/scm.json",
+          "bytes": 131,
+          "hash": "7ce0fbe6"
+        },
+        {
+          "path": "data/entry/sc/sco.json",
+          "bytes": 123244,
+          "hash": "7cc06427"
+        },
+        {
+          "path": "data/entry/sc/scr.json",
+          "bytes": 29585,
+          "hash": "ad870c9d"
+        },
+        {
+          "path": "data/entry/sc/scu.json",
+          "bytes": 23154,
+          "hash": "1bbf0a02"
         }
       ],
       "ex": [
@@ -9194,9 +13034,44 @@
       ],
       "forms": [
         {
-          "path": "data/forms/sc.json",
-          "bytes": 769747,
-          "hash": "28a7cc8e"
+          "path": "data/forms/sc/sca.json",
+          "bytes": 243311,
+          "hash": "e3cb09fc"
+        },
+        {
+          "path": "data/forms/sc/sce.json",
+          "bytes": 28234,
+          "hash": "c7f27a06"
+        },
+        {
+          "path": "data/forms/sc/sch.json",
+          "bytes": 94099,
+          "hash": "7b7dc636"
+        },
+        {
+          "path": "data/forms/sc/sci.json",
+          "bytes": 77253,
+          "hash": "08fd87be"
+        },
+        {
+          "path": "data/forms/sc/scl.json",
+          "bytes": 4127,
+          "hash": "3da07b48"
+        },
+        {
+          "path": "data/forms/sc/sco.json",
+          "bytes": 243897,
+          "hash": "0ec26ca7"
+        },
+        {
+          "path": "data/forms/sc/scr.json",
+          "bytes": 54489,
+          "hash": "71ba6b16"
+        },
+        {
+          "path": "data/forms/sc/scu.json",
+          "bytes": 27902,
+          "hash": "0b91bc46"
         }
       ]
     },
@@ -9497,16 +13372,206 @@
     "so": {
       "search": [
         {
-          "path": "data/so.json",
-          "bytes": 107105,
-          "hash": "71ecc416"
+          "path": "data/so/so_.json",
+          "bytes": 102,
+          "hash": "c5c622c8"
+        },
+        {
+          "path": "data/so/soa.json",
+          "bytes": 263,
+          "hash": "029f8f5b"
+        },
+        {
+          "path": "data/so/sob.json",
+          "bytes": 1163,
+          "hash": "98a41c58"
+        },
+        {
+          "path": "data/so/soc.json",
+          "bytes": 16543,
+          "hash": "0bf28709"
+        },
+        {
+          "path": "data/so/sod.json",
+          "bytes": 2662,
+          "hash": "8e3b0379"
+        },
+        {
+          "path": "data/so/sof.json",
+          "bytes": 6518,
+          "hash": "67f1d658"
+        },
+        {
+          "path": "data/so/sog.json",
+          "bytes": 3621,
+          "hash": "f420a2b7"
+        },
+        {
+          "path": "data/so/soi.json",
+          "bytes": 252,
+          "hash": "ff0729a2"
+        },
+        {
+          "path": "data/so/sok.json",
+          "bytes": 117,
+          "hash": "94038383"
+        },
+        {
+          "path": "data/so/sol.json",
+          "bytes": 18866,
+          "hash": "fbf76c37"
+        },
+        {
+          "path": "data/so/som.json",
+          "bytes": 5860,
+          "hash": "9594c3a1"
+        },
+        {
+          "path": "data/so/son.json",
+          "bytes": 4297,
+          "hash": "4ec524b5"
+        },
+        {
+          "path": "data/so/sop.json",
+          "bytes": 9283,
+          "hash": "449e4837"
+        },
+        {
+          "path": "data/so/soq.json",
+          "bytes": 90,
+          "hash": "b34f2836"
+        },
+        {
+          "path": "data/so/sor.json",
+          "bytes": 7444,
+          "hash": "703af5a5"
+        },
+        {
+          "path": "data/so/sos.json",
+          "bytes": 5499,
+          "hash": "cf85924a"
+        },
+        {
+          "path": "data/so/sot.json",
+          "bytes": 14147,
+          "hash": "7454473e"
+        },
+        {
+          "path": "data/so/sou.json",
+          "bytes": 1488,
+          "hash": "32330fa8"
+        },
+        {
+          "path": "data/so/sov.json",
+          "bytes": 8760,
+          "hash": "8cfdfa12"
+        },
+        {
+          "path": "data/so/soz.json",
+          "bytes": 216,
+          "hash": "74c80884"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/so.json",
-          "bytes": 302726,
-          "hash": "5d39c95e"
+          "path": "data/entry/so/so_.json",
+          "bytes": 190,
+          "hash": "4bd17baa"
+        },
+        {
+          "path": "data/entry/so/soa.json",
+          "bytes": 366,
+          "hash": "8e9be6a4"
+        },
+        {
+          "path": "data/entry/so/sob.json",
+          "bytes": 5653,
+          "hash": "e533943e"
+        },
+        {
+          "path": "data/entry/so/soc.json",
+          "bytes": 27895,
+          "hash": "d77cd24f"
+        },
+        {
+          "path": "data/entry/so/sod.json",
+          "bytes": 6209,
+          "hash": "529397d8"
+        },
+        {
+          "path": "data/entry/so/sof.json",
+          "bytes": 18821,
+          "hash": "e18faa19"
+        },
+        {
+          "path": "data/entry/so/sog.json",
+          "bytes": 13204,
+          "hash": "161b7790"
+        },
+        {
+          "path": "data/entry/so/soi.json",
+          "bytes": 338,
+          "hash": "19f8c4d9"
+        },
+        {
+          "path": "data/entry/so/sok.json",
+          "bytes": 179,
+          "hash": "3796eb40"
+        },
+        {
+          "path": "data/entry/so/sol.json",
+          "bytes": 47650,
+          "hash": "b3fbaf6d"
+        },
+        {
+          "path": "data/entry/so/som.json",
+          "bytes": 17205,
+          "hash": "8ccd1b57"
+        },
+        {
+          "path": "data/entry/so/son.json",
+          "bytes": 10079,
+          "hash": "4a47ad38"
+        },
+        {
+          "path": "data/entry/so/sop.json",
+          "bytes": 32515,
+          "hash": "bca3d57b"
+        },
+        {
+          "path": "data/entry/so/soq.json",
+          "bytes": 219,
+          "hash": "11584faa"
+        },
+        {
+          "path": "data/entry/so/sor.json",
+          "bytes": 27136,
+          "hash": "4428c898"
+        },
+        {
+          "path": "data/entry/so/sos.json",
+          "bytes": 22542,
+          "hash": "2b05e3d3"
+        },
+        {
+          "path": "data/entry/so/sot.json",
+          "bytes": 38481,
+          "hash": "e34a9e09"
+        },
+        {
+          "path": "data/entry/so/sou.json",
+          "bytes": 2135,
+          "hash": "e643c0c1"
+        },
+        {
+          "path": "data/entry/so/sov.json",
+          "bytes": 31542,
+          "hash": "aa865368"
+        },
+        {
+          "path": "data/entry/so/soz.json",
+          "bytes": 453,
+          "hash": "104965e3"
         }
       ],
       "ex": [
@@ -9518,25 +13583,205 @@
       ],
       "forms": [
         {
-          "path": "data/forms/so.json",
-          "bytes": 457533,
-          "hash": "aec8fefc"
+          "path": "data/forms/so/so_.json",
+          "bytes": 107,
+          "hash": "872123bc"
+        },
+        {
+          "path": "data/forms/so/soa.json",
+          "bytes": 61,
+          "hash": "7137f3b4"
+        },
+        {
+          "path": "data/forms/so/sob.json",
+          "bytes": 13447,
+          "hash": "16957e89"
+        },
+        {
+          "path": "data/forms/so/soc.json",
+          "bytes": 20087,
+          "hash": "37324551"
+        },
+        {
+          "path": "data/forms/so/sod.json",
+          "bytes": 6161,
+          "hash": "b8489cf7"
+        },
+        {
+          "path": "data/forms/so/sof.json",
+          "bytes": 23914,
+          "hash": "88b11098"
+        },
+        {
+          "path": "data/forms/so/sog.json",
+          "bytes": 23446,
+          "hash": "2e392553"
+        },
+        {
+          "path": "data/forms/so/sol.json",
+          "bytes": 66410,
+          "hash": "53716c36"
+        },
+        {
+          "path": "data/forms/so/som.json",
+          "bytes": 28208,
+          "hash": "e5614a6b"
+        },
+        {
+          "path": "data/forms/so/son.json",
+          "bytes": 10355,
+          "hash": "9a7f3ca4"
+        },
+        {
+          "path": "data/forms/so/sop.json",
+          "bytes": 59763,
+          "hash": "409d0a45"
+        },
+        {
+          "path": "data/forms/so/soq.json",
+          "bytes": 69,
+          "hash": "34f51080"
+        },
+        {
+          "path": "data/forms/so/sor.json",
+          "bytes": 49088,
+          "hash": "b8db6b1e"
+        },
+        {
+          "path": "data/forms/so/sos.json",
+          "bytes": 41920,
+          "hash": "31c72805"
+        },
+        {
+          "path": "data/forms/so/sot.json",
+          "bytes": 56684,
+          "hash": "ce936d41"
+        },
+        {
+          "path": "data/forms/so/sov.json",
+          "bytes": 57631,
+          "hash": "2958091a"
+        },
+        {
+          "path": "data/forms/so/soz.json",
+          "bytes": 189,
+          "hash": "67ec0810"
         }
       ]
     },
     "sp": {
       "search": [
         {
-          "path": "data/sp.json",
-          "bytes": 75933,
-          "hash": "4beb5ec0"
+          "path": "data/sp/sp_.json",
+          "bytes": 86,
+          "hash": "73edd7ef"
+        },
+        {
+          "path": "data/sp/spa.json",
+          "bytes": 19353,
+          "hash": "8cf47a6f"
+        },
+        {
+          "path": "data/sp/spb.json",
+          "bytes": 185,
+          "hash": "fc384f7b"
+        },
+        {
+          "path": "data/sp/spe.json",
+          "bytes": 18791,
+          "hash": "69c0bedf"
+        },
+        {
+          "path": "data/sp/sph.json",
+          "bytes": 107,
+          "hash": "5709db8b"
+        },
+        {
+          "path": "data/sp/spi.json",
+          "bytes": 15097,
+          "hash": "c0a2cbc4"
+        },
+        {
+          "path": "data/sp/spl.json",
+          "bytes": 2628,
+          "hash": "978cee3d"
+        },
+        {
+          "path": "data/sp/spo.json",
+          "bytes": 10701,
+          "hash": "574bdfef"
+        },
+        {
+          "path": "data/sp/spr.json",
+          "bytes": 6519,
+          "hash": "6f85e4a2"
+        },
+        {
+          "path": "data/sp/spu.json",
+          "bytes": 2461,
+          "hash": "d7aa73bd"
+        },
+        {
+          "path": "data/sp/spy.json",
+          "bytes": 228,
+          "hash": "1b29afe1"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/sp.json",
-          "bytes": 250299,
-          "hash": "907372f9"
+          "path": "data/entry/sp/sp_.json",
+          "bytes": 126,
+          "hash": "58b62c7f"
+        },
+        {
+          "path": "data/entry/sp/spa.json",
+          "bytes": 66204,
+          "hash": "f6d7859f"
+        },
+        {
+          "path": "data/entry/sp/spb.json",
+          "bytes": 227,
+          "hash": "291c3f96"
+        },
+        {
+          "path": "data/entry/sp/spe.json",
+          "bytes": 58436,
+          "hash": "c17f1992"
+        },
+        {
+          "path": "data/entry/sp/sph.json",
+          "bytes": 140,
+          "hash": "c8bac34c"
+        },
+        {
+          "path": "data/entry/sp/spi.json",
+          "bytes": 48910,
+          "hash": "e3c64b56"
+        },
+        {
+          "path": "data/entry/sp/spl.json",
+          "bytes": 5297,
+          "hash": "b4657c6a"
+        },
+        {
+          "path": "data/entry/sp/spo.json",
+          "bytes": 35192,
+          "hash": "6bc20db0"
+        },
+        {
+          "path": "data/entry/sp/spr.json",
+          "bytes": 22640,
+          "hash": "7d33aaf3"
+        },
+        {
+          "path": "data/entry/sp/spu.json",
+          "bytes": 13084,
+          "hash": "b745dbe3"
+        },
+        {
+          "path": "data/entry/sp/spy.json",
+          "bytes": 266,
+          "hash": "b4ab9a76"
         }
       ],
       "ex": [
@@ -9548,9 +13793,39 @@
       ],
       "forms": [
         {
-          "path": "data/forms/sp.json",
-          "bytes": 417159,
-          "hash": "54999048"
+          "path": "data/forms/sp/spa.json",
+          "bytes": 113115,
+          "hash": "b06a48c8"
+        },
+        {
+          "path": "data/forms/sp/spe.json",
+          "bytes": 91203,
+          "hash": "0a2363bf"
+        },
+        {
+          "path": "data/forms/sp/spi.json",
+          "bytes": 79043,
+          "hash": "7b326c30"
+        },
+        {
+          "path": "data/forms/sp/spl.json",
+          "bytes": 4896,
+          "hash": "f8bf00b8"
+        },
+        {
+          "path": "data/forms/sp/spo.json",
+          "bytes": 58922,
+          "hash": "ea876dc8"
+        },
+        {
+          "path": "data/forms/sp/spr.json",
+          "bytes": 41197,
+          "hash": "3a4707ea"
+        },
+        {
+          "path": "data/forms/sp/spu.json",
+          "bytes": 29998,
+          "hash": "d23513b2"
         }
       ]
     },
@@ -9579,8 +13854,8 @@
       "forms": [
         {
           "path": "data/forms/sq.json",
-          "bytes": 40779,
-          "hash": "990ea0b0"
+          "bytes": 40780,
+          "hash": "6d79c706"
         }
       ]
     },
@@ -9641,16 +13916,76 @@
     "st": {
       "search": [
         {
-          "path": "data/st.json",
-          "bytes": 110356,
-          "hash": "0093d84e"
+          "path": "data/st/sta.json",
+          "bytes": 30579,
+          "hash": "eae2f1f3"
+        },
+        {
+          "path": "data/st/ste.json",
+          "bytes": 20949,
+          "hash": "11eaba67"
+        },
+        {
+          "path": "data/st/sti.json",
+          "bytes": 8858,
+          "hash": "c9743348"
+        },
+        {
+          "path": "data/st/stm.json",
+          "bytes": 253,
+          "hash": "beab24cb"
+        },
+        {
+          "path": "data/st/sto.json",
+          "bytes": 13735,
+          "hash": "347fd8ce"
+        },
+        {
+          "path": "data/st/str.json",
+          "bytes": 31798,
+          "hash": "83250efa"
+        },
+        {
+          "path": "data/st/stu.json",
+          "bytes": 4608,
+          "hash": "766cf4e8"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/st.json",
-          "bytes": 303901,
-          "hash": "821821f8"
+          "path": "data/entry/st/sta.json",
+          "bytes": 73146,
+          "hash": "3e7a680b"
+        },
+        {
+          "path": "data/entry/st/ste.json",
+          "bytes": 44364,
+          "hash": "685d844c"
+        },
+        {
+          "path": "data/entry/st/sti.json",
+          "bytes": 32015,
+          "hash": "43e9a0ca"
+        },
+        {
+          "path": "data/entry/st/stm.json",
+          "bytes": 280,
+          "hash": "399512a9"
+        },
+        {
+          "path": "data/entry/st/sto.json",
+          "bytes": 35185,
+          "hash": "ad076dd5"
+        },
+        {
+          "path": "data/entry/st/str.json",
+          "bytes": 104131,
+          "hash": "5d295490"
+        },
+        {
+          "path": "data/entry/st/stu.json",
+          "bytes": 15204,
+          "hash": "20633360"
         }
       ],
       "ex": [
@@ -9662,9 +13997,34 @@
       ],
       "forms": [
         {
-          "path": "data/forms/st.json",
-          "bytes": 427292,
-          "hash": "d0326474"
+          "path": "data/forms/st/sta.json",
+          "bytes": 82368,
+          "hash": "b2756468"
+        },
+        {
+          "path": "data/forms/st/ste.json",
+          "bytes": 41833,
+          "hash": "b2c4438d"
+        },
+        {
+          "path": "data/forms/st/sti.json",
+          "bytes": 56964,
+          "hash": "9478c8f0"
+        },
+        {
+          "path": "data/forms/st/sto.json",
+          "bytes": 45553,
+          "hash": "044021be"
+        },
+        {
+          "path": "data/forms/st/str.json",
+          "bytes": 179399,
+          "hash": "8b3d875d"
+        },
+        {
+          "path": "data/forms/st/stu.json",
+          "bytes": 23062,
+          "hash": "bd994968"
         }
       ]
     },
@@ -9694,7 +14054,7 @@
         {
           "path": "data/forms/su.json",
           "bytes": 173637,
-          "hash": "7b391819"
+          "hash": "001f5873"
         }
       ]
     },
@@ -9776,24 +14136,24 @@
       ],
       "forms": []
     },
-    "t": {
+    "t_": {
       "search": [
         {
-          "path": "data/t.json",
-          "bytes": 119,
-          "hash": "d388af98"
+          "path": "data/t_.json",
+          "bytes": 121,
+          "hash": "84987d30"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/t.json",
-          "bytes": 269,
-          "hash": "4146d3f9"
+          "path": "data/entry/t_.json",
+          "bytes": 271,
+          "hash": "757c03d4"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/t.json",
+          "path": "data/ex/t_.json",
           "bytes": 187,
           "hash": "3e47fa43"
         }
@@ -10085,16 +14445,66 @@
     "tr": {
       "search": [
         {
-          "path": "data/tr.json",
-          "bytes": 103557,
-          "hash": "87b5a795"
+          "path": "data/tr/tra.json",
+          "bytes": 50322,
+          "hash": "155211ca"
+        },
+        {
+          "path": "data/tr/tre.json",
+          "bytes": 10737,
+          "hash": "b22fb5b1"
+        },
+        {
+          "path": "data/tr/tri.json",
+          "bytes": 26179,
+          "hash": "e78de302"
+        },
+        {
+          "path": "data/tr/trn.json",
+          "bytes": 191,
+          "hash": "9e9218aa"
+        },
+        {
+          "path": "data/tr/tro.json",
+          "bytes": 13735,
+          "hash": "d2392e5b"
+        },
+        {
+          "path": "data/tr/tru.json",
+          "bytes": 2905,
+          "hash": "e1ec2830"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/tr.json",
-          "bytes": 287917,
-          "hash": "81cd0ec9"
+          "path": "data/entry/tr/tra.json",
+          "bytes": 175416,
+          "hash": "4fcb781f"
+        },
+        {
+          "path": "data/entry/tr/tre.json",
+          "bytes": 19337,
+          "hash": "83a3454a"
+        },
+        {
+          "path": "data/entry/tr/tri.json",
+          "bytes": 54424,
+          "hash": "43a9c41a"
+        },
+        {
+          "path": "data/entry/tr/trn.json",
+          "bytes": 232,
+          "hash": "54f698af"
+        },
+        {
+          "path": "data/entry/tr/tro.json",
+          "bytes": 30575,
+          "hash": "1acabda3"
+        },
+        {
+          "path": "data/entry/tr/tru.json",
+          "bytes": 8445,
+          "hash": "d5bd8c9d"
         }
       ],
       "ex": [
@@ -10106,9 +14516,109 @@
       ],
       "forms": [
         {
-          "path": "data/forms/tr.json",
-          "bytes": 417717,
-          "hash": "7ce2f4cc"
+          "path": "data/forms/tr/trab.json",
+          "bytes": 9018,
+          "hash": "5e452eef"
+        },
+        {
+          "path": "data/forms/tr/trac.json",
+          "bytes": 22769,
+          "hash": "dbdf9bda"
+        },
+        {
+          "path": "data/forms/tr/trad.json",
+          "bytes": 9694,
+          "hash": "e5176fc2"
+        },
+        {
+          "path": "data/forms/tr/trae.json",
+          "bytes": 1818,
+          "hash": "6412412f"
+        },
+        {
+          "path": "data/forms/tr/traf.json",
+          "bytes": 18526,
+          "hash": "6ee4b67e"
+        },
+        {
+          "path": "data/forms/tr/trag.json",
+          "bytes": 6913,
+          "hash": "1c7459e5"
+        },
+        {
+          "path": "data/forms/tr/trai.json",
+          "bytes": 4645,
+          "hash": "cf8c9468"
+        },
+        {
+          "path": "data/forms/tr/tral.json",
+          "bytes": 9068,
+          "hash": "3efd1683"
+        },
+        {
+          "path": "data/forms/tr/tram.json",
+          "bytes": 26832,
+          "hash": "76e47310"
+        },
+        {
+          "path": "data/forms/tr/tran.json",
+          "bytes": 33989,
+          "hash": "2d35485d"
+        },
+        {
+          "path": "data/forms/tr/trap.json",
+          "bytes": 17801,
+          "hash": "ba92d705"
+        },
+        {
+          "path": "data/forms/tr/trar.json",
+          "bytes": 1243,
+          "hash": "0b6c5241"
+        },
+        {
+          "path": "data/forms/tr/tras.json",
+          "bytes": 108156,
+          "hash": "1ca4b97d"
+        },
+        {
+          "path": "data/forms/tr/trat.json",
+          "bytes": 9977,
+          "hash": "75a32662"
+        },
+        {
+          "path": "data/forms/tr/trau.json",
+          "bytes": 64,
+          "hash": "efaf0bdd"
+        },
+        {
+          "path": "data/forms/tr/trav.json",
+          "bytes": 35154,
+          "hash": "8b175802"
+        },
+        {
+          "path": "data/forms/tr/traz.json",
+          "bytes": 69,
+          "hash": "a25818b4"
+        },
+        {
+          "path": "data/forms/tr/tre.json",
+          "bytes": 9984,
+          "hash": "aeccb1ee"
+        },
+        {
+          "path": "data/forms/tr/tri.json",
+          "bytes": 50260,
+          "hash": "83344cb3"
+        },
+        {
+          "path": "data/forms/tr/tro.json",
+          "bytes": 31827,
+          "hash": "6e702142"
+        },
+        {
+          "path": "data/forms/tr/tru.json",
+          "bytes": 12920,
+          "hash": "ebc82dd8"
         }
       ]
     },
@@ -10250,24 +14760,24 @@
       "ex": [],
       "forms": []
     },
-    "u": {
+    "u_": {
       "search": [
         {
-          "path": "data/u.json",
-          "bytes": 78,
-          "hash": "2eb9f840"
+          "path": "data/u_.json",
+          "bytes": 79,
+          "hash": "3a1e8918"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/u.json",
-          "bytes": 161,
-          "hash": "fea2c8a3"
+          "path": "data/entry/u_.json",
+          "bytes": 162,
+          "hash": "29aaa7b2"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/u.json",
+          "path": "data/ex/u_.json",
           "bytes": 278,
           "hash": "b4e40a51"
         }
@@ -10844,24 +15354,24 @@
       ],
       "forms": []
     },
-    "v": {
+    "v_": {
       "search": [
         {
-          "path": "data/v.json",
-          "bytes": 80,
-          "hash": "b39cdd29"
+          "path": "data/v_.json",
+          "bytes": 81,
+          "hash": "d6b18a10"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/v.json",
-          "bytes": 179,
-          "hash": "0e9c3e08"
+          "path": "data/entry/v_.json",
+          "bytes": 180,
+          "hash": "7eb174bb"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/v.json",
+          "path": "data/ex/v_.json",
           "bytes": 234,
           "hash": "e9081197"
         }
@@ -10893,8 +15403,8 @@
       "forms": [
         {
           "path": "data/forms/va.json",
-          "bytes": 96353,
-          "hash": "8bfbbe5a"
+          "bytes": 96360,
+          "hash": "7a58bcfd"
         }
       ]
     },
@@ -10990,7 +15500,7 @@
         {
           "path": "data/forms/vi.json",
           "bytes": 118809,
-          "hash": "9e6148fc"
+          "hash": "72800152"
         }
       ]
     },
@@ -11150,24 +15660,24 @@
       "ex": [],
       "forms": []
     },
-    "w": {
+    "w_": {
       "search": [
         {
-          "path": "data/w.json",
-          "bytes": 116,
-          "hash": "92669cd6"
+          "path": "data/w_.json",
+          "bytes": 117,
+          "hash": "db6cbbbd"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/w.json",
-          "bytes": 173,
-          "hash": "efc656c6"
+          "path": "data/entry/w_.json",
+          "bytes": 174,
+          "hash": "ba14377e"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/w.json",
+          "path": "data/ex/w_.json",
           "bytes": 185,
           "hash": "2eb96765"
         }
@@ -11420,24 +15930,24 @@
       ],
       "forms": []
     },
-    "x": {
+    "x_": {
       "search": [
         {
-          "path": "data/x.json",
-          "bytes": 85,
-          "hash": "3f5b99a2"
+          "path": "data/x_.json",
+          "bytes": 86,
+          "hash": "296e4fa9"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/x.json",
-          "bytes": 318,
-          "hash": "6e54e690"
+          "path": "data/entry/x_.json",
+          "bytes": 319,
+          "hash": "1b9945b6"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/x.json",
+          "path": "data/ex/x_.json",
           "bytes": 184,
           "hash": "6bc09325"
         }
@@ -11720,24 +16230,24 @@
         }
       ]
     },
-    "y": {
+    "y_": {
       "search": [
         {
-          "path": "data/y.json",
-          "bytes": 107,
-          "hash": "c9b0c70d"
+          "path": "data/y_.json",
+          "bytes": 108,
+          "hash": "dbd49585"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/y.json",
-          "bytes": 242,
-          "hash": "fb8367f1"
+          "path": "data/entry/y_.json",
+          "bytes": 243,
+          "hash": "a90b666d"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/y.json",
+          "path": "data/ex/y_.json",
           "bytes": 294,
           "hash": "11e955db"
         }
@@ -11894,24 +16404,24 @@
         }
       ]
     },
-    "z": {
+    "z_": {
       "search": [
         {
-          "path": "data/z.json",
-          "bytes": 130,
-          "hash": "59e6441a"
+          "path": "data/z_.json",
+          "bytes": 131,
+          "hash": "969e721b"
         }
       ],
       "entry": [
         {
-          "path": "data/entry/z.json",
-          "bytes": 196,
-          "hash": "817fd002"
+          "path": "data/entry/z_.json",
+          "bytes": 197,
+          "hash": "a5e1d9b3"
         }
       ],
       "ex": [
         {
-          "path": "data/ex/z.json",
+          "path": "data/ex/z_.json",
           "bytes": 193,
           "hash": "f9b29696"
         }
@@ -12106,7 +16616,7 @@
         {
           "path": "data/forms/zo.json",
           "bytes": 14077,
-          "hash": "eeed1812"
+          "hash": "b9b4c489"
         }
       ]
     },
@@ -12199,79 +16709,79 @@
     "a1": [
       {
         "path": "data/cefr/a1.json",
-        "bytes": 54379,
-        "hash": "8bfae29d",
+        "bytes": 54500,
+        "hash": "0db118f6",
         "rows": 670
       }
     ],
     "a2": [
       {
         "path": "data/cefr/a2.json",
-        "bytes": 53423,
-        "hash": "dc867d8a",
+        "bytes": 53496,
+        "hash": "2e924ce7",
         "rows": 572
       }
     ],
     "b1": [
       {
         "path": "data/cefr/b1.json",
-        "bytes": 141636,
-        "hash": "3bf7d82d",
+        "bytes": 141817,
+        "hash": "2e584d04",
         "rows": 1489
       }
     ],
     "b2": [
       {
         "path": "data/cefr/b2.json",
-        "bytes": 202612,
-        "hash": "e39d94e4",
+        "bytes": 202761,
+        "hash": "c5fee53a",
         "rows": 2144
       }
     ],
     "c1": [
       {
         "path": "data/cefr/c1.json",
-        "bytes": 470473,
-        "hash": "12d66a9a",
+        "bytes": 470701,
+        "hash": "f42c2d2e",
         "rows": 5028
       }
     ],
     "c2": [
       {
         "path": "data/cefr/c2.json",
-        "bytes": 999847,
-        "hash": "e51a8873",
-        "rows": 10872
+        "bytes": 999940,
+        "hash": "92ac1b8c",
+        "rows": 10867
       },
       {
         "path": "data/cefr/c2-2.json",
-        "bytes": 999933,
-        "hash": "de4e93b1",
-        "rows": 11013
+        "bytes": 999863,
+        "hash": "1f75882a",
+        "rows": 11008
       },
       {
         "path": "data/cefr/c2-3.json",
-        "bytes": 999990,
-        "hash": "13753cd8",
-        "rows": 9561
+        "bytes": 999943,
+        "hash": "4bd6fbc2",
+        "rows": 9559
       },
       {
         "path": "data/cefr/c2-4.json",
-        "bytes": 999984,
-        "hash": "d30f3c1e",
-        "rows": 9785
+        "bytes": 999816,
+        "hash": "d1223537",
+        "rows": 9782
       },
       {
         "path": "data/cefr/c2-5.json",
-        "bytes": 999952,
-        "hash": "71feae56",
-        "rows": 9758
+        "bytes": 999870,
+        "hash": "88744ed5",
+        "rows": 9737
       },
       {
         "path": "data/cefr/c2-6.json",
-        "bytes": 91160,
-        "hash": "66b91cc8",
-        "rows": 928
+        "bytes": 94578,
+        "hash": "212a3c1b",
+        "rows": 964
       }
     ]
   },
@@ -12279,6 +16789,6 @@
     "entries": 61820,
     "forms": 232248,
     "examples": 49283,
-    "bytes": 59836005
+    "bytes": 59877636
   }
 }

@@ -1,7 +1,0 @@
-[
-{"id":"a:0","word":"a","ipa":"/a*/","cefr":"a1","pos":[{"pos":"prep","senses":["indica stato in luogo","indica moto a luogo","indica il tempo in cui si verifica un'azione","indica età"]},{"pos":"abbrev","senses":["abbreviazione in vari linguaggi specifici","nell'uso postale indica l'assicurata","abbreviazione di altezza","sigla dell'Austria nelle targhe automobilistiche"]},{"pos":"noun","senses":["prima lettera dell'alfabeto italiano"]},{"pos":"character","senses":["prima lettera dell'alfabeto italiano e di altre lingue."]}],"ex":[0,1,2]},
-{"id":"a:1","word":"à","cefr":"a1","pos":[{"pos":"verb","senses":["variante grafica, vedi ha"]}],"ex":[3,4]},
-{"id":"a:2","word":"-a","ipa":"/a/","cefr":"c2","pos":[{"pos":"suffix","senses":["desinenza femminile singolare;","desinenza maschile singolare:","desinenza femminile plurale, da qualcuno detta anche neutro plurale, vale a dire quel plurale irregolare concordato al femminile di alcuni nomi che al singolare sono maschili (ad esempio uova…","desinenza della terza persona singolare dell'indicativo presente della prima coniugazione;"]}]},
-{"id":"a:3","word":"a-","cefr":"c2","pos":[{"pos":"prefix","senses":["indica mancanza o privazione in parole di origine greca e moderna;","indica avvicinamento o direzione"]}]},
-{"id":"a:4","word":"a.","cefr":"b2","pos":[{"pos":"abbrev","senses":["anno, autore"]}]}
-]

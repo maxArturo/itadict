@@ -1,0 +1,6 @@
+[
+{"id":"cao:0","word":"caos","ipa":"/ˈkaos/","cefr":"b1","pos":[{"pos":"noun","senses":["la materia informe, antecedente al cosmo","fase precedente al completamento della creazione","stato di confusione o disordine estremo","\"mancanza\" o gesti inaspettati che \"creano\" \"scompiglio\" o stupore"]}],"ex":[511,583,638]},
+{"id":"cao:1","word":"caotico","ipa":"/kaˈɔtiko/","cefr":"c2","pos":[{"pos":"adj","senses":["del caos","persona senza organizzazione e talvolta volontariamente irrispettosa, senza creanza"]}],"ex":[400,1094,1218]},
+{"id":"cao:2","word":"caolino","ipa":"/kaoˈlino/","cefr":"c2","pos":[{"pos":"noun","senses":["roccia incoerente a base di silicati, che deriva dalla sedimentazione di rocce feldspatiche, e che si usa come materia prima per produrre materiali ceramici e refrattari"]}]},
+{"id":"cao:3","word":"caoticamente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo caotico; con caos, disordinatamente"]}]}
+]

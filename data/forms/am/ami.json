@@ -1,0 +1,14 @@
+{
+"ami":{"id":"am:1","lemma":"amo","label":"plurale"},
+"amiamo":{"id":"am:10","lemma":"amare","label":"prima persona plurale dell'indicativo presente"},
+"amiate":{"id":"am:10","lemma":"amare","label":"seconda persona plurale del congiuntivo presente"},
+"amica":{"id":"am:0","lemma":"amico","label":"femminile"},
+"amiche":{"id":"am:0","lemma":"amico","label":"femminile plurale"},
+"amichevoli":{"id":"am:12","lemma":"amichevole","label":"plurale"},
+"amici":{"id":"am:0","lemma":"amico","label":"plurale"},
+"amicizie":{"id":"am:5","lemma":"amicizia","label":"plurale"},
+"amigdale":{"id":"am:103","lemma":"amigdala","label":"plurale"},
+"amino":{"id":"am:10","lemma":"amare","label":"terza persona plurale del congiuntivo presente"},
+"aminoacidi":{"id":"am:283","lemma":"aminoacido","label":"plurale"},
+"amitti":{"id":"am:286","lemma":"amitto","label":"plurale"}
+}

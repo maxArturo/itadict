@@ -1,11 +1,11 @@
 {
-"diuretica":{"id":"di:1309","lemma":"diuretico","label":"femminile"},
-"diuretiche":{"id":"di:1309","lemma":"diuretico","label":"femminile plurale"},
-"diuretici":{"id":"di:1309","lemma":"diuretico","label":"plurale"},
-"diurna":{"id":"di:480","lemma":"diurno","label":"femminile"},
-"diurne":{"id":"di:479","lemma":"diurna","label":"plurale"},
-"diurni":{"id":"di:480","lemma":"diurno","label":"plurale"},
-"diuturna":{"id":"di:1313","lemma":"diuturno","label":"femminile"},
-"diuturne":{"id":"di:1313","lemma":"diuturno","label":"femminile plurale"},
-"diuturni":{"id":"di:1313","lemma":"diuturno","label":"plurale"}
+"diuretica":{"id":"diu:4","lemma":"diuretico","label":"femminile"},
+"diuretiche":{"id":"diu:4","lemma":"diuretico","label":"femminile plurale"},
+"diuretici":{"id":"diu:4","lemma":"diuretico","label":"plurale"},
+"diurna":{"id":"diu:1","lemma":"diurno","label":"femminile"},
+"diurne":{"id":"diu:0","lemma":"diurna","label":"plurale"},
+"diurni":{"id":"diu:1","lemma":"diurno","label":"plurale"},
+"diuturna":{"id":"diu:8","lemma":"diuturno","label":"femminile"},
+"diuturne":{"id":"diu:8","lemma":"diuturno","label":"femminile plurale"},
+"diuturni":{"id":"diu:8","lemma":"diuturno","label":"plurale"}
 }

@@ -1,0 +1,14 @@
+{
+"trarra":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare dell'indicativo futuro"},
+"trarrai":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare dell'indicativo futuro"},
+"trarranno":{"id":"tra:47","lemma":"trarre","label":"terza persona plurale dell'indicativo futuro"},
+"trarrebbe":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare del condizionale presente"},
+"trarrebbero":{"id":"tra:47","lemma":"trarre","label":"terza persona plurale del condizionale presente"},
+"trarrei":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare del condizionale presente"},
+"trarremmo":{"id":"tra:47","lemma":"trarre","label":"prima persona plurale del condizionale presente"},
+"trarremo":{"id":"tra:47","lemma":"trarre","label":"prima persona plurale dell'indicativo futuro"},
+"trarreste":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale del condizionale presente"},
+"trarresti":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare del condizionale presente"},
+"trarrete":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale dell'indicativo futuro"},
+"trarro":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare dell'indicativo futuro"}
+}

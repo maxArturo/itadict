@@ -656,7 +656,7 @@
 "punzonate":{"id":"pu:223","lemma":"punzonare","label":"seconda persona plurale dell'indicativo presente"},
 "punzonati":{"id":"pu:223","lemma":"punzonare","label":"participio passato maschile plurale"},
 "punzonato":{"id":"pu:223","lemma":"punzonare","label":"participio passato"},
-"punzonatrice":{"id":"ma:3","lemma":"macchina","label":"macchina per punzonare"},
+"punzonatrice":{"id":"mac:0","lemma":"macchina","label":"macchina per punzonare"},
 "punzonature":{"id":"pu:224","lemma":"punzonatura","label":"plurale"},
 "punzonava":{"id":"pu:223","lemma":"punzonare","label":"terza persona singolare dell'indicativo imperfetto"},
 "punzonavamo":{"id":"pu:223","lemma":"punzonare","label":"prima persona plurale dell'indicativo imperfetto"},

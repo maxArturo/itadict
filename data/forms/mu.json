@@ -460,7 +460,7 @@
 "muoviate":{"id":"mu:10","lemma":"muovere","label":"seconda persona plurale del congiuntivo presente"},
 "muovo":{"id":"mu:10","lemma":"muovere","label":"1ª persona singolare del presente semplice indicativo"},
 "muovono":{"id":"mu:10","lemma":"muovere","label":"terza persona plurale dell'indicativo presente"},
-"mura":{"id":"co:260","lemma":"conquista","label":"plurale collettivo di muro, fortificazioni costruite…"},
+"mura":{"id":"conq:1","lemma":"conquista","label":"plurale collettivo di muro, fortificazioni costruite…"},
 "muraglie":{"id":"mu:41","lemma":"muraglia","label":"plurale"},
 "murai":{"id":"mu:193","lemma":"murare","label":"prima persona singolare dell'indicativo passato remoto"},
 "muraiole":{"id":"mu:192","lemma":"muraiola","label":"plurale"},

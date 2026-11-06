@@ -1,0 +1,14 @@
+{
+"proba":{"id":"pro:255","lemma":"probo","label":"femminile"},
+"probabili":{"id":"pro:14","lemma":"probabile","label":"plurale"},
+"probabilistici":{"id":"pro:190","lemma":"probabilistico","label":"plurale"},
+"probanti":{"id":"pro:249","lemma":"probante","label":"plurale"},
+"probe":{"id":"pro:255","lemma":"probo","label":"femminile plurale"},
+"probi":{"id":"pro:255","lemma":"probo","label":"plurale"},
+"problematica":{"id":"pro:75","lemma":"problematico","label":"femminile"},
+"problematiche":{"id":"pro:75","lemma":"problematico","label":"femminile plurale"},
+"problematici":{"id":"pro:75","lemma":"problematico","label":"plurale"},
+"problemi":{"id":"pro:0","lemma":"problema","label":"plurale"},
+"proboscidata":{"id":"pro:256","lemma":"proboscidato","label":"femminile"},
+"proboscidati":{"id":"pro:256","lemma":"proboscidato","label":"plurale"}
+}

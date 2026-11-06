@@ -1,0 +1,16 @@
+[
+{"id":"mae:0","word":"maestro","ipa":"/maˈɛstro/","cefr":"a2","pos":[{"pos":"noun","senses":["persona molto competente o esperta in una determinata arte o abilità che è in grado di trasmettere le sue conoscenze a chi vuole apprenderle","colui che è talmente bravo nel suo lavoro da divenire un punto di riferimento per i suoi colleghi","persona venerata per erudizione","chi per professione esercita l'istruzione e l'educazione dei bambini nella scuola primaria"]},{"pos":"adj","senses":["che è molto rilevante"]}],"ex":[120,128,201]},
+{"id":"mae:1","word":"maestria","ipa":"/maesˈtria/","cefr":"c2","pos":[{"pos":"noun","senses":["dimostrazione di grande abilità nell'esecuzione di un'opera d'arte, d'un esercizio sportivo e di qualsiasi tipo di lavoro","grande capacità nel compiere, effettuare qualcosa"]}],"ex":[263,1121,1122]},
+{"id":"mae:2","word":"maestra","ipa":"//","cefr":"b2","pos":[{"pos":"noun","senses":["persona abilitata all'insegnamento nelle scuole elementari","donna abile nell'eseguire qualcosa","Albero al centro o a poppa di un veliero che reca la vela principale","persona o cosa che insegna nell'esistenza"]}],"ex":[229,257,379]},
+{"id":"mae:3","word":"maestoso","ipa":"/maeˈstozo/","cefr":"c2","pos":[{"pos":"adj","senses":["che è enorme, grandioso o solenne","molto ingombrante"]}],"ex":[496,497,1120]},
+{"id":"mae:4","word":"maestà","cefr":"b1","pos":[{"pos":"noun","senses":["relativa al/ad un regno"]}],"ex":[1084,1085,1086]},
+{"id":"mae:5","word":"maestosità","ipa":"/maestosiˈta/","cefr":"c2","pos":[{"pos":"noun","senses":["Che manifesta o denota maestà; che suscita ammirazione e rispetto imponente, nobile."]}],"ex":[1161]},
+{"id":"mae:6","word":"maestosamente","ipa":"/maestosaˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["in modo maestoso, con maestosità"]}]},
+{"id":"mae:7","word":"maestralata","ipa":"/maestraˈlata/","cefr":"c2","pos":[{"pos":"noun","senses":["Lo spirare del maestrale"]}]},
+{"id":"mae:8","word":"maestrale","ipa":"/maeˈstrale/","cefr":"c2","pos":[{"pos":"noun","senses":["vento fresco che nel Mediterraneo soffia da nord-ovest","la direzione dell'ago della bussola verso nord-ovest"]},{"pos":"adj","senses":["relativo alla direzione di nord-ovest o al vento che spira da quella direzione"]}]},
+{"id":"mae:9","word":"maestramente","ipa":"/maestraˈmente/","cefr":"c2","pos":[{"pos":"adv","senses":["con abilità"]}]},
+{"id":"mae:10","word":"maestranza","ipa":"/maesˈtrantsa/","cefr":"c2","pos":[{"pos":"noun","senses":["complesso di maestri operai di uno stabilimento, da cui dipendono gli operai apprendisti"]}]},
+{"id":"mae:11","word":"maestrevolmente","cefr":"c2","pos":[{"pos":"adv","senses":["in modo maestrevole; magistralmente"]}]},
+{"id":"mae:12","word":"maestro d'arte","cefr":"c2","pos":[{"pos":"phrase","senses":["nella scuola superiore italiana precedente al 2010, diplomato in arti applicate e visive"]}]},
+{"id":"mae:13","word":"maestro di campo","cefr":"c2","pos":[{"pos":"phrase","senses":["ufficiale comandante di reggimento nel Regno delle Due Sicilie"]}]}
+]

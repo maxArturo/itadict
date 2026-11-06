@@ -1,0 +1,20 @@
+{
+"trae":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare dell'indicativo presente"},
+"traemmo":{"id":"tra:47","lemma":"trarre","label":"prima persona plurale dell'indicativo passato remoto"},
+"traendo":{"id":"tra:47","lemma":"trarre","label":"gerundio presente"},
+"traente":{"id":"tra:47","lemma":"trarre","label":"participio presente singolare"},
+"traenti":{"id":"tra:47","lemma":"trarre","label":"participio presente plurale"},
+"traesse":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare del congiuntivo imperfetto"},
+"traessero":{"id":"tra:47","lemma":"trarre","label":"terza persona plurale del congiuntivo imperfetto"},
+"traessi":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare del congiuntivo imperfetto"},
+"traessimo":{"id":"tra:47","lemma":"trarre","label":"prima persona plurale del congiuntivo imperfetto"},
+"traeste":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale dell'indicativo passato remoto"},
+"traesti":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare dell'indicativo passato remoto"},
+"traete":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale dell'indicativo presente"},
+"traeva":{"id":"tra:47","lemma":"trarre","label":"terza persona singolare dell'indicativo imperfetto"},
+"traevamo":{"id":"tra:47","lemma":"trarre","label":"prima persona plurale dell'indicativo imperfetto"},
+"traevano":{"id":"tra:47","lemma":"trarre","label":"terza persona plurale dell'indicativo imperfetto"},
+"traevate":{"id":"tra:47","lemma":"trarre","label":"seconda persona plurale dell'indicativo imperfetto"},
+"traevi":{"id":"tra:47","lemma":"trarre","label":"seconda persona singolare dell'indicativo imperfetto"},
+"traevo":{"id":"tra:47","lemma":"trarre","label":"prima persona singolare dell'indicativo imperfetto"}
+}

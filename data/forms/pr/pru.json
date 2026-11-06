@@ -1,0 +1,11 @@
+{
+"prude":{"id":"pru:4","lemma":"prudere","label":"terza persona singolare dell'infinito presente"},
+"prudente":{"id":"pru:4","lemma":"prudere","label":"participio presente di singolare"},
+"prudenti":{"id":"pru:0","lemma":"prudente","label":"plurale"},
+"prudenze":{"id":"pru:1","lemma":"prudenza","label":"plurale"},
+"prudi":{"id":"pru:4","lemma":"prudere","label":"seconda persona singolare dell'indicativo presente"},
+"prue":{"id":"pru:7","lemma":"prua","label":"plurale"},
+"prugne":{"id":"pru:9","lemma":"prugna","label":"plurale"},
+"pruni":{"id":"pru:11","lemma":"pruno","label":"plurale"},
+"pruriti":{"id":"pru:3","lemma":"prurito","label":"plurale"}
+}

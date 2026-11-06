@@ -41,6 +41,9 @@ const EXCLUSIONS = path.join(ROOT, 'tools', 'data-exclusions.json');
 
 /** 1 MB means 1,000,000 bytes. The gate checks the same numbers. */
 const MAX_FILE = 1_000_000;
+/** Entry and form files split at 250 KB: one cold tap must not pull a whole fat bucket. */
+const ENTRY_CAP = 250_000;
+const FORM_CAP = 250_000;
 const MAX_SENSES = 4;
 const MAX_GLOSS = 200;
 const MAX_LABEL = 60;
@@ -507,10 +510,14 @@ function planEntryFiles(items) {
 }
 
 function splitEntryList(list, length) {
-  const key = prefixKey(list[0].key, length);
+  const prefix = prefixKey(list[0].key, length);
+  // A word shorter than the split prefix ("in") would take the bucket's own file name and
+  // shadow every split file for a two-letter query. Such a group gets a name no query matches,
+  // so the app falls back to the whole bucket instead of missing the rest of it.
+  const key = prefix.length < length ? prefix + '_' : prefix;
   const body = renderArray(list.map((item, index) => entryJson(item.entry, key + ':' + index, item.entry.ex)));
   const files = [{ key, items: list, body }];
-  if (Buffer.byteLength(body) <= MAX_FILE || length >= MAX_PREFIX) return files;
+  if (Buffer.byteLength(body) <= ENTRY_CAP || length >= MAX_PREFIX) return files;
   const parts = groupBy(list, (item) => prefixKey(item.key, length + 1));
   if (parts.size === 1) return files;
   return [...parts.values()].flatMap((group) => splitEntryList(group, length + 1));
@@ -518,9 +525,10 @@ function splitEntryList(list, length) {
 
 /** Object files (forms) split the same way, keyed by the form itself. */
 function planObjectFiles(list, length) {
-  const key = prefixKey(list[0].key, length);
+  const prefix = prefixKey(list[0].key, length);
+  const key = prefix.length < length ? prefix + '_' : prefix;
   const body = renderObject(list.map((item) => item.body));
-  if (Buffer.byteLength(body) <= MAX_FILE || length >= MAX_PREFIX) return [{ key, body }];
+  if (Buffer.byteLength(body) <= FORM_CAP || length >= MAX_PREFIX) return [{ key, body }];
   const parts = groupBy(list, (item) => prefixKey(item.key, length + 1));
   if (parts.size === 1) return [{ key, body }];
   return [...parts.values()].flatMap((group) => planObjectFiles(group, length + 1));
@@ -639,22 +647,46 @@ async function main() {
   const entryFiles = planEntryFiles(shipped.map((entry) => ({ key: entry.word, entry })));
   let exampleRows = 0;
 
-  // Ids are <file>:<position>. Examples become positions in the sibling ex file.
+  // Ids are <file>:<position>.
   for (const file of entryFiles) {
-    const sentences = [...new Set(file.items.flatMap((item) => item.entry.ex))].sort((a, b) => Number(a) - Number(b));
-    const position = new Map(sentences.map((id, index) => [id, index]));
     file.items.forEach((item, index) => {
       item.entry.id = file.key + ':' + index;
-      item.entry.ex = item.entry.ex.map((id) => position.get(id));
     });
-    file.sentences = sentences;
-    file.body = renderArray(file.items.map((item) => entryJson(item.entry, item.entry.id, item.entry.ex)));
-    if (Buffer.byteLength(file.body) > MAX_FILE) throw new Error(file.key + ': entry file grew over 1 MB after ids were assigned');
-    addFile('entry', file.key, file.body);
-    if (sentences.length > 0) {
-      exampleRows += sentences.length;
-      addFile('ex', file.key, renderArray(sentences.map((id) => JSON.stringify([id, textById.get(id)]))));
+  }
+
+  // Example ids are positions in the bucket's one example file. A split would shift every
+  // position after the split point, so the build fails instead of splitting. The gate
+  // repeats the rule because a silent mis-index is worse than a failed build.
+  const exampleSets = new Map();
+  for (const file of entryFiles) {
+    const bucket = file.key.slice(0, 2);
+    let set = exampleSets.get(bucket);
+    if (!set) exampleSets.set(bucket, (set = new Set()));
+    for (const item of file.items) for (const id of item.entry.ex) set.add(id);
+  }
+  /** @type {Map<string, Map<string, number>>} */
+  const examplePositions = new Map();
+  for (const [bucket, set] of exampleSets) {
+    const sentences = [...set].sort((a, b) => Number(a) - Number(b));
+    examplePositions.set(bucket, new Map(sentences.map((id, index) => [id, index])));
+    if (sentences.length === 0) continue;
+    const body = renderArray(sentences.map((id) => JSON.stringify([id, textById.get(id)])));
+    const bytes = Buffer.byteLength(body);
+    if (bytes > MAX_FILE) {
+      throw new Error('data/ex/' + bucket + '.json would need a split (' + bytes + ' bytes); example positions cannot survive it');
     }
+    addFile('ex', bucket, body);
+    exampleRows += sentences.length;
+  }
+
+  for (const file of entryFiles) {
+    const positions = examplePositions.get(file.key.slice(0, 2));
+    file.items.forEach((item) => {
+      item.entry.ex = item.entry.ex.map((id) => positions.get(id));
+    });
+    const body = renderArray(file.items.map((item) => entryJson(item.entry, item.entry.id, item.entry.ex)));
+    if (Buffer.byteLength(body) > MAX_FILE) throw new Error(file.key + ': entry file grew over 1 MB after ids were assigned');
+    addFile('entry', file.key, body);
     addFile('search', file.key, renderArray(file.items.map((item) => {
       const entry = item.entry;
       return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, entry.pos[0].senses[0]]);

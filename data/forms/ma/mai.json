@@ -1,0 +1,9 @@
+{
+"maiale":{"id":"mai:17","lemma":"maiala","label":"plurale"},
+"maiali":{"id":"mai:1","lemma":"maiale","label":"plurale"},
+"mainofobie":{"id":"mai:21","lemma":"mainofobia","label":"plurale"},
+"maioliche":{"id":"mai:8","lemma":"maiolica","label":"plurale"},
+"maionesi":{"id":"mai:3","lemma":"maionese","label":"plurale"},
+"maiorchine":{"id":"mai:23","lemma":"maiorchino","label":"Femminile plurale"},
+"maiuscola":{"id":"mai:5","lemma":"maiuscolo","label":"femminile singolare"}
+}

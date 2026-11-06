@@ -1,0 +1,10 @@
+{
+"maestosa":{"id":"mae:3","lemma":"maestoso","label":"femminile"},
+"maestose":{"id":"mae:3","lemma":"maestoso","label":"femminile plurale"},
+"maestosi":{"id":"mae:3","lemma":"maestoso","label":"plurale"},
+"maestra":{"id":"mae:0","lemma":"maestro","label":"forma flessa"},
+"maestrali":{"id":"mae:8","lemma":"maestrale","label":"plurale"},
+"maestranze":{"id":"mae:10","lemma":"maestranza","label":"plurale"},
+"maestre":{"id":"mae:0","lemma":"maestro","label":"femminile plurale"},
+"maestri":{"id":"mae:0","lemma":"maestro","label":"plurale"}
+}

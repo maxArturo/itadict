@@ -253,7 +253,7 @@
 "orecchieresti":{"id":"or:209","lemma":"orecchiare","label":"seconda persona singolare del condizionale presente"},
 "orecchierete":{"id":"or:209","lemma":"orecchiare","label":"seconda persona plurale dell'indicativo futuro"},
 "orecchiero":{"id":"or:209","lemma":"orecchiare","label":"prima persona singolare dell'indicativo futuro"},
-"orecchiette":{"id":"so:58","lemma":"sorta","label":"sorta di pasta della Puglia con l'aspetto di piccoli…"},
+"orecchiette":{"id":"sor:8","lemma":"sorta","label":"sorta di pasta della Puglia con l'aspetto di piccoli…"},
 "orecchini":{"id":"or:37","lemma":"orecchino","label":"plurale"},
 "orecchio":{"id":"or:209","lemma":"orecchiare","label":"terza persona singolare dell'indicativo passato remoto"},
 "orefici":{"id":"or:213","lemma":"orefice","label":"plurale"},

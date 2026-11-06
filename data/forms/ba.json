@@ -816,7 +816,7 @@
 "baluginiate":{"id":"ba:494","lemma":"baluginare","label":"seconda persona plurale del congiuntivo presente"},
 "baluginino":{"id":"ba:494","lemma":"baluginare","label":"terza persona plurale del congiuntivo presente"},
 "balugino":{"id":"ba:494","lemma":"baluginare","label":"prima persona singolare dell'indicativo presente"},
-"balza":{"id":"im:544","lemma":"impervio","label":"luogo ripido e dirupato; paesaggio scosceso e tormentato…"},
+"balza":{"id":"imp:255","lemma":"impervio","label":"luogo ripido e dirupato; paesaggio scosceso e tormentato…"},
 "balzai":{"id":"ba:498","lemma":"balzare","label":"prima persona singolare dell'indicativo passato remoto"},
 "balzammo":{"id":"ba:498","lemma":"balzare","label":"prima persona plurale dell'indicativo passato remoto"},
 "balzana":{"id":"ba:252","lemma":"balzano","label":"femminile"},

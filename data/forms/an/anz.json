@@ -1,0 +1,8 @@
+{
+"anziana":{"id":"anz:0","lemma":"anziano","label":"femminile"},
+"anziane":{"id":"anz:0","lemma":"anziano","label":"femminile plurale"},
+"anziani":{"id":"anz:0","lemma":"anziano","label":"plurale"},
+"anzianotta":{"id":"anz:6","lemma":"anzianotto","label":"femminile"},
+"anzianotte":{"id":"anz:6","lemma":"anzianotto","label":"femminile plurale"},
+"anzianotti":{"id":"anz:6","lemma":"anzianotto","label":"plurale"}
+}

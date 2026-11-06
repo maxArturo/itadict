@@ -1,0 +1,11 @@
+{
+"anfetamine":{"id":"anf:6","lemma":"anfetamina","label":"plurale"},
+"anfibi":{"id":"anf:3","lemma":"anfibio","label":"plurale"},
+"anfibia":{"id":"anf:3","lemma":"anfibio","label":"femminile"},
+"anfitriona":{"id":"anf:2","lemma":"anfitrione","label":"femminile"},
+"anfitrioni":{"id":"anf:2","lemma":"anfitrione","label":"plurale"},
+"anfore":{"id":"anf:17","lemma":"anfora","label":"plurale"},
+"anfotera":{"id":"anf:19","lemma":"anfotero","label":"femminile singolare"},
+"anfotere":{"id":"anf:19","lemma":"anfotero","label":"femminile plurale"},
+"anfoteri":{"id":"anf:19","lemma":"anfotero","label":"maschile plurale"}
+}

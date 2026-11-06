@@ -11,7 +11,7 @@
  * to prove one bad file is counted and the run goes on. Every response is checked except that one.
  */
 
-import { readdirSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { basename, extname, join, resolve, sep } from 'node:path';
@@ -137,8 +137,20 @@ check('every module under js/ is precached', absent.length === 0, absent.join(',
 // ---------------------------------------------------------------- the run
 
 let build;
+let caCount = 0;
+let casaId = '';
 try {
   build = JSON.parse(await readFile(join(REPO, 'data', 'index.json'), 'utf8'));
+  // The bucket file list changes with the split cap, so derive the fixtures from the manifest.
+  const caFiles = build.buckets.ca ?? { search: [], entry: [], ex: [], forms: [] };
+  caCount = caFiles.search.length + caFiles.entry.length + caFiles.ex.length + caFiles.forms.length;
+  for (const file of caFiles.entry) {
+    const home = JSON.parse(readFileSync(join(REPO, file.path), 'utf8')).find((entry) => entry.word === 'casa');
+    if (home) {
+      casaId = home.id;
+      break;
+    }
+  }
 } catch (error) {
   console.error('verify:offline: data/index.json is missing. Run npm run build:data first.');
   process.exit(1);
@@ -217,7 +229,7 @@ try {
   const deepPage = await deepContext.newPage();
   deepPage.setDefaultTimeout(20000);
   const deepRecord = watch(deepPage);
-  await deepPage.goto(app + '#/entry/ca:0', { waitUntil: 'load' });
+  await deepPage.goto(app + '#/entry/' + casaId, { waitUntil: 'load' });
   let headword = '';
   try {
     await deepPage.waitForSelector('.entry-screen .headword', { timeout: 20000 });
@@ -248,7 +260,7 @@ try {
   }, build.buckets.ca ?? { search: [], entry: [], ex: [], forms: [] });
   const lastProgress = download.progress[download.progress.length - 1] ?? [];
   check('the download action reports progress per file', download.progress.length === download.run.total && lastProgress[2] === 0, JSON.stringify(lastProgress));
-  check('the download action fetches every listed file', download.run.total === 4 && download.run.failures.length === 0, JSON.stringify(download.run.failures));
+  check('the download action fetches every listed file', download.run.total === caCount && download.run.failures.length === 0, JSON.stringify(download.run.failures));
   check('one bad file is counted and the run goes on', download.bad.failures.length === 1 && download.bad.done === 1, JSON.stringify(download.bad));
 
   // -------------------------------------------------------------- offline

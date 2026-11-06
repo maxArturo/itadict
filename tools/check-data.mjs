@@ -193,12 +193,14 @@ async function checkFiles(listed) {
 
 /** The file the app would pick for a key: the longest listed prefix it starts with. */
 function pickFile(files, key) {
+  // The build names a file after the folded, alphanumeric-only prefix, so match the same way.
+  const folded = String(key).normalize('NFD').replace(/\p{M}+/gu, '').toLowerCase().replace(/[^a-z0-9]/g, '');
   /** @type {any} */
   let best = null;
   let length = 0;
   for (const file of files) {
     const prefix = path.basename(file.path, '.json');
-    if (prefix.length > length && key.startsWith(prefix)) {
+    if (prefix.length > length && folded.startsWith(prefix)) {
       best = file;
       length = prefix.length;
     }
@@ -211,8 +213,12 @@ async function checkBodies(manifest, exclusions, byId) {
   let entryCount = 0;
   let sentenceCount = 0;
   for (const [key, bucket] of Object.entries(manifest.buckets)) {
-    /** @type {Map<string, string[]>} */
-    const sentences = new Map();
+    // Example ids are positions in this one file. A split would shift them, so it is an error.
+    if (bucket.ex.length > 1) {
+      fail('bucket "' + key + '": the example set splits into ' + bucket.ex.length + ' files, and positions would mis-index');
+    }
+    /** @type {string[]} */
+    let sentences = [];
     for (const file of bucket.ex) {
       const list = await readJson(path.join(ROOT, file.path));
       if (!Array.isArray(list)) {
@@ -231,7 +237,7 @@ async function checkBodies(manifest, exclusions, byId) {
         if (rows[index] !== undefined) fail(file.path + ': row ' + index + ' is listed twice');
         rows[index] = text;
       });
-      sentences.set(path.basename(file.path, '.json'), rows);
+      sentences = rows;
       sentenceCount += list.length;
     }
 
@@ -243,7 +249,7 @@ async function checkBodies(manifest, exclusions, byId) {
       }
       if (entries.length === 0) fail(file.path + ': is listed but holds no entry');
       const prefix = path.basename(file.path, '.json');
-      const sibling = sentences.get(prefix);
+      const sibling = bucket.ex.length === 1 ? sentences : undefined;
       entries.forEach((entry, index) => {
         entryCount += 1;
         if (!isObject(entry)) return fail(file.path + ': entry ' + index + ' must be an object');
@@ -385,7 +391,10 @@ async function checkIndexes(manifest, byId) {
         const entry = byId.get(claim.id);
         if (!entry) fail(file.path + ': form "' + form + '" points at unknown entry ' + claim.id);
         else if (entry.word !== claim.lemma) fail(file.path + ': form "' + form + '" says lemma "' + claim.lemma + '" but ' + claim.id + ' is "' + entry.word + '"');
-        if (!foldWord(form).replace(/[^a-z0-9]/g, '').startsWith(prefix)) fail(file.path + ': form "' + form + '" is in the wrong bucket');
+        // A trailing underscore marks a group shorter than the split prefix ("so" in "so_").
+        if (!foldWord(form).replace(/[^a-z0-9]/g, '').startsWith(prefix.replace(/_$/, ''))) {
+          fail(file.path + ': form "' + form + '" is in the wrong bucket');
+        }
         const picked = pickFile(bucket.forms, foldWord(form));
         if (picked !== null && picked.path !== file.path) fail(file.path + ': form "' + form + '" belongs in ' + picked.path);
       }

@@ -1,9 +1,9 @@
 {
-"didascalica":{"id":"di:675","lemma":"didascalico","label":"femminile"},
-"didascalici":{"id":"di:675","lemma":"didascalico","label":"plurale"},
-"didascalie":{"id":"di:401","lemma":"didascalia","label":"plurale"},
-"didattica":{"id":"di:351","lemma":"didattico","label":"femminile"},
-"didattiche":{"id":"di:351","lemma":"didattico","label":"femminile plurale"},
-"didattici":{"id":"di:351","lemma":"didattico","label":"plurale"},
-"didelfidi":{"id":"di:678","lemma":"didelfide","label":"plurale"}
+"didascalica":{"id":"did:8","lemma":"didascalico","label":"femminile"},
+"didascalici":{"id":"did:8","lemma":"didascalico","label":"plurale"},
+"didascalie":{"id":"did:2","lemma":"didascalia","label":"plurale"},
+"didattica":{"id":"did:1","lemma":"didattico","label":"femminile"},
+"didattiche":{"id":"did:1","lemma":"didattico","label":"femminile plurale"},
+"didattici":{"id":"did:1","lemma":"didattico","label":"plurale"},
+"didelfidi":{"id":"did:11","lemma":"didelfide","label":"plurale"}
 }

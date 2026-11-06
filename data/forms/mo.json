@@ -924,7 +924,7 @@
 "monumenti":{"id":"mo:54","lemma":"monumento","label":"plurale"},
 "monzesi":{"id":"mo:513","lemma":"monzese","label":"plurale"},
 "mora":{"id":"mo:189","lemma":"moro","label":"femminile"},
-"moracee":{"id":"di:492","lemma":"Dicotiledoni","label":"famiglia"},
+"moracee":{"id":"dic:14","lemma":"Dicotiledoni","label":"famiglia"},
 "morali":{"id":"mo:25","lemma":"morale","label":"plurale"},
 "moraliste":{"id":"mo:57","lemma":"moralista","label":"plurale"},
 "moralisti":{"id":"mo:57","lemma":"moralista","label":"plurale"},

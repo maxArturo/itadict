@@ -86,7 +86,7 @@
 "gabellino":{"id":"ga:161","lemma":"gabellare","label":"terza persona plurale del congiuntivo presente"},
 "gabello":{"id":"ga:161","lemma":"gabellare","label":"prima persona singolare dell'indicativo presente"},
 "gabinetti":{"id":"ga:19","lemma":"gabinetto","label":"plurale"},
-"gaffe":{"id":"im:19","lemma":"imbarazzante","label":"errore imbarazzante"},
+"gaffe":{"id":"imb:1","lemma":"imbarazzante","label":"errore imbarazzante"},
 "gagliarda":{"id":"ga:82","lemma":"gagliardo","label":"femminile"},
 "gagliarde":{"id":"ga:82","lemma":"gagliardo","label":"femminile plurale"},
 "gagliardi":{"id":"ga:82","lemma":"gagliardo","label":"plurale"},

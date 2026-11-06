@@ -470,25 +470,6 @@ export function createData(options = {}) {
   }
 
   /**
-   * Every entry of a bucket, in file order. The position is the second half of an entry id.
-   * @param {string} bucket
-   * @returns {Promise<Entry[]>}
-   */
-  function entries(bucket) {
-    return memo('entries:' + bucket, async () => {
-      /** @type {Entry[]} */
-      const out = [];
-      for (const body of await read(await files(bucket, 'entry', false))) {
-        for (const raw of Array.isArray(body) ? body : []) {
-          const entry = toEntry(raw);
-          if (entry !== null) out.push(entry);
-        }
-      }
-      return out;
-    });
-  }
-
-  /**
    * How many cards a CEFR deck holds, from the manifest alone: no file fetch.
    * @param {string} band
    * @returns {Promise<number>}
@@ -555,11 +536,22 @@ export function createData(options = {}) {
     async entry(id) {
       const bucket = bucketOfId(id);
       if (bucket === '') return null;
-      const list = await entries(bucket);
+      // The id names its own file ("com:1" lives in data/entry/co/com.json), so a cold open
+      // reads one file, not the whole two-letter bucket.
+      const bodies = await read(await files(bucket, 'entry', true));
       const index = Number(id.slice(bucket.length + 1));
-      const at = Number.isInteger(index) ? list[index] : undefined;
-      if (at !== undefined && at.id === id) return at;
-      return list.find((entry) => entry.id === id) ?? null;
+      if (bodies.length === 1 && Number.isInteger(index)) {
+        const list = Array.isArray(bodies[0]) ? bodies[0] : [];
+        const at = toEntry(list[index]);
+        if (at !== null && at.id === id) return at;
+      }
+      for (const body of bodies) {
+        for (const raw of Array.isArray(body) ? body : []) {
+          const entry = toEntry(raw);
+          if (entry !== null && entry.id === id) return entry;
+        }
+      }
+      return null;
     },
     /**
      * The sentences of one bucket, in file order. An entry's example positions index this list.

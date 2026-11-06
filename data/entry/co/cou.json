@@ -1,0 +1,15 @@
+[
+{"id":"cou:0","word":"country","ipa":"/ˈkau̯ntri/","cefr":"b2","pos":[{"pos":"adj","senses":["relativo allo stile musicale popolare tipico della campagna degli Stati Uniti d'America"]},{"pos":"noun","senses":["stile musicale popolare tipico della campagna degli Stati Uniti d'America"]}],"ex":[970,971,1107]},
+{"id":"cou:1","word":"coupon","ipa":"/ku.pɔ̃/","cefr":"c1","pos":[{"pos":"noun","senses":["tagliando","cedola","buono per ottenere prodotti o servizi (buoni pasti; buoni benzina ecc.)"]}],"ex":[1957,1958,1959]},
+{"id":"cou:2","word":"coulrofobia","cefr":"c2","pos":[{"pos":"noun","senses":["paura dei pagliacci e dei clown"]}],"ex":[1225,1226]},
+{"id":"cou:3","word":"coulomb","ipa":"/ˈkulomb/","cefr":"c2","pos":[{"pos":"noun","senses":["unità di misura del Sistema Internazionale della carica elettrica. Si indica con il simbolo C, e corrisponde alla quantità di carica elettrica trasportata in un secondo da un flusso di corrente di un…"]}],"ex":[2066]},
+{"id":"cou:4","word":"cougar","cefr":"c2","pos":[{"pos":"noun","senses":["donna di mezza età che sceglie come partner un uomo più giovane"]}]},
+{"id":"cou:5","word":"coulombiano","cefr":"c2","pos":[{"pos":"adj","senses":["che si attiene alla dottrina del fisico francese Charles Augustin de Coulomb"]}]},
+{"id":"cou:6","word":"coulombometria","ipa":"/,kulombomeˈtria/","cefr":"c2","pos":[{"pos":"noun","senses":["tecnica per la determinazione quantitativa di una sostanza con la misura del numero di coulomb che servono per la sua ossidazione o riduzione elettrolitica"]}]},
+{"id":"cou:7","word":"coulombometrico","cefr":"c2","pos":[{"pos":"adj","senses":["che riguarda i metodi per la determinazione quantitativa di una sostanza con la misura del numero di coulomb che servono per la sua ossidazione o riduzione elettrolitica"]}]},
+{"id":"cou:8","word":"counseling","cefr":"c2","pos":[{"pos":"noun","senses":["attività relazionale svolta da personale specializzato, col fine di orientare, sostenere e sviluppare le possibilità di chi si trova momentaneamente in difficoltà"]}]},
+{"id":"cou:9","word":"counselor","cefr":"c2","pos":[{"pos":"noun","senses":["consulente"]}]},
+{"id":"cou:10","word":"country manager","cefr":"c2","pos":[{"pos":"noun","senses":["chi dirige e coordina l'attività di una multinazionale per conto di una specifica nazione"]}]},
+{"id":"cou:11","word":"coupé","ipa":"/kuˈpe/","cefr":"c2","pos":[{"pos":"noun","senses":["auto sportiva a due porte"]}]},
+{"id":"cou:12","word":"couscoussiera","cefr":"c2","pos":[{"pos":"noun","senses":["pentola usata per preparare il couscous"]}]}
+]

@@ -1,0 +1,6 @@
+{
+"caffettiera":{"id":"mac:8","lemma":"macchinetta","label":"macchinetta per il caffè"},
+"caffettieri":{"id":"caf:3","lemma":"caffettiere","label":"plurale"},
+"cafona":{"id":"caf:6","lemma":"cafone","label":"femminile"},
+"cafoni":{"id":"caf:6","lemma":"cafone","label":"plurale"}
+}
