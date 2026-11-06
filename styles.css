@@ -1058,6 +1058,19 @@ mark {
 }
 
 /*
+ * The search field draws its ring only after a key. A field focused by a script or a tap keeps
+ * the plain fill, which is the reference app's look; the keyboard still gets its ring.
+ */
+.search-input:focus-visible {
+  outline: none;
+}
+
+html[data-input="keyboard"] .search-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/*
  * The shell is two rows: the scrollable screen area, then the tab bar. A grid row makes the bar
  * full width and below both panes at every width; the bar paints above the pane divider, which
  * ends at its top edge.

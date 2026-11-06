@@ -55,6 +55,21 @@ function registerWorker(container) {
 }
 
 /**
+ * Track the last input device, so a focus ring can follow the keyboard and nothing else. A text
+ * field focused by a script or a tap would otherwise draw Chromium's :focus-visible ring and make
+ * the app look like a web page. The field is never focused on boot.
+ *
+ * @param {Document} doc
+ */
+function trackInput(doc) {
+  const html = doc.documentElement;
+  if (!html) return;
+  html.setAttribute('data-input', 'pointer');
+  doc.addEventListener('keydown', () => html.setAttribute('data-input', 'keyboard'), true);
+  doc.addEventListener('pointerdown', () => html.setAttribute('data-input', 'pointer'), true);
+}
+
+/**
  * Start the app.
  *
  * @param {{
@@ -81,6 +96,7 @@ export function boot(options = {}) {
   if (!root) throw new Error(`itadict app: index.html must provide a #${ROOT_ID} root node`);
 
   registerWorker(options.serviceWorker);
+  trackInput(doc);
 
   const storage = options.storage ?? createStorage();
   const data = options.data ?? createData({ fetch: options.fetch, base: options.base });
