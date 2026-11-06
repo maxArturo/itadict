@@ -26,6 +26,7 @@ import { WORD_CAP, summarise, tokenize } from './text.js';
 /** @typedef {import('./data.js').Entry} Entry */
 /** @typedef {import('./data.js').ConjGroup} ConjGroup */
 /** @typedef {import('./text.js').Match} Match */
+/** @typedef {import('./study.js').Deck} Deck */
 /** @typedef {import('./text.js').Segment} Segment */
 
 const NAMESPACE = 'http://www.w3.org/2000/svg';
@@ -124,6 +125,7 @@ export function formRows(conj) {
  * @returns {{
  *   tabBar: () => HTMLElement,
  *   setActiveTab: (bar: HTMLElement, name: string) => void,
+ *   setTabBadge: (bar: HTMLElement, name: string, value: string) => void,
  *   searchScreen: (options: {
  *     search: (query: string) => Promise<{ rows: Row[], history: string[] }>,
  *     onCommit?: (query: string) => void,
@@ -137,7 +139,19 @@ export function formRows(conj) {
  *     examples: (indexes: number[]) => Promise<string[]>,
  *     query?: string,
  *     back?: { label: string, go?: () => void },
+ *     speech?: { available: () => boolean, speak: (text: string) => boolean },
  *   }) => HTMLElement,
+ *   studyScreen: (options: {
+ *     decks: () => Promise<Deck[]>,
+ *     cards: (deckId: string) => Promise<Array<{ id: string, word?: string, gloss?: string }>>,
+ *     load: (id: string) => Promise<{ word: string, ipa: string, sense: string, example: string } | null>,
+ *     grade: (id: string, remembered: boolean) => void,
+ *     note: (id: string) => string,
+ *     setNote: (id: string, text: string) => void,
+ *     speech: { available: () => boolean, speak: (text: string) => boolean },
+ *     entryHref: (id: string) => string,
+ *     onGrade?: () => void,
+ *   }) => { node: HTMLElement, refresh: () => void },
  *   placeholder: (options: { title: string, note: string }) => HTMLElement,
  * }}
  */
@@ -209,10 +223,28 @@ export function createUi(doc = globalThis.document) {
       const link = el('a', 'tab');
       link.href = HASH[name];
       link.setAttribute('data-tab', name);
-      link.append(icon(path), text('span', 'tab-label', label));
+      const badge = text('span', 'tab-badge', '');
+      badge.hidden = true;
+      link.append(icon(path), text('span', 'tab-label', label), badge);
       bar.append(link);
     }
     return bar;
+  }
+
+  /**
+   * A small count on one tab, or no badge when the value is empty.
+   * @param {HTMLElement} bar
+   * @param {string} name
+   * @param {string} value
+   */
+  function setTabBadge(bar, name, value) {
+    for (const node of Array.from(bar.children)) {
+      if (node.getAttribute('data-tab') !== name) continue;
+      const badge = /** @type {HTMLElement | null} */ (node.querySelector('.tab-badge'));
+      if (!badge) continue;
+      badge.textContent = value;
+      badge.hidden = value === '';
+    }
   }
 
   /**
@@ -450,6 +482,7 @@ export function createUi(doc = globalThis.document) {
    *   examples: (indexes: number[]) => Promise<string[]>,
    *   query?: string,
    *   back?: { label: string, go?: () => void },
+   *   speech?: { available: () => boolean, speak: (text: string) => boolean },
    * }} options
    * @returns {HTMLElement}
    */
@@ -495,7 +528,16 @@ export function createUi(doc = globalThis.document) {
     const note = text('p', 'note', '');
     note.setAttribute('role', 'status');
     note.hidden = true;
-    action('🔈', 'Speak', 'Audio arrives in a later build.');
+    // A speaker that cannot speak is never drawn.
+    if (options.speech?.available()) {
+      const speak = el('button', 'action');
+      speak.type = 'button';
+      speak.textContent = '🔈';
+      speak.setAttribute('aria-label', 'Speak');
+      speak.title = 'Speak';
+      speak.addEventListener('click', () => options.speech?.speak(row.headword));
+      actions.append(speak);
+    }
     action('＋', 'Add to list', 'Lists arrive in a later build.');
     bar.append(back, title, actions);
 
@@ -716,6 +758,364 @@ export function createUi(doc = globalThis.document) {
   }
 
   /**
+   * The Study screen: a deck list, then one full-screen card at a time.
+   *
+   * A run grades one card at a time, by swipe or by the two buttons, and the app writes the
+   * result at once. The app keeps this node alive, so tapping the headword, reading the entry
+   * and coming back lands on the same card.
+   *
+   * @param {{
+   *   decks: () => Promise<Deck[]>,
+   *   cards: (deckId: string) => Promise<Array<{ id: string, word?: string, gloss?: string }>>,
+   *   load: (id: string) => Promise<{ word: string, ipa: string, sense: string, example: string } | null>,
+   *   grade: (id: string, remembered: boolean) => void,
+   *   note: (id: string) => string,
+   *   setNote: (id: string, text: string) => void,
+   *   speech: { available: () => boolean, speak: (text: string) => boolean },
+   *   entryHref: (id: string) => string,
+   *   onGrade?: () => void,
+   * }} options
+   * @returns {{ node: HTMLElement, refresh: () => void }}
+   */
+  function studyScreen(options) {
+    const section = el('section', 'screen study-screen');
+    section.setAttribute('aria-label', 'Study');
+
+    const picker = el('div', 'study-picker');
+    const run = el('div', 'study-run');
+    run.hidden = true;
+    const done = el('div', 'study-finish');
+    done.hidden = true;
+    section.append(picker, run, done);
+
+    /** @type {'picker' | 'card' | 'done'} */
+    let screen = 'picker';
+    /** @type {Array<{ id: string, word?: string, gloss?: string }>} */
+    let cards = [];
+    let index = 0;
+    let graded = 0;
+    let remembered = 0;
+    let forgot = 0;
+    let lastGrade = '';
+    let deckTitle = '';
+    let deckToken = 0;
+    let cardToken = 0;
+    /** @type {any} */ let fill = null;
+    /** @type {any} */ let gradeLabel = null;
+    /** @type {any} */ let remainingLabel = null;
+    /** @type {any} */ let cardHost = null;
+
+    /** @param {'picker' | 'card' | 'done'} next */
+    function show(next) {
+      screen = next;
+      picker.hidden = next !== 'picker';
+      run.hidden = next !== 'card';
+      done.hidden = next !== 'done';
+    }
+
+    function paintProgress() {
+      const total = cards.length;
+      const remaining = Math.max(0, total - graded);
+      // A deck can hold hundreds of cards; keep the first grade visible.
+      if (fill) fill.style.width = (total === 0 || graded === 0 ? 0 : Math.max(0.6, (graded / total) * 100)) + '%';
+      if (gradeLabel) gradeLabel.textContent = lastGrade === '' ? 'Ready' : lastGrade;
+      if (remainingLabel) {
+        remainingLabel.textContent = String(remaining);
+        remainingLabel.setAttribute('aria-label', remaining === 1 ? '1 card left' : remaining + ' cards left');
+      }
+    }
+
+    async function drawDecks() {
+      const mine = (deckToken += 1);
+      /** @type {Deck[]} */
+      let decks = [];
+      try {
+        decks = await options.decks();
+      } catch {
+        decks = [];
+      }
+      if (mine !== deckToken || screen !== 'picker') return;
+      const list = el('ul', 'decks');
+      for (const deck of decks) {
+        const item = el('li');
+        const button = el('button', 'row deck');
+        button.type = 'button';
+        button.setAttribute('data-deck', deck.id);
+        const main = el('span', 'row-main');
+        main.append(text('span', 'row-headword', deck.title));
+        if (deck.note) main.append(text('span', 'row-pronunciation', deck.note));
+        button.append(main, text('span', 'deck-count', String(deck.count)));
+        button.addEventListener('click', () => {
+          if (deck.count > 0) void openDeck(deck);
+        });
+        item.append(button);
+        list.append(item);
+      }
+      const dueDeck = decks.find((deck) => deck.id === 'due');
+      const due = dueDeck ? dueDeck.count : 0;
+      picker.replaceChildren(
+        text('h1', 'page-title', 'Study'),
+        text('p', 'study-due', due === 1 ? '1 card due today.' : due + ' cards due today.'),
+        list,
+        text('p', 'study-note', 'CEFR bands are approximate, derived from frequency.'),
+        text('p', 'study-note', 'Review reminders show only while the app is open. iOS has no web push for a web app.'),
+      );
+    }
+
+    /** @param {Deck} deck */
+    async function openDeck(deck) {
+      const mine = (deckToken += 1);
+      /** @type {Array<{ id: string, word?: string, gloss?: string }>} */
+      let list = [];
+      try {
+        list = await options.cards(deck.id);
+      } catch {
+        list = [];
+      }
+      if (mine !== deckToken) return;
+      cards = list;
+      index = 0;
+      graded = 0;
+      remembered = 0;
+      forgot = 0;
+      lastGrade = '';
+      deckTitle = deck.title;
+      if (cards.length === 0) {
+        show('picker');
+        void drawDecks();
+        return;
+      }
+      paintRun();
+      show('card');
+      void showCard();
+    }
+
+    function paintRun() {
+      const top = el('header', 'study-top');
+      const close = el('button', 'study-close');
+      close.type = 'button';
+      close.textContent = '×';
+      close.setAttribute('aria-label', 'Close this run');
+      close.addEventListener('click', () => {
+        deckToken += 1;
+        cardToken += 1;
+        show('picker');
+        void drawDecks();
+      });
+      const progress = el('div', 'study-progress');
+      const track = el('div', 'study-track');
+      fill = el('div', 'study-fill');
+      track.append(fill);
+      const meta = el('div', 'study-meta');
+      gradeLabel = text('span', 'study-grade', 'Ready');
+      remainingLabel = text('span', 'study-left', '0');
+      meta.append(gradeLabel, remainingLabel);
+      progress.append(track, meta);
+      top.append(close, progress);
+
+      cardHost = el('div', 'study-card-host');
+      const hints = el('div', 'study-hints');
+      hints.append(
+        text('p', 'study-hint', 'Swipe right if you remembered, left if not.'),
+        text('p', 'study-hint', 'Tap the headword to see the entry.'),
+      );
+      const actions = el('div', 'study-actions');
+      const wrong = el('button', 'study-forgot');
+      wrong.type = 'button';
+      wrong.textContent = 'Forgot';
+      wrong.addEventListener('click', () => grade(false));
+      const right = el('button', 'study-remembered');
+      right.type = 'button';
+      right.textContent = 'Remembered';
+      right.addEventListener('click', () => grade(true));
+      actions.append(wrong, right);
+      run.replaceChildren(top, cardHost, hints, actions);
+      paintProgress();
+    }
+
+    /**
+     * @param {{ word: string, ipa: string, sense: string, example: string }} view
+     * @param {string} id
+     */
+    function paintCard(view, id) {
+      if (!cardHost) return;
+      const box = el('article', 'study-card');
+
+      const headword = el('a', 'study-headword');
+      headword.href = options.entryHref(id);
+      headword.textContent = view.word;
+      headword.draggable = false;
+
+      const ipa = text('p', 'study-ipa', view.ipa);
+      ipa.hidden = view.ipa === '';
+      const sense = text('p', 'study-sense', view.sense);
+      sense.hidden = view.sense === '';
+
+      const example = el('div', 'study-example');
+      example.append(text('span', 'study-label', 'Example'), text('p', 'study-sentence', view.example));
+      example.hidden = view.example === '';
+
+      const note = el('div', 'study-note');
+      note.append(text('span', 'study-label', 'Note'));
+      const field = el('textarea', 'study-note-input');
+      field.rows = 2;
+      field.placeholder = 'Tap here to add a note...';
+      field.setAttribute('aria-label', 'Note');
+      field.value = options.note(id);
+      field.addEventListener('input', () => options.setNote(id, field.value));
+      note.append(field);
+
+      box.append(headword, ipa, sense, example, note);
+
+      // A speaker that cannot speak is never drawn.
+      if (options.speech.available()) {
+        const speak = el('button', 'study-speak');
+        speak.type = 'button';
+        speak.setAttribute('aria-label', 'Speak ' + view.word);
+        speak.title = 'Speak';
+        speak.append(icon('M4 9h3l4-4v14l-4-4H4zM14.5 8a5.5 5.5 0 0 1 0 8', 'study-speak-icon'));
+        speak.addEventListener('click', () => options.speech.speak(view.word));
+        box.append(speak);
+      }
+
+      attachSwipe(box);
+      cardHost.replaceChildren(box);
+      paintProgress();
+    }
+
+    /**
+     * Swipe right for remembered, left for forgot. A tap or a tap on a control is not a swipe.
+     * @param {HTMLElement} box
+     */
+    function attachSwipe(box) {
+      let startX = 0;
+      let startY = 0;
+      let dx = 0;
+      let active = false;
+      let captured = false;
+      /**
+       * Stop the click a drag would otherwise send to the headword link.
+       * @param {Event} event
+       */
+      const blockClick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+      // A link under the finger starts a native drag and cancels the swipe.
+      box.addEventListener('dragstart', (event) => event.preventDefault());
+      box.addEventListener('pointerdown', (event) => {
+        const target = /** @type {any} */ (event.target);
+        if (target && typeof target.closest === 'function' && target.closest('textarea, input, button')) return;
+        startX = event.clientX;
+        startY = event.clientY;
+        dx = 0;
+        active = true;
+        captured = false;
+        box.style.transition = 'none';
+      });
+      box.addEventListener('pointermove', (event) => {
+        if (!active) return;
+        dx = event.clientX - startX;
+        if (Math.abs(dx) <= 6 || Math.abs(event.clientY - startY) > 40) return;
+        // Capture only once the drag starts, so a tap still reaches the headword link.
+        if (!captured && typeof box.setPointerCapture === 'function') {
+          box.setPointerCapture(event.pointerId);
+          captured = true;
+        }
+        box.style.transform = 'translateX(' + dx + 'px)';
+      });
+      const release = () => {
+        if (!active) return;
+        active = false;
+        box.style.transition = '';
+        box.style.transform = '';
+        if (Math.abs(dx) > 60) {
+          // The headword is a link across the whole card, so a drag ends with a click.
+          box.addEventListener('click', blockClick, true);
+          globalThis.setTimeout(() => box.removeEventListener('click', blockClick, true), 400);
+          grade(dx > 0);
+        }
+        dx = 0;
+      };
+      box.addEventListener('pointerup', release);
+      box.addEventListener('pointercancel', release);
+    }
+
+    /** @param {boolean} isRemembered */
+    function grade(isRemembered) {
+      if (screen !== 'card') return;
+      const card = cards[index];
+      if (!card) return;
+      options.grade(card.id, isRemembered);
+      graded += 1;
+      if (isRemembered) remembered += 1;
+      else forgot += 1;
+      lastGrade = isRemembered ? 'Remembered' : 'Forgot';
+      index += 1;
+      options.onGrade?.();
+      if (index >= cards.length) {
+        finishRun();
+        return;
+      }
+      paintProgress();
+      void showCard();
+    }
+
+    async function showCard() {
+      const card = cards[index];
+      if (!card) return finishRun();
+      const mine = (cardToken += 1);
+      paintCard({ word: card.word ?? '', ipa: '', sense: card.gloss ?? '', example: '' }, card.id);
+      /** @type {{ word: string, ipa: string, sense: string, example: string } | null} */
+      let view = null;
+      try {
+        view = await options.load(card.id);
+      } catch {
+        view = null;
+      }
+      if (mine !== cardToken || screen !== 'card') return;
+      if (view !== null) paintCard(view, card.id);
+    }
+
+    function finishRun() {
+      show('done');
+      const summary = el('article', 'study-summary');
+      summary.append(
+        text('h1', 'page-title', deckTitle + ' done'),
+        text('p', 'study-total', graded === 1 ? '1 card graded' : graded + ' cards graded'),
+        text('p', 'study-total', remembered + ' remembered, ' + forgot + ' forgot'),
+      );
+      const back = el('button', 'study-done');
+      back.type = 'button';
+      back.textContent = 'Done';
+      back.addEventListener('click', () => {
+        show('picker');
+        void drawDecks();
+      });
+      summary.append(back);
+      done.replaceChildren(summary);
+    }
+
+    section.addEventListener('keydown', (event) => {
+      if (screen !== 'card') return;
+      const target = /** @type {any} */ (event.target);
+      if (target && target.tagName === 'TEXTAREA') return;
+      if (event.key === 'ArrowRight') grade(true);
+      else if (event.key === 'ArrowLeft') grade(false);
+    });
+
+    void drawDecks();
+
+    return {
+      node: section,
+      /** Re-read the deck counts. A run in progress is left alone. */
+      refresh: () => {
+        if (screen === 'picker') void drawDecks();
+      },
+    };
+  }
+
+  /**
    * A screen whose feature is a later build. It says so, so nothing is a dead end.
    * @param {{ title: string, note: string }} options
    * @returns {HTMLElement}
@@ -726,5 +1126,5 @@ export function createUi(doc = globalThis.document) {
     return section;
   }
 
-  return { tabBar, setActiveTab, searchScreen, textScreen, entryScreen, placeholder };
+  return { tabBar, setActiveTab, setTabBadge, searchScreen, textScreen, entryScreen, studyScreen, placeholder };
 }

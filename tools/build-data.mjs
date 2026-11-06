@@ -627,7 +627,15 @@ async function main() {
   await mkdir(DATA, { recursive: true });
   await writeFile(path.join(DATA, 'LICENSE-DATA.md'), licenceText());
 
-  const files = new Map(SETS.map(([name]) => [name, []]));
+  // Bucket keys are always two characters. A split file keeps its longer name, but it is
+  // listed under its two-character bucket, so the app finds it by longest prefix.
+  const files = new Map(SETS.map(([name]) => [name, new Map()]));
+  const addFile = (name, key, body) => {
+    const bucket = key.slice(0, 2);
+    let list = files.get(name).get(bucket);
+    if (!list) files.get(name).set(bucket, (list = []));
+    list.push({ key, body });
+  };
   const entryFiles = planEntryFiles(shipped.map((entry) => ({ key: entry.word, entry })));
   let exampleRows = 0;
 
@@ -642,19 +650,15 @@ async function main() {
     file.sentences = sentences;
     file.body = renderArray(file.items.map((item) => entryJson(item.entry, item.entry.id, item.entry.ex)));
     if (Buffer.byteLength(file.body) > MAX_FILE) throw new Error(file.key + ': entry file grew over 1 MB after ids were assigned');
-    files.get('entry').push({ key: file.key, body: file.body });
-    exampleRows += sentences.length;
-    files.get('ex').push({
-      key: file.key,
-      body: renderArray(sentences.map((id) => JSON.stringify([id, textById.get(id)]))),
-    });
-    files.get('search').push({
-      key: file.key,
-      body: renderArray(file.items.map((item) => {
-        const entry = item.entry;
-        return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, entry.pos[0].senses[0]]);
-      })),
-    });
+    addFile('entry', file.key, file.body);
+    if (sentences.length > 0) {
+      exampleRows += sentences.length;
+      addFile('ex', file.key, renderArray(sentences.map((id) => JSON.stringify([id, textById.get(id)]))));
+    }
+    addFile('search', file.key, renderArray(file.items.map((item) => {
+      const entry = item.entry;
+      return JSON.stringify([foldWord(entry.word), entry.id, entry.word, entry.ipa, entry.pos[0].pos, entry.pos[0].senses[0]]);
+    })));
   }
 
   const idByWord = new Map(shipped.map((entry) => [entry.word, entry.id]));
@@ -665,30 +669,26 @@ async function main() {
       body: JSON.stringify(form) + ':' + JSON.stringify({ id: idByWord.get(claim.lemma), lemma: claim.lemma, label: claim.label }),
     }));
   for (const [, list] of groupBy(formItems, (item) => prefixKey(item.key, 2))) {
-    for (const file of planObjectFiles(list, 2)) files.get('forms').push({ key: file.key, body: file.body });
+    for (const file of planObjectFiles(list, 2)) addFile('forms', file.key, file.body);
   }
 
-  // Buckets are the union of the four sets; a missing member ships empty.
+  // Buckets are the union of the four sets. A set with no record in a bucket lists no file.
   const buckets = new Map();
-  for (const [name, list] of files) {
-    for (const file of list) {
-      let bucket = buckets.get(file.key);
+  for (const [name, byBucket] of files) {
+    for (const [key, list] of byBucket) {
+      let bucket = buckets.get(key);
       if (!bucket) {
         bucket = { search: [], entry: [], ex: [], forms: [] };
-        buckets.set(file.key, bucket);
+        buckets.set(key, bucket);
       }
-      bucket[name].push({ path: 'data/' + filePath(DIR_OF.get(name), file.key), body: file.body });
-    }
-  }
-  for (const [key, bucket] of buckets) {
-    for (const [name] of SETS) {
-      if (bucket[name].length === 0) {
-        bucket[name].push({ path: 'data/' + filePath(DIR_OF.get(name), key), body: name === 'forms' ? '{}\n' : '[]\n' });
+      for (const file of list) {
+        bucket[name].push({ path: 'data/' + filePath(DIR_OF.get(name), file.key), body: file.body });
       }
     }
   }
 
   const written = [];
+  const setBytes = { search: 0, entry: 0, ex: 0, forms: 0 };
   for (const [, bucket] of buckets) {
     for (const [name] of SETS) {
       bucket[name].sort((a, b) => (a.path < b.path ? -1 : 1));
@@ -701,9 +701,49 @@ async function main() {
         file.bytes = bytes;
         file.hash = createHash('sha256').update(file.body).digest('hex').slice(0, 8);
         delete file.body;
+        setBytes[name] += bytes;
         written.push(file);
       }
     }
+  }
+
+  // CEFR decks: one array per band, split to stay under the file cap.
+  const cefr = {};
+  for (const band of BAND_ORDER) {
+    const rows = shipped
+      .filter((entry) => entry.cefr === band)
+      .map((entry) => JSON.stringify([entry.id, entry.word, entry.pos[0].pos, entry.pos[0].senses[0]]));
+    /** @type {Array<{ path: string, bytes: number, hash: string }>} */
+    const deckFiles = [];
+    let chunk = [];
+    let size = 2;
+    let part = 1;
+    const flush = async () => {
+      const name = part === 1 ? band + '.json' : band + '-' + part + '.json';
+      const body = '[\n' + chunk.join(',\n') + '\n]\n';
+      const rel = 'cefr/' + name;
+      await mkdir(path.join(DATA, 'cefr'), { recursive: true });
+      await writeFile(path.join(DATA, rel), body);
+      const record = {
+        path: 'data/' + rel,
+        bytes: Buffer.byteLength(body),
+        hash: createHash('sha256').update(body).digest('hex').slice(0, 8),
+        rows: chunk.length,
+      };
+      deckFiles.push(record);
+      written.push(record);
+      part += 1;
+      chunk = [];
+      size = 2;
+    };
+    for (const row of rows) {
+      const bytes = Buffer.byteLength(row) + 2;
+      if (chunk.length > 0 && size + bytes > MAX_FILE) await flush();
+      chunk.push(row);
+      size += bytes;
+    }
+    if (chunk.length > 0) await flush();
+    cefr[band] = deckFiles;
   }
 
   const sourceStats = await Promise.all(SOURCES.map((source) => stat(path.join(CACHE, source.file))));
@@ -723,6 +763,7 @@ async function main() {
     persons: PERSON_LABELS,
     sources: SOURCES.map((source) => ({ url: source.url, licence: source.licence })),
     buckets: Object.fromEntries(keys.map((key) => [key, buckets.get(key)])),
+    cefr,
     totals: { entries: shipped.length, forms: forms.size, examples: exampleRows, bytes },
   };
   const manifestText = JSON.stringify(manifest, null, 2) + '\n';
@@ -733,11 +774,10 @@ async function main() {
   const verbs = shipped.filter((entry) => entry.pos.some((group) => group.pos === 'verb'));
   const with30 = verbs.filter((entry) => entry.conj.length > 0 && entry.conj.reduce((n, group) => n + group.forms.filter(Boolean).length, 0) >= 30).length;
   const largest = Math.max(...written.map((file) => file.bytes));
-  const sizeOfSet = (dir, exact) => written.filter((file) => (exact ? /^data\/[a-z0-9_]+\.json$/.test(file.path) && !file.path.includes('/') : file.path.startsWith(dir))).reduce((total, file) => total + file.bytes, 0);
-  const searchBytes = written.filter((file) => /^data\/(?:[a-z0-9_]+\/)?[a-z0-9_]+\.json$/.test(file.path) && !file.path.startsWith('data/entry/') && !file.path.startsWith('data/ex/') && !file.path.startsWith('data/forms/')).reduce((total, file) => total + file.bytes, 0);
-  const entryBytes = sizeOfSet('data/entry/', false);
-  const formBytes = sizeOfSet('data/forms/', false);
-  const exBytes = sizeOfSet('data/ex/', false);
+  const searchBytes = setBytes.search;
+  const entryBytes = setBytes.entry;
+  const formBytes = setBytes.forms;
+  const exBytes = setBytes.ex;
   const merged = shipped.filter((entry) => entry.pos.length > 1).length;
 
   console.log([
@@ -754,6 +794,7 @@ async function main() {
       (formMisses.unshipped + formMisses.unknown) + ' (lemma not shipped ' + formMisses.unshipped + ', no lemma record ' + formMisses.unknown + ')',
     'examples              ' + attachments + ' attachments, ' + textById.size + ' distinct sentences, ' + exampleRows + ' rows, ' + exBytes + ' bytes',
     'bytes                 search ' + searchBytes + ', entry ' + entryBytes + ', forms ' + formBytes + ', ex ' + exBytes + ', total ' + bytes,
+    'cefr decks            ' + BAND_ORDER.map((band) => band + ':' + cefr[band].reduce((n, file) => n + 1, 0) + 'f/' + cefr[band].reduce((n, file) => n + file.bytes, 0) + 'B').join(' '),
     'files                 ' + written.length + ', largest ' + largest + ', buckets ' + keys.length,
     'build time            ' + ((Date.now() - started) / 1000).toFixed(1) + 's',
     'manifest              ' + Buffer.byteLength(manifestText) + ' bytes, ' + version,

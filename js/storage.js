@@ -3,29 +3,45 @@
  * Persistence: one key, one envelope, one `migrate()` chain.
  *
  * ```js
- * localStorage['itadict'] = { v: 1, data: { history: [...], opened: [...] } }
+ * localStorage['itadict'] = {
+ *   v: 2,
+ *   data: { history: [...], opened: [...], schedule: {...}, notes: {...} }
+ * }
  * ```
  *
- * `history` is the last {@link HISTORY_MAX} search queries, newest first. An entry id carries its
- * own location, so nothing has to remember a bucket.
+ * `history` is the last {@link HISTORY_MAX} search queries, newest first. `opened` is the last
+ * {@link OPENED_MAX} entries opened, newest first. `schedule` is one study card per entry id and
+ * `notes` is one note per entry id. An entry id carries its own location, so nothing has to
+ * remember a bucket.
  *
  * Nothing is pruned. A blob this build cannot read (unparsable, foreign, newer) is left exactly
  * where it is and writes are refused, so data is never clobbered; the app keeps working from
  * memory for the session.
  */
 
+import { readCard } from './study.js';
+
 /** The one persistent key. No second key, no export, no import. */
 export const KEY = 'itadict';
 
 /** The envelope version this build understands and writes. */
-export const VERSION = 1;
+export const VERSION = 2;
 
 /** How many queries search history keeps. */
 export const HISTORY_MAX = 50;
 
+/** How many recently opened entries the History deck keeps. */
+export const OPENED_MAX = 50;
+
 /**
  * Envelope contents once versioned. Extra top-level keys survive untouched.
- * @typedef {{ history: string[], [key: string]: unknown }} Data
+ * @typedef {{
+ *   history: string[],
+ *   opened: string[],
+ *   schedule: Record<string, import('./study.js').Card>,
+ *   notes: Record<string, string>,
+ *   [key: string]: unknown,
+ * }} Data
  */
 
 /** A `localStorage`-shaped backend; injected so the module is testable without a DOM. */
@@ -34,12 +50,14 @@ export const HISTORY_MAX = 50;
 /** @typedef {(data: Data) => Data} Step */
 
 /**
- * One migration step per version bump, keyed by the version it *produces*. Empty because `v: 1`
- * is the first shipped envelope: the chain exists so the first bump is one entry here plus
- * `VERSION`, and never a boot that probes a set of versioned keys.
+ * One migration step per version bump, keyed by the version it *produces*.
+ * Step 2 adds study: the card schedule, the notes and the recently opened entries. A v1 blob
+ * has none of them, so the step gives the three empty collections and normalise fills the rest.
  * @type {Record<number, Step>}
  */
-const STEPS = {};
+const STEPS = {
+  2: (data) => ({ ...data, schedule: {}, notes: {}, opened: [] }),
+};
 
 /**
  * The single migration entry point. Walks `v` forward to {@link VERSION}, running one registered
@@ -84,7 +102,43 @@ function normalise(data) {
       .filter((query) => typeof query === 'string' && query.trim() !== '')
       .map((query) => /** @type {string} */ (query).trim())
       .slice(0, HISTORY_MAX),
+    opened: Array.isArray(source.opened)
+      ? [...new Set(source.opened.filter((id) => typeof id === 'string' && id !== ''))].slice(0, OPENED_MAX)
+      : [],
+    schedule: normaliseSchedule(source.schedule),
+    notes: normaliseNotes(source.notes),
   };
+}
+
+/**
+ * Keep only well-formed cards, with the five known fields.
+ * @param {unknown} value
+ * @returns {Record<string, import('./study.js').Card>}
+ */
+function normaliseSchedule(value) {
+  /** @type {Record<string, import('./study.js').Card>} */
+  const out = {};
+  if (!isPlain(value)) return out;
+  for (const [id, card] of Object.entries(/** @type {Record<string, unknown>} */ (value))) {
+    const clean = readCard(card);
+    if (id !== '' && clean !== null) out[id] = clean;
+  }
+  return out;
+}
+
+/**
+ * Keep only non-empty notes on non-empty ids.
+ * @param {unknown} value
+ * @returns {Record<string, string>}
+ */
+function normaliseNotes(value) {
+  /** @type {Record<string, string>} */
+  const out = {};
+  if (!isPlain(value)) return out;
+  for (const [id, note] of Object.entries(/** @type {Record<string, unknown>} */ (value))) {
+    if (id !== '' && typeof note === 'string' && note.trim() !== '') out[id] = note;
+  }
+  return out;
 }
 
 /** @param {string} message @param {unknown} [detail] */
@@ -139,6 +193,12 @@ function open(backend) {
  *   history: () => string[],
  *   addQuery: (query: string) => string[],
  *   clearHistory: () => void,
+ *   schedule: () => Record<string, import('./study.js').Card>,
+ *   setSchedule: (id: string, card: import('./study.js').Card) => void,
+ *   note: (id: string) => string,
+ *   setNote: (id: string, text: string) => void,
+ *   opened: () => string[],
+ *   addOpened: (id: string) => void,
  *   save: () => boolean,
  * }}
  */
@@ -168,6 +228,48 @@ export function createStorage(backend = globalThis.localStorage) {
     /** False once writes are refused (newer, foreign or unwritable blob). */
     get writable() {
       return writable;
+    },
+    /** The stored cards, by entry id. A copy: callers never mutate the envelope. */
+    schedule: () => ({ ...data.schedule }),
+    /**
+     * Store one graded card and write the envelope now.
+     * @param {string} id
+     * @param {import('./study.js').Card} card
+     */
+    setSchedule(id, card) {
+      const clean = readCard(card);
+      if (typeof id !== 'string' || id === '' || clean === null) return;
+      data.schedule[id] = clean;
+      persist();
+    },
+    /**
+     * The note of one entry, or an empty string.
+     * @param {string} id
+     * @returns {string}
+     */
+    note: (id) => data.notes[id] ?? '',
+    /**
+     * Store or clear one note and write the envelope now.
+     * @param {string} id
+     * @param {string} text
+     */
+    setNote(id, text) {
+      if (typeof id !== 'string' || id === '') return;
+      const clean = typeof text === 'string' ? text : '';
+      if (clean.trim() === '') delete data.notes[id];
+      else data.notes[id] = clean;
+      persist();
+    },
+    /** The entries opened most recently, newest first. A copy. */
+    opened: () => [...data.opened],
+    /**
+     * Put one entry at the front of the History deck and write the envelope now.
+     * @param {string} id
+     */
+    addOpened(id) {
+      if (typeof id !== 'string' || id === '') return;
+      data.opened = [id, ...data.opened.filter((entry) => entry !== id)].slice(0, OPENED_MAX);
+      persist();
     },
     /** The stored queries, newest first. A copy: callers never mutate the envelope. */
     history: () => [...data.history],

@@ -691,3 +691,325 @@ mark {
   color: var(--muted);
 }
 
+
+
+/* ---------------------------------------------------------------- Study */
+
+/*
+ * The Study tab: a deck list, then one card on the whole screen. The card is the only coloured
+ * surface in the app; everything else stays on the system background. At 390x664 the card fills
+ * the space between the progress bar and the grade buttons, and scrolls inside if a note grows.
+ */
+
+.tab {
+  position: relative;
+}
+
+.tab-badge {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  margin-left: 6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--match);
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.study-screen {
+  height: 100%;
+}
+
+.study-picker {
+  padding-bottom: 16px;
+}
+
+.study-due {
+  margin: 4px 16px 8px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.study-note {
+  margin: 6px 16px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.decks {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck {
+  width: 100%;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.deck .row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.deck-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.study-run {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 12px env(safe-area-inset-bottom);
+}
+
+/* An author display rule beats the hidden attribute; restore it. */
+.study-run[hidden] {
+  display: none;
+}
+
+.study-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.study-close {
+  flex: 0 0 auto;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.study-progress {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.study-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--fill);
+  overflow: hidden;
+}
+
+.study-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ffcc00, #0a84ff 45%, #34c759);
+  transition: width 0.2s ease;
+}
+
+.study-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.study-left {
+  font-variant-numeric: tabular-nums;
+}
+
+.study-card-host {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.study-card {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 22px 20px 64px;
+  border-radius: 16px;
+  background: #f6a13a;
+  color: #1c1c1e;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+.study-headword {
+  margin: 0;
+  color: #1c1c1e;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.study-ipa,
+.study-sense,
+.study-sentence {
+  margin: 0;
+}
+
+.study-ipa {
+  font-size: 17px;
+  line-height: 22px;
+  opacity: 0.75;
+}
+
+.study-sense {
+  font-size: 19px;
+  line-height: 26px;
+}
+
+.study-label {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.study-example,
+.study-note {
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.study-note-input {
+  width: 100%;
+  min-height: 56px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.28);
+  color: #1c1c1e;
+  font: inherit;
+  resize: none;
+}
+
+.study-note-input::placeholder {
+  color: rgba(28, 28, 30, 0.55);
+}
+
+.study-speak {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.35);
+  color: #1c1c1e;
+  cursor: pointer;
+}
+
+.study-speak-icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.study-hints {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.study-hint {
+  margin: 2px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.study-actions {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0 12px;
+}
+
+.study-forgot,
+.study-remembered,
+.study-done {
+  flex: 1 1 0;
+  min-height: var(--tap);
+  border: 0.5px solid var(--hairline);
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.study-forgot {
+  background: var(--group);
+  color: var(--fg);
+}
+
+.study-remembered,
+.study-done {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
+
+.study-finish {
+  display: flex;
+  height: 100%;
+}
+
+.study-finish[hidden] {
+  display: none;
+}
+
+.study-summary {
+  margin: auto;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.study-total {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+.study-done {
+  width: 100%;
+  max-width: 320px;
+  margin: 20px auto 0;
+}
+

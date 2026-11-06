@@ -1,5 +1,5 @@
 {
-  "version": "v1-11546c1cf5d5",
+  "version": "v1-eeb5e34d3756",
   "built": "2026-11-06",
   "partial": false,
   "bucketKey": "fold to lowercase, strip diacritics, first two letters or digits",
@@ -49,13 +49,7 @@
           "hash": "6427a026"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/0.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "1": {
       "search": [
@@ -79,13 +73,7 @@
           "hash": "3f9c0ae9"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/1.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "2": {
       "search": [
@@ -109,13 +97,7 @@
           "hash": "cdaa1449"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/2.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "3": {
       "search": [
@@ -139,13 +121,7 @@
           "hash": "8589acd7"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/3.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "4": {
       "search": [
@@ -169,13 +145,7 @@
           "hash": "f1fb8171"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/4.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "5": {
       "search": [
@@ -199,13 +169,7 @@
           "hash": "29ded036"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/5.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "6": {
       "search": [
@@ -259,13 +223,7 @@
           "hash": "ab7a9e67"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/7.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "8": {
       "search": [
@@ -289,13 +247,7 @@
           "hash": "d5ba9121"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/8.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "9": {
       "search": [
@@ -319,13 +271,7 @@
           "hash": "4560ac10"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/9.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "00": {
       "search": [
@@ -342,20 +288,8 @@
           "hash": "7df68fd7"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/00.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/00.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "4g": {
       "search": [
@@ -372,20 +306,8 @@
           "hash": "0d1c2802"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/4g.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/4g.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "5g": {
       "search": [
@@ -402,20 +324,8 @@
           "hash": "8ab17250"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/5g.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/5g.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "_": {
       "search": [
@@ -439,13 +349,7 @@
           "hash": "6e468a51"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/_.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "a": {
       "search": [
@@ -469,13 +373,7 @@
           "hash": "a848604d"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/a.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "aa": {
       "search": [
@@ -499,13 +397,7 @@
           "hash": "2f6281d8"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/aa.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ab": {
       "search": [
@@ -709,13 +601,7 @@
           "hash": "36bfb2ec"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ah.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ai": {
       "search": [
@@ -762,20 +648,8 @@
           "hash": "9690a33f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/aj.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/aj.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ak": {
       "search": [
@@ -792,20 +666,8 @@
           "hash": "6d9d69e9"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ak.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ak.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "al": {
       "search": [
@@ -1152,20 +1014,8 @@
           "hash": "ead6ce53"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ax.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ax.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ay": {
       "search": [
@@ -1182,20 +1032,8 @@
           "hash": "aa79caf4"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ay.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ay.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "az": {
       "search": [
@@ -1249,13 +1087,7 @@
           "hash": "c4264179"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/b.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ba": {
       "search": [
@@ -1309,13 +1141,7 @@
           "hash": "77ba7957"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/bc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "bd": {
       "search": [
@@ -1339,13 +1165,7 @@
           "hash": "bc586ca8"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/bd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "be": {
       "search": [
@@ -1392,20 +1212,8 @@
           "hash": "eb81b3af"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bh": {
       "search": [
@@ -1429,13 +1237,7 @@
           "hash": "c34d09e4"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/bh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "bi": {
       "search": [
@@ -1482,20 +1284,8 @@
           "hash": "98dee96a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bj.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bj.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bl": {
       "search": [
@@ -1549,13 +1339,7 @@
           "hash": "d0c27429"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/bm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "bn": {
       "search": [
@@ -1572,20 +1356,8 @@
           "hash": "e20a1da8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bo": {
       "search": [
@@ -1632,20 +1404,8 @@
           "hash": "b976aed3"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bq": {
       "search": [
@@ -1662,20 +1422,8 @@
           "hash": "7621344b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bq.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bq.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "br": {
       "search": [
@@ -1722,20 +1470,8 @@
           "hash": "522e5a6f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bt": {
       "search": [
@@ -1752,20 +1488,8 @@
           "hash": "041e37f1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "bu": {
       "search": [
@@ -1842,20 +1566,8 @@
           "hash": "f79c64c2"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/bz.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/bz.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "c": {
       "search": [
@@ -1879,13 +1591,7 @@
           "hash": "63e98378"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/c.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ca": {
       "search": [
@@ -1939,13 +1645,7 @@
           "hash": "a079ddd6"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "cd": {
       "search": [
@@ -1969,13 +1669,7 @@
           "hash": "911b4bc5"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ce": {
       "search": [
@@ -2022,20 +1716,8 @@
           "hash": "808a8a8b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/cf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/cf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "cg": {
       "search": [
@@ -2052,20 +1734,8 @@
           "hash": "8bd71d6f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/cg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/cg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ch": {
       "search": [
@@ -2179,13 +1849,7 @@
           "hash": "7a1c07fd"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "cn": {
       "search": [
@@ -2209,13 +1873,7 @@
           "hash": "36931958"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "co": {
       "search": [
@@ -2241,575 +1899,95 @@
       ],
       "forms": [
         {
-          "path": "data/forms/co.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
-    },
-    "coa": {
-      "search": [
-        {
-          "path": "data/co/coa.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coa.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coa.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
-        {
           "path": "data/forms/co/coa.json",
           "bytes": 26990,
           "hash": "92ad2d70"
-        }
-      ]
-    },
-    "coc": {
-      "search": [
-        {
-          "path": "data/co/coc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/coc.json",
           "bytes": 9948,
           "hash": "a20f74d2"
-        }
-      ]
-    },
-    "cod": {
-      "search": [
-        {
-          "path": "data/co/cod.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cod.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cod.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cod.json",
           "bytes": 5558,
           "hash": "5d8a3c49"
-        }
-      ]
-    },
-    "coe": {
-      "search": [
-        {
-          "path": "data/co/coe.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coe.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coe.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/coe.json",
           "bytes": 10406,
           "hash": "a8e9676b"
-        }
-      ]
-    },
-    "cof": {
-      "search": [
-        {
-          "path": "data/co/cof.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cof.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cof.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cof.json",
           "bytes": 4655,
           "hash": "e951ea33"
-        }
-      ]
-    },
-    "cog": {
-      "search": [
-        {
-          "path": "data/co/cog.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cog.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cog.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cog.json",
           "bytes": 13268,
           "hash": "60674e09"
-        }
-      ]
-    },
-    "coi": {
-      "search": [
-        {
-          "path": "data/co/coi.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coi.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coi.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/coi.json",
           "bytes": 23190,
           "hash": "2bb3586e"
-        }
-      ]
-    },
-    "cok": {
-      "search": [
-        {
-          "path": "data/co/cok.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cok.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cok.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cok.json",
           "bytes": 75,
           "hash": "d0c5b864"
-        }
-      ]
-    },
-    "col": {
-      "search": [
-        {
-          "path": "data/co/col.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/col.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/col.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/col.json",
           "bytes": 121943,
           "hash": "1f86eb7d"
-        }
-      ]
-    },
-    "com": {
-      "search": [
-        {
-          "path": "data/co/com.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/com.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/com.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/com.json",
           "bytes": 255738,
           "hash": "91a16553"
-        }
-      ]
-    },
-    "con": {
-      "search": [
-        {
-          "path": "data/co/con.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/con.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/con.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/con.json",
           "bytes": 782326,
           "hash": "3ca46919"
-        }
-      ]
-    },
-    "coo": {
-      "search": [
-        {
-          "path": "data/co/coo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/coo.json",
           "bytes": 13927,
           "hash": "13dbffb8"
-        }
-      ]
-    },
-    "cop": {
-      "search": [
-        {
-          "path": "data/co/cop.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cop.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cop.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cop.json",
           "bytes": 32778,
           "hash": "10d54e6d"
-        }
-      ]
-    },
-    "cor": {
-      "search": [
-        {
-          "path": "data/co/cor.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cor.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cor.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cor.json",
           "bytes": 118084,
           "hash": "87512c66"
-        }
-      ]
-    },
-    "cos": {
-      "search": [
-        {
-          "path": "data/co/cos.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cos.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cos.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cos.json",
           "bytes": 74535,
           "hash": "bfec9e9f"
-        }
-      ]
-    },
-    "cot": {
-      "search": [
-        {
-          "path": "data/co/cot.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cot.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cot.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cot.json",
           "bytes": 4933,
           "hash": "9558c599"
-        }
-      ]
-    },
-    "cou": {
-      "search": [
-        {
-          "path": "data/co/cou.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cou.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cou.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cou.json",
           "bytes": 157,
           "hash": "33c81de6"
-        }
-      ]
-    },
-    "cov": {
-      "search": [
-        {
-          "path": "data/co/cov.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/cov.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/cov.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/cov.json",
           "bytes": 13610,
           "hash": "da972df0"
-        }
-      ]
-    },
-    "coz": {
-      "search": [
-        {
-          "path": "data/co/coz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/co/coz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/co/coz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/co/coz.json",
           "bytes": 4053,
@@ -2832,20 +2010,8 @@
           "hash": "5215cf99"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/cp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/cp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "cr": {
       "search": [
@@ -2899,13 +2065,7 @@
           "hash": "5a459f98"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ct": {
       "search": [
@@ -2922,13 +2082,7 @@
           "hash": "e4fb657d"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ct.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
+      "ex": [],
       "forms": [
         {
           "path": "data/forms/ct.json",
@@ -2982,20 +2136,8 @@
           "hash": "b79c4c34"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/cv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/cv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "cy": {
       "search": [
@@ -3019,13 +2161,7 @@
           "hash": "e9a7c10f"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/cy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "cz": {
       "search": [
@@ -3042,20 +2178,8 @@
           "hash": "45949a76"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/cz.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/cz.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "d": {
       "search": [
@@ -3079,13 +2203,7 @@
           "hash": "2076b456"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/d.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "da": {
       "search": [
@@ -3139,13 +2257,7 @@
           "hash": "0a5bec88"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/dc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "dd": {
       "search": [
@@ -3162,20 +2274,8 @@
           "hash": "7d71de9f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "de": {
       "search": [
@@ -3201,545 +2301,90 @@
       ],
       "forms": [
         {
-          "path": "data/forms/de.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
-    },
-    "dea": {
-      "search": [
-        {
-          "path": "data/de/dea.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dea.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dea.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
-        {
           "path": "data/forms/de/dea.json",
           "bytes": 13499,
           "hash": "43e695cd"
-        }
-      ]
-    },
-    "deb": {
-      "search": [
-        {
-          "path": "data/de/deb.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/deb.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/deb.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/deb.json",
           "bytes": 18118,
           "hash": "cb3489e3"
-        }
-      ]
-    },
-    "dec": {
-      "search": [
-        {
-          "path": "data/de/dec.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dec.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dec.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/dec.json",
           "bytes": 225848,
           "hash": "594e0fc3"
-        }
-      ]
-    },
-    "ded": {
-      "search": [
-        {
-          "path": "data/de/ded.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/ded.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/ded.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/ded.json",
           "bytes": 9134,
           "hash": "18d6bdfb"
-        }
-      ]
-    },
-    "def": {
-      "search": [
-        {
-          "path": "data/de/def.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/def.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/def.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/def.json",
           "bytes": 108624,
           "hash": "7866ff24"
-        }
-      ]
-    },
-    "deg": {
-      "search": [
-        {
-          "path": "data/de/deg.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/deg.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/deg.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/deg.json",
           "bytes": 40331,
           "hash": "2df506c6"
-        }
-      ]
-    },
-    "dei": {
-      "search": [
-        {
-          "path": "data/de/dei.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dei.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dei.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/dei.json",
           "bytes": 28250,
           "hash": "09dbee71"
-        }
-      ]
-    },
-    "del": {
-      "search": [
-        {
-          "path": "data/de/del.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/del.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/del.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/del.json",
           "bytes": 58707,
           "hash": "4cc8ed7e"
-        }
-      ]
-    },
-    "dem": {
-      "search": [
-        {
-          "path": "data/de/dem.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dem.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dem.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/dem.json",
           "bytes": 80741,
           "hash": "ec01fb9f"
-        }
-      ]
-    },
-    "den": {
-      "search": [
-        {
-          "path": "data/de/den.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/den.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/den.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/den.json",
           "bytes": 51874,
           "hash": "a6209317"
-        }
-      ]
-    },
-    "deo": {
-      "search": [
-        {
-          "path": "data/de/deo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/deo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/deo.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/deo.json",
           "bytes": 13466,
           "hash": "79f36751"
-        }
-      ]
-    },
-    "dep": {
-      "search": [
-        {
-          "path": "data/de/dep.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dep.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dep.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/dep.json",
           "bytes": 107954,
           "hash": "46121d98"
-        }
-      ]
-    },
-    "deq": {
-      "search": [
-        {
-          "path": "data/de/deq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/deq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/deq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/deq.json",
           "bytes": 4617,
           "hash": "3e7c77ce"
-        }
-      ]
-    },
-    "der": {
-      "search": [
-        {
-          "path": "data/de/der.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/der.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/der.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/der.json",
           "bytes": 64845,
           "hash": "f585a817"
-        }
-      ]
-    },
-    "des": {
-      "search": [
-        {
-          "path": "data/de/des.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/des.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/des.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/des.json",
           "bytes": 126986,
           "hash": "0cc3f849"
-        }
-      ]
-    },
-    "det": {
-      "search": [
-        {
-          "path": "data/de/det.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/det.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/det.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/det.json",
           "bytes": 64084,
           "hash": "cf831376"
-        }
-      ]
-    },
-    "deu": {
-      "search": [
-        {
-          "path": "data/de/deu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/deu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/deu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/deu.json",
           "bytes": 4954,
           "hash": "95ccf557"
-        }
-      ]
-    },
-    "dev": {
-      "search": [
-        {
-          "path": "data/de/dev.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/de/dev.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/de/dev.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/de/dev.json",
           "bytes": 26823,
@@ -3762,20 +2407,8 @@
           "hash": "b7a61cd7"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dh": {
       "search": [
@@ -3792,20 +2425,8 @@
           "hash": "4f9fe969"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "di": {
       "search": [
@@ -3834,542 +2455,92 @@
           "path": "data/forms/di.json",
           "bytes": 187,
           "hash": "1339eef6"
-        }
-      ]
-    },
-    "dia": {
-      "search": [
-        {
-          "path": "data/di/dia.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dia.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dia.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dia.json",
           "bytes": 34757,
           "hash": "3b38cfe4"
-        }
-      ]
-    },
-    "dib": {
-      "search": [
-        {
-          "path": "data/di/dib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dib.json",
           "bytes": 4514,
           "hash": "1010d191"
-        }
-      ]
-    },
-    "dic": {
-      "search": [
-        {
-          "path": "data/di/dic.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dic.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dic.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dic.json",
           "bytes": 12072,
           "hash": "82b8e280"
-        }
-      ]
-    },
-    "did": {
-      "search": [
-        {
-          "path": "data/di/did.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/did.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/did.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/did.json",
           "bytes": 497,
           "hash": "bebf4a92"
-        }
-      ]
-    },
-    "die": {
-      "search": [
-        {
-          "path": "data/di/die.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/die.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/die.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/die.json",
           "bytes": 9307,
           "hash": "6314695e"
-        }
-      ]
-    },
-    "dif": {
-      "search": [
-        {
-          "path": "data/di/dif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dif.json",
           "bytes": 45874,
           "hash": "8634f3a5"
-        }
-      ]
-    },
-    "dig": {
-      "search": [
-        {
-          "path": "data/di/dig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dig.json",
           "bytes": 44899,
           "hash": "249c8475"
-        }
-      ]
-    },
-    "dil": {
-      "search": [
-        {
-          "path": "data/di/dil.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dil.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dil.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dil.json",
           "bytes": 65221,
           "hash": "138510a6"
-        }
-      ]
-    },
-    "dim": {
-      "search": [
-        {
-          "path": "data/di/dim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dim.json",
           "bytes": 51935,
           "hash": "c02dfcbd"
-        }
-      ]
-    },
-    "din": {
-      "search": [
-        {
-          "path": "data/di/din.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/din.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/din.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/din.json",
           "bytes": 18613,
           "hash": "93ee4538"
-        }
-      ]
-    },
-    "dio": {
-      "search": [
-        {
-          "path": "data/di/dio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dio.json",
           "bytes": 190,
           "hash": "90843c2b"
-        }
-      ]
-    },
-    "dip": {
-      "search": [
-        {
-          "path": "data/di/dip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dip.json",
           "bytes": 22618,
           "hash": "dc5c7ee7"
-        }
-      ]
-    },
-    "dir": {
-      "search": [
-        {
-          "path": "data/di/dir.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dir.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dir.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dir.json",
           "bytes": 54409,
           "hash": "eac235f3"
-        }
-      ]
-    },
-    "dis": {
-      "search": [
-        {
-          "path": "data/di/dis.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dis.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dis.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dis.json",
           "bytes": 626386,
           "hash": "de90d292"
-        }
-      ]
-    },
-    "dit": {
-      "search": [
-        {
-          "path": "data/di/dit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/dit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/dit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/dit.json",
           "bytes": 5352,
           "hash": "1b5b371d"
-        }
-      ]
-    },
-    "diu": {
-      "search": [
-        {
-          "path": "data/di/diu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/diu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/diu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/diu.json",
           "bytes": 615,
           "hash": "2af70fc8"
-        }
-      ]
-    },
-    "div": {
-      "search": [
-        {
-          "path": "data/di/div.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/div.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/div.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/div.json",
           "bytes": 78578,
           "hash": "40583247"
-        }
-      ]
-    },
-    "diz": {
-      "search": [
-        {
-          "path": "data/di/diz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/di/diz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/di/diz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/di/diz.json",
           "bytes": 133,
@@ -4392,20 +2563,8 @@
           "hash": "5ddcbca5"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dj.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dj.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dl": {
       "search": [
@@ -4422,20 +2581,8 @@
           "hash": "ce32261f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dm": {
       "search": [
@@ -4452,20 +2599,8 @@
           "hash": "d5f0a8fc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dn": {
       "search": [
@@ -4489,13 +2624,7 @@
           "hash": "14a89166"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/dn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "do": {
       "search": [
@@ -4542,20 +2671,8 @@
           "hash": "3a2f5579"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dr": {
       "search": [
@@ -4602,20 +2719,8 @@
           "hash": "53c5791b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ds.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ds.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "dt": {
       "search": [
@@ -4632,20 +2737,8 @@
           "hash": "eb0f6620"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "du": {
       "search": [
@@ -4699,13 +2792,7 @@
           "hash": "8c9fbc66"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/dv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "dy": {
       "search": [
@@ -4722,20 +2809,8 @@
           "hash": "24702c56"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/dy.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/dy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "e": {
       "search": [
@@ -4782,20 +2857,8 @@
           "hash": "31dd881c"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/e9.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/e9.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ea": {
       "search": [
@@ -4812,20 +2875,8 @@
           "hash": "66f1e938"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ea.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ea.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "eb": {
       "search": [
@@ -4932,20 +2983,8 @@
           "hash": "e4967aa9"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ee.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ee.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ef": {
       "search": [
@@ -5029,13 +3068,7 @@
           "hash": "5624b361"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/eh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ei": {
       "search": [
@@ -5412,20 +3445,8 @@
           "hash": "3d46892f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ew.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ew.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ex": {
       "search": [
@@ -5472,20 +3493,8 @@
           "hash": "f7d1a654"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ey.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ey.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ez": {
       "search": [
@@ -5509,13 +3518,7 @@
           "hash": "42e048ba"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ez.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "f": {
       "search": [
@@ -5539,13 +3542,7 @@
           "hash": "1aa76145"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/f.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "fa": {
       "search": [
@@ -5599,13 +3596,7 @@
           "hash": "a63c3c50"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/fb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "fc": {
       "search": [
@@ -5629,13 +3620,7 @@
           "hash": "82a0f687"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/fc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "fd": {
       "search": [
@@ -5652,20 +3637,8 @@
           "hash": "d4289c35"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fe": {
       "search": [
@@ -5712,20 +3685,8 @@
           "hash": "08afbb92"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ff.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ff.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fg": {
       "search": [
@@ -5742,20 +3703,8 @@
           "hash": "097c4182"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fi": {
       "search": [
@@ -5839,13 +3788,7 @@
           "hash": "4fc4d60b"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/fm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "fn": {
       "search": [
@@ -5862,20 +3805,8 @@
           "hash": "60330dc0"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fo": {
       "search": [
@@ -5922,20 +3853,8 @@
           "hash": "637bfd1a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fr": {
       "search": [
@@ -5982,20 +3901,8 @@
           "hash": "5ac3253b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ft": {
       "search": [
@@ -6012,20 +3919,8 @@
           "hash": "ad6877c9"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ft.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ft.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "fu": {
       "search": [
@@ -6072,20 +3967,8 @@
           "hash": "cf6aae59"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/fy.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/fy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "g": {
       "search": [
@@ -6109,13 +3992,7 @@
           "hash": "32d7264a"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/g.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "g7": {
       "search": [
@@ -6139,13 +4016,7 @@
           "hash": "2b44aa4c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/g7.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "g8": {
       "search": [
@@ -6162,20 +4033,8 @@
           "hash": "9e6f7535"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/g8.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/g8.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ga": {
       "search": [
@@ -6222,20 +4081,8 @@
           "hash": "5a3ce5ad"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ge": {
       "search": [
@@ -6282,20 +4129,8 @@
           "hash": "5424a4f1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "gh": {
       "search": [
@@ -6402,20 +4237,8 @@
           "hash": "58f86793"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "gn": {
       "search": [
@@ -6499,13 +4322,7 @@
           "hash": "ded91c1a"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/gp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "gr": {
       "search": [
@@ -6552,20 +4369,8 @@
           "hash": "247ce645"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "gt": {
       "search": [
@@ -6582,20 +4387,8 @@
           "hash": "2126c124"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "gu": {
       "search": [
@@ -6642,20 +4435,8 @@
           "hash": "f8744458"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gw.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "gy": {
       "search": [
@@ -6672,20 +4453,8 @@
           "hash": "81c8b080"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/gy.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/gy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "h": {
       "search": [
@@ -6709,13 +4478,7 @@
           "hash": "98ba945c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/h.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ha": {
       "search": [
@@ -6762,20 +4525,8 @@
           "hash": "02b59c51"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "hc": {
       "search": [
@@ -6792,20 +4543,8 @@
           "hash": "d1234a55"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "hd": {
       "search": [
@@ -6822,20 +4561,8 @@
           "hash": "db411e56"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "he": {
       "search": [
@@ -6889,13 +4616,7 @@
           "hash": "41cf4897"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/hf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "hg": {
       "search": [
@@ -6919,13 +4640,7 @@
           "hash": "ab6a3f7e"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/hg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "hi": {
       "search": [
@@ -6972,20 +4687,8 @@
           "hash": "ddd9f227"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ho": {
       "search": [
@@ -7032,20 +4735,8 @@
           "hash": "b212bca0"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "hs": {
       "search": [
@@ -7062,20 +4753,8 @@
           "hash": "45064a0d"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ht": {
       "search": [
@@ -7099,13 +4778,7 @@
           "hash": "db7b43f0"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ht.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "hu": {
       "search": [
@@ -7129,13 +4802,7 @@
           "hash": "e6a0349b"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/hu.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "hy": {
       "search": [
@@ -7152,20 +4819,8 @@
           "hash": "a78a7743"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/hy.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/hy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "i": {
       "search": [
@@ -7189,13 +4844,7 @@
           "hash": "24b3aebe"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/i.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ia": {
       "search": [
@@ -7362,20 +5011,8 @@
           "hash": "ecff290f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/if.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/if.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ig": {
       "search": [
@@ -7422,20 +5059,8 @@
           "hash": "613771df"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ih.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ih.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ii": {
       "search": [
@@ -7452,20 +5077,8 @@
           "hash": "b3076f77"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ii.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ii.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ik": {
       "search": [
@@ -7489,13 +5102,7 @@
           "hash": "f4ca6efc"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ik.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "il": {
       "search": [
@@ -7581,455 +5188,75 @@
       ],
       "forms": [
         {
-          "path": "data/forms/in.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
-    },
-    "ina": {
-      "search": [
-        {
-          "path": "data/in/ina.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ina.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ina.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
-        {
           "path": "data/forms/in/ina.json",
           "bytes": 58337,
           "hash": "47ac9f85"
-        }
-      ]
-    },
-    "inc": {
-      "search": [
-        {
-          "path": "data/in/inc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inc.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inc.json",
           "bytes": 316060,
           "hash": "6f9ae402"
-        }
-      ]
-    },
-    "ind": {
-      "search": [
-        {
-          "path": "data/in/ind.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ind.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ind.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ind.json",
           "bytes": 99986,
           "hash": "8b1c909c"
-        }
-      ]
-    },
-    "ine": {
-      "search": [
-        {
-          "path": "data/in/ine.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ine.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ine.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ine.json",
           "bytes": 7483,
           "hash": "6ea8a54c"
-        }
-      ]
-    },
-    "inf": {
-      "search": [
-        {
-          "path": "data/in/inf.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inf.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inf.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inf.json",
           "bytes": 166239,
           "hash": "92f4e648"
-        }
-      ]
-    },
-    "ing": {
-      "search": [
-        {
-          "path": "data/in/ing.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ing.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ing.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ing.json",
           "bytes": 117098,
           "hash": "790a4047"
-        }
-      ]
-    },
-    "ini": {
-      "search": [
-        {
-          "path": "data/in/ini.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ini.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ini.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ini.json",
           "bytes": 19029,
           "hash": "790a0bce"
-        }
-      ]
-    },
-    "inn": {
-      "search": [
-        {
-          "path": "data/in/inn.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inn.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inn.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inn.json",
           "bytes": 40803,
           "hash": "fd3e3eb5"
-        }
-      ]
-    },
-    "ino": {
-      "search": [
-        {
-          "path": "data/in/ino.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ino.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ino.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ino.json",
           "bytes": 33390,
           "hash": "5318fd4f"
-        }
-      ]
-    },
-    "inq": {
-      "search": [
-        {
-          "path": "data/in/inq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inq.json",
           "bytes": 22903,
           "hash": "f30fd914"
-        }
-      ]
-    },
-    "ins": {
-      "search": [
-        {
-          "path": "data/in/ins.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/ins.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/ins.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/ins.json",
           "bytes": 160382,
           "hash": "3b3d5a15"
-        }
-      ]
-    },
-    "int": {
-      "search": [
-        {
-          "path": "data/in/int.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/int.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/int.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/int.json",
           "bytes": 290818,
           "hash": "1b7a0a45"
-        }
-      ]
-    },
-    "inu": {
-      "search": [
-        {
-          "path": "data/in/inu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inu.json",
           "bytes": 9666,
           "hash": "889ca4cd"
-        }
-      ]
-    },
-    "inv": {
-      "search": [
-        {
-          "path": "data/in/inv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inv.json",
           "bytes": 82608,
           "hash": "46267452"
-        }
-      ]
-    },
-    "inz": {
-      "search": [
-        {
-          "path": "data/in/inz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/in/inz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/in/inz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/in/inz.json",
           "bytes": 8731,
@@ -8262,20 +5489,8 @@
           "hash": "a3399473"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ix.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ix.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "iz": {
       "search": [
@@ -8292,20 +5507,8 @@
           "hash": "03c567df"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/iz.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/iz.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "j": {
       "search": [
@@ -8329,13 +5532,7 @@
           "hash": "c2c23fb3"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/j.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ja": {
       "search": [
@@ -8389,13 +5586,7 @@
           "hash": "62290710"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/je.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "jf": {
       "search": [
@@ -8412,20 +5603,8 @@
           "hash": "51742f08"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/jf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/jf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ji": {
       "search": [
@@ -8449,13 +5628,7 @@
           "hash": "d448816c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ji.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "jo": {
       "search": [
@@ -8479,13 +5652,7 @@
           "hash": "8a418603"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/jo.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "jp": {
       "search": [
@@ -8502,20 +5669,8 @@
           "hash": "d3918377"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/jp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/jp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ju": {
       "search": [
@@ -8569,13 +5724,7 @@
           "hash": "e4ff5a9f"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/k.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ka": {
       "search": [
@@ -8622,20 +5771,8 @@
           "hash": "4006ccbc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/kc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/kc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "kd": {
       "search": [
@@ -8652,20 +5789,8 @@
           "hash": "7965f7f3"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/kd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/kd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ke": {
       "search": [
@@ -8719,13 +5844,7 @@
           "hash": "2eeb3a7d"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/kg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "kh": {
       "search": [
@@ -8749,13 +5868,7 @@
           "hash": "54f31d15"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/kh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ki": {
       "search": [
@@ -8809,13 +5922,7 @@
           "hash": "a2d61bac"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/kl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "km": {
       "search": [
@@ -8839,13 +5946,7 @@
           "hash": "b7e60b8e"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/km.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "kn": {
       "search": [
@@ -8862,20 +5963,8 @@
           "hash": "76052fa2"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/kn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/kn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ko": {
       "search": [
@@ -8899,13 +5988,7 @@
           "hash": "5f7f5648"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ko.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "kp": {
       "search": [
@@ -8922,20 +6005,8 @@
           "hash": "c6668739"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/kp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/kp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "kr": {
       "search": [
@@ -8959,13 +6030,7 @@
           "hash": "2df7cf78"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/kr.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ku": {
       "search": [
@@ -8989,13 +6054,7 @@
           "hash": "75827b57"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ku.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "kv": {
       "search": [
@@ -9019,13 +6078,7 @@
           "hash": "9661df69"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/kv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "kw": {
       "search": [
@@ -9042,20 +6095,8 @@
           "hash": "376213bc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/kw.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/kw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ky": {
       "search": [
@@ -9079,13 +6120,7 @@
           "hash": "29c3cb44"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ky.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "l": {
       "search": [
@@ -9109,13 +6144,7 @@
           "hash": "cdbcd761"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/l.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "la": {
       "search": [
@@ -9162,20 +6191,8 @@
           "hash": "622a1de3"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/lc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/lc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ld": {
       "search": [
@@ -9192,20 +6209,8 @@
           "hash": "c6a12b53"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ld.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ld.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "le": {
       "search": [
@@ -9252,20 +6257,8 @@
           "hash": "176211ae"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/lf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/lf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "lg": {
       "search": [
@@ -9282,20 +6275,8 @@
           "hash": "4dc8a1ce"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/lg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/lg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "lh": {
       "search": [
@@ -9312,20 +6293,8 @@
           "hash": "0f0c6cc8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/lh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/lh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "li": {
       "search": [
@@ -9372,20 +6341,8 @@
           "hash": "66c8fe3a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ll.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ll.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "lo": {
       "search": [
@@ -9432,20 +6389,8 @@
           "hash": "f7f5e548"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ls.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ls.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "lt": {
       "search": [
@@ -9462,20 +6407,8 @@
           "hash": "4b57ee55"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/lt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/lt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "lu": {
       "search": [
@@ -9522,20 +6455,8 @@
           "hash": "9e19772b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ly.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ly.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "m": {
       "search": [
@@ -9559,13 +6480,7 @@
           "hash": "99adc50d"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/m.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "m5": {
       "search": [
@@ -9582,20 +6497,8 @@
           "hash": "123635fa"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/m5.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/m5.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ma": {
       "search": [
@@ -9642,20 +6545,8 @@
           "hash": "3dea7785"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mc": {
       "search": [
@@ -9672,20 +6563,8 @@
           "hash": "4b43e7da"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "me": {
       "search": [
@@ -9732,20 +6611,8 @@
           "hash": "ddd26ee6"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mg": {
       "search": [
@@ -9769,13 +6636,7 @@
           "hash": "ec44c60d"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/mg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "mh": {
       "search": [
@@ -9792,20 +6653,8 @@
           "hash": "7f605765"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mi": {
       "search": [
@@ -9852,20 +6701,8 @@
           "hash": "c85095cc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mk.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mk.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ml": {
       "search": [
@@ -9889,13 +6726,7 @@
           "hash": "e79e8b57"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ml.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "mm": {
       "search": [
@@ -9919,13 +6750,7 @@
           "hash": "c3da1656"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/mm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "mn": {
       "search": [
@@ -10009,13 +6834,7 @@
           "hash": "17947094"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/mp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "mq": {
       "search": [
@@ -10032,20 +6851,8 @@
           "hash": "16f16e02"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mq.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mq.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ms": {
       "search": [
@@ -10062,20 +6869,8 @@
           "hash": "ec94e4f8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ms.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ms.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mt": {
       "search": [
@@ -10092,20 +6887,8 @@
           "hash": "d4cac397"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mu": {
       "search": [
@@ -10152,20 +6935,8 @@
           "hash": "dac90c24"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "mw": {
       "search": [
@@ -10182,20 +6953,8 @@
           "hash": "efb4151f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/mw.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/mw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "my": {
       "search": [
@@ -10219,13 +6978,7 @@
           "hash": "2f247b82"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/my.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "n": {
       "search": [
@@ -10249,13 +7002,7 @@
           "hash": "4aceae88"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/n.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "na": {
       "search": [
@@ -10302,20 +7049,8 @@
           "hash": "a2b98083"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/nd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/nd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ne": {
       "search": [
@@ -10362,20 +7097,8 @@
           "hash": "45625367"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/nf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/nf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ng": {
       "search": [
@@ -10392,20 +7115,8 @@
           "hash": "d65e499d"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ng.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ng.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ni": {
       "search": [
@@ -10452,20 +7163,8 @@
           "hash": "6d404ac8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/nm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/nm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "nn": {
       "search": [
@@ -10482,20 +7181,8 @@
           "hash": "260af4d1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/nn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/nn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "no": {
       "search": [
@@ -10542,20 +7229,8 @@
           "hash": "7284d3a2"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/np.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/np.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "nt": {
       "search": [
@@ -10572,20 +7247,8 @@
           "hash": "5ba93f2a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/nt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/nt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "nu": {
       "search": [
@@ -10639,13 +7302,7 @@
           "hash": "c61c69f1"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ny.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "o": {
       "search": [
@@ -10669,13 +7326,7 @@
           "hash": "a4c2a75f"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/o.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "oa": {
       "search": [
@@ -10699,13 +7350,7 @@
           "hash": "469a09a7"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/oa.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ob": {
       "search": [
@@ -10812,20 +7457,8 @@
           "hash": "cd181191"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/oe.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/oe.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "of": {
       "search": [
@@ -10909,13 +7542,7 @@
           "hash": "4eb59184"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/oh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "oi": {
       "search": [
@@ -10932,20 +7559,8 @@
           "hash": "cc643659"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/oi.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/oi.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "oj": {
       "search": [
@@ -10962,20 +7577,8 @@
           "hash": "956fedb5"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/oj.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/oj.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ok": {
       "search": [
@@ -10999,13 +7602,7 @@
           "hash": "8d1b6d7c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ok.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ol": {
       "search": [
@@ -11112,20 +7709,8 @@
           "hash": "856427fa"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/oo.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/oo.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "op": {
       "search": [
@@ -11269,13 +7854,7 @@
           "hash": "712ebbae"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ou.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ov": {
       "search": [
@@ -11322,20 +7901,8 @@
           "hash": "417d8f57"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ox.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ox.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "oz": {
       "search": [
@@ -11389,13 +7956,7 @@
           "hash": "e50b1441"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/p.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "p2": {
       "search": [
@@ -11412,20 +7973,8 @@
           "hash": "1e6cdc5a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/p2.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/p2.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "pa": {
       "search": [
@@ -11479,13 +8028,7 @@
           "hash": "fc000988"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/pc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "pd": {
       "search": [
@@ -11502,20 +8045,8 @@
           "hash": "7a3313ce"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/pd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/pd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "pe": {
       "search": [
@@ -11569,13 +8100,7 @@
           "hash": "b22d5046"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ph.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "pi": {
       "search": [
@@ -11659,13 +8184,7 @@
           "hash": "a4be44bf"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/pm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "pn": {
       "search": [
@@ -11742,20 +8261,8 @@
           "hash": "477782e0"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/pp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/pp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "pr": {
       "search": [
@@ -11832,13 +8339,7 @@
           "hash": "fb11ce33"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/pt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
+      "ex": [],
       "forms": [
         {
           "path": "data/forms/pt.json",
@@ -11892,20 +8393,8 @@
           "hash": "e278e91b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/pv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/pv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "py": {
       "search": [
@@ -11929,13 +8418,7 @@
           "hash": "19d59dcf"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/py.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "q": {
       "search": [
@@ -11959,13 +8442,7 @@
           "hash": "467e9528"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/q.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "qa": {
       "search": [
@@ -11989,13 +8466,7 @@
           "hash": "a21eae33"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/qa.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "qb": {
       "search": [
@@ -12012,20 +8483,8 @@
           "hash": "f6900706"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/qb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/qb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "qi": {
       "search": [
@@ -12042,20 +8501,8 @@
           "hash": "95e30c5c"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/qi.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/qi.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ql": {
       "search": [
@@ -12072,20 +8519,8 @@
           "hash": "7f178c08"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ql.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ql.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "qn": {
       "search": [
@@ -12102,20 +8537,8 @@
           "hash": "d3ac14da"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/qn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/qn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "qo": {
       "search": [
@@ -12132,20 +8555,8 @@
           "hash": "cfa16688"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/qo.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/qo.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "qu": {
       "search": [
@@ -12192,20 +8603,8 @@
           "hash": "bd80ff1a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/qv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/qv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "r": {
       "search": [
@@ -12229,13 +8628,7 @@
           "hash": "eec46282"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/r.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ra": {
       "search": [
@@ -12282,20 +8675,8 @@
           "hash": "18cdc012"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "rc": {
       "search": [
@@ -12319,13 +8700,7 @@
           "hash": "767dbe4c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/rc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "rd": {
       "search": [
@@ -12342,20 +8717,8 @@
           "hash": "6285dfb1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "re": {
       "search": [
@@ -12409,13 +8772,7 @@
           "hash": "733f9634"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/rf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "rh": {
       "search": [
@@ -12432,20 +8789,8 @@
           "hash": "01930c39"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ri": {
       "search": [
@@ -12471,575 +8816,95 @@
       ],
       "forms": [
         {
-          "path": "data/forms/ri.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
-    },
-    "ria": {
-      "search": [
-        {
-          "path": "data/ri/ria.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/ria.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/ria.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
-        {
           "path": "data/forms/ri/ria.json",
           "bytes": 61198,
           "hash": "8b9bac3c"
-        }
-      ]
-    },
-    "rib": {
-      "search": [
-        {
-          "path": "data/ri/rib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rib.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rib.json",
           "bytes": 26400,
           "hash": "dfcd1142"
-        }
-      ]
-    },
-    "ric": {
-      "search": [
-        {
-          "path": "data/ri/ric.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/ric.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/ric.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/ric.json",
           "bytes": 180872,
           "hash": "d1f287d6"
-        }
-      ]
-    },
-    "rid": {
-      "search": [
-        {
-          "path": "data/ri/rid.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rid.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rid.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rid.json",
           "bytes": 58523,
           "hash": "2c1cfa41"
-        }
-      ]
-    },
-    "rie": {
-      "search": [
-        {
-          "path": "data/ri/rie.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rie.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rie.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rie.json",
           "bytes": 37776,
           "hash": "3f04863d"
-        }
-      ]
-    },
-    "rif": {
-      "search": [
-        {
-          "path": "data/ri/rif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rif.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rif.json",
           "bytes": 55470,
           "hash": "1758cd62"
-        }
-      ]
-    },
-    "rig": {
-      "search": [
-        {
-          "path": "data/ri/rig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rig.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rig.json",
           "bytes": 36558,
           "hash": "e62b92a8"
-        }
-      ]
-    },
-    "rii": {
-      "search": [
-        {
-          "path": "data/ri/rii.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rii.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rii.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rii.json",
           "bytes": 57,
           "hash": "3af52a90"
-        }
-      ]
-    },
-    "ril": {
-      "search": [
-        {
-          "path": "data/ri/ril.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/ril.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/ril.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/ril.json",
           "bytes": 26929,
           "hash": "408e3249"
-        }
-      ]
-    },
-    "rim": {
-      "search": [
-        {
-          "path": "data/ri/rim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rim.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rim.json",
           "bytes": 155942,
           "hash": "5cf28768"
-        }
-      ]
-    },
-    "rin": {
-      "search": [
-        {
-          "path": "data/ri/rin.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rin.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rin.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rin.json",
           "bytes": 144331,
           "hash": "7e9cf760"
-        }
-      ]
-    },
-    "rio": {
-      "search": [
-        {
-          "path": "data/ri/rio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rio.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rio.json",
           "bytes": 9321,
           "hash": "e4f917e1"
-        }
-      ]
-    },
-    "rip": {
-      "search": [
-        {
-          "path": "data/ri/rip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rip.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rip.json",
           "bytes": 104613,
           "hash": "844af52d"
-        }
-      ]
-    },
-    "riq": {
-      "search": [
-        {
-          "path": "data/ri/riq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/riq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/riq.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/riq.json",
           "bytes": 4522,
           "hash": "24ec21c7"
-        }
-      ]
-    },
-    "ris": {
-      "search": [
-        {
-          "path": "data/ri/ris.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/ris.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/ris.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/ris.json",
           "bytes": 174000,
           "hash": "c6bff824"
-        }
-      ]
-    },
-    "rit": {
-      "search": [
-        {
-          "path": "data/ri/rit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/rit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/rit.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/rit.json",
           "bytes": 44640,
           "hash": "9e7e096a"
-        }
-      ]
-    },
-    "riu": {
-      "search": [
-        {
-          "path": "data/ri/riu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/riu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/riu.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/riu.json",
           "bytes": 14119,
           "hash": "5ccdef4d"
-        }
-      ]
-    },
-    "riv": {
-      "search": [
-        {
-          "path": "data/ri/riv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/riv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/riv.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/riv.json",
           "bytes": 65317,
           "hash": "70475b42"
-        }
-      ]
-    },
-    "riz": {
-      "search": [
-        {
-          "path": "data/ri/riz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "entry": [
-        {
-          "path": "data/entry/ri/riz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "ex": [
-        {
-          "path": "data/ex/ri/riz.json",
-          "bytes": 3,
-          "hash": "37517e5f"
-        }
-      ],
-      "forms": [
+        },
         {
           "path": "data/forms/ri/riz.json",
           "bytes": 4373,
@@ -13062,20 +8927,8 @@
           "hash": "56d43c30"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "rm": {
       "search": [
@@ -13092,20 +8945,8 @@
           "hash": "9623b0e8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "rn": {
       "search": [
@@ -13129,13 +8970,7 @@
           "hash": "d2488c49"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/rn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ro": {
       "search": [
@@ -13182,20 +9017,8 @@
           "hash": "b48f16c6"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rr.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rr.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "rs": {
       "search": [
@@ -13212,20 +9035,8 @@
           "hash": "60f4f9dc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "rt": {
       "search": [
@@ -13242,20 +9053,8 @@
           "hash": "27256e3c"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/rt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/rt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ru": {
       "search": [
@@ -13309,13 +9108,7 @@
           "hash": "b694663b"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/s.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "sa": {
       "search": [
@@ -13609,13 +9402,7 @@
           "hash": "38d604e7"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/sk.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "sl": {
       "search": [
@@ -13849,13 +9636,7 @@
           "hash": "b91311ec"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ss.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "st": {
       "search": [
@@ -13969,13 +9750,7 @@
           "hash": "0bbc6907"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/sw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "sy": {
       "search": [
@@ -13999,13 +9774,7 @@
           "hash": "7ce98dea"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/sy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "t": {
       "search": [
@@ -14029,13 +9798,7 @@
           "hash": "3e47fa43"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/t.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ta": {
       "search": [
@@ -14082,20 +9845,8 @@
           "hash": "505fed45"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "te": {
       "search": [
@@ -14142,20 +9893,8 @@
           "hash": "c13f9c8f"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tf.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tf.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "tg": {
       "search": [
@@ -14179,13 +9918,7 @@
           "hash": "56fa737a"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/tg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "th": {
       "search": [
@@ -14262,20 +9995,8 @@
           "hash": "bd52fd62"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "tm": {
       "search": [
@@ -14292,20 +10013,8 @@
           "hash": "17f4edca"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "tn": {
       "search": [
@@ -14322,20 +10031,8 @@
           "hash": "1d55a2c8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tn.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tn.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "to": {
       "search": [
@@ -14382,20 +10079,8 @@
           "hash": "67a15e1d"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "tr": {
       "search": [
@@ -14449,13 +10134,7 @@
           "hash": "1650cb3e"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ts.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "tt": {
       "search": [
@@ -14472,20 +10151,8 @@
           "hash": "b1f74cb1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/tt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/tt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "tu": {
       "search": [
@@ -14539,13 +10206,7 @@
           "hash": "43cf23dc"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/tv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "tw": {
       "search": [
@@ -14569,13 +10230,7 @@
           "hash": "820aeed9"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/tw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ty": {
       "search": [
@@ -14592,20 +10247,8 @@
           "hash": "5c4ff2ff"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ty.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ty.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "u": {
       "search": [
@@ -14629,13 +10272,7 @@
           "hash": "b4e40a51"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/u.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ua": {
       "search": [
@@ -14652,20 +10289,8 @@
           "hash": "d80ee32c"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ua.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ua.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ub": {
       "search": [
@@ -14779,13 +10404,7 @@
           "hash": "8ab10357"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ue.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "uf": {
       "search": [
@@ -14869,13 +10488,7 @@
           "hash": "fa8a2ba6"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/uh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ui": {
       "search": [
@@ -14899,13 +10512,7 @@
           "hash": "d18f039a"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ui.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "uk": {
       "search": [
@@ -14929,13 +10536,7 @@
           "hash": "e79a0f17"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/uk.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ul": {
       "search": [
@@ -15072,13 +10673,7 @@
           "hash": "80106fd1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/up.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
+      "ex": [],
       "forms": [
         {
           "path": "data/forms/up.json",
@@ -15222,20 +10817,8 @@
           "hash": "c7f1a3f8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ux.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ux.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "uz": {
       "search": [
@@ -15259,13 +10842,7 @@
           "hash": "caf0c814"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/uz.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "v": {
       "search": [
@@ -15289,13 +10866,7 @@
           "hash": "e9081197"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/v.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "va": {
       "search": [
@@ -15372,20 +10943,8 @@
           "hash": "9a5b5ce9"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "vh": {
       "search": [
@@ -15402,20 +10961,8 @@
           "hash": "44ac6755"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "vi": {
       "search": [
@@ -15469,13 +11016,7 @@
           "hash": "b1c2a750"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/vl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "vm": {
       "search": [
@@ -15492,20 +11033,8 @@
           "hash": "3365cee1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "vo": {
       "search": [
@@ -15552,20 +11081,8 @@
           "hash": "b3a7e920"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vr.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vr.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "vs": {
       "search": [
@@ -15582,20 +11099,8 @@
           "hash": "224852e1"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "vu": {
       "search": [
@@ -15642,20 +11147,8 @@
           "hash": "b60b2fcc"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/vv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/vv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "w": {
       "search": [
@@ -15679,13 +11172,7 @@
           "hash": "2eb96765"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/w.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "wa": {
       "search": [
@@ -15709,13 +11196,7 @@
           "hash": "45b8bda0"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wa.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "wb": {
       "search": [
@@ -15732,20 +11213,8 @@
           "hash": "d3b62d50"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/wb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/wb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "we": {
       "search": [
@@ -15799,13 +11268,7 @@
           "hash": "0bd16396"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "wi": {
       "search": [
@@ -15829,13 +11292,7 @@
           "hash": "a108c122"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wi.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "wl": {
       "search": [
@@ -15852,20 +11309,8 @@
           "hash": "a0d9e281"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/wl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/wl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "wo": {
       "search": [
@@ -15889,13 +11334,7 @@
           "hash": "1bd85439"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wo.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "wr": {
       "search": [
@@ -15919,13 +11358,7 @@
           "hash": "7aee3489"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wr.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ws": {
       "search": [
@@ -15942,20 +11375,8 @@
           "hash": "ef8bac0a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/ws.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/ws.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "wu": {
       "search": [
@@ -15972,20 +11393,8 @@
           "hash": "73b73b32"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/wu.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/wu.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "wy": {
       "search": [
@@ -16009,13 +11418,7 @@
           "hash": "6216720c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/wy.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "x": {
       "search": [
@@ -16039,13 +11442,7 @@
           "hash": "6bc09325"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/x.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "xa": {
       "search": [
@@ -16062,13 +11459,7 @@
           "hash": "bc466dc8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xa.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
+      "ex": [],
       "forms": [
         {
           "path": "data/forms/xa.json",
@@ -16092,20 +11483,8 @@
           "hash": "1efbb402"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xb.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xb.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xc": {
       "search": [
@@ -16122,20 +11501,8 @@
           "hash": "597404f9"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xc.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xc.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xe": {
       "search": [
@@ -16189,13 +11556,7 @@
           "hash": "8492242b"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/xh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "xi": {
       "search": [
@@ -16242,20 +11603,8 @@
           "hash": "ce077c46"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xk.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xk.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xm": {
       "search": [
@@ -16272,20 +11621,8 @@
           "hash": "3503b450"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xm.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xm.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xo": {
       "search": [
@@ -16302,20 +11639,8 @@
           "hash": "c194f4ef"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xo.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xo.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xs": {
       "search": [
@@ -16332,20 +11657,8 @@
           "hash": "fbb8fdd8"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xs.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xs.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xv": {
       "search": [
@@ -16362,20 +11675,8 @@
           "hash": "a051edb2"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xv.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xv.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xx": {
       "search": [
@@ -16392,20 +11693,8 @@
           "hash": "22967c9b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xx.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/xx.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "xy": {
       "search": [
@@ -16422,13 +11711,7 @@
           "hash": "a36b500b"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/xy.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
+      "ex": [],
       "forms": [
         {
           "path": "data/forms/xy.json",
@@ -16459,13 +11742,7 @@
           "hash": "11e955db"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/y.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ya": {
       "search": [
@@ -16489,13 +11766,7 @@
           "hash": "a91d2854"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ya.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "ye": {
       "search": [
@@ -16519,13 +11790,7 @@
           "hash": "64f499d1"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/ye.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "yi": {
       "search": [
@@ -16549,13 +11814,7 @@
           "hash": "f425d42c"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/yi.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "yo": {
       "search": [
@@ -16602,20 +11861,8 @@
           "hash": "fac7e8aa"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/yp.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/yp.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "yu": {
       "search": [
@@ -16669,13 +11916,7 @@
           "hash": "f9b29696"
         }
       ],
-      "forms": [
-        {
-          "path": "data/forms/z.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "forms": []
     },
     "za": {
       "search": [
@@ -16722,20 +11963,8 @@
           "hash": "be983820"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zd.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zd.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "ze": {
       "search": [
@@ -16782,20 +12011,8 @@
           "hash": "d4c179ea"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zg.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zg.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "zh": {
       "search": [
@@ -16812,20 +12029,8 @@
           "hash": "7a145416"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zh.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zh.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "zi": {
       "search": [
@@ -16872,20 +12077,8 @@
           "hash": "6e890d48"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zl.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zl.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "zo": {
       "search": [
@@ -16932,20 +12125,8 @@
           "hash": "aa7ddb67"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zt.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zt.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "zu": {
       "search": [
@@ -16992,20 +12173,8 @@
           "hash": "8acd98ca"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zw.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zw.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     },
     "zz": {
       "search": [
@@ -17022,26 +12191,94 @@
           "hash": "27b0dd6a"
         }
       ],
-      "ex": [
-        {
-          "path": "data/ex/zz.json",
-          "bytes": 5,
-          "hash": "2ba33ca0"
-        }
-      ],
-      "forms": [
-        {
-          "path": "data/forms/zz.json",
-          "bytes": 3,
-          "hash": "ca3d163b"
-        }
-      ]
+      "ex": [],
+      "forms": []
     }
+  },
+  "cefr": {
+    "a1": [
+      {
+        "path": "data/cefr/a1.json",
+        "bytes": 54379,
+        "hash": "8bfae29d",
+        "rows": 670
+      }
+    ],
+    "a2": [
+      {
+        "path": "data/cefr/a2.json",
+        "bytes": 53423,
+        "hash": "dc867d8a",
+        "rows": 572
+      }
+    ],
+    "b1": [
+      {
+        "path": "data/cefr/b1.json",
+        "bytes": 141636,
+        "hash": "3bf7d82d",
+        "rows": 1489
+      }
+    ],
+    "b2": [
+      {
+        "path": "data/cefr/b2.json",
+        "bytes": 202612,
+        "hash": "e39d94e4",
+        "rows": 2144
+      }
+    ],
+    "c1": [
+      {
+        "path": "data/cefr/c1.json",
+        "bytes": 470473,
+        "hash": "12d66a9a",
+        "rows": 5028
+      }
+    ],
+    "c2": [
+      {
+        "path": "data/cefr/c2.json",
+        "bytes": 999847,
+        "hash": "e51a8873",
+        "rows": 10872
+      },
+      {
+        "path": "data/cefr/c2-2.json",
+        "bytes": 999933,
+        "hash": "de4e93b1",
+        "rows": 11013
+      },
+      {
+        "path": "data/cefr/c2-3.json",
+        "bytes": 999990,
+        "hash": "13753cd8",
+        "rows": 9561
+      },
+      {
+        "path": "data/cefr/c2-4.json",
+        "bytes": 999984,
+        "hash": "d30f3c1e",
+        "rows": 9785
+      },
+      {
+        "path": "data/cefr/c2-5.json",
+        "bytes": 999952,
+        "hash": "71feae56",
+        "rows": 9758
+      },
+      {
+        "path": "data/cefr/c2-6.json",
+        "bytes": 91160,
+        "hash": "66b91cc8",
+        "rows": 928
+      }
+    ]
   },
   "totals": {
     "entries": 61820,
     "forms": 232248,
     "examples": 49283,
-    "bytes": 53825050
+    "bytes": 59836005
   }
 }

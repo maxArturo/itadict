@@ -13,9 +13,11 @@
  */
 
 import { bucketOfId, createData } from './data.js';
-import { HASH, createRouter } from './router.js';
+import { HASH, createRouter, entryHash } from './router.js';
 import { createSearch } from './search.js';
+import { createSpeech } from './speech.js';
 import { createStorage } from './storage.js';
+import { BANDS, dueCount, dueIds, gradeCard, newCard, orderDeck } from './study.js';
 import { createReader } from './text.js';
 import { backTarget, createUi } from './ui.js';
 
@@ -34,7 +36,6 @@ const WIDE = '(min-width: 900px)';
  * @type {Record<string, { title: string, note: string }>}
  */
 const PLACEHOLDERS = {
-  study: { title: 'Study', note: 'Flashcards arrive in a later build.' },
   lists: { title: 'Lists', note: 'Lists and notes arrive in a later build.' },
   settings: { title: 'Settings', note: 'Settings arrive in a later build.' },
   reference: { title: 'Reference', note: 'The grammar catalogue arrives in a later build.' },
@@ -74,6 +75,8 @@ function registerWorker(container) {
  *   base?: string,
  *   matchWide?: () => boolean,
  *   serviceWorker?: ServiceWorkerContainer | null,
+ *   speech?: ReturnType<typeof createSpeech>,
+ *   now?: () => number,
  * }} [options] injected by `tools/sanity.mjs`; the browser passes nothing
  */
 export function boot(options = {}) {
@@ -110,6 +113,90 @@ export function boot(options = {}) {
   const reader = createReader({ data });
   const textView = ui.textScreen({ read: (segments) => reader.read(segments) });
 
+  const speech = options.speech ?? createSpeech();
+  const now = options.now ?? (() => Date.now());
+
+  /** The due count on the Study tab: the one number the chrome shows about study. */
+  function updateDue() {
+    const due = dueCount(storage.schedule(), now());
+    ui.setTabBadge(bar, 'study', due === 0 ? '' : String(due));
+  }
+
+  /**
+   * Ask for notification permission on the first deck open. A browser only grants it after a
+   * gesture, and a tap on a deck is one.
+   */
+  function askToRemind() {
+    const api = globalThis.Notification;
+    if (!api || typeof api.requestPermission !== 'function' || api.permission !== 'default') return;
+    Promise.resolve(api.requestPermission()).catch(() => {});
+  }
+
+  /**
+   * One reminder per session, only while the app is open. A web app has no push on iOS, so the
+   * reminder can never arrive after the page is closed. The picker says so in one line.
+   */
+  let reminded = false;
+  function remind() {
+    const api = globalThis.Notification;
+    if (reminded || !api || api.permission !== 'granted') return;
+    const due = dueCount(storage.schedule(), now());
+    if (due === 0) return;
+    reminded = true;
+    try {
+      new api('Review due', { body: due === 1 ? '1 card is due today.' : due + ' cards are due today.', tag: 'itadict-due' });
+    } catch {
+      // A blocked notification is not an error the learner must see.
+    }
+  }
+  if (typeof globalThis.setInterval === 'function') globalThis.setInterval(remind, 15 * 60 * 1000);
+
+  const studyView = ui.studyScreen({
+    decks: async () => {
+      const schedule = storage.schedule();
+      /** @type {import('./study.js').Deck[]} */
+      const decks = [
+        { id: 'due', title: 'Due today', count: dueCount(schedule, now()) },
+        { id: 'history', title: 'History', count: storage.opened().length },
+      ];
+      for (const band of BANDS) decks.push({ id: band, title: band.toUpperCase(), count: await data.cefrCount(band) });
+      return decks;
+    },
+    cards: async (deckId) => {
+      askToRemind();
+      if (deckId === 'due') return dueIds(storage.schedule(), now()).map((id) => ({ id }));
+      if (deckId === 'history') return storage.opened().map((id) => ({ id }));
+      const rows = await data.cefr(deckId);
+      const byId = new Map(rows.map((row) => [row.id, row]));
+      return orderDeck(rows.map((row) => row.id), storage.schedule(), now()).map((id) => ({
+        id,
+        word: byId.get(id)?.word ?? '',
+        gloss: byId.get(id)?.gloss ?? '',
+      }));
+    },
+    load: (id) =>
+      data.entry(id).then((entry) => {
+        if (entry === null) return null;
+        const sense = entry.posList[0]?.senses[0] ?? '';
+        const card = { word: entry.headword, ipa: entry.pronunciation, sense, example: '' };
+        return data
+          .examples(bucketOfId(id))
+          .then((sentences) => ({ ...card, example: sentences[entry.exampleIndexes[0]] ?? '' }))
+          .catch(() => card);
+      }),
+    grade: (id, remembered) => {
+      const at = now();
+      storage.setSchedule(id, gradeCard(storage.schedule()[id] ?? newCard(at), remembered, at));
+      updateDue();
+    },
+    note: (id) => storage.note(id),
+    setNote: (id, text) => storage.setNote(id, text),
+    speech,
+    entryHref: (id) => entryHash(id),
+    onGrade: updateDue,
+  });
+  updateDue();
+
   /**
    * One entry screen. The id carries its own location, so a cold deep link costs one entry file
    * and needs no memory of an earlier search. The row this session showed gives the headword at
@@ -130,6 +217,7 @@ export function boot(options = {}) {
         () => null,
       ),
       query: searchView.query(),
+      speech,
       examples: (indexes) =>
         data
           .examples(bucket)
@@ -151,6 +239,7 @@ export function boot(options = {}) {
     if (route.name !== 'entry') from = route.name;
 
     if (route.name === 'entry' && route.id !== null) {
+      storage.addOpened(route.id);
       const target = backTarget(previous);
       /** @type {{ label: string, go?: () => void }} */
       const back = { label: target.label };
@@ -194,6 +283,12 @@ export function boot(options = {}) {
     if (route.name === 'text') {
       main.replaceChildren(textView);
       return;
+    }
+
+    if (route.name === 'study') {
+      studyView.refresh();
+      main.replaceChildren(studyView.node);
+      return () => speech.cancel();
     }
 
     main.replaceChildren(ui.placeholder(PLACEHOLDERS[route.name] ?? NO_ENTRY));

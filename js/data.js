@@ -9,6 +9,7 @@
  *     version, built, partial, bucketKey,
  *     sources: [{ name, url, licence }],
  *     totals: { entries, forms, examples, bytes },
+ *     cefr: { "a1": [{ path, bytes, hash, rows }], ... },
  *     buckets: {
  *       "<key>": {                          // lowercase, diacritics removed, first two letters or digits
  *         search: [{ path, bytes, hash }],   // rows: [folded, id, headword, pronunciation, pos, gloss]
@@ -33,7 +34,7 @@
 export const DATA_BASE = '';
 
 /** One file listed by the manifest. */
-/** @typedef {{ path: string, bytes: number, hash: string }} Shard */
+/** @typedef {{ path: string, bytes: number, hash: string, rows?: number }} Shard */
 
 /** One bucket's four file sets. */
 /** @typedef {{ search: Shard[], entry: Shard[], ex: Shard[], forms: Shard[] }} Bucket */
@@ -45,6 +46,7 @@ export const DATA_BASE = '';
  *   partial: boolean,
  *   sources: Array<{ name: string, url: string, licence: string }>,
  *   totals: { entries: number, forms: number, examples: number, bytes: number },
+ *   cefr: Record<string, Shard[]>,
  *   buckets: Record<string, Bucket>,
  * }} Manifest */
 
@@ -64,6 +66,9 @@ export const DATA_BASE = '';
 
 /** One conjugation group. `forms` keeps the person slots: a missing form is "". */
 /** @typedef {{ key: string, personal: boolean, forms: string[] }} ConjGroup */
+
+/** One CEFR deck row: what a Study card needs before the entry body arrives. */
+/** @typedef {{ id: string, word: string, pos: string, gloss: string }} DeckRow */
 
 /** One entry body, as the Entry screen draws it. */
 /** @typedef {{
@@ -162,6 +167,20 @@ export function parseManifest(json) {
     if (source !== null) sources.push({ name: str(source.name), url: str(source.url), licence: str(source.licence) });
   }
 
+  /** @type {Record<string, Shard[]>} */
+  const cefr = {};
+  for (const [band, files] of Object.entries(obj(root.cefr) ?? {})) {
+    /** @type {Shard[]} */
+    const shards = [];
+    for (const raw of Array.isArray(files) ? files : []) {
+      const file = obj(raw);
+      const path = str(file?.path ?? file?.file);
+      if (path === '') continue;
+      shards.push({ path, bytes: num(file?.bytes), hash: str(file?.hash), rows: num(file?.rows) });
+    }
+    if (shards.length > 0) cefr[band] = shards;
+  }
+
   const totals = obj(root.totals) ?? {};
   return {
     version: str(root.version),
@@ -169,6 +188,7 @@ export function parseManifest(json) {
     partial: root.partial === true,
     sources,
     totals: { entries: num(totals.entries), forms: num(totals.forms), examples: num(totals.examples), bytes: num(totals.bytes) },
+    cefr,
     buckets,
   };
 }
@@ -257,6 +277,25 @@ export function toRow(raw) {
     gloss: str(source.gloss),
   };
   return row.id === '' || row.headword === '' ? null : row;
+}
+
+/**
+ * One CEFR deck row, from the compact `[id, word, pos, gloss]` array the build writes.
+ * @param {unknown} raw
+ * @returns {DeckRow | null}
+ */
+export function toDeckRow(raw) {
+  const source = Array.isArray(raw)
+    ? { id: raw[0], word: raw[1], pos: raw[2], gloss: raw[3] }
+    : obj(raw);
+  if (source === null) return null;
+  const row = {
+    id: str(source.id),
+    word: str(source.word ?? source.headword),
+    pos: str(source.pos),
+    gloss: str(source.gloss),
+  };
+  return row.id === '' || row.word === '' ? null : row;
 }
 
 /**
@@ -449,8 +488,36 @@ export function createData(options = {}) {
     });
   }
 
+  /**
+   * How many cards a CEFR deck holds, from the manifest alone: no file fetch.
+   * @param {string} band
+   * @returns {Promise<number>}
+   */
+  function cefrCount(band) {
+    return manifest().then((parsed) => (parsed.cefr[band] ?? []).reduce((total, file) => total + (file.rows ?? 0), 0));
+  }
+
   return {
     manifest,
+    cefrCount,
+    /**
+     * One CEFR deck, every row in file order.
+     * @param {string} band
+     * @returns {Promise<DeckRow[]>}
+     */
+    cefr(band) {
+      return memo('cefr:' + band, async () => {
+        /** @type {DeckRow[]} */
+        const out = [];
+        for (const body of await read((await manifest()).cefr[band] ?? [])) {
+          for (const raw of Array.isArray(body) ? body : []) {
+            const row = toDeckRow(raw);
+            if (row !== null) out.push(row);
+          }
+        }
+        return out;
+      });
+    },
     /**
      * The search rows of one folded key.
      * @param {string} key folded
