@@ -581,6 +581,7 @@ export function boot(options = {}) {
     lists: () => storage.lists(),
     folders: () => storage.folders(),
     history: () => storage.history(),
+    clearHistory: () => storage.clearHistory(),
     notesCount: () => storage.notes().length,
     notes: noteRows,
     rows: describeItems,

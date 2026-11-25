@@ -47,6 +47,7 @@ import { WORD_CAP, contexts, readKey, summarise, tokenize } from './text.js';
  *   lists: () => UserList[],
  *   folders: () => Array<{ id: string, name: string }>,
  *   history: () => string[],
+ *   clearHistory: () => void,
  *   notesCount: () => number,
  *   notes: () => Promise<Array<{ id: string, text: string, word: string }>>,
  *   rows: (ids: string[]) => Promise<Map<string, { pos: string, gloss: string }>>,
@@ -1985,9 +1986,15 @@ export function createUi(doc = globalThis.document) {
       /** @type {HTMLElement} */
       let body;
       if (view === 'history') {
-        bar = headerBar('History', barButton('‹ Lists', goMain), []);
-        body = el('div', 'lists-body');
         const queries = options.history();
+        // Clear shows only when there is history to clear.
+        const clear = barButton('Clear', () => {
+          if (!options.confirm('Clear all search history?')) return;
+          options.clearHistory();
+          render();
+        }, 'action');
+        bar = headerBar('History', barButton('‹ Lists', goMain), queries.length > 0 ? [clear] : []);
+        body = el('div', 'lists-body');
         if (queries.length === 0) {
           body.append(message('No searches yet.'));
         } else {

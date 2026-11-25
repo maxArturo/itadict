@@ -45,7 +45,7 @@ import {
   readCard,
 } from '../js/study.js';
 import { WORD_CAP, contexts, createReader, pickCandidate, readKey, summarise, tokenize } from '../js/text.js';
-import { PALETTE, backFor, backTarget, formRows, translationRows } from '../js/ui.js';
+import { PALETTE, backFor, backTarget, createUi, formRows, translationRows } from '../js/ui.js';
 import {
   LABELS,
   backupFile,
@@ -78,6 +78,70 @@ function fakeBackend(initial = null) {
     },
     raw: () => store.get(KEY) ?? null,
   };
+}
+
+/** One element of the fake document. It holds children, attributes and click listeners. */
+class FakeElement {
+  /** @param {string} tag */
+  constructor(tag) {
+    this.tagName = tag.toUpperCase();
+    this.className = '';
+    /** @type {Array<FakeElement | { textContent: string }>} */
+    this.childNodes = [];
+    /** @type {Record<string, string>} */
+    this.attributes = {};
+    /** @type {Array<() => void>} */
+    this.clicks = [];
+  }
+  /** @param {...(FakeElement | string)} nodes */
+  append(...nodes) {
+    for (const node of nodes) this.childNodes.push(typeof node === 'string' ? { textContent: node } : node);
+  }
+  /** @param {...(FakeElement | string)} nodes */
+  replaceChildren(...nodes) {
+    this.childNodes = [];
+    this.append(...nodes);
+  }
+  get textContent() {
+    return this.childNodes.map((node) => node.textContent).join('');
+  }
+  set textContent(value) {
+    this.childNodes = [{ textContent: String(value) }];
+  }
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
+  }
+  getAttribute(name) {
+    return this.attributes[name] ?? null;
+  }
+  addEventListener(type, listener) {
+    if (type === 'click') this.clicks.push(listener);
+  }
+  click() {
+    for (const listener of this.clicks) listener({ preventDefault() {} });
+  }
+}
+
+/** The document the Lists screen needs: elements and SVG elements. No layout, no events beyond click. */
+function fakeDocument() {
+  return {
+    createElement: (tag) => new FakeElement(tag),
+    createElementNS: (_namespace, tag) => new FakeElement(tag),
+  };
+}
+
+/** Every element under a root, depth first. @param {FakeElement} root @returns {FakeElement[]} */
+function elementsUnder(root) {
+  const found = [];
+  for (const node of root.childNodes) {
+    if (node instanceof FakeElement) found.push(node, ...elementsUnder(node));
+  }
+  return found;
+}
+
+/** The one button under a root whose text starts with a label. @param {FakeElement} root @param {string} label */
+function buttonNamed(root, label) {
+  return elementsUnder(root).find((node) => node.tagName === 'BUTTON' && node.textContent.startsWith(label));
 }
 
 /** A `window` with a hash, a recording replace, and a manual hashchange. @param {string} hash */
@@ -1754,3 +1818,41 @@ test('speech picks an Italian voice, speaks at 0.9 and never offers a dead butto
   assert.equal(createSpeech({}).available(), false, 'a browser without synthesis hides the control');
 });
 
+
+test('the History view clears every query only after a yes', () => {
+  /** Open the History view over two stored queries. The confirm answers with `answer`. */
+  function openHistory(answer) {
+    const storage = createStorage(fakeBackend());
+    storage.addQuery('via');
+    storage.addQuery('casa');
+    const asked = [];
+    const screen = createUi(fakeDocument()).listsScreen({
+      lists: () => storage.lists(),
+      folders: () => storage.folders(),
+      history: () => storage.history(),
+      clearHistory: () => storage.clearHistory(),
+      notesCount: () => 0,
+      confirm: (line) => {
+        asked.push(line);
+        return answer;
+      },
+      onSettings() {},
+      onSearch() {},
+    });
+    buttonNamed(screen.node, 'History').click();
+    return { storage, node: screen.node, asked };
+  }
+
+  const kept = openHistory(false);
+  buttonNamed(kept.node, 'Clear').click();
+  assert.deepEqual(kept.asked, ['Clear all search history?']);
+  assert.deepEqual(kept.storage.history(), ['casa', 'via'], 'a no keeps every query');
+  assert.ok(buttonNamed(kept.node, 'casa'), 'the rows stay on screen');
+  assert.ok(buttonNamed(kept.node, 'via'));
+
+  const cleared = openHistory(true);
+  buttonNamed(cleared.node, 'Clear').click();
+  assert.deepEqual(cleared.storage.history(), [], 'a yes drops every query');
+  assert.match(cleared.node.textContent, /No searches yet\./, 'the view shows the empty message');
+  assert.equal(buttonNamed(cleared.node, 'Clear'), undefined, 'an empty history has no Clear');
+});
