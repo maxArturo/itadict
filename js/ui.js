@@ -270,6 +270,8 @@ export function translationRows(en) {
  *   setTabBadge: (bar: HTMLElement, name: string, value: string) => void,
  *   searchScreen: (options: {
  *     search: (query: string, options?: { whole?: boolean }) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
+ *     clearHistory: () => void,
+ *     confirm: (message: string) => boolean,
  *     onCommit?: (query: string) => void,
  *   }) => { node: HTMLElement, query: () => string, setQuery: (value: string, options?: { whole?: boolean }) => void, refresh: () => void },
  *   textScreen: (options: {
@@ -720,6 +722,8 @@ export function createUi(doc = globalThis.document) {
    *
    * @param {{
    *   search: (query: string, options?: { whole?: boolean }) => Promise<{ rows: Row[], english: Row[], history: string[] }>,
+   *   clearHistory: () => void,
+   *   confirm: (message: string) => boolean,
    *   onCommit?: (query: string) => void,
    * }} options
    */
@@ -847,7 +851,19 @@ export function createUi(doc = globalThis.document) {
     /** @param {string[]} history */
     function historyView(history) {
       const wrap = el('div', 'history');
-      wrap.append(text('h2', 'section-title', 'History'));
+      const title = text('h2', 'section-title', 'History');
+      if (history.length > 0) {
+        // Same action and confirm as the History view on Lists.
+        const head = el('div', 'section-head');
+        head.append(title, barButton('Clear', () => {
+          if (!options.confirm('Clear all search history?')) return;
+          options.clearHistory();
+          void run();
+        }, 'action'));
+        wrap.append(head);
+      } else {
+        wrap.append(title);
+      }
       const list = el('ul', 'rows');
       for (const query of history) {
         const item = el('li');

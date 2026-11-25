@@ -86,6 +86,8 @@ class FakeElement {
   constructor(tag) {
     this.tagName = tag.toUpperCase();
     this.className = '';
+    /** An input reads as empty before anything is typed, as in a real document. */
+    this.value = '';
     /** @type {Array<FakeElement | { textContent: string }>} */
     this.childNodes = [];
     /** @type {Record<string, string>} */
@@ -1854,5 +1856,42 @@ test('the History view clears every query only after a yes', () => {
   buttonNamed(cleared.node, 'Clear').click();
   assert.deepEqual(cleared.storage.history(), [], 'a yes drops every query');
   assert.match(cleared.node.textContent, /No searches yet\./, 'the view shows the empty message');
+  assert.equal(buttonNamed(cleared.node, 'Clear'), undefined, 'an empty history has no Clear');
+});
+
+test('the Search screen clears its history only after a yes', async () => {
+  // The first paint of the Search screen draws the history list, so each view waits a tick.
+  const settle = () => new Promise((resolve) => setImmediate(resolve));
+
+  /** Open the Search screen over two stored queries. The confirm answers with `answer`. */
+  function openSearch(answer) {
+    const storage = createStorage(fakeBackend());
+    storage.addQuery('via');
+    storage.addQuery('casa');
+    const asked = [];
+    const screen = createUi(fakeDocument()).searchScreen({
+      search: async () => ({ rows: [], english: [], history: storage.history() }),
+      clearHistory: () => storage.clearHistory(),
+      confirm: (line) => {
+        asked.push(line);
+        return answer;
+      },
+    });
+    return { storage, node: screen.node, asked };
+  }
+
+  const kept = openSearch(false);
+  await settle();
+  assert.ok(buttonNamed(kept.node, 'Clear'), 'a history with entries shows Clear');
+  buttonNamed(kept.node, 'Clear').click();
+  assert.deepEqual(kept.asked, ['Clear all search history?']);
+  assert.deepEqual(kept.storage.history(), ['casa', 'via'], 'a no keeps every query');
+  assert.ok(buttonNamed(kept.node, 'casa'), 'the rows stay on screen');
+
+  const cleared = openSearch(true);
+  await settle();
+  buttonNamed(cleared.node, 'Clear').click();
+  await settle();
+  assert.deepEqual(cleared.storage.history(), [], 'a yes drops every query');
   assert.equal(buttonNamed(cleared.node, 'Clear'), undefined, 'an empty history has no Clear');
 });

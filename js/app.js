@@ -123,6 +123,9 @@ export function boot(options = {}) {
 
   const searchView = ui.searchScreen({
     search: (query, searchOptions) => search.search(query, searchOptions),
+    clearHistory: () => storage.clearHistory(),
+    // ask is defined below, so it is read at tap time, not at boot time.
+    confirm: (message) => ask(message),
     onCommit: (query) => {
       storage.addQuery(query);
     },

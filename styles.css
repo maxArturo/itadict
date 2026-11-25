@@ -291,6 +291,17 @@ body {
   padding-top: 16px;
 }
 
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0 8px;
+}
+
+.section-head .section-title {
+  margin: 0;
+}
+
 /* ---------------------------------------------------------------- entry */
 
 .navbar {
